@@ -1,0 +1,428 @@
+body{
+    background-color: #FFFFFF;
+}
+.gender {
+    margin-top: 10px;
+}
+
+.avatarusers {
+    width: 55px;
+    border-radius: 100%;
+}
+
+.btn-primary:hover {
+    background-color: #2e649e !important;
+    color: #FFFFFF;
+}
+
+.logo {
+    padding: 0 !important;
+    background: white !important;
+    height: 110px;
+}
+
+.logo_img {
+    width: 65%;
+    margin-left: 40px;
+    margin-top: 10px;
+}
+
+.searchusers {
+    display: block;
+    margin: 0 !important;
+}
+
+.uspageform {
+    border-radius: 0 !important;
+}
+
+.selects {
+    -webkit-appearance: none;
+    background: url('/img/desing_img/rowselects.PNG');
+    background-repeat: no-repeat;
+    background-position: right 0px;
+    background-size: 20px 32px;
+}
+
+#bodyadd {
+    border-radius: 50px;
+    display: block;
+    margin-top: 2px;
+    font-size: 20px;
+    padding: 7px 15px;
+}
+
+#bodyicon {
+    margin-top: 30px;
+}
+
+.iconbody {
+    width: 90px;
+    background-color: #2e649e;
+    padding: 5px 20px;
+}
+
+.onepng {
+    width: 50px;
+}
+
+.onetime {
+    margin-top: 50px;
+}
+
+#modeladd {
+    border-radius: 50px;
+    display: block;
+    margin-top: 2px;
+    font-size: 20px;
+    padding: 7px 15px;
+}
+
+#modelicon {
+    margin-top: 30px;
+}
+
+.iconmodel {
+    width: 95px;
+}
+
+#stateadd {
+    border-radius: 50px;
+    display: block;
+    margin-top: 2px;
+    font-size: 20px;
+    padding: 7px 15px;
+}
+
+#stateicon {
+    margin-top: 30px;
+}
+
+#parkingadd {
+    border-radius: 50px;
+    display: block;
+    margin-top: 2px;
+    font-size: 20px;
+    padding: 7px 15px;
+}
+
+#parkingicon {
+    margin-top: 30px;
+}
+
+#auctioncatadd {
+    border-radius: 50px;
+    display: block;
+    margin-top: 2px;
+    font-size: 20px;
+    padding: 7px 15px;
+}
+
+#auctioncaticon {
+    margin-top: 30px;
+}
+
+.pagination {
+    justify-content: center;
+    margin-top: 100px;
+}
+
+.searching {
+    margin-top: 30px;
+}
+
+.searchbut {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.founds {
+    padding-top: 25px;
+}
+
+.searchboxmodel {
+    margin-top: -35px !important;
+}
+
+.cars-body {
+    padding: 20px 25px;
+}
+
+.mainpicadmin {
+    width: 100%;
+}
+
+.car-blok {
+    margin-top: 60px;
+}
+
+.commentsadmin {
+    background: #ca9a686b;
+    padding: 20px 20px 10px 20px;
+}
+
+.descript {
+    margin-top: 30px;
+}
+
+.carimages {
+    width: 100px;
+}
+
+
+.headerback {
+    background-image: url('/img/desing_img/bg.jpg');
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    padding-right: 0 !important;
+    padding-left: 0 !important;
+}
+
+.headerlogo {
+    width: 150px;
+    margin-top: 15px;
+}
+
+.carnavbar {
+    border-bottom: 2px solid #2099FE;
+}
+
+.menunavbar ul > li {
+    position: relative;
+    float: left;
+    padding: 15px 5px;
+}
+
+.menunavbar ul > li > a {
+    cursor: pointer;
+    padding: 0 25px;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.menunavbar ul li, ol li {
+    list-style: none;
+
+}
+
+.menunavbar ul {
+    padding: 0 !important;
+}
+
+.menunavbar ol > li {
+    width: 160px;
+}
+
+.menunavbar ol {
+    position: absolute;
+    padding: 0 0 0 25px !important;
+}
+
+.menunavbar ol > li > a {
+    opacity: 0;
+    color: black;
+    width: 230px;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.menunavbar ul > li:hover a {
+    opacity: 1;
+    transition: 1.3s;
+}
+
+.menunavbar {
+    padding-top: 25px;
+    display: flex;
+}
+
+.body-cars img {
+    width: 50px;
+}
+
+.body-cars {
+    background-color: #2099FE;
+    margin: 40px 10px;
+    text-align: center;
+}
+
+.body-name {
+    color: white;
+    text-align: center;
+    font-size: 12px;
+}
+
+.car-filters {
+    background-color: #555863;
+    height: 140px;
+}
+
+.body-cats {
+    margin-left: 20px;
+}
+
+.select-options-filter {
+    padding-top: 25px;
+}
+
+.options {
+    border-radius: 0;
+}
+
+.car-filters label {
+    color: white;
+}
+
+.car-filters p {
+    color: white;
+    display: block;
+}
+
+.filter-date {
+    max-width: 45%;
+}
+
+.now-ui-icons.ui-1_zoom-bold:before {
+    content: "\ea64";
+}
+
+.filter-search-icon {
+    width: 23px;
+}
+
+.cars-article img {
+    width: 100%;
+    height: 280px;
+    position: relative;
+    box-shadow: 0 0 21px -2px black;
+}
+
+.cars-root {
+    margin-top: 50px;
+}
+
+.article-price {
+    width: 110px;
+    height: 33px;
+    background-color: #2099FE;
+    position: absolute;
+    top: -7px;
+    left: 120px;
+    text-align: center;
+    padding-top: 5px;
+    box-shadow: 0 0 21px -2px black;
+}
+
+.article-price p {
+    color: white;
+}
+
+.footer-background {
+    background-color: #DAE2F0;
+}
+
+.footer-logo {
+    text-align: center;
+    font-weight: 600;
+    background-position: center;
+    background-image: url("/img/desing_img/carbiddinglogo.png");
+    background-size: 500px;
+    background-repeat: no-repeat;
+}
+
+.footer-opacity {
+    background-color: #dae2f0e0;;
+    padding-top: 50px;
+    padding-bottom: 70px;
+}
+
+.lastcars {
+    width: 100%;
+}
+
+.lastcars img {
+    width: 100%;
+}
+
+#lastcars {
+    margin-top: 120px;
+    padding-bottom: 60px;
+}
+
+.slider-col {
+    width: 100%;
+    height: 400px;
+    display: flex;
+    align-items: center;
+}
+
+.img-fluid {
+    width: 100%;
+}
+#carouselExampleControls{
+    box-shadow: 0 0 21px -2px black;
+}
+.carousel-control-prev-icon, .carousel-control-next-icon {
+    width: 60px !important;
+    height: 45px !important;
+}
+
+.carousel-control-prev, .carousel-control-next {
+    width: 10% !important;
+}
+
+.carousel-control-prev:hover, .carousel-control-next:hover {
+    background-color: #61616173;
+}
+
+.car-informacion{
+    position: absolute;
+    top: 0;
+    right: 126px;
+    background-color: #61616173;
+    width: 290px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+}
+
+.car-informacion p{
+    color: white;
+    font-weight: 600;
+}
+
+.text-hover{
+    position: relative;
+    overflow: hidden;
+}
+
+.drop-text{
+    position: absolute;
+    left: 15px;
+    top: 82%;
+    width: 92.5%;
+    background-color: #6161619c;
+    padding-top: 10px;
+    padding-bottom: 20px;
+}
+.car-informacion-article p{
+    color: white;
+    font-weight: 600;
+    font-size: 20px;
+}
+
+.car-informacion-article{
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+}
+
+.drop-text:hover{
+    top: 28%;
+    transition: 1s cubic-bezier(0.18, 0.89, 0.32, 1.28);
+}
