@@ -5,7 +5,7 @@
                 <div class="row body-cats">
                     <div v-for="(body, index) in bodies" :id="body.id" class="col-md-1 body-cars">
                         <div class="row">
-                            <div class="col-md-12">
+                            <div class="col">
                                 <img :src="'/img/desing_img/'+body.icons" :alt="body.name">
                             </div>
                         </div>
@@ -52,21 +52,21 @@
                     </div>
                     <div class="col-md-4">
                         <label>Дата завершения</label>
-                        <div class="row">
+                        <div class="row input-row">
                             <p>С</p>
                             <div class="col-md-6 filter-date">
-                                <input type="date" name="start">
+                                <input type="date" name="start" class="input-date">
                             </div>
                             <p>ПО</p>
                             <div class="col-md-6 filter-date">
-                                <input type="date" name="finish">
+                                <input type="date" name="finish" class="input-date">
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="float-right">
                     <div>
-                        <button class="btn btn-primary searchusers" type="submit">
+                        <button class="btn btn-primary searchcarsauction" type="submit">
                             Поиск
                         </button>
                     </div>

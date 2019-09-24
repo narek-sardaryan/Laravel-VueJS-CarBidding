@@ -40,7 +40,7 @@ body{
     -webkit-appearance: none;
     background: url('/img/desing_img/rowselects.PNG');
     background-repeat: no-repeat;
-    background-position: right 0px;
+    background-position: right 0;
     background-size: 20px 32px;
 }
 
@@ -260,7 +260,7 @@ body{
 }
 
 .body-cats {
-    margin-left: 20px;
+    justify-content: space-around;
 }
 
 .select-options-filter {
@@ -424,5 +424,18 @@ body{
 
 .drop-text:hover{
     top: 28%;
-    transition: 1s cubic-bezier(0.18, 0.89, 0.32, 1.28);
+    transition: 0.7s cubic-bezier(0.18, 0.89, 0.32, 1.28);
+}
+
+.input-row{
+    margin: 0!important;
+}
+
+.input-date{
+    width: 100%;
+}
+
+.searchcarsauction {
+    display: block;
+    margin-right: 17px;
 }

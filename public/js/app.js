@@ -40883,7 +40883,7 @@ var render = function() {
               { staticClass: "col-md-1 body-cars", attrs: { id: body.id } },
               [
                 _c("div", { staticClass: "row" }, [
-                  _c("div", { staticClass: "col-md-12" }, [
+                  _c("div", { staticClass: "col" }, [
                     _c("img", {
                       attrs: {
                         src: "/img/desing_img/" + body.icons,
@@ -41099,17 +41099,23 @@ var staticRenderFns = [
     return _c("div", { staticClass: "col-md-4" }, [
       _c("label", [_vm._v("Дата завершения")]),
       _vm._v(" "),
-      _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "row input-row" }, [
         _c("p", [_vm._v("С")]),
         _vm._v(" "),
         _c("div", { staticClass: "col-md-6 filter-date" }, [
-          _c("input", { attrs: { type: "date", name: "start" } })
+          _c("input", {
+            staticClass: "input-date",
+            attrs: { type: "date", name: "start" }
+          })
         ]),
         _vm._v(" "),
         _c("p", [_vm._v("ПО")]),
         _vm._v(" "),
         _c("div", { staticClass: "col-md-6 filter-date" }, [
-          _c("input", { attrs: { type: "date", name: "finish" } })
+          _c("input", {
+            staticClass: "input-date",
+            attrs: { type: "date", name: "finish" }
+          })
         ])
       ])
     ])
@@ -41123,7 +41129,7 @@ var staticRenderFns = [
         _c(
           "button",
           {
-            staticClass: "btn btn-primary searchusers",
+            staticClass: "btn btn-primary searchcarsauction",
             attrs: { type: "submit" }
           },
           [_vm._v("\n                        Поиск\n                    ")]
