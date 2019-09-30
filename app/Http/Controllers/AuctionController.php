@@ -17,11 +17,13 @@ class AuctionController extends Controller
     {
         return view('auctions');
     }
+
     public function fetchauctions()
     {
         $auctions = Auctioncat::orderBy('id', 'asc')->get();
         return $auctions;
     }
+
     public function fetchslider()
     {
         $slider = Car::orderBy('id', 'asc')->get();
@@ -51,9 +53,11 @@ class AuctionController extends Controller
         $states = State::orderBy('id', 'asc')->get();
         return $states;
     }
+
     public function fetchcars()
     {
-        $cars = Car::orderBy('id', 'asc')->get();
+        $cars = Car::orderBy('id', 'asc')->where('completed','1')
+        ->get();
         return $cars;
     }
 

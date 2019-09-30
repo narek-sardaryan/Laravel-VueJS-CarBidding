@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div class="container-fluid carbidding-container">
+        <div class="container-fluid">
             <section id="lastcars">
                 <div class="container container-back">
                     <div id="bs4-slide-carousel" class="carousel slide d-block d-sm-none slide"
@@ -119,7 +119,7 @@
             <div class="container container-back">
                 <div class="row body-cats">
                     <div class="col-md-1 body-cars">
-                        <router-link to="/" active-class="active">
+                        <router-link to="/sedan" active-class="active">
                             <div class="row">
                                 <div class="col body-car-back1">
 
@@ -333,7 +333,8 @@
 
 <script>
     export default {
-        name: "Home",
+        name: "SearchCar",
+        props: ['cars'],
         data() {
             return {
                 bodies: [],
@@ -351,7 +352,7 @@
             this.fetchModels();
             this.fetchParkings();
             this.fetchStates();
-            this.fetchCars();
+            // this.fetchCars();
             this.fetchSlider();
         },
         methods: {
@@ -375,11 +376,11 @@
                     this.states = response.data;
                 })
             },
-            fetchCars() {
-                axios.get('/fetchcars').then(response => {
-                    this.cars = response.data;
-                })
-            },
+            // fetchCars() {
+            //     axios.get('/fetchcars').then(response => {
+            //         this.cars = response.data;
+            //     })
+            // },
             fetchSlider() {
                 axios.get('/fetchslider').then(response => {
                     this.firstSlider = response.data[0];

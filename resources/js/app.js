@@ -38,7 +38,9 @@ Vue.component('faq', require('./components/Faq.vue').default);
 Vue.component('about', require('./components/About.vue').default);
 Vue.component('rules', require('./components/Rules.vue').default);
 Vue.component('contacts', require('./components/Contacts.vue').default);
-
+Vue.component('searchcar', require('./components/SearchCar.vue').default);
+Vue.component('showcar', require('./components/ShowCar.vue').default);
+Vue.component('pagination', require('laravel-vue-pagination'));
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application

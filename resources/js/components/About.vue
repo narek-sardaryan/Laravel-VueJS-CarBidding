@@ -1,7 +1,34 @@
 <template>
-<div>
-    <h1>About</h1>
-</div>
+    <div>
+        <div class="bg_img" style="margin-top: 79px;">
+            <div class="container">
+                <div class="row justify-content-end">
+                    <div class="col-md-6 about_div">
+                        <h1 class="about_paragraph">О компании</h1>
+                        <p class="about_txt">
+                        <p class="hello">Здравствуйте!</p>
+
+                        Мы создали нашу компанию в 2006 году. У нас была цель, сделать красивый и современный бизнес.<br>
+
+                        Воплощая эту идею, мы создали в сети Интернет торговую площадку по продаже аварийных автомобилей. Нас с самого начала не интересовали простые доски объявлений – мы стремились создать именно сайт по оценке и продаже автомобилей после ДТП, где конечную стоимость продаваемого поврежденного автомобиля, будет определять рынок – именно такая цена является справедливой и для продавцов – страховых и лизинговых компаний, и для покупателей.
+                        </p>
+                        <button class="show_more_btn">Show More</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <section class="partners">
+            <h3 class="partners_title">Наши партнеры</h3>
+            <div class="container">
+                <div class="pics text-center">
+                    <img src="/img/about_img/bmw].png">
+                    <img src="/img/about_img/lexus.png">
+                    <img src="/img/about_img/mercedes.png">
+                    <img src="/img/about_img/toyota.png">
+                </div>
+            </div>
+        </section>
+    </div>
 </template>
 
 <script>

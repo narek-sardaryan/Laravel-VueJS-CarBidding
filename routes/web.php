@@ -21,7 +21,6 @@ Route::get('/', function () {
 });
 
 Auth::routes();
-
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::group(['middleware' => ['auth', 'admin']], function () {
@@ -113,6 +112,10 @@ Route::group(['middleware' => ['auth', 'admin']], function () {
 });
 
 Route::get('/auctions', 'AuctionController@index');
+Route::get('/about', 'AboutController@index');
+Route::get('/contacts', 'ContactsController@index');
+Route::get('/rules', 'RulesController@index');
+Route::get('/faq', 'FaqController@index');
 Route::get('/fetchauctions', 'AuctionController@fetchauctions');
 Route::get('/fetchslider', 'AuctionController@fetchslider');
 Route::get('/fetchbodies', 'AuctionController@fetchbodies');
@@ -120,3 +123,18 @@ Route::get('/fetchmodels', 'AuctionController@fetchmodels');
 Route::get('/fetchparkings', 'AuctionController@fetchparkings');
 Route::get('/fetchstates', 'AuctionController@fetchstates');
 Route::get('/fetchcars', 'AuctionController@fetchcars');
+Route::get('/cars/{id}', 'CarsController@showcar');
+Route::get('/car/{id}', 'CarsController@fetchcar');
+Route::get('/searchcar', function (Request $request) {
+    $cars = Car::query()
+        ->where('name', 'LIKE', "%{$request->name}%")
+        ->get();
+    return view('searchcar', [
+        'cars' => $cars]);
+});
+//Route::get('/fetchsearchcar', function (Request $request) {
+//    $cars = Car::query()
+//        ->where('name', 'LIKE', "%{$request->name}%")
+//        ->get();
+//    return $cars;
+//});
