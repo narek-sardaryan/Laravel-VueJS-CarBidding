@@ -2457,7 +2457,8 @@ __webpack_require__.r(__webpack_exports__);
       cars: [],
       firstSlider: [],
       slider: [],
-      filters: []
+      filters: [],
+      bodiesId: ''
     };
   },
   created: function created() {
@@ -2524,9 +2525,10 @@ __webpack_require__.r(__webpack_exports__);
       if (id) {
         axios.get('/fetchcars').then(function (response) {
           return _this7.cars = response.data.filter(function (obj) {
-            return obj.categorId === id;
+            return obj.bodyId === id;
           });
         });
+        this.bodiesId = id;
       }
 
       var disStyle = document.getElementsByClassName("body-cars");
@@ -2557,14 +2559,25 @@ __webpack_require__.r(__webpack_exports__);
     filterCars: function filterCars() {
       var _this8 = this;
 
+      this.cars = [];
       var model = document.getElementById('model').value;
       var state = document.getElementById('state').value;
       var parking = document.getElementById('parking').value;
-      var start = document.getElementById('start').value;
-      var finish = document.getElementById('finish').value;
+      var start = new Date(document.getElementById('start').value).getTime();
+      var finish = new Date(document.getElementById('finish').value).getTime();
+      var body = this.bodiesId;
+      console.log(start, finish);
       axios.get('/fetchcars').then(function (response) {
-        _this8.cars = _this8.cars.filter(function (obj) {
-          return obj.modelId == model;
+        _this8.cars = response.data.filter(function (obj) {
+          var startAuction = new Date(obj.auctionStart).getTime();
+          var endAuction = new Date(obj.endOfAuction).getTime();
+          console.log(startAuction, endAuction);
+
+          if ((state == '' || obj.stateId == state) && (model == '' || obj.modelId == model) && (parking == '' || obj.parkingId == parking) && (!start || start >= startAuction) && (!finish || finish <= endAuction)) {
+            return true;
+          }
+
+          return false;
         });
       });
     }
@@ -43625,7 +43638,7 @@ var staticRenderFns = [
     return _c("div", { staticClass: "col filter-date" }, [
       _c("input", {
         staticClass: "input-date form-control options",
-        attrs: { type: "date", id: "start" }
+        attrs: { type: "date", id: "start", value: "" }
       })
     ])
   },
@@ -43636,7 +43649,7 @@ var staticRenderFns = [
     return _c("div", { staticClass: "col filter-date" }, [
       _c("input", {
         staticClass: "input-date form-control options",
-        attrs: { type: "date", id: "finish" }
+        attrs: { type: "date", id: "finish", value: "" }
       })
     ])
   }

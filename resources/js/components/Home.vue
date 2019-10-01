@@ -252,11 +252,11 @@
                         <div class="row input-row">
                             <p>С</p>
                             <div class="col filter-date">
-                                <input type="date" id="start" class="input-date form-control options">
+                                <input type="date" id="start" value="" class="input-date form-control options">
                             </div>
                             <p>ПО</p>
                             <div class="col filter-date">
-                                <input type="date" id="finish" class="input-date form-control options">
+                                <input type="date" id="finish" value="" class="input-date form-control options">
                             </div>
                             <div class="col filter-date">
                                 <button class="btn btn-light searchcarsauction" @click="filterCars()">
@@ -327,7 +327,8 @@
                 cars: [],
                 firstSlider: [],
                 slider: [],
-                filters: []
+                filters: [],
+                bodiesId: ''
             }
         },
         created: function () {
@@ -378,8 +379,9 @@
                 }
                 if (id) {
                     axios.get('/fetchcars').then(response => {
-                        return this.cars = response.data.filter(obj => obj.categorId === id);
-                    })
+                        return this.cars = response.data.filter(obj => obj.bodyId === id);
+                    });
+                    this.bodiesId = id;
                 }
                 var disStyle = document.getElementsByClassName("body-cars");
                 var dispStyle = document.getElementsByClassName("body-name");
@@ -403,13 +405,28 @@
                 bodyStyle.style.background = '#0f92ff';
             },
             filterCars() {
+                this.cars = [];
                 var model = document.getElementById('model').value;
                 var state = document.getElementById('state').value;
                 var parking = document.getElementById('parking').value;
-                var start = document.getElementById('start').value;
-                var finish = document.getElementById('finish').value;
+                var start = new Date(document.getElementById('start').value).getTime();
+                var finish = new Date(document.getElementById('finish').value).getTime();
+                var body = this.bodiesId;
+                console.log(start, finish)
                 axios.get('/fetchcars').then(response => {
-                    this.cars = this.cars.filter(obj => obj.modelId == model);
+                    this.cars = response.data.filter(obj => {
+                        const startAuction = new Date(obj.auctionStart).getTime();
+                        const endAuction = new Date(obj.endOfAuction).getTime();
+                        console.log(startAuction, endAuction)
+                        if ((state == '' || obj.stateId == state) &&
+                            (model == '' || obj.modelId == model) &&
+                            (parking == '' || obj.parkingId == parking) &&
+                            (!start || start >= startAuction) &&
+                            (!finish || finish <= endAuction)) {
+                            return true;
+                        }
+                        return false;
+                    });
                 })
             }
         }
