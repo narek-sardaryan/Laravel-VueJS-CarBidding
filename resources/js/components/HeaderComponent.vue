@@ -36,7 +36,7 @@
                                 <li>
                                     <a>Все Аукционы <p style="display:inline-block;transition: 1.3s;color:#2099FE;">⇩</p></a>
                                     <ol>
-                                        <li v-for="auction in auctions">
+                                        <li @click="reloadForAuctions" v-for="auction in auctions">
                                             <router-link :to="'/auctions/'+auction.id">{{auction.name}}</router-link>
                                         </li>
                                     </ol>
@@ -85,6 +85,9 @@
                 axios.get('/fetchauctions').then(response => {
                     this.auctions = response.data;
                 })
+            },
+            reloadForAuctions() {
+                window.location.reload();
             }
         }
     }

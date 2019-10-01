@@ -1898,31 +1898,35 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
 //
 //
 //
 //
 //
 //
-
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Auctions",
   data: function data() {
     return {
-      auctions: []
+      auctions: [],
+      id: this.$router.currentRoute.params['id']
     };
   },
   created: function created() {
-    this.fetchAuctions();
+    this.fetchAuction();
   },
   methods: {
-    fetchAuctions: function fetchAuctions() {
+    fetchAuction: function fetchAuction() {
       var _this = this;
 
-      axios.get('/fetchauctions').then(function (response) {
+      axios.get('/auction/' + this.id).then(function (response) {
         _this.auctions = response.data;
       });
+    }
+  },
+  watch: {
+    $route: function $route(toR, fromR) {
+      this.id = toR.params['id'];
     }
   }
 });
@@ -2129,6 +2133,9 @@ __webpack_require__.r(__webpack_exports__);
       axios.get('/fetchauctions').then(function (response) {
         _this.auctions = response.data;
       });
+    },
+    reloadForAuctions: function reloadForAuctions() {
+      window.location.reload();
     }
   }
 });
@@ -2461,22 +2468,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Home",
   data: function data() {
@@ -2486,9 +2477,9 @@ __webpack_require__.r(__webpack_exports__);
       parkings: [],
       models: [],
       cars: [],
-      carss: [],
       firstSlider: [],
-      slider: []
+      slider: [],
+      filters: []
     };
   },
   created: function created() {
@@ -2541,6 +2532,62 @@ __webpack_require__.r(__webpack_exports__);
       axios.get('/fetchslider').then(function (response) {
         _this6.firstSlider = response.data[0];
         _this6.slider = response.data;
+      });
+    },
+    filterByBodies: function filterByBodies(id) {
+      var _this7 = this;
+
+      if (!id) {
+        axios.get('/fetchcars').then(function (response) {
+          return _this7.cars = response.data;
+        });
+      }
+
+      if (id) {
+        axios.get('/fetchcars').then(function (response) {
+          return _this7.cars = response.data.filter(function (obj) {
+            return obj.categorId === id;
+          });
+        });
+      }
+
+      var disStyle = document.getElementsByClassName("body-cars");
+      var dispStyle = document.getElementsByClassName("body-name");
+      var disbackStyle = document.getElementsByClassName("activeback");
+
+      for (var i = 0; i < disbackStyle.length; i++) {
+        var backid = disbackStyle[i].getAttribute('back-id');
+        var disbackimg = document.querySelector('div[back-id="' + backid + '"]');
+        disbackimg.style.backgroundImage = "url('/img/desing_img/" + backid + backid + ".png')";
+      }
+
+      for (var j = 0; j < dispStyle.length; j++) {
+        dispStyle[j].style.color = 'black';
+      }
+
+      for (var k = 0; k < disStyle.length; k++) {
+        disStyle[k].style.background = 'white';
+      }
+
+      var backimg = document.querySelector('div[back-id="' + id + '"]');
+      backimg.style.backgroundImage = "url('/img/desing_img/" + id + ".png')";
+      var pStyle = document.querySelector('p[p-id="' + id + '"]');
+      pStyle.style.color = 'white';
+      var bodyStyle = document.querySelector('div[data-id="' + id + '"]');
+      bodyStyle.style.background = '#0f92ff';
+    },
+    filterCars: function filterCars() {
+      var _this8 = this;
+
+      var model = document.getElementById('model').value;
+      var state = document.getElementById('state').value;
+      var parking = document.getElementById('parking').value;
+      var start = document.getElementById('start').value;
+      var finish = document.getElementById('finish').value;
+      axios.get('/fetchcars').then(function (response) {
+        _this8.cars = _this8.cars.filter(function (obj) {
+          return obj.modelId == model;
+        });
       });
     }
   }
@@ -42688,6 +42735,7 @@ var render = function() {
                     _vm._l(_vm.auctions, function(auction) {
                       return _c(
                         "li",
+                        { on: { click: _vm.reloadForAuctions } },
                         [
                           _c(
                             "router-link",
@@ -43053,204 +43101,114 @@ var render = function() {
         _c("div", { staticClass: "row body-cats" }, [
           _c(
             "div",
-            { staticClass: "col-md-1 body-cars" },
-            [
-              _c(
-                "router-link",
-                { attrs: { to: "/", "active-class": "active" } },
-                [
-                  _c("div", { staticClass: "row" }, [
-                    _c("div", { staticClass: "col body-car-back1" })
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "row" }, [
-                    _c("div", { staticClass: "col-md-12 text-name" }, [
-                      _c("p", { staticClass: "body-name" }, [
-                        _vm._v("Все типы")
-                      ])
-                    ])
-                  ])
-                ]
-              )
-            ],
-            1
+            {
+              staticClass: "col-md-1 body-cars",
+              attrs: { "data-id": "0" },
+              on: {
+                click: function($event) {
+                  return _vm.filterByBodies(0)
+                }
+              }
+            },
+            [_vm._m(3), _vm._v(" "), _vm._m(4)]
           ),
           _vm._v(" "),
           _c(
             "div",
-            { staticClass: "col-md-1 body-cars" },
-            [
-              _c(
-                "router-link",
-                { attrs: { to: "/sedan", "active-class": "active" } },
-                [
-                  _c("div", { staticClass: "row" }, [
-                    _c("div", { staticClass: "col body-car-back2" })
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "row" }, [
-                    _c("div", { staticClass: "col-md-12 text-name" }, [
-                      _c("p", { staticClass: "body-name" }, [
-                        _vm._v("Легковые")
-                      ])
-                    ])
-                  ])
-                ]
-              )
-            ],
-            1
+            {
+              staticClass: "col-md-1 body-cars",
+              attrs: { "data-id": "3" },
+              on: {
+                click: function($event) {
+                  return _vm.filterByBodies(3)
+                }
+              }
+            },
+            [_vm._m(5), _vm._v(" "), _vm._m(6)]
           ),
           _vm._v(" "),
           _c(
             "div",
-            { staticClass: "col-md-1 body-cars" },
-            [
-              _c(
-                "router-link",
-                { attrs: { to: "/buses", "active-class": "active" } },
-                [
-                  _c("div", { staticClass: "row" }, [
-                    _c("div", { staticClass: "col body-car-back3" })
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "row" }, [
-                    _c("div", { staticClass: "col-md-12 text-name" }, [
-                      _c("p", { staticClass: "body-name" }, [
-                        _vm._v("Автобусы")
-                      ])
-                    ])
-                  ])
-                ]
-              )
-            ],
-            1
+            {
+              staticClass: "col-md-1 body-cars",
+              attrs: { "data-id": "8" },
+              on: {
+                click: function($event) {
+                  return _vm.filterByBodies(8)
+                }
+              }
+            },
+            [_vm._m(7), _vm._v(" "), _vm._m(8)]
           ),
           _vm._v(" "),
           _c(
             "div",
-            { staticClass: "col-md-1 body-cars" },
-            [
-              _c(
-                "router-link",
-                {
-                  attrs: { to: "/light_commercial", "active-class": "active" }
-                },
-                [
-                  _c("div", { staticClass: "row" }, [
-                    _c("div", { staticClass: "col body-car-back4" })
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "row" }, [
-                    _c("div", { staticClass: "col-md-12 text-name" }, [
-                      _c("p", { staticClass: "body-name" }, [
-                        _vm._v("Легкие коммерческие")
-                      ])
-                    ])
-                  ])
-                ]
-              )
-            ],
-            1
+            {
+              staticClass: "col-md-1 body-cars",
+              attrs: { "data-id": "4" },
+              on: {
+                click: function($event) {
+                  return _vm.filterByBodies(4)
+                }
+              }
+            },
+            [_vm._m(9), _vm._v(" "), _vm._m(10)]
           ),
           _vm._v(" "),
           _c(
             "div",
-            { staticClass: "col-md-1 body-cars" },
-            [
-              _c(
-                "router-link",
-                { attrs: { to: "/freight", "active-class": "active" } },
-                [
-                  _c("div", { staticClass: "row" }, [
-                    _c("div", { staticClass: "col body-car-back5" })
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "row" }, [
-                    _c("div", { staticClass: "col-md-12 text-name" }, [
-                      _c("p", { staticClass: "body-name" }, [
-                        _vm._v("Грузовые")
-                      ])
-                    ])
-                  ])
-                ]
-              )
-            ],
-            1
+            {
+              staticClass: "col-md-1 body-cars",
+              attrs: { "data-id": "5" },
+              on: {
+                click: function($event) {
+                  return _vm.filterByBodies(5)
+                }
+              }
+            },
+            [_vm._m(11), _vm._v(" "), _vm._m(12)]
           ),
           _vm._v(" "),
           _c(
             "div",
-            { staticClass: "col-md-1 body-cars" },
-            [
-              _c(
-                "router-link",
-                { attrs: { to: "/sedan", "active-class": "active" } },
-                [
-                  _c("div", { staticClass: "row" }, [
-                    _c("div", { staticClass: "col body-car-back6" })
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "row" }, [
-                    _c("div", { staticClass: "col-md-12 text-name" }, [
-                      _c("p", { staticClass: "body-name" }, [
-                        _vm._v("Легковые")
-                      ])
-                    ])
-                  ])
-                ]
-              )
-            ],
-            1
+            {
+              staticClass: "col-md-1 body-cars",
+              attrs: { "data-id": "6" },
+              on: {
+                click: function($event) {
+                  return _vm.filterByBodies(6)
+                }
+              }
+            },
+            [_vm._m(13), _vm._v(" "), _vm._m(14)]
           ),
           _vm._v(" "),
           _c(
             "div",
-            { staticClass: "col-md-1 body-cars" },
-            [
-              _c(
-                "router-link",
-                { attrs: { to: "/trailers", "active-class": "active" } },
-                [
-                  _c("div", { staticClass: "row" }, [
-                    _c("div", { staticClass: "col body-car-back7" })
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "row" }, [
-                    _c("div", { staticClass: "col-md-12 text-name" }, [
-                      _c("p", { staticClass: "body-name" }, [_vm._v("Прицепы")])
-                    ])
-                  ])
-                ]
-              )
-            ],
-            1
+            {
+              staticClass: "col-md-1 body-cars",
+              attrs: { "data-id": "7" },
+              on: {
+                click: function($event) {
+                  return _vm.filterByBodies(7)
+                }
+              }
+            },
+            [_vm._m(15), _vm._v(" "), _vm._m(16)]
           ),
           _vm._v(" "),
           _c(
             "div",
-            { staticClass: "col-md-1 body-cars" },
-            [
-              _c(
-                "router-link",
-                {
-                  attrs: { to: "/special_machinery", "active-class": "active" }
-                },
-                [
-                  _c("div", { staticClass: "row" }, [
-                    _c("div", { staticClass: "col body-car-back8" })
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "row" }, [
-                    _c("div", { staticClass: "col-md-12 text-name" }, [
-                      _c("p", { staticClass: "body-name" }, [
-                        _vm._v("Спецтехника")
-                      ])
-                    ])
-                  ])
-                ]
-              )
-            ],
-            1
+            {
+              staticClass: "col-md-1 body-cars",
+              attrs: { "data-id": "9" },
+              on: {
+                click: function($event) {
+                  return _vm.filterByBodies(9)
+                }
+              }
+            },
+            [_vm._m(17), _vm._v(" "), _vm._m(18)]
           )
         ])
       ])
@@ -43266,20 +43224,15 @@ var render = function() {
               "select",
               {
                 staticClass: "form-control options selectbox",
-                attrs: { name: "model", id: "select-model" }
+                attrs: { id: "model" }
               },
               [
                 _c("option", { attrs: { value: "" } }, [_vm._v("Все марки")]),
                 _vm._v(" "),
                 _vm._l(_vm.models, function(model, index) {
-                  return _c(
-                    "option",
-                    {
-                      attrs: { "data-id": model.id },
-                      domProps: { value: model.id }
-                    },
-                    [_vm._v(_vm._s(model.name) + "\n                        ")]
-                  )
+                  return _c("option", { domProps: { value: model.id } }, [
+                    _vm._v(_vm._s(model.name) + "\n                        ")
+                  ])
                 })
               ],
               2
@@ -43293,7 +43246,7 @@ var render = function() {
               "select",
               {
                 staticClass: "form-control options selectbox",
-                attrs: { name: "state", id: "select-state" }
+                attrs: { id: "state" }
               },
               [
                 _c("option", { attrs: { value: "" } }, [
@@ -43301,14 +43254,9 @@ var render = function() {
                 ]),
                 _vm._v(" "),
                 _vm._l(_vm.states, function(state, index) {
-                  return _c(
-                    "option",
-                    {
-                      attrs: { "data-id": state.id },
-                      domProps: { value: state.id }
-                    },
-                    [_vm._v(_vm._s(state.name) + "\n                        ")]
-                  )
+                  return _c("option", { domProps: { value: state.id } }, [
+                    _vm._v(_vm._s(state.name) + "\n                        ")
+                  ])
                 })
               ],
               2
@@ -43322,33 +43270,57 @@ var render = function() {
               "select",
               {
                 staticClass: "form-control options selectbox",
-                attrs: { name: "parking", id: "select-parking" }
+                attrs: { id: "parking" }
               },
               [
                 _c("option", { attrs: { value: "" } }, [_vm._v("Все стоянки")]),
                 _vm._v(" "),
                 _vm._l(_vm.parkings, function(parking, index) {
-                  return _c(
-                    "option",
-                    {
-                      attrs: { "data-id": parking.id },
-                      domProps: { value: parking.id }
-                    },
-                    [
-                      _vm._v(
-                        "\n                            " +
-                          _vm._s(parking.address) +
-                          "\n                        "
-                      )
-                    ]
-                  )
+                  return _c("option", { domProps: { value: parking.id } }, [
+                    _vm._v(
+                      "\n                            " +
+                        _vm._s(parking.address) +
+                        "\n                        "
+                    )
+                  ])
                 })
               ],
               2
             )
           ]),
           _vm._v(" "),
-          _vm._m(3)
+          _c("div", { staticClass: "col" }, [
+            _c("label", [_vm._v("Дата завершения")]),
+            _vm._v(" "),
+            _c("div", { staticClass: "row input-row" }, [
+              _c("p", [_vm._v("С")]),
+              _vm._v(" "),
+              _vm._m(19),
+              _vm._v(" "),
+              _c("p", [_vm._v("ПО")]),
+              _vm._v(" "),
+              _vm._m(20),
+              _vm._v(" "),
+              _c("div", { staticClass: "col filter-date" }, [
+                _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-light searchcarsauction",
+                    on: {
+                      click: function($event) {
+                        return _vm.filterCars()
+                      }
+                    }
+                  },
+                  [
+                    _vm._v(
+                      "\n                                Показать\n                            "
+                    )
+                  ]
+                )
+              ])
+            ])
+          ])
         ])
       ])
     ]),
@@ -43553,43 +43525,206 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col" }, [
-      _c("label", [_vm._v("Дата завершения")]),
-      _vm._v(" "),
-      _c("div", { staticClass: "row input-row" }, [
-        _c("p", [_vm._v("С")]),
-        _vm._v(" "),
-        _c("div", { staticClass: "col filter-date" }, [
-          _c("input", {
-            staticClass: "input-date form-control options",
-            attrs: { type: "date", name: "start" }
-          })
-        ]),
-        _vm._v(" "),
-        _c("p", [_vm._v("ПО")]),
-        _vm._v(" "),
-        _c("div", { staticClass: "col filter-date" }, [
-          _c("input", {
-            staticClass: "input-date form-control options",
-            attrs: { type: "date", name: "finish" }
-          })
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "col filter-date" }, [
-          _c(
-            "button",
-            {
-              staticClass: "btn btn-light searchcarsauction",
-              attrs: { type: "submit" }
-            },
-            [
-              _vm._v(
-                "\n                                Показать\n                            "
-              )
-            ]
-          )
+    return _c("div", { staticClass: "row" }, [
+      _c("div", {
+        staticClass: "col activeback body-car-back1",
+        attrs: { "back-id": "0" }
+      })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col-md-12 text-name" }, [
+        _c("p", { staticClass: "body-name", attrs: { "p-id": "0" } }, [
+          _vm._v("Все типы")
         ])
       ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "row" }, [
+      _c("div", {
+        staticClass: "col activeback body-car-back2",
+        attrs: { "back-id": "3" }
+      })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col-md-12 text-name" }, [
+        _c("p", { staticClass: "body-name", attrs: { "p-id": "3" } }, [
+          _vm._v("Легковые")
+        ])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "row" }, [
+      _c("div", {
+        staticClass: "col activeback body-car-back3",
+        attrs: { "back-id": "8" }
+      })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col-md-12 text-name" }, [
+        _c("p", { staticClass: "body-name", attrs: { "p-id": "8" } }, [
+          _vm._v("Автобусы")
+        ])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "row" }, [
+      _c("div", {
+        staticClass: "col activeback body-car-back4",
+        attrs: { "back-id": "4" }
+      })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col-md-12 text-name" }, [
+        _c("p", { staticClass: "body-name", attrs: { "p-id": "4" } }, [
+          _vm._v("Легкие коммерческие")
+        ])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "row" }, [
+      _c("div", {
+        staticClass: "col activeback body-car-back5",
+        attrs: { "back-id": "5" }
+      })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col-md-12 text-name" }, [
+        _c("p", { staticClass: "body-name", attrs: { "p-id": "5" } }, [
+          _vm._v("Грузовые")
+        ])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "row" }, [
+      _c("div", {
+        staticClass: "col activeback body-car-back6",
+        attrs: { "back-id": "6" }
+      })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col-md-12 text-name" }, [
+        _c("p", { staticClass: "body-name", attrs: { "p-id": "6" } }, [
+          _vm._v("Седельные тягачи")
+        ])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "row" }, [
+      _c("div", {
+        staticClass: "col activeback body-car-back7",
+        attrs: { "back-id": "7" }
+      })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col-md-12 text-name" }, [
+        _c("p", { staticClass: "body-name", attrs: { "p-id": "7" } }, [
+          _vm._v("Прицепы")
+        ])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "row" }, [
+      _c("div", {
+        staticClass: "col activeback body-car-back8",
+        attrs: { "back-id": "9" }
+      })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col-md-12 text-name" }, [
+        _c("p", { staticClass: "body-name", attrs: { "p-id": "9" } }, [
+          _vm._v("Спецтехника")
+        ])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col filter-date" }, [
+      _c("input", {
+        staticClass: "input-date form-control options",
+        attrs: { type: "date", id: "start" }
+      })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col filter-date" }, [
+      _c("input", {
+        staticClass: "input-date form-control options",
+        attrs: { type: "date", id: "finish" }
+      })
     ])
   }
 ]
@@ -61631,6 +61766,9 @@ __webpack_require__.r(__webpack_exports__);
     props: true
   }, {
     path: '/auctions',
+    component: _components_Auctions_vue__WEBPACK_IMPORTED_MODULE_2__["default"]
+  }, {
+    path: '/auctions/:id',
     component: _components_Auctions_vue__WEBPACK_IMPORTED_MODULE_2__["default"]
   }, {
     path: '/cars/:id',

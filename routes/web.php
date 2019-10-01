@@ -124,6 +124,8 @@ Route::get('/fetchparkings', 'AuctionController@fetchparkings');
 Route::get('/fetchstates', 'AuctionController@fetchstates');
 Route::get('/fetchcars', 'AuctionController@fetchcars');
 Route::get('/cars/{id}', 'CarsController@showcar');
+Route::get('/auctions/{id}', 'AuctionController@index');
+Route::get('/auction/{id}', 'AuctionController@fetchcar');
 Route::get('/car/{id}', 'CarsController@fetchcar');
 Route::get('/searchcar', function (Request $request) {
     $cars = Car::query()
