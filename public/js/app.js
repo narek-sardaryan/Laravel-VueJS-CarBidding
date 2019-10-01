@@ -2456,7 +2456,8 @@ __webpack_require__.r(__webpack_exports__);
       models: [],
       cars: [],
       firstSlider: [],
-      slider: []
+      slider: [],
+      filters: []
     };
   },
   created: function created() {
@@ -2554,13 +2555,17 @@ __webpack_require__.r(__webpack_exports__);
       bodyStyle.style.background = '#0f92ff';
     },
     filterCars: function filterCars() {
+      var _this8 = this;
+
       var model = document.getElementById('model').value;
       var state = document.getElementById('state').value;
       var parking = document.getElementById('parking').value;
       var start = document.getElementById('start').value;
       var finish = document.getElementById('finish').value;
-      this.cars = this.cars.filter(function (ccc) {
-        return ccc.modelId === model;
+      axios.get('/fetchcars').then(function (response) {
+        _this8.cars = _this8.cars.filter(function (obj) {
+          return obj.modelId == model;
+        });
       });
     }
   }
@@ -43214,7 +43219,11 @@ var render = function() {
                   "button",
                   {
                     staticClass: "btn btn-light searchcarsauction",
-                    on: { click: _vm.filterCars }
+                    on: {
+                      click: function($event) {
+                        return _vm.filterCars()
+                      }
+                    }
                   },
                   [
                     _vm._v(

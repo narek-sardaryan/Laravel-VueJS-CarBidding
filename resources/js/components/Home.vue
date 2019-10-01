@@ -259,7 +259,7 @@
                                 <input type="date" id="finish" class="input-date form-control options">
                             </div>
                             <div class="col filter-date">
-                                <button class="btn btn-light searchcarsauction" @click="filterCars">
+                                <button class="btn btn-light searchcarsauction" @click="filterCars()">
                                     Показать
                                 </button>
                             </div>
@@ -326,7 +326,8 @@
                 models: [],
                 cars: [],
                 firstSlider: [],
-                slider: []
+                slider: [],
+                filters: []
             }
         },
         created: function () {
@@ -407,7 +408,9 @@
                 var parking = document.getElementById('parking').value;
                 var start = document.getElementById('start').value;
                 var finish = document.getElementById('finish').value;
-                this.cars = this.cars.filter(ccc => ccc.modelId === model);
+                axios.get('/fetchcars').then(response => {
+                    this.cars = this.cars.filter(obj => obj.modelId == model);
+                })
             }
         }
     }
