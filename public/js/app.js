@@ -1942,6 +1942,28 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Contacts"
 });
@@ -42388,9 +42410,74 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div")
+  return _vm._m(0)
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", [
+      _c(
+        "div",
+        { staticClass: "container", staticStyle: { "margin-top": "79px" } },
+        [
+          _c("div", { staticClass: "row" }, [
+            _c("div", { staticClass: "col-md-4 contacts_div" }, [
+              _c("h6", { staticClass: "address_title" }, [
+                _vm._v("Наш адрес:")
+              ]),
+              _vm._v(" "),
+              _c("span", { staticClass: "address_info" }, [
+                _c("i", { staticClass: "fas fa-map-marker-alt" }),
+                _vm._v("109044, г. Москва, Крутицкий Вал, 14.")
+              ]),
+              _vm._v(" "),
+              _c("h6", { staticClass: "contact_title" }, [
+                _vm._v("Наши контакты:")
+              ]),
+              _vm._v(" "),
+              _c("span", { staticClass: "tel_info" }, [
+                _c("i", { staticClass: "fas fa-phone" }),
+                _vm._v("+7(495)748-5608")
+              ]),
+              _vm._v(" "),
+              _c("span", { staticClass: "mail_info" }, [
+                _c("i", { staticClass: "far fa-envelope" }),
+                _vm._v("letters@autosale.ru")
+              ]),
+              _vm._v(" "),
+              _c("h6", { staticClass: "w_hours_title" }, [
+                _vm._v("Часы работы:")
+              ]),
+              _vm._v(" "),
+              _c("span", { staticClass: "w_hours_info" }, [
+                _c("i", { staticClass: "far fa-clock" }),
+                _vm._v("Понедельник-пятница с 9:00 до 18:00")
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "additional_services_btn" }, [
+                _c("button", [_vm._v("Дополнительные услуги")])
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "col-md-5 contacts_div_txt" }, [
+              _c("h4", { staticClass: "add_services_title" }, [
+                _vm._v("Офис компании CarBidding")
+              ])
+            ])
+          ])
+        ]
+      ),
+      _vm._v(" "),
+      _c("div", { staticClass: "row mr-0" }, [
+        _c("div", { staticClass: "col" }, [
+          _c("div", { staticClass: "map_img" })
+        ])
+      ])
+    ])
+  }
+]
 render._withStripped = true
 
 
