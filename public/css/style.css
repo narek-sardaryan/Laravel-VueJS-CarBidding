@@ -792,3 +792,27 @@ span i {
     height: 100px;
     cursor: pointer;
 }
+
+/* car info styles  */
+.car_info {
+    margin-top: 30px;
+    text-align: center;
+}
+.lot_number {
+    font-size: 12px;
+    background: #0C74CA;
+    color: #fff;
+    padding: 3px;
+    text-align: center;
+}
+.current_prize {
+    color: #0C74CA;
+    font-size: 25px;
+    font-weight: bold;
+    margin-top: 30px;
+    text-align: left;
+}
+.car_type {
+    font-size: 20px;
+    text-align: left;
+}

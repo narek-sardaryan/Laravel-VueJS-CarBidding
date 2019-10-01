@@ -3105,6 +3105,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "ShowCar",
   data: function data() {
@@ -44693,20 +44695,31 @@ var render = function() {
             )
           ]),
           _vm._v(" "),
-          _vm._m(0)
+          _c("div", { staticClass: "col car_info" }, [
+            _c("span", { staticClass: "lot_number" }, [
+              _vm._v("Лот №1907-0906")
+            ]),
+            _vm._v(" "),
+            _c("h6", { staticClass: "current_prize" }, [
+              _vm._v("текущая цена: " + _vm._s(_vm.car.currentPrice) + " ₽")
+            ]),
+            _vm._v(" "),
+            _c("h6", { staticClass: "car_type" }, [
+              _vm._v(
+                "Легковой автомобиль " +
+                  _vm._s(_vm.car.name) +
+                  " " +
+                  _vm._s(_vm.car.year) +
+                  " "
+              )
+            ])
+          ])
         ])
       ])
     ])
   ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col" }, [_c("h4", [_vm._v("jkgjh")])])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 

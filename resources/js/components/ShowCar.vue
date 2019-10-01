@@ -11,8 +11,10 @@
               </div>
             </div>
           </div>
-          <div class="col">
-            <h4>jkgjh</h4>
+          <div class="col car_info">
+            <span class="lot_number">Лот №1907-0906</span>
+            <h6 class="current_prize">текущая цена: {{ car.currentPrice }} &#8381;</h6>
+            <h6 class="car_type">Легковой автомобиль {{ car.name }} {{ car.year }} </h6>
             
           </div>
         </div>
