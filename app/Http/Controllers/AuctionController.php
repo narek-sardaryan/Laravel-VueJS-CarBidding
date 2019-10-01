@@ -13,9 +13,20 @@ use Illuminate\Http\Request;
 
 class AuctionController extends Controller
 {
-    public function index()
+    public function index($id)
     {
-        return view('auctions');
+        $cars = Car::orderBy('id', 'asc')
+            ->where('categorId', '=', $id)
+            ->get();
+        return view('auctions', compact($cars));
+    }
+
+    public function fetchcar($id)
+    {
+        $cars = Car::orderBy('id', 'asc')
+            ->where('categorId', '=', $id)
+            ->get();
+        return $cars;
     }
 
     public function fetchauctions()
@@ -56,8 +67,8 @@ class AuctionController extends Controller
 
     public function fetchcars()
     {
-        $cars = Car::orderBy('id', 'asc')->where('completed','1')
-        ->get();
+        $cars = Car::orderBy('id', 'asc')->where('completed', '1')
+            ->get();
         return $cars;
     }
 

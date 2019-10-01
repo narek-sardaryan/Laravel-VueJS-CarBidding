@@ -118,117 +118,101 @@
             </section>
             <div class="container container-back">
                 <div class="row body-cats">
-                    <div class="col-md-1 body-cars">
-                        <router-link to="/" active-class="active">
-                            <div class="row">
-                                <div class="col body-car-back1">
+                    <div class="col-md-1 body-cars" data-id="0" @click="filterByBodies(0)">
+                        <div class="row">
+                            <div back-id="0" class="col activeback body-car-back1">
 
-                                </div>
                             </div>
-                            <div class="row">
-                                <div class="col-md-12 text-name">
-                                    <p class="body-name">Все типы</p>
-                                </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12 text-name">
+                                <p class="body-name" p-id="0">Все типы</p>
                             </div>
-                        </router-link>
+                        </div>
                     </div>
-                    <div class="col-md-1 body-cars">
-                        <router-link to="/sedan" active-class="active">
-                            <div class="row">
-                                <div class="col body-car-back2">
+                    <div class="col-md-1 body-cars" data-id="3" @click="filterByBodies(3)">
+                        <div class="row">
+                            <div back-id="3" class="col activeback body-car-back2">
 
-                                </div>
                             </div>
-                            <div class="row">
-                                <div class="col-md-12 text-name">
-                                    <p class="body-name">Легковые</p>
-                                </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12 text-name">
+                                <p class="body-name" p-id="3">Легковые</p>
                             </div>
-                        </router-link>
+                        </div>
                     </div>
-                    <div class="col-md-1 body-cars">
-                        <router-link to="/buses" active-class="active">
-                            <div class="row">
-                                <div class="col body-car-back3">
+                    <div class="col-md-1 body-cars" data-id="8" @click="filterByBodies(8)">
+                        <div class="row">
+                            <div back-id="8" class="col activeback body-car-back3">
 
-                                </div>
                             </div>
-                            <div class="row">
-                                <div class="col-md-12 text-name">
-                                    <p class="body-name">Автобусы</p>
-                                </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12 text-name">
+                                <p class="body-name" p-id="8">Автобусы</p>
                             </div>
-                        </router-link>
+                        </div>
                     </div>
-                    <div class="col-md-1 body-cars">
-                        <router-link to="/light_commercial" active-class="active">
-                            <div class="row">
-                                <div class="col body-car-back4">
+                    <div class="col-md-1 body-cars" data-id="4" @click="filterByBodies(4)">
+                        <div class="row">
+                            <div back-id="4" class="col activeback body-car-back4">
 
-                                </div>
                             </div>
-                            <div class="row">
-                                <div class="col-md-12 text-name">
-                                    <p class="body-name">Легкие коммерческие</p>
-                                </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12 text-name">
+                                <p class="body-name" p-id="4">Легкие коммерческие</p>
                             </div>
-                        </router-link>
+                        </div>
                     </div>
-                    <div class="col-md-1 body-cars">
-                        <router-link to="/freight" active-class="active">
-                            <div class="row">
-                                <div class="col body-car-back5">
+                    <div class="col-md-1 body-cars" data-id="5" @click="filterByBodies(5)">
+                        <div class="row">
+                            <div back-id="5" class="col activeback body-car-back5">
 
-                                </div>
                             </div>
-                            <div class="row">
-                                <div class="col-md-12 text-name">
-                                    <p class="body-name">Грузовые</p>
-                                </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12 text-name">
+                                <p class="body-name" p-id="5">Грузовые</p>
                             </div>
-                        </router-link>
+                        </div>
                     </div>
-                    <div class="col-md-1 body-cars">
-                        <router-link to="/sedan" active-class="active">
-                            <div class="row">
-                                <div class="col body-car-back6">
+                    <div class="col-md-1 body-cars" data-id="6" @click="filterByBodies(6)">
+                        <div class="row">
+                            <div back-id="6" class="col activeback body-car-back6">
 
-                                </div>
                             </div>
-                            <div class="row">
-                                <div class="col-md-12 text-name">
-                                    <p class="body-name">Легковые</p>
-                                </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12 text-name">
+                                <p class="body-name" p-id="6">Седельные тягачи</p>
                             </div>
-                        </router-link>
+                        </div>
                     </div>
-                    <div class="col-md-1 body-cars">
-                        <router-link to="/trailers" active-class="active">
-                            <div class="row">
-                                <div class="col body-car-back7">
+                    <div class="col-md-1 body-cars" data-id="7" @click="filterByBodies(7)">
+                        <div class="row">
+                            <div back-id="7" class="col activeback body-car-back7">
 
-                                </div>
                             </div>
-                            <div class="row">
-                                <div class="col-md-12 text-name">
-                                    <p class="body-name">Прицепы</p>
-                                </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12 text-name">
+                                <p class="body-name" p-id="7">Прицепы</p>
                             </div>
-                        </router-link>
+                        </div>
                     </div>
-                    <div class="col-md-1 body-cars">
-                        <router-link to="/special_machinery" active-class="active">
-                            <div class="row">
-                                <div class="col body-car-back8">
+                    <div class="col-md-1 body-cars" data-id="9" @click="filterByBodies(9)">
+                        <div class="row">
+                            <div back-id="9" class="col activeback body-car-back8">
 
-                                </div>
                             </div>
-                            <div class="row">
-                                <div class="col-md-12 text-name">
-                                    <p class="body-name">Спецтехника</p>
-                                </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12 text-name">
+                                <p class="body-name" p-id="9">Спецтехника</p>
                             </div>
-                        </router-link>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -238,27 +222,27 @@
                 <div class="row select-options-filter">
                     <div class="col">
                         <label></label>
-                        <select name="model" class="form-control options selectbox" id="select-model">
+                        <select id="model" class="form-control options selectbox">
                             <option value="">Все марки</option>
-                            <option v-for="(model, index) in models" :value="model.id" :data-id="model.id">{{ model.name
+                            <option v-for="(model, index) in models" :value="model.id">{{ model.name
                                 }}
                             </option>
                         </select>
                     </div>
                     <div class="col">
                         <label></label>
-                        <select name="state" class="form-control options selectbox" id="select-state">
+                        <select id="state" class="form-control options selectbox">
                             <option value="">Все состояния</option>
-                            <option v-for="(state, index) in states" :value="state.id" :data-id="state.id">{{ state.name
+                            <option v-for="(state, index) in states" :value="state.id">{{ state.name
                                 }}
                             </option>
                         </select>
                     </div>
                     <div class="col">
                         <label></label>
-                        <select name="parking" class="form-control options selectbox" id="select-parking">
+                        <select id="parking" class="form-control options selectbox">
                             <option value="">Все стоянки</option>
-                            <option v-for="(parking, index) in parkings" :value="parking.id" :data-id="parking.id">
+                            <option v-for="(parking, index) in parkings" :value="parking.id">
                                 {{ parking.address }}
                             </option>
                         </select>
@@ -268,14 +252,14 @@
                         <div class="row input-row">
                             <p>С</p>
                             <div class="col filter-date">
-                                <input type="date" name="start" class="input-date form-control options">
+                                <input type="date" id="start" class="input-date form-control options">
                             </div>
                             <p>ПО</p>
                             <div class="col filter-date">
-                                <input type="date" name="finish" class="input-date form-control options">
+                                <input type="date" id="finish" class="input-date form-control options">
                             </div>
                             <div class="col filter-date">
-                                <button class="btn btn-light searchcarsauction" type="submit">
+                                <button class="btn btn-light searchcarsauction" @click="filterCars">
                                     Показать
                                 </button>
                             </div>
@@ -341,7 +325,6 @@
                 parkings: [],
                 models: [],
                 cars: [],
-                carss: [],
                 firstSlider: [],
                 slider: []
             }
@@ -385,6 +368,46 @@
                     this.firstSlider = response.data[0];
                     this.slider = response.data;
                 })
+            },
+            filterByBodies(id) {
+                if (!id) {
+                    axios.get('/fetchcars').then(response => {
+                        return this.cars = response.data;
+                    })
+                }
+                if (id) {
+                    axios.get('/fetchcars').then(response => {
+                        return this.cars = response.data.filter(obj => obj.categorId === id);
+                    })
+                }
+                var disStyle = document.getElementsByClassName("body-cars");
+                var dispStyle = document.getElementsByClassName("body-name");
+                var disbackStyle = document.getElementsByClassName("activeback");
+                for (var i = 0; i < disbackStyle.length; i++) {
+                    var backid = disbackStyle[i].getAttribute('back-id');
+                    var disbackimg = document.querySelector('div[back-id="' + backid + '"]');
+                    disbackimg.style.backgroundImage = "url('/img/desing_img/" + backid + backid + ".png')"
+                }
+                for (var j = 0; j < dispStyle.length; j++) {
+                    dispStyle[j].style.color = 'black';
+                }
+                for (var k = 0; k < disStyle.length; k++) {
+                    disStyle[k].style.background = 'white';
+                }
+                var backimg = document.querySelector('div[back-id="' + id + '"]');
+                backimg.style.backgroundImage = "url('/img/desing_img/" + id + ".png')";
+                var pStyle = document.querySelector('p[p-id="' + id + '"]');
+                pStyle.style.color = 'white';
+                var bodyStyle = document.querySelector('div[data-id="' + id + '"]');
+                bodyStyle.style.background = '#0f92ff';
+            },
+            filterCars() {
+                var model = document.getElementById('model').value;
+                var state = document.getElementById('state').value;
+                var parking = document.getElementById('parking').value;
+                var start = document.getElementById('start').value;
+                var finish = document.getElementById('finish').value;
+                this.cars = this.cars.filter(ccc => ccc.modelId === model);
             }
         }
     }

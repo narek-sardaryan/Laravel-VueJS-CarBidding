@@ -22,6 +22,10 @@ export default new VueRouter({
             component: Auctions
         },
         {
+            path: '/auctions/:id',
+            component: Auctions
+        },
+        {
             path: '/cars/:id',
             component: ShowCar
         },

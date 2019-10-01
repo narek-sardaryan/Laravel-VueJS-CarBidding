@@ -5,22 +5,28 @@
 </template>
 
 <script>
-    import {mapGetters} from 'vuex'
+
     export default {
         name: "Auctions",
         data() {
             return {
-                auctions: []
+                auctions: [],
+                id: this.$router.currentRoute.params['id']
             }
         },
         created: function () {
-            this.fetchAuctions();
+            this.fetchAuction();
         },
         methods: {
-            fetchAuctions(){
-                axios.get('/fetchauctions').then(response => {
+            fetchAuction() {
+                axios.get('/auction/'+this.id).then(response => {
                     this.auctions = response.data;
                 })
+            }
+        },
+        watch: {
+            $route(toR, fromR) {
+                this.id = toR.params['id'];
             }
         }
     }
