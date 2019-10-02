@@ -3,8 +3,8 @@
 
 <head>
     <meta charset="utf-8"/>
-    <link sizes="80x80" href="/img/desing_img/carbiddinglogo.png">
-    <link rel="icon" type="image/png" href="/img/desing_img/carbiddinglogo.png">
+    <link sizes="80x80" href="/img/design_img/carbiddinglogo.png">
+    <link rel="icon" type="image/png" href="/img/design_img/carbiddinglogo.png">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
     <title>
         @yield('title')
@@ -34,7 +34,7 @@
       -->
         <div class="logo">
             <a href="#" class="simple-text logo-normal">
-                <img src="/img/desing_img/carbiddinglogo.png" alt="logo" class="logo_img">
+                <img src="/img/design_img/carbiddinglogo.png" alt="logo" class="logo_img">
             </a>
         </div>
         <div class="sidebar-wrapper" id="sidebar-wrapper">
