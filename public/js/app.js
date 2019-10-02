@@ -41439,7 +41439,7 @@ var render = function() {
                 _c("img", {
                   staticClass: "headerlogo",
                   attrs: {
-                    src: "/img/desing_img/carbiddinglogo.png",
+                    src: "/img/design_img/carbiddinglogo.png",
                     alt: "logo"
                   }
                 })
@@ -60828,8 +60828,8 @@ var axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\xampp\htdocs\CarBidding\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\xampp\htdocs\CarBidding\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\xampp\htdocs\Laravel-VueJS-CarBidding\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\xampp\htdocs\Laravel-VueJS-CarBidding\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
