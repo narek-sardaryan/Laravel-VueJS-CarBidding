@@ -439,7 +439,7 @@
                 for (var i = 0; i < disbackStyle.length; i++) {
                     var backid = disbackStyle[i].getAttribute('back-id');
                     var disbackimg = document.querySelector('div[back-id="' + backid + '"]');
-                    disbackimg.style.backgroundImage = "url('/img/desing_img/" + backid + backid + ".png')"
+                    disbackimg.style.backgroundImage = "url('/img/design_img/" + backid + backid + ".png')"
                 }
                 for (var j = 0; j < dispStyle.length; j++) {
                     dispStyle[j].style.color = 'black';
@@ -448,7 +448,7 @@
                     disStyle[k].style.background = 'white';
                 }
                 var backimg = document.querySelector('div[back-id="' + id + '"]');
-                backimg.style.backgroundImage = "url('/img/desing_img/" + id + ".png')";
+                backimg.style.backgroundImage = "url('/img/design_img/" + id + ".png')";
                 var pStyle = document.querySelector('p[p-id="' + id + '"]');
                 pStyle.style.color = 'white';
                 var bodyStyle = document.querySelector('div[data-id="' + id + '"]');
