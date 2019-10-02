@@ -4,8 +4,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-2">
-                        <router-link to="/"><img src="/img/design_img/carbiddinglogo.png" class="headerlogo"
-                                                 alt="logo"></router-link>
+                        <router-link to="/#"><img src="/img/desing_img/carbiddinglogo.png" class="headerlogo" alt="logo"></router-link>
                     </div>
                     <div class="col-md-9 offset-1">
                         <div class="col-md-12 menunavbar">

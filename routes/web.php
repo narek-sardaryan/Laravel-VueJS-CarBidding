@@ -123,7 +123,8 @@ Route::get('/fetchbodies', 'AuctionController@fetchbodies');
 Route::get('/fetchmodels', 'AuctionController@fetchmodels');
 Route::get('/fetchparkings', 'AuctionController@fetchparkings');
 Route::get('/fetchstates', 'AuctionController@fetchstates');
-Route::get('/fetchcars', 'AuctionController@fetchcars');
+Route::get('/fetchcars/{id}', 'AuctionController@fetchcars');
+Route::get('/fetchcarsall', 'AuctionController@fetchcarsall');
 Route::get('/cars/{id}', 'CarsController@showcar');
 Route::get('/auctions/{id}', 'AuctionController@index');
 Route::get('/auction/{id}', 'AuctionController@fetchcar');
@@ -135,9 +136,3 @@ Route::get('/searchcar', function (Request $request) {
     return view('searchcar', [
         'cars' => $cars]);
 });
-//Route::get('/fetchsearchcar', function (Request $request) {
-//    $cars = Car::query()
-//        ->where('name', 'LIKE', "%{$request->name}%")
-//        ->get();
-//    return $cars;
-//});
