@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Car;
+use App\Image;
 use Illuminate\Http\Request;
 
 class CarsController extends Controller
@@ -17,5 +18,10 @@ class CarsController extends Controller
     {
         $car = Car::find($id);
         return $car;
+    }
+
+    public function fetchimages(){
+        $images = Image::orderBy('id', 'desc')->get();
+        return $images;
     }
 }
