@@ -15,22 +15,19 @@
             <span class="lot_number">Лот №1907-0906</span>
             <h6 class="current_prize">текущая цена: {{ car.currentPrice }} &#8381;</h6>
             <h6 class="car_type">Легковой автомобиль {{ car.name }} {{ car.year }} </h6>
-            
+            <ul class="auction_desc">
+              <li>начало аукциона: {{ car.auctionStart }}</li>
+              <li>окончание аукциона: {{ car.endOfAuction }}</li>
+              <li>начальная цена: {{ car.startingPrice }}</li>
+              <li>шаг аукциона: {{ car.auctionStep }}</li>
+              <li>ставка НДС: в том числе 20%</li>
+            </ul>
           </div>
         </div>
       </div>
     </div>
   </div>
 </template>
-    <!--   <div class="col carImages">
-         <img class="img-fluid" :src="'/img/auctions/'+car.mainpics" alt="BMW">
-         
-     <div class="col slideImages">
-            <img class="img-fluid" :src="'/img/auctions/'+car.mainpics" alt="BMW">
-          </div>
-         <h1><img :src="'/img/auctions/'+car.mainpics" alt="BMW"></h1>
-        <h1>{{car.currentPrice}}asdas</h1> @click=""
-        -->
 
 <script>
   export default {
@@ -58,8 +55,8 @@
         axios.get('/images').then(response => {
           this.images = response.data.filter(obj => obj.carID == this.id);
             console.log(this.images.mainpics);
-            })
-          },
+          })
+        },
       slide(id){
         var current = document.getElementById('main_pic');
         var that = document.getElementById(id);
