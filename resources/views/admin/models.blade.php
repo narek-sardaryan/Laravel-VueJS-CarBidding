@@ -52,7 +52,7 @@
                     @if(count($models) == 0)
                         <div class="row onetime">
                             <div class="col-md-7"><h1>Создайте ваш первый модель </h1></div>
-                            <div class="col-md-2"><img class="onepng" src="/img/desing_img/number1_PNG14871.png" alt="">
+                            <div class="col-md-2"><img class="onepng" src="/img/design_img/number1_PNG14871.png" alt="">
                             </div>
                         </div>
                     @else
@@ -85,7 +85,7 @@
                                             {{ $model->name }}
                                         </td>
                                         <td>
-                                            <img src="/img/desing_img/{{$model->icons}}" class="iconmodel"
+                                            <img src="/img/design_img/{{$model->icons}}" class="iconmodel"
                                                  alt="iconmodel">
                                         </td>
                                         <td>
