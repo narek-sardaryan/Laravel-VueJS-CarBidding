@@ -5,9 +5,11 @@ body {
     background-position: 0 -280px;
     background-size: contain;
 }
-.carbidding-container{
+
+.carbidding-container {
     margin-top: 120px;
 }
+
 /*.container-back{*/
 /*    background-color: silver;*/
 /*}*/
@@ -200,10 +202,12 @@ body {
     float: left;
     padding: 15px 0;
 }
-.menunavbar a{
+
+.menunavbar a {
     color: black;
     text-decoration: none;
 }
+
 .menunavbar ul > li > a {
     cursor: pointer;
     padding: 0 10px;
@@ -218,7 +222,7 @@ body {
 
 .menunavbar ul {
     padding: 0 !important;
-    margin-bottom: 0!important;
+    margin-bottom: 0 !important;
 }
 
 .menunavbar ol > li {
@@ -229,14 +233,16 @@ body {
 .menunavbar ol > li:hover {
     background-color: #2099fe;
 }
-.menunavbar ol > li:hover a{
-    color:#f1f1f1;
+
+.menunavbar ol > li:hover a {
+    color: #f1f1f1;
 }
+
 .menunavbar ol {
     display: none;
     transition: opacity 1s ease-out;
     position: absolute;
-    padding: 0!important;
+    padding: 0 !important;
     background-color: #f1f1f1;
     box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
     z-index: 1;
@@ -263,8 +269,8 @@ body {
     font-weight: 600;
 }
 
-.menunavbar li:hover p{
-    transform: rotate(90deg)!important;
+.menunavbar li:hover p {
+    transform: rotate(90deg) !important;
     transition: 1s;
 }
 
@@ -281,7 +287,8 @@ body {
 .body-cars img {
     width: 50px;
 }
-.body-car-back1{
+
+.body-car-back1 {
     width: 100%;
     height: 50px;
     background-image: url("/img/desing_img/00.png");
@@ -290,7 +297,8 @@ body {
     margin: 3px 17px;
     border-bottom: none;
 }
-.body-car-back2{
+
+.body-car-back2 {
     width: 100%;
     height: 50px;
     background-image: url("/img/desing_img/33.png");
@@ -299,7 +307,8 @@ body {
     margin: 3px 17px;
     border-bottom: none;
 }
-.body-car-back3{
+
+.body-car-back3 {
     width: 100%;
     height: 50px;
     background-image: url("/img/desing_img/88.png");
@@ -308,7 +317,8 @@ body {
     margin: 3px 17px;
     border-bottom: none;
 }
-.body-car-back4{
+
+.body-car-back4 {
     width: 100%;
     height: 50px;
     background-image: url("/img/desing_img/44.png");
@@ -317,7 +327,8 @@ body {
     margin: 3px 17px;
     border-bottom: none;
 }
-.body-car-back5{
+
+.body-car-back5 {
     width: 100%;
     height: 50px;
     background-image: url("/img/desing_img/55.png");
@@ -326,7 +337,8 @@ body {
     margin: 3px 17px;
     border-bottom: none;
 }
-.body-car-back6{
+
+.body-car-back6 {
     width: 100%;
     height: 50px;
     background-image: url("/img/desing_img/66.png");
@@ -335,7 +347,8 @@ body {
     margin: 3px 17px;
     border-bottom: none;
 }
-.body-car-back7{
+
+.body-car-back7 {
     width: 100%;
     height: 50px;
     background-image: url("/img/desing_img/77.png");
@@ -344,7 +357,8 @@ body {
     margin: 3px 17px;
     border-bottom: none;
 }
-.body-car-back8{
+
+.body-car-back8 {
     width: 100%;
     height: 50px;
     background-image: url("/img/desing_img/99.png");
@@ -353,6 +367,7 @@ body {
     margin: 3px 17px;
     border-bottom: none;
 }
+
 .body-cars {
     border: 1px solid #0f92ff;
     background-color: white;
@@ -363,15 +378,55 @@ body {
     cursor: pointer;
 }
 
+.body-cars:hover .body-car-back1 {
+    background-image: url("/img/desing_img/0.png");
+}
+
+.body-cars:hover .body-car-back2 {
+    background-image: url("/img/desing_img/3.png");
+}
+
+.body-cars:hover .body-car-back3 {
+    background-image: url("/img/desing_img/8.png");
+}
+
+.body-cars:hover .body-car-back4 {
+    background-image: url("/img/desing_img/4.png");
+}
+
+.body-cars:hover .body-car-back5 {
+    background-image: url("/img/desing_img/5.png");
+}
+
+.body-cars:hover .body-car-back6 {
+    background-image: url("/img/desing_img/6.png");
+}
+
+.body-cars:hover .body-car-back7 {
+    background-image: url("/img/desing_img/7.png");
+}
+
+.body-cars:hover .body-car-back8 {
+    background-image: url("/img/desing_img/9.png");
+}
+
+.body-cars:hover .body-name {
+    color: white;
+}
+
+.body-cars:hover{
+    background-color: #0f92ff;
+}
+
 .body-name {
     color: black;
     text-align: center;
     font-size: 12px;
 }
 
-.text-name{
-    padding-left: 10px!important;
-    padding-right: 10px!important;
+.text-name {
+    padding-left: 10px !important;
+    padding-right: 10px !important;
 }
 
 .car-filters {
@@ -380,12 +435,12 @@ body {
 }
 
 .body-cats {
-    justify-content: space-around;
+    justify-content: space-between;
 }
 
 .select-options-filter {
     padding-top: 25px;
-    flex-wrap: nowrap!important;
+    flex-wrap: nowrap !important;
     justify-content: space-around;
 }
 
@@ -403,7 +458,7 @@ body {
     display: block;
 }
 
-.selectbox{
+.selectbox {
     margin-top: 8px;
 }
 
@@ -573,11 +628,15 @@ body {
     margin: 0 !important;
     flex-wrap: nowrap;
 }
+
 /*.input-date::-webkit-datetime-edit-text { display: none;  }*/
 /*.input-date::-webkit-datetime-edit-month-field { display: none; }*/
 /*.input-date::-webkit-datetime-edit-day-field { display: none; }*/
 /*.input-date::-webkit-datetime-edit-year-field { display: none; }*/
-.input-date::-webkit-inner-spin-button { display: none; }
+.input-date::-webkit-inner-spin-button {
+    display: none;
+}
+
 /*.input-date::-webkit-calendar-picker-indicator { display: none; }*/
 .input-date {
     width: 92%;
@@ -700,8 +759,8 @@ body {
 }
 
 .searchbox {
-    padding-top: 15px!important;
-    padding-left: 25px!important;
+    padding-top: 15px !important;
+    padding-left: 25px !important;
 }
 
 .searchicon {
@@ -731,13 +790,16 @@ body {
     background-color: #0C74CA;
     padding: 60px 15px 60px 15px;
 }
+
 .contact_title, .w_hours_title, .address_title {
-   margin-top: 20px;
-   font-size: 18px;
+    margin-top: 20px;
+    font-size: 18px;
 }
+
 .mail_info {
     display: block;
 }
+
 .additional_services_btn button {
     background: #f1f1f1;
     color: #0C74CA;
@@ -746,10 +808,12 @@ body {
     font-weight: bold;
     padding: 7px 10px;
 }
+
 .additional_services_btn {
     text-align: right;
     margin-top: 30px;
 }
+
 .contacts_div_txt .add_services_title {
     font-size: 40px;
     color: #0C74CA;
@@ -757,9 +821,11 @@ body {
     margin-top: 75px;
     text-shadow: -20px -12px #d6dadd;
 }
+
 span i {
     padding-right: 10px;
 }
+
 .map_img {
     background-image: url(../img/about_img/map.jpg);
     background-repeat: no-repeat;
