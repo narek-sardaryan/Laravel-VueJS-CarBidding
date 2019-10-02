@@ -4,8 +4,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-2">
-                        <router-link to="/#"><img src="/img/desing_img/carbiddinglogo.png" class="headerlogo"
-                                                 alt="logo"></router-link>
+                        <router-link to="/#"><img src="/img/desing_img/carbiddinglogo.png" class="headerlogo" alt="logo"></router-link>
                     </div>
                     <div class="col-md-9 offset-1">
                         <div class="col-md-12 menunavbar">
@@ -24,9 +23,6 @@
                                         </li>
                                         <li>
                                             <router-link to="/rules">Правила</router-link>
-                                        </li>
-                                        <li>
-                                            <router-link to="/contacts">Контакты</router-link>
                                         </li>
                                         <li>
                                             <router-link to="/contacts">Контакты</router-link>
@@ -54,7 +50,7 @@
                                             <div class="input-group-append">
                                                 <div class="input-group-text searchicon">
                                                     <button class="butsearch"
-                                                            type="submit"><img src="/img/desing_img/search-icon-90107.png" style="width:18px;" alt="searchicon"></button>
+                                                            type="submit"><img src="/img/design_img/search-icon-90107.png" style="width:18px;" alt="searchicon"></button>
                                                 </div>
                                             </div>
                                         </div>

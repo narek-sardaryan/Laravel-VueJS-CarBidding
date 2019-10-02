@@ -1,6 +1,6 @@
 body {
     background-color: #FFFFFF;
-    background-image: url('/img/desing_img/bg2.jpg');
+    background-image: url('/img/design_img/bg2.jpg');
     background-repeat: no-repeat;
     background-position: 0 -280px;
     background-size: contain;
@@ -50,7 +50,7 @@ body {
 
 .selects {
     -webkit-appearance: none;
-    background: url('/img/desing_img/rowselects.PNG');
+    background: url('/img/design_img/rowselects.PNG');
     background-repeat: no-repeat;
     background-position: right 0;
     background-size: 20px 32px;
@@ -291,7 +291,7 @@ body {
 .body-car-back1 {
     width: 100%;
     height: 50px;
-    background-image: url("/img/desing_img/00.png");
+    background-image: url("/img/design_img/00.png");
     background-repeat: no-repeat;
     background-size: 100% 100%;
     margin: 3px 17px;
@@ -301,7 +301,7 @@ body {
 .body-car-back2 {
     width: 100%;
     height: 50px;
-    background-image: url("/img/desing_img/33.png");
+    background-image: url("/img/design_img/33.png");
     background-repeat: no-repeat;
     background-size: 100% 100%;
     margin: 3px 17px;
@@ -311,7 +311,7 @@ body {
 .body-car-back3 {
     width: 100%;
     height: 50px;
-    background-image: url("/img/desing_img/88.png");
+    background-image: url("/img/design_img/88.png");
     background-repeat: no-repeat;
     background-size: 100% 100%;
     margin: 3px 17px;
@@ -321,7 +321,7 @@ body {
 .body-car-back4 {
     width: 100%;
     height: 50px;
-    background-image: url("/img/desing_img/44.png");
+    background-image: url("/img/design_img/44.png");
     background-repeat: no-repeat;
     background-size: 100% 100%;
     margin: 3px 17px;
@@ -331,7 +331,7 @@ body {
 .body-car-back5 {
     width: 100%;
     height: 50px;
-    background-image: url("/img/desing_img/55.png");
+    background-image: url("/img/design_img/55.png");
     background-repeat: no-repeat;
     background-size: 100% 100%;
     margin: 3px 17px;
@@ -341,7 +341,7 @@ body {
 .body-car-back6 {
     width: 100%;
     height: 50px;
-    background-image: url("/img/desing_img/66.png");
+    background-image: url("/img/design_img/66.png");
     background-repeat: no-repeat;
     background-size: 100% 100%;
     margin: 3px 17px;
@@ -351,7 +351,7 @@ body {
 .body-car-back7 {
     width: 100%;
     height: 50px;
-    background-image: url("/img/desing_img/77.png");
+    background-image: url("/img/design_img/77.png");
     background-repeat: no-repeat;
     background-size: 100% 100%;
     margin: 3px 17px;
@@ -361,7 +361,7 @@ body {
 .body-car-back8 {
     width: 100%;
     height: 50px;
-    background-image: url("/img/desing_img/99.png");
+    background-image: url("/img/design_img/99.png");
     background-repeat: no-repeat;
     background-size: 100% 100%;
     margin: 3px 17px;
@@ -379,35 +379,35 @@ body {
 }
 
 .body-cars:hover .body-car-back1 {
-    background-image: url("/img/desing_img/0.png") !important;
+    background-image: url("/img/design_img/0.png") !important;
 }
 
 .body-cars:hover .body-car-back2 {
-    background-image: url("/img/desing_img/3.png") !important;
+    background-image: url("/img/design_img/3.png") !important;
 }
 
 .body-cars:hover .body-car-back3 {
-    background-image: url("/img/desing_img/8.png") !important;
+    background-image: url("/img/design_img/8.png") !important;
 }
 
 .body-cars:hover .body-car-back4 {
-    background-image: url("/img/desing_img/4.png") !important;
+    background-image: url("/img/design_img/4.png") !important;
 }
 
 .body-cars:hover .body-car-back5 {
-    background-image: url("/img/desing_img/5.png") !important;
+    background-image: url("/img/design_img/5.png") !important;
 }
 
 .body-cars:hover .body-car-back6 {
-    background-image: url("/img/desing_img/6.png") !important;
+    background-image: url("/img/design_img/6.png") !important;
 }
 
 .body-cars:hover .body-car-back7 {
-    background-image: url("/img/desing_img/7.png") !important;
+    background-image: url("/img/design_img/7.png") !important;
 }
 
 .body-cars:hover .body-car-back8 {
-    background-image: url("/img/desing_img/9.png") !important;
+    background-image: url("/img/design_img/9.png") !important;
 }
 
 .body-cars:hover .body-name {
@@ -518,7 +518,7 @@ body {
     text-align: center;
     font-weight: 600;
     background-position: center;
-    background-image: url("/img/desing_img/carbiddinglogo.png");
+    background-image: url("/img/design_img/carbiddinglogo.png");
     background-size: 500px;
     background-repeat: no-repeat;
 }
@@ -682,6 +682,7 @@ body {
 }
 
 .about_paragraph {
+    font-size: 25px;
     text-align: center;
     padding-bottom: 20px;
 }
@@ -692,6 +693,7 @@ body {
 
 .hello {
     text-align: center;
+    font-size: 20px;
 }
 
 .show_more_btn {
@@ -702,7 +704,23 @@ body {
     font-weight: bold;
     padding: 7px 30px;
 }
-
+ .add_txt_show {
+    transition: 0.3s;
+    font-size: 15px;
+}
+/* Анимации появления и исчезновения могут иметь */
+/* различные продолжительности и динамику.       */
+.slide-fade-enter-active {
+  transition: all .3s ease;
+}
+.slide-fade-leave-active {
+  transition: all .8s cubic-bezier(1.0, 0.5, 0.8, 1.0);
+}
+.slide-fade-enter, .slide-fade-leave-to
+/* .slide-fade-leave-active до версии 2.1.8 */ {
+    transform: translateX(10px);
+    opacity: 0;
+}
 .show_more_btn:focus {
     outline: none;
 }
@@ -784,6 +802,12 @@ body {
     box-shadow: none;
     border: none;
 }
+.contacts_bg_img {
+    background-image: url(../img/design_img/bg1.jpg);
+    background-position: left;
+    background-repeat: no-repeat;
+    height: 400px;
+}
 
 .contacts_div {
     color: #fff;
@@ -820,7 +844,6 @@ body {
     color: #0C74CA;
     text-align: center;
     margin-top: 75px;
-    text-shadow: -20px -12px #d6dadd;
 }
 
 span i {
@@ -903,4 +926,11 @@ span i {
 .pagination {
     justify-content: left;
     margin-top: 40px;
+}
+
+.auction_desc {
+    font-size: 16px;
+    text-align: left;
+    margin-top: 30px;
+    list-style: none;
 }

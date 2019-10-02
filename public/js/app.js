@@ -1883,8 +1883,18 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: "About"
+  name: "About",
+  data: function data() {
+    return {
+      show: false
+    };
+  }
 });
 
 /***/ }),
@@ -1942,6 +1952,8 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
 //
 //
 //
@@ -2045,10 +2057,6 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-//
-//
-//
-//
 //
 //
 //
@@ -3159,9 +3167,6 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-//
-//
-//
 //
 //
 //
@@ -41114,21 +41119,17 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
-}
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", [
-      _c(
-        "div",
-        { staticClass: "bg_img", staticStyle: { "margin-top": "79px" } },
-        [
-          _c("div", { staticClass: "container" }, [
-            _c("div", { staticClass: "row justify-content-end" }, [
-              _c("div", { staticClass: "col-md-6 about_div" }, [
+  return _c("div", [
+    _c(
+      "div",
+      { staticClass: "bg_img", staticStyle: { "margin-top": "79px" } },
+      [
+        _c("div", { staticClass: "container" }, [
+          _c("div", { staticClass: "row justify-content-end" }, [
+            _c(
+              "div",
+              { staticClass: "col-md-6 about_div" },
+              [
                 _c("h1", { staticClass: "about_paragraph" }, [
                   _vm._v("О компании")
                 ]),
@@ -41136,36 +41137,64 @@ var staticRenderFns = [
                 _c("p", { staticClass: "about_txt" }),
                 _c("p", { staticClass: "hello" }, [_vm._v("Здравствуйте!")]),
                 _vm._v(
-                  "\n\n                    Мы создали нашу компанию в 2006 году. У нас была цель, сделать красивый и современный бизнес."
+                  "\n                      Мы создали нашу компанию в 2006 году. У нас была цель, сделать красивый и современный бизнес."
                 ),
                 _c("br"),
                 _vm._v(
-                  "\n\n                    Воплощая эту идею, мы создали в сети Интернет торговую площадку по продаже аварийных автомобилей. Нас с самого начала не интересовали простые доски объявлений – мы стремились создать именно сайт по оценке и продаже автомобилей после ДТП, где конечную стоимость продаваемого поврежденного автомобиля, будет определять рынок – именно такая цена является справедливой и для продавцов – страховых и лизинговых компаний, и для покупателей.\n                    "
+                  "\n                      Воплощая эту идею, мы создали в сети Интернет торговую площадку по продаже аварийных автомобилей. Нас с самого начала не интересовали простые доски объявлений – мы стремились создать именно сайт по оценке и продаже автомобилей после ДТП, где конечную стоимость продаваемого поврежденного автомобиля, будет определять рынок – именно такая цена является справедливой и для продавцов – страховых и лизинговых компаний, и для покупателей.\n                      Воплощая эту идею, мы создали в сети Интернет торговую площадку по продаже аварийных автомобилей. Нас с самого начала не интересовали простые доски объявлений – мы стремились создать именно сайт по оценке и продаже автомобилей после ДТП, где конечную стоимость продаваемого поврежденного автомобиля, будет определять рынок – именно такая цена является справедливой и для продавцов – страховых и лизинговых компаний, и для покупателей.\n                      Воплощая эту идею, мы создали в сети Интернет торговую площадку по продаже аварийных автомобилей. Нас с самого начала не интересовали простые доски объявлений – мы стремились создать именно сайт по оценке и продаже автомобилей после ДТП, где конечную стоимость продаваемого поврежденного автомобиля, будет определять рынок – именно такая цена является справедливой и для продавцов – страховых и лизинговых компаний, и для покупателей.\n                      "
                 ),
                 _c("p"),
                 _vm._v(" "),
-                _c("button", { staticClass: "show_more_btn" }, [
-                  _vm._v("Show More")
-                ])
-              ])
-            ])
+                _c("transition", { attrs: { name: "slide-fade" } }, [
+                  _vm.show
+                    ? _c("p", { staticClass: "add_txt_show" }, [
+                        _vm._v(
+                          "\n                        Воплощая эту идею, мы создали в сети Интернет торговую площадку по продаже аварийных автомобилей. Нас с самого начала не интересовали простые доски объявлений – мы стремились создать именно сайт по оценке и продаже автомобилей после ДТП, где конечную стоимость продаваемого поврежденного автомобиля, будет определять рынок – именно такая цена является справедливой и для продавцов – страховых и лизинговых компаний, и для покупателей.\n                      "
+                        )
+                      ])
+                    : _vm._e()
+                ]),
+                _vm._v(" "),
+                _c(
+                  "button",
+                  {
+                    staticClass: "show_more_btn",
+                    on: {
+                      click: function($event) {
+                        _vm.show = !_vm.show
+                      }
+                    }
+                  },
+                  [_vm._v("Show More")]
+                )
+              ],
+              1
+            )
           ])
-        ]
-      ),
+        ])
+      ]
+    ),
+    _vm._v(" "),
+    _vm._m(0)
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("section", { staticClass: "partners" }, [
+      _c("h3", { staticClass: "partners_title" }, [_vm._v("Наши партнеры")]),
       _vm._v(" "),
-      _c("section", { staticClass: "partners" }, [
-        _c("h3", { staticClass: "partners_title" }, [_vm._v("Наши партнеры")]),
-        _vm._v(" "),
-        _c("div", { staticClass: "container" }, [
-          _c("div", { staticClass: "pics text-center" }, [
-            _c("img", { attrs: { src: "/img/about_img/bmw].png" } }),
-            _vm._v(" "),
-            _c("img", { attrs: { src: "/img/about_img/lexus.png" } }),
-            _vm._v(" "),
-            _c("img", { attrs: { src: "/img/about_img/mercedes.png" } }),
-            _vm._v(" "),
-            _c("img", { attrs: { src: "/img/about_img/toyota.png" } })
-          ])
+      _c("div", { staticClass: "container" }, [
+        _c("div", { staticClass: "pics text-center" }, [
+          _c("img", { attrs: { src: "/img/about_img/bmw].png" } }),
+          _vm._v(" "),
+          _c("img", { attrs: { src: "/img/about_img/lexus.png" } }),
+          _vm._v(" "),
+          _c("img", { attrs: { src: "/img/about_img/mercedes.png" } }),
+          _vm._v(" "),
+          _c("img", { attrs: { src: "/img/about_img/toyota.png" } })
         ])
       ])
     ])
@@ -41224,57 +41253,59 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", [
-      _c(
-        "div",
-        { staticClass: "container", staticStyle: { "margin-top": "79px" } },
-        [
-          _c("div", { staticClass: "row" }, [
-            _c("div", { staticClass: "col-md-4 contacts_div" }, [
-              _c("h6", { staticClass: "address_title" }, [
-                _vm._v("Наш адрес:")
+      _c("div", { staticClass: "container-fluid contacts_bg_img" }, [
+        _c(
+          "div",
+          { staticClass: "container", staticStyle: { "margin-top": "79px" } },
+          [
+            _c("div", { staticClass: "row" }, [
+              _c("div", { staticClass: "col-md-4 contacts_div" }, [
+                _c("h6", { staticClass: "address_title" }, [
+                  _vm._v("Наш адрес:")
+                ]),
+                _vm._v(" "),
+                _c("span", { staticClass: "address_info" }, [
+                  _c("i", { staticClass: "fas fa-map-marker-alt" }),
+                  _vm._v("109044, г. Москва, Крутицкий Вал, 14.")
+                ]),
+                _vm._v(" "),
+                _c("h6", { staticClass: "contact_title" }, [
+                  _vm._v("Наши контакты:")
+                ]),
+                _vm._v(" "),
+                _c("span", { staticClass: "tel_info" }, [
+                  _c("i", { staticClass: "fas fa-phone" }),
+                  _vm._v("+7(495)748-5608")
+                ]),
+                _vm._v(" "),
+                _c("span", { staticClass: "mail_info" }, [
+                  _c("i", { staticClass: "far fa-envelope" }),
+                  _vm._v("letters@autosale.ru")
+                ]),
+                _vm._v(" "),
+                _c("h6", { staticClass: "w_hours_title" }, [
+                  _vm._v("Часы работы:")
+                ]),
+                _vm._v(" "),
+                _c("span", { staticClass: "w_hours_info" }, [
+                  _c("i", { staticClass: "far fa-clock" }),
+                  _vm._v("Понедельник-пятница с 9:00 до 18:00")
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "additional_services_btn" }, [
+                  _c("button", [_vm._v("Дополнительные услуги")])
+                ])
               ]),
               _vm._v(" "),
-              _c("span", { staticClass: "address_info" }, [
-                _c("i", { staticClass: "fas fa-map-marker-alt" }),
-                _vm._v("109044, г. Москва, Крутицкий Вал, 14.")
-              ]),
-              _vm._v(" "),
-              _c("h6", { staticClass: "contact_title" }, [
-                _vm._v("Наши контакты:")
-              ]),
-              _vm._v(" "),
-              _c("span", { staticClass: "tel_info" }, [
-                _c("i", { staticClass: "fas fa-phone" }),
-                _vm._v("+7(495)748-5608")
-              ]),
-              _vm._v(" "),
-              _c("span", { staticClass: "mail_info" }, [
-                _c("i", { staticClass: "far fa-envelope" }),
-                _vm._v("letters@autosale.ru")
-              ]),
-              _vm._v(" "),
-              _c("h6", { staticClass: "w_hours_title" }, [
-                _vm._v("Часы работы:")
-              ]),
-              _vm._v(" "),
-              _c("span", { staticClass: "w_hours_info" }, [
-                _c("i", { staticClass: "far fa-clock" }),
-                _vm._v("Понедельник-пятница с 9:00 до 18:00")
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "additional_services_btn" }, [
-                _c("button", [_vm._v("Дополнительные услуги")])
-              ])
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "col-md-5 contacts_div_txt" }, [
-              _c("h4", { staticClass: "add_services_title" }, [
-                _vm._v("Офис компании CarBidding")
+              _c("div", { staticClass: "col-md-5 contacts_div_txt" }, [
+                _c("h4", { staticClass: "add_services_title" }, [
+                  _vm._v("Офис компании CarBidding")
+                ])
               ])
             ])
-          ])
-        ]
-      ),
+          ]
+        )
+      ]),
       _vm._v(" "),
       _c("div", { staticClass: "row mr-0" }, [
         _c("div", { staticClass: "col" }, [
@@ -41472,16 +41503,6 @@ var render = function() {
                         ])
                       ],
                       1
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "li",
-                      [
-                        _c("router-link", { attrs: { to: "/contacts" } }, [
-                          _vm._v("Контакты")
-                        ])
-                      ],
-                      1
                     )
                   ])
                 ]),
@@ -41598,7 +41619,7 @@ var staticRenderFns = [
                   _c("img", {
                     staticStyle: { width: "18px" },
                     attrs: {
-                      src: "/img/desing_img/search-icon-90107.png",
+                      src: "/img/design_img/search-icon-90107.png",
                       alt: "searchicon"
                     }
                   })
@@ -43482,6 +43503,26 @@ var render = function() {
                   _vm._s(_vm.car.year) +
                   " "
               )
+            ]),
+            _vm._v(" "),
+            _c("ul", { staticClass: "auction_desc" }, [
+              _c("li", [
+                _vm._v("начало аукциона: " + _vm._s(_vm.car.auctionStart))
+              ]),
+              _vm._v(" "),
+              _c("li", [
+                _vm._v("окончание аукциона: " + _vm._s(_vm.car.endOfAuction))
+              ]),
+              _vm._v(" "),
+              _c("li", [
+                _vm._v("начальная цена: " + _vm._s(_vm.car.startingPrice))
+              ]),
+              _vm._v(" "),
+              _c("li", [
+                _vm._v("шаг аукциона: " + _vm._s(_vm.car.auctionStep))
+              ]),
+              _vm._v(" "),
+              _c("li", [_vm._v("ставка НДС: в том числе 20%")])
             ])
           ])
         ])
