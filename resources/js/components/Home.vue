@@ -310,6 +310,16 @@
                         </router-link>
                     </div>
                 </div>
+                <nav aria-label="Page navigation example float-left">
+                    <ul class="pagination">
+                        <li v-if="offset != 1" class="page-item" @click="prewis"><a class="page-link">Предыдущий</a>
+                        </li>
+                        <li @click="page(off)" class="page-item" v-for="(off, index) in offsetCars"><a
+                            :id="index" class="page-link">{{off+1}}</a></li>
+                        <li v-if="offset != offsetCars.length" class="page-item" @click="nextis"><a class="page-link">Следующий</a>
+                        </li>
+                    </ul>
+                </nav>
             </div>
         </div>
     </div>
@@ -325,10 +335,14 @@
                 parkings: [],
                 models: [],
                 cars: [],
+                offsetCars: [],
                 firstSlider: [],
                 slider: [],
                 filters: [],
-                bodiesId: ''
+                bodiesId: '',
+                currentPage: 0,
+                offset: 1,
+                allCarsLength: null
             }
         },
         created: function () {
@@ -337,9 +351,25 @@
             this.fetchParkings();
             this.fetchStates();
             this.fetchCars();
+            this.fetchCarsPaginate();
             this.fetchSlider();
         },
         methods: {
+            page(off) {
+                this.currentPage = off * 6;
+                this.offset = this.currentPage / 6 + 1
+                this.fetchCarsPaginate();
+            },
+            prewis() {
+                this.currentPage = (this.currentPage / 6 - 1) * 6;
+                this.offset = this.offset - 1;
+                this.fetchCarsPaginate();
+            },
+            nextis() {
+                this.currentPage = (this.currentPage / 6 + 1) * 6;
+                this.offset = this.offset + 1;
+                this.fetchCarsPaginate();
+            },
             fetchBodies() {
                 axios.get('/fetchbodies').then(response => {
                     this.bodies = response.data;
@@ -360,9 +390,19 @@
                     this.states = response.data;
                 })
             },
-            fetchCars() {
-                axios.get('/fetchcars').then(response => {
+            fetchCarsPaginate() {
+                axios.get('/fetchcars/' + this.currentPage).then(response => {
                     this.cars = response.data;
+                })
+            },
+            fetchCars() {
+                axios.get('/fetchcarsall').then(response => {
+                    this.allCarsLength = response.data.length;
+                    console.log(this.allCarsLength)
+                    this.offsetCars = [];
+                    for (let i = 0; i < Math.ceil(response.data.length / 6); i++) {
+                        this.offsetCars.push(i);
+                    }
                 })
             },
             fetchSlider() {
@@ -372,13 +412,23 @@
                 })
             },
             filterByBodies(id) {
+                this.offsetCars = [];
                 if (!id) {
-                    axios.get('/fetchcars').then(response => {
+                    this.offsetCars = [];
+                    console.log(this.allCarsLength);
+                    for (let i = 0; i < Math.ceil(this.allCarsLength / 6); i++) {
+                        this.offsetCars.push(i);
+                    }
+                    axios.get('/fetchcars/' + this.currentPage).then(response => {
                         return this.cars = response.data;
                     })
                 }
                 if (id) {
-                    axios.get('/fetchcars').then(response => {
+                    this.offsetCars = [];
+                    axios.get('/fetchcars/' + this.currentPage).then(response => {
+                        for (let i = 0; i < Math.ceil(response.data.filter(obj => obj.bodyId === id).length / 6); i++) {
+                            this.offsetCars.push(i);
+                        }
                         return this.cars = response.data.filter(obj => obj.bodyId === id);
                     });
                     this.bodiesId = id;
@@ -412,8 +462,23 @@
                 var start = new Date(document.getElementById('start').value).getTime();
                 var finish = new Date(document.getElementById('finish').value).getTime();
                 var body = this.bodiesId;
-                console.log(start, finish)
-                axios.get('/fetchcars').then(response => {
+                this.offsetCars = [];
+                axios.get('/fetchcars/' + this.currentPage).then(response => {
+                    for (let i = 0; i < Math.ceil(response.data.filter(obj => {
+                        const startAuction = new Date(obj.auctionStart).getTime();
+                        const endAuction = new Date(obj.endOfAuction).getTime();
+                        console.log(startAuction, endAuction)
+                        if ((state == '' || obj.stateId == state) &&
+                            (model == '' || obj.modelId == model) &&
+                            (parking == '' || obj.parkingId == parking) &&
+                            (!start || start >= startAuction) &&
+                            (!finish || finish <= endAuction)) {
+                            return true;
+                        }
+                        return false;
+                    }).length / 6); i++) {
+                        this.offsetCars.push(i);
+                    }
                     this.cars = response.data.filter(obj => {
                         const startAuction = new Date(obj.auctionStart).getTime();
                         const endAuction = new Date(obj.endOfAuction).getTime();
@@ -428,7 +493,7 @@
                         return false;
                     });
                 })
-            }
+            },
         }
     }
 </script>

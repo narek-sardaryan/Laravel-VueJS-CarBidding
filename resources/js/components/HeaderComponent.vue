@@ -4,7 +4,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-2">
-                        <router-link to="/"><img src="/img/desing_img/carbiddinglogo.png" class="headerlogo"
+                        <router-link to="/#"><img src="/img/desing_img/carbiddinglogo.png" class="headerlogo"
                                                  alt="logo"></router-link>
                     </div>
                     <div class="col-md-9 offset-1">

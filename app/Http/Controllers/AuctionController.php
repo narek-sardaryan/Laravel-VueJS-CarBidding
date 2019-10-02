@@ -65,11 +65,19 @@ class AuctionController extends Controller
         return $states;
     }
 
-    public function fetchcars()
+    public function fetchcars($id)
     {
         $cars = Car::orderBy('id', 'asc')->where('completed', '1')
+            ->offset($id)
+            ->limit(6)
             ->get();
         return $cars;
     }
 
+    public function fetchcarsall()
+    {
+        $carsall = Car::orderBy('id', 'asc')->where('completed', '1')
+            ->get();
+        return $carsall;
+    }
 }

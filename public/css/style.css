@@ -379,43 +379,43 @@ body {
 }
 
 .body-cars:hover .body-car-back1 {
-    background-image: url("/img/desing_img/0.png");
+    background-image: url("/img/desing_img/0.png") !important;
 }
 
 .body-cars:hover .body-car-back2 {
-    background-image: url("/img/desing_img/3.png");
+    background-image: url("/img/desing_img/3.png") !important;
 }
 
 .body-cars:hover .body-car-back3 {
-    background-image: url("/img/desing_img/8.png");
+    background-image: url("/img/desing_img/8.png") !important;
 }
 
 .body-cars:hover .body-car-back4 {
-    background-image: url("/img/desing_img/4.png");
+    background-image: url("/img/desing_img/4.png") !important;
 }
 
 .body-cars:hover .body-car-back5 {
-    background-image: url("/img/desing_img/5.png");
+    background-image: url("/img/desing_img/5.png") !important;
 }
 
 .body-cars:hover .body-car-back6 {
-    background-image: url("/img/desing_img/6.png");
+    background-image: url("/img/desing_img/6.png") !important;
 }
 
 .body-cars:hover .body-car-back7 {
-    background-image: url("/img/desing_img/7.png");
+    background-image: url("/img/desing_img/7.png") !important;
 }
 
 .body-cars:hover .body-car-back8 {
-    background-image: url("/img/desing_img/9.png");
+    background-image: url("/img/desing_img/9.png") !important;
 }
 
 .body-cars:hover .body-name {
-    color: white;
+    color: white !important;
 }
 
-.body-cars:hover{
-    background-color: #0f92ff;
+.body-cars:hover {
+    background-color: #0f92ff !important;
 }
 
 .body-name {
@@ -511,7 +511,7 @@ body {
 
 .footer-background {
     background-color: #DAE2F0;
-    border-top: 4px solid #707482;
+    border-top: 4px solid #0f92ff;
 }
 
 .footer-logo {
@@ -600,7 +600,8 @@ body {
     left: 15px;
     top: 82%;
     width: 92.5%;
-    background-color: #6161619c;
+    /*background-color: #6161619c;*/
+    background-image: linear-gradient(#0f92ff61, #0f92ff1f);
     padding-top: 10px;
     padding-bottom: 20px;
     transition: 0.7s cubic-bezier(0.18, 0.89, 0.32, 1.28);
@@ -827,7 +828,7 @@ span i {
 }
 
 .map_img {
-    background-image: url(../img/about_img/map.jpg);
+    background-image: url(/img/about_img/map.jpg);
     background-repeat: no-repeat;
     -webkit-background-size: cover;
     background-size: cover;
@@ -839,20 +840,25 @@ span i {
     margin-top: 79px;
     background: #fff;
 }
+
 .cars_section {
     margin-top: 30px;
 }
+
 .cars_section img {
     box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
 }
+
 #main_pic {
     width: 540px;
     height: 400px;
     cursor: pointer;
 }
+
 .small_pics_row {
     margin-top: 20px;
 }
+
 .smallImages {
     width: 110px;
     height: 100px;
@@ -864,6 +870,7 @@ span i {
     margin-top: 30px;
     text-align: center;
 }
+
 .lot_number {
     font-size: 12px;
     background: #0C74CA;
@@ -871,6 +878,7 @@ span i {
     padding: 3px;
     text-align: center;
 }
+
 .current_prize {
     color: #0C74CA;
     font-size: 25px;
@@ -878,7 +886,21 @@ span i {
     margin-top: 30px;
     text-align: left;
 }
+
 .car_type {
     font-size: 20px;
     text-align: left;
+}
+
+.page-link{
+    color: #0f92ff!important;
+}
+
+.page-item{
+    cursor: pointer;
+}
+
+.pagination {
+    justify-content: left;
+    margin-top: 40px;
 }
