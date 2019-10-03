@@ -312,11 +312,11 @@
                 </div>
                 <nav aria-label="Page navigation example float-left">
                     <ul class="pagination">
-                        <li v-if="offset != 1" class="page-item" @click="prewis"><a class="page-link">Предыдущий</a>
+                        <li v-if="offset != 1" class="page-item" @click="prewis"><a class="page-link">&laquo;</a>
                         </li>
                         <li @click="page(off)" class="page-item" v-for="(off, index) in offsetCars"><a
                             :id="index" class="page-link">{{off+1}}</a></li>
-                        <li v-if="offset != offsetCars.length" class="page-item" @click="nextis"><a class="page-link">Следующий</a>
+                        <li v-if="offset != offsetCars.length" class="page-item" @click="nextis"><a class="page-link">&raquo;</a>
                         </li>
                     </ul>
                 </nav>
@@ -413,6 +413,7 @@
             },
             filterByBodies(id) {
                 this.offsetCars = [];
+                this.offset = 1;
                 if (!id) {
                     this.offsetCars = [];
                     console.log(this.allCarsLength);
@@ -425,10 +426,11 @@
                 }
                 if (id) {
                     this.offsetCars = [];
-                    axios.get('/fetchcars/' + this.currentPage).then(response => {
-                        for (let i = 0; i < Math.ceil(response.data.filter(obj => obj.bodyId === id).length / 6); i++) {
-                            this.offsetCars.push(i);
-                        }
+                    this.currentPage = 0;
+                    axios.get('/fetchcarsall').then(response => {
+                        // for (let i = 0; i < Math.ceil(response.data.filter(obj => obj.bodyId === id).length / 6); i++) {
+                        //     this.offsetCars.push(i);
+                        // }
                         return this.cars = response.data.filter(obj => obj.bodyId === id);
                     });
                     this.bodiesId = id;
@@ -463,26 +465,24 @@
                 var finish = new Date(document.getElementById('finish').value).getTime();
                 var body = this.bodiesId;
                 this.offsetCars = [];
-                axios.get('/fetchcars/' + this.currentPage).then(response => {
-                    for (let i = 0; i < Math.ceil(response.data.filter(obj => {
-                        const startAuction = new Date(obj.auctionStart).getTime();
-                        const endAuction = new Date(obj.endOfAuction).getTime();
-                        console.log(startAuction, endAuction)
-                        if ((state == '' || obj.stateId == state) &&
-                            (model == '' || obj.modelId == model) &&
-                            (parking == '' || obj.parkingId == parking) &&
-                            (!start || start >= startAuction) &&
-                            (!finish || finish <= endAuction)) {
-                            return true;
-                        }
-                        return false;
-                    }).length / 6); i++) {
-                        this.offsetCars.push(i);
-                    }
+                axios.get('/fetchcarsall').then(response => {
+                    // for (let i = 0; i < Math.ceil(response.data.filter(obj => {
+                    //     const startAuction = new Date(obj.auctionStart).getTime();
+                    //     const endAuction = new Date(obj.endOfAuction).getTime();
+                    //     if ((state == '' || obj.stateId == state) &&
+                    //         (model == '' || obj.modelId == model) &&
+                    //         (parking == '' || obj.parkingId == parking) &&
+                    //         (!start || start >= startAuction) &&
+                    //         (!finish || finish <= endAuction)) {
+                    //         return true;
+                    //     }
+                    //     return false;
+                    // }).length / 6); i++) {
+                    //     this.offsetCars.push(i);
+                    // }
                     this.cars = response.data.filter(obj => {
                         const startAuction = new Date(obj.auctionStart).getTime();
                         const endAuction = new Date(obj.endOfAuction).getTime();
-                        console.log(startAuction, endAuction)
                         if ((state == '' || obj.stateId == state) &&
                             (model == '' || obj.modelId == model) &&
                             (parking == '' || obj.parkingId == parking) &&

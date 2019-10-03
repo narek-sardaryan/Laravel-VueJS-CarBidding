@@ -16,7 +16,10 @@ body {
 .gender {
     margin-top: 10px;
 }
-
+.headerlogo:hover {
+    transform: rotate(10deg);
+    transition: 1s;
+}
 .avatarusers {
     width: 55px;
     border-radius: 100%;
@@ -190,6 +193,7 @@ body {
 
 .headerlogo {
     width: 130px;
+    transition: 1s;
 }
 
 .carnavbar {
@@ -211,7 +215,7 @@ body {
 .menunavbar ul > li > a {
     cursor: pointer;
     padding: 0 10px;
-    font-size: 17px;
+    font-size: 16px;
     font-weight: 600;
 }
 
@@ -421,7 +425,7 @@ body {
 .body-name {
     color: black;
     text-align: center;
-    font-size: 12px;
+    font-size: 10px;
 }
 
 .text-name {
@@ -916,15 +920,18 @@ span i {
 }
 
 .page-link{
-    color: #0f92ff!important;
+    background: #eaeaea;
 }
-
+.page-link:hover{
+    color:white!important;
+    background: #0f92ff;
+}
 .page-item{
     cursor: pointer;
 }
 
 .pagination {
-    justify-content: left;
+    justify-content: center;
     margin-top: 40px;
 }
 
