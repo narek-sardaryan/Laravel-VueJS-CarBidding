@@ -13,14 +13,90 @@
           </div>
           <div class="col car_info">
             <span class="lot_number">Лот №1907-0906</span>
-            <h6 class="current_prize">текущая цена: {{ car.currentPrice }} &#8381;</h6>
-            <h6 class="car_type">Легковой автомобиль {{ car.name }} {{ car.year }} </h6>
-            <ul class="auction_desc">
-              <li>начало аукциона: {{ car.auctionStart }}</li>
-              <li>окончание аукциона: {{ car.endOfAuction }}</li>
-              <li>начальная цена: {{ car.startingPrice }}</li>
-              <li>шаг аукциона: {{ car.auctionStep }}</li>
-              <li>ставка НДС: в том числе 20%</li>
+            <h6 class="current_prize">Текущая цена: {{ car.currentPrice }} &#8381;</h6>
+            <h6 class="car_type">Легковой автомобиль {{ car.name }} {{ car.year }}</h6>
+            <div class="row auction_desc_uls">
+              <div class="col ul_one">
+                <ul>
+                  <li><span>начало аукциона:</span></li>
+                  <li><span>окончание аукциона:</span></li>
+                  <li><span>начальная цена:</span></li>
+                  <li><span>шаг аукциона:</span></li>
+                  <li><span>ставка НДС:</span></li>
+                </ul>
+              </div>
+              <div class="col ul_two">
+                <ul>
+                  <li><span>{{ car.auctionStart }}</span></li>
+                  <li><span>{{ car.endOfAuction }}</span></li>
+                  <li><span>{{ car.startingPrice }}</span></li>
+                  <li><span>{{ car.auctionStep }}</span></li>
+                  <li><span>в том числе 20%</span></li>
+                </ul>
+              </div>
+            </div>
+            <div class="ending_counter_div">
+              <span class="hour_span">21ч.0м.</span>
+              <span class="txt_span">до завершения</span>
+            </div>
+          </div>
+        </div>
+        <div class="row mobiles_data_row">
+          <div class="col m_data_list">
+          <h5 class="car_data_title">Данные по автомобилю</h5>
+            <ul>
+              <li>Марка:</li>
+              <li>Модель:</li>
+              <li>тип по ПСМ/ПТС:</li>
+              <li>Категория:</li>
+              <li>Год выпуска:</li>
+              <li>Пробег:</li>
+              <li>VIN:</li>
+              <li>Номер ПСМ/ПТС:</li>
+              <li>Рама (шасси):</li>
+              <li>Кузов (кабина, прицеп):</li>
+            </ul>
+          </div>
+          <div class="col m_data_list">
+            <ul>
+              <li>{{ car.name }}</li>
+              <li>{{ car.name }}</li>
+              <li>{{ car.name }}</li>
+              <li>{{ car.categorId }}</li>
+              <li>{{ car.year }}</li>
+              <li>{{ car.milage }}</li>
+              <li>{{ car.name }}</li>
+              <li>{{ car.name }}</li>
+              <li>{{ car.name }}</li>
+              <li>{{ car.name }}</li>
+            </ul>
+          </div>
+          <div class="col m_data_list">
+             <ul>
+              <li>Марка:</li>
+              <li>Модель:</li>
+              <li>тип по ПСМ/ПТС:</li>
+              <li>Категория:</li>
+              <li>Год выпуска:</li>
+              <li>Пробег:</li>
+              <li>VIN:</li>
+              <li>Номер ПСМ/ПТС:</li>
+              <li>Рама (шасси):</li>
+              <li>Кузов (кабина, прицеп):</li>
+            </ul>
+          </div>
+          <div class="col m_data_list">
+            <ul>
+              <li>{{ car.name }}</li>
+              <li>{{ car.name }}</li>
+              <li>{{ car.name }}</li>
+              <li>{{ car.categorId }}</li>
+              <li>{{ car.year }}</li>
+              <li>{{ car.milage }}</li>
+              <li>{{ car.name }}</li>
+              <li>{{ car.name }}</li>
+              <li>{{ car.name }}</li>
+              <li>{{ car.name }}</li>
             </ul>
           </div>
         </div>

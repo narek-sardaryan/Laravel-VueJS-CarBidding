@@ -3198,6 +3198,82 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "ShowCar",
   data: function data() {
@@ -43492,7 +43568,7 @@ var render = function() {
             ]),
             _vm._v(" "),
             _c("h6", { staticClass: "current_prize" }, [
-              _vm._v("текущая цена: " + _vm._s(_vm.car.currentPrice) + " ₽")
+              _vm._v("Текущая цена: " + _vm._s(_vm.car.currentPrice) + " ₽")
             ]),
             _vm._v(" "),
             _c("h6", { staticClass: "car_type" }, [
@@ -43500,29 +43576,88 @@ var render = function() {
                 "Легковой автомобиль " +
                   _vm._s(_vm.car.name) +
                   " " +
-                  _vm._s(_vm.car.year) +
-                  " "
+                  _vm._s(_vm.car.year)
               )
             ]),
             _vm._v(" "),
-            _c("ul", { staticClass: "auction_desc" }, [
-              _c("li", [
-                _vm._v("начало аукциона: " + _vm._s(_vm.car.auctionStart))
-              ]),
+            _c("div", { staticClass: "row auction_desc_uls" }, [
+              _vm._m(0),
               _vm._v(" "),
-              _c("li", [
-                _vm._v("окончание аукциона: " + _vm._s(_vm.car.endOfAuction))
-              ]),
+              _c("div", { staticClass: "col ul_two" }, [
+                _c("ul", [
+                  _c("li", [
+                    _c("span", [_vm._v(_vm._s(_vm.car.auctionStart))])
+                  ]),
+                  _vm._v(" "),
+                  _c("li", [
+                    _c("span", [_vm._v(_vm._s(_vm.car.endOfAuction))])
+                  ]),
+                  _vm._v(" "),
+                  _c("li", [
+                    _c("span", [_vm._v(_vm._s(_vm.car.startingPrice))])
+                  ]),
+                  _vm._v(" "),
+                  _c("li", [_c("span", [_vm._v(_vm._s(_vm.car.auctionStep))])]),
+                  _vm._v(" "),
+                  _vm._m(1)
+                ])
+              ])
+            ]),
+            _vm._v(" "),
+            _vm._m(2)
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "row mobiles_data_row" }, [
+          _vm._m(3),
+          _vm._v(" "),
+          _c("div", { staticClass: "col m_data_list" }, [
+            _c("ul", [
+              _c("li", [_vm._v(_vm._s(_vm.car.name))]),
               _vm._v(" "),
-              _c("li", [
-                _vm._v("начальная цена: " + _vm._s(_vm.car.startingPrice))
-              ]),
+              _c("li", [_vm._v(_vm._s(_vm.car.name))]),
               _vm._v(" "),
-              _c("li", [
-                _vm._v("шаг аукциона: " + _vm._s(_vm.car.auctionStep))
-              ]),
+              _c("li", [_vm._v(_vm._s(_vm.car.name))]),
               _vm._v(" "),
-              _c("li", [_vm._v("ставка НДС: в том числе 20%")])
+              _c("li", [_vm._v(_vm._s(_vm.car.categorId))]),
+              _vm._v(" "),
+              _c("li", [_vm._v(_vm._s(_vm.car.year))]),
+              _vm._v(" "),
+              _c("li", [_vm._v(_vm._s(_vm.car.milage))]),
+              _vm._v(" "),
+              _c("li", [_vm._v(_vm._s(_vm.car.name))]),
+              _vm._v(" "),
+              _c("li", [_vm._v(_vm._s(_vm.car.name))]),
+              _vm._v(" "),
+              _c("li", [_vm._v(_vm._s(_vm.car.name))]),
+              _vm._v(" "),
+              _c("li", [_vm._v(_vm._s(_vm.car.name))])
+            ])
+          ]),
+          _vm._v(" "),
+          _vm._m(4),
+          _vm._v(" "),
+          _c("div", { staticClass: "col m_data_list" }, [
+            _c("ul", [
+              _c("li", [_vm._v(_vm._s(_vm.car.name))]),
+              _vm._v(" "),
+              _c("li", [_vm._v(_vm._s(_vm.car.name))]),
+              _vm._v(" "),
+              _c("li", [_vm._v(_vm._s(_vm.car.name))]),
+              _vm._v(" "),
+              _c("li", [_vm._v(_vm._s(_vm.car.categorId))]),
+              _vm._v(" "),
+              _c("li", [_vm._v(_vm._s(_vm.car.year))]),
+              _vm._v(" "),
+              _c("li", [_vm._v(_vm._s(_vm.car.milage))]),
+              _vm._v(" "),
+              _c("li", [_vm._v(_vm._s(_vm.car.name))]),
+              _vm._v(" "),
+              _c("li", [_vm._v(_vm._s(_vm.car.name))]),
+              _vm._v(" "),
+              _c("li", [_vm._v(_vm._s(_vm.car.name))]),
+              _vm._v(" "),
+              _c("li", [_vm._v(_vm._s(_vm.car.name))])
             ])
           ])
         ])
@@ -43530,7 +43665,102 @@ var render = function() {
     ])
   ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col ul_one" }, [
+      _c("ul", [
+        _c("li", [_c("span", [_vm._v("начало аукциона:")])]),
+        _vm._v(" "),
+        _c("li", [_c("span", [_vm._v("окончание аукциона:")])]),
+        _vm._v(" "),
+        _c("li", [_c("span", [_vm._v("начальная цена:")])]),
+        _vm._v(" "),
+        _c("li", [_c("span", [_vm._v("шаг аукциона:")])]),
+        _vm._v(" "),
+        _c("li", [_c("span", [_vm._v("ставка НДС:")])])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("li", [_c("span", [_vm._v("в том числе 20%")])])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "ending_counter_div" }, [
+      _c("span", { staticClass: "hour_span" }, [_vm._v("21ч.0м.")]),
+      _vm._v(" "),
+      _c("span", { staticClass: "txt_span" }, [_vm._v("до завершения")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col m_data_list" }, [
+      _c("h5", { staticClass: "car_data_title" }, [
+        _vm._v("Данные по автомобилю")
+      ]),
+      _vm._v(" "),
+      _c("ul", [
+        _c("li", [_vm._v("Марка:")]),
+        _vm._v(" "),
+        _c("li", [_vm._v("Модель:")]),
+        _vm._v(" "),
+        _c("li", [_vm._v("тип по ПСМ/ПТС:")]),
+        _vm._v(" "),
+        _c("li", [_vm._v("Категория:")]),
+        _vm._v(" "),
+        _c("li", [_vm._v("Год выпуска:")]),
+        _vm._v(" "),
+        _c("li", [_vm._v("Пробег:")]),
+        _vm._v(" "),
+        _c("li", [_vm._v("VIN:")]),
+        _vm._v(" "),
+        _c("li", [_vm._v("Номер ПСМ/ПТС:")]),
+        _vm._v(" "),
+        _c("li", [_vm._v("Рама (шасси):")]),
+        _vm._v(" "),
+        _c("li", [_vm._v("Кузов (кабина, прицеп):")])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col m_data_list" }, [
+      _c("ul", [
+        _c("li", [_vm._v("Марка:")]),
+        _vm._v(" "),
+        _c("li", [_vm._v("Модель:")]),
+        _vm._v(" "),
+        _c("li", [_vm._v("тип по ПСМ/ПТС:")]),
+        _vm._v(" "),
+        _c("li", [_vm._v("Категория:")]),
+        _vm._v(" "),
+        _c("li", [_vm._v("Год выпуска:")]),
+        _vm._v(" "),
+        _c("li", [_vm._v("Пробег:")]),
+        _vm._v(" "),
+        _c("li", [_vm._v("VIN:")]),
+        _vm._v(" "),
+        _c("li", [_vm._v("Номер ПСМ/ПТС:")]),
+        _vm._v(" "),
+        _c("li", [_vm._v("Рама (шасси):")]),
+        _vm._v(" "),
+        _c("li", [_vm._v("Кузов (кабина, прицеп):")])
+      ])
+    ])
+  }
+]
 render._withStripped = true
 
 
