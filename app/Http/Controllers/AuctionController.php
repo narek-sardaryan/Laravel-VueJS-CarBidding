@@ -23,7 +23,7 @@ class AuctionController extends Controller
 
     public function fetchcar($id)
     {
-        $cars = Car::orderBy('id', 'asc')
+        $cars = Car::orderBy('id', 'desc')
             ->where('categorId', '=', $id)
             ->get();
         return $cars;
@@ -37,7 +37,7 @@ class AuctionController extends Controller
 
     public function fetchslider()
     {
-        $slider = Car::orderBy('id', 'asc')->get();
+        $slider = Car::orderBy('id', 'desc')->get();
         return $slider;
     }
 
@@ -67,7 +67,7 @@ class AuctionController extends Controller
 
     public function fetchcars($id)
     {
-        $cars = Car::orderBy('id', 'asc')->where('completed', '1')
+        $cars = Car::orderBy('id', 'desc')->where('completed', '1')
             ->offset($id)
             ->limit(6)
             ->get();
@@ -76,7 +76,7 @@ class AuctionController extends Controller
 
     public function fetchcarsall()
     {
-        $carsall = Car::orderBy('id', 'asc')->where('completed', '1')
+        $carsall = Car::orderBy('id', 'desc')->where('completed', '1')
             ->get();
         return $carsall;
     }

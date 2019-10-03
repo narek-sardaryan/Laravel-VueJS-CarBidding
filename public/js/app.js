@@ -2590,6 +2590,7 @@ __webpack_require__.r(__webpack_exports__);
       var _this8 = this;
 
       this.offsetCars = [];
+      this.offset = 1;
 
       if (!id) {
         this.offsetCars = [];
@@ -2606,13 +2607,11 @@ __webpack_require__.r(__webpack_exports__);
 
       if (id) {
         this.offsetCars = [];
-        axios.get('/fetchcars/' + this.currentPage).then(function (response) {
-          for (var _i2 = 0; _i2 < Math.ceil(response.data.filter(function (obj) {
-            return obj.bodyId === id;
-          }).length / 6); _i2++) {
-            _this8.offsetCars.push(_i2);
-          }
-
+        this.currentPage = 0;
+        axios.get('/fetchcarsall').then(function (response) {
+          // for (let i = 0; i < Math.ceil(response.data.filter(obj => obj.bodyId === id).length / 6); i++) {
+          //     this.offsetCars.push(i);
+          // }
           return _this8.cars = response.data.filter(function (obj) {
             return obj.bodyId === id;
           });
@@ -2656,25 +2655,24 @@ __webpack_require__.r(__webpack_exports__);
       var finish = new Date(document.getElementById('finish').value).getTime();
       var body = this.bodiesId;
       this.offsetCars = [];
-      axios.get('/fetchcars/' + this.currentPage).then(function (response) {
-        for (var i = 0; i < Math.ceil(response.data.filter(function (obj) {
-          var startAuction = new Date(obj.auctionStart).getTime();
-          var endAuction = new Date(obj.endOfAuction).getTime();
-          console.log(startAuction, endAuction);
-
-          if ((state == '' || obj.stateId == state) && (model == '' || obj.modelId == model) && (parking == '' || obj.parkingId == parking) && (!start || start >= startAuction) && (!finish || finish <= endAuction)) {
-            return true;
-          }
-
-          return false;
-        }).length / 6); i++) {
-          _this9.offsetCars.push(i);
-        }
-
+      axios.get('/fetchcarsall').then(function (response) {
+        // for (let i = 0; i < Math.ceil(response.data.filter(obj => {
+        //     const startAuction = new Date(obj.auctionStart).getTime();
+        //     const endAuction = new Date(obj.endOfAuction).getTime();
+        //     if ((state == '' || obj.stateId == state) &&
+        //         (model == '' || obj.modelId == model) &&
+        //         (parking == '' || obj.parkingId == parking) &&
+        //         (!start || start >= startAuction) &&
+        //         (!finish || finish <= endAuction)) {
+        //         return true;
+        //     }
+        //     return false;
+        // }).length / 6); i++) {
+        //     this.offsetCars.push(i);
+        // }
         _this9.cars = response.data.filter(function (obj) {
           var startAuction = new Date(obj.auctionStart).getTime();
           var endAuction = new Date(obj.endOfAuction).getTime();
-          console.log(startAuction, endAuction);
 
           if ((state == '' || obj.stateId == state) && (model == '' || obj.modelId == model) && (parking == '' || obj.parkingId == parking) && (!start || start >= startAuction) && (!finish || finish <= endAuction)) {
             return true;
@@ -42206,11 +42204,7 @@ var render = function() {
                   ? _c(
                       "li",
                       { staticClass: "page-item", on: { click: _vm.prewis } },
-                      [
-                        _c("a", { staticClass: "page-link" }, [
-                          _vm._v("Предыдущий")
-                        ])
-                      ]
+                      [_c("a", { staticClass: "page-link" }, [_vm._v("«")])]
                     )
                   : _vm._e(),
                 _vm._v(" "),
@@ -42239,11 +42233,7 @@ var render = function() {
                   ? _c(
                       "li",
                       { staticClass: "page-item", on: { click: _vm.nextis } },
-                      [
-                        _c("a", { staticClass: "page-link" }, [
-                          _vm._v("Следующий")
-                        ])
-                      ]
+                      [_c("a", { staticClass: "page-link" }, [_vm._v("»")])]
                     )
                   : _vm._e()
               ],
