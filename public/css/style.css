@@ -956,6 +956,9 @@ span i {
     padding-left: 40px;
     width: 285px;
 }
+.m_data_list {
+    margin-top: 24px;
+}
 .m_data_list ul {
     margin-top: 30px;
     list-style: none;
@@ -972,7 +975,6 @@ span i {
 .page-item{
     cursor: pointer;
 }
-
 .pagination {
     justify-content: center;
     margin-top: 40px;
