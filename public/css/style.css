@@ -681,7 +681,7 @@ body {
 
 .about_div {
     color: #fff;
-    padding: 45px 0px;
+    padding: 95px 0px;
     text-align: center;
 }
 
@@ -918,7 +918,50 @@ span i {
     font-size: 20px;
     text-align: left;
 }
-
+.auction_desc_uls {
+    margin-top: 30px;
+}
+.auction_desc_uls > div ul {
+    font-size: 16px;
+    text-align: left;
+    list-style: none;
+}
+.ul_one ul li span {
+    color: #0C74CA;
+    font-weight: bold;
+}
+.ending_counter_div {
+    margin-left: 41px;
+    text-align: left;
+}
+.ending_counter_div .hour_span {
+    color: #d82f2f;
+    font-size: 16px;
+    font-weight: bold;
+}
+.txt_span {
+    color: #000;
+    font-size: 16px;
+    font-weight: bold;
+}
+.mobiles_data_row {
+    margin: 30px 0px;
+    background: #0C74CA;
+    padding: 30px 0px;
+}
+.car_data_title {
+    font-size: 20px;
+    font-weight: bold;
+    color: #fff;
+    padding-left: 40px;
+    width: 285px;
+}
+.m_data_list ul {
+    margin-top: 30px;
+    list-style: none;
+    font-size: 16px;
+    color: #fff;
+}
 .page-link{
     background: #eaeaea;
 }
@@ -935,9 +978,3 @@ span i {
     margin-top: 40px;
 }
 
-.auction_desc {
-    font-size: 16px;
-    text-align: left;
-    margin-top: 30px;
-    list-style: none;
-}
