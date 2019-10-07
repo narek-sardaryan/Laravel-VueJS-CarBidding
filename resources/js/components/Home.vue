@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div class="container-fluid carbidding-container">
+        <div class="container-fluid carbidding-container">`
             <section id="lastcars">
                 <div class="container container-back">
                     <div id="bs4-slide-carousel" class="carousel slide d-block d-sm-none slide"
@@ -21,37 +21,37 @@
                     <div id="carouselExampleControls" class="carousel slide d-none d-sm-block m-50 slide"
                          data-ride="carousel">
                         <div class="carousel-inner text-center carouselin">
-                            <div class="carousel-item active">
+                            <div class="carousel-item active" v-if="index == 0" v-for="(slid, index) in slider">
                                 <div class="row">
                                     <div class="col slider-col">
-                                        <img class="img-fluid" :src="'/img/auctions/'+firstSlider.mainpics"
-                                             :alt="firstSlider.name">
+                                        <img class="img-fluid" :src="'/img/auctions/'+slid.mainpics"
+                                             :alt="slid.name">
                                         <div class="car-informacion">
                                             <div class="inform-text">
                                                 <div class="row">
                                                     <div class="col">
-                                                        <p>{{firstSlider.name}} | {{firstSlider.year}}</p>
+                                                        <p>{{slid.name}} | {{slid.year}}</p>
                                                     </div>
                                                 </div>
                                                 <div class="row">
                                                     <div class="col">
-                                                        <p>Текущая цена | {{firstSlider.currentPrice}} ₽</p>
+                                                        <p>Текущая цена | {{slid.currentPrice}} ₽</p>
                                                     </div>
                                                 </div>
                                                 <div class="row">
                                                     <div class="col">
-                                                        <p>Начало торгов | {{firstSlider.auctionStart}}</p>
+                                                        <p>Начало торгов | {{slid.auctionStart}}</p>
                                                     </div>
                                                 </div>
                                                 <div class="row">
                                                     <div class="col">
-                                                        <p>Завершение торгов: | {{firstSlider.endOfAuction}}</p>
+                                                        <p>Завершение торгов: | {{slid.endOfAuction}}</p>
                                                     </div>
                                                 </div>
                                                 <div class="row">
                                                     <div class="col">
-                                                        <router-link :to="'/cars/'+firstSlider.id"
-                                                                     :key="firstSlider.id">
+                                                        <router-link :to="'/cars/'+slid.id"
+                                                                     :key="slid.id">
                                                             <button type="button" class="btn btn-light">Смотреть
                                                             </button>
                                                         </router-link>
@@ -219,53 +219,60 @@
         </div>
         <div class="container-fluid car-filters">
             <div class="container container-back">
-                <div class="row select-options-filter">
-                    <div class="col">
-                        <label></label>
-                        <select id="model" class="form-control options selectbox">
-                            <option value="">Все марки</option>
-                            <option v-for="(model, index) in models" :value="model.id">{{ model.name
-                                }}
-                            </option>
-                        </select>
-                    </div>
-                    <div class="col">
-                        <label></label>
-                        <select id="state" class="form-control options selectbox">
-                            <option value="">Все состояния</option>
-                            <option v-for="(state, index) in states" :value="state.id">{{ state.name
-                                }}
-                            </option>
-                        </select>
-                    </div>
-                    <div class="col">
-                        <label></label>
-                        <select id="parking" class="form-control options selectbox">
-                            <option value="">Все стоянки</option>
-                            <option v-for="(parking, index) in parkings" :value="parking.id">
-                                {{ parking.address }}
-                            </option>
-                        </select>
-                    </div>
-                    <div class="col">
-                        <label>Дата завершения</label>
-                        <div class="row input-row">
-                            <p>С</p>
-                            <div class="col filter-date">
-                                <input type="date" id="start" value="" class="input-date form-control options">
-                            </div>
-                            <p>ПО</p>
-                            <div class="col filter-date">
-                                <input type="date" id="finish" value="" class="input-date form-control options">
-                            </div>
-                            <div class="col filter-date">
-                                <button class="btn btn-light searchcarsauction" @click="filterCars()">
-                                    Показать
-                                </button>
+                <form action="/filtercar" type="GET">
+                    <div class="row select-options-filter">
+                        <div class="col">
+                            <label></label>
+                            <select @change="filterByModels($event)" id="model" name="modelval"
+                                    class="form-control options selectbox">
+                                <option value="">Все марки</option>
+                                <option v-for="(model, index) in models" :value="model.id">{{ model.name
+                                    }}
+                                </option>
+                            </select>
+                        </div>
+                        <div class="col">
+                            <label></label>
+                            <select id="state" @change="filterByStates($event)" name="stateval" class="form-control options selectbox">
+                                <option value="">Все состояния</option>
+                                <option v-for="(state, index) in states" :value="state.id">{{ state.name
+                                    }}
+                                </option>
+                            </select>
+                        </div>
+                        <div class="col">
+                            <label></label>
+                            <select id="parking" name="parkingval" @change="filterByParkings($event)"
+                                    class="form-control options selectbox">
+                                <option value="">Все стоянки</option>
+                                <option v-for="(parking, index) in parkings" :value="parking.id">
+                                    {{ parking.address }}
+                                </option>
+                            </select>
+                        </div>
+                        <div class="col">
+                            <label>Дата завершения</label>
+                            <div class="row input-row">
+                                <p>С</p>
+                                <div class="col filter-date">
+                                    <input @change="filterByStarts($event)" name="startval" type="date" id="start" value=""
+                                           class="input-date form-control options">
+                                </div>
+                                <p>ПО</p>
+                                <div class="col filter-date">
+                                    <input @change="filterByEnds($event)" name="endval" type="date" id="finish" value=""
+                                           class="input-date form-control options">
+                                    <input type="hidden" :value="bodiesId" name="bodyval">
+                                </div>
+                                <div class="col filter-date">
+                                    <button class="btn btn-light searchcarsauction" type="submit">
+                                        Показать: {{this.allCarsLength}}
+                                    </button>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
+                </form>
             </div>
         </div>
         <div class="container-fluid">
@@ -339,13 +346,18 @@
                 firstSlider: [],
                 slider: [],
                 filters: [],
+                startAu: '',
+                endAu: '',
+                stateId: '',
+                modelId: '',
+                parkingId: '',
                 bodiesId: '',
                 currentPage: 0,
                 offset: 1,
                 allCarsLength: null
             }
         },
-        created: function () {
+        async created() {
             this.fetchBodies();
             this.fetchModels();
             this.fetchParkings();
@@ -398,7 +410,6 @@
             fetchCars() {
                 axios.get('/fetchcarsall').then(response => {
                     this.allCarsLength = response.data.length;
-                    console.log(this.allCarsLength)
                     this.offsetCars = [];
                     for (let i = 0; i < Math.ceil(response.data.length / 6); i++) {
                         this.offsetCars.push(i);
@@ -412,28 +423,24 @@
                 })
             },
             filterByBodies(id) {
-                this.offsetCars = [];
-                this.offset = 1;
+                this.bodiesId = id;
                 if (!id) {
-                    this.offsetCars = [];
-                    console.log(this.allCarsLength);
-                    for (let i = 0; i < Math.ceil(this.allCarsLength / 6); i++) {
-                        this.offsetCars.push(i);
-                    }
-                    axios.get('/fetchcars/' + this.currentPage).then(response => {
-                        return this.cars = response.data;
+                    axios.get('/fetchcarsall').then(response => {
+                        this.offsetCars = [];
+                        for (let i = 0; i < Math.ceil(response.data.length / 6); i++) {
+                            this.offsetCars.push(i);
+                        }
+                        return this.allCarsLength = response.data.length;
                     })
                 }
                 if (id) {
-                    this.offsetCars = [];
-                    this.currentPage = 0;
                     axios.get('/fetchcarsall').then(response => {
-                        // for (let i = 0; i < Math.ceil(response.data.filter(obj => obj.bodyId === id).length / 6); i++) {
-                        //     this.offsetCars.push(i);
-                        // }
-                        return this.cars = response.data.filter(obj => obj.bodyId === id);
-                    });
-                    this.bodiesId = id;
+                        this.offsetCars = [];
+                        for (let i = 0; i < Math.ceil(response.data.length / 6); i++) {
+                            this.offsetCars.push(i);
+                        }
+                        return this.allCarsLength = response.data.filter(obj => (obj.bodyId === id) && (this.stateId == obj.stateId || this.stateId == '') && (this.parkingId == obj.parkingId || this.parkingId == '') && (this.modelId == obj.modelId || this.modelId == '') && (this.parkingId == obj.parkingId || this.parkingId == '') && (!this.startAu || this.startAu >= new Date(obj.auctionStart).getTime()) && (!this.endAu || this.endAu <= new Date(obj.endOfAuction).getTime())).length;
+                    })
                 }
                 var disStyle = document.getElementsByClassName("body-cars");
                 var dispStyle = document.getElementsByClassName("body-name");
@@ -456,42 +463,35 @@
                 var bodyStyle = document.querySelector('div[data-id="' + id + '"]');
                 bodyStyle.style.background = '#0f92ff';
             },
-            filterCars() {
-                this.cars = [];
-                var model = document.getElementById('model').value;
-                var state = document.getElementById('state').value;
-                var parking = document.getElementById('parking').value;
-                var start = new Date(document.getElementById('start').value).getTime();
-                var finish = new Date(document.getElementById('finish').value).getTime();
-                var body = this.bodiesId;
-                this.offsetCars = [];
+            filterByParkings(event) {
+                this.parkingId = event.target.value;
                 axios.get('/fetchcarsall').then(response => {
-                    // for (let i = 0; i < Math.ceil(response.data.filter(obj => {
-                    //     const startAuction = new Date(obj.auctionStart).getTime();
-                    //     const endAuction = new Date(obj.endOfAuction).getTime();
-                    //     if ((state == '' || obj.stateId == state) &&
-                    //         (model == '' || obj.modelId == model) &&
-                    //         (parking == '' || obj.parkingId == parking) &&
-                    //         (!start || start >= startAuction) &&
-                    //         (!finish || finish <= endAuction)) {
-                    //         return true;
-                    //     }
-                    //     return false;
-                    // }).length / 6); i++) {
-                    //     this.offsetCars.push(i);
-                    // }
-                    this.cars = response.data.filter(obj => {
-                        const startAuction = new Date(obj.auctionStart).getTime();
-                        const endAuction = new Date(obj.endOfAuction).getTime();
-                        if ((state == '' || obj.stateId == state) &&
-                            (model == '' || obj.modelId == model) &&
-                            (parking == '' || obj.parkingId == parking) &&
-                            (!start || start >= startAuction) &&
-                            (!finish || finish <= endAuction)) {
-                            return true;
-                        }
-                        return false;
-                    });
+                    this.allCarsLength = response.data.filter(obj => (obj.parkingId == this.parkingId) && (this.stateId == obj.stateId || this.stateId == '') && (this.modelId == obj.modelId || this.modelId == '') && (this.bodiesId == obj.bodyId || this.bodiesId == '') && (!this.startAu || this.startAu >= new Date(obj.auctionStart).getTime()) && (!this.endAu || this.endAu <= new Date(obj.endOfAuction).getTime())).length;
+                })
+            },
+            filterByStarts(event) {
+                this.startAu = new Date(event.target.value).getTime();
+                axios.get('/fetchcarsall').then(response => {
+                    this.allCarsLength = response.data.filter(obj => ((new Date(obj.auctionStart).getTime()) >= this.startAu) && (this.stateId == obj.stateId || this.stateId == '') && (this.parkingId == obj.parkingId || this.parkingId == '') && (this.modelId == obj.modelId || this.modelId == '') && (this.bodiesId == obj.bodyId || this.bodiesId == '') && (!this.endAu || this.endAu <= new Date(obj.endOfAuction).getTime())).length;
+                })
+            },
+            filterByEnds(event) {
+                this.endAu = new Date(event.target.value).getTime();
+                axios.get('/fetchcarsall').then(response => {
+                    this.allCarsLength = response.data.filter(obj => ((new Date(obj.endOfAuction).getTime()) <= this.endAu) && (this.stateId == obj.stateId || this.stateId == '') && (this.parkingId == obj.parkingId || this.parkingId == '') && (this.modelId == obj.modelId || this.modelId == '') && (this.bodiesId == obj.bodyId || this.bodiesId == '') && (!this.startAu || this.startAu >= new Date(obj.auctionStart).getTime())).length;
+                })
+            },
+            filterByModels(event) {
+                this.modelId = event.target.value;
+                axios.get('/fetchcarsall').then(response => {
+                    this.allCarsLength = response.data.filter(obj => (obj.modelId == this.modelId) && (this.stateId == obj.stateId || this.stateId == '') && (this.parkingId == obj.parkingId || this.parkingId == '') && (this.bodiesId == obj.bodyId || this.bodiesId == '') && (!this.startAu || this.startAu >= new Date(obj.auctionStart).getTime()) && (!this.endAu || this.endAu <= new Date(obj.endOfAuction).getTime())).length;
+                })
+            },
+            filterByStates(event) {
+                this.stateId = event.target.value;
+                console.log(this.stateId)
+                axios.get('/fetchcarsall').then(response => {
+                    this.allCarsLength = response.data.filter(obj => (obj.stateId == this.stateId) && (this.bodiesId == obj.bodyId || this.bodiesId == '') && (this.parkingId == obj.parkingId || this.parkingId == '') && (this.modelId == obj.modelId || this.modelId == '') && (!this.startAu || this.startAu >= new Date(obj.auctionStart).getTime()) && (!this.endAu || this.endAu <= new Date(obj.endOfAuction).getTime())).length;
                 })
             },
         }
