@@ -147,6 +147,5 @@
     }
   }
 </script>
-
-<style coped>
+<style scoped>
 </style>

@@ -4,6 +4,7 @@ body {
     background-repeat: no-repeat;
     background-position: 0 -280px;
     background-size: contain;
+    font-family: 'Roboto Slab', serif; 
 }
 
 .carbidding-container {
@@ -955,9 +956,6 @@ span i {
     color: #fff;
     padding-left: 40px;
     width: 285px;
-}
-.m_data_list {
-    margin-top: 24px;
 }
 .m_data_list ul {
     margin-top: 30px;
