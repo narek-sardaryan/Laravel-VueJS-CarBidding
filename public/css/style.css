@@ -4,7 +4,7 @@ body {
     background-repeat: no-repeat;
     background-position: 0 -280px;
     background-size: contain;
-    font-family: 'Roboto Slab', serif;
+    font-family: 'Roboto Slab', serif; 
 }
 
 .carbidding-container {
@@ -973,7 +973,6 @@ span i {
 .page-item{
     cursor: pointer;
 }
-
 .pagination {
     justify-content: center;
     margin-top: 40px;
