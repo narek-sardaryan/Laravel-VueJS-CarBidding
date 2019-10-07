@@ -17,7 +17,7 @@ body {
 .gender {
     margin-top: 10px;
 }
-.headerlogo:hover {
+#headerlogo:hover {
     transform: rotate(10deg);
     transition: 1s;
 }
@@ -192,7 +192,7 @@ body {
     padding-left: 0 !important;
 }
 
-.headerlogo {
+#headerlogo {
     width: 130px;
     transition: 1s;
 }

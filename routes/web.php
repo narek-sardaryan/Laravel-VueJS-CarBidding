@@ -136,3 +136,27 @@ Route::get('/searchcar', function (Request $request) {
     return view('searchcar', [
         'cars' => $cars]);
 });
+Route::get('/filtercar', function (Request $request) {
+    $carssel = Car::query();
+    if (!empty($request->bodyval)) {
+        $carssel->where('bodyId', '=', $request->bodyval);
+    }
+    if (!empty($request->modelval)) {
+        $carssel->where('modelId', '=', $request->modelval);
+    }
+    if (!empty($request->stateval)) {
+        $carssel->where('stateId', '=', $request->stateval);
+    }
+    if (!empty($request->parkingval)) {
+        $carssel->where('parkingId', '=', $request->parkingval);
+    }
+    if (!empty($request->startval)) {
+        $carssel->where('auctionStart', '>=', $request->startval);
+    }
+    if (!empty($request->endval)) {
+        $carssel->where('endOfAuction', '<=', $request->endval);
+    }
+    $cars = $carssel->get();
+    return view('filtercars', [
+        'cars' => $cars]);
+});

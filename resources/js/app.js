@@ -12,7 +12,9 @@ import router from './routes.js';
 import store from './store'
 import VueAxios from 'vue-axios'
 import VueAgile from 'vue-agile'
+import Vuex from 'vuex';
 
+Vue.use(Vuex);
 Vue.use(VueAgile);
 Vue.use(VueAxios, axios);
 Vue.use(VueRouter);
@@ -39,6 +41,7 @@ Vue.component('about', require('./components/About.vue').default);
 Vue.component('rules', require('./components/Rules.vue').default);
 Vue.component('contacts', require('./components/Contacts.vue').default);
 Vue.component('searchcar', require('./components/SearchCar.vue').default);
+Vue.component('filtercars', require('./components/FilterCars.vue').default);
 Vue.component('showcar', require('./components/ShowCar.vue').default);
 
 /**
