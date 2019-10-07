@@ -4,7 +4,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-2">
-                        <router-link to="/#"><img src="/img/design_img/carbiddinglogo.png" class="headerlogo" alt="logo"></router-link>
+                        <router-link to="/#"><img src="/img/design_img/carbiddinglogo.png" id="headerlogo" alt="logo"></router-link>
                     </div>
                     <div class="col-md-9 offset-1">
                         <div class="col-md-12 menunavbar">
@@ -66,12 +66,16 @@
 </template>
 
 <script>
+    import Auctions from './Auctions';
     export default {
         name: "HeaderComponent",
         data() {
             return {
                 auctions: []
             }
+        },
+        components: {
+            Auctions
         },
         created: function () {
             this.fetchAuctions();
@@ -84,7 +88,7 @@
             },
             reloadForAuctions() {
                 window.location.reload();
-            }
+            },
         }
     }
 </script>

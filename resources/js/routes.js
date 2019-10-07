@@ -9,6 +9,7 @@ import Register from './components/Register.vue';
 import Contacts from './components/Contacts.vue';
 import Faq from './components/Faq.vue';
 import Rules from './components/Rules.vue';
+import FilterCars from "./components/FilterCars";
 
 export default new VueRouter({
     routes: [
@@ -36,6 +37,11 @@ export default new VueRouter({
         {
             path: '/searchcar',
             component: SearchCar,
+            props: true
+        },
+        {
+            path: '/filtercar',
+            component: FilterCars,
             props: true
         },
         {

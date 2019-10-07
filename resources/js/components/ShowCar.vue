@@ -6,7 +6,7 @@
           <div class="col cars_section">
             <img class="img-fluid" id="main_pic" :src="'/img/auctions/'+car.mainpics" alt="BMW">
             <div class="row small_pics_row">
-              <div v-for="image in images" class="col smallSlide">
+              <div v-for="image in images" class="col-md-3 smallSlide">
                 <img @click="slide(image.id)" :id="image.id" class="img-fluid smallImages" :src="'/img/auctions/'+image.name" alt="Slide">
               </div>
             </div>
@@ -148,5 +148,5 @@
   }
 </script>
 
-<style coped>
+<style scoped>
 </style>

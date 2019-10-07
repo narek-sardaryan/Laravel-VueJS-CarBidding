@@ -15,6 +15,7 @@
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet"/>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css"
           integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab&display=swap" rel="stylesheet">
     <!-- CSS Files -->
     <link href="/assets/css/bootstrap.min.css" rel="stylesheet"/>
     <link href="/assets/css/now-ui-dashboard.css?v=1.3.0" rel="stylesheet"/>
@@ -33,7 +34,7 @@
           Tip 1: You can change the color of the sidebar using: data-color="blue | green | orange | red | yellow"
       -->
         <div class="logo">
-            <a href="#" class="simple-text logo-normal">
+            <a href="/admin/" class="simple-text logo-normal">
                 <img src="/img/design_img/carbiddinglogo.png" alt="logo" class="logo_img">
             </a>
         </div>
