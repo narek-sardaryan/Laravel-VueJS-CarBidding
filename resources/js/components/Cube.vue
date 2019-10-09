@@ -2,7 +2,8 @@
     <div :style="styles" class="spinner spinner--cube">
         <!--        <div :style="cubeStyles" class="cube1"></div>-->
         <!--        <div :style="cubeStyles" class="cube2"></div>-->
-        <img src="http://continental-motor.com/loading.gif"> 
+<!--        <img src="https://thumbs.gfycat.com/AchingSpeedyArmyworm-size_restricted.gif"> -->
+        <img src="https://i.pinimg.com/originals/ed/23/68/ed23685339ada1b6d88008cbe1a11e98.gif"> 
     </div>
 
 </template>
@@ -18,7 +19,7 @@
                 default: '#0f92ff'
             },
             duration: {
-                default: '2s'
+                default: '0s'
             },
         },
         computed: {
@@ -47,7 +48,7 @@
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
-        /*background-color: white;*/
+        background-color: white;
         z-index: 1;
     }
 

@@ -10,11 +10,17 @@ import Contacts from './components/Contacts.vue';
 import Faq from './components/Faq.vue';
 import Rules from './components/Rules.vue';
 import FilterCars from "./components/FilterCars";
+import Profile from "./components/Profile";
 
 export default new VueRouter({
     routes: [
         {
             path: '/',
+            component: Home,
+            props: true
+        },
+        {
+            path: '/home',
             component: Home,
             props: true
         },
@@ -33,6 +39,10 @@ export default new VueRouter({
         {
             path: '/about',
             component: About
+        },
+        {
+            path: '/profile',
+            component: Profile
         },
         {
             path: '/searchcar',

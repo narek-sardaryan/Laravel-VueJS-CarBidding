@@ -1,8 +1,8 @@
 <template>
     <div>
-        <transition name="fade">
+<!--        <transition name="fade">-->
             <Cube v-if="car.length == 0"></Cube>
-        </transition>
+<!--        </transition>-->
         <header-component v-if="car.length != 0"></header-component>
         <div class="container-fluid margin" v-if="car.length != 0">
             <div class="container">
