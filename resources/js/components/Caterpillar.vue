@@ -1,5 +1,6 @@
 <template>
-
+    <header-component></header-component>
+    <footer-component></footer-component>
 </template>
 
 <script>
