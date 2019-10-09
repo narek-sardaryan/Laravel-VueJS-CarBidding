@@ -4,7 +4,7 @@ body {
     background-repeat: no-repeat;
     background-position: 0 -280px;
     background-size: contain;
-    font-family: 'Roboto Slab', serif; 
+    font-family: 'Roboto Slab', serif;
 }
 
 .carbidding-container {
@@ -977,6 +977,17 @@ span i {
     justify-content: center;
     margin-top: 40px;
 }
+
+.fade-enter-active, .fade-leave-active {
+    /*transform: scale(0.3) rotate(360deg);*/
+    transition: 2s;
+}
+.fade-enter, .fade-leave-to /* .fade-leave-active до версии 2.1.8 */
+{
+    opacity: 0;
+    /*transform: scale(0.3) rotate(360deg);*/
+    transition: 2s;
+}
 .register_container {
     margin-top: 79px;
 }
@@ -1067,4 +1078,5 @@ input[type='checkbox'] {
 .btn {
     background: #0f92ff;
     color: #fff;
+>>>>>>> 7b82423258deda6bc9d8db0378329418495ebcdd
 }

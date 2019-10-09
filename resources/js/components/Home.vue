@@ -1,6 +1,10 @@
 <template>
     <div>
-        <div class="container-fluid carbidding-container">`
+        <transition name="fade">
+            <Cube v-if="slider.length == 0"></Cube>
+        </transition>
+        <header-component v-if="slider.length > 0"></header-component>
+        <div class="container-fluid carbidding-container" v-if="slider.length > 0">
             <section id="lastcars">
                 <div class="container container-back">
                     <div id="bs4-slide-carousel" class="carousel slide d-block d-sm-none slide"
@@ -116,7 +120,7 @@
                     </div>
                 </div>
             </section>
-            <div class="container container-back">
+            <div class="container container-back" v-if="slider.length > 0">
                 <div class="row body-cats">
                     <div class="col-md-1 body-cars" data-id="0" @click="filterByBodies(0)">
                         <div class="row">
@@ -217,7 +221,7 @@
                 </div>
             </div>
         </div>
-        <div class="container-fluid car-filters">
+        <div class="container-fluid car-filters" v-if="slider.length > 0">
             <div class="container container-back">
                 <form action="/filtercar" type="GET">
                     <div class="row select-options-filter">
@@ -233,7 +237,8 @@
                         </div>
                         <div class="col">
                             <label></label>
-                            <select id="state" @change="filterByStates($event)" name="stateval" class="form-control options selectbox">
+                            <select id="state" @change="filterByStates($event)" name="stateval"
+                                    class="form-control options selectbox">
                                 <option value="">Все состояния</option>
                                 <option v-for="(state, index) in states" :value="state.id">{{ state.name
                                     }}
@@ -255,7 +260,8 @@
                             <div class="row input-row">
                                 <p>С</p>
                                 <div class="col filter-date">
-                                    <input @change="filterByStarts($event)" name="startval" type="date" id="start" value=""
+                                    <input @change="filterByStarts($event)" name="startval" type="date" id="start"
+                                           value=""
                                            class="input-date form-control options">
                                 </div>
                                 <p>ПО</p>
@@ -275,7 +281,7 @@
                 </form>
             </div>
         </div>
-        <div class="container-fluid">
+        <div class="container-fluid" v-if="slider.length > 0">
             <div class="container container-back">
                 <div class="row cars-root">
                     <div class="col-md-4 cars-article" v-for="(car, index) in cars">
@@ -329,10 +335,13 @@
                 </nav>
             </div>
         </div>
+        <footer-component v-if="slider.length > 0"></footer-component>
     </div>
 </template>
 
 <script>
+    import Cube from './Cube';
+
     export default {
         name: "Home",
         data() {
@@ -366,7 +375,27 @@
             this.fetchCarsPaginate();
             this.fetchSlider();
         },
+        component: {
+            Cube
+        },
         methods: {
+            beforeEnter: function (el) {
+                el.style.opacity = 0
+            },
+            enter: function (el, done) {
+                Velocity(el, { opacity: 1, fontSize: '1.4em' }, { duration: 300 })
+                Velocity(el, { fontSize: '1em' }, { complete: done })
+            },
+            leave: function (el, done) {
+                Velocity(el, { translateX: '15px', rotateZ: '50deg' }, { duration: 600 })
+                Velocity(el, { rotateZ: '100deg' }, { loop: 2 })
+                Velocity(el, {
+                    rotateZ: '45deg',
+                    translateY: '30px',
+                    translateX: '30px',
+                    opacity: 0
+                }, { complete: done })
+            },
             page(off) {
                 this.currentPage = off * 6;
                 this.offset = this.currentPage / 6 + 1

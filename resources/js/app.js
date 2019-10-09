@@ -32,7 +32,6 @@ Vue.use(VueRouter);
 
 Vue.component('header-component', require('./components/HeaderComponent.vue').default);
 Vue.component('footer-component', require('./components/FooterComponent.vue').default);
-Vue.component('slider', require('./components/Slider.vue').default);
 Vue.component('home', require('./components/Home.vue').default);
 Vue.component('register', require('./components/Register.vue').default);
 Vue.component('auctions', require('./components/Auctions.vue').default);
@@ -43,6 +42,7 @@ Vue.component('contacts', require('./components/Contacts.vue').default);
 Vue.component('searchcar', require('./components/SearchCar.vue').default);
 Vue.component('filtercars', require('./components/FilterCars.vue').default);
 Vue.component('showcar', require('./components/ShowCar.vue').default);
+Vue.component('Cube', require('./components/Cube.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

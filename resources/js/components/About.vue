@@ -1,5 +1,6 @@
 <template>
     <div>
+        <header-component></header-component>
         <div class="bg_img" style="margin-top: 79px;">
             <div class="container">
                 <div class="row justify-content-end">
@@ -33,6 +34,7 @@
                 </div>
             </div>
         </section>
+        <footer-component></footer-component>
     </div>
 </template>
 
@@ -41,7 +43,7 @@
     name: "About",
      data:function(){
         return {
-          show: false 
+          show: false
       }
     }
   }

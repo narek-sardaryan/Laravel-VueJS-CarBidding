@@ -1,5 +1,6 @@
 <template>
 	<div>
+        <header-component></header-component>
 		<div class="container-fluid contacts_bg_img">
 			<div class="container" style="margin-top: 79px;">
 				<div class="row">
@@ -23,7 +24,8 @@
 			<div class="col">
 				<div class="map_img"></div>
 			</div>
-		</div> 
+		</div>
+        <footer-component></footer-component>
 	</div>
 </template>
 <script>

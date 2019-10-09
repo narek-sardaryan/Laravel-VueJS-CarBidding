@@ -1,6 +1,10 @@
 <template>
     <div>
-        <div class="container-fluid carbidding-container">
+        <transition name="fade">
+            <Cube v-if="slider.length == 0"></Cube>
+        </transition>
+        <header-component v-if="slider.length > 0"></header-component>
+        <div class="container-fluid carbidding-container" v-if="slider.length > 0">
             <section id="lastcars">
                 <div class="container container-back">
                     <div id="bs4-slide-carousel" class="carousel slide d-block d-sm-none slide"
@@ -116,7 +120,7 @@
                     </div>
                 </div>
             </section>
-            <div class="container container-back">
+            <div class="container container-back" v-if="slider.length > 0">
                 <div class="row body-cats">
                     <div class="col-md-1 body-cars" data-id="0" @click="filterByBodies(0)">
                         <div class="row">
@@ -217,7 +221,7 @@
                 </div>
             </div>
         </div>
-        <div class="container-fluid car-filters">
+        <div class="container-fluid car-filters" v-if="slider.length > 0">
             <div class="container container-back">
                 <form action="/filtercar" type="GET">
                     <div class="row select-options-filter">
@@ -277,7 +281,7 @@
                 </form>
             </div>
         </div>
-        <div class="container-fluid">
+        <div class="container-fluid" v-if="slider.length > 0">
             <div class="container container-back">
                 <div class="row cars-root">
                     <div class="col-md-4 cars-article" v-for="(car, index) in cars">
@@ -321,6 +325,7 @@
                 </div>
             </div>
         </div>
+        <footer-component v-if="slider.length > 0"></footer-component>
     </div>
 </template>
 
