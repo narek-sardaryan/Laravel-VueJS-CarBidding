@@ -15,14 +15,11 @@ use App\Car;
 use App\Carmodel;
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 Route::get('/', function () {
     return view('home');
 });
-
-Auth::routes();
-Route::get('/home', 'HomeController@index')->name('home');
-
 Route::group(['middleware' => ['auth', 'admin']], function () {
 
     Route::get('/admin', 'AdminController@profile');
@@ -125,6 +122,7 @@ Route::get('/fetchparkings', 'AuctionController@fetchparkings');
 Route::get('/fetchstates', 'AuctionController@fetchstates');
 Route::get('/fetchcars/{id}', 'AuctionController@fetchcars');
 Route::get('/fetchcarsall', 'AuctionController@fetchcarsall');
+Route::get('/fetchUser', 'UserController@fetchUser');
 Route::get('/cars/{id}', 'CarsController@showcar');
 Route::get('/auctions/{id}', 'AuctionController@index');
 Route::get('/auction/{pid}/{id}', 'AuctionController@fetchcar');
@@ -188,3 +186,6 @@ Route::get('/filtercarau', function (Request $request) {
     return view('filtercars', [
         'cars' => $carsau]);
 });
+
+Auth::routes();
+Route::get('/home', 'HomeController@index')->name('home');

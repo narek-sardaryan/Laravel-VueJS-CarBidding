@@ -1,8 +1,8 @@
 <template>
     <div>
-        <transition name="fade">
+<!--        <transition name="fade">-->
             <Cube v-if="slider.length == 0"></Cube>
-        </transition>
+<!--        </transition>-->
         <header-component v-if="slider.length > 0"></header-component>
         <div class="container-fluid carbidding-container" v-if="slider.length > 0">
             <section id="lastcars">
@@ -419,7 +419,7 @@
                     this.auctioncars = response.data;
                 })
             },
-            fetchCars() {
+            fetchCars(id) {
                 axios.get('/auction/0/' + this.id).then(response => {
                     this.allCarsLength = response.data.length;
                 })
