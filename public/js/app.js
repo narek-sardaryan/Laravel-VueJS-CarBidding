@@ -4023,6 +4023,66 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+<<<<<<< HEAD
+=======
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+>>>>>>> 2e8bddca74cf678fe21822aaa7f5d822db7c44c2
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Profile",
   data: function data() {
@@ -46875,16 +46935,40 @@ var render = function() {
     [
       _c("header-component"),
       _vm._v(" "),
+<<<<<<< HEAD
       _c("div", { staticClass: "register_bg_img" }, [
         _c("div", { staticClass: "container register_container" }, [
           _c("div", { staticClass: "row" }, [
             _c("div", { staticClass: "col" }, [
               _vm._m(0),
+=======
+      _vm._m(0),
+      _vm._v(" "),
+      _c("footer-component")
+    ],
+    1
+  )
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "register_bg_img" }, [
+      _c("div", { staticClass: "container register_container" }, [
+        _c("div", { staticClass: "row" }, [
+          _c("div", { staticClass: "col" }, [
+            _c("div", { staticClass: "attention_main_txt" }, [
+              _c("p", { staticClass: "attention" }, [
+                _vm._v("\r\n    \t\t\t\t\t\tВнимание!\r\n    \t\t\t\t\t")
+              ]),
+>>>>>>> 2e8bddca74cf678fe21822aaa7f5d822db7c44c2
               _vm._v(" "),
-              _c("h6", [
+              _c("p", { staticClass: "attention_content" }, [
                 _vm._v(
-                  "К регистрации в качестве Продавца допускаются юридические лица"
+                  "\r\n    \t\t\t\t\t\tРегистрация бесплатна и доступна всем желающим. Пожалуйста, указывайте только достоверные данные - от этого зависит будет ли Ваш аккаунт активирован.\r\n\t\t\t\t\t\t\tПо вопросам регистрации обращайтесь по телефону +7 495 748-56-08. Звонки принимаются с 9:00 до 18:00 по Московскому времени.\r\n    \t\t\t\t\t"
                 )
+<<<<<<< HEAD
               ]),
               _vm._v(" "),
               _c("form", { attrs: { action: "register", method: "POST" } }, [
@@ -46892,14 +46976,146 @@ var render = function() {
                   attrs: { type: "hidden", name: "_token" },
                   domProps: { value: _vm.csrf }
                 }),
+=======
+              ])
+            ]),
+            _vm._v(" "),
+            _c("h6", [
+              _vm._v(
+                "К регистрации в качестве Продавца допускаются юридические лица"
+              )
+            ]),
+            _vm._v(" "),
+            _c(
+              "form",
+              { staticClass: "register_form", attrs: { action: "register" } },
+              [
+                _c("div", { staticClass: "row" }, [
+                  _c("div", { staticClass: "col inputs_div_one" }, [
+                    _c("label", { attrs: { for: "email" } }, [
+                      _vm._v("Email *")
+                    ]),
+                    _vm._v(" "),
+                    _c("input", {
+                      staticClass: "register_inputs",
+                      attrs: { id: "email", type: "email", name: "email" }
+                    }),
+                    _vm._v(" "),
+                    _c("label", { attrs: { for: "phone" } }, [
+                      _vm._v("Телефон *")
+                    ]),
+                    _vm._v(" "),
+                    _c("input", {
+                      staticClass: "register_inputs",
+                      attrs: { id: "phone", type: "phone", name: "phone" }
+                    }),
+                    _vm._v(" "),
+                    _c("label", { attrs: { for: "pssw" } }, [
+                      _vm._v("Пароль *")
+                    ]),
+                    _vm._v(" "),
+                    _c("input", {
+                      staticClass: "register_inputs",
+                      attrs: { id: "pssw", type: "password", name: "password" }
+                    }),
+                    _vm._v(" "),
+                    _c("label", { attrs: { for: "psswr" } }, [
+                      _vm._v("Ещё раз *")
+                    ]),
+                    _vm._v(" "),
+                    _c("input", {
+                      staticClass: "register_inputs",
+                      attrs: { id: "psswr", type: "password", name: "password" }
+                    }),
+                    _vm._v(" "),
+                    _c("label", { attrs: { for: "timezone" } }, [
+                      _vm._v("Часовой пояс *")
+                    ]),
+                    _vm._v(" "),
+                    _c("select", { attrs: { id: "timezone" } }, [
+                      _c("option", [_vm._v("Часовой пояс *")])
+                    ]),
+                    _vm._v(" "),
+                    _c("input", { attrs: { type: "file", name: "avatar" } })
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "col inputs_div_two" }, [
+                    _c("label", { attrs: { for: "sname" } }, [
+                      _vm._v("Фамилия *")
+                    ]),
+                    _vm._v(" "),
+                    _c("input", {
+                      staticClass: "register_inputs",
+                      attrs: { id: "sname", type: "text", name: "sname" }
+                    }),
+                    _vm._v(" "),
+                    _c("label", { attrs: { for: "name" } }, [_vm._v("Имя *")]),
+                    _vm._v(" "),
+                    _c("input", {
+                      staticClass: "register_inputs",
+                      attrs: { id: "name", type: "text", name: "name" }
+                    }),
+                    _vm._v(" "),
+                    _c("label", { attrs: { for: "date" } }, [
+                      _vm._v("День рождения *")
+                    ]),
+                    _vm._v(" "),
+                    _c("input", {
+                      staticClass: "register_inputs",
+                      attrs: { id: "date", type: "date", name: "date-birth" }
+                    }),
+                    _vm._v(" "),
+                    _c("label", { attrs: { for: "textarea" } }, [
+                      _vm._v("Дополнительно *")
+                    ]),
+                    _vm._v(" "),
+                    _c("textarea", { attrs: { id: "textarea" } }),
+                    _vm._v(" "),
+                    _c("label", { attrs: { id: "gender" } }, [_vm._v("Пол")]),
+                    _vm._v(" "),
+                    _c("label", { attrs: { for: "male" } }, [
+                      _vm._v("Мужское")
+                    ]),
+                    _vm._v(" "),
+                    _c("input", {
+                      staticClass: "register_inputs",
+                      attrs: { id: "male", type: "radio", name: "gender" }
+                    }),
+                    _vm._v(" "),
+                    _c("label", { attrs: { for: "female" } }, [
+                      _vm._v("Женское")
+                    ]),
+                    _vm._v(" "),
+                    _c("input", {
+                      staticClass: "register_inputs",
+                      attrs: { id: "female", type: "radio", name: "gender" }
+                    })
+                  ])
+                ]),
+>>>>>>> 2e8bddca74cf678fe21822aaa7f5d822db7c44c2
                 _vm._v(" "),
                 _vm._m(1),
                 _vm._v(" "),
+<<<<<<< HEAD
                 _vm._m(2),
                 _vm._v(" "),
                 _vm._m(3)
               ])
             ])
+=======
+                _c("div", { staticClass: "send" }, [
+                  _c("input", {
+                    staticClass: "btn",
+                    attrs: {
+                      type: "submit",
+                      name: "send",
+                      value: "Отправить заявку"
+                    }
+                  })
+                ])
+              ]
+            )
+>>>>>>> 2e8bddca74cf678fe21822aaa7f5d822db7c44c2
           ])
         ])
       ]),
@@ -65870,8 +66086,8 @@ var axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\xampp\htdocs\CarBidding\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\xampp\htdocs\CarBidding\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\xampp\htdocs\Laravel-VueJS-CarBidding\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\xampp\htdocs\Laravel-VueJS-CarBidding\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
