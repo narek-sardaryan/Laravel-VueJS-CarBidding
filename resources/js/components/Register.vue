@@ -14,7 +14,7 @@
     					</p>
     				</div>
     				<h6>К регистрации в качестве Продавца допускаются юридические лица</h6>
-    				<form action="register">
+    				<form class="register_form" action="register">
     					<div class="row">
 	    					<div class="col inputs_div_one">
 	    						<label for="email">Email *</label>

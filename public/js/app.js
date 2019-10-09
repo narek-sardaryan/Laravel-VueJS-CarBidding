@@ -44404,136 +44404,150 @@ var staticRenderFns = [
                 )
               ]),
               _vm._v(" "),
-              _c("form", { attrs: { action: "register" } }, [
-                _c("div", { staticClass: "row" }, [
-                  _c("div", { staticClass: "col inputs_div_one" }, [
-                    _c("label", { attrs: { for: "email" } }, [
-                      _vm._v("Email *")
+              _c(
+                "form",
+                { staticClass: "register_form", attrs: { action: "register" } },
+                [
+                  _c("div", { staticClass: "row" }, [
+                    _c("div", { staticClass: "col inputs_div_one" }, [
+                      _c("label", { attrs: { for: "email" } }, [
+                        _vm._v("Email *")
+                      ]),
+                      _vm._v(" "),
+                      _c("input", {
+                        attrs: { id: "email", type: "email", name: "email" }
+                      }),
+                      _vm._v(" "),
+                      _c("label", { attrs: { for: "phone" } }, [
+                        _vm._v("Телефон *")
+                      ]),
+                      _vm._v(" "),
+                      _c("input", {
+                        attrs: { id: "phone", type: "phone", name: "phone" }
+                      }),
+                      _vm._v(" "),
+                      _c("label", { attrs: { for: "pssw" } }, [
+                        _vm._v("Пароль *")
+                      ]),
+                      _vm._v(" "),
+                      _c("input", {
+                        attrs: {
+                          id: "pssw",
+                          type: "password",
+                          name: "password"
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c("label", { attrs: { for: "psswr" } }, [
+                        _vm._v("Ещё раз *")
+                      ]),
+                      _vm._v(" "),
+                      _c("input", {
+                        attrs: {
+                          id: "psswr",
+                          type: "password",
+                          name: "password"
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c("label", { attrs: { for: "timezone" } }, [
+                        _vm._v("Часовой пояс *")
+                      ]),
+                      _vm._v(" "),
+                      _c("select", { attrs: { id: "timezone" } }, [
+                        _c("option", [_vm._v("Часовой пояс *")])
+                      ]),
+                      _vm._v(" "),
+                      _c("input", { attrs: { type: "file", name: "avatar" } })
                     ]),
                     _vm._v(" "),
-                    _c("input", {
-                      attrs: { id: "email", type: "email", name: "email" }
-                    }),
-                    _vm._v(" "),
-                    _c("label", { attrs: { for: "phone" } }, [
-                      _vm._v("Телефон *")
-                    ]),
-                    _vm._v(" "),
-                    _c("input", {
-                      attrs: { id: "phone", type: "phone", name: "phone" }
-                    }),
-                    _vm._v(" "),
-                    _c("label", { attrs: { for: "pssw" } }, [
-                      _vm._v("Пароль *")
-                    ]),
-                    _vm._v(" "),
-                    _c("input", {
-                      attrs: { id: "pssw", type: "password", name: "password" }
-                    }),
-                    _vm._v(" "),
-                    _c("label", { attrs: { for: "psswr" } }, [
-                      _vm._v("Ещё раз *")
-                    ]),
-                    _vm._v(" "),
-                    _c("input", {
-                      attrs: { id: "psswr", type: "password", name: "password" }
-                    }),
-                    _vm._v(" "),
-                    _c("label", { attrs: { for: "timezone" } }, [
-                      _vm._v("Часовой пояс *")
-                    ]),
-                    _vm._v(" "),
-                    _c("select", { attrs: { id: "timezone" } }, [
-                      _c("option", [_vm._v("Часовой пояс *")])
-                    ]),
-                    _vm._v(" "),
-                    _c("input", { attrs: { type: "file", name: "avatar" } })
+                    _c("div", { staticClass: "col inputs_div_two" }, [
+                      _c("label", { attrs: { for: "sname" } }, [
+                        _vm._v("Фамилия *")
+                      ]),
+                      _vm._v(" "),
+                      _c("input", {
+                        attrs: { id: "sname", type: "text", name: "sname" }
+                      }),
+                      _vm._v(" "),
+                      _c("label", { attrs: { for: "name" } }, [
+                        _vm._v("Имя *")
+                      ]),
+                      _vm._v(" "),
+                      _c("input", {
+                        attrs: { id: "name", type: "text", name: "name" }
+                      }),
+                      _vm._v(" "),
+                      _c("label", { attrs: { for: "date" } }, [
+                        _vm._v("День рождения *")
+                      ]),
+                      _vm._v(" "),
+                      _c("input", {
+                        attrs: { id: "date", type: "date", name: "date-birth" }
+                      }),
+                      _vm._v(" "),
+                      _c("label", { attrs: { for: "textarea" } }, [
+                        _vm._v("Дополнительно *")
+                      ]),
+                      _vm._v(" "),
+                      _c("textarea", { attrs: { id: "textarea" } }),
+                      _vm._v(" "),
+                      _c("label", { attrs: { id: "gender" } }, [_vm._v("Пол")]),
+                      _vm._v(" "),
+                      _c("label", { attrs: { for: "male" } }, [
+                        _vm._v("Мужское")
+                      ]),
+                      _vm._v(" "),
+                      _c("input", {
+                        attrs: { id: "male", type: "radio", name: "gender" }
+                      }),
+                      _vm._v(" "),
+                      _c("label", { attrs: { for: "female" } }, [
+                        _vm._v("Женское")
+                      ]),
+                      _vm._v(" "),
+                      _c("input", {
+                        attrs: { id: "female", type: "radio", name: "gender" }
+                      })
+                    ])
                   ]),
                   _vm._v(" "),
-                  _c("div", { staticClass: "col inputs_div_two" }, [
-                    _c("label", { attrs: { for: "sname" } }, [
-                      _vm._v("Фамилия *")
-                    ]),
-                    _vm._v(" "),
+                  _c("div", { staticClass: "policy" }, [
+                    _c("label", { staticClass: "policy_label" }, [
+                      _c("input", {
+                        attrs: {
+                          id: "checkbox",
+                          type: "checkbox",
+                          name: "policy"
+                        }
+                      }),
+                      _vm._v(
+                        " – согласен с обработкой персональных данных.\r\n\t    \t\t\t\t\t\t"
+                      ),
+                      _c(
+                        "a",
+                        { staticClass: "policy_txt", attrs: { href: "#" } },
+                        [
+                          _vm._v(
+                            'Политика в отношении обработки персональных данных в ООО "АВТО-СЕЙЛ"'
+                          )
+                        ]
+                      )
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "send" }, [
                     _c("input", {
-                      attrs: { id: "sname", type: "text", name: "sname" }
-                    }),
-                    _vm._v(" "),
-                    _c("label", { attrs: { for: "name" } }, [_vm._v("Имя *")]),
-                    _vm._v(" "),
-                    _c("input", {
-                      attrs: { id: "name", type: "text", name: "name" }
-                    }),
-                    _vm._v(" "),
-                    _c("label", { attrs: { for: "date" } }, [
-                      _vm._v("День рождения *")
-                    ]),
-                    _vm._v(" "),
-                    _c("input", {
-                      attrs: { id: "date", type: "date", name: "date-birth" }
-                    }),
-                    _vm._v(" "),
-                    _c("label", { attrs: { for: "textarea" } }, [
-                      _vm._v("Дополнительно *")
-                    ]),
-                    _vm._v(" "),
-                    _c("textarea", { attrs: { id: "textarea" } }),
-                    _vm._v(" "),
-                    _c("label", { attrs: { id: "gender" } }, [_vm._v("Пол")]),
-                    _vm._v(" "),
-                    _c("label", { attrs: { for: "male" } }, [
-                      _vm._v("Мужское")
-                    ]),
-                    _vm._v(" "),
-                    _c("input", {
-                      attrs: { id: "male", type: "radio", name: "gender" }
-                    }),
-                    _vm._v(" "),
-                    _c("label", { attrs: { for: "female" } }, [
-                      _vm._v("Женское")
-                    ]),
-                    _vm._v(" "),
-                    _c("input", {
-                      attrs: { id: "female", type: "radio", name: "gender" }
+                      staticClass: "btn",
+                      attrs: {
+                        type: "submit",
+                        name: "send",
+                        value: "Отправить заявку"
+                      }
                     })
                   ])
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "policy" }, [
-                  _c("label", { staticClass: "policy_label" }, [
-                    _c("input", {
-                      attrs: {
-                        id: "checkbox",
-                        type: "checkbox",
-                        name: "policy"
-                      }
-                    }),
-                    _vm._v(
-                      " – согласен с обработкой персональных данных.\r\n\t    \t\t\t\t\t\t"
-                    ),
-                    _c(
-                      "a",
-                      { staticClass: "policy_txt", attrs: { href: "#" } },
-                      [
-                        _vm._v(
-                          'Политика в отношении обработки персональных данных в ООО "АВТО-СЕЙЛ"'
-                        )
-                      ]
-                    )
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "send" }, [
-                  _c("input", {
-                    staticClass: "btn",
-                    attrs: {
-                      type: "submit",
-                      name: "send",
-                      value: "Отправить заявку"
-                    }
-                  })
-                ])
-              ])
+                ]
+              )
             ])
           ])
         ])
