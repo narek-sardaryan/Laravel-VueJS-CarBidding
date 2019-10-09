@@ -1,5 +1,6 @@
 <template>
 <div>
+	<header-component></header-component>	
     <div class="register_bg_img">
     	<div class="container register_container">
     		<div class="row">
@@ -14,17 +15,17 @@
     					</p>
     				</div>
     				<h6>К регистрации в качестве Продавца допускаются юридические лица</h6>
-    				<form action="register">
+    				<form class="register_form" action="register">
     					<div class="row">
 	    					<div class="col inputs_div_one">
 	    						<label for="email">Email *</label>
-	    						<input id="email" type="email" name="email">
+	    						<input class="register_inputs" id="email" type="email" name="email">
 	    						<label for="phone">Телефон *</label>
-	    						<input id="phone" type="phone" name="phone">
+	    						<input class="register_inputs" id="phone" type="phone" name="phone">
 	    						<label for="pssw">Пароль *</label>
-	    						<input id="pssw" type="password" name="password">
+	    						<input class="register_inputs" id="pssw" type="password" name="password">
 	    						<label for="psswr">Ещё раз *</label>
-	    						<input id="psswr" type="password" name="password">
+	    						<input class="register_inputs" id="psswr" type="password" name="password">
 	    						<label for="timezone">Часовой пояс *</label>
 		    					<select id="timezone">
 		    						<option>Часовой пояс *</option>
@@ -33,18 +34,18 @@
 	    					</div>
 	    					<div class="col inputs_div_two">
 	    						<label for="sname">Фамилия *</label>
-	    						<input id="sname" type="text" name="sname">
+	    						<input class="register_inputs" id="sname" type="text" name="sname">
 	    						<label for="name">Имя *</label>
-	    						<input id="name" type="text" name="name">
+	    						<input class="register_inputs" id="name" type="text" name="name">
 	    						<label for="date">День рождения *</label>
-	    						<input id="date" type="date" name="date-birth">
+	    						<input class="register_inputs" id="date" type="date" name="date-birth">
 	    						<label for="textarea">Дополнительно *</label>
 	    						<textarea id="textarea"></textarea>
 	    						<label id="gender">Пол</label>
 	    						<label for="male">Мужское</label>
-	    						<input id="male" type="radio" name="gender">
+	    						<input class="register_inputs" id="male" type="radio" name="gender">
 	    						<label for="female">Женское</label>
-	    						<input id="female" type="radio" name="gender">
+	    						<input class="register_inputs" id="female" type="radio" name="gender">
 	    					</div>
     					</div>
     					<div class="policy">
@@ -61,6 +62,7 @@
     		</div>	
     	</div>
     </div>
+    <footer-component></footer-component>	
 </div>
 </template>
 
