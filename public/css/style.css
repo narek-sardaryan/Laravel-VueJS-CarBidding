@@ -979,3 +979,12 @@ span i {
     margin-top: 40px;
 }
 
+.fade-enter-active, .fade-leave-active {
+    /*transform: scale(0.3) rotate(360deg);*/
+    transition: 2s;
+}
+.fade-enter, .fade-leave-to /* .fade-leave-active до версии 2.1.8 */ {
+    opacity: 0;
+    /*transform: scale(0.3) rotate(360deg);*/
+    transition: 2s;
+}

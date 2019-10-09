@@ -127,7 +127,8 @@ Route::get('/fetchcars/{id}', 'AuctionController@fetchcars');
 Route::get('/fetchcarsall', 'AuctionController@fetchcarsall');
 Route::get('/cars/{id}', 'CarsController@showcar');
 Route::get('/auctions/{id}', 'AuctionController@index');
-Route::get('/auction/{id}', 'AuctionController@fetchcar');
+Route::get('/auction/{pid}/{id}', 'AuctionController@fetchcar');
+Route::get('/auctionall/{id}', 'AuctionController@auctionall');
 Route::get('/car/{id}', 'CarsController@fetchcar');
 Route::get('/searchcar', function (Request $request) {
     $cars = Car::query()
@@ -159,4 +160,31 @@ Route::get('/filtercar', function (Request $request) {
     $cars = $carssel->get();
     return view('filtercars', [
         'cars' => $cars]);
+});
+Route::get('/filtercarau', function (Request $request) {
+    $carsauctions = Car::query();
+    if (!empty($request->categorval)) {
+        $carsauctions->where('categorId', '=', $request->categorval);
+    }
+    if (!empty($request->bodyval)) {
+        $carsauctions->where('bodyId', '=', $request->bodyval);
+    }
+    if (!empty($request->modelval)) {
+        $carsauctions->where('modelId', '=', $request->modelval);
+    }
+    if (!empty($request->stateval)) {
+        $carsauctions->where('stateId', '=', $request->stateval);
+    }
+    if (!empty($request->parkingval)) {
+        $carsauctions->where('parkingId', '=', $request->parkingval);
+    }
+    if (!empty($request->startval)) {
+        $carsauctions->where('auctionStart', '>=', $request->startval);
+    }
+    if (!empty($request->endval)) {
+        $carsauctions->where('endOfAuction', '<=', $request->endval);
+    }
+    $carsau = $carsauctions->get();
+    return view('filtercars', [
+        'cars' => $carsau]);
 });

@@ -45,6 +45,11 @@ export default new VueRouter({
             props: true
         },
         {
+            path: '/filtercarau',
+            component: FilterCars,
+            props: true
+        },
+        {
             path: '/login',
             component: Login,
         },

@@ -15,18 +15,29 @@ class AuctionController extends Controller
 {
     public function index($id)
     {
-        $cars = Car::orderBy('id', 'asc')
-            ->where('categorId', '=', $id)
-            ->get();
-        return view('auctions', compact($cars));
+//        $cars = Car::orderBy('id', 'asc')
+//            ->where('categorId', '=', $id)
+//            ->offset(0)
+//            ->limit(6)
+//            ->get();
+        return view('auctions');
     }
 
-    public function fetchcar($id)
+    public function fetchcar($pid,$id)
     {
         $cars = Car::orderBy('id', 'desc')
             ->where('categorId', '=', $id)
+            ->offset($pid)
+            ->limit(6)
             ->get();
         return $cars;
+    }
+    public function auctionall($id)
+    {
+        $auctionallis = Car::orderBy('id', 'desc')
+            ->where('categorId', '=', $id)
+            ->get();
+        return $auctionallis;
     }
 
     public function fetchauctions()
