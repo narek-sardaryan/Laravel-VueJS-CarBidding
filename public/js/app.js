@@ -46879,7 +46879,7 @@ var staticRenderFns = [
                   _vm._v(" "),
                   _c("input", {
                     staticClass: "login_inputs",
-                    attrs: { type: "email", name: "password" }
+                    attrs: { type: "password", name: "password" }
                   }),
                   _vm._v(" "),
                   _c("div", { staticClass: "login_btn_div text-center" }, [

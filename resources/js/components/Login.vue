@@ -11,7 +11,7 @@
 					  		<label class="login_label">Login</label>
 					  		<input type="email" class="login_inputs" name="email">
 					  		<label class="login_label">Password</label>
-					  		<input type="email" class="login_inputs" name="password">
+					  		<input type="password" class="login_inputs" name="password">
 					  		<div class="login_btn_div text-center">
 					  			<input type="submit" class="login_btn" name="send" value="Войти">
 					  		</div>
