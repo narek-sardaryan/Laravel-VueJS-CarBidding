@@ -2368,7 +2368,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         _this5.auctioncars = response.data;
       });
     },
-    fetchCars: function fetchCars() {
+    fetchCars: function fetchCars(id) {
       var _this6 = this;
 
       axios.get('/auction/0/' + this.id).then(function (response) {
@@ -2575,6 +2575,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Cube",
   props: {
@@ -2585,7 +2586,7 @@ __webpack_require__.r(__webpack_exports__);
       "default": '#0f92ff'
     },
     duration: {
-      "default": '2s'
+      "default": '0s'
     }
   },
   computed: {
@@ -2640,6 +2641,11 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
 //
 //
 //
@@ -3278,15 +3284,43 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "HeaderComponent",
   data: function data() {
     return {
-      auctions: []
+      auctions: [],
+      user: [],
+      csrf: document.querySelector('meta[name="csrf-token"]').getAttribute('content')
     };
   },
   created: function created() {
     this.fetchAuctions();
+    this.fetchUser();
   },
   methods: {
     fetchAuctions: function fetchAuctions() {
@@ -3294,6 +3328,14 @@ __webpack_require__.r(__webpack_exports__);
 
       axios.get('/fetchauctions').then(function (response) {
         _this.auctions = response.data;
+      });
+    },
+    fetchUser: function fetchUser() {
+      var _this2 = this;
+
+      axios.get('/fetchUser').then(function (response) {
+        _this2.user = response.data;
+        console.log(_this2.user);
       });
     },
     reloadForAuctions: function reloadForAuctions() {
@@ -3322,8 +3364,6 @@ function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
-//
-//
 //
 //
 //
@@ -3986,6 +4026,111 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Profile.vue?vue&type=script&lang=js&":
+/*!******************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Profile.vue?vue&type=script&lang=js& ***!
+  \******************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+<<<<<<< HEAD
+=======
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+>>>>>>> 2e8bddca74cf678fe21822aaa7f5d822db7c44c2
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: "Profile",
+  data: function data() {
+    return {
+      user: [],
+      csrf: document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+    };
+  },
+  created: function created() {
+    this.fetchUser();
+  },
+  methods: {
+    fetchUser: function fetchUser() {
+      var _this = this;
+
+      axios.get('/fetchUser').then(function (response) {
+        _this.user = response.data;
+        console.log(_this.user);
+      });
+    }
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Register.vue?vue&type=script&lang=js&":
 /*!*******************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Register.vue?vue&type=script&lang=js& ***!
@@ -4063,8 +4208,20 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: "Register"
+  name: "Register",
+  data: function data() {
+    return {
+      csrf: document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+    };
+  }
 });
 
 /***/ }),
@@ -9268,7 +9425,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.spinner {\n    position: absolute;\n    top: 50%;\n    left: 50%;\n    transform: translate(-50%, -50%);\n    /*background-color: white;*/\n    z-index: 1;\n}\n.cube1, .cube2 {\n    width: 50px;\n    height: 50px;\n    position: absolute;\n    top: 500px;\n    left: 900px;\n}\n.cube2 {\n    -webkit-animation-delay: -0.9s;\n            animation-delay: -0.9s;\n}\n\n/*@keyframes sk-cubemove {*/\n/*    25% {*/\n/*        transform: translateX(20px) rotate(-90deg) scale(0.5);*/\n/*    }*/\n/*    50% {*/\n/*        transform: translateX(20px) translateY(20px) rotate(-179deg);*/\n/*    }*/\n/*    50.1% {*/\n/*        transform: translateX(20px) translateY(20px) rotate(-180deg);*/\n/*    }*/\n/*    75% {*/\n/*        transform: translateX(0px) translateY(20px) rotate(-270deg) scale(0.5);*/\n/*    }*/\n/*    100% {*/\n/*        transform: rotate(-360deg);*/\n/*    }*/\n/*}*/\n", ""]);
+exports.push([module.i, "\n.spinner {\n    position: absolute;\n    top: 50%;\n    left: 50%;\n    transform: translate(-50%, -50%);\n    background-color: white;\n    z-index: 1;\n}\n.cube1, .cube2 {\n    width: 50px;\n    height: 50px;\n    position: absolute;\n    top: 500px;\n    left: 900px;\n}\n.cube2 {\n    -webkit-animation-delay: -0.9s;\n            animation-delay: -0.9s;\n}\n\n/*@keyframes sk-cubemove {*/\n/*    25% {*/\n/*        transform: translateX(20px) rotate(-90deg) scale(0.5);*/\n/*    }*/\n/*    50% {*/\n/*        transform: translateX(20px) translateY(20px) rotate(-179deg);*/\n/*    }*/\n/*    50.1% {*/\n/*        transform: translateX(20px) translateY(20px) rotate(-180deg);*/\n/*    }*/\n/*    75% {*/\n/*        transform: translateX(0px) translateY(20px) rotate(-270deg) scale(0.5);*/\n/*    }*/\n/*    100% {*/\n/*        transform: rotate(-360deg);*/\n/*    }*/\n/*}*/\n", ""]);
 
 // exports
 
@@ -42807,12 +42964,7 @@ var render = function() {
   return _c(
     "div",
     [
-      _c(
-        "transition",
-        { attrs: { name: "fade" } },
-        [_vm.slider.length == 0 ? _c("Cube") : _vm._e()],
-        1
-      ),
+      _vm.slider.length == 0 ? _c("Cube") : _vm._e(),
       _vm._v(" "),
       _vm.slider.length > 0 ? _c("header-component") : _vm._e(),
       _vm._v(" "),
@@ -42978,7 +43130,7 @@ var render = function() {
                                                               },
                                                               [
                                                                 _vm._v(
-                                                                  "Смотреть\n                                                        "
+                                                                  "Смотреть\n                                                            "
                                                                 )
                                                               ]
                                                             )
@@ -43115,7 +43267,7 @@ var render = function() {
                                                         },
                                                         [
                                                           _vm._v(
-                                                            "Смотреть\n                                                        "
+                                                            "Смотреть\n                                                            "
                                                           )
                                                         ]
                                                       )
@@ -43297,7 +43449,7 @@ var render = function() {
                             [
                               _vm._v(
                                 _vm._s(model.name) +
-                                  "\n                            "
+                                  "\n                                "
                               )
                             ]
                           )
@@ -43333,7 +43485,7 @@ var render = function() {
                             [
                               _vm._v(
                                 _vm._s(state.name) +
-                                  "\n                            "
+                                  "\n                                "
                               )
                             ]
                           )
@@ -43368,9 +43520,9 @@ var render = function() {
                             { domProps: { value: parking.id } },
                             [
                               _vm._v(
-                                "\n                                " +
+                                "\n                                    " +
                                   _vm._s(parking.address) +
-                                  "\n                            "
+                                  "\n                                "
                               )
                             ]
                           )
@@ -43441,9 +43593,9 @@ var render = function() {
                           },
                           [
                             _vm._v(
-                              "\n                                    Показать: " +
+                              "\n                                        Показать: " +
                                 _vm._s(this.allCarsLength) +
-                                "\n                                "
+                                "\n                                    "
                             )
                           ]
                         )
@@ -44052,7 +44204,14 @@ var render = function() {
   return _c(
     "div",
     { staticClass: "spinner spinner--cube", style: _vm.styles },
-    [_c("img", { attrs: { src: "http://continental-motor.com/loading.gif" } })]
+    [
+      _c("img", {
+        attrs: {
+          src:
+            "https://i.pinimg.com/originals/ed/23/68/ed23685339ada1b6d88008cbe1a11e98.gif"
+        }
+      })
+    ]
   )
 }
 var staticRenderFns = []
@@ -44108,12 +44267,7 @@ var render = function() {
   return _c(
     "div",
     [
-      _c(
-        "transition",
-        { attrs: { name: "fade" } },
-        [_vm.slider.length == 0 ? _c("Cube") : _vm._e()],
-        1
-      ),
+      _vm.slider.length == 0 ? _c("Cube") : _vm._e(),
       _vm._v(" "),
       _vm.slider.length > 0 ? _c("header-component") : _vm._e(),
       _vm._v(" "),
@@ -44279,7 +44433,7 @@ var render = function() {
                                                               },
                                                               [
                                                                 _vm._v(
-                                                                  "Смотреть\n                                                        "
+                                                                  "Смотреть\n                                                            "
                                                                 )
                                                               ]
                                                             )
@@ -44416,7 +44570,7 @@ var render = function() {
                                                         },
                                                         [
                                                           _vm._v(
-                                                            "Смотреть\n                                                        "
+                                                            "Смотреть\n                                                            "
                                                           )
                                                         ]
                                                       )
@@ -44598,7 +44752,7 @@ var render = function() {
                             [
                               _vm._v(
                                 _vm._s(model.name) +
-                                  "\n                            "
+                                  "\n                                "
                               )
                             ]
                           )
@@ -44634,7 +44788,7 @@ var render = function() {
                             [
                               _vm._v(
                                 _vm._s(state.name) +
-                                  "\n                            "
+                                  "\n                                "
                               )
                             ]
                           )
@@ -44669,9 +44823,9 @@ var render = function() {
                             { domProps: { value: parking.id } },
                             [
                               _vm._v(
-                                "\n                                " +
+                                "\n                                    " +
                                   _vm._s(parking.address) +
-                                  "\n                            "
+                                  "\n                                "
                               )
                             ]
                           )
@@ -44737,9 +44891,9 @@ var render = function() {
                           },
                           [
                             _vm._v(
-                              "\n                                    Показать: " +
+                              "\n                                        Показать: " +
                                 _vm._s(this.allCarsLength) +
-                                "\n                                "
+                                "\n                                    "
                             )
                           ]
                         )
@@ -44754,102 +44908,162 @@ var render = function() {
       _vm._v(" "),
       _vm.slider.length > 0
         ? _c("div", { staticClass: "container-fluid" }, [
-            _c("div", { staticClass: "container container-back" }, [
-              _c(
-                "div",
-                { staticClass: "row cars-root" },
-                _vm._l(_vm.cars, function(car, index) {
-                  return _c(
+            _vm.cars.length != 0
+              ? _c("div", { staticClass: "container container-back" }, [
+                  _c(
                     "div",
-                    { staticClass: "col-md-4 cars-article" },
-                    [
-                      _c(
-                        "router-link",
-                        { key: car.id, attrs: { to: "/cars/" + car.id } },
+                    { staticClass: "row cars-root" },
+                    _vm._l(_vm.cars, function(car, index) {
+                      return _c(
+                        "div",
+                        { staticClass: "col-md-4 cars-article" },
                         [
-                          _c("div", { staticClass: "row" }, [
-                            _c("div", { staticClass: "col-md-12 text-hover" }, [
-                              _c("img", {
-                                attrs: {
-                                  src: "/img/auctions/" + car.mainpics,
-                                  alt: car.name
-                                }
-                              }),
-                              _vm._v(" "),
-                              _c(
-                                "div",
-                                { staticClass: "car-informacion-article" },
-                                [
-                                  _c(
-                                    "div",
-                                    { staticClass: "inform-text-article" },
-                                    [
-                                      _c("div", { staticClass: "drop-text" }, [
-                                        _c("div", { staticClass: "row" }, [
-                                          _c("div", { staticClass: "col" }, [
-                                            _c("p", [
-                                              _vm._v(
-                                                _vm._s(car.name) +
-                                                  " | " +
-                                                  _vm._s(car.year)
-                                              )
-                                            ])
-                                          ])
-                                        ]),
-                                        _vm._v(" "),
-                                        _c("div", { staticClass: "row" }, [
-                                          _c("div", { staticClass: "col" }, [
-                                            _c("p", [
-                                              _vm._v(
-                                                "Текущая цена | " +
-                                                  _vm._s(car.currentPrice) +
-                                                  " ₽"
-                                              )
-                                            ])
-                                          ])
-                                        ]),
-                                        _vm._v(" "),
-                                        _c("div", { staticClass: "row" }, [
-                                          _c("div", { staticClass: "col" }, [
-                                            _c("p", [
-                                              _vm._v(
-                                                "Начало торгов | " +
-                                                  _vm._s(car.auctionStart)
-                                              )
-                                            ])
-                                          ])
-                                        ]),
-                                        _vm._v(" "),
-                                        _c("div", { staticClass: "row" }, [
-                                          _c("div", { staticClass: "col" }, [
-                                            _c("p", [
-                                              _vm._v(
-                                                "Завершение торгов: | " +
-                                                  _vm._s(car.endOfAuction)
-                                              )
-                                            ])
-                                          ])
-                                        ])
-                                      ])
-                                    ]
-                                  )
-                                ]
-                              )
-                            ]),
-                            _vm._v(" "),
-                            _c("div", { staticClass: "article-price" }, [
-                              _c("p", [_vm._v(_vm._s(car.currentPrice) + "₽")])
-                            ])
-                          ])
-                        ]
+                          _c(
+                            "router-link",
+                            { key: car.id, attrs: { to: "/cars/" + car.id } },
+                            [
+                              _c("div", { staticClass: "row" }, [
+                                _c(
+                                  "div",
+                                  { staticClass: "col-md-12 text-hover" },
+                                  [
+                                    _c("img", {
+                                      attrs: {
+                                        src: "/img/auctions/" + car.mainpics,
+                                        alt: car.name
+                                      }
+                                    }),
+                                    _vm._v(" "),
+                                    _c(
+                                      "div",
+                                      {
+                                        staticClass: "car-informacion-article"
+                                      },
+                                      [
+                                        _c(
+                                          "div",
+                                          {
+                                            staticClass: "inform-text-article"
+                                          },
+                                          [
+                                            _c(
+                                              "div",
+                                              { staticClass: "drop-text" },
+                                              [
+                                                _c(
+                                                  "div",
+                                                  { staticClass: "row" },
+                                                  [
+                                                    _c(
+                                                      "div",
+                                                      { staticClass: "col" },
+                                                      [
+                                                        _c("p", [
+                                                          _vm._v(
+                                                            _vm._s(car.name) +
+                                                              " | " +
+                                                              _vm._s(car.year)
+                                                          )
+                                                        ])
+                                                      ]
+                                                    )
+                                                  ]
+                                                ),
+                                                _vm._v(" "),
+                                                _c(
+                                                  "div",
+                                                  { staticClass: "row" },
+                                                  [
+                                                    _c(
+                                                      "div",
+                                                      { staticClass: "col" },
+                                                      [
+                                                        _c("p", [
+                                                          _vm._v(
+                                                            "Текущая цена | " +
+                                                              _vm._s(
+                                                                car.currentPrice
+                                                              ) +
+                                                              " ₽"
+                                                          )
+                                                        ])
+                                                      ]
+                                                    )
+                                                  ]
+                                                ),
+                                                _vm._v(" "),
+                                                _c(
+                                                  "div",
+                                                  { staticClass: "row" },
+                                                  [
+                                                    _c(
+                                                      "div",
+                                                      { staticClass: "col" },
+                                                      [
+                                                        _c("p", [
+                                                          _vm._v(
+                                                            "Начало торгов | " +
+                                                              _vm._s(
+                                                                car.auctionStart
+                                                              )
+                                                          )
+                                                        ])
+                                                      ]
+                                                    )
+                                                  ]
+                                                ),
+                                                _vm._v(" "),
+                                                _c(
+                                                  "div",
+                                                  { staticClass: "row" },
+                                                  [
+                                                    _c(
+                                                      "div",
+                                                      { staticClass: "col" },
+                                                      [
+                                                        _c("p", [
+                                                          _vm._v(
+                                                            "Завершение торгов: | " +
+                                                              _vm._s(
+                                                                car.endOfAuction
+                                                              )
+                                                          )
+                                                        ])
+                                                      ]
+                                                    )
+                                                  ]
+                                                )
+                                              ]
+                                            )
+                                          ]
+                                        )
+                                      ]
+                                    )
+                                  ]
+                                ),
+                                _vm._v(" "),
+                                _c("div", { staticClass: "article-price" }, [
+                                  _c("p", [
+                                    _vm._v(_vm._s(car.currentPrice) + "₽")
+                                  ])
+                                ])
+                              ])
+                            ]
+                          )
+                        ],
+                        1
                       )
-                    ],
-                    1
+                    }),
+                    0
                   )
-                }),
-                0
-              )
-            ])
+                ])
+              : _vm._e(),
+            _vm._v(" "),
+            _vm.cars.length == 0
+              ? _c("div", { staticClass: "container container-back" }, [
+                  _vm._m(19)
+                ])
+              : _vm._e()
           ])
         : _vm._e(),
       _vm._v(" "),
@@ -45145,6 +45359,14 @@ var staticRenderFns = [
         ])
       ])
     ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "row cars-root" }, [
+      _c("h1", [_vm._v("chka avto")])
+    ])
   }
 ]
 render._withStripped = true
@@ -45332,7 +45554,12 @@ var render = function() {
                                 _c(
                                   "router-link",
                                   { attrs: { to: "/auctions/" + auction.id } },
-                                  [_vm._v(_vm._s(auction.name))]
+                                  [
+                                    _vm._v(
+                                      _vm._s(auction.name) +
+                                        "\n                                            "
+                                    )
+                                  ]
                                 )
                               ],
                               1
@@ -45342,27 +45569,83 @@ var render = function() {
                         )
                       ]),
                       _vm._v(" "),
-                      _c(
-                        "li",
-                        [
-                          _c("router-link", { attrs: { to: "/login" } }, [
-                            _vm._v("Войти")
-                          ])
-                        ],
-                        1
-                      ),
+                      _vm.user.length == 0
+                        ? _c(
+                            "li",
+                            [
+                              _c("router-link", { attrs: { to: "/login" } }, [
+                                _vm._v("Войти")
+                              ])
+                            ],
+                            1
+                          )
+                        : _vm._e(),
                       _vm._v(" "),
-                      _c(
-                        "li",
-                        [
-                          _c("router-link", { attrs: { to: "/register" } }, [
-                            _vm._v("Регистрация")
-                          ])
-                        ],
-                        1
-                      ),
+                      _vm.user.length == 0
+                        ? _c(
+                            "li",
+                            [
+                              _c(
+                                "router-link",
+                                { attrs: { to: "/register" } },
+                                [_vm._v("Регистрация")]
+                              )
+                            ],
+                            1
+                          )
+                        : _vm._e(),
                       _vm._v(" "),
-                      _vm._m(2)
+                      _vm.user.length != 0
+                        ? _c("li", [
+                            _c("a", [
+                              _vm._v(_vm._s(_vm.user.name) + " "),
+                              _c(
+                                "p",
+                                {
+                                  staticStyle: {
+                                    display: "inline-block",
+                                    transition: "1.3s",
+                                    color: "#2099FE"
+                                  }
+                                },
+                                [_vm._v("⇩")]
+                              )
+                            ]),
+                            _vm._v(" "),
+                            _c("ol", [
+                              _c(
+                                "li",
+                                [
+                                  _c(
+                                    "router-link",
+                                    { attrs: { to: "/profile" } },
+                                    [_vm._v("Профиль")]
+                                  )
+                                ],
+                                1
+                              ),
+                              _vm._v(" "),
+                              _c("li", [
+                                _c(
+                                  "form",
+                                  {
+                                    attrs: { action: "logout", method: "POST" }
+                                  },
+                                  [
+                                    _vm._m(2),
+                                    _vm._v(" "),
+                                    _c("input", {
+                                      attrs: { type: "hidden", name: "_token" },
+                                      domProps: { value: _vm.csrf }
+                                    })
+                                  ]
+                                )
+                              ])
+                            ])
+                          ])
+                        : _vm._e(),
+                      _vm._v(" "),
+                      _vm._m(3)
                     ])
                   ])
                 ])
@@ -45408,9 +45691,19 @@ var staticRenderFns = [
             color: "#2099FE"
           }
         },
-        [_vm._v("⇩")]
+        [_vm._v("\n                                        ⇩")]
       )
     ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "button",
+      { staticClass: "logoutbut", attrs: { type: "submit" } },
+      [_c("a", [_vm._v("Выход")])]
+    )
   },
   function() {
     var _vm = this
@@ -45470,12 +45763,7 @@ var render = function() {
   return _c(
     "div",
     [
-      _c(
-        "transition",
-        { attrs: { name: "fade" } },
-        [_vm.slider.length == 0 ? _c("Cube") : _vm._e()],
-        1
-      ),
+      _vm.slider.length == 0 ? _c("Cube") : _vm._e(),
       _vm._v(" "),
       _vm.slider.length > 0 ? _c("header-component") : _vm._e(),
       _vm._v(" "),
@@ -46673,6 +46961,44 @@ render._withStripped = true
 
 /***/ }),
 
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Profile.vue?vue&type=template&id=3bd692e4&scoped=true&":
+/*!**********************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Profile.vue?vue&type=template&id=3bd692e4&scoped=true& ***!
+  \**********************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    [
+      _c("header-component"),
+      _vm._v(" "),
+      _c("ul", [
+        _c("li", [_vm._v(_vm._s(_vm.user.name))]),
+        _vm._v(" "),
+        _c("li", [_vm._v(_vm._s(_vm.user.sname))])
+      ]),
+      _vm._v(" "),
+      _c("footer-component")
+    ],
+    1
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
 /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Register.vue?vue&type=template&id=97358ae4&scoped=true&":
 /*!***********************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Register.vue?vue&type=template&id=97358ae4&scoped=true& ***!
@@ -46693,6 +47019,13 @@ var render = function() {
     [
       _c("header-component"),
       _vm._v(" "),
+<<<<<<< HEAD
+      _c("div", { staticClass: "register_bg_img" }, [
+        _c("div", { staticClass: "container register_container" }, [
+          _c("div", { staticClass: "row" }, [
+            _c("div", { staticClass: "col" }, [
+              _vm._m(0),
+=======
       _vm._m(0),
       _vm._v(" "),
       _c("footer-component")
@@ -46713,11 +47046,21 @@ var staticRenderFns = [
               _c("p", { staticClass: "attention" }, [
                 _vm._v("\r\n    \t\t\t\t\t\tВнимание!\r\n    \t\t\t\t\t")
               ]),
+>>>>>>> 2e8bddca74cf678fe21822aaa7f5d822db7c44c2
               _vm._v(" "),
               _c("p", { staticClass: "attention_content" }, [
                 _vm._v(
                   "\r\n    \t\t\t\t\t\tРегистрация бесплатна и доступна всем желающим. Пожалуйста, указывайте только достоверные данные - от этого зависит будет ли Ваш аккаунт активирован.\r\n\t\t\t\t\t\t\tПо вопросам регистрации обращайтесь по телефону +7 495 748-56-08. Звонки принимаются с 9:00 до 18:00 по Московскому времени.\r\n    \t\t\t\t\t"
                 )
+<<<<<<< HEAD
+              ]),
+              _vm._v(" "),
+              _c("form", { attrs: { action: "register", method: "POST" } }, [
+                _c("input", {
+                  attrs: { type: "hidden", name: "_token" },
+                  domProps: { value: _vm.csrf }
+                }),
+=======
               ])
             ]),
             _vm._v(" "),
@@ -46833,31 +47176,17 @@ var staticRenderFns = [
                     })
                   ])
                 ]),
+>>>>>>> 2e8bddca74cf678fe21822aaa7f5d822db7c44c2
                 _vm._v(" "),
-                _c("div", { staticClass: "policy" }, [
-                  _c("label", { staticClass: "policy_label" }, [
-                    _c("input", {
-                      attrs: {
-                        id: "checkbox",
-                        type: "checkbox",
-                        name: "policy"
-                      }
-                    }),
-                    _vm._v(
-                      " – согласен с обработкой персональных данных.\r\n\t    \t\t\t\t\t\t"
-                    ),
-                    _c(
-                      "a",
-                      { staticClass: "policy_txt", attrs: { href: "#" } },
-                      [
-                        _vm._v(
-                          'Политика в отношении обработки персональных данных в ООО "АВТО-СЕЙЛ"'
-                        )
-                      ]
-                    )
-                  ])
-                ]),
+                _vm._m(1),
                 _vm._v(" "),
+<<<<<<< HEAD
+                _vm._m(2),
+                _vm._v(" "),
+                _vm._m(3)
+              ])
+            ])
+=======
                 _c("div", { staticClass: "send" }, [
                   _c("input", {
                     staticClass: "btn",
@@ -46870,9 +47199,155 @@ var staticRenderFns = [
                 ])
               ]
             )
+>>>>>>> 2e8bddca74cf678fe21822aaa7f5d822db7c44c2
           ])
         ])
+      ]),
+      _vm._v(" "),
+      _c("footer-component")
+    ],
+    1
+  )
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "attention_main_txt" }, [
+      _c("p", { staticClass: "attention" }, [
+        _vm._v(
+          "\n                            Внимание!\n                        "
+        )
+      ]),
+      _vm._v(" "),
+      _c("p", { staticClass: "attention_content" }, [
+        _vm._v(
+          "\n                            Регистрация бесплатна и доступна всем желающим. Пожалуйста, указывайте только\n                            достоверные данные - от этого зависит будет ли Ваш аккаунт активирован.\n                            По вопросам регистрации обращайтесь по телефону +7 495 748-56-08. Звонки принимаются с\n                            9:00 до 18:00 по Московскому времени.\n                        "
+        )
       ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col inputs_div_one" }, [
+        _c("label", { attrs: { for: "email" } }, [_vm._v("Email *")]),
+        _vm._v(" "),
+        _c("input", {
+          staticClass: "register_inputs",
+          attrs: { id: "email", type: "email", name: "email" }
+        }),
+        _vm._v(" "),
+        _c("label", { attrs: { for: "phone" } }, [
+          _vm._v("Телефон * (+37491-85-45-35)")
+        ]),
+        _vm._v(" "),
+        _c("input", {
+          staticClass: "register_inputs",
+          attrs: { id: "phone", type: "tel", name: "phone" }
+        }),
+        _vm._v(" "),
+        _c("label", { attrs: { for: "pssw" } }, [_vm._v("Пароль *")]),
+        _vm._v(" "),
+        _c("input", {
+          staticClass: "register_inputs",
+          attrs: { id: "pssw", type: "password", name: "password" }
+        }),
+        _vm._v(" "),
+        _c("label", { attrs: { for: "psswr" } }, [_vm._v("Ещё раз *")]),
+        _vm._v(" "),
+        _c("input", {
+          staticClass: "register_inputs",
+          attrs: {
+            id: "psswr",
+            type: "password",
+            name: "password_confirmation"
+          }
+        }),
+        _vm._v(" "),
+        _c("label", { attrs: { for: "avatar" } }, [_vm._v("Аватар")]),
+        _vm._v(" "),
+        _c("input", {
+          staticClass: "register_inputs",
+          attrs: { id: "avatar", type: "file", name: "avatar" }
+        })
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col inputs_div_two" }, [
+        _c("label", { attrs: { for: "name" } }, [_vm._v("Имя *")]),
+        _vm._v(" "),
+        _c("input", {
+          staticClass: "register_inputs",
+          attrs: { id: "name", type: "text", name: "name" }
+        }),
+        _vm._v(" "),
+        _c("label", { attrs: { for: "sname" } }, [_vm._v("Фамилия *")]),
+        _vm._v(" "),
+        _c("input", {
+          staticClass: "register_inputs",
+          attrs: { id: "sname", type: "text", name: "sname" }
+        }),
+        _vm._v(" "),
+        _c("label", { attrs: { for: "date" } }, [_vm._v("День рождения *")]),
+        _vm._v(" "),
+        _c("input", {
+          staticClass: "register_inputs",
+          attrs: { id: "date", type: "date", name: "date-birth" }
+        }),
+        _vm._v(" "),
+        _c("label", { attrs: { for: "textarea" } }, [
+          _vm._v("Дополнительно *")
+        ]),
+        _vm._v(" "),
+        _c("textarea", {
+          staticClass: "register_inputs",
+          attrs: { id: "textarea", name: "additionally" }
+        }),
+        _vm._v(" "),
+        _c("label", { attrs: { id: "gender" } }, [_vm._v("Пол")]),
+        _vm._v(" "),
+        _c("label", { attrs: { for: "male" } }, [_vm._v("Мужское")]),
+        _vm._v(" "),
+        _c("input", { attrs: { id: "male", type: "radio", name: "gender" } }),
+        _vm._v(" "),
+        _c("label", { attrs: { for: "female" } }, [_vm._v("Женское")]),
+        _vm._v(" "),
+        _c("input", { attrs: { id: "female", type: "radio", name: "gender" } })
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "policy" }, [
+      _c("label", { staticClass: "policy_label" }, [
+        _c("input", {
+          attrs: { id: "checkbox", type: "checkbox", name: "policy" }
+        }),
+        _vm._v(
+          " – согласен с обработкой\n                                персональных данных.\n                                "
+        ),
+        _c("a", { staticClass: "policy_txt", attrs: { href: "#" } }, [
+          _vm._v(
+            'Политика в отношении обработки персональных данных в\n                                    ООО "АВТО-СЕЙЛ"'
+          )
+        ])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "send" }, [
+      _c("input", {
+        staticClass: "btn reg-but",
+        attrs: { type: "submit", name: "send", value: "Отправить заявку" }
+      })
     ])
   }
 ]
@@ -46928,12 +47403,7 @@ var render = function() {
   return _c(
     "div",
     [
-      _c(
-        "transition",
-        { attrs: { name: "fade" } },
-        [_vm.slider.length == 0 ? _c("Cube") : _vm._e()],
-        1
-      ),
+      _vm.slider.length == 0 ? _c("Cube") : _vm._e(),
       _vm._v(" "),
       _vm.slider.length > 0 ? _c("header-component") : _vm._e(),
       _vm._v(" "),
@@ -47099,7 +47569,7 @@ var render = function() {
                                                               },
                                                               [
                                                                 _vm._v(
-                                                                  "Смотреть\n                                                        "
+                                                                  "Смотреть\n                                                            "
                                                                 )
                                                               ]
                                                             )
@@ -47236,7 +47706,7 @@ var render = function() {
                                                         },
                                                         [
                                                           _vm._v(
-                                                            "Смотреть\n                                                        "
+                                                            "Смотреть\n                                                            "
                                                           )
                                                         ]
                                                       )
@@ -47418,7 +47888,7 @@ var render = function() {
                             [
                               _vm._v(
                                 _vm._s(model.name) +
-                                  "\n                            "
+                                  "\n                                "
                               )
                             ]
                           )
@@ -47454,7 +47924,7 @@ var render = function() {
                             [
                               _vm._v(
                                 _vm._s(state.name) +
-                                  "\n                            "
+                                  "\n                                "
                               )
                             ]
                           )
@@ -47489,9 +47959,9 @@ var render = function() {
                             { domProps: { value: parking.id } },
                             [
                               _vm._v(
-                                "\n                                " +
+                                "\n                                    " +
                                   _vm._s(parking.address) +
-                                  "\n                            "
+                                  "\n                                "
                               )
                             ]
                           )
@@ -47557,9 +48027,9 @@ var render = function() {
                           },
                           [
                             _vm._v(
-                              "\n                                    Показать: " +
+                              "\n                                        Показать: " +
                                 _vm._s(this.allCarsLength) +
-                                "\n                                "
+                                "\n                                    "
                             )
                           ]
                         )
@@ -47991,12 +48461,7 @@ var render = function() {
   return _c(
     "div",
     [
-      _c(
-        "transition",
-        { attrs: { name: "fade" } },
-        [_vm.car.length == 0 ? _c("Cube") : _vm._e()],
-        1
-      ),
+      _vm.car.length == 0 ? _c("Cube") : _vm._e(),
       _vm._v(" "),
       _vm.car.length != 0 ? _c("header-component") : _vm._e(),
       _vm._v(" "),
@@ -65151,6 +65616,75 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/components/Profile.vue":
+/*!*********************************************!*\
+  !*** ./resources/js/components/Profile.vue ***!
+  \*********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _Profile_vue_vue_type_template_id_3bd692e4_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Profile.vue?vue&type=template&id=3bd692e4&scoped=true& */ "./resources/js/components/Profile.vue?vue&type=template&id=3bd692e4&scoped=true&");
+/* harmony import */ var _Profile_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Profile.vue?vue&type=script&lang=js& */ "./resources/js/components/Profile.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _Profile_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _Profile_vue_vue_type_template_id_3bd692e4_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _Profile_vue_vue_type_template_id_3bd692e4_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  "3bd692e4",
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/Profile.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/Profile.vue?vue&type=script&lang=js&":
+/*!**********************************************************************!*\
+  !*** ./resources/js/components/Profile.vue?vue&type=script&lang=js& ***!
+  \**********************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Profile_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./Profile.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Profile.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Profile_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/Profile.vue?vue&type=template&id=3bd692e4&scoped=true&":
+/*!****************************************************************************************!*\
+  !*** ./resources/js/components/Profile.vue?vue&type=template&id=3bd692e4&scoped=true& ***!
+  \****************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Profile_vue_vue_type_template_id_3bd692e4_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./Profile.vue?vue&type=template&id=3bd692e4&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Profile.vue?vue&type=template&id=3bd692e4&scoped=true&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Profile_vue_vue_type_template_id_3bd692e4_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Profile_vue_vue_type_template_id_3bd692e4_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
 /***/ "./resources/js/components/Register.vue":
 /*!**********************************************!*\
   !*** ./resources/js/components/Register.vue ***!
@@ -65448,6 +65982,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_Faq_vue__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./components/Faq.vue */ "./resources/js/components/Faq.vue");
 /* harmony import */ var _components_Rules_vue__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./components/Rules.vue */ "./resources/js/components/Rules.vue");
 /* harmony import */ var _components_FilterCars__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./components/FilterCars */ "./resources/js/components/FilterCars.vue");
+/* harmony import */ var _components_Profile__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./components/Profile */ "./resources/js/components/Profile.vue");
+
 
 
 
@@ -65466,6 +66002,10 @@ __webpack_require__.r(__webpack_exports__);
     component: _components_Home_vue__WEBPACK_IMPORTED_MODULE_1__["default"],
     props: true
   }, {
+    path: '/home',
+    component: _components_Home_vue__WEBPACK_IMPORTED_MODULE_1__["default"],
+    props: true
+  }, {
     path: '/auctions',
     component: _components_Auctions_vue__WEBPACK_IMPORTED_MODULE_2__["default"]
   }, {
@@ -65477,6 +66017,9 @@ __webpack_require__.r(__webpack_exports__);
   }, {
     path: '/about',
     component: _components_About_vue__WEBPACK_IMPORTED_MODULE_4__["default"]
+  }, {
+    path: '/profile',
+    component: _components_Profile__WEBPACK_IMPORTED_MODULE_12__["default"]
   }, {
     path: '/searchcar',
     component: _components_SearchCar_vue__WEBPACK_IMPORTED_MODULE_5__["default"],

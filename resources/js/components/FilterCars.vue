@@ -1,8 +1,8 @@
 <template>
     <div>
-        <transition name="fade">
+<!--        <transition name="fade">-->
             <Cube v-if="slider.length == 0"></Cube>
-        </transition>
+<!--        </transition>-->
         <header-component v-if="slider.length > 0"></header-component>
         <div class="container-fluid carbidding-container" v-if="slider.length > 0">
             <section id="lastcars">
@@ -282,7 +282,7 @@
             </div>
         </div>
         <div class="container-fluid" v-if="slider.length > 0">
-            <div class="container container-back">
+            <div class="container container-back" v-if="cars.length != 0">
                 <div class="row cars-root">
                     <div class="col-md-4 cars-article" v-for="(car, index) in cars">
                         <router-link :to="'/cars/'+car.id" :key="car.id">
@@ -322,6 +322,11 @@
                             </div>
                         </router-link>
                     </div>
+                </div>
+            </div>
+            <div class="container container-back" v-if="cars.length == 0">
+                <div class="row cars-root">
+                   <h1>chka avto</h1>
                 </div>
             </div>
         </div>
