@@ -2,7 +2,7 @@ body {
     background-color: #FFFFFF;
     background-image: url(../img/design_img/bg2.jpg);
     background-repeat: no-repeat;
-    background-position: 0 -280px;
+    background-position: 0 -215px;
     background-size: contain;
     font-family: 'Roboto Slab', serif;
 }
@@ -15,7 +15,7 @@ body {
 }
 
 #headerlogo:hover {
-    transform: rotate(10deg);
+    transform: translateX(-20px);
     transition: 1s;
 }
 
@@ -166,7 +166,7 @@ body {
     padding-left: 0 !important;
 }
 #headerlogo {
-    width: 130px;
+    width: 119px;
     transition: 1s;
 }
 .carnavbar {
@@ -644,7 +644,7 @@ body {
 
 .about_div {
     color: #fff;
-    padding: 95px 0px;
+    padding: 95px 0;
     text-align: center;
 }
 
@@ -697,18 +697,18 @@ body {
 /*partners section*/
 .partners {
     background: #fff;
-    padding: 50px 0px;
+    padding: 50px 0;
 }
 
 .partners_title {
     color: #0C74CA;
     font-size: 35px;
     text-align: center;
-    padding: 30px 0px 10px;
+    padding: 30px 0 10px;
 }
 
 .pics {
-    padding: 30px 0px;
+    padding: 30px 0;
 }
 
 .pics > img {
@@ -749,6 +749,11 @@ body {
 .searchbox {
     position: absolute!important;
     left: 470px;
+    background: #0F91FF;
+    margin-top: -5px;
+    margin-left: -9px;
+    height: 78px;
+    width: 261px;
 }
 
 .searchicon {
@@ -770,13 +775,6 @@ body {
     outline: none;
     box-shadow: none;
     border: none;
-}
-
-.contacts_bg_img {
-    background-image: url(../img/design_img/bg1.jpg);
-    background-position: left;
-    background-repeat: no-repeat;
-    height: 400px;
 }
 
 .contacts_div {
@@ -918,9 +916,9 @@ span i {
 }
 
 .mobiles_data_row {
-    margin: 30px 0px;
+    margin: 30px 0;
     background: #0C74CA;
-    padding: 30px 0px;
+    padding: 30px 0;
 }
 
 .car_data_title {
@@ -970,15 +968,6 @@ span i {
 
 .register_container {
     margin-top: 79px;
-}
-
-/* register background image */
-.register_bg_img {
-    background-image: url(../img/design_img/bg.jpg);
-    background-repeat: no-repeat;
-    background-position: left;
-    background-size: 100%;
-    padding-bottom: 20px;
 }
 
 .attention_main_txt {
@@ -1053,9 +1042,11 @@ span i {
     text-align: center;
 }
 
-.reg-but {
+#reg-but {
     background: #0f92ff;
     color: #fff;
+    margin-bottom: 20px;
+    cursor: not-allowed;
 }
 
 .register_inputs {
@@ -1087,15 +1078,24 @@ span i {
     font-weight: 600;
 }
 
+.notfoundtxt{
+    display: flex;
+    align-items: flex-end;
+}
+
+.notfoundimg img{
+    width: 100%;
+}
+
 
 /* login page styles */
  .login_page_bg {
-    background-image: url(/img/design_img/bg.jpg);
+    background-image: url(../img/design_img/bg.jpg);
     background-repeat: no-repeat;
     height: 935px;
     background-position: left;
     background-size: cover;
-} 
+}
 .login_page_container {
     margin-top: 78px;
 }

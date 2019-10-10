@@ -5,7 +5,7 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-md-2">
-                            <router-link to="/#"><img src="/img/design_img/carbiddinglogo.png" id="headerlogo"
+                            <router-link to="/#"><img src="/img/design_img/header_logo.png" id="headerlogo"
                                                       alt="logo"></router-link>
                         </div>
                         <div class="col-md-9 offset-1">
@@ -67,7 +67,7 @@
                                         </ol>
                                     </li>
                                     <li class="searchbox">
-                                        <form action="/searchcar" method="GET">
+                                        <form action="/searchcar" method="GET" style="padding: 5px 10px 5px 10px;">
                                             <div class="input-group no-border searchdiv">
                                                 <input type="text" name="name" class="form-control searchinput"
                                                        placeholder="Search...">
