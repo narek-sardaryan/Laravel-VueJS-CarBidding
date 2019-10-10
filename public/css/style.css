@@ -10,10 +10,6 @@ body {
 .carbidding-container {
     margin-top: 120px;
 }
-
-/*.container-back{*/
-/*    background-color: silver;*/
-/*}*/
 .gender {
     margin-top: 10px;
 }
@@ -61,7 +57,6 @@ body {
     background-position: right 0;
     background-size: 20px 32px;
 }
-
 #bodyadd {
     border-radius: 50px;
     display: block;
@@ -73,21 +68,17 @@ body {
 #bodyicon {
     margin-top: 30px;
 }
-
 .iconbody {
     width: 90px;
     background-color: #2e649e;
     padding: 5px 20px;
 }
-
 .onepng {
     width: 50px;
 }
-
 .onetime {
     margin-top: 50px;
 }
-
 #modeladd {
     border-radius: 50px;
     display: block;
@@ -95,15 +86,12 @@ body {
     font-size: 20px;
     padding: 7px 15px;
 }
-
 #modelicon {
     margin-top: 30px;
 }
-
 .iconmodel {
     width: 95px;
 }
-
 #stateadd {
     border-radius: 50px;
     display: block;
@@ -111,11 +99,9 @@ body {
     font-size: 20px;
     padding: 7px 15px;
 }
-
 #stateicon {
     margin-top: 30px;
 }
-
 #parkingadd {
     border-radius: 50px;
     display: block;
@@ -123,11 +109,9 @@ body {
     font-size: 20px;
     padding: 7px 15px;
 }
-
 #parkingicon {
     margin-top: 30px;
 }
-
 #auctioncatadd {
     border-radius: 50px;
     display: block;
@@ -135,11 +119,9 @@ body {
     font-size: 20px;
     padding: 7px 15px;
 }
-
 #auctioncaticon {
     margin-top: 30px;
 }
-
 .pagination {
     justify-content: center;
     margin-top: 100px;
@@ -148,13 +130,11 @@ body {
 .searching {
     margin-top: 30px;
 }
-
 .searchbut {
     background-color: transparent;
     border: none;
     cursor: pointer;
 }
-
 .founds {
     padding-top: 25px;
 }
@@ -162,89 +142,70 @@ body {
 .searchboxmodel {
     margin-top: -35px !important;
 }
-
 .cars-body {
     padding: 20px 25px;
 }
-
 .mainpicadmin {
     width: 100%;
 }
-
 .car-blok {
     margin-top: 60px;
 }
-
 .commentsadmin {
     background: #ca9a686b;
     padding: 20px 20px 10px 20px;
 }
-
 .descript {
     margin-top: 30px;
 }
-
 .carimages {
     width: 100px;
 }
-
-
 .headerback {
     padding-right: 0 !important;
     padding-left: 0 !important;
 }
-
 #headerlogo {
     width: 119px;
     transition: 1s;
 }
-
 .carnavbar {
     border-bottom: 2px solid #A4A4A4;
     background-color: transparent;
 }
-
 .menunavbar ul > li {
     position: relative;
     float: left;
     padding: 15px 0;
 }
-
 .menunavbar a {
     color: black;
     text-decoration: none;
 }
-
 .menunavbar ul > li > a {
     cursor: pointer;
     padding: 0 10px;
     font-size: 16px;
     font-weight: 600;
 }
-
 .menunavbar ul li, ol li {
     list-style: none;
 
 }
-
 .menunavbar ul {
     padding: 0 !important;
     margin-bottom: 0 !important;
 }
-
 .menunavbar ol > li {
     width: 160px;
     padding: 5px 0 5px 15px;
 }
-
 .menunavbar ol > li:hover {
     background-color: #2099fe;
 }
-
 .menunavbar ol > li:hover a {
     color: #f1f1f1;
 }
-
 .menunavbar ol {
     display: none;
     transition: opacity 1s ease-out;
@@ -255,7 +216,6 @@ body {
     z-index: 1;
     top: 60px;
 }
-
 .menunavbar ol:before {
     content: "";
     width: 0;
@@ -1046,10 +1006,6 @@ span i {
     box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
     margin-bottom: 10px;
 }
-input[type='date'] {
->>>>>>> 2e8bddca74cf678fe21822aaa7f5d822db7c44c2
-    width: 196px;
-}
 
 .register_container input[type='file'] {
     margin-top: 10px;
@@ -1129,4 +1085,75 @@ input[type='date'] {
 
 .notfoundimg img{
     width: 100%;
+}
+
+
+/* login page styles */
+ .login_page_bg {
+    background-image: url(../img/design_img/bg.jpg);
+    background-repeat: no-repeat;
+    height: 935px;
+    background-position: left;
+    background-size: cover;
+}
+.login_page_container {
+    margin-top: 78px;
+}
+.lg_div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 50px;
+}
+.login_div {
+    background: #fff;
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 30px;
+}
+.login_title {
+    font-size: 25px;
+    color: #0f92ff;
+}
+.register_div {
+    background: #0f92ff;
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+    padding: 40px 60px;
+}
+.registration {
+    color: #fff;
+    font-size: 25px;
+}
+.register_div .registr_txts {
+    color: #fff;
+    font-size: 16px;
+}
+.login_btn {
+    background: #0f92ff;;
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+    padding: 0.75rem 4.75rem;
+    cursor: pointer;
+}
+.registr_btn {
+    background: #fff;
+    color: #0f92ff;
+    border: none;
+    border-radius: 3px;
+    padding: 0.75rem 2.75rem;
+    cursor: pointer;
+}
+.login_inputs {
+    padding: 7px 25px;
+    border: 1px solid #0f92ff;
+    border-radius: 3px;
+    display: block;
+    margin-bottom: 20px;
+}
+.fpssw_label {
+    margin-top: 20px;
+    display: block;
 }

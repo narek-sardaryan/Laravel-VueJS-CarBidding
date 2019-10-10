@@ -4022,6 +4022,38 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Login"
 });
@@ -47041,11 +47073,99 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    [_c("header-component"), _vm._v(" "), _c("footer-component")],
+    [
+      _c("header-component"),
+      _vm._v(" "),
+      _vm._m(0),
+      _vm._v(" "),
+      _c("footer-component")
+    ],
     1
   )
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "login_page_bg" }, [
+      _c("div", { staticClass: "container login_page_container" }, [
+        _c("div", { staticClass: "row" }, [
+          _c("div", { staticClass: "lg_div" }, [
+            _c("div", { staticClass: "col login_div" }, [
+              _c(
+                "form",
+                { staticClass: "login_form", attrs: { action: "login" } },
+                [
+                  _c("h6", { staticClass: "login_title" }, [_vm._v("Войти")]),
+                  _vm._v(" "),
+                  _c("label", { staticClass: "login_label" }, [
+                    _vm._v("Login")
+                  ]),
+                  _vm._v(" "),
+                  _c("input", {
+                    staticClass: "login_inputs",
+                    attrs: { type: "email", name: "email" }
+                  }),
+                  _vm._v(" "),
+                  _c("label", { staticClass: "login_label" }, [
+                    _vm._v("Password")
+                  ]),
+                  _vm._v(" "),
+                  _c("input", {
+                    staticClass: "login_inputs",
+                    attrs: { type: "email", name: "password" }
+                  }),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "login_btn_div text-center" }, [
+                    _c("input", {
+                      staticClass: "login_btn",
+                      attrs: { type: "submit", name: "send", value: "Войти" }
+                    })
+                  ]),
+                  _vm._v(" "),
+                  _c("label", { staticClass: "fpssw_label text-center" }, [
+                    _c("input", {
+                      staticClass: "forgot_pssw",
+                      attrs: { type: "checkbox", name: "password" }
+                    }),
+                    _vm._v(" "),
+                    _c(
+                      "a",
+                      { staticClass: "fpssw_txt", attrs: { href: "#" } },
+                      [_vm._v("Забыли пароль?")]
+                    )
+                  ])
+                ]
+              )
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "col register_div" }, [
+              _c("h6", { staticClass: "registration" }, [
+                _vm._v("Регистрация")
+              ]),
+              _vm._v(" "),
+              _c("p", { staticClass: "registr_txts" }, [
+                _vm._v("Регистрация участника ЭТП в качестве Покупателья ")
+              ]),
+              _vm._v(" "),
+              _c("p", { staticClass: "registr_txts" }, [
+                _vm._v("Регистрация участника ЭТП в качестве Продавца")
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "registr_btn_div text-center" }, [
+                _c("input", {
+                  staticClass: "registr_btn",
+                  attrs: { type: "submit", name: "send", value: "Регистрация" }
+                })
+              ])
+            ])
+          ])
+        ])
+      ])
+    ])
+  }
+]
 render._withStripped = true
 
 
