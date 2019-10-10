@@ -18,7 +18,7 @@
                         </div>
                         <h6>К регистрации в качестве Продавца допускаются юридические лица</h6>
                         <form action="register" method="POST">
-                            s<input type="hidden" name="_token" :value="csrf">
+                            <input type="hidden" name="_token" :value="csrf">
                             <div class="row">
                                 <div class="col inputs_div_one">
                                     <label for="email">Email *</label>
