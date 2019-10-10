@@ -280,7 +280,7 @@
             </div>
         </div>
         <div class="container-fluid" v-if="slider.length > 0">
-            <div class="container container-back">
+            <div class="container container-back" v-if="cars.length != 0">
                 <div class="row cars-root">
                     <div class="col-md-4 cars-article" v-for="(car, index) in cars">
                         <router-link :to="'/cars/'+car.id" :key="car.id">
@@ -331,6 +331,16 @@
                         </li>
                     </ul>
                 </nav>
+            </div>
+            <div class="container container-back" v-if="cars.length == 0">
+                <div class="row cars-root">
+                    <div class="col-md-8 notfoundtxt">
+                        <h1>По вашему запросу ничего не найдено</h1>
+                    </div>
+                    <div class="col-md-2 notfoundimg">
+                        <img src="/img/design_img/27-272926_confused-clipart-confused-person-confused-png.png" alt="notfound">
+                    </div>
+                </div>
             </div>
         </div>
         <footer-component v-if="slider.length > 0"></footer-component>
