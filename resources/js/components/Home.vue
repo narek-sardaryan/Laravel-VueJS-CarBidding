@@ -5,6 +5,7 @@
         <div class="container-fluid carbidding-container" v-if="slider.length > 0">
             <section id="lastcars">
                 <div class="container container-back">
+                    <h1>{{carsall}}</h1>
                     <div id="bs4-slide-carousel" class="carousel slide d-block d-sm-none slide"
                          data-ride="carousel">
                         <div class="carousel-inner text-center">
@@ -30,6 +31,11 @@
                                              :alt="slid.name">
                                         <div class="car-informacion">
                                             <div class="inform-text">
+                                                <div class="row">
+                                                    <div class="col">
+                                                        <p>Лот | #{{slid.id}}</p>
+                                                    </div>
+                                                </div>
                                                 <div class="row">
                                                     <div class="col">
                                                         <p>{{slid.name}} | {{slid.year}}</p>
@@ -71,6 +77,11 @@
                                              :alt="slid.name">
                                         <div class="car-informacion">
                                             <div class="inform-text">
+                                                <div class="row">
+                                                    <div class="col">
+                                                        <p>Лот | #{{slid.id}}</p>
+                                                    </div>
+                                                </div>
                                                 <div class="row">
                                                     <div class="col">
                                                         <p>{{slid.name}} | {{slid.year}}</p>
@@ -352,6 +363,7 @@
 
     export default {
         name: "Home",
+        props:["carsall"],
         data() {
             return {
                 bodies: [],

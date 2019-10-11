@@ -34,6 +34,11 @@
                                             <div class="inform-text">
                                                 <div class="row">
                                                     <div class="col">
+                                                        <p>Лот | #{{slid.id}}</p>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col">
                                                         <p>{{slid.name}} | {{slid.year}}</p>
                                                     </div>
                                                 </div>
@@ -73,6 +78,11 @@
                                              :alt="slid.name">
                                         <div class="car-informacion">
                                             <div class="inform-text">
+                                                <div class="row">
+                                                    <div class="col">
+                                                        <p>Лот | #{{slid.id}}</p>
+                                                    </div>
+                                                </div>
                                                 <div class="row">
                                                     <div class="col">
                                                         <p>{{slid.name}} | {{slid.year}}</p>
