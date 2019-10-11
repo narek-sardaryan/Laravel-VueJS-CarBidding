@@ -45,7 +45,11 @@ class AdminController extends Controller
         $users = User::orderBy('id', 'desc')->paginate(10);
         return view('admin.users', ['users' => $users]);
     }
-
+    public function fetchAllUsers()
+    {
+        $users = User::orderBy('id', 'desc')->get();
+        return $users;
+    }
     public function user($id)
     {
         $user = User::find($id);
