@@ -85,6 +85,7 @@
 </div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script>
+    $('html, body').animate({scrollTop:0}, 'slow');
     $(window).on("scroll", function() {
         if($(window).scrollTop() >= 1) {
             $(".carnavbar").css({"background-color": "#fffffff5", "transition": "0.8s"});

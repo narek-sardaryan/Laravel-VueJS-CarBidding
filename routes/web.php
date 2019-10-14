@@ -188,5 +188,5 @@ Route::get('/filtercarau', function (Request $request) {
     return view('filtercars', [
         'cars' => $carsau]);
 });
-Auth::routes();
-Route::get('/home', 'HomeController@index')->name('home');
+Auth::routes(['verify' => true]);
+Route::get('/home', 'HomeController@index')->name('home')->middleware('verified');

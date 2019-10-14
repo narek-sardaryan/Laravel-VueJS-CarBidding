@@ -4476,24 +4476,20 @@ __webpack_require__.r(__webpack_exports__);
 
       for (var _i = 0; _i < f.length; _i++) {
         if (f[_i].checked) {
-          this.gender = f[_i].value;
-          f[_i].closest('.inp_row').style.border = 'none';
+          this.gender = f[_i].value; // f[i].closest('.inp_row').style.border = 'none';
         }
-      }
+      } // var errorinps = document.getElementsByClassName('reqreg');
+      // for (let i = 0; i < errorinps.length; i++) {
+      //     if (!errorinps[i].value) {
+      //         errorinps[i].closest('.inp_row').style.border = '2px solid red';
+      //     }
+      // }
 
-      var errorinps = document.getElementsByClassName('reqreg');
-
-      for (var _i2 = 0; _i2 < errorinps.length; _i2++) {
-        if (!errorinps[_i2].value) {
-          errorinps[_i2].closest('.inp_row').style.border = '2px solid red';
-        }
-      }
 
       if (this.name.length < 4 || this.name.length > 24) {
         this.errors.push({
           'name': 'Имя должен содержать от 4 до 16 символов.'
-        });
-        document.getElementById('name').closest('.inp_row').style.border = '2px solid red';
+        }); // document.getElementById('name').closest('.inp_row').style.border = '2px solid red'
       }
 
       if (!this.sname) {
@@ -4511,8 +4507,7 @@ __webpack_require__.r(__webpack_exports__);
       if (this.users.length > 0) {
         this.errors.push({
           'emailret': 'Такой E-mail уже зарегистрирован.'
-        });
-        document.getElementById('email').closest('.inp_row').style.border = '2px solid red';
+        }); // document.getElementById('email').closest('.inp_row').style.border = '2px solid red'
       }
 
       if (!this.phone) {
@@ -4542,20 +4537,16 @@ __webpack_require__.r(__webpack_exports__);
       if (!this.gender) {
         this.errors.push({
           'gender': 'Необходимо заполнить поле "Пол".'
-        });
-        var k = document.getElementsByClassName('genderreg');
-
-        for (var _i3 = 0; _i3 < k.length; _i3++) {
-          k[_i3].closest('.inp_row').style.border = '2px solid red';
-        }
+        }); // var k = document.getElementsByClassName('genderreg');
+        // for (let i = 0; i < k.length; i++) {
+        //     k[i].closest('.inp_row').style.border = '2px solid red';
+        // }
       }
 
-      if (this.gender) {
-        var a = document.getElementsByClassName('genderreg');
-
-        for (var _i4 = 0; _i4 < a.length; _i4++) {
-          a[_i4].closest('.inp_row').style.border = 'none';
-        }
+      if (this.gender) {// var a = document.getElementsByClassName('genderreg');
+        // for (let i = 0; i < a.length; i++) {
+        //     a[i].closest('.inp_row').style.border = 'none';
+        // }
       }
 
       if (this.password !== this.passwordconfirm) {
@@ -44706,7 +44697,7 @@ var render = function() {
       _c("img", {
         attrs: {
           src:
-            "https://i.pinimg.com/originals/ed/23/68/ed23685339ada1b6d88008cbe1a11e98.gif"
+            "https://thumbs.gfycat.com/AchingSpeedyArmyworm-size_restricted.gif"
         }
       })
     ]
@@ -46148,7 +46139,7 @@ var render = function() {
                                 {
                                   staticStyle: {
                                     display: "inline-block",
-                                    transition: "1.3s",
+                                    transition: "0.6s",
                                     color: "#2099FE"
                                   }
                                 },
@@ -46212,7 +46203,7 @@ var staticRenderFns = [
         {
           staticStyle: {
             display: "inline-block",
-            transition: "1.3s",
+            transition: "0.6s",
             color: "#2099FE"
           }
         },
@@ -46231,7 +46222,7 @@ var staticRenderFns = [
         {
           staticStyle: {
             display: "inline-block",
-            transition: "1.3s",
+            transition: "0.6s",
             color: "#2099FE"
           }
         },
@@ -47778,37 +47769,6 @@ var render = function() {
                       _c("div", { staticClass: "col-md-12" }, [
                         _vm._m(1),
                         _vm._v(" "),
-                        _c("div", { staticClass: "row" }, [
-                          _c("div", { staticClass: "col-md-12" }, [
-                            _c("input", {
-                              directives: [
-                                {
-                                  name: "model",
-                                  rawName: "v-model",
-                                  value: _vm.email,
-                                  expression: "email"
-                                }
-                              ],
-                              staticClass: "register_inputs reqreg",
-                              attrs: {
-                                id: "email",
-                                type: "email",
-                                name: "email",
-                                required: ""
-                              },
-                              domProps: { value: _vm.email },
-                              on: {
-                                input: function($event) {
-                                  if ($event.target.composing) {
-                                    return
-                                  }
-                                  _vm.email = $event.target.value
-                                }
-                              }
-                            })
-                          ])
-                        ]),
-                        _vm._v(" "),
                         _c(
                           "div",
                           { staticClass: "row" },
@@ -47851,13 +47811,66 @@ var render = function() {
                             ])
                           }),
                           0
-                        )
+                        ),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "row" }, [
+                          _c("div", { staticClass: "col-md-12" }, [
+                            _c("input", {
+                              directives: [
+                                {
+                                  name: "model",
+                                  rawName: "v-model",
+                                  value: _vm.email,
+                                  expression: "email"
+                                }
+                              ],
+                              staticClass: "register_inputs reqreg",
+                              attrs: {
+                                id: "email",
+                                type: "email",
+                                name: "email",
+                                required: ""
+                              },
+                              domProps: { value: _vm.email },
+                              on: {
+                                input: function($event) {
+                                  if ($event.target.composing) {
+                                    return
+                                  }
+                                  _vm.email = $event.target.value
+                                }
+                              }
+                            })
+                          ])
+                        ])
                       ])
                     ]),
                     _vm._v(" "),
                     _c("div", { staticClass: "row  inp_row" }, [
                       _c("div", { staticClass: "col-md-12" }, [
                         _vm._m(2),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          { staticClass: "row" },
+                          _vm._l(_vm.errors, function(error) {
+                            return _c("div", { staticClass: "col-md-12" }, [
+                              error.phone
+                                ? _c(
+                                    "span",
+                                    {
+                                      staticStyle: {
+                                        color: "red",
+                                        "font-weight": "bold"
+                                      }
+                                    },
+                                    [_vm._v(_vm._s(error.phone))]
+                                  )
+                                : _vm._e()
+                            ])
+                          }),
+                          0
+                        ),
                         _vm._v(" "),
                         _c("div", { staticClass: "row" }, [
                           _c("div", { staticClass: "col-md-12" }, [
@@ -47887,65 +47900,13 @@ var render = function() {
                               }
                             })
                           ])
-                        ]),
-                        _vm._v(" "),
-                        _c(
-                          "div",
-                          { staticClass: "row" },
-                          _vm._l(_vm.errors, function(error) {
-                            return _c("div", { staticClass: "col-md-12" }, [
-                              error.phone
-                                ? _c(
-                                    "span",
-                                    {
-                                      staticStyle: {
-                                        color: "red",
-                                        "font-weight": "bold"
-                                      }
-                                    },
-                                    [_vm._v(_vm._s(error.phone))]
-                                  )
-                                : _vm._e()
-                            ])
-                          }),
-                          0
-                        )
+                        ])
                       ])
                     ]),
                     _vm._v(" "),
                     _c("div", { staticClass: "row  inp_row" }, [
                       _c("div", { staticClass: "col-md-12" }, [
                         _vm._m(3),
-                        _vm._v(" "),
-                        _c("div", { staticClass: "row" }, [
-                          _c("div", { staticClass: "col-md-12" }, [
-                            _c("input", {
-                              directives: [
-                                {
-                                  name: "model",
-                                  rawName: "v-model",
-                                  value: _vm.password,
-                                  expression: "password"
-                                }
-                              ],
-                              staticClass: "register_inputs reqreg",
-                              attrs: {
-                                id: "pssw",
-                                type: "password",
-                                name: "password"
-                              },
-                              domProps: { value: _vm.password },
-                              on: {
-                                input: function($event) {
-                                  if ($event.target.composing) {
-                                    return
-                                  }
-                                  _vm.password = $event.target.value
-                                }
-                              }
-                            })
-                          ])
-                        ]),
                         _vm._v(" "),
                         _c(
                           "div",
@@ -47989,13 +47950,65 @@ var render = function() {
                             ])
                           }),
                           0
-                        )
+                        ),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "row" }, [
+                          _c("div", { staticClass: "col-md-12" }, [
+                            _c("input", {
+                              directives: [
+                                {
+                                  name: "model",
+                                  rawName: "v-model",
+                                  value: _vm.password,
+                                  expression: "password"
+                                }
+                              ],
+                              staticClass: "register_inputs reqreg",
+                              attrs: {
+                                id: "pssw",
+                                type: "password",
+                                name: "password"
+                              },
+                              domProps: { value: _vm.password },
+                              on: {
+                                input: function($event) {
+                                  if ($event.target.composing) {
+                                    return
+                                  }
+                                  _vm.password = $event.target.value
+                                }
+                              }
+                            })
+                          ])
+                        ])
                       ])
                     ]),
                     _vm._v(" "),
                     _c("div", { staticClass: "row  inp_row" }, [
                       _c("div", { staticClass: "col-md-12" }, [
                         _vm._m(4),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          { staticClass: "row" },
+                          _vm._l(_vm.errors, function(error) {
+                            return _c("div", { staticClass: "col-md-12" }, [
+                              error.passwordconfirm
+                                ? _c(
+                                    "span",
+                                    {
+                                      staticStyle: {
+                                        color: "red",
+                                        "font-weight": "bold"
+                                      }
+                                    },
+                                    [_vm._v(_vm._s(error.passwordconfirm))]
+                                  )
+                                : _vm._e()
+                            ])
+                          }),
+                          0
+                        ),
                         _vm._v(" "),
                         _c("div", { staticClass: "row" }, [
                           _c("div", { staticClass: "col-md-12" }, [
@@ -48025,29 +48038,7 @@ var render = function() {
                               }
                             })
                           ])
-                        ]),
-                        _vm._v(" "),
-                        _c(
-                          "div",
-                          { staticClass: "row" },
-                          _vm._l(_vm.errors, function(error) {
-                            return _c("div", { staticClass: "col-md-12" }, [
-                              error.passwordconfirm
-                                ? _c(
-                                    "span",
-                                    {
-                                      staticStyle: {
-                                        color: "red",
-                                        "font-weight": "bold"
-                                      }
-                                    },
-                                    [_vm._v(_vm._s(error.passwordconfirm))]
-                                  )
-                                : _vm._e()
-                            ])
-                          }),
-                          0
-                        )
+                        ])
                       ])
                     ]),
                     _vm._v(" "),
@@ -48060,6 +48051,28 @@ var render = function() {
                     _c("div", { staticClass: "row  inp_row" }, [
                       _c("div", { staticClass: "col-md-12" }, [
                         _vm._m(6),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          { staticClass: "row" },
+                          _vm._l(_vm.errors, function(error) {
+                            return _c("div", { staticClass: "col-md-12" }, [
+                              error.name
+                                ? _c(
+                                    "span",
+                                    {
+                                      staticStyle: {
+                                        color: "red",
+                                        "font-weight": "bold"
+                                      }
+                                    },
+                                    [_vm._v(_vm._s(error.name))]
+                                  )
+                                : _vm._e()
+                            ])
+                          }),
+                          0
+                        ),
                         _vm._v(" "),
                         _c("div", { staticClass: "row" }, [
                           _c("div", { staticClass: "col-md-12" }, [
@@ -48085,14 +48098,20 @@ var render = function() {
                               }
                             })
                           ])
-                        ]),
+                        ])
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "row  inp_row" }, [
+                      _c("div", { staticClass: "col-md-12" }, [
+                        _vm._m(7),
                         _vm._v(" "),
                         _c(
                           "div",
                           { staticClass: "row" },
                           _vm._l(_vm.errors, function(error) {
                             return _c("div", { staticClass: "col-md-12" }, [
-                              error.name
+                              error.sname
                                 ? _c(
                                     "span",
                                     {
@@ -48101,19 +48120,13 @@ var render = function() {
                                         "font-weight": "bold"
                                       }
                                     },
-                                    [_vm._v(_vm._s(error.name))]
+                                    [_vm._v(_vm._s(error.sname))]
                                   )
                                 : _vm._e()
                             ])
                           }),
                           0
-                        )
-                      ])
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "row  inp_row" }, [
-                      _c("div", { staticClass: "col-md-12" }, [
-                        _vm._m(7),
+                        ),
                         _vm._v(" "),
                         _c("div", { staticClass: "row" }, [
                           _c("div", { staticClass: "col-md-12" }, [
@@ -48143,14 +48156,20 @@ var render = function() {
                               }
                             })
                           ])
-                        ]),
+                        ])
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "row  inp_row" }, [
+                      _c("div", { staticClass: "col-md-12" }, [
+                        _vm._m(8),
                         _vm._v(" "),
                         _c(
                           "div",
                           { staticClass: "row" },
                           _vm._l(_vm.errors, function(error) {
                             return _c("div", { staticClass: "col-md-12" }, [
-                              error.sname
+                              error.date
                                 ? _c(
                                     "span",
                                     {
@@ -48159,19 +48178,13 @@ var render = function() {
                                         "font-weight": "bold"
                                       }
                                     },
-                                    [_vm._v(_vm._s(error.sname))]
+                                    [_vm._v(_vm._s(error.date))]
                                   )
                                 : _vm._e()
                             ])
                           }),
                           0
-                        )
-                      ])
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "row  inp_row" }, [
-                      _c("div", { staticClass: "col-md-12" }, [
-                        _vm._m(8),
+                        ),
                         _vm._v(" "),
                         _c("div", { staticClass: "row" }, [
                           _c("div", { staticClass: "col-md-12" }, [
@@ -48201,29 +48214,7 @@ var render = function() {
                               }
                             })
                           ])
-                        ]),
-                        _vm._v(" "),
-                        _c(
-                          "div",
-                          { staticClass: "row" },
-                          _vm._l(_vm.errors, function(error) {
-                            return _c("div", { staticClass: "col-md-12" }, [
-                              error.date
-                                ? _c(
-                                    "span",
-                                    {
-                                      staticStyle: {
-                                        color: "red",
-                                        "font-weight": "bold"
-                                      }
-                                    },
-                                    [_vm._v(_vm._s(error.date))]
-                                  )
-                                : _vm._e()
-                            ])
-                          }),
-                          0
-                        )
+                        ])
                       ])
                     ]),
                     _vm._v(" "),
@@ -48232,8 +48223,6 @@ var render = function() {
                     _c("div", { staticClass: "row  inp_row reqreg" }, [
                       _c("div", { staticClass: "col-md-12" }, [
                         _vm._m(10),
-                        _vm._v(" "),
-                        _vm._m(11),
                         _vm._v(" "),
                         _c(
                           "div",
@@ -48255,7 +48244,9 @@ var render = function() {
                             ])
                           }),
                           0
-                        )
+                        ),
+                        _vm._v(" "),
+                        _vm._m(11)
                       ])
                     ])
                   ])
