@@ -29,12 +29,6 @@
                                                 </div>
                                             </div>
                                             <div class="row">
-                                                <div class="col-md-12">
-                                                    <input class="register_inputs reqreg" id="email" type="email"
-                                                           name="email" v-model="email" required>
-                                                </div>
-                                            </div>
-                                            <div class="row">
                                                 <div class="col-md-12" v-for="error in errors">
                                                     <span style="color: red; font-weight: bold;" v-if="error.email">{{error.email}}</span>
                                                 </div>
@@ -42,6 +36,12 @@
                                             <div class="row">
                                                 <div class="col-md-12" v-for="error in errors">
                                                     <span style="color: red; font-weight: bold;" v-if="error.emailret">{{error.emailret}}</span>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <input class="register_inputs reqreg" id="email" type="email"
+                                                           name="email" v-model="email" required>
                                                 </div>
                                             </div>
                                         </div>
@@ -54,15 +54,15 @@
                                                 </div>
                                             </div>
                                             <div class="row">
+                                                <div class="col-md-12" v-for="error in errors">
+                                                    <span style="color: red; font-weight: bold;" v-if="error.phone">{{error.phone}}</span>
+                                                </div>
+                                            </div>
+                                            <div class="row">
                                                 <div class="col-md-12">
                                                     <input class="register_inputs reqreg" id="phone" type="tel"
                                                            name="phone"
                                                            v-model="phone">
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-md-12" v-for="error in errors">
-                                                    <span style="color: red; font-weight: bold;" v-if="error.phone">{{error.phone}}</span>
                                                 </div>
                                             </div>
                                         </div>
@@ -75,13 +75,6 @@
                                                 </div>
                                             </div>
                                             <div class="row">
-                                                <div class="col-md-12">
-                                                    <input class="register_inputs reqreg" id="pssw" type="password"
-                                                           name="password"
-                                                           v-model="password">
-                                                </div>
-                                            </div>
-                                            <div class="row">
                                                 <div class="col-md-12" v-for="error in errors">
                                                     <span style="color: red; font-weight: bold;" v-if="error.password">{{error.password}}</span>
                                                 </div>
@@ -89,6 +82,13 @@
                                             <div class="row">
                                                 <div class="col-md-12" v-for="error in errors">
                                                     <span style="color: red; font-weight: bold;" v-if="error.passno">{{error.passno}}</span>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <input class="register_inputs reqreg" id="pssw" type="password"
+                                                           name="password"
+                                                           v-model="password">
                                                 </div>
                                             </div>
                                         </div>
@@ -101,15 +101,15 @@
                                                 </div>
                                             </div>
                                             <div class="row">
-                                                <div class="col-md-12">
-                                                    <input class="register_inputs reqreg" id="psswr" type="password"
-                                                           name="password_confirmation" v-model="passwordconfirm">
-                                                </div>
-                                            </div>
-                                            <div class="row">
                                                 <div class="col-md-12" v-for="error in errors">
                                                     <span style="color: red; font-weight: bold;"
                                                           v-if="error.passwordconfirm">{{error.passwordconfirm}}</span>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <input class="register_inputs reqreg" id="psswr" type="password"
+                                                           name="password_confirmation" v-model="passwordconfirm">
                                                 </div>
                                             </div>
                                         </div>
@@ -142,15 +142,15 @@
                                                 </div>
                                             </div>
                                             <div class="row">
+                                                <div class="col-md-12" v-for="error in errors">
+                                                    <span style="color: red; font-weight: bold;" v-if="error.name">{{error.name}}</span>
+                                                </div>
+                                            </div>
+                                            <div class="row">
                                                 <div class="col-md-12">
                                                     <input class="register_inputs reqreg" id="name" v-model="name"
                                                            type="text"
                                                            name="name">
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-md-12" v-for="error in errors">
-                                                    <span style="color: red; font-weight: bold;" v-if="error.name">{{error.name}}</span>
                                                 </div>
                                             </div>
                                         </div>
@@ -163,15 +163,15 @@
                                                 </div>
                                             </div>
                                             <div class="row">
+                                                <div class="col-md-12" v-for="error in errors">
+                                                    <span style="color: red; font-weight: bold;" v-if="error.sname">{{error.sname}}</span>
+                                                </div>
+                                            </div>
+                                            <div class="row">
                                                 <div class="col-md-12">
                                                     <input class="register_inputs reqreg" id="sname" v-model="sname"
                                                            type="text"
                                                            name="sname">
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-md-12" v-for="error in errors">
-                                                    <span style="color: red; font-weight: bold;" v-if="error.sname">{{error.sname}}</span>
                                                 </div>
                                             </div>
                                         </div>
@@ -184,15 +184,15 @@
                                                 </div>
                                             </div>
                                             <div class="row">
+                                                <div class="col-md-12" v-for="error in errors">
+                                                    <span style="color: red; font-weight: bold;" v-if="error.date">{{error.date}}</span>
+                                                </div>
+                                            </div>
+                                            <div class="row">
                                                 <div class="col-md-12">
                                                     <input class="register_inputs reqreg" id="date" type="date"
                                                            v-model="date"
                                                            name="date-birth">
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-md-12" v-for="error in errors">
-                                                    <span style="color: red; font-weight: bold;" v-if="error.date">{{error.date}}</span>
                                                 </div>
                                             </div>
                                         </div>
@@ -220,16 +220,16 @@
                                                 </div>
                                             </div>
                                             <div class="row">
+                                                <div class="col-md-12" v-for="error in errors">
+                                                    <span style="color: red; font-weight: bold;" v-if="error.gender">{{error.gender}}</span>
+                                                </div>
+                                            </div>
+                                            <div class="row">
                                                 <div class="col-md-12">
                                                     <label for="male">Мужское</label>
                                                     <input class="genderreg" value="male" type="radio" name="gender">
                                                     <label for="female">Женское</label>
                                                     <input class="genderreg" type="radio" value="female" name="gender">
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-md-12" v-for="error in errors">
-                                                    <span style="color: red; font-weight: bold;" v-if="error.gender">{{error.gender}}</span>
                                                 </div>
                                             </div>
                                         </div>
@@ -309,18 +309,18 @@
                 for (let i = 0; i < f.length; i++) {
                     if (f[i].checked) {
                         this.gender = f[i].value
-                        f[i].closest('.inp_row').style.border = 'none';
+                        // f[i].closest('.inp_row').style.border = 'none';
                     }
                 }
-                var errorinps = document.getElementsByClassName('reqreg');
-                for (let i = 0; i < errorinps.length; i++) {
-                    if (!errorinps[i].value) {
-                        errorinps[i].closest('.inp_row').style.border = '2px solid red';
-                    }
-                }
+                // var errorinps = document.getElementsByClassName('reqreg');
+                // for (let i = 0; i < errorinps.length; i++) {
+                //     if (!errorinps[i].value) {
+                //         errorinps[i].closest('.inp_row').style.border = '2px solid red';
+                //     }
+                // }
                 if (this.name.length < 4 || this.name.length > 24) {
                     this.errors.push({'name': 'Имя должен содержать от 4 до 16 символов.'})
-                    document.getElementById('name').closest('.inp_row').style.border = '2px solid red'
+                    // document.getElementById('name').closest('.inp_row').style.border = '2px solid red'
                 }
                 if (!this.sname) {
                     this.errors.push({'sname': 'Необходимо заполнить поле "Фамилия".'})
@@ -330,7 +330,7 @@
                 }
                 if ((this.users.length > 0)) {
                     this.errors.push({'emailret': 'Такой E-mail уже зарегистрирован.'})
-                    document.getElementById('email').closest('.inp_row').style.border = '2px solid red'
+                    // document.getElementById('email').closest('.inp_row').style.border = '2px solid red'
                 }
 
                 if (!this.phone) {
@@ -347,16 +347,16 @@
                 }
                 if (!this.gender) {
                     this.errors.push({'gender': 'Необходимо заполнить поле "Пол".'})
-                    var k = document.getElementsByClassName('genderreg');
-                    for (let i = 0; i < k.length; i++) {
-                        k[i].closest('.inp_row').style.border = '2px solid red';
-                    }
+                    // var k = document.getElementsByClassName('genderreg');
+                    // for (let i = 0; i < k.length; i++) {
+                    //     k[i].closest('.inp_row').style.border = '2px solid red';
+                    // }
                 }
                 if (this.gender) {
-                    var a = document.getElementsByClassName('genderreg');
-                    for (let i = 0; i < a.length; i++) {
-                        a[i].closest('.inp_row').style.border = 'none';
-                    }
+                    // var a = document.getElementsByClassName('genderreg');
+                    // for (let i = 0; i < a.length; i++) {
+                    //     a[i].closest('.inp_row').style.border = 'none';
+                    // }
                 }
                 if (this.password !== this.passwordconfirm) {
                     this.errors.push({'passno': 'Пароли не совпадают.'})

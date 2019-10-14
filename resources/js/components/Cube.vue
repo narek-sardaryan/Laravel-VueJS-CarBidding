@@ -3,7 +3,7 @@
         <!--        <div :style="cubeStyles" class="cube1"></div>-->
         <!--        <div :style="cubeStyles" class="cube2"></div>-->
 <!--        <img src="https://thumbs.gfycat.com/AchingSpeedyArmyworm-size_restricted.gif"> -->
-        <img src="https://i.pinimg.com/originals/ed/23/68/ed23685339ada1b6d88008cbe1a11e98.gif"> 
+        <img src="https://thumbs.gfycat.com/AchingSpeedyArmyworm-size_restricted.gif"> 
     </div>
 
 </template>

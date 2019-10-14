@@ -5,14 +5,14 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-md-2">
-                            <router-link to="/#"><img src="/img/design_img/header_logo.png" id="headerlogo"
+                            <router-link to="/#"><img src="/img/design_img/header_logo.png"  id="headerlogo"
                                                       alt="logo"></router-link>
                         </div>
                         <div class="col-md-9 offset-1">
                             <div class="col-md-12 menunavbar">
                                 <ul>
                                     <li>
-                                        <a>Меню <p style="display:inline-block;transition: 1.3s;color:#2099FE;">⇩</p>
+                                        <a>Меню <p style="display:inline-block;transition: 0.6s;color:#2099FE;">⇩</p>
                                         </a>
                                         <ol>
                                             <li>
@@ -33,7 +33,7 @@
                                         </ol>
                                     </li>
                                     <li>
-                                        <a>Все Аукционы <p style="display:inline-block;transition: 1.3s;color:#2099FE;">
+                                        <a>Все Аукционы <p style="display:inline-block;transition: 0.6s;color:#2099FE;">
                                             ⇩</p></a>
                                         <ol>
                                             <li @click="reloadForAuctions" v-for="auction in auctions">
@@ -50,7 +50,7 @@
                                     </li>
                                     <li v-if="user.length != 0">
                                         <a>{{user.name}} <p
-                                            style="display:inline-block;transition: 1.3s;color:#2099FE;">⇩</p></a>
+                                            style="display:inline-block;transition: 0.6s;color:#2099FE;">⇩</p></a>
                                         <ol>
                                             <li>
                                                 <router-link to="/profile">Профиль</router-link>
