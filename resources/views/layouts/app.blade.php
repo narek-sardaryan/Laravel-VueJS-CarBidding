@@ -88,10 +88,8 @@
     $(window).on("scroll", function() {
         if($(window).scrollTop() >= 1) {
             $(".carnavbar").css({"background-color": "#fffffff5", "transition": "0.8s"});
-            $(".searchdiv").css({"border": "1px solid #0f92ff"});
         } else {
             $(".carnavbar").css({"background-color": "transparent", "transition": "0.8s"});
-            $(".searchdiv").css({"border": "none", "transition": "0.8s"});
         }
     });
 </script>

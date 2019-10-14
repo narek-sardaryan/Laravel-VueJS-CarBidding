@@ -123,11 +123,13 @@ Route::get('/fetchstates', 'AuctionController@fetchstates');
 Route::get('/fetchcars/{id}', 'AuctionController@fetchcars');
 Route::get('/fetchcarsall', 'AuctionController@fetchcarsall');
 Route::get('/fetchUser', 'UserController@fetchUser');
+Route::get('/fetchusers', 'AdminController@fetchAllUsers');
 Route::get('/cars/{id}', 'CarsController@showcar');
 Route::get('/auctions/{id}', 'AuctionController@index');
 Route::get('/auction/{pid}/{id}', 'AuctionController@fetchcar');
 Route::get('/auctionall/{id}', 'AuctionController@auctionall');
 Route::get('/car/{id}', 'CarsController@fetchcar');
+Route::get('/errors', 'RegisterController@validator');
 Route::get('/searchcar', function (Request $request) {
     $cars = Car::query()
         ->where('name', 'LIKE', "%{$request->name}%")
@@ -186,6 +188,5 @@ Route::get('/filtercarau', function (Request $request) {
     return view('filtercars', [
         'cars' => $carsau]);
 });
-
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');

@@ -6,18 +6,24 @@
 		  	<div class="row">
 		  		<div class="lg_div">
 			  		<div class="col login_div">
-				  		<form action="login" class="login_form">
+				  		<form action="login" method="POST" class="login_form">
+                            <input type="hidden" name="_token" :value="csrf">
 			  				<h6 class="login_title">Войти</h6>
 					  		<label class="login_label">Login</label>
 					  		<input type="email" class="login_inputs" name="email">
 					  		<label class="login_label">Password</label>
 					  		<input type="password" class="login_inputs" name="password">
+                            <div class="row">
+                                <div class="col rem_me">
+                                    <input class="form-check-input" type="checkbox" name="remember" id="remember" style="">
+                                    <a>Remember me</a>
+                                </div>
+                            </div>
 					  		<div class="login_btn_div text-center">
 					  			<input type="submit" class="login_btn" name="send" value="Войти">
 					  		</div>
 					  		<label class="fpssw_label text-center">
-					  			<input type="checkbox" class="forgot_pssw" name="password">
-					  			<a class="fpssw_txt" href="#">Забыли пароль?</a>
+					  			<router-link class="fpssw_txt" to="passwordrequest">Забыли пароль?</router-link>
 					  		</label>
 					  	</form>
 			  		</div>
@@ -26,9 +32,9 @@
 			  		 	<p class="registr_txts">Регистрация участника ЭТП в качестве Покупателья </p>
 			  		 	<p class="registr_txts">Регистрация участника ЭТП в качестве Продавца</p>
 			  		 	<div class="registr_btn_div text-center">
-			  		 		<input type="submit" class="registr_btn" name="send" value="Регистрация">
+			  		 		<router-link to="/register"><input type="submit" class="registr_btn" name="send" value="Регистрация"></router-link>
 			  		 	</div>
-			  		</div> 
+			  		</div>
 			  	</div>
 		  	</div>
 		  </div>
@@ -39,7 +45,12 @@
 
 <script>
   export default {
-    name: "Login"
+    name: "Login",
+      data() {
+          return {
+              csrf: document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
+          }
+      },
   }
 </script>
 

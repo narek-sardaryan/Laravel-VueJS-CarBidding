@@ -34,6 +34,11 @@
                                             <div class="inform-text">
                                                 <div class="row">
                                                     <div class="col">
+                                                        <p>Лот | #{{slid.id}}</p>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col">
                                                         <p>{{slid.name}} | {{slid.year}}</p>
                                                     </div>
                                                 </div>
@@ -73,6 +78,11 @@
                                              :alt="slid.name">
                                         <div class="car-informacion">
                                             <div class="inform-text">
+                                                <div class="row">
+                                                    <div class="col">
+                                                        <p>Лот | #{{slid.id}}</p>
+                                                    </div>
+                                                </div>
                                                 <div class="row">
                                                     <div class="col">
                                                         <p>{{slid.name}} | {{slid.year}}</p>
@@ -326,7 +336,12 @@
             </div>
             <div class="container container-back" v-if="cars.length == 0">
                 <div class="row cars-root">
-                   <h1>chka avto</h1>
+                    <div class="col-md-8 notfoundtxt">
+                        <h1>По вашему запросу ничего не найдено</h1>
+                    </div>
+                    <div class="col-md-2 notfoundimg">
+                        <img src="/img/design_img/27-272926_confused-clipart-confused-person-confused-png.png" alt="notfound">
+                    </div>
                 </div>
             </div>
         </div>
