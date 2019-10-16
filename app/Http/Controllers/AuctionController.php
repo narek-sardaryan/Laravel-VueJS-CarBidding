@@ -23,7 +23,7 @@ class AuctionController extends Controller
         return view('auctions');
     }
 
-    public function fetchcar($pid,$id)
+    public function fetchcar($pid, $id)
     {
         $cars = Car::orderBy('id', 'desc')
             ->where('categorId', '=', $id)
@@ -32,6 +32,7 @@ class AuctionController extends Controller
             ->get();
         return $cars;
     }
+
     public function auctionall($id)
     {
         $auctionallis = Car::orderBy('id', 'desc')

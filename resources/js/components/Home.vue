@@ -386,7 +386,7 @@
                 allCarsLength: null
             }
         },
-        async created() {
+        created: function () {
             this.fetchBodies();
             this.fetchModels();
             this.fetchParkings();
@@ -397,6 +397,11 @@
         },
         component: {
             Cube
+        },
+        computed: {
+          defalutbody(){
+              console.log('555')
+          }
         },
         methods: {
             beforeEnter: function (el) {

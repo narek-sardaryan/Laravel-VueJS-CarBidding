@@ -43,6 +43,7 @@ Vue.component('searchcar', require('./components/SearchCar.vue').default);
 Vue.component('filtercars', require('./components/FilterCars.vue').default);
 Vue.component('showcar', require('./components/ShowCar.vue').default);
 Vue.component('Cube', require('./components/Cube.vue').default);
+Vue.component('app', require('./components/app.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

@@ -17,7 +17,7 @@
                             </p>
                         </div>
                         <h6>К регистрации в качестве Продавца допускаются юридические лица</h6>
-                        <form>
+                        <form action="register" method="POST">
                             <input type="hidden" name="_token" :value="csrf">
                             <div class="row">
                                 <div class="col-md-4 inputs_div_one">
@@ -29,13 +29,8 @@
                                                 </div>
                                             </div>
                                             <div class="row">
-                                                <div class="col-md-12" v-for="error in errors">
-                                                    <span style="color: red; font-weight: bold;" v-if="error.email">{{error.email}}</span>
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-md-12" v-for="error in errors">
-                                                    <span style="color: red; font-weight: bold;" v-if="error.emailret">{{error.emailret}}</span>
+                                                <div class="col-md-12">
+                                                    <span style="color: red; font-weight: bold;" v-if="errorsreg.email">{{errorsreg.email[0]}}</span>
                                                 </div>
                                             </div>
                                             <div class="row">
@@ -54,8 +49,8 @@
                                                 </div>
                                             </div>
                                             <div class="row">
-                                                <div class="col-md-12" v-for="error in errors">
-                                                    <span style="color: red; font-weight: bold;" v-if="error.phone">{{error.phone}}</span>
+                                                <div class="col-md-12">
+                                                    <span style="color: red; font-weight: bold;" v-if="errorsreg.phone">{{errorsreg.phone[0]}}</span>
                                                 </div>
                                             </div>
                                             <div class="row">
@@ -75,13 +70,9 @@
                                                 </div>
                                             </div>
                                             <div class="row">
-                                                <div class="col-md-12" v-for="error in errors">
-                                                    <span style="color: red; font-weight: bold;" v-if="error.password">{{error.password}}</span>
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-md-12" v-for="error in errors">
-                                                    <span style="color: red; font-weight: bold;" v-if="error.passno">{{error.passno}}</span>
+                                                <div class="col-md-12">
+                                                    <span style="color: red; font-weight: bold;"
+                                                          v-if="errorsreg.password">{{errorsreg.password[0]}}</span>
                                                 </div>
                                             </div>
                                             <div class="row">
@@ -101,9 +92,9 @@
                                                 </div>
                                             </div>
                                             <div class="row">
-                                                <div class="col-md-12" v-for="error in errors">
+                                                <div class="col-md-12">
                                                     <span style="color: red; font-weight: bold;"
-                                                          v-if="error.passwordconfirm">{{error.passwordconfirm}}</span>
+                                                          v-if="errorsreg.passwordconfirm">{{errorsreg.passwordconfirm[0]}}</span>
                                                 </div>
                                             </div>
                                             <div class="row">
@@ -142,8 +133,8 @@
                                                 </div>
                                             </div>
                                             <div class="row">
-                                                <div class="col-md-12" v-for="error in errors">
-                                                    <span style="color: red; font-weight: bold;" v-if="error.name">{{error.name}}</span>
+                                                <div class="col-md-12">
+                                                    <span style="color: red; font-weight: bold;" v-if="errorsreg.name">{{errorsreg.name[0]}}</span>
                                                 </div>
                                             </div>
                                             <div class="row">
@@ -163,8 +154,8 @@
                                                 </div>
                                             </div>
                                             <div class="row">
-                                                <div class="col-md-12" v-for="error in errors">
-                                                    <span style="color: red; font-weight: bold;" v-if="error.sname">{{error.sname}}</span>
+                                                <div class="col-md-12">
+                                                    <span style="color: red; font-weight: bold;" v-if="errorsreg.sname">{{errorsreg.sname[0]}}</span>
                                                 </div>
                                             </div>
                                             <div class="row">
@@ -184,15 +175,16 @@
                                                 </div>
                                             </div>
                                             <div class="row">
-                                                <div class="col-md-12" v-for="error in errors">
-                                                    <span style="color: red; font-weight: bold;" v-if="error.date">{{error.date}}</span>
+                                                <div class="col-md-12">
+                                                    <span style="color: red; font-weight: bold;"
+                                                          v-if="errorsreg.datebirth">{{errorsreg.datebirth[0]}}</span>
                                                 </div>
                                             </div>
                                             <div class="row">
                                                 <div class="col-md-12">
                                                     <input class="register_inputs reqreg" id="date" type="date"
                                                            v-model="date"
-                                                           name="date-birth">
+                                                           name="datebirth">
                                                 </div>
                                             </div>
                                         </div>
@@ -220,8 +212,9 @@
                                                 </div>
                                             </div>
                                             <div class="row">
-                                                <div class="col-md-12" v-for="error in errors">
-                                                    <span style="color: red; font-weight: bold;" v-if="error.gender">{{error.gender}}</span>
+                                                <div class="col-md-12">
+                                                    <span style="color: red; font-weight: bold;"
+                                                          v-if="errorsreg.gender">{{errorsreg.gender[0]}}</span>
                                                 </div>
                                             </div>
                                             <div class="row">
@@ -236,21 +229,21 @@
                                     </div>
                                 </div>
                             </div>
+                            <div class="policy">
+                                <label class="policy_label">
+                                    <input @change="handleChange" id="regcheckbox" type="checkbox" name="policy"
+                                           required> – согласен с обработкой
+                                    персональных данных.
+                                    <a class="policy_txt" href="#">Политика в отношении обработки персональных данных в
+                                        ООО "CarBidding"</a>
+                                </label>
+                            </div>
+                            <div class="send">
+                                <button class="btn" type="submit" id="reg-but"
+                                        disabled>Отправить заявку
+                                </button>
+                            </div>
                         </form>
-                        <div class="policy">
-                            <label class="policy_label">
-                                <input @change="handleChange" id="regcheckbox" type="checkbox" name="policy"
-                                       required> – согласен с обработкой
-                                персональных данных.
-                                <a class="policy_txt" href="#">Политика в отношении обработки персональных данных в
-                                    ООО "CarBidding"</a>
-                            </label>
-                        </div>
-                        <div class="send">
-                            <button class="btn" id="reg-but" @click="onSubmit"
-                                    disabled>Отправить заявку
-                            </button>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -262,11 +255,11 @@
 <script>
     export default {
         name: "Register",
+        props: ['errorsreg'],
         data() {
             return {
                 csrf: document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
                 regcheck: false,
-                errors: [],
                 name: '',
                 sname: '',
                 email: '',
@@ -275,10 +268,11 @@
                 passwordconfirm: '',
                 date: '',
                 gender: '',
-                users: []
+                users: [],
+                validationErrors: ''
             }
         },
-        created() {
+        created: function () {
             this.fetchUsers();
         },
         methods: {
@@ -295,86 +289,6 @@
                 if (e.target.checked === true) {
                     document.getElementById('reg-but').removeAttribute('disabled')
                     document.getElementById('reg-but').style.cursor = 'pointer';
-                }
-            },
-            onSubmit() {
-                this.users = this.users.filter(o => o.email == this.email)
-                var newerrors = document.getElementsByClassName('reqreg');
-                for (let i = 0; i < newerrors.length; i++) {
-                    newerrors[i].closest('.inp_row').style.border = 'none';
-                }
-                this.errors = [];
-                this.fetchUsers();
-                var f = document.getElementsByClassName('genderreg');
-                for (let i = 0; i < f.length; i++) {
-                    if (f[i].checked) {
-                        this.gender = f[i].value
-                        // f[i].closest('.inp_row').style.border = 'none';
-                    }
-                }
-                // var errorinps = document.getElementsByClassName('reqreg');
-                // for (let i = 0; i < errorinps.length; i++) {
-                //     if (!errorinps[i].value) {
-                //         errorinps[i].closest('.inp_row').style.border = '2px solid red';
-                //     }
-                // }
-                if (this.name.length < 4 || this.name.length > 24) {
-                    this.errors.push({'name': 'Имя должен содержать от 4 до 16 символов.'})
-                    // document.getElementById('name').closest('.inp_row').style.border = '2px solid red'
-                }
-                if (!this.sname) {
-                    this.errors.push({'sname': 'Необходимо заполнить поле "Фамилия".'})
-                }
-                if (!this.email) {
-                    this.errors.push({'email': 'Необходимо заполнить поле "Email".'})
-                }
-                if ((this.users.length > 0)) {
-                    this.errors.push({'emailret': 'Такой E-mail уже зарегистрирован.'})
-                    // document.getElementById('email').closest('.inp_row').style.border = '2px solid red'
-                }
-
-                if (!this.phone) {
-                    this.errors.push({'phone': 'Необходимо заполнить поле "Телефон".'})
-                }
-                if (!this.password) {
-                    this.errors.push({'password': 'Необходимо заполнить поле "Пароль".'})
-                }
-                if (!this.passwordconfirm) {
-                    this.errors.push({'passwordconfirm': 'Необходимо заполнить поле "Ещё раз".'})
-                }
-                if (!this.date) {
-                    this.errors.push({'date': 'Необходимо заполнить поле "День рождения".'})
-                }
-                if (!this.gender) {
-                    this.errors.push({'gender': 'Необходимо заполнить поле "Пол".'})
-                    // var k = document.getElementsByClassName('genderreg');
-                    // for (let i = 0; i < k.length; i++) {
-                    //     k[i].closest('.inp_row').style.border = '2px solid red';
-                    // }
-                }
-                if (this.gender) {
-                    // var a = document.getElementsByClassName('genderreg');
-                    // for (let i = 0; i < a.length; i++) {
-                    //     a[i].closest('.inp_row').style.border = 'none';
-                    // }
-                }
-                if (this.password !== this.passwordconfirm) {
-                    this.errors.push({'passno': 'Пароли не совпадают.'})
-                }
-                if(this.password == this.passwordconfirm && this.gender && this.passwordconfirm && this.date && this.password && this.users.length == 0 && this.name.length > 4 && this.name.length < 24){
-                    this.axios.post('register', {
-                        name: this.name,
-                        email: this.email,
-                        phone: this.phone,
-                        password: this.password,
-                        password_confirmation: this.passwordconfirm,
-                        avatar: document.getElementById('avatar').value,
-                        sname: this.sname,
-                        datebirth: this.date,
-                        additionally: document.getElementById('textarea').value,
-                        gender: this.gender
-                    })
-                    window.location.href = '/login'
                 }
             },
         }

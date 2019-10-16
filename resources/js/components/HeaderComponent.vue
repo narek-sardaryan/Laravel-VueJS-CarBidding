@@ -1,19 +1,20 @@
 <template>
     <div>
         <div class="container-fluid headerback" v-if="auctions.length > 0">
-            <div class="container-fluid carnavbar fixed-top">
+            <div class="container-fluid  fixed-top" id="carnavbar">
                 <div class="container">
                     <div class="row">
                         <div class="col-md-2">
-                            <router-link to="/#"><img src="/img/design_img/header_logo.png"  id="headerlogo"
+                            <router-link to="/#"><img src="/img/design_img/header_logo.png" id="headerlogo"
                                                       alt="logo"></router-link>
                         </div>
                         <div class="col-md-9 offset-1">
                             <div class="col-md-12 menunavbar">
                                 <ul>
                                     <li>
-                                        <a>Меню <p style="display:inline-block;transition: 0.6s;color:#2099FE;">⇩</p>
-                                        </a>
+                                        <a>Меню</a>
+                                        <p class="arrow_nav">🡄</p>
+
                                         <ol>
                                             <li>
                                                 <router-link to="/">Главная</router-link>
@@ -33,10 +34,10 @@
                                         </ol>
                                     </li>
                                     <li>
-                                        <a>Все Аукционы <p style="display:inline-block;transition: 0.6s;color:#2099FE;">
-                                            ⇩</p></a>
+                                        <a>Все Аукционы</a>
+                                        <p class="arrow_nav">🡄</p>
                                         <ol>
-                                            <li @click="reloadForAuctions" v-for="auction in auctions">
+                                            <li v-for="auction in auctions">
                                                 <router-link :to="'/auctions/'+auction.id">{{auction.name}}
                                                 </router-link>
                                             </li>
@@ -49,8 +50,8 @@
                                         <router-link to="/register">Регистрация</router-link>
                                     </li>
                                     <li v-if="user.length != 0">
-                                        <a>{{user.name}} <p
-                                            style="display:inline-block;transition: 0.6s;color:#2099FE;">⇩</p></a>
+                                        <a>{{user.name}}</a>
+                                        <p class="arrow_nav">🡄</p>
                                         <ol>
                                             <li>
                                                 <router-link to="/profile">Профиль</router-link>
@@ -106,6 +107,12 @@
             this.fetchAuctions();
             this.fetchUser();
         },
+        updated() {
+            if (window.scrollY > 0) {
+                document.getElementById('carnavbar').style.background = '#fffffff5'
+            }
+            ;
+        },
         methods: {
             fetchAuctions() {
                 axios.get('/fetchauctions').then(response => {
@@ -115,12 +122,11 @@
             fetchUser() {
                 axios.get('/fetchUser').then(response => {
                     this.user = response.data;
-                    console.log(this.user)
                 })
             },
-            reloadForAuctions() {
-                window.location.reload();
-            },
+            //reloadForAuctions() {
+            // window.location.reload();
+            // },
         }
     }
 </script>

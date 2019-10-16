@@ -10,8 +10,18 @@
                             <input type="hidden" name="_token" :value="csrf">
 			  				<h6 class="login_title">Войти</h6>
 					  		<label class="login_label">Login</label>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <span style="color: red; font-weight: bold;" v-if="errors.email">{{errors.email[0]}}</span>
+                                </div>
+                            </div>
 					  		<input type="email" class="login_inputs" name="email">
 					  		<label class="login_label">Password</label>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <span style="color: red; font-weight: bold;" v-if="errors.password">{{errors.password[0]}}</span>
+                                </div>
+                            </div>
 					  		<input type="password" class="login_inputs" name="password">
                             <div class="row">
                                 <div class="col rem_me">
@@ -46,6 +56,7 @@
 <script>
   export default {
     name: "Login",
+      props:['errors'],
       data() {
           return {
               csrf: document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
