@@ -10,6 +10,7 @@
             myProps() {
                 if (this.$route.name === 'log') { return { errors: this.errors }}
                 if (this.$route.name === 'reg') { return { errorsreg: this.errorsreg }}
+
             },
         }
     }

@@ -3757,7 +3757,8 @@ __webpack_require__.r(__webpack_exports__);
       bodiesId: '',
       currentPage: 0,
       offset: 1,
-      allCarsLength: null
+      allCarsLength: null,
+      forbody: 0
     };
   },
   created: function created() {
@@ -3771,11 +3772,6 @@ __webpack_require__.r(__webpack_exports__);
   },
   component: {
     Cube: _Cube__WEBPACK_IMPORTED_MODULE_0__["default"]
-  },
-  computed: {
-    defalutbody: function defalutbody() {
-      console.log('555');
-    }
   },
   methods: {
     beforeEnter: function beforeEnter(el) {
@@ -4436,6 +4432,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
 //
 //
 //
@@ -48064,29 +48061,34 @@ var render = function() {
                 ]),
                 _vm._v(" "),
                 _c("div", { staticClass: "policy" }, [
-                  _c("label", { staticClass: "policy_label" }, [
-                    _c("input", {
-                      attrs: {
-                        id: "regcheckbox",
-                        type: "checkbox",
-                        name: "policy",
-                        required: ""
-                      },
-                      on: { change: _vm.handleChange }
-                    }),
-                    _vm._v(
-                      " – согласен с обработкой\n                                персональных данных.\n                                "
-                    ),
-                    _c(
-                      "a",
-                      { staticClass: "policy_txt", attrs: { href: "#" } },
-                      [
-                        _vm._v(
-                          'Политика в отношении обработки персональных данных в\n                                    ООО "CarBidding"'
-                        )
-                      ]
-                    )
-                  ])
+                  _c(
+                    "label",
+                    { staticClass: "policy_label" },
+                    [
+                      _c("input", {
+                        attrs: {
+                          id: "regcheckbox",
+                          type: "checkbox",
+                          name: "policy",
+                          required: ""
+                        },
+                        on: { change: _vm.handleChange }
+                      }),
+                      _vm._v(
+                        " – согласен с обработкой\n                                персональных данных.\n                                "
+                      ),
+                      _c(
+                        "router-link",
+                        { staticClass: "policy_txt", attrs: { to: "/rules" } },
+                        [
+                          _vm._v(
+                            'Политика в отношении обработки персональных данных в\n                                    ООО "CarBidding"'
+                          )
+                        ]
+                      )
+                    ],
+                    1
+                  )
                 ]),
                 _vm._v(" "),
                 _vm._m(12)
@@ -48311,7 +48313,13 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    [_c("header-component"), _vm._v(" "), _c("footer-component")],
+    [
+      _c("header-component"),
+      _vm._v(" "),
+      _c("h1", [_vm._v("rulessss")]),
+      _vm._v(" "),
+      _c("footer-component")
+    ],
     1
   )
 }
