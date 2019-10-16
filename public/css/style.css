@@ -1288,6 +1288,7 @@ span i {
     transition: 0.5s;
     padding: 15px 85px;
     cursor: pointer;
+    font-size: 17px;
 }
 .profile_menu_ul .profile_menu_li:hover {
     background: #fff;
@@ -1301,17 +1302,38 @@ span i {
 
 /* personal data styles */
 .personal_data_title {
-    margin-top: 20px;
     font-size: 22px;
     color: #0f92ff;
 }
-th {
-    text-align: left;
-}
+
 .showEdit {
     display: none;
 }
 .table-hover tbody tr:hover {
     background: rgba(0, 0, 0, 0.13);
     color: #000;
+}
+
+.tab {
+    overflow: hidden;
+    border: 1px solid #ccc;
+    background-color: #f1f1f1;
+}
+
+.tabcontent {
+    display: none;
+    margin-top: 20px;
+}
+.tablinks {
+    border: none;
+    width: 100%;
+    outline: none;
+    cursor: pointer;
+    background-color:transparent;
+    text-align: left;
+    color: white;
+}
+
+.activetabis{
+    display: block;
 }

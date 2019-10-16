@@ -4337,6 +4337,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Profile",
   data: function data() {
@@ -4356,6 +4360,26 @@ __webpack_require__.r(__webpack_exports__);
         _this.user = response.data;
         console.log(_this.user);
       });
+    },
+    openCity: function openCity(tabname) {
+      // Declare all variables
+      var i, tabcontent, tablinks; // Get all elements with class="tabcontent" and hide them
+
+      tabcontent = document.getElementsByClassName("tabcontent");
+
+      for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+      } // Get all elements with class="tablinks" and remove the class "active"
+
+
+      tablinks = document.getElementsByClassName("tablinks");
+
+      for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].className = tablinks[i].className.replace(" active", "");
+      } // Show the current tab, and add an "active" class to the button that opened the tab
+
+
+      document.getElementById(tabname).style.display = "block";
     }
   }
 });
@@ -47864,7 +47888,35 @@ var render = function() {
                   ])
                 ]),
                 _vm._v(" "),
-                _vm._m(1)
+                _c("div", { staticClass: "col-md-12 profile_menu_nav" }, [
+                  _c("ul", { staticClass: "profile_menu_ul" }, [
+                    _c(
+                      "button",
+                      {
+                        staticClass: "tablinks",
+                        on: {
+                          click: function($event) {
+                            return _vm.openCity("profiletab")
+                          }
+                        }
+                      },
+                      [_vm._m(1)]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "button",
+                      {
+                        staticClass: "tablinks",
+                        on: {
+                          click: function($event) {
+                            return _vm.openCity("balancetab")
+                          }
+                        }
+                      },
+                      [_vm._m(2)]
+                    )
+                  ])
+                ])
               ])
             ]),
             _vm._v(" "),
@@ -47882,7 +47934,7 @@ var render = function() {
                       _vm._v(_vm._s(_vm.user.sname))
                     ]),
                     _vm._v(" "),
-                    _vm._m(2)
+                    _vm._m(3)
                   ]),
                   _vm._v(" "),
                   _c("tr", [
@@ -47892,7 +47944,7 @@ var render = function() {
                       _vm._v(_vm._s(_vm.user.name))
                     ]),
                     _vm._v(" "),
-                    _vm._m(3)
+                    _vm._m(4)
                   ]),
                   _vm._v(" "),
                   _c("tr", [
@@ -47902,7 +47954,7 @@ var render = function() {
                       _vm._v(_vm._s(_vm.user.sname))
                     ]),
                     _vm._v(" "),
-                    _vm._m(4)
+                    _vm._m(5)
                   ]),
                   _vm._v(" "),
                   _c("tr", [
@@ -47912,7 +47964,7 @@ var render = function() {
                       _vm._v(_vm._s(_vm.user.date_of_birth))
                     ]),
                     _vm._v(" "),
-                    _vm._m(5)
+                    _vm._m(6)
                   ]),
                   _vm._v(" "),
                   _c("tr", [
@@ -47922,7 +47974,7 @@ var render = function() {
                       _vm._v(_vm._s(_vm.user.sname))
                     ]),
                     _vm._v(" "),
-                    _vm._m(6)
+                    _vm._m(7)
                   ]),
                   _vm._v(" "),
                   _c("tr", [
@@ -47932,7 +47984,7 @@ var render = function() {
                       _vm._v(_vm._s(_vm.user.sname))
                     ]),
                     _vm._v(" "),
-                    _vm._m(7)
+                    _vm._m(8)
                   ]),
                   _vm._v(" "),
                   _c("tr", [
@@ -47942,256 +47994,287 @@ var render = function() {
                       _vm._v(_vm._s(_vm.user.sname))
                     ]),
                     _vm._v(" "),
-                    _vm._m(8)
-                  ])
-                ])
-              ])
-            ])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "row contact_info_row" }, [
-            _c("div", { staticClass: "col-md-6 profile_data" }, [
-              _c("h3", { staticClass: "personal_data_title" }, [
-                _vm._v("Паспортные данные")
-              ]),
-              _vm._v(" "),
-              _c("table", { staticClass: "table table-striped table-hover" }, [
-                _c("tbody", [
-                  _c("tr", [
-                    _c("th", [_vm._v("Паспорт *")]),
-                    _vm._v(" "),
-                    _c("td", { staticClass: "showView" }, [
-                      _vm._v(_vm._s(_vm.user.sname))
-                    ]),
-                    _vm._v(" "),
                     _vm._m(9)
-                  ]),
-                  _vm._v(" "),
-                  _c("tr", [
-                    _c("th", [_vm._v("Кем выдан *")]),
-                    _vm._v(" "),
-                    _c("td", { staticClass: "showView" }, [
-                      _vm._v(_vm._s(_vm.user.name))
-                    ]),
-                    _vm._v(" "),
-                    _vm._m(10)
-                  ]),
-                  _vm._v(" "),
-                  _c("tr", [
-                    _c("th", [_vm._v("Дата выдачи *")]),
-                    _vm._v(" "),
-                    _c("td", { staticClass: "showView" }, [
-                      _vm._v(_vm._s(_vm.user.sname))
-                    ]),
-                    _vm._v(" "),
-                    _vm._m(11)
-                  ]),
-                  _vm._v(" "),
-                  _c("tr", [
-                    _c("th", [_vm._v("Код подразделения *")]),
-                    _vm._v(" "),
-                    _c("td", { staticClass: "showView" }, [
-                      _vm._v(_vm._s(_vm.user.sname))
-                    ]),
-                    _vm._v(" "),
-                    _vm._m(12)
-                  ]),
-                  _vm._v(" "),
-                  _c("tr", [
-                    _c("th", [_vm._v("Место регистрации *")]),
-                    _vm._v(" "),
-                    _c("td", { staticClass: "showView" }, [
-                      _vm._v(_vm._s(_vm.user.sname))
-                    ]),
-                    _vm._v(" "),
-                    _vm._m(13)
-                  ])
-                ])
-              ])
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "col-md-6 profile_data" }, [
-              _c("h3", { staticClass: "personal_data_title" }, [
-                _vm._v("Контактная информация")
-              ]),
-              _vm._v(" "),
-              _c("table", { staticClass: "table table-striped table-hover" }, [
-                _c("tbody", [
-                  _c("tr", [
-                    _c("th", [_vm._v("Телефон  *")]),
-                    _vm._v(" "),
-                    _c("td", { staticClass: "showView" }, [
-                      _vm._v(_vm._s(_vm.user.phone))
-                    ]),
-                    _vm._v(" "),
-                    _vm._m(14)
-                  ]),
-                  _vm._v(" "),
-                  _c("tr", [
-                    _c("th", [_vm._v("E-mail  *")]),
-                    _vm._v(" "),
-                    _c("td", { staticClass: "showView" }, [
-                      _vm._v(_vm._s(_vm.user.email))
-                    ]),
-                    _vm._v(" "),
-                    _vm._m(15)
-                  ]),
-                  _vm._v(" "),
-                  _c("tr", [
-                    _c("th", [_vm._v("Почтовый индекс *")]),
-                    _vm._v(" "),
-                    _c("td", { staticClass: "showView" }, [
-                      _vm._v(_vm._s(_vm.user.postcode))
-                    ]),
-                    _vm._v(" "),
-                    _vm._m(16)
-                  ]),
-                  _vm._v(" "),
-                  _c("tr", [
-                    _c("th", [_vm._v("Почтовый адрес *")]),
-                    _vm._v(" "),
-                    _c("td", { staticClass: "showView" }, [
-                      _vm._v(_vm._s(_vm.user.date_of_birth))
-                    ]),
-                    _vm._v(" "),
-                    _vm._m(17)
-                  ]),
-                  _vm._v(" "),
-                  _c("tr", [
-                    _c("th", [_vm._v("Дополнительно *")]),
-                    _vm._v(" "),
-                    _c("td", { staticClass: "showView" }, [
-                      _vm._v(_vm._s(_vm.user.sname))
-                    ]),
-                    _vm._v(" "),
-                    _vm._m(18)
                   ])
                 ])
               ])
             ])
           ]),
           _vm._v(" "),
-          _c("div", { staticClass: "row count_row" }, [
-            _c("div", { staticClass: "col-md-6 profile_data" }, [
-              _c("h3", { staticClass: "personal_data_title" }, [
-                _vm._v("Лицевой счет")
-              ]),
-              _vm._v(" "),
-              _c("table", { staticClass: "table table-striped table-hover" }, [
-                _c("tbody", [
-                  _c("tr", [
-                    _c("th", [_vm._v("Паспорт *")]),
-                    _vm._v(" "),
-                    _c("td", { staticClass: "showView" }, [
-                      _vm._v(_vm._s(_vm.user.sname))
-                    ]),
-                    _vm._v(" "),
-                    _vm._m(19)
+          _c(
+            "div",
+            {
+              staticClass: "tabcontent activetabis",
+              attrs: { id: "profiletab" }
+            },
+            [
+              _c("div", { staticClass: "row contact_info_row" }, [
+                _c("div", { staticClass: "col-md-6 profile_data" }, [
+                  _c("h3", { staticClass: "personal_data_title" }, [
+                    _vm._v("Паспортные данные")
                   ]),
                   _vm._v(" "),
-                  _c("tr", [
-                    _c("th", [_vm._v("Кем выдан *")]),
-                    _vm._v(" "),
-                    _c("td", { staticClass: "showView" }, [
-                      _vm._v(_vm._s(_vm.user.name))
-                    ]),
-                    _vm._v(" "),
-                    _vm._m(20)
+                  _c(
+                    "table",
+                    { staticClass: "table table-striped table-hover" },
+                    [
+                      _c("tbody", [
+                        _c("tr", [
+                          _c("th", [_vm._v("Паспорт *")]),
+                          _vm._v(" "),
+                          _c("td", { staticClass: "showView" }, [
+                            _vm._v(_vm._s(_vm.user.sname))
+                          ]),
+                          _vm._v(" "),
+                          _vm._m(10)
+                        ]),
+                        _vm._v(" "),
+                        _c("tr", [
+                          _c("th", [_vm._v("Кем выдан *")]),
+                          _vm._v(" "),
+                          _c("td", { staticClass: "showView" }, [
+                            _vm._v(_vm._s(_vm.user.name))
+                          ]),
+                          _vm._v(" "),
+                          _vm._m(11)
+                        ]),
+                        _vm._v(" "),
+                        _c("tr", [
+                          _c("th", [_vm._v("Дата выдачи *")]),
+                          _vm._v(" "),
+                          _c("td", { staticClass: "showView" }, [
+                            _vm._v(_vm._s(_vm.user.sname))
+                          ]),
+                          _vm._v(" "),
+                          _vm._m(12)
+                        ]),
+                        _vm._v(" "),
+                        _c("tr", [
+                          _c("th", [_vm._v("Код подразделения *")]),
+                          _vm._v(" "),
+                          _c("td", { staticClass: "showView" }, [
+                            _vm._v(_vm._s(_vm.user.sname))
+                          ]),
+                          _vm._v(" "),
+                          _vm._m(13)
+                        ]),
+                        _vm._v(" "),
+                        _c("tr", [
+                          _c("th", [_vm._v("Место регистрации *")]),
+                          _vm._v(" "),
+                          _c("td", { staticClass: "showView" }, [
+                            _vm._v(_vm._s(_vm.user.sname))
+                          ]),
+                          _vm._v(" "),
+                          _vm._m(14)
+                        ])
+                      ])
+                    ]
+                  )
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "col-md-6 profile_data" }, [
+                  _c("h3", { staticClass: "personal_data_title" }, [
+                    _vm._v("Контактная информация")
                   ]),
                   _vm._v(" "),
-                  _c("tr", [
-                    _c("th", [_vm._v("Дата выдачи *")]),
-                    _vm._v(" "),
-                    _c("td", { staticClass: "showView" }, [
-                      _vm._v(_vm._s(_vm.user.sname))
-                    ]),
-                    _vm._v(" "),
-                    _vm._m(21)
-                  ]),
-                  _vm._v(" "),
-                  _c("tr", [
-                    _c("th", [_vm._v("Код подразделения *")]),
-                    _vm._v(" "),
-                    _c("td", { staticClass: "showView" }, [
-                      _vm._v(_vm._s(_vm.user.sname))
-                    ]),
-                    _vm._v(" "),
-                    _vm._m(22)
-                  ]),
-                  _vm._v(" "),
-                  _c("tr", [
-                    _c("th", [_vm._v("Место регистрации *")]),
-                    _vm._v(" "),
-                    _c("td", { staticClass: "showView" }, [
-                      _vm._v(_vm._s(_vm.user.sname))
-                    ]),
-                    _vm._v(" "),
-                    _vm._m(23)
-                  ])
+                  _c(
+                    "table",
+                    { staticClass: "table table-striped table-hover" },
+                    [
+                      _c("tbody", [
+                        _c("tr", [
+                          _c("th", [_vm._v("Телефон  *")]),
+                          _vm._v(" "),
+                          _c("td", { staticClass: "showView" }, [
+                            _vm._v(_vm._s(_vm.user.phone))
+                          ]),
+                          _vm._v(" "),
+                          _vm._m(15)
+                        ]),
+                        _vm._v(" "),
+                        _c("tr", [
+                          _c("th", [_vm._v("E-mail  *")]),
+                          _vm._v(" "),
+                          _c("td", { staticClass: "showView" }, [
+                            _vm._v(_vm._s(_vm.user.email))
+                          ]),
+                          _vm._v(" "),
+                          _vm._m(16)
+                        ]),
+                        _vm._v(" "),
+                        _c("tr", [
+                          _c("th", [_vm._v("Почтовый индекс *")]),
+                          _vm._v(" "),
+                          _c("td", { staticClass: "showView" }, [
+                            _vm._v(_vm._s(_vm.user.postcode))
+                          ]),
+                          _vm._v(" "),
+                          _vm._m(17)
+                        ]),
+                        _vm._v(" "),
+                        _c("tr", [
+                          _c("th", [_vm._v("Почтовый адрес *")]),
+                          _vm._v(" "),
+                          _c("td", { staticClass: "showView" }, [
+                            _vm._v(_vm._s(_vm.user.date_of_birth))
+                          ]),
+                          _vm._v(" "),
+                          _vm._m(18)
+                        ]),
+                        _vm._v(" "),
+                        _c("tr", [
+                          _c("th", [_vm._v("Дополнительно *")]),
+                          _vm._v(" "),
+                          _c("td", { staticClass: "showView" }, [
+                            _vm._v(_vm._s(_vm.user.sname))
+                          ]),
+                          _vm._v(" "),
+                          _vm._m(19)
+                        ])
+                      ])
+                    ]
+                  )
                 ])
               ])
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "col-md-6 profile_data" }, [
-              _c("h3", { staticClass: "personal_data_title" }, [
-                _vm._v("Реквизиты для пополнения лицевого счета")
-              ]),
-              _vm._v(" "),
-              _c("table", { staticClass: "table table-striped table-hover" }, [
-                _c("tbody", [
-                  _c("tr", [
-                    _c("th", [_vm._v("Телефон  *")]),
-                    _vm._v(" "),
-                    _c("td", { staticClass: "showView" }, [
-                      _vm._v(_vm._s(_vm.user.phone))
-                    ]),
-                    _vm._v(" "),
-                    _vm._m(24)
+            ]
+          ),
+          _vm._v(" "),
+          _c(
+            "div",
+            { staticClass: "tabcontent", attrs: { id: "balancetab" } },
+            [
+              _c("div", { staticClass: "row count_row" }, [
+                _c("div", { staticClass: "col-md-6 profile_data" }, [
+                  _c("h3", { staticClass: "personal_data_title" }, [
+                    _vm._v("Лицевой счет")
                   ]),
                   _vm._v(" "),
-                  _c("tr", [
-                    _c("th", [_vm._v("E-mail  *")]),
-                    _vm._v(" "),
-                    _c("td", { staticClass: "showView" }, [
-                      _vm._v(_vm._s(_vm.user.email))
-                    ]),
-                    _vm._v(" "),
-                    _vm._m(25)
+                  _c(
+                    "table",
+                    { staticClass: "table table-striped table-hover" },
+                    [
+                      _c("tbody", [
+                        _c("tr", [
+                          _c("th", [_vm._v("Паспорт *")]),
+                          _vm._v(" "),
+                          _c("td", { staticClass: "showView" }, [
+                            _vm._v(_vm._s(_vm.user.sname))
+                          ]),
+                          _vm._v(" "),
+                          _vm._m(20)
+                        ]),
+                        _vm._v(" "),
+                        _c("tr", [
+                          _c("th", [_vm._v("Кем выдан *")]),
+                          _vm._v(" "),
+                          _c("td", { staticClass: "showView" }, [
+                            _vm._v(_vm._s(_vm.user.name))
+                          ]),
+                          _vm._v(" "),
+                          _vm._m(21)
+                        ]),
+                        _vm._v(" "),
+                        _c("tr", [
+                          _c("th", [_vm._v("Дата выдачи *")]),
+                          _vm._v(" "),
+                          _c("td", { staticClass: "showView" }, [
+                            _vm._v(_vm._s(_vm.user.sname))
+                          ]),
+                          _vm._v(" "),
+                          _vm._m(22)
+                        ]),
+                        _vm._v(" "),
+                        _c("tr", [
+                          _c("th", [_vm._v("Код подразделения *")]),
+                          _vm._v(" "),
+                          _c("td", { staticClass: "showView" }, [
+                            _vm._v(_vm._s(_vm.user.sname))
+                          ]),
+                          _vm._v(" "),
+                          _vm._m(23)
+                        ]),
+                        _vm._v(" "),
+                        _c("tr", [
+                          _c("th", [_vm._v("Место регистрации *")]),
+                          _vm._v(" "),
+                          _c("td", { staticClass: "showView" }, [
+                            _vm._v(_vm._s(_vm.user.sname))
+                          ]),
+                          _vm._v(" "),
+                          _vm._m(24)
+                        ])
+                      ])
+                    ]
+                  )
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "col-md-6 profile_data" }, [
+                  _c("h3", { staticClass: "personal_data_title" }, [
+                    _vm._v("Реквизиты для пополнения лицевого счета")
                   ]),
                   _vm._v(" "),
-                  _c("tr", [
-                    _c("th", [_vm._v("Почтовый индекс *")]),
-                    _vm._v(" "),
-                    _c("td", { staticClass: "showView" }, [
-                      _vm._v(_vm._s(_vm.user.postcode))
-                    ]),
-                    _vm._v(" "),
-                    _vm._m(26)
-                  ]),
-                  _vm._v(" "),
-                  _c("tr", [
-                    _c("th", [_vm._v("Почтовый адрес *")]),
-                    _vm._v(" "),
-                    _c("td", { staticClass: "showView" }, [
-                      _vm._v(_vm._s(_vm.user.date_of_birth))
-                    ]),
-                    _vm._v(" "),
-                    _vm._m(27)
-                  ]),
-                  _vm._v(" "),
-                  _c("tr", [
-                    _c("th", [_vm._v("Дополнительно *")]),
-                    _vm._v(" "),
-                    _c("td", { staticClass: "showView" }, [
-                      _vm._v(_vm._s(_vm.user.sname))
-                    ]),
-                    _vm._v(" "),
-                    _vm._m(28)
-                  ])
+                  _c(
+                    "table",
+                    { staticClass: "table table-striped table-hover" },
+                    [
+                      _c("tbody", [
+                        _c("tr", [
+                          _c("th", [_vm._v("Телефон  *")]),
+                          _vm._v(" "),
+                          _c("td", { staticClass: "showView" }, [
+                            _vm._v(_vm._s(_vm.user.phone))
+                          ]),
+                          _vm._v(" "),
+                          _vm._m(25)
+                        ]),
+                        _vm._v(" "),
+                        _c("tr", [
+                          _c("th", [_vm._v("E-mail  *")]),
+                          _vm._v(" "),
+                          _c("td", { staticClass: "showView" }, [
+                            _vm._v(_vm._s(_vm.user.email))
+                          ]),
+                          _vm._v(" "),
+                          _vm._m(26)
+                        ]),
+                        _vm._v(" "),
+                        _c("tr", [
+                          _c("th", [_vm._v("Почтовый индекс *")]),
+                          _vm._v(" "),
+                          _c("td", { staticClass: "showView" }, [
+                            _vm._v(_vm._s(_vm.user.postcode))
+                          ]),
+                          _vm._v(" "),
+                          _vm._m(27)
+                        ]),
+                        _vm._v(" "),
+                        _c("tr", [
+                          _c("th", [_vm._v("Почтовый адрес *")]),
+                          _vm._v(" "),
+                          _c("td", { staticClass: "showView" }, [
+                            _vm._v(_vm._s(_vm.user.date_of_birth))
+                          ]),
+                          _vm._v(" "),
+                          _vm._m(28)
+                        ]),
+                        _vm._v(" "),
+                        _c("tr", [
+                          _c("th", [_vm._v("Дополнительно *")]),
+                          _vm._v(" "),
+                          _c("td", { staticClass: "showView" }, [
+                            _vm._v(_vm._s(_vm.user.sname))
+                          ]),
+                          _vm._v(" "),
+                          _vm._m(29)
+                        ])
+                      ])
+                    ]
+                  )
                 ])
               ])
-            ])
-          ])
+            ]
+          )
         ])
       ]),
       _vm._v(" "),
@@ -48216,18 +48299,18 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-md-12 profile_menu_nav" }, [
-      _c("ul", { staticClass: "profile_menu_ul" }, [
-        _c("li", { staticClass: "profile_menu_li" }, [
-          _c("i", { staticClass: "fas fa-user" }),
-          _vm._v("Профиль")
-        ]),
-        _vm._v(" "),
-        _c("li", { staticClass: "profile_menu_li" }, [
-          _c("i", { staticClass: "fas fa-ruble-sign" }),
-          _vm._v("Лицевой счёт")
-        ])
-      ])
+    return _c("li", { staticClass: "profile_menu_li" }, [
+      _c("i", { staticClass: "fas fa-user" }),
+      _vm._v("Профиль")
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("li", { staticClass: "profile_menu_li" }, [
+      _c("i", { staticClass: "fas fa-ruble-sign" }),
+      _vm._v("Лицевой счёт")
     ])
   },
   function() {
@@ -68251,8 +68334,8 @@ var axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\xampp\htdocs\Laravel-VueJS-CarBidding\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\xampp\htdocs\Laravel-VueJS-CarBidding\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\xampp\htdocs\CarBidding\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\xampp\htdocs\CarBidding\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

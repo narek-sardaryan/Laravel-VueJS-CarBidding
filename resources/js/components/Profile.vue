@@ -16,8 +16,8 @@
                         </div>
                         <div class="col-md-12 profile_menu_nav">
                             <ul class="profile_menu_ul">
-                                <li class="profile_menu_li"><i class="fas fa-user"></i>Профиль</li>
-                                <li class="profile_menu_li"><i class="fas fa-ruble-sign"></i>Лицевой счёт</li>
+                                    <button class="tablinks" @click="openCity('profiletab')"><li class="profile_menu_li"><i class="fas fa-user"></i>Профиль</li></button>
+                                    <button class="tablinks" @click="openCity('balancetab')"><li class="profile_menu_li"><i class="fas fa-ruble-sign"></i>Лицевой счёт</li></button>
                             </ul>
                         </div>
                     </div>
@@ -79,178 +79,182 @@
                     </table>
                 </div>
             </div>
-            <div class="row contact_info_row">
-                <div class="col-md-6 profile_data">
-                    <h3 class="personal_data_title">Паспортные данные</h3>
-                    <table class="table table-striped table-hover">
-                        <tbody>
-                           <tr>
-                                <th>Паспорт *</th>
-                                <td class="showView">{{user.sname}}</td>
-                                <td class="showEdit">
-                                    <input class="form-control  required" type="text" name="passportNumber" value="Sardaryan">
-                                </td>
-                            </tr>
-                            <tr>
-                                <th>Кем выдан *</th>
-                                <td class="showView">{{user.name}}</td>
-                                <td class="showEdit">
-                                    <input class="form-control  required" type="text" name="givenFrom" value="Sardaryan">
-                                </td>
-                            </tr>
-                            <tr>
-                                <th>Дата выдачи *</th>
-                                <td class="showView">{{user.sname}}</td>
-                                <td class="showEdit">
-                                    <input class="form-control  required" type="text" name="givenDate" value="Sardaryan">
-                                </td>
-                            </tr>
-                            <tr>
-                                <th>Код подразделения *</th>
-                                <td class="showView">{{user.sname}}</td>
-                                <td class="showEdit">
-                                    <input class="form-control  required" type="text" name="placeCode" value="Sardaryan">
-                                </td>
-                            </tr>
-                            <tr>
-                                <th>Место регистрации *</th>
-                                <td class="showView">{{user.sname}}</td>
-                                <td class="showEdit">
-                                    <input class="form-control  required" type="text" name="RegistrName" value="Sardaryan">
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
+                <div id="profiletab" class="tabcontent activetabis">
+                    <div class="row contact_info_row">
+                        <div class="col-md-6 profile_data">
+                            <h3 class="personal_data_title">Паспортные данные</h3>
+                            <table class="table table-striped table-hover">
+                                <tbody>
+                                <tr>
+                                    <th>Паспорт *</th>
+                                    <td class="showView">{{user.sname}}</td>
+                                    <td class="showEdit">
+                                        <input class="form-control  required" type="text" name="passportNumber" value="Sardaryan">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>Кем выдан *</th>
+                                    <td class="showView">{{user.name}}</td>
+                                    <td class="showEdit">
+                                        <input class="form-control  required" type="text" name="givenFrom" value="Sardaryan">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>Дата выдачи *</th>
+                                    <td class="showView">{{user.sname}}</td>
+                                    <td class="showEdit">
+                                        <input class="form-control  required" type="text" name="givenDate" value="Sardaryan">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>Код подразделения *</th>
+                                    <td class="showView">{{user.sname}}</td>
+                                    <td class="showEdit">
+                                        <input class="form-control  required" type="text" name="placeCode" value="Sardaryan">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>Место регистрации *</th>
+                                    <td class="showView">{{user.sname}}</td>
+                                    <td class="showEdit">
+                                        <input class="form-control  required" type="text" name="RegistrName" value="Sardaryan">
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="col-md-6 profile_data">
+                            <h3 class="personal_data_title">Контактная информация</h3>
+                            <table class="table table-striped table-hover">
+                                <tbody>
+                                <tr>
+                                    <th>Телефон  *</th>
+                                    <td class="showView">{{user.phone}}</td>
+                                    <td class="showEdit">
+                                        <input class="form-control  required" type="phone" name="phone" value="Sardaryan">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>E-mail  *</th>
+                                    <td class="showView">{{user.email}}</td>
+                                    <td class="showEdit">
+                                        <input class="form-control  required" type="email" name="email" value="Sardaryan">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>Почтовый индекс *</th>
+                                    <td class="showView">{{user.postcode}}</td>
+                                    <td class="showEdit">
+                                        <input class="form-control  required" type="text" name="postIndex" value="Sardaryan">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>Почтовый адрес *</th>
+                                    <td class="showView">{{user.date_of_birth}}</td>
+                                    <td class="showEdit">
+                                        <input class="form-control required" type="text" name="postCode">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>Дополнительно *</th>
+                                    <td class="showView">{{user.sname}}</td>
+                                    <td class="showEdit">
+                                        <input class="form-control required" type="text" name="additional" value="Sardaryan">
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
                 </div>
-                <div class="col-md-6 profile_data">
-                    <h3 class="personal_data_title">Контактная информация</h3>
-                    <table class="table table-striped table-hover">
-                        <tbody>
-                           <tr>
-                                <th>Телефон  *</th>
-                                <td class="showView">{{user.phone}}</td>
-                                <td class="showEdit">
-                                    <input class="form-control  required" type="phone" name="phone" value="Sardaryan">
-                                </td>
-                            </tr>
-                            <tr>
-                                <th>E-mail  *</th>
-                                <td class="showView">{{user.email}}</td>
-                                <td class="showEdit">
-                                    <input class="form-control  required" type="email" name="email" value="Sardaryan">
-                                </td>
-                            </tr>
-                            <tr>
-                                <th>Почтовый индекс *</th>
-                                <td class="showView">{{user.postcode}}</td>
-                                <td class="showEdit">
-                                    <input class="form-control  required" type="text" name="postIndex" value="Sardaryan">
-                                </td>
-                            </tr>
-                            <tr>
-                                <th>Почтовый адрес *</th>
-                                <td class="showView">{{user.date_of_birth}}</td>
-                                <td class="showEdit">
-                                    <input class="form-control required" type="text" name="postCode">
-                                </td>
-                            </tr>
-                            <tr>
-                                <th>Дополнительно *</th>
-                                <td class="showView">{{user.sname}}</td>
-                                <td class="showEdit">
-                                    <input class="form-control required" type="text" name="additional" value="Sardaryan">
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div> 
-            </div>
-            <div class="row count_row">
-                <div class="col-md-6 profile_data">
-                    <h3 class="personal_data_title">Лицевой счет</h3>
-                    <table class="table table-striped table-hover">
-                        <tbody>
-                           <tr>
-                                <th>Паспорт *</th>
-                                <td class="showView">{{user.sname}}</td>
-                                <td class="showEdit">
-                                    <input class="form-control  required" type="text" name="passportNumber" value="Sardaryan">
-                                </td>
-                            </tr>
-                            <tr>
-                                <th>Кем выдан *</th>
-                                <td class="showView">{{user.name}}</td>
-                                <td class="showEdit">
-                                    <input class="form-control  required" type="text" name="givenFrom" value="Sardaryan">
-                                </td>
-                            </tr>
-                            <tr>
-                                <th>Дата выдачи *</th>
-                                <td class="showView">{{user.sname}}</td>
-                                <td class="showEdit">
-                                    <input class="form-control  required" type="text" name="givenDate" value="Sardaryan">
-                                </td>
-                            </tr>
-                            <tr>
-                                <th>Код подразделения *</th>
-                                <td class="showView">{{user.sname}}</td>
-                                <td class="showEdit">
-                                    <input class="form-control  required" type="text" name="placeCode" value="Sardaryan">
-                                </td>
-                            </tr>
-                            <tr>
-                                <th>Место регистрации *</th>
-                                <td class="showView">{{user.sname}}</td>
-                                <td class="showEdit">
-                                    <input class="form-control  required" type="text" name="RegistrName" value="Sardaryan">
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
+                <div id="balancetab" class="tabcontent">
+                    <div class="row count_row">
+                        <div class="col-md-6 profile_data">
+                            <h3 class="personal_data_title">Лицевой счет</h3>
+                            <table class="table table-striped table-hover">
+                                <tbody>
+                                <tr>
+                                    <th>Паспорт *</th>
+                                    <td class="showView">{{user.sname}}</td>
+                                    <td class="showEdit">
+                                        <input class="form-control  required" type="text" name="passportNumber" value="Sardaryan">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>Кем выдан *</th>
+                                    <td class="showView">{{user.name}}</td>
+                                    <td class="showEdit">
+                                        <input class="form-control  required" type="text" name="givenFrom" value="Sardaryan">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>Дата выдачи *</th>
+                                    <td class="showView">{{user.sname}}</td>
+                                    <td class="showEdit">
+                                        <input class="form-control  required" type="text" name="givenDate" value="Sardaryan">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>Код подразделения *</th>
+                                    <td class="showView">{{user.sname}}</td>
+                                    <td class="showEdit">
+                                        <input class="form-control  required" type="text" name="placeCode" value="Sardaryan">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>Место регистрации *</th>
+                                    <td class="showView">{{user.sname}}</td>
+                                    <td class="showEdit">
+                                        <input class="form-control  required" type="text" name="RegistrName" value="Sardaryan">
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="col-md-6 profile_data">
+                            <h3 class="personal_data_title">Реквизиты для пополнения лицевого счета</h3>
+                            <table class="table table-striped table-hover">
+                                <tbody>
+                                <tr>
+                                    <th>Телефон  *</th>
+                                    <td class="showView">{{user.phone}}</td>
+                                    <td class="showEdit">
+                                        <input class="form-control  required" type="phone" name="phone" value="Sardaryan">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>E-mail  *</th>
+                                    <td class="showView">{{user.email}}</td>
+                                    <td class="showEdit">
+                                        <input class="form-control  required" type="email" name="email" value="Sardaryan">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>Почтовый индекс *</th>
+                                    <td class="showView">{{user.postcode}}</td>
+                                    <td class="showEdit">
+                                        <input class="form-control  required" type="text" name="postIndex" value="Sardaryan">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>Почтовый адрес *</th>
+                                    <td class="showView">{{user.date_of_birth}}</td>
+                                    <td class="showEdit">
+                                        <input class="form-control required" type="text" name="postCode">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>Дополнительно *</th>
+                                    <td class="showView">{{user.sname}}</td>
+                                    <td class="showEdit">
+                                        <input class="form-control required" type="text" name="additional" value="Sardaryan">
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
                 </div>
-                <div class="col-md-6 profile_data">
-                    <h3 class="personal_data_title">Реквизиты для пополнения лицевого счета</h3>
-                    <table class="table table-striped table-hover">
-                        <tbody>
-                           <tr>
-                                <th>Телефон  *</th>
-                                <td class="showView">{{user.phone}}</td>
-                                <td class="showEdit">
-                                    <input class="form-control  required" type="phone" name="phone" value="Sardaryan">
-                                </td>
-                            </tr>
-                            <tr>
-                                <th>E-mail  *</th>
-                                <td class="showView">{{user.email}}</td>
-                                <td class="showEdit">
-                                    <input class="form-control  required" type="email" name="email" value="Sardaryan">
-                                </td>
-                            </tr>
-                            <tr>
-                                <th>Почтовый индекс *</th>
-                                <td class="showView">{{user.postcode}}</td>
-                                <td class="showEdit">
-                                    <input class="form-control  required" type="text" name="postIndex" value="Sardaryan">
-                                </td>
-                            </tr>
-                            <tr>
-                                <th>Почтовый адрес *</th>
-                                <td class="showView">{{user.date_of_birth}}</td>
-                                <td class="showEdit">
-                                    <input class="form-control required" type="text" name="postCode">
-                                </td>
-                            </tr>
-                            <tr>
-                                <th>Дополнительно *</th>
-                                <td class="showView">{{user.sname}}</td>
-                                <td class="showEdit">
-                                    <input class="form-control required" type="text" name="additional" value="Sardaryan">
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div> 
-            </div>
         </div>
     </div>
         <footer-component></footer-component>
@@ -276,6 +280,25 @@
                     console.log(this.user)
                 })
             },
+            openCity(tabname) {
+        // Declare all variables
+        var i, tabcontent, tablinks;
+
+        // Get all elements with class="tabcontent" and hide them
+        tabcontent = document.getElementsByClassName("tabcontent");
+        for (i = 0; i < tabcontent.length; i++) {
+            tabcontent[i].style.display = "none";
+        }
+
+        // Get all elements with class="tablinks" and remove the class "active"
+        tablinks = document.getElementsByClassName("tablinks");
+        for (i = 0; i < tablinks.length; i++) {
+            tablinks[i].className = tablinks[i].className.replace(" active", "");
+        }
+
+        // Show the current tab, and add an "active" class to the button that opened the tab
+        document.getElementById(tabname).style.display = "block";
+    }
         }
     }
 </script>
