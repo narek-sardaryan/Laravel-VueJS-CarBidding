@@ -11,4 +11,8 @@ class UserController extends Controller
     public function fetchUser(){
         return Auth::user();
     }
+
+    public function showme(){
+    	return view('profile');
+    }
 }
