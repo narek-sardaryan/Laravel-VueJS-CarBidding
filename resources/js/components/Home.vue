@@ -383,7 +383,8 @@
                 bodiesId: '',
                 currentPage: 0,
                 offset: 1,
-                allCarsLength: null
+                allCarsLength: null,
+                forbody: 0
             }
         },
         created: function () {
@@ -397,11 +398,6 @@
         },
         component: {
             Cube
-        },
-        computed: {
-          defalutbody(){
-              console.log('555')
-          }
         },
         methods: {
             beforeEnter: function (el) {
@@ -476,7 +472,7 @@
                     this.slider = response.data;
                 })
             },
-            filterByBodies(id) {
+            filterByBodies: function(id) {
                 this.bodiesId = id;
                 if (!id) {
                     axios.get('/fetchcarsall').then(response => {

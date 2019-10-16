@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html lang="ru">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -81,7 +81,7 @@
     {{--    </nav>--}}
     <main>
 {{--        @yield('content')--}}
-        <app :errorsreg="{{$errors}}" :errors="{{$errors}}"></app>
+        <router-view :errorsreg="{{$errors}}" :errors="{{$errors}}"></router-view>
     </main>
 </div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>

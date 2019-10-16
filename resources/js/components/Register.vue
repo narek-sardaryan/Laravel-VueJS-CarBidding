@@ -234,8 +234,8 @@
                                     <input @change="handleChange" id="regcheckbox" type="checkbox" name="policy"
                                            required> – согласен с обработкой
                                     персональных данных.
-                                    <a class="policy_txt" href="#">Политика в отношении обработки персональных данных в
-                                        ООО "CarBidding"</a>
+                                    <router-link class="policy_txt" to="/rules">Политика в отношении обработки персональных данных в
+                                        ООО "CarBidding"</router-link>
                                 </label>
                             </div>
                             <div class="send">
