@@ -4341,6 +4341,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Profile",
   data: function data() {
@@ -47872,7 +47874,27 @@ var render = function() {
           _c("div", { staticClass: "row" }, [
             _c("div", { staticClass: "col profile_menu" }, [
               _c("div", { staticClass: "row mx-0" }, [
-                _vm._m(0),
+                _c("div", { staticClass: "col-md-3 avatar_section" }, [
+                  !_vm.user.avatar && _vm.user.gender == "male"
+                    ? _c("img", {
+                        staticClass: "avatar_img",
+                        attrs: { src: "/img/avatar/images.png" }
+                      })
+                    : _vm._e(),
+                  _vm._v(" "),
+                  !_vm.user.avatar && _vm.user.gender == "female"
+                    ? _c("img", {
+                        staticClass: "avatar_img",
+                        attrs: {
+                          src:
+                            "/img/avatar/female-avatar-profile-icon-round-african-american-vector-18307298.jpg"
+                        }
+                      })
+                    : _c("img", {
+                        staticClass: "avatar_img",
+                        attrs: { src: "/img/avatar/" + _vm.user.avatar }
+                      })
+                ]),
                 _vm._v(" "),
                 _c("div", { staticClass: "col-md-6 user_name_ul " }, [
                   _c("h6", { staticClass: "user_name_tag" }, [
@@ -47900,7 +47922,7 @@ var render = function() {
                           }
                         }
                       },
-                      [_vm._m(1)]
+                      [_vm._m(0)]
                     ),
                     _vm._v(" "),
                     _c(
@@ -47913,7 +47935,7 @@ var render = function() {
                           }
                         }
                       },
-                      [_vm._m(2)]
+                      [_vm._m(1)]
                     )
                   ])
                 ])
@@ -47934,7 +47956,7 @@ var render = function() {
                       _vm._v(_vm._s(_vm.user.sname))
                     ]),
                     _vm._v(" "),
-                    _vm._m(3)
+                    _vm._m(2)
                   ]),
                   _vm._v(" "),
                   _c("tr", [
@@ -47944,7 +47966,7 @@ var render = function() {
                       _vm._v(_vm._s(_vm.user.name))
                     ]),
                     _vm._v(" "),
-                    _vm._m(4)
+                    _vm._m(3)
                   ]),
                   _vm._v(" "),
                   _c("tr", [
@@ -47954,7 +47976,7 @@ var render = function() {
                       _vm._v(_vm._s(_vm.user.sname))
                     ]),
                     _vm._v(" "),
-                    _vm._m(5)
+                    _vm._m(4)
                   ]),
                   _vm._v(" "),
                   _c("tr", [
@@ -47964,7 +47986,7 @@ var render = function() {
                       _vm._v(_vm._s(_vm.user.date_of_birth))
                     ]),
                     _vm._v(" "),
-                    _vm._m(6)
+                    _vm._m(5)
                   ]),
                   _vm._v(" "),
                   _c("tr", [
@@ -47974,7 +47996,7 @@ var render = function() {
                       _vm._v(_vm._s(_vm.user.sname))
                     ]),
                     _vm._v(" "),
-                    _vm._m(7)
+                    _vm._m(6)
                   ]),
                   _vm._v(" "),
                   _c("tr", [
@@ -47984,7 +48006,7 @@ var render = function() {
                       _vm._v(_vm._s(_vm.user.sname))
                     ]),
                     _vm._v(" "),
-                    _vm._m(8)
+                    _vm._m(7)
                   ]),
                   _vm._v(" "),
                   _c("tr", [
@@ -47994,7 +48016,7 @@ var render = function() {
                       _vm._v(_vm._s(_vm.user.sname))
                     ]),
                     _vm._v(" "),
-                    _vm._m(9)
+                    _vm._m(8)
                   ])
                 ])
               ])
@@ -48026,7 +48048,7 @@ var render = function() {
                             _vm._v(_vm._s(_vm.user.sname))
                           ]),
                           _vm._v(" "),
-                          _vm._m(10)
+                          _vm._m(9)
                         ]),
                         _vm._v(" "),
                         _c("tr", [
@@ -48036,7 +48058,7 @@ var render = function() {
                             _vm._v(_vm._s(_vm.user.name))
                           ]),
                           _vm._v(" "),
-                          _vm._m(11)
+                          _vm._m(10)
                         ]),
                         _vm._v(" "),
                         _c("tr", [
@@ -48046,7 +48068,7 @@ var render = function() {
                             _vm._v(_vm._s(_vm.user.sname))
                           ]),
                           _vm._v(" "),
-                          _vm._m(12)
+                          _vm._m(11)
                         ]),
                         _vm._v(" "),
                         _c("tr", [
@@ -48056,7 +48078,7 @@ var render = function() {
                             _vm._v(_vm._s(_vm.user.sname))
                           ]),
                           _vm._v(" "),
-                          _vm._m(13)
+                          _vm._m(12)
                         ]),
                         _vm._v(" "),
                         _c("tr", [
@@ -48066,7 +48088,7 @@ var render = function() {
                             _vm._v(_vm._s(_vm.user.sname))
                           ]),
                           _vm._v(" "),
-                          _vm._m(14)
+                          _vm._m(13)
                         ])
                       ])
                     ]
@@ -48090,7 +48112,7 @@ var render = function() {
                             _vm._v(_vm._s(_vm.user.phone))
                           ]),
                           _vm._v(" "),
-                          _vm._m(15)
+                          _vm._m(14)
                         ]),
                         _vm._v(" "),
                         _c("tr", [
@@ -48100,7 +48122,7 @@ var render = function() {
                             _vm._v(_vm._s(_vm.user.email))
                           ]),
                           _vm._v(" "),
-                          _vm._m(16)
+                          _vm._m(15)
                         ]),
                         _vm._v(" "),
                         _c("tr", [
@@ -48110,7 +48132,7 @@ var render = function() {
                             _vm._v(_vm._s(_vm.user.postcode))
                           ]),
                           _vm._v(" "),
-                          _vm._m(17)
+                          _vm._m(16)
                         ]),
                         _vm._v(" "),
                         _c("tr", [
@@ -48120,7 +48142,7 @@ var render = function() {
                             _vm._v(_vm._s(_vm.user.date_of_birth))
                           ]),
                           _vm._v(" "),
-                          _vm._m(18)
+                          _vm._m(17)
                         ]),
                         _vm._v(" "),
                         _c("tr", [
@@ -48130,7 +48152,7 @@ var render = function() {
                             _vm._v(_vm._s(_vm.user.sname))
                           ]),
                           _vm._v(" "),
-                          _vm._m(19)
+                          _vm._m(18)
                         ])
                       ])
                     ]
@@ -48162,7 +48184,7 @@ var render = function() {
                             _vm._v(_vm._s(_vm.user.sname))
                           ]),
                           _vm._v(" "),
-                          _vm._m(20)
+                          _vm._m(19)
                         ]),
                         _vm._v(" "),
                         _c("tr", [
@@ -48172,7 +48194,7 @@ var render = function() {
                             _vm._v(_vm._s(_vm.user.name))
                           ]),
                           _vm._v(" "),
-                          _vm._m(21)
+                          _vm._m(20)
                         ]),
                         _vm._v(" "),
                         _c("tr", [
@@ -48182,7 +48204,7 @@ var render = function() {
                             _vm._v(_vm._s(_vm.user.sname))
                           ]),
                           _vm._v(" "),
-                          _vm._m(22)
+                          _vm._m(21)
                         ]),
                         _vm._v(" "),
                         _c("tr", [
@@ -48192,7 +48214,7 @@ var render = function() {
                             _vm._v(_vm._s(_vm.user.sname))
                           ]),
                           _vm._v(" "),
-                          _vm._m(23)
+                          _vm._m(22)
                         ]),
                         _vm._v(" "),
                         _c("tr", [
@@ -48202,7 +48224,7 @@ var render = function() {
                             _vm._v(_vm._s(_vm.user.sname))
                           ]),
                           _vm._v(" "),
-                          _vm._m(24)
+                          _vm._m(23)
                         ])
                       ])
                     ]
@@ -48226,7 +48248,7 @@ var render = function() {
                             _vm._v(_vm._s(_vm.user.phone))
                           ]),
                           _vm._v(" "),
-                          _vm._m(25)
+                          _vm._m(24)
                         ]),
                         _vm._v(" "),
                         _c("tr", [
@@ -48236,7 +48258,7 @@ var render = function() {
                             _vm._v(_vm._s(_vm.user.email))
                           ]),
                           _vm._v(" "),
-                          _vm._m(26)
+                          _vm._m(25)
                         ]),
                         _vm._v(" "),
                         _c("tr", [
@@ -48246,7 +48268,7 @@ var render = function() {
                             _vm._v(_vm._s(_vm.user.postcode))
                           ]),
                           _vm._v(" "),
-                          _vm._m(27)
+                          _vm._m(26)
                         ]),
                         _vm._v(" "),
                         _c("tr", [
@@ -48256,7 +48278,7 @@ var render = function() {
                             _vm._v(_vm._s(_vm.user.date_of_birth))
                           ]),
                           _vm._v(" "),
-                          _vm._m(28)
+                          _vm._m(27)
                         ]),
                         _vm._v(" "),
                         _c("tr", [
@@ -48266,7 +48288,7 @@ var render = function() {
                             _vm._v(_vm._s(_vm.user.sname))
                           ]),
                           _vm._v(" "),
-                          _vm._m(29)
+                          _vm._m(28)
                         ])
                       ])
                     ]
@@ -48284,17 +48306,6 @@ var render = function() {
   )
 }
 var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-md-3 avatar_section" }, [
-      _c("img", {
-        staticClass: "avatar_img",
-        attrs: { src: "/img/avatar/avatar_hippi.png" }
-      })
-    ])
-  },
   function() {
     var _vm = this
     var _h = _vm.$createElement
