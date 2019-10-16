@@ -1328,7 +1328,7 @@ span i {
     width: 100%;
     outline: none;
     cursor: pointer;
-    background-color:transparent;
+    background-color: transparent;
     text-align: left;
     color: white;
 }
@@ -1336,3 +1336,4 @@ span i {
 .activetabis{
     display: block;
 }
+
