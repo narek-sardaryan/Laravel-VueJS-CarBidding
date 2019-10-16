@@ -113,6 +113,7 @@ Route::get('/about', 'AboutController@index');
 Route::get('/contacts', 'ContactsController@index');
 Route::get('/rules', 'RulesController@index');
 Route::get('/faq', 'FaqController@index');
+Route::get('/profile', 'UserController@showme');
 Route::get('/images', 'CarsController@fetchimages');
 Route::get('/fetchauctions', 'AuctionController@fetchauctions');
 Route::get('/fetchslider', 'AuctionController@fetchslider');
