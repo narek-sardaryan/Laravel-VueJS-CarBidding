@@ -49,11 +49,31 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => ['required', 'string', 'max:255', 'unique:users'],
-            'sname' => ['required', 'string', 'max:255'],
-            'additionally' => ['string', 'max:1500'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'name' => ['required', 'string', 'max:24', 'min:4'],
+            'sname' => ['required', 'string', 'max:36', 'min:4'],
+            'additionally' => ['max:1500'],
+            'email' => ['required', 'string', 'email', 'max:60', 'unique:users'],
+            'phone' => ['required'],
+            'datebirth' => ['required'],
+            'gender' => ['required'],
+            'password' => ['required', 'string', 'min:6', 'max:24', 'confirmed'],
+        ], [
+            'name.required' => 'Необходимо заполнить поле "Имя"',
+            'name.max' => 'Имя должен содержать максимум 24 символов',
+            'name.min' => 'Имя должен содержать минимум 4 символов',
+            'sname.required' => 'Необходимо заполнить поле "Фамилия"',
+            'sname.max' => 'Фамилия должен содержать максимум 24 символов',
+            'sname.min' => 'Фамилия должен содержать минимум 4 символов',
+            'email.required' => 'Необходимо заполнить поле "Email"',
+            'email.unique' => 'Такой E-mail уже зарегистрирован',
+            'email.max' => 'Email должен содержать максимум 60 символов',
+            'phone.required' => 'Необходимо заполнить поле "Телефон"',
+            'datebirth.required' => 'Необходимо заполнить поле "День рождения"',
+            'gender.required' => 'Необходимо заполнить поле "Пол"',
+            'password.required' => 'Необходимо заполнить поле "Пароль"',
+            'password.min:6' => 'Пароль должен содержать максимум 24 символов',
+            'password.max:24' => 'Пароль должен содержать минимум 6 символов',
+            'password.confirmed' => 'Пароли не совпадают'
         ]);
     }
 

@@ -15,6 +15,7 @@ import Profile from "./components/Profile";
 export default new VueRouter({
     routes: [
         {
+            name: 'home',
             path: '/',
             component: Home,
             props: true
@@ -37,6 +38,7 @@ export default new VueRouter({
             component: ShowCar
         },
         {
+            name: 'about',
             path: '/about',
             component: About
         },
@@ -60,16 +62,21 @@ export default new VueRouter({
             props: true
         },
         {
+            name: 'log',
             path: '/login',
             component: Login,
+            props: true
         },
         {
+            name: 'reg',
             path: '/register',
             component: Register,
+            props: true
         },
         {
             path: '/contacts',
             component: Contacts,
+            props: true
         },
         {
             path: '/faq',

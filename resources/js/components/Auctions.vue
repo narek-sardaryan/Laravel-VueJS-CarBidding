@@ -1,8 +1,8 @@
 <template>
     <div>
-<!--        <transition name="fade">-->
-            <Cube v-if="slider.length == 0"></Cube>
-<!--        </transition>-->
+        <!--        <transition name="fade">-->
+        <Cube v-if="slider.length == 0"></Cube>
+        <!--        </transition>-->
         <header-component v-if="slider.length > 0"></header-component>
         <div class="container-fluid carbidding-container" v-if="slider.length > 0">
             <section id="lastcars">
@@ -293,7 +293,7 @@
             </div>
         </div>
         <div class="container-fluid" v-if="slider.length > 0">
-            <div class="container container-back" v-if="cars.length != 0">
+            <div class="container container-back" v-if="auctioncars.length != 0">
                 <div class="row cars-root">
                     <div class="col-md-4 cars-article" v-for="(auction, index) in auctioncars">
                         <router-link :to="'/cars/'+auction.id" :key="auction.id">
@@ -345,13 +345,14 @@
                     </ul>
                 </nav>
             </div>
-            <div class="container container-back" v-if="cars.length == 0">
+            <div class="container container-back" v-if="auctioncars.length == 0">
                 <div class="row cars-root">
                     <div class="col-md-8 notfoundtxt">
                         <h1>По вашему запросу ничего не найдено</h1>
                     </div>
                     <div class="col-md-2 notfoundimg">
-                        <img src="/img/design_img/27-272926_confused-clipart-confused-person-confused-png.png" alt="notfound">
+                        <img src="/img/design_img/27-272926_confused-clipart-confused-person-confused-png.png"
+                             alt="notfound">
                     </div>
                 </div>
             </div>
@@ -388,31 +389,32 @@
                 id: this.$router.currentRoute.params['id']
             }
         },
-        async created() {
+        created: function (){
             this.fetchBodies();
             this.fetchModels();
             this.fetchParkings();
             this.fetchStates();
-            this.fetchCars();
-            this.fetchCarsPaginate();
+            this.fetchCars(this.id);
+            this.fetchCarsPaginate(this.id);
             this.fetchSlider();
-            this.fetchAuctionCars();
+            this.fetchSlider();
+            this.fetchAuctionCars(this.id);
         },
         methods: {
             page(off) {
                 this.currentPage = off * 6;
                 this.offset = this.currentPage / 6 + 1;
-                this.fetchCarsPaginate();
+                this.fetchCarsPaginate(this.id);
             },
             prewis() {
                 this.currentPage = (this.currentPage / 6 - 1) * 6;
                 this.offset = this.offset - 1;
-                this.fetchCarsPaginate();
+                this.fetchCarsPaginate(this.id);
             },
             nextis() {
                 this.currentPage = (this.currentPage / 6 + 1) * 6;
                 this.offset = this.offset + 1;
-                this.fetchCarsPaginate();
+                this.fetchCarsPaginate(this.id);
             },
             fetchBodies() {
                 axios.get('/fetchbodies').then(response => {
@@ -434,8 +436,8 @@
                     this.states = response.data;
                 })
             },
-            fetchCarsPaginate() {
-                axios.get('/auction/' + this.currentPage + '/' + this.id).then(response => {
+            fetchCarsPaginate(id) {
+                axios.get('/auction/' + this.currentPage + '/' + id).then(response => {
                     this.auctioncars = response.data;
                 })
             },
@@ -521,21 +523,24 @@
                     this.allCarsLength = response.data.filter(obj => (obj.stateId == this.stateId) && (this.bodiesId == obj.bodyId || this.bodiesId == '') && (this.parkingId == obj.parkingId || this.parkingId == '') && (this.modelId == obj.modelId || this.modelId == '') && (!this.startAu || this.startAu >= new Date(obj.auctionStart).getTime()) && (!this.endAu || this.endAu <= new Date(obj.endOfAuction).getTime())).length;
                 })
             },
-            fetchAuctionCars() {
-                axios.get('/auctionall/' + this.id).then(response => {
-                    this.auctioncars = response.data;
+            fetchAuctionCars(id) {
+                axios.get('/auctionall/' + id).then(response => {
+                    // this.auctioncars = response.data;
                     this.allCarsLength = response.data.length;
                     this.offsetCars = [];
                     for (let i = 0; i < Math.ceil(response.data.length / 6); i++) {
                         this.offsetCars.push(i);
                     }
                 })
-            }
+            },
         },
         watch: {
             $route(toR, fromR) {
                 this.id = toR.params['id'];
-            }
+                this.fetchAuctionCars(this.id);
+                this.fetchCarsPaginate(this.id);
+                this.fetchCars(this.id);
+            },
         }
     }
 
