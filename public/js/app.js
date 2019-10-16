@@ -4076,7 +4076,7 @@ __webpack_require__.r(__webpack_exports__);
 /*! exports provided: default */
 /***/ (function(module, exports) {
 
-throw new Error("Module build failed (from ./node_modules/babel-loader/lib/index.js):\nSyntaxError: C:\\xampp\\htdocs\\Laravel-VueJS-CarBidding\\resources\\js\\components\\Profile.vue: Unexpected token, expected \",\" (300:4)\n\n\u001b[0m \u001b[90m 298 | \u001b[39m        }\u001b[0m\n\u001b[0m \u001b[90m 299 | \u001b[39m    }\u001b[0m\n\u001b[0m\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 300 | \u001b[39m    addClassActive() {\u001b[0m\n\u001b[0m \u001b[90m     | \u001b[39m    \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 301 | \u001b[39m      \u001b[36mvar\u001b[39m element \u001b[33m=\u001b[39m document\u001b[33m.\u001b[39mgetElementsByClassName(\u001b[32m\"tablinks\"\u001b[39m)\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 302 | \u001b[39m      element\u001b[33m.\u001b[39mclassList\u001b[33m.\u001b[39madd(\u001b[32m\"activeli\"\u001b[39m)\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 303 | \u001b[39m    }\u001b[0m\n    at Parser.raise (C:\\xampp\\htdocs\\Laravel-VueJS-CarBidding\\node_modules\\@babel\\parser\\lib\\index.js:6387:17)\n    at Parser.unexpected (C:\\xampp\\htdocs\\Laravel-VueJS-CarBidding\\node_modules\\@babel\\parser\\lib\\index.js:7704:16)\n    at Parser.expect (C:\\xampp\\htdocs\\Laravel-VueJS-CarBidding\\node_modules\\@babel\\parser\\lib\\index.js:7690:28)\n    at Parser.parseObj (C:\\xampp\\htdocs\\Laravel-VueJS-CarBidding\\node_modules\\@babel\\parser\\lib\\index.js:9221:14)\n    at Parser.parseExprAtom (C:\\xampp\\htdocs\\Laravel-VueJS-CarBidding\\node_modules\\@babel\\parser\\lib\\index.js:8855:28)\n    at Parser.parseExprSubscripts (C:\\xampp\\htdocs\\Laravel-VueJS-CarBidding\\node_modules\\@babel\\parser\\lib\\index.js:8483:23)\n    at Parser.parseMaybeUnary (C:\\xampp\\htdocs\\Laravel-VueJS-CarBidding\\node_modules\\@babel\\parser\\lib\\index.js:8463:21)\n    at Parser.parseExprOps (C:\\xampp\\htdocs\\Laravel-VueJS-CarBidding\\node_modules\\@babel\\parser\\lib\\index.js:8329:23)\n    at Parser.parseMaybeConditional (C:\\xampp\\htdocs\\Laravel-VueJS-CarBidding\\node_modules\\@babel\\parser\\lib\\index.js:8302:23)\n    at Parser.parseMaybeAssign (C:\\xampp\\htdocs\\Laravel-VueJS-CarBidding\\node_modules\\@babel\\parser\\lib\\index.js:8249:21)\n    at Parser.parseExportDefaultExpression (C:\\xampp\\htdocs\\Laravel-VueJS-CarBidding\\node_modules\\@babel\\parser\\lib\\index.js:11081:24)\n    at Parser.parseExport (C:\\xampp\\htdocs\\Laravel-VueJS-CarBidding\\node_modules\\@babel\\parser\\lib\\index.js:10976:31)\n    at Parser.parseStatementContent (C:\\xampp\\htdocs\\Laravel-VueJS-CarBidding\\node_modules\\@babel\\parser\\lib\\index.js:10004:27)\n    at Parser.parseStatement (C:\\xampp\\htdocs\\Laravel-VueJS-CarBidding\\node_modules\\@babel\\parser\\lib\\index.js:9900:17)\n    at Parser.parseBlockOrModuleBlockBody (C:\\xampp\\htdocs\\Laravel-VueJS-CarBidding\\node_modules\\@babel\\parser\\lib\\index.js:10476:25)\n    at Parser.parseBlockBody (C:\\xampp\\htdocs\\Laravel-VueJS-CarBidding\\node_modules\\@babel\\parser\\lib\\index.js:10463:10)\n    at Parser.parseTopLevel (C:\\xampp\\htdocs\\Laravel-VueJS-CarBidding\\node_modules\\@babel\\parser\\lib\\index.js:9829:10)\n    at Parser.parse (C:\\xampp\\htdocs\\Laravel-VueJS-CarBidding\\node_modules\\@babel\\parser\\lib\\index.js:11341:17)\n    at parse (C:\\xampp\\htdocs\\Laravel-VueJS-CarBidding\\node_modules\\@babel\\parser\\lib\\index.js:11377:38)\n    at parser (C:\\xampp\\htdocs\\Laravel-VueJS-CarBidding\\node_modules\\@babel\\core\\lib\\transformation\\normalize-file.js:166:34)\n    at normalizeFile (C:\\xampp\\htdocs\\Laravel-VueJS-CarBidding\\node_modules\\@babel\\core\\lib\\transformation\\normalize-file.js:100:11)\n    at runSync (C:\\xampp\\htdocs\\Laravel-VueJS-CarBidding\\node_modules\\@babel\\core\\lib\\transformation\\index.js:44:43)\n    at runAsync (C:\\xampp\\htdocs\\Laravel-VueJS-CarBidding\\node_modules\\@babel\\core\\lib\\transformation\\index.js:35:14)\n    at process.nextTick (C:\\xampp\\htdocs\\Laravel-VueJS-CarBidding\\node_modules\\@babel\\core\\lib\\transform.js:34:34)\n    at _combinedTickCallback (internal/process/next_tick.js:131:7)\n    at process._tickCallback (internal/process/next_tick.js:180:9)");
+throw new Error("Module build failed (from ./node_modules/babel-loader/lib/index.js):\nSyntaxError: C:\\xampp\\htdocs\\Laravel-VueJS-CarBidding\\resources\\js\\components\\Profile.vue: Unexpected token, expected \",\" (302:4)\n\n\u001b[0m \u001b[90m 300 | \u001b[39m        }\u001b[0m\n\u001b[0m \u001b[90m 301 | \u001b[39m    }\u001b[0m\n\u001b[0m\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 302 | \u001b[39m    addClassActive() {\u001b[0m\n\u001b[0m \u001b[90m     | \u001b[39m    \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 303 | \u001b[39m      \u001b[36mvar\u001b[39m element \u001b[33m=\u001b[39m document\u001b[33m.\u001b[39mgetElementsByClassName(\u001b[32m\"tablinks\"\u001b[39m)\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 304 | \u001b[39m      element\u001b[33m.\u001b[39mclassList\u001b[33m.\u001b[39madd(\u001b[32m\"activeli\"\u001b[39m)\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 305 | \u001b[39m    }\u001b[0m\n    at Parser.raise (C:\\xampp\\htdocs\\Laravel-VueJS-CarBidding\\node_modules\\@babel\\parser\\lib\\index.js:6387:17)\n    at Parser.unexpected (C:\\xampp\\htdocs\\Laravel-VueJS-CarBidding\\node_modules\\@babel\\parser\\lib\\index.js:7704:16)\n    at Parser.expect (C:\\xampp\\htdocs\\Laravel-VueJS-CarBidding\\node_modules\\@babel\\parser\\lib\\index.js:7690:28)\n    at Parser.parseObj (C:\\xampp\\htdocs\\Laravel-VueJS-CarBidding\\node_modules\\@babel\\parser\\lib\\index.js:9221:14)\n    at Parser.parseExprAtom (C:\\xampp\\htdocs\\Laravel-VueJS-CarBidding\\node_modules\\@babel\\parser\\lib\\index.js:8855:28)\n    at Parser.parseExprSubscripts (C:\\xampp\\htdocs\\Laravel-VueJS-CarBidding\\node_modules\\@babel\\parser\\lib\\index.js:8483:23)\n    at Parser.parseMaybeUnary (C:\\xampp\\htdocs\\Laravel-VueJS-CarBidding\\node_modules\\@babel\\parser\\lib\\index.js:8463:21)\n    at Parser.parseExprOps (C:\\xampp\\htdocs\\Laravel-VueJS-CarBidding\\node_modules\\@babel\\parser\\lib\\index.js:8329:23)\n    at Parser.parseMaybeConditional (C:\\xampp\\htdocs\\Laravel-VueJS-CarBidding\\node_modules\\@babel\\parser\\lib\\index.js:8302:23)\n    at Parser.parseMaybeAssign (C:\\xampp\\htdocs\\Laravel-VueJS-CarBidding\\node_modules\\@babel\\parser\\lib\\index.js:8249:21)\n    at Parser.parseExportDefaultExpression (C:\\xampp\\htdocs\\Laravel-VueJS-CarBidding\\node_modules\\@babel\\parser\\lib\\index.js:11081:24)\n    at Parser.parseExport (C:\\xampp\\htdocs\\Laravel-VueJS-CarBidding\\node_modules\\@babel\\parser\\lib\\index.js:10976:31)\n    at Parser.parseStatementContent (C:\\xampp\\htdocs\\Laravel-VueJS-CarBidding\\node_modules\\@babel\\parser\\lib\\index.js:10004:27)\n    at Parser.parseStatement (C:\\xampp\\htdocs\\Laravel-VueJS-CarBidding\\node_modules\\@babel\\parser\\lib\\index.js:9900:17)\n    at Parser.parseBlockOrModuleBlockBody (C:\\xampp\\htdocs\\Laravel-VueJS-CarBidding\\node_modules\\@babel\\parser\\lib\\index.js:10476:25)\n    at Parser.parseBlockBody (C:\\xampp\\htdocs\\Laravel-VueJS-CarBidding\\node_modules\\@babel\\parser\\lib\\index.js:10463:10)\n    at Parser.parseTopLevel (C:\\xampp\\htdocs\\Laravel-VueJS-CarBidding\\node_modules\\@babel\\parser\\lib\\index.js:9829:10)\n    at Parser.parse (C:\\xampp\\htdocs\\Laravel-VueJS-CarBidding\\node_modules\\@babel\\parser\\lib\\index.js:11341:17)\n    at parse (C:\\xampp\\htdocs\\Laravel-VueJS-CarBidding\\node_modules\\@babel\\parser\\lib\\index.js:11377:38)\n    at parser (C:\\xampp\\htdocs\\Laravel-VueJS-CarBidding\\node_modules\\@babel\\core\\lib\\transformation\\normalize-file.js:166:34)\n    at normalizeFile (C:\\xampp\\htdocs\\Laravel-VueJS-CarBidding\\node_modules\\@babel\\core\\lib\\transformation\\normalize-file.js:100:11)\n    at runSync (C:\\xampp\\htdocs\\Laravel-VueJS-CarBidding\\node_modules\\@babel\\core\\lib\\transformation\\index.js:44:43)\n    at runAsync (C:\\xampp\\htdocs\\Laravel-VueJS-CarBidding\\node_modules\\@babel\\core\\lib\\transformation\\index.js:35:14)\n    at process.nextTick (C:\\xampp\\htdocs\\Laravel-VueJS-CarBidding\\node_modules\\@babel\\core\\lib\\transform.js:34:34)\n    at _combinedTickCallback (internal/process/next_tick.js:131:7)\n    at process._tickCallback (internal/process/next_tick.js:180:9)");
 
 /***/ }),
 
@@ -47566,7 +47566,27 @@ var render = function() {
           _c("div", { staticClass: "row" }, [
             _c("div", { staticClass: "col profile_menu" }, [
               _c("div", { staticClass: "row mx-0" }, [
-                _vm._m(0),
+                _c("div", { staticClass: "col-md-3 avatar_section" }, [
+                  !_vm.user.avatar && _vm.user.gender == "male"
+                    ? _c("img", {
+                        staticClass: "avatar_img",
+                        attrs: { src: "/img/avatar/images.png" }
+                      })
+                    : _vm._e(),
+                  _vm._v(" "),
+                  !_vm.user.avatar && _vm.user.gender == "female"
+                    ? _c("img", {
+                        staticClass: "avatar_img",
+                        attrs: {
+                          src:
+                            "/img/avatar/female-avatar-profile-icon-round-african-american-vector-18307298.jpg"
+                        }
+                      })
+                    : _c("img", {
+                        staticClass: "avatar_img",
+                        attrs: { src: "/img/avatar/" + _vm.user.avatar }
+                      })
+                ]),
                 _vm._v(" "),
                 _c("div", { staticClass: "col-md-6 user_name_ul " }, [
                   _c("h6", { staticClass: "user_name_tag" }, [
@@ -47594,7 +47614,7 @@ var render = function() {
                           }
                         }
                       },
-                      [_vm._m(1)]
+                      [_vm._m(0)]
                     ),
                     _vm._v(" "),
                     _c(
@@ -47607,7 +47627,7 @@ var render = function() {
                           }
                         }
                       },
-                      [_vm._m(2)]
+                      [_vm._m(1)]
                     )
                   ])
                 ])
@@ -47628,7 +47648,7 @@ var render = function() {
                       _vm._v(_vm._s(_vm.user.sname))
                     ]),
                     _vm._v(" "),
-                    _vm._m(3)
+                    _vm._m(2)
                   ]),
                   _vm._v(" "),
                   _c("tr", [
@@ -47638,7 +47658,7 @@ var render = function() {
                       _vm._v(_vm._s(_vm.user.name))
                     ]),
                     _vm._v(" "),
-                    _vm._m(4)
+                    _vm._m(3)
                   ]),
                   _vm._v(" "),
                   _c("tr", [
@@ -47648,7 +47668,7 @@ var render = function() {
                       _vm._v(_vm._s(_vm.user.sname))
                     ]),
                     _vm._v(" "),
-                    _vm._m(5)
+                    _vm._m(4)
                   ]),
                   _vm._v(" "),
                   _c("tr", [
@@ -47658,7 +47678,7 @@ var render = function() {
                       _vm._v(_vm._s(_vm.user.date_of_birth))
                     ]),
                     _vm._v(" "),
-                    _vm._m(6)
+                    _vm._m(5)
                   ]),
                   _vm._v(" "),
                   _c("tr", [
@@ -47668,7 +47688,7 @@ var render = function() {
                       _vm._v(_vm._s(_vm.user.sname))
                     ]),
                     _vm._v(" "),
-                    _vm._m(7)
+                    _vm._m(6)
                   ]),
                   _vm._v(" "),
                   _c("tr", [
@@ -47678,7 +47698,7 @@ var render = function() {
                       _vm._v(_vm._s(_vm.user.sname))
                     ]),
                     _vm._v(" "),
-                    _vm._m(8)
+                    _vm._m(7)
                   ]),
                   _vm._v(" "),
                   _c("tr", [
@@ -47688,7 +47708,7 @@ var render = function() {
                       _vm._v(_vm._s(_vm.user.sname))
                     ]),
                     _vm._v(" "),
-                    _vm._m(9)
+                    _vm._m(8)
                   ])
                 ])
               ])
@@ -47720,7 +47740,7 @@ var render = function() {
                             _vm._v(_vm._s(_vm.user.sname))
                           ]),
                           _vm._v(" "),
-                          _vm._m(10)
+                          _vm._m(9)
                         ]),
                         _vm._v(" "),
                         _c("tr", [
@@ -47730,7 +47750,7 @@ var render = function() {
                             _vm._v(_vm._s(_vm.user.name))
                           ]),
                           _vm._v(" "),
-                          _vm._m(11)
+                          _vm._m(10)
                         ]),
                         _vm._v(" "),
                         _c("tr", [
@@ -47740,7 +47760,7 @@ var render = function() {
                             _vm._v(_vm._s(_vm.user.sname))
                           ]),
                           _vm._v(" "),
-                          _vm._m(12)
+                          _vm._m(11)
                         ]),
                         _vm._v(" "),
                         _c("tr", [
@@ -47750,7 +47770,7 @@ var render = function() {
                             _vm._v(_vm._s(_vm.user.sname))
                           ]),
                           _vm._v(" "),
-                          _vm._m(13)
+                          _vm._m(12)
                         ]),
                         _vm._v(" "),
                         _c("tr", [
@@ -47760,7 +47780,7 @@ var render = function() {
                             _vm._v(_vm._s(_vm.user.sname))
                           ]),
                           _vm._v(" "),
-                          _vm._m(14)
+                          _vm._m(13)
                         ])
                       ])
                     ]
@@ -47784,7 +47804,7 @@ var render = function() {
                             _vm._v(_vm._s(_vm.user.phone))
                           ]),
                           _vm._v(" "),
-                          _vm._m(15)
+                          _vm._m(14)
                         ]),
                         _vm._v(" "),
                         _c("tr", [
@@ -47794,7 +47814,7 @@ var render = function() {
                             _vm._v(_vm._s(_vm.user.email))
                           ]),
                           _vm._v(" "),
-                          _vm._m(16)
+                          _vm._m(15)
                         ]),
                         _vm._v(" "),
                         _c("tr", [
@@ -47804,7 +47824,7 @@ var render = function() {
                             _vm._v(_vm._s(_vm.user.postcode))
                           ]),
                           _vm._v(" "),
-                          _vm._m(17)
+                          _vm._m(16)
                         ]),
                         _vm._v(" "),
                         _c("tr", [
@@ -47814,7 +47834,7 @@ var render = function() {
                             _vm._v(_vm._s(_vm.user.date_of_birth))
                           ]),
                           _vm._v(" "),
-                          _vm._m(18)
+                          _vm._m(17)
                         ]),
                         _vm._v(" "),
                         _c("tr", [
@@ -47824,7 +47844,7 @@ var render = function() {
                             _vm._v(_vm._s(_vm.user.sname))
                           ]),
                           _vm._v(" "),
-                          _vm._m(19)
+                          _vm._m(18)
                         ])
                       ])
                     ]
@@ -47856,7 +47876,7 @@ var render = function() {
                             _vm._v(_vm._s(_vm.user.sname))
                           ]),
                           _vm._v(" "),
-                          _vm._m(20)
+                          _vm._m(19)
                         ]),
                         _vm._v(" "),
                         _c("tr", [
@@ -47866,7 +47886,7 @@ var render = function() {
                             _vm._v(_vm._s(_vm.user.name))
                           ]),
                           _vm._v(" "),
-                          _vm._m(21)
+                          _vm._m(20)
                         ]),
                         _vm._v(" "),
                         _c("tr", [
@@ -47876,7 +47896,7 @@ var render = function() {
                             _vm._v(_vm._s(_vm.user.sname))
                           ]),
                           _vm._v(" "),
-                          _vm._m(22)
+                          _vm._m(21)
                         ]),
                         _vm._v(" "),
                         _c("tr", [
@@ -47886,7 +47906,7 @@ var render = function() {
                             _vm._v(_vm._s(_vm.user.sname))
                           ]),
                           _vm._v(" "),
-                          _vm._m(23)
+                          _vm._m(22)
                         ]),
                         _vm._v(" "),
                         _c("tr", [
@@ -47896,7 +47916,7 @@ var render = function() {
                             _vm._v(_vm._s(_vm.user.sname))
                           ]),
                           _vm._v(" "),
-                          _vm._m(24)
+                          _vm._m(23)
                         ])
                       ])
                     ]
@@ -47920,7 +47940,7 @@ var render = function() {
                             _vm._v(_vm._s(_vm.user.phone))
                           ]),
                           _vm._v(" "),
-                          _vm._m(25)
+                          _vm._m(24)
                         ]),
                         _vm._v(" "),
                         _c("tr", [
@@ -47930,7 +47950,7 @@ var render = function() {
                             _vm._v(_vm._s(_vm.user.email))
                           ]),
                           _vm._v(" "),
-                          _vm._m(26)
+                          _vm._m(25)
                         ]),
                         _vm._v(" "),
                         _c("tr", [
@@ -47940,7 +47960,7 @@ var render = function() {
                             _vm._v(_vm._s(_vm.user.postcode))
                           ]),
                           _vm._v(" "),
-                          _vm._m(27)
+                          _vm._m(26)
                         ]),
                         _vm._v(" "),
                         _c("tr", [
@@ -47950,7 +47970,7 @@ var render = function() {
                             _vm._v(_vm._s(_vm.user.date_of_birth))
                           ]),
                           _vm._v(" "),
-                          _vm._m(28)
+                          _vm._m(27)
                         ]),
                         _vm._v(" "),
                         _c("tr", [
@@ -47960,7 +47980,7 @@ var render = function() {
                             _vm._v(_vm._s(_vm.user.sname))
                           ]),
                           _vm._v(" "),
-                          _vm._m(29)
+                          _vm._m(28)
                         ])
                       ])
                     ]
@@ -47978,17 +47998,6 @@ var render = function() {
   )
 }
 var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-md-3 avatar_section" }, [
-      _c("img", {
-        staticClass: "avatar_img",
-        attrs: { src: "/img/avatar/avatar_hippi.png" }
-      })
-    ])
-  },
   function() {
     var _vm = this
     var _h = _vm.$createElement

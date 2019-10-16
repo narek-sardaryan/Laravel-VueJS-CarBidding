@@ -7,7 +7,9 @@
                 <div class="col profile_menu">
                     <div class="row mx-0">
                         <div class="col-md-3 avatar_section">
-                            <img class="avatar_img" src="/img/avatar/avatar_hippi.png">
+                            <img class="avatar_img" v-if="!user.avatar && user.gender == 'male'" src="/img/avatar/images.png">
+                            <img class="avatar_img" v-if="!user.avatar && user.gender == 'female'" src="/img/avatar/female-avatar-profile-icon-round-african-american-vector-18307298.jpg">
+                            <img class="avatar_img" v-else :src="'/img/avatar/'+user.avatar">
                         </div>
                         <div class="col-md-6 user_name_ul ">
                             <h6 class="user_name_tag">{{user.name}}</h6>
