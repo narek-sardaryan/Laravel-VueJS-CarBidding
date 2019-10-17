@@ -4077,9 +4077,352 @@ __webpack_require__.r(__webpack_exports__);
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Profile.vue?vue&type=script&lang=js& ***!
   \******************************************************************************************************************************************************************/
 /*! exports provided: default */
-/***/ (function(module, exports) {
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-throw new Error("Module build failed (from ./node_modules/babel-loader/lib/index.js):\nSyntaxError: C:\\xampp\\htdocs\\Laravel-VueJS-CarBidding\\resources\\js\\components\\Profile.vue: Unexpected token, expected \",\" (347:0)\n\n\u001b[0m \u001b[90m 345 | \u001b[39m                document\u001b[33m.\u001b[39mgetElementById(tabname)\u001b[33m.\u001b[39mstyle\u001b[33m.\u001b[39mdisplay \u001b[33m=\u001b[39m \u001b[32m\"block\"\u001b[39m\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 346 | \u001b[39m            }\u001b[0m\n\u001b[0m\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 347 | \u001b[39m\u001b[33m<<\u001b[39m\u001b[33m<<\u001b[39m\u001b[33m<<\u001b[39m\u001b[33m<\u001b[39m \u001b[33mHEAD\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m     | \u001b[39m\u001b[31m\u001b[1m^\u001b[22m\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 348 | \u001b[39m\u001b[33m===\u001b[39m\u001b[33m===\u001b[39m\u001b[33m=\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 349 | \u001b[39m        }\u001b[33m,\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 350 | \u001b[39m        addClassActive() {\u001b[0m\n    at Parser.raise (C:\\xampp\\htdocs\\Laravel-VueJS-CarBidding\\node_modules\\@babel\\parser\\lib\\index.js:6387:17)\n    at Parser.unexpected (C:\\xampp\\htdocs\\Laravel-VueJS-CarBidding\\node_modules\\@babel\\parser\\lib\\index.js:7704:16)\n    at Parser.expect (C:\\xampp\\htdocs\\Laravel-VueJS-CarBidding\\node_modules\\@babel\\parser\\lib\\index.js:7690:28)\n    at Parser.parseObj (C:\\xampp\\htdocs\\Laravel-VueJS-CarBidding\\node_modules\\@babel\\parser\\lib\\index.js:9221:14)\n    at Parser.parseExprAtom (C:\\xampp\\htdocs\\Laravel-VueJS-CarBidding\\node_modules\\@babel\\parser\\lib\\index.js:8855:28)\n    at Parser.parseExprSubscripts (C:\\xampp\\htdocs\\Laravel-VueJS-CarBidding\\node_modules\\@babel\\parser\\lib\\index.js:8483:23)\n    at Parser.parseMaybeUnary (C:\\xampp\\htdocs\\Laravel-VueJS-CarBidding\\node_modules\\@babel\\parser\\lib\\index.js:8463:21)\n    at Parser.parseExprOps (C:\\xampp\\htdocs\\Laravel-VueJS-CarBidding\\node_modules\\@babel\\parser\\lib\\index.js:8329:23)\n    at Parser.parseMaybeConditional (C:\\xampp\\htdocs\\Laravel-VueJS-CarBidding\\node_modules\\@babel\\parser\\lib\\index.js:8302:23)\n    at Parser.parseMaybeAssign (C:\\xampp\\htdocs\\Laravel-VueJS-CarBidding\\node_modules\\@babel\\parser\\lib\\index.js:8249:21)\n    at Parser.parseObjectProperty (C:\\xampp\\htdocs\\Laravel-VueJS-CarBidding\\node_modules\\@babel\\parser\\lib\\index.js:9352:101)\n    at Parser.parseObjPropValue (C:\\xampp\\htdocs\\Laravel-VueJS-CarBidding\\node_modules\\@babel\\parser\\lib\\index.js:9377:101)\n    at Parser.parseObjectMember (C:\\xampp\\htdocs\\Laravel-VueJS-CarBidding\\node_modules\\@babel\\parser\\lib\\index.js:9301:10)\n    at Parser.parseObj (C:\\xampp\\htdocs\\Laravel-VueJS-CarBidding\\node_modules\\@babel\\parser\\lib\\index.js:9225:25)\n    at Parser.parseExprAtom (C:\\xampp\\htdocs\\Laravel-VueJS-CarBidding\\node_modules\\@babel\\parser\\lib\\index.js:8855:28)\n    at Parser.parseExprSubscripts (C:\\xampp\\htdocs\\Laravel-VueJS-CarBidding\\node_modules\\@babel\\parser\\lib\\index.js:8483:23)\n    at Parser.parseMaybeUnary (C:\\xampp\\htdocs\\Laravel-VueJS-CarBidding\\node_modules\\@babel\\parser\\lib\\index.js:8463:21)\n    at Parser.parseExprOps (C:\\xampp\\htdocs\\Laravel-VueJS-CarBidding\\node_modules\\@babel\\parser\\lib\\index.js:8329:23)\n    at Parser.parseMaybeConditional (C:\\xampp\\htdocs\\Laravel-VueJS-CarBidding\\node_modules\\@babel\\parser\\lib\\index.js:8302:23)\n    at Parser.parseMaybeAssign (C:\\xampp\\htdocs\\Laravel-VueJS-CarBidding\\node_modules\\@babel\\parser\\lib\\index.js:8249:21)\n    at Parser.parseExportDefaultExpression (C:\\xampp\\htdocs\\Laravel-VueJS-CarBidding\\node_modules\\@babel\\parser\\lib\\index.js:11081:24)\n    at Parser.parseExport (C:\\xampp\\htdocs\\Laravel-VueJS-CarBidding\\node_modules\\@babel\\parser\\lib\\index.js:10976:31)\n    at Parser.parseStatementContent (C:\\xampp\\htdocs\\Laravel-VueJS-CarBidding\\node_modules\\@babel\\parser\\lib\\index.js:10004:27)\n    at Parser.parseStatement (C:\\xampp\\htdocs\\Laravel-VueJS-CarBidding\\node_modules\\@babel\\parser\\lib\\index.js:9900:17)\n    at Parser.parseBlockOrModuleBlockBody (C:\\xampp\\htdocs\\Laravel-VueJS-CarBidding\\node_modules\\@babel\\parser\\lib\\index.js:10476:25)\n    at Parser.parseBlockBody (C:\\xampp\\htdocs\\Laravel-VueJS-CarBidding\\node_modules\\@babel\\parser\\lib\\index.js:10463:10)\n    at Parser.parseTopLevel (C:\\xampp\\htdocs\\Laravel-VueJS-CarBidding\\node_modules\\@babel\\parser\\lib\\index.js:9829:10)\n    at Parser.parse (C:\\xampp\\htdocs\\Laravel-VueJS-CarBidding\\node_modules\\@babel\\parser\\lib\\index.js:11341:17)\n    at parse (C:\\xampp\\htdocs\\Laravel-VueJS-CarBidding\\node_modules\\@babel\\parser\\lib\\index.js:11377:38)\n    at parser (C:\\xampp\\htdocs\\Laravel-VueJS-CarBidding\\node_modules\\@babel\\core\\lib\\transformation\\normalize-file.js:166:34)\n    at normalizeFile (C:\\xampp\\htdocs\\Laravel-VueJS-CarBidding\\node_modules\\@babel\\core\\lib\\transformation\\normalize-file.js:100:11)\n    at runSync (C:\\xampp\\htdocs\\Laravel-VueJS-CarBidding\\node_modules\\@babel\\core\\lib\\transformation\\index.js:44:43)\n    at runAsync (C:\\xampp\\htdocs\\Laravel-VueJS-CarBidding\\node_modules\\@babel\\core\\lib\\transformation\\index.js:35:14)\n    at process.nextTick (C:\\xampp\\htdocs\\Laravel-VueJS-CarBidding\\node_modules\\@babel\\core\\lib\\transform.js:34:34)\n    at _combinedTickCallback (internal/process/next_tick.js:131:7)\n    at process._tickCallback (internal/process/next_tick.js:180:9)");
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: "Profile",
+  data: function data() {
+    return {
+      user: [],
+      csrf: document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+    };
+  },
+  created: function created() {
+    this.fetchUser();
+  },
+  methods: {
+    fetchUser: function fetchUser() {
+      var _this = this;
+
+      axios.get('/fetchUser').then(function (response) {
+        _this.user = response.data;
+        console.log(_this.user);
+      });
+    },
+    openCity: function openCity(tabname) {
+      // Declare all variables
+      var i, tabcontent, tablinks; // Get all elements with class="tabcontent" and hide them
+
+      tabcontent = document.getElementsByClassName("tabcontent");
+
+      for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+      } // Get all elements with class="tablinks" and remove the class "active"
+
+
+      tablinks = document.getElementsByClassName("tablinks");
+
+      for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].className = tablinks[i].className.replace(" active", "");
+      } // Show the current tab, and add an "active" class to the button that opened the tab
+
+
+      document.getElementById(tabname).style.display = "block";
+      var elem = document.getElementsByClassName('profile_menu_li');
+
+      for (var p = 0; p < elem.length; p++) {
+        elem[p].classList.remove("active");
+      }
+
+      document.getElementById(tabname + 'but').classList.add("active");
+    }
+  }
+});
 
 /***/ }),
 
@@ -47563,8 +47906,791 @@ render._withStripped = true
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
-var render = function () {}
-var staticRenderFns = []
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    [
+      _c("header-component"),
+      _vm._v(" "),
+      _c("div", { staticClass: "container-fluid profile_bg_white" }, [
+        _c("div", { staticClass: "container profile_container" }, [
+          _c("div", { staticClass: "row" }, [
+            _c("div", { staticClass: "col profile_menu" }, [
+              _c("div", { staticClass: "row mx-0" }, [
+                _c("div", { staticClass: "col-md-3 avatar_section" }, [
+                  !_vm.user.avatar && _vm.user.gender == "male"
+                    ? _c("img", {
+                        staticClass: "avatar_img",
+                        attrs: { src: "/img/avatar/images.png" }
+                      })
+                    : !_vm.user.avatar && _vm.user.gender == "female"
+                    ? _c("img", {
+                        staticClass: "avatar_img",
+                        attrs: {
+                          src:
+                            "/img/avatar/female-avatar-profile-icon-round-african-american-vector-18307298.jpg"
+                        }
+                      })
+                    : _c("img", {
+                        staticClass: "avatar_img",
+                        attrs: { src: "/img/avatar/" + _vm.user.avatar }
+                      })
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "col-md-6 user_name_ul " }, [
+                  _c("h6", { staticClass: "user_name_tag" }, [
+                    _vm._v(_vm._s(_vm.user.name) + " " + _vm._s(_vm.user.sname))
+                  ]),
+                  _vm._v(" "),
+                  _c("button", { staticClass: "myprofile_btn" }, [
+                    _vm._v("Мой профиль")
+                  ]),
+                  _vm._v(" "),
+                  _c("button", { staticClass: "profile_btn_followers" }, [
+                    _vm._v("Мои подписки")
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "col-md-12 profile_menu_nav" }, [
+                  _c("ul", { staticClass: "profile_menu_ul" }, [
+                    _c(
+                      "button",
+                      {
+                        staticClass: "tablinks",
+                        on: {
+                          click: function($event) {
+                            return _vm.openCity("profile")
+                          }
+                        }
+                      },
+                      [_vm._m(0)]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "button",
+                      {
+                        staticClass: "tablinks",
+                        on: {
+                          click: function($event) {
+                            return _vm.openCity("balance")
+                          }
+                        }
+                      },
+                      [_vm._m(1)]
+                    )
+                  ])
+                ])
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "col profile_data" }, [
+              _c("h3", { staticClass: "personal_data_title" }, [
+                _vm._v("Личные данные")
+              ]),
+              _vm._v(" "),
+              _c("table", { staticClass: "table table-striped table-hover" }, [
+                _c("tbody", [
+                  _c("tr", [
+                    _c("th", [_vm._v("Фамилия *")]),
+                    _vm._v(" "),
+                    _c("td", { staticClass: "showView" }, [
+                      _vm._v(_vm._s(_vm.user.sname))
+                    ]),
+                    _vm._v(" "),
+                    _vm._m(2)
+                  ]),
+                  _vm._v(" "),
+                  _c("tr", [
+                    _c("th", [_vm._v("Имя *")]),
+                    _vm._v(" "),
+                    _c("td", { staticClass: "showView" }, [
+                      _vm._v(_vm._s(_vm.user.name))
+                    ]),
+                    _vm._v(" "),
+                    _vm._m(3)
+                  ]),
+                  _vm._v(" "),
+                  _c("tr", [
+                    _c("th", [_vm._v("Дата рождения *")]),
+                    _vm._v(" "),
+                    _c("td", { staticClass: "showView" }, [
+                      _vm._v(_vm._s(_vm.user.date_of_birth))
+                    ]),
+                    _vm._v(" "),
+                    _vm._m(4)
+                  ]),
+                  _vm._v(" "),
+                  _vm._m(5),
+                  _vm._v(" "),
+                  _vm._m(6)
+                ])
+              ])
+            ])
+          ]),
+          _vm._v(" "),
+          _c(
+            "div",
+            { staticClass: "tabcontent activetabis", attrs: { id: "profile" } },
+            [
+              _c("div", { staticClass: "row contact_info_row" }, [
+                _c("div", { staticClass: "col-md-6 profile_data" }, [
+                  _c("h3", { staticClass: "personal_data_title" }, [
+                    _vm._v("Паспортные данные")
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "table",
+                    { staticClass: "table table-striped table-hover" },
+                    [
+                      _c("tbody", [
+                        _c("tr", [
+                          _c("th", [_vm._v("Паспорт *")]),
+                          _vm._v(" "),
+                          _c("td", { staticClass: "showView" }, [
+                            _vm._v(_vm._s(_vm.user.sname))
+                          ]),
+                          _vm._v(" "),
+                          _vm._m(7)
+                        ]),
+                        _vm._v(" "),
+                        _c("tr", [
+                          _c("th", [_vm._v("Кем выдан *")]),
+                          _vm._v(" "),
+                          _c("td", { staticClass: "showView" }, [
+                            _vm._v(_vm._s(_vm.user.name))
+                          ]),
+                          _vm._v(" "),
+                          _vm._m(8)
+                        ]),
+                        _vm._v(" "),
+                        _c("tr", [
+                          _c("th", [_vm._v("Дата выдачи *")]),
+                          _vm._v(" "),
+                          _c("td", { staticClass: "showView" }, [
+                            _vm._v(_vm._s(_vm.user.sname))
+                          ]),
+                          _vm._v(" "),
+                          _vm._m(9)
+                        ]),
+                        _vm._v(" "),
+                        _c("tr", [
+                          _c("th", [_vm._v("Код подразделения *")]),
+                          _vm._v(" "),
+                          _c("td", { staticClass: "showView" }, [
+                            _vm._v(_vm._s(_vm.user.sname))
+                          ]),
+                          _vm._v(" "),
+                          _vm._m(10)
+                        ]),
+                        _vm._v(" "),
+                        _c("tr", [
+                          _c("th", [_vm._v("Место регистрации *")]),
+                          _vm._v(" "),
+                          _c("td", { staticClass: "showView" }, [
+                            _vm._v(_vm._s(_vm.user.sname))
+                          ]),
+                          _vm._v(" "),
+                          _vm._m(11)
+                        ])
+                      ])
+                    ]
+                  )
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "col-md-6 profile_data" }, [
+                  _c("h3", { staticClass: "personal_data_title" }, [
+                    _vm._v("Контактная информация")
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "table",
+                    { staticClass: "table table-striped table-hover" },
+                    [
+                      _c("tbody", [
+                        _c("tr", [
+                          _c("th", [_vm._v("Телефон *")]),
+                          _vm._v(" "),
+                          _c("td", { staticClass: "showView" }, [
+                            _vm._v(_vm._s(_vm.user.phone))
+                          ]),
+                          _vm._v(" "),
+                          _vm._m(12)
+                        ]),
+                        _vm._v(" "),
+                        _c("tr", [
+                          _c("th", [_vm._v("E-mail *")]),
+                          _vm._v(" "),
+                          _c("td", { staticClass: "showView" }, [
+                            _vm._v(_vm._s(_vm.user.email))
+                          ]),
+                          _vm._v(" "),
+                          _vm._m(13)
+                        ]),
+                        _vm._v(" "),
+                        _c("tr", [
+                          _c("th", [_vm._v("Почтовый индекс *")]),
+                          _vm._v(" "),
+                          _c("td", { staticClass: "showView" }, [
+                            _vm._v(_vm._s(_vm.user.postcode))
+                          ]),
+                          _vm._v(" "),
+                          _vm._m(14)
+                        ]),
+                        _vm._v(" "),
+                        _c("tr", [
+                          _c("th", [_vm._v("Почтовый адрес *")]),
+                          _vm._v(" "),
+                          _c("td", { staticClass: "showView" }, [
+                            _vm._v(_vm._s(_vm.user.date_of_birth))
+                          ]),
+                          _vm._v(" "),
+                          _vm._m(15)
+                        ]),
+                        _vm._v(" "),
+                        _c("tr", [
+                          _c("th", [_vm._v("Дополнительно *")]),
+                          _vm._v(" "),
+                          _c("td", { staticClass: "showView" }, [
+                            _vm._v(_vm._s(_vm.user.sname))
+                          ]),
+                          _vm._v(" "),
+                          _vm._m(16)
+                        ])
+                      ])
+                    ]
+                  )
+                ])
+              ])
+            ]
+          ),
+          _vm._v(" "),
+          _c("div", { staticClass: "tabcontent", attrs: { id: "balance" } }, [
+            _c("div", { staticClass: "row count_row" }, [
+              _c("div", { staticClass: "col-md-6 profile_data" }, [
+                _c("h3", { staticClass: "personal_data_title" }, [
+                  _vm._v("Лицевой счет")
+                ]),
+                _vm._v(" "),
+                _c(
+                  "table",
+                  { staticClass: "table table-striped table-hover" },
+                  [
+                    _c("tbody", [
+                      _c("tr", [
+                        _c("th", [
+                          _vm._v("Лицевой счет № " + _vm._s(_vm.user.id) + " *")
+                        ]),
+                        _vm._v(" "),
+                        _c("td", { staticClass: "showView" }, [
+                          _vm._v(_vm._s(_vm.user.sname))
+                        ]),
+                        _vm._v(" "),
+                        _vm._m(17)
+                      ]),
+                      _vm._v(" "),
+                      _c("tr", [
+                        _c("th", [_vm._v("Субсчет депозита *")]),
+                        _vm._v(" "),
+                        _c("td", { staticClass: "showView" }, [
+                          _vm._v(_vm._s(_vm.user.name))
+                        ]),
+                        _vm._v(" "),
+                        _vm._m(18)
+                      ]),
+                      _vm._v(" "),
+                      _c("tr", [
+                        _c("th", [_vm._v("Субсчет свободных средств *")]),
+                        _vm._v(" "),
+                        _c("td", { staticClass: "showView" }, [
+                          _vm._v(_vm._s(_vm.user.sname))
+                        ]),
+                        _vm._v(" "),
+                        _vm._m(19)
+                      ]),
+                      _vm._v(" "),
+                      _c("tr", [
+                        _c("th", [
+                          _vm._v(
+                            "Субсчет заблокированных средств в счет задатка *"
+                          )
+                        ]),
+                        _vm._v(" "),
+                        _c("td", { staticClass: "showView" }, [
+                          _vm._v(_vm._s(_vm.user.sname))
+                        ]),
+                        _vm._v(" "),
+                        _vm._m(20)
+                      ])
+                    ])
+                  ]
+                )
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "col-md-6 profile_data" }, [
+                _c("h3", { staticClass: "personal_data_title" }, [
+                  _vm._v("Реквизиты для пополнения лицевого счета")
+                ]),
+                _vm._v(" "),
+                _c(
+                  "table",
+                  { staticClass: "table table-striped table-hover" },
+                  [
+                    _c("tbody", [
+                      _c("tr", [
+                        _c("th", [_vm._v("Расчетный счет *")]),
+                        _vm._v(" "),
+                        _c("td", { staticClass: "showView" }, [
+                          _vm._v(_vm._s(_vm.user.phone))
+                        ]),
+                        _vm._v(" "),
+                        _vm._m(21)
+                      ]),
+                      _vm._v(" "),
+                      _c("tr", [
+                        _c("th", [_vm._v("Корреспондентский счет *")]),
+                        _vm._v(" "),
+                        _c("td", { staticClass: "showView" }, [
+                          _vm._v(_vm._s(_vm.user.email))
+                        ]),
+                        _vm._v(" "),
+                        _vm._m(22)
+                      ]),
+                      _vm._v(" "),
+                      _c("tr", [
+                        _c("th", [_vm._v("БИК *")]),
+                        _vm._v(" "),
+                        _c("td", { staticClass: "showView" }, [
+                          _vm._v(_vm._s(_vm.user.postcode))
+                        ]),
+                        _vm._v(" "),
+                        _vm._m(23)
+                      ]),
+                      _vm._v(" "),
+                      _c("tr", [
+                        _c("th", [_vm._v("ИНН *")]),
+                        _vm._v(" "),
+                        _c("td", { staticClass: "showView" }, [
+                          _vm._v(_vm._s(_vm.user.date_of_birth))
+                        ]),
+                        _vm._v(" "),
+                        _vm._m(24)
+                      ]),
+                      _vm._v(" "),
+                      _c("tr", [
+                        _c("th", [_vm._v("КПП *")]),
+                        _vm._v(" "),
+                        _c("td", { staticClass: "showView" }, [
+                          _vm._v(_vm._s(_vm.user.sname))
+                        ]),
+                        _vm._v(" "),
+                        _vm._m(25)
+                      ]),
+                      _vm._v(" "),
+                      _c("tr", [
+                        _c("th", [_vm._v("Наименование банка *")]),
+                        _vm._v(" "),
+                        _c("td", { staticClass: "showView" }, [
+                          _vm._v(_vm._s(_vm.user.sname))
+                        ]),
+                        _vm._v(" "),
+                        _vm._m(26)
+                      ]),
+                      _vm._v(" "),
+                      _c("tr", [
+                        _c("th", [_vm._v("Наименование получателя *")]),
+                        _vm._v(" "),
+                        _c("td", { staticClass: "showView" }, [
+                          _vm._v(_vm._s(_vm.user.sname))
+                        ]),
+                        _vm._v(" "),
+                        _vm._m(27)
+                      ]),
+                      _vm._v(" "),
+                      _c("tr", [
+                        _c("th", [
+                          _vm._v("Назначение платежа для субсчета депозита *")
+                        ]),
+                        _vm._v(" "),
+                        _c("td", { staticClass: "showView" }, [
+                          _vm._v(_vm._s(_vm.user.sname))
+                        ]),
+                        _vm._v(" "),
+                        _vm._m(28)
+                      ]),
+                      _vm._v(" "),
+                      _c("tr", [
+                        _c("th", [
+                          _vm._v(
+                            "Назначение платежа для субсчета свободных средств *"
+                          )
+                        ]),
+                        _vm._v(" "),
+                        _c("td", { staticClass: "showView" }, [
+                          _vm._v(_vm._s(_vm.user.sname))
+                        ]),
+                        _vm._v(" "),
+                        _vm._m(29)
+                      ])
+                    ])
+                  ]
+                )
+              ])
+            ])
+          ])
+        ])
+      ]),
+      _vm._v(" "),
+      _c("footer-component")
+    ],
+    1
+  )
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "li",
+      { staticClass: "profile_menu_li active", attrs: { id: "profilebut" } },
+      [_c("i", { staticClass: "fas fa-user" }), _vm._v("Профиль")]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "li",
+      { staticClass: "profile_menu_li", attrs: { id: "balancebut" } },
+      [_c("i", { staticClass: "fas fa-ruble-sign" }), _vm._v("Лицевой счёт")]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", { staticClass: "showEdit" }, [
+      _c("input", {
+        staticClass: "form-control  required",
+        attrs: { type: "text", name: "lastName", value: "Sardaryan" }
+      })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", { staticClass: "showEdit" }, [
+      _c("input", {
+        staticClass: "form-control  required",
+        attrs: { type: "text", name: "lastName", value: "Sardaryan" }
+      })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", { staticClass: "showEdit" }, [
+      _c("input", {
+        staticClass: "form-control datepicker hasDatepicker",
+        attrs: { type: "date", name: "birthDate" }
+      })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("tr", [
+      _c("th", [_vm._v("ИНН физ. лица *")]),
+      _vm._v(" "),
+      _c("td", { staticClass: "showView" }, [_vm._v("AAAA")]),
+      _vm._v(" "),
+      _c("td", { staticClass: "showEdit" }, [
+        _c("input", {
+          staticClass: "form-control  required",
+          attrs: { type: "text", name: "lastName", value: "Sardaryan" }
+        })
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("tr", [
+      _c("th", [_vm._v("Расчетный/лицевой счет *")]),
+      _vm._v(" "),
+      _c("td", { staticClass: "showView" }, [_vm._v("999888777")]),
+      _vm._v(" "),
+      _c("td", { staticClass: "showEdit" }, [
+        _c("input", {
+          staticClass: "form-control  required",
+          attrs: { type: "text", name: "lastName", value: "Sardaryan" }
+        })
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", { staticClass: "showEdit" }, [
+      _c("input", {
+        staticClass: "form-control  required",
+        attrs: { type: "text", name: "passportNumber", value: "Sardaryan" }
+      })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", { staticClass: "showEdit" }, [
+      _c("input", {
+        staticClass: "form-control  required",
+        attrs: { type: "text", name: "givenFrom", value: "Sardaryan" }
+      })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", { staticClass: "showEdit" }, [
+      _c("input", {
+        staticClass: "form-control  required",
+        attrs: { type: "text", name: "givenDate", value: "Sardaryan" }
+      })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", { staticClass: "showEdit" }, [
+      _c("input", {
+        staticClass: "form-control  required",
+        attrs: { type: "text", name: "placeCode", value: "Sardaryan" }
+      })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", { staticClass: "showEdit" }, [
+      _c("input", {
+        staticClass: "form-control  required",
+        attrs: { type: "text", name: "RegistrName", value: "Sardaryan" }
+      })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", { staticClass: "showEdit" }, [
+      _c("input", {
+        staticClass: "form-control  required",
+        attrs: { type: "phone", name: "phone", value: "Sardaryan" }
+      })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", { staticClass: "showEdit" }, [
+      _c("input", {
+        staticClass: "form-control  required",
+        attrs: { type: "email", name: "email", value: "Sardaryan" }
+      })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", { staticClass: "showEdit" }, [
+      _c("input", {
+        staticClass: "form-control  required",
+        attrs: { type: "text", name: "postIndex", value: "Sardaryan" }
+      })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", { staticClass: "showEdit" }, [
+      _c("input", {
+        staticClass: "form-control required",
+        attrs: { type: "text", name: "postCode" }
+      })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", { staticClass: "showEdit" }, [
+      _c("input", {
+        staticClass: "form-control required",
+        attrs: { type: "text", name: "additional", value: "Sardaryan" }
+      })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", { staticClass: "showEdit" }, [
+      _c("input", {
+        staticClass: "form-control  required",
+        attrs: { type: "text", name: "passportNumber", value: "Sardaryan" }
+      })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", { staticClass: "showEdit" }, [
+      _c("input", {
+        staticClass: "form-control  required",
+        attrs: { type: "text", name: "givenFrom", value: "Sardaryan" }
+      })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", { staticClass: "showEdit" }, [
+      _c("input", {
+        staticClass: "form-control  required",
+        attrs: { type: "text", name: "givenDate", value: "Sardaryan" }
+      })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", { staticClass: "showEdit" }, [
+      _c("input", {
+        staticClass: "form-control  required",
+        attrs: { type: "text", name: "placeCode", value: "Sardaryan" }
+      })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", { staticClass: "showEdit" }, [
+      _c("input", {
+        staticClass: "form-control  required",
+        attrs: { type: "phone", name: "phone", value: "Sardaryan" }
+      })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", { staticClass: "showEdit" }, [
+      _c("input", {
+        staticClass: "form-control  required",
+        attrs: { type: "email", name: "email", value: "Sardaryan" }
+      })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", { staticClass: "showEdit" }, [
+      _c("input", {
+        staticClass: "form-control  required",
+        attrs: { type: "text", name: "postIndex", value: "Sardaryan" }
+      })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", { staticClass: "showEdit" }, [
+      _c("input", {
+        staticClass: "form-control required",
+        attrs: { type: "text", name: "postCode" }
+      })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", { staticClass: "showEdit" }, [
+      _c("input", {
+        staticClass: "form-control required",
+        attrs: { type: "text", name: "additional", value: "Sardaryan" }
+      })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", { staticClass: "showEdit" }, [
+      _c("input", {
+        staticClass: "form-control required",
+        attrs: { type: "text", name: "additional", value: "Sardaryan" }
+      })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", { staticClass: "showEdit" }, [
+      _c("input", {
+        staticClass: "form-control required",
+        attrs: { type: "text", name: "additional", value: "Sardaryan" }
+      })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", { staticClass: "showEdit" }, [
+      _c("input", {
+        staticClass: "form-control required",
+        attrs: { type: "text", name: "additional", value: "Sardaryan" }
+      })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", { staticClass: "showEdit" }, [
+      _c("input", {
+        staticClass: "form-control required",
+        attrs: { type: "text", name: "additional", value: "Sardaryan" }
+      })
+    ])
+  }
+]
+render._withStripped = true
 
 
 
