@@ -4081,6 +4081,8 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 //
 //
 //
@@ -4391,7 +4393,7 @@ __webpack_require__.r(__webpack_exports__);
   created: function created() {
     this.fetchUser();
   },
-  methods: {
+  methods: _defineProperty({
     fetchUser: function fetchUser() {
       var _this = this;
 
@@ -4420,6 +4422,29 @@ __webpack_require__.r(__webpack_exports__);
 
       document.getElementById(tabname).style.display = "block";
     }
+  }, "openCity", function openCity(tabname) {
+    // Declare all variables
+    var i, tabcontent, tablinks; // Get all elements with class="tabcontent" and hide them
+
+    tabcontent = document.getElementsByClassName("tabcontent");
+
+    for (i = 0; i < tabcontent.length; i++) {
+      tabcontent[i].style.display = "none";
+    } // Get all elements with class="tablinks" and remove the class "active"
+
+
+    tablinks = document.getElementsByClassName("tablinks");
+
+    for (i = 0; i < tablinks.length; i++) {
+      tablinks[i].className = tablinks[i].className.replace(" active", "");
+    } // Show the current tab, and add an "active" class to the button that opened the tab
+
+
+    document.getElementById(tabname).style.display = "block";
+  }),
+  addClassActive: function addClassActive() {
+    var element = document.getElementsByClassName("tablinks");
+    element.classList.add("activeli");
   }
 });
 
