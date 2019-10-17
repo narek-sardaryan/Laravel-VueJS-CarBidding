@@ -8,11 +8,11 @@
                     <div class="row mx-0">
                         <div class="col-md-3 avatar_section">
                             <img class="avatar_img" v-if="!user.avatar && user.gender == 'male'" src="/img/avatar/images.png">
-                            <img class="avatar_img" v-if="!user.avatar && user.gender == 'female'" src="/img/avatar/female-avatar-profile-icon-round-african-american-vector-18307298.jpg">
+                            <img class="avatar_img" v-else-if="!user.avatar && user.gender == 'female'" src="/img/avatar/female-avatar-profile-icon-round-african-american-vector-18307298.jpg">
                             <img class="avatar_img" v-else :src="'/img/avatar/'+user.avatar">
                         </div>
                         <div class="col-md-6 user_name_ul ">
-                            <h6 class="user_name_tag">{{user.name}}</h6>
+                            <h6 class="user_name_tag">{{user.name}} {{user.sname}}</h6>
                             <button class="myprofile_btn">Мой профиль</button>
                             <button class="profile_btn_followers">Мои подписки</button>
                         </div>
@@ -137,7 +137,7 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <th>E-mail  *</th>
+                                    <th>E-mail *</th>
                                     <td class="showView">{{user.email}}</td>
                                     <td class="showEdit">
                                         <input class="form-control  required" type="email" name="email" value="Sardaryan">
@@ -298,10 +298,6 @@
                 // Show the current tab, and add an "active" class to the button that opened the tab
                 document.getElementById(tabname).style.display = "block";
             }
-        }
-        addClassActive() {
-          var element = document.getElementsByClassName("tablinks");
-          element.classList.add("activeli");
         }
     }
 </script>

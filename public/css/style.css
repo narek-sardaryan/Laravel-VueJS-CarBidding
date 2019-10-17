@@ -1289,9 +1289,12 @@ span i {
     cursor: pointer;
     font-size: 17px;
 }
-.profile_menu_ul .profile_menu_li:hover {
+.tablinks:hover {
     background: #fff;
     box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+    transition: 0.5s;
+}
+.tablinks:hover .profile_menu_li {
     transition: 0.5s;
     color: #0f92ff;
 }
@@ -1331,6 +1334,11 @@ span i {
     background-color: transparent;
     text-align: left;
     color: white;
+}
+.tablinks:focus {
+    outline: none;
+    background: #fff;
+    color: #0f92ff;
 }
 
 .activetabis{
