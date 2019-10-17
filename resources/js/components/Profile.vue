@@ -23,12 +23,11 @@
                             </ul>
                         </div>
                     </div>
-                </div>
-                <div class="col profile_data">
-                    <h3 class="personal_data_title">Личные данные</h3>
-                    <table class="table table-striped table-hover">
-                        <tbody>
-                           <tr>
+                    <div class="col profile_data">
+                        <h3 class="personal_data_title">Личные данные</h3>
+                        <table class="table table-striped table-hover">
+                            <tbody>
+                            <tr>
                                 <th>Фамилия *</th>
                                 <td class="showView">{{user.sname}}</td>
                                 <td class="showEdit">
@@ -43,13 +42,6 @@
                                 </td>
                             </tr>
                             <tr>
-                                <th>Отчество *</th>
-                                <td class="showView">{{user.sname}}</td>
-                                <td class="showEdit">
-                                    <input class="form-control  required" type="text" name="lastName" value="Sardaryan">
-                                </td>
-                            </tr>
-                            <tr>
                                 <th>Дата рождения *</th>
                                 <td class="showView">{{user.date_of_birth}}</td>
                                 <td class="showEdit">
@@ -58,29 +50,22 @@
                             </tr>
                             <tr>
                                 <th>ИНН физ. лица *</th>
-                                <td class="showView">{{user.sname}}</td>
+                                <td class="showView">AAAA</td>
                                 <td class="showEdit">
                                     <input class="form-control  required" type="text" name="lastName" value="Sardaryan">
                                 </td>
                             </tr>
                             <tr>
                                 <th>Расчетный/лицевой счет *</th>
-                                <td class="showView">{{user.sname}}</td>
+                                <td class="showView">999888777</td>
                                 <td class="showEdit">
                                     <input class="form-control  required" type="text" name="lastName" value="Sardaryan">
                                 </td>
                             </tr>
-                            <tr>
-                                <th>Корр. счет *</th>
-                                <td class="showView">{{user.sname}}</td>
-                                <td class="showEdit">
-                                    <input class="form-control  required" type="text" name="lastName" value="Sardaryan">
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
-            </div>
                 <div id="profiletab" class="tabcontent activetabis">
                     <div class="row contact_info_row">
                         <div class="col-md-6 profile_data">
@@ -91,35 +76,40 @@
                                     <th>Паспорт *</th>
                                     <td class="showView">{{user.sname}}</td>
                                     <td class="showEdit">
-                                        <input class="form-control  required" type="text" name="passportNumber" value="Sardaryan">
+                                        <input class="form-control  required" type="text" name="passportNumber"
+                                               value="Sardaryan">
                                     </td>
                                 </tr>
                                 <tr>
                                     <th>Кем выдан *</th>
                                     <td class="showView">{{user.name}}</td>
                                     <td class="showEdit">
-                                        <input class="form-control  required" type="text" name="givenFrom" value="Sardaryan">
+                                        <input class="form-control  required" type="text" name="givenFrom"
+                                               value="Sardaryan">
                                     </td>
                                 </tr>
                                 <tr>
                                     <th>Дата выдачи *</th>
                                     <td class="showView">{{user.sname}}</td>
                                     <td class="showEdit">
-                                        <input class="form-control  required" type="text" name="givenDate" value="Sardaryan">
+                                        <input class="form-control  required" type="text" name="givenDate"
+                                               value="Sardaryan">
                                     </td>
                                 </tr>
                                 <tr>
                                     <th>Код подразделения *</th>
                                     <td class="showView">{{user.sname}}</td>
                                     <td class="showEdit">
-                                        <input class="form-control  required" type="text" name="placeCode" value="Sardaryan">
+                                        <input class="form-control  required" type="text" name="placeCode"
+                                               value="Sardaryan">
                                     </td>
                                 </tr>
                                 <tr>
                                     <th>Место регистрации *</th>
                                     <td class="showView">{{user.sname}}</td>
                                     <td class="showEdit">
-                                        <input class="form-control  required" type="text" name="RegistrName" value="Sardaryan">
+                                        <input class="form-control  required" type="text" name="RegistrName"
+                                               value="Sardaryan">
                                     </td>
                                 </tr>
                                 </tbody>
@@ -130,24 +120,27 @@
                             <table class="table table-striped table-hover">
                                 <tbody>
                                 <tr>
-                                    <th>Телефон  *</th>
+                                    <th>Телефон *</th>
                                     <td class="showView">{{user.phone}}</td>
                                     <td class="showEdit">
-                                        <input class="form-control  required" type="phone" name="phone" value="Sardaryan">
+                                        <input class="form-control  required" type="phone" name="phone"
+                                               value="Sardaryan">
                                     </td>
                                 </tr>
                                 <tr>
                                     <th>E-mail *</th>
                                     <td class="showView">{{user.email}}</td>
                                     <td class="showEdit">
-                                        <input class="form-control  required" type="email" name="email" value="Sardaryan">
+                                        <input class="form-control  required" type="email" name="email"
+                                               value="Sardaryan">
                                     </td>
                                 </tr>
                                 <tr>
                                     <th>Почтовый индекс *</th>
                                     <td class="showView">{{user.postcode}}</td>
                                     <td class="showEdit">
-                                        <input class="form-control  required" type="text" name="postIndex" value="Sardaryan">
+                                        <input class="form-control  required" type="text" name="postIndex"
+                                               value="Sardaryan">
                                     </td>
                                 </tr>
                                 <tr>
@@ -161,7 +154,8 @@
                                     <th>Дополнительно *</th>
                                     <td class="showView">{{user.sname}}</td>
                                     <td class="showEdit">
-                                        <input class="form-control required" type="text" name="additional" value="Sardaryan">
+                                        <input class="form-control required" type="text" name="additional"
+                                               value="Sardaryan">
                                     </td>
                                 </tr>
                                 </tbody>
@@ -176,38 +170,35 @@
                             <table class="table table-striped table-hover">
                                 <tbody>
                                 <tr>
-                                    <th>Паспорт *</th>
+                                    <th>Лицевой счет № {{user.id}} *</th>
                                     <td class="showView">{{user.sname}}</td>
                                     <td class="showEdit">
-                                        <input class="form-control  required" type="text" name="passportNumber" value="Sardaryan">
+                                        <input class="form-control  required" type="text" name="passportNumber"
+                                               value="Sardaryan">
                                     </td>
                                 </tr>
                                 <tr>
-                                    <th>Кем выдан *</th>
+                                    <th>Субсчет депозита *</th>
                                     <td class="showView">{{user.name}}</td>
                                     <td class="showEdit">
-                                        <input class="form-control  required" type="text" name="givenFrom" value="Sardaryan">
+                                        <input class="form-control  required" type="text" name="givenFrom"
+                                               value="Sardaryan">
                                     </td>
                                 </tr>
                                 <tr>
-                                    <th>Дата выдачи *</th>
+                                    <th>Субсчет свободных средств *</th>
                                     <td class="showView">{{user.sname}}</td>
                                     <td class="showEdit">
-                                        <input class="form-control  required" type="text" name="givenDate" value="Sardaryan">
+                                        <input class="form-control  required" type="text" name="givenDate"
+                                               value="Sardaryan">
                                     </td>
                                 </tr>
                                 <tr>
-                                    <th>Код подразделения *</th>
+                                    <th>Субсчет заблокированных средств в счет задатка *</th>
                                     <td class="showView">{{user.sname}}</td>
                                     <td class="showEdit">
-                                        <input class="form-control  required" type="text" name="placeCode" value="Sardaryan">
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th>Место регистрации *</th>
-                                    <td class="showView">{{user.sname}}</td>
-                                    <td class="showEdit">
-                                        <input class="form-control  required" type="text" name="RegistrName" value="Sardaryan">
+                                        <input class="form-control  required" type="text" name="placeCode"
+                                               value="Sardaryan">
                                     </td>
                                 </tr>
                                 </tbody>
@@ -218,38 +209,74 @@
                             <table class="table table-striped table-hover">
                                 <tbody>
                                 <tr>
-                                    <th>Телефон  *</th>
+                                    <th>Расчетный счет *</th>
                                     <td class="showView">{{user.phone}}</td>
                                     <td class="showEdit">
-                                        <input class="form-control  required" type="phone" name="phone" value="Sardaryan">
+                                        <input class="form-control  required" type="phone" name="phone"
+                                               value="Sardaryan">
                                     </td>
                                 </tr>
                                 <tr>
-                                    <th>E-mail  *</th>
+                                    <th>Корреспондентский счет *</th>
                                     <td class="showView">{{user.email}}</td>
                                     <td class="showEdit">
-                                        <input class="form-control  required" type="email" name="email" value="Sardaryan">
+                                        <input class="form-control  required" type="email" name="email"
+                                               value="Sardaryan">
                                     </td>
                                 </tr>
                                 <tr>
-                                    <th>Почтовый индекс *</th>
+                                    <th>БИК *</th>
                                     <td class="showView">{{user.postcode}}</td>
                                     <td class="showEdit">
-                                        <input class="form-control  required" type="text" name="postIndex" value="Sardaryan">
+                                        <input class="form-control  required" type="text" name="postIndex"
+                                               value="Sardaryan">
                                     </td>
                                 </tr>
                                 <tr>
-                                    <th>Почтовый адрес *</th>
+                                    <th>ИНН *</th>
                                     <td class="showView">{{user.date_of_birth}}</td>
                                     <td class="showEdit">
                                         <input class="form-control required" type="text" name="postCode">
                                     </td>
                                 </tr>
                                 <tr>
-                                    <th>Дополнительно *</th>
+                                    <th>КПП *</th>
                                     <td class="showView">{{user.sname}}</td>
                                     <td class="showEdit">
-                                        <input class="form-control required" type="text" name="additional" value="Sardaryan">
+                                        <input class="form-control required" type="text" name="additional"
+                                               value="Sardaryan">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>Наименование банка *</th>
+                                    <td class="showView">{{user.sname}}</td>
+                                    <td class="showEdit">
+                                        <input class="form-control required" type="text" name="additional"
+                                               value="Sardaryan">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>Наименование получателя *</th>
+                                    <td class="showView">{{user.sname}}</td>
+                                    <td class="showEdit">
+                                        <input class="form-control required" type="text" name="additional"
+                                               value="Sardaryan">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>Назначение платежа для субсчета депозита *</th>
+                                    <td class="showView">{{user.sname}}</td>
+                                    <td class="showEdit">
+                                        <input class="form-control required" type="text" name="additional"
+                                               value="Sardaryan">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>Назначение платежа для субсчета свободных средств *</th>
+                                    <td class="showView">{{user.sname}}</td>
+                                    <td class="showEdit">
+                                        <input class="form-control required" type="text" name="additional"
+                                               value="Sardaryan">
                                     </td>
                                 </tr>
                                 </tbody>
@@ -257,8 +284,8 @@
                         </div>
                     </div>
                 </div>
+            </div>
         </div>
-    </div>
         <footer-component></footer-component>
     </div>
 </template>
@@ -275,12 +302,31 @@
         created: function () {
             this.fetchUser();
         },
-        methods:{
+        methods: {
             fetchUser() {
                 axios.get('/fetchUser').then(response => {
                     this.user = response.data;
                     console.log(this.user)
                 })
+            },
+            openCity(tabname) {
+                // Declare all variables
+                var i, tabcontent, tablinks;
+
+                // Get all elements with class="tabcontent" and hide them
+                tabcontent = document.getElementsByClassName("tabcontent");
+                for (i = 0; i < tabcontent.length; i++) {
+                    tabcontent[i].style.display = "none";
+                }
+
+                // Get all elements with class="tablinks" and remove the class "active"
+                tablinks = document.getElementsByClassName("tablinks");
+                for (i = 0; i < tablinks.length; i++) {
+                    tablinks[i].className = tablinks[i].className.replace(" active", "");
+                }
+
+                // Show the current tab, and add an "active" class to the button that opened the tab
+                document.getElementById(tabname).style.display = "block";
             },
         openCity(tabname) {
         // Declare all variables
@@ -298,6 +344,13 @@
                 // Show the current tab, and add an "active" class to the button that opened the tab
                 document.getElementById(tabname).style.display = "block";
             }
+<<<<<<< HEAD
+=======
+        },
+        addClassActive() {
+          var element = document.getElementsByClassName("tablinks");
+          element.classList.add("activeli");
+>>>>>>> 836d6618ff0428f831acbed1d65683e1c3b7c8a9
         }
     }
 </script>

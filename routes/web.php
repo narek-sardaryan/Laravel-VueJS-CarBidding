@@ -21,7 +21,6 @@ Route::get('/', function () {
     return view('home');
 });
 Route::group(['middleware' => ['auth', 'admin']], function () {
-
     Route::get('/admin', 'AdminController@profile');
     Route::get('/admin/profile', 'AdminController@profile');
     Route::get('/admin/searchuser', function (Request $request) {
