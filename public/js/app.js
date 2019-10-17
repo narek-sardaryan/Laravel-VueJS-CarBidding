@@ -3321,6 +3321,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "HeaderComponent",
   data: function data() {
@@ -4078,6 +4081,40 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -46307,6 +46344,14 @@ var render = function() {
                               ]),
                               _vm._v(" "),
                               _c("ol", [
+                                _vm.user.usertype == "admin"
+                                  ? _c("li", [
+                                      _c("a", { attrs: { href: "/admin" } }, [
+                                        _vm._v("Админ Панель")
+                                      ])
+                                    ])
+                                  : _vm._e(),
+                                _vm._v(" "),
                                 _c(
                                   "li",
                                   [
@@ -47970,54 +48015,18 @@ var render = function() {
                   ]),
                   _vm._v(" "),
                   _c("tr", [
-                    _c("th", [_vm._v("Отчество *")]),
-                    _vm._v(" "),
-                    _c("td", { staticClass: "showView" }, [
-                      _vm._v(_vm._s(_vm.user.sname))
-                    ]),
-                    _vm._v(" "),
-                    _vm._m(4)
-                  ]),
-                  _vm._v(" "),
-                  _c("tr", [
                     _c("th", [_vm._v("Дата рождения *")]),
                     _vm._v(" "),
                     _c("td", { staticClass: "showView" }, [
                       _vm._v(_vm._s(_vm.user.date_of_birth))
                     ]),
                     _vm._v(" "),
-                    _vm._m(5)
+                    _vm._m(4)
                   ]),
                   _vm._v(" "),
-                  _c("tr", [
-                    _c("th", [_vm._v("ИНН физ. лица *")]),
-                    _vm._v(" "),
-                    _c("td", { staticClass: "showView" }, [
-                      _vm._v(_vm._s(_vm.user.sname))
-                    ]),
-                    _vm._v(" "),
-                    _vm._m(6)
-                  ]),
+                  _vm._m(5),
                   _vm._v(" "),
-                  _c("tr", [
-                    _c("th", [_vm._v("Расчетный/лицевой счет *")]),
-                    _vm._v(" "),
-                    _c("td", { staticClass: "showView" }, [
-                      _vm._v(_vm._s(_vm.user.sname))
-                    ]),
-                    _vm._v(" "),
-                    _vm._m(7)
-                  ]),
-                  _vm._v(" "),
-                  _c("tr", [
-                    _c("th", [_vm._v("Корр. счет *")]),
-                    _vm._v(" "),
-                    _c("td", { staticClass: "showView" }, [
-                      _vm._v(_vm._s(_vm.user.sname))
-                    ]),
-                    _vm._v(" "),
-                    _vm._m(8)
-                  ])
+                  _vm._m(6)
                 ])
               ])
             ])
@@ -48048,7 +48057,7 @@ var render = function() {
                             _vm._v(_vm._s(_vm.user.sname))
                           ]),
                           _vm._v(" "),
-                          _vm._m(9)
+                          _vm._m(7)
                         ]),
                         _vm._v(" "),
                         _c("tr", [
@@ -48058,7 +48067,7 @@ var render = function() {
                             _vm._v(_vm._s(_vm.user.name))
                           ]),
                           _vm._v(" "),
-                          _vm._m(10)
+                          _vm._m(8)
                         ]),
                         _vm._v(" "),
                         _c("tr", [
@@ -48068,7 +48077,7 @@ var render = function() {
                             _vm._v(_vm._s(_vm.user.sname))
                           ]),
                           _vm._v(" "),
-                          _vm._m(11)
+                          _vm._m(9)
                         ]),
                         _vm._v(" "),
                         _c("tr", [
@@ -48078,7 +48087,7 @@ var render = function() {
                             _vm._v(_vm._s(_vm.user.sname))
                           ]),
                           _vm._v(" "),
-                          _vm._m(12)
+                          _vm._m(10)
                         ]),
                         _vm._v(" "),
                         _c("tr", [
@@ -48088,7 +48097,7 @@ var render = function() {
                             _vm._v(_vm._s(_vm.user.sname))
                           ]),
                           _vm._v(" "),
-                          _vm._m(13)
+                          _vm._m(11)
                         ])
                       ])
                     ]
@@ -48106,23 +48115,23 @@ var render = function() {
                     [
                       _c("tbody", [
                         _c("tr", [
-                          _c("th", [_vm._v("Телефон  *")]),
+                          _c("th", [_vm._v("Телефон *")]),
                           _vm._v(" "),
                           _c("td", { staticClass: "showView" }, [
                             _vm._v(_vm._s(_vm.user.phone))
                           ]),
                           _vm._v(" "),
-                          _vm._m(14)
+                          _vm._m(12)
                         ]),
                         _vm._v(" "),
                         _c("tr", [
-                          _c("th", [_vm._v("E-mail  *")]),
+                          _c("th", [_vm._v("E-mail *")]),
                           _vm._v(" "),
                           _c("td", { staticClass: "showView" }, [
                             _vm._v(_vm._s(_vm.user.email))
                           ]),
                           _vm._v(" "),
-                          _vm._m(15)
+                          _vm._m(13)
                         ]),
                         _vm._v(" "),
                         _c("tr", [
@@ -48132,7 +48141,7 @@ var render = function() {
                             _vm._v(_vm._s(_vm.user.postcode))
                           ]),
                           _vm._v(" "),
-                          _vm._m(16)
+                          _vm._m(14)
                         ]),
                         _vm._v(" "),
                         _c("tr", [
@@ -48142,7 +48151,7 @@ var render = function() {
                             _vm._v(_vm._s(_vm.user.date_of_birth))
                           ]),
                           _vm._v(" "),
-                          _vm._m(17)
+                          _vm._m(15)
                         ]),
                         _vm._v(" "),
                         _c("tr", [
@@ -48152,7 +48161,7 @@ var render = function() {
                             _vm._v(_vm._s(_vm.user.sname))
                           ]),
                           _vm._v(" "),
-                          _vm._m(18)
+                          _vm._m(16)
                         ])
                       ])
                     ]
@@ -48178,7 +48187,31 @@ var render = function() {
                     [
                       _c("tbody", [
                         _c("tr", [
-                          _c("th", [_vm._v("Паспорт *")]),
+                          _c("th", [
+                            _vm._v(
+                              "Лицевой счет № " + _vm._s(_vm.user.id) + " *"
+                            )
+                          ]),
+                          _vm._v(" "),
+                          _c("td", { staticClass: "showView" }, [
+                            _vm._v(_vm._s(_vm.user.sname))
+                          ]),
+                          _vm._v(" "),
+                          _vm._m(17)
+                        ]),
+                        _vm._v(" "),
+                        _c("tr", [
+                          _c("th", [_vm._v("Субсчет депозита *")]),
+                          _vm._v(" "),
+                          _c("td", { staticClass: "showView" }, [
+                            _vm._v(_vm._s(_vm.user.name))
+                          ]),
+                          _vm._v(" "),
+                          _vm._m(18)
+                        ]),
+                        _vm._v(" "),
+                        _c("tr", [
+                          _c("th", [_vm._v("Субсчет свободных средств *")]),
                           _vm._v(" "),
                           _c("td", { staticClass: "showView" }, [
                             _vm._v(_vm._s(_vm.user.sname))
@@ -48188,43 +48221,17 @@ var render = function() {
                         ]),
                         _vm._v(" "),
                         _c("tr", [
-                          _c("th", [_vm._v("Кем выдан *")]),
+                          _c("th", [
+                            _vm._v(
+                              "Субсчет заблокированных средств в счет задатка *"
+                            )
+                          ]),
                           _vm._v(" "),
                           _c("td", { staticClass: "showView" }, [
-                            _vm._v(_vm._s(_vm.user.name))
+                            _vm._v(_vm._s(_vm.user.sname))
                           ]),
                           _vm._v(" "),
                           _vm._m(20)
-                        ]),
-                        _vm._v(" "),
-                        _c("tr", [
-                          _c("th", [_vm._v("Дата выдачи *")]),
-                          _vm._v(" "),
-                          _c("td", { staticClass: "showView" }, [
-                            _vm._v(_vm._s(_vm.user.sname))
-                          ]),
-                          _vm._v(" "),
-                          _vm._m(21)
-                        ]),
-                        _vm._v(" "),
-                        _c("tr", [
-                          _c("th", [_vm._v("Код подразделения *")]),
-                          _vm._v(" "),
-                          _c("td", { staticClass: "showView" }, [
-                            _vm._v(_vm._s(_vm.user.sname))
-                          ]),
-                          _vm._v(" "),
-                          _vm._m(22)
-                        ]),
-                        _vm._v(" "),
-                        _c("tr", [
-                          _c("th", [_vm._v("Место регистрации *")]),
-                          _vm._v(" "),
-                          _c("td", { staticClass: "showView" }, [
-                            _vm._v(_vm._s(_vm.user.sname))
-                          ]),
-                          _vm._v(" "),
-                          _vm._m(23)
                         ])
                       ])
                     ]
@@ -48242,53 +48249,99 @@ var render = function() {
                     [
                       _c("tbody", [
                         _c("tr", [
-                          _c("th", [_vm._v("Телефон  *")]),
+                          _c("th", [_vm._v("Расчетный счет *")]),
                           _vm._v(" "),
                           _c("td", { staticClass: "showView" }, [
                             _vm._v(_vm._s(_vm.user.phone))
+                          ]),
+                          _vm._v(" "),
+                          _vm._m(21)
+                        ]),
+                        _vm._v(" "),
+                        _c("tr", [
+                          _c("th", [_vm._v("Корреспондентский счет *")]),
+                          _vm._v(" "),
+                          _c("td", { staticClass: "showView" }, [
+                            _vm._v(_vm._s(_vm.user.email))
+                          ]),
+                          _vm._v(" "),
+                          _vm._m(22)
+                        ]),
+                        _vm._v(" "),
+                        _c("tr", [
+                          _c("th", [_vm._v("БИК *")]),
+                          _vm._v(" "),
+                          _c("td", { staticClass: "showView" }, [
+                            _vm._v(_vm._s(_vm.user.postcode))
+                          ]),
+                          _vm._v(" "),
+                          _vm._m(23)
+                        ]),
+                        _vm._v(" "),
+                        _c("tr", [
+                          _c("th", [_vm._v("ИНН *")]),
+                          _vm._v(" "),
+                          _c("td", { staticClass: "showView" }, [
+                            _vm._v(_vm._s(_vm.user.date_of_birth))
                           ]),
                           _vm._v(" "),
                           _vm._m(24)
                         ]),
                         _vm._v(" "),
                         _c("tr", [
-                          _c("th", [_vm._v("E-mail  *")]),
+                          _c("th", [_vm._v("КПП *")]),
                           _vm._v(" "),
                           _c("td", { staticClass: "showView" }, [
-                            _vm._v(_vm._s(_vm.user.email))
+                            _vm._v(_vm._s(_vm.user.sname))
                           ]),
                           _vm._v(" "),
                           _vm._m(25)
                         ]),
                         _vm._v(" "),
                         _c("tr", [
-                          _c("th", [_vm._v("Почтовый индекс *")]),
+                          _c("th", [_vm._v("Наименование банка *")]),
                           _vm._v(" "),
                           _c("td", { staticClass: "showView" }, [
-                            _vm._v(_vm._s(_vm.user.postcode))
+                            _vm._v(_vm._s(_vm.user.sname))
                           ]),
                           _vm._v(" "),
                           _vm._m(26)
                         ]),
                         _vm._v(" "),
                         _c("tr", [
-                          _c("th", [_vm._v("Почтовый адрес *")]),
+                          _c("th", [_vm._v("Наименование получателя *")]),
                           _vm._v(" "),
                           _c("td", { staticClass: "showView" }, [
-                            _vm._v(_vm._s(_vm.user.date_of_birth))
+                            _vm._v(_vm._s(_vm.user.sname))
                           ]),
                           _vm._v(" "),
                           _vm._m(27)
                         ]),
                         _vm._v(" "),
                         _c("tr", [
-                          _c("th", [_vm._v("Дополнительно *")]),
+                          _c("th", [
+                            _vm._v("Назначение платежа для субсчета депозита *")
+                          ]),
                           _vm._v(" "),
                           _c("td", { staticClass: "showView" }, [
                             _vm._v(_vm._s(_vm.user.sname))
                           ]),
                           _vm._v(" "),
                           _vm._m(28)
+                        ]),
+                        _vm._v(" "),
+                        _c("tr", [
+                          _c("th", [
+                            _vm._v(
+                              "Назначение платежа для субсчета свободных средств *"
+                            )
+                          ]),
+                          _vm._v(" "),
+                          _c("td", { staticClass: "showView" }, [
+                            _vm._v(_vm._s(_vm.user.sname))
+                          ]),
+                          _vm._v(" "),
+                          _vm._m(29)
                         ])
                       ])
                     ]
@@ -48352,17 +48405,6 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("td", { staticClass: "showEdit" }, [
       _c("input", {
-        staticClass: "form-control  required",
-        attrs: { type: "text", name: "lastName", value: "Sardaryan" }
-      })
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("td", { staticClass: "showEdit" }, [
-      _c("input", {
         staticClass: "form-control datepicker hasDatepicker",
         attrs: { type: "date", name: "birthDate" }
       })
@@ -48372,33 +48414,34 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("td", { staticClass: "showEdit" }, [
-      _c("input", {
-        staticClass: "form-control  required",
-        attrs: { type: "text", name: "lastName", value: "Sardaryan" }
-      })
+    return _c("tr", [
+      _c("th", [_vm._v("ИНН физ. лица *")]),
+      _vm._v(" "),
+      _c("td", { staticClass: "showView" }, [_vm._v("AAAA")]),
+      _vm._v(" "),
+      _c("td", { staticClass: "showEdit" }, [
+        _c("input", {
+          staticClass: "form-control  required",
+          attrs: { type: "text", name: "lastName", value: "Sardaryan" }
+        })
+      ])
     ])
   },
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("td", { staticClass: "showEdit" }, [
-      _c("input", {
-        staticClass: "form-control  required",
-        attrs: { type: "text", name: "lastName", value: "Sardaryan" }
-      })
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("td", { staticClass: "showEdit" }, [
-      _c("input", {
-        staticClass: "form-control  required",
-        attrs: { type: "text", name: "lastName", value: "Sardaryan" }
-      })
+    return _c("tr", [
+      _c("th", [_vm._v("Расчетный/лицевой счет *")]),
+      _vm._v(" "),
+      _c("td", { staticClass: "showView" }, [_vm._v("999888777")]),
+      _vm._v(" "),
+      _c("td", { staticClass: "showEdit" }, [
+        _c("input", {
+          staticClass: "form-control  required",
+          attrs: { type: "text", name: "lastName", value: "Sardaryan" }
+        })
+      ])
     ])
   },
   function() {
@@ -48562,17 +48605,6 @@ var staticRenderFns = [
     return _c("td", { staticClass: "showEdit" }, [
       _c("input", {
         staticClass: "form-control  required",
-        attrs: { type: "text", name: "RegistrName", value: "Sardaryan" }
-      })
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("td", { staticClass: "showEdit" }, [
-      _c("input", {
-        staticClass: "form-control  required",
         attrs: { type: "phone", name: "phone", value: "Sardaryan" }
       })
     ])
@@ -48607,6 +48639,50 @@ var staticRenderFns = [
       _c("input", {
         staticClass: "form-control required",
         attrs: { type: "text", name: "postCode" }
+      })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", { staticClass: "showEdit" }, [
+      _c("input", {
+        staticClass: "form-control required",
+        attrs: { type: "text", name: "additional", value: "Sardaryan" }
+      })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", { staticClass: "showEdit" }, [
+      _c("input", {
+        staticClass: "form-control required",
+        attrs: { type: "text", name: "additional", value: "Sardaryan" }
+      })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", { staticClass: "showEdit" }, [
+      _c("input", {
+        staticClass: "form-control required",
+        attrs: { type: "text", name: "additional", value: "Sardaryan" }
+      })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", { staticClass: "showEdit" }, [
+      _c("input", {
+        staticClass: "form-control required",
+        attrs: { type: "text", name: "additional", value: "Sardaryan" }
       })
     ])
   },

@@ -53,6 +53,9 @@
                                         <a>{{user.name}}</a>
                                         <p class="arrow_nav">🡄</p>
                                         <ol>
+                                            <li v-if="user.usertype == 'admin'">
+                                                <a href="/admin">Админ Панель</a>
+                                            </li>
                                             <li>
                                                 <router-link to="/profile">Профиль</router-link>
                                             </li>
