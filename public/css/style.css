@@ -1237,10 +1237,11 @@ span i {
 }
 .profile_menu {
     background: #1969abb0;
-    padding: 40px 0 80px 0;
+    padding: 20px 0 0 0;
 }
 .avatar_section {
     margin-left: 70px;
+    margin-bottom: 15px;
 }
 .avatar_img {
     width: 100px;
@@ -1248,7 +1249,7 @@ span i {
     border-radius: 50px;
 }
 .user_name_tag {
-    font-size: 16px;
+    font-size: 25px;
     color: #fff;
 }
 .user_name_ul {
@@ -1257,7 +1258,7 @@ span i {
 }
 .myprofile_btn, .profile_btn_followers  {
     width: 100px;
-    padding: 10px 0px;
+    padding: 10px 0;
     font-size: 12px;
     border-radius: 5px;
 }
@@ -1272,17 +1273,22 @@ span i {
     border: 1px solid #fff;
 }
 .profile_menu_nav {
-    padding-right: 0px;
-    padding-left: 0px;
+    padding-right: 0;
+    padding-left: 0;
 }
 .profile_menu_ul {
-    padding-inline-start: 0px;
+    padding-inline-start: 0;
     list-style: none;
     color: #fff;
 }
 .profile_menu_ul .active {
     color: #0f92ff;
 }
+
+.table {
+    margin-bottom: 0;
+}
+
 .profile_menu_ul .profile_menu_li {
     transition: 0.5s;
     padding: 15px 85px;
@@ -1295,7 +1301,7 @@ span i {
     transition: 0.5s;
     color: #0f92ff;
 }
-.active {
+.profile_container .active {
     background: #fff;
 }
  .fa-user, .fa-ruble-sign {

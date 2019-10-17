@@ -4403,7 +4403,7 @@ __webpack_require__.r(__webpack_exports__);
       } // Show the current tab, and add an "active" class to the button that opened the tab
 
 
-      document.getElementById(tabname).style.display = "block";
+      document.getElementById(tabname + 'tab').style.display = "block";
       var elem = document.getElementsByClassName('profile_menu_li');
 
       for (var p = 0; p < elem.length; p++) {
@@ -48510,7 +48510,10 @@ var render = function() {
           _vm._v(" "),
           _c(
             "div",
-            { staticClass: "tabcontent activetabis", attrs: { id: "profile" } },
+            {
+              staticClass: "tabcontent activetabis",
+              attrs: { id: "profiletab" }
+            },
             [
               _c("div", { staticClass: "row contact_info_row" }, [
                 _c("div", { staticClass: "col-md-6 profile_data" }, [
@@ -48644,179 +48647,185 @@ var render = function() {
             ]
           ),
           _vm._v(" "),
-          _c("div", { staticClass: "tabcontent", attrs: { id: "balance" } }, [
-            _c("div", { staticClass: "row count_row" }, [
-              _c("div", { staticClass: "col-md-6 profile_data" }, [
-                _c("h3", { staticClass: "personal_data_title" }, [
-                  _vm._v("Лицевой счет")
+          _c(
+            "div",
+            { staticClass: "tabcontent", attrs: { id: "balancetab" } },
+            [
+              _c("div", { staticClass: "row count_row" }, [
+                _c("div", { staticClass: "col-md-6 profile_data" }, [
+                  _c("h3", { staticClass: "personal_data_title" }, [
+                    _vm._v("Лицевой счет")
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "table",
+                    { staticClass: "table table-striped table-hover" },
+                    [
+                      _c("tbody", [
+                        _c("tr", [
+                          _c("th", [
+                            _vm._v(
+                              "Лицевой счет № " + _vm._s(_vm.user.id) + " *"
+                            )
+                          ]),
+                          _vm._v(" "),
+                          _c("td", { staticClass: "showView" }, [
+                            _vm._v(_vm._s(_vm.user.sname))
+                          ]),
+                          _vm._v(" "),
+                          _vm._m(17)
+                        ]),
+                        _vm._v(" "),
+                        _c("tr", [
+                          _c("th", [_vm._v("Субсчет депозита *")]),
+                          _vm._v(" "),
+                          _c("td", { staticClass: "showView" }, [
+                            _vm._v(_vm._s(_vm.user.name))
+                          ]),
+                          _vm._v(" "),
+                          _vm._m(18)
+                        ]),
+                        _vm._v(" "),
+                        _c("tr", [
+                          _c("th", [_vm._v("Субсчет свободных средств *")]),
+                          _vm._v(" "),
+                          _c("td", { staticClass: "showView" }, [
+                            _vm._v(_vm._s(_vm.user.sname))
+                          ]),
+                          _vm._v(" "),
+                          _vm._m(19)
+                        ]),
+                        _vm._v(" "),
+                        _c("tr", [
+                          _c("th", [
+                            _vm._v(
+                              "Субсчет заблокированных средств в счет задатка *"
+                            )
+                          ]),
+                          _vm._v(" "),
+                          _c("td", { staticClass: "showView" }, [
+                            _vm._v(_vm._s(_vm.user.sname))
+                          ]),
+                          _vm._v(" "),
+                          _vm._m(20)
+                        ])
+                      ])
+                    ]
+                  )
                 ]),
                 _vm._v(" "),
-                _c(
-                  "table",
-                  { staticClass: "table table-striped table-hover" },
-                  [
-                    _c("tbody", [
-                      _c("tr", [
-                        _c("th", [
-                          _vm._v("Лицевой счет № " + _vm._s(_vm.user.id) + " *")
+                _c("div", { staticClass: "col-md-6 profile_data" }, [
+                  _c("h3", { staticClass: "personal_data_title" }, [
+                    _vm._v("Реквизиты для пополнения лицевого счета")
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "table",
+                    { staticClass: "table table-striped table-hover" },
+                    [
+                      _c("tbody", [
+                        _c("tr", [
+                          _c("th", [_vm._v("Расчетный счет *")]),
+                          _vm._v(" "),
+                          _c("td", { staticClass: "showView" }, [
+                            _vm._v(_vm._s(_vm.user.phone))
+                          ]),
+                          _vm._v(" "),
+                          _vm._m(21)
                         ]),
                         _vm._v(" "),
-                        _c("td", { staticClass: "showView" }, [
-                          _vm._v(_vm._s(_vm.user.sname))
+                        _c("tr", [
+                          _c("th", [_vm._v("Корреспондентский счет *")]),
+                          _vm._v(" "),
+                          _c("td", { staticClass: "showView" }, [
+                            _vm._v(_vm._s(_vm.user.email))
+                          ]),
+                          _vm._v(" "),
+                          _vm._m(22)
                         ]),
                         _vm._v(" "),
-                        _vm._m(17)
-                      ]),
-                      _vm._v(" "),
-                      _c("tr", [
-                        _c("th", [_vm._v("Субсчет депозита *")]),
-                        _vm._v(" "),
-                        _c("td", { staticClass: "showView" }, [
-                          _vm._v(_vm._s(_vm.user.name))
+                        _c("tr", [
+                          _c("th", [_vm._v("БИК *")]),
+                          _vm._v(" "),
+                          _c("td", { staticClass: "showView" }, [
+                            _vm._v(_vm._s(_vm.user.postcode))
+                          ]),
+                          _vm._v(" "),
+                          _vm._m(23)
                         ]),
                         _vm._v(" "),
-                        _vm._m(18)
-                      ]),
-                      _vm._v(" "),
-                      _c("tr", [
-                        _c("th", [_vm._v("Субсчет свободных средств *")]),
-                        _vm._v(" "),
-                        _c("td", { staticClass: "showView" }, [
-                          _vm._v(_vm._s(_vm.user.sname))
+                        _c("tr", [
+                          _c("th", [_vm._v("ИНН *")]),
+                          _vm._v(" "),
+                          _c("td", { staticClass: "showView" }, [
+                            _vm._v(_vm._s(_vm.user.date_of_birth))
+                          ]),
+                          _vm._v(" "),
+                          _vm._m(24)
                         ]),
                         _vm._v(" "),
-                        _vm._m(19)
-                      ]),
-                      _vm._v(" "),
-                      _c("tr", [
-                        _c("th", [
-                          _vm._v(
-                            "Субсчет заблокированных средств в счет задатка *"
-                          )
+                        _c("tr", [
+                          _c("th", [_vm._v("КПП *")]),
+                          _vm._v(" "),
+                          _c("td", { staticClass: "showView" }, [
+                            _vm._v(_vm._s(_vm.user.sname))
+                          ]),
+                          _vm._v(" "),
+                          _vm._m(25)
                         ]),
                         _vm._v(" "),
-                        _c("td", { staticClass: "showView" }, [
-                          _vm._v(_vm._s(_vm.user.sname))
+                        _c("tr", [
+                          _c("th", [_vm._v("Наименование банка *")]),
+                          _vm._v(" "),
+                          _c("td", { staticClass: "showView" }, [
+                            _vm._v(_vm._s(_vm.user.sname))
+                          ]),
+                          _vm._v(" "),
+                          _vm._m(26)
                         ]),
                         _vm._v(" "),
-                        _vm._m(20)
+                        _c("tr", [
+                          _c("th", [_vm._v("Наименование получателя *")]),
+                          _vm._v(" "),
+                          _c("td", { staticClass: "showView" }, [
+                            _vm._v(_vm._s(_vm.user.sname))
+                          ]),
+                          _vm._v(" "),
+                          _vm._m(27)
+                        ]),
+                        _vm._v(" "),
+                        _c("tr", [
+                          _c("th", [
+                            _vm._v("Назначение платежа для субсчета депозита *")
+                          ]),
+                          _vm._v(" "),
+                          _c("td", { staticClass: "showView" }, [
+                            _vm._v(_vm._s(_vm.user.sname))
+                          ]),
+                          _vm._v(" "),
+                          _vm._m(28)
+                        ]),
+                        _vm._v(" "),
+                        _c("tr", [
+                          _c("th", [
+                            _vm._v(
+                              "Назначение платежа для субсчета свободных средств *"
+                            )
+                          ]),
+                          _vm._v(" "),
+                          _c("td", { staticClass: "showView" }, [
+                            _vm._v(_vm._s(_vm.user.sname))
+                          ]),
+                          _vm._v(" "),
+                          _vm._m(29)
+                        ])
                       ])
-                    ])
-                  ]
-                )
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "col-md-6 profile_data" }, [
-                _c("h3", { staticClass: "personal_data_title" }, [
-                  _vm._v("Реквизиты для пополнения лицевого счета")
-                ]),
-                _vm._v(" "),
-                _c(
-                  "table",
-                  { staticClass: "table table-striped table-hover" },
-                  [
-                    _c("tbody", [
-                      _c("tr", [
-                        _c("th", [_vm._v("Расчетный счет *")]),
-                        _vm._v(" "),
-                        _c("td", { staticClass: "showView" }, [
-                          _vm._v(_vm._s(_vm.user.phone))
-                        ]),
-                        _vm._v(" "),
-                        _vm._m(21)
-                      ]),
-                      _vm._v(" "),
-                      _c("tr", [
-                        _c("th", [_vm._v("Корреспондентский счет *")]),
-                        _vm._v(" "),
-                        _c("td", { staticClass: "showView" }, [
-                          _vm._v(_vm._s(_vm.user.email))
-                        ]),
-                        _vm._v(" "),
-                        _vm._m(22)
-                      ]),
-                      _vm._v(" "),
-                      _c("tr", [
-                        _c("th", [_vm._v("БИК *")]),
-                        _vm._v(" "),
-                        _c("td", { staticClass: "showView" }, [
-                          _vm._v(_vm._s(_vm.user.postcode))
-                        ]),
-                        _vm._v(" "),
-                        _vm._m(23)
-                      ]),
-                      _vm._v(" "),
-                      _c("tr", [
-                        _c("th", [_vm._v("ИНН *")]),
-                        _vm._v(" "),
-                        _c("td", { staticClass: "showView" }, [
-                          _vm._v(_vm._s(_vm.user.date_of_birth))
-                        ]),
-                        _vm._v(" "),
-                        _vm._m(24)
-                      ]),
-                      _vm._v(" "),
-                      _c("tr", [
-                        _c("th", [_vm._v("КПП *")]),
-                        _vm._v(" "),
-                        _c("td", { staticClass: "showView" }, [
-                          _vm._v(_vm._s(_vm.user.sname))
-                        ]),
-                        _vm._v(" "),
-                        _vm._m(25)
-                      ]),
-                      _vm._v(" "),
-                      _c("tr", [
-                        _c("th", [_vm._v("Наименование банка *")]),
-                        _vm._v(" "),
-                        _c("td", { staticClass: "showView" }, [
-                          _vm._v(_vm._s(_vm.user.sname))
-                        ]),
-                        _vm._v(" "),
-                        _vm._m(26)
-                      ]),
-                      _vm._v(" "),
-                      _c("tr", [
-                        _c("th", [_vm._v("Наименование получателя *")]),
-                        _vm._v(" "),
-                        _c("td", { staticClass: "showView" }, [
-                          _vm._v(_vm._s(_vm.user.sname))
-                        ]),
-                        _vm._v(" "),
-                        _vm._m(27)
-                      ]),
-                      _vm._v(" "),
-                      _c("tr", [
-                        _c("th", [
-                          _vm._v("Назначение платежа для субсчета депозита *")
-                        ]),
-                        _vm._v(" "),
-                        _c("td", { staticClass: "showView" }, [
-                          _vm._v(_vm._s(_vm.user.sname))
-                        ]),
-                        _vm._v(" "),
-                        _vm._m(28)
-                      ]),
-                      _vm._v(" "),
-                      _c("tr", [
-                        _c("th", [
-                          _vm._v(
-                            "Назначение платежа для субсчета свободных средств *"
-                          )
-                        ]),
-                        _vm._v(" "),
-                        _c("td", { staticClass: "showView" }, [
-                          _vm._v(_vm._s(_vm.user.sname))
-                        ]),
-                        _vm._v(" "),
-                        _vm._m(29)
-                      ])
-                    ])
-                  ]
-                )
+                    ]
+                  )
+                ])
               ])
-            ])
-          ])
+            ]
+          )
         ])
       ]),
       _vm._v(" "),
