@@ -18,11 +18,12 @@
                         </div>
                         <div class="col-md-12 profile_menu_nav">
                             <ul class="profile_menu_ul">
-                                <button class="tablinks" @click="openCity('profiletab')"><li class="profile_menu_li"><i class="fas fa-user"></i>Профиль</li></button>
-                                <button class="tablinks" @click="openCity('balancetab')"><li class="profile_menu_li"><i class="fas fa-ruble-sign"></i>Лицевой счёт</li></button>
+                                <button class="tablinks" @click="openCity('profile')"><li id="profilebut" class="profile_menu_li active"><i class="fas fa-user"></i>Профиль</li></button>
+                                <button class="tablinks" @click="openCity('balance')"><li id="balancebut" class="profile_menu_li"><i class="fas fa-ruble-sign"></i>Лицевой счёт</li></button>
                             </ul>
                         </div>
                     </div>
+                                </div>
                     <div class="col profile_data">
                         <h3 class="personal_data_title">Личные данные</h3>
                         <table class="table table-striped table-hover">
@@ -66,7 +67,7 @@
                         </table>
                     </div>
                 </div>
-                <div id="profiletab" class="tabcontent activetabis">
+                <div id="profile" class="tabcontent activetabis">
                     <div class="row contact_info_row">
                         <div class="col-md-6 profile_data">
                             <h3 class="personal_data_title">Паспортные данные</h3>
@@ -163,7 +164,7 @@
                         </div>
                     </div>
                 </div>
-                <div id="balancetab" class="tabcontent">
+                <div id="balance" class="tabcontent">
                     <div class="row count_row">
                         <div class="col-md-6 profile_data">
                             <h3 class="personal_data_title">Лицевой счет</h3>
@@ -310,49 +311,29 @@
                 })
             },
             openCity(tabname) {
-                // Declare all variables
+            // Declare all variables
                 var i, tabcontent, tablinks;
-
                 // Get all elements with class="tabcontent" and hide them
                 tabcontent = document.getElementsByClassName("tabcontent");
                 for (i = 0; i < tabcontent.length; i++) {
                     tabcontent[i].style.display = "none";
                 }
-
                 // Get all elements with class="tablinks" and remove the class "active"
                 tablinks = document.getElementsByClassName("tablinks");
                 for (i = 0; i < tablinks.length; i++) {
                     tablinks[i].className = tablinks[i].className.replace(" active", "");
-                }
 
-                // Show the current tab, and add an "active" class to the button that opened the tab
-                document.getElementById(tabname).style.display = "block";
+                }
+                    // Show the current tab, and add an "active" class to the button that opened the tab
+                    document.getElementById(tabname).style.display = "block";
+            var elem = document.getElementsByClassName('profile_menu_li');
+            for(let p=0; p<elem.length;p++){
+                elem[p].classList.remove("active");
+            }
+            document.getElementById(tabname+'but').classList.add("active");
             },
-        openCity(tabname) {
-        // Declare all variables
-            var i, tabcontent, tablinks;
-            // Get all elements with class="tabcontent" and hide them
-            tabcontent = document.getElementsByClassName("tabcontent");
-            for (i = 0; i < tabcontent.length; i++) {
-                tabcontent[i].style.display = "none";
-            }
-            // Get all elements with class="tablinks" and remove the class "active"
-            tablinks = document.getElementsByClassName("tablinks");
-            for (i = 0; i < tablinks.length; i++) {
-                tablinks[i].className = tablinks[i].className.replace(" active", "");
-            }
-                // Show the current tab, and add an "active" class to the button that opened the tab
-                document.getElementById(tabname).style.display = "block";
-            }
-<<<<<<< HEAD
-=======
-        },
-        addClassActive() {
-          var element = document.getElementsByClassName("tablinks");
-          element.classList.add("activeli");
->>>>>>> 836d6618ff0428f831acbed1d65683e1c3b7c8a9
-        }
     }
+}
 </script>
 
 <style scoped>
