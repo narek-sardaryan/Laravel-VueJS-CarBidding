@@ -295,7 +295,7 @@
         <div class="container-fluid" v-if="slider.length > 0">
             <div class="container container-back" v-if="auctioncars.length != 0">
                 <div class="row cars-root">
-                    <div class="col-md-4 cars-article" v-for="(auction, index) in auctioncars">
+                    <div class="col-md-4 cars-article" v-for="(auction, index) in auctioncars.data.data">
                         <router-link :to="'/cars/'+auction.id" :key="auction.id">
                             <div class="row">
                                 <div class="col-md-12 text-hover">
@@ -334,16 +334,7 @@
                         </router-link>
                     </div>
                 </div>
-                <nav aria-label="Page navigation example float-left">
-                    <ul class="pagination">
-                        <li v-if="offset != 1" class="page-item" @click="prewis"><a class="page-link">&laquo;</a>
-                        </li>
-                        <li @click="page(off)" class="page-item" v-for="(off, index) in offsetCars"><a
-                            :id="index" class="page-link">{{off+1}}</a></li>
-                        <li v-if="offset != offsetCars.length" class="page-item" @click="nextis"><a class="page-link">&raquo;</a>
-                        </li>
-                    </ul>
-                </nav>
+                <pagination :data="auctioncars.data" @pagination-change-page="getResultsPagein"></pagination>
             </div>
             <div class="container container-back" v-if="auctioncars.length == 0">
                 <div class="row cars-root">
@@ -394,27 +385,31 @@
             this.fetchModels();
             this.fetchParkings();
             this.fetchStates();
-            this.fetchCars(this.id);
-            this.fetchCarsPaginate(this.id);
-            this.fetchSlider();
+            // this.fetchCars(this.id);
             this.fetchSlider();
             this.fetchAuctionCars(this.id);
+            this.getResults(1,this.id);
         },
         methods: {
-            page(off) {
-                this.currentPage = off * 6;
-                this.offset = this.currentPage / 6 + 1;
-                this.fetchCarsPaginate(this.id);
+            getResults(page, id) {
+                if (typeof page === 'undefined') {
+                    page = 1;
+                }
+
+                axios.get('/auction/'+id+'/?page=' + page)
+                    .then(response => {
+                        return  this.auctioncars = response;
+                    })
             },
-            prewis() {
-                this.currentPage = (this.currentPage / 6 - 1) * 6;
-                this.offset = this.offset - 1;
-                this.fetchCarsPaginate(this.id);
-            },
-            nextis() {
-                this.currentPage = (this.currentPage / 6 + 1) * 6;
-                this.offset = this.offset + 1;
-                this.fetchCarsPaginate(this.id);
+            getResultsPagein(page) {
+                if (typeof page === 'undefined') {
+                    page = 1;
+                }
+
+                axios.get('/auction/'+this.id+'/?page=' + page)
+                    .then(response => {
+                        return  this.auctioncars = response;
+                    })
             },
             fetchBodies() {
                 axios.get('/fetchbodies').then(response => {
@@ -436,16 +431,11 @@
                     this.states = response.data;
                 })
             },
-            fetchCarsPaginate(id) {
-                axios.get('/auction/' + this.currentPage + '/' + id).then(response => {
-                    this.auctioncars = response.data;
-                })
-            },
-            fetchCars(id) {
-                axios.get('/auction/0/' + this.id).then(response => {
-                    this.allCarsLength = response.data.length;
-                })
-            },
+            // fetchCars(id) {
+            //     axios.get('/auction/0/' + this.id).then(response => {
+            //         this.allCarsLength = response.data.length;
+            //     })
+            // },
             fetchSlider() {
                 axios.get('/fetchslider').then(response => {
                     this.firstSlider = response.data[0];
@@ -538,8 +528,8 @@
             $route(toR, fromR) {
                 this.id = toR.params['id'];
                 this.fetchAuctionCars(this.id);
-                this.fetchCarsPaginate(this.id);
-                this.fetchCars(this.id);
+                this.getResults(1, this.id);
+                // this.fetchCars(this.id);
             },
         }
     }

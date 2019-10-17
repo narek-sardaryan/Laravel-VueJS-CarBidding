@@ -293,7 +293,7 @@
         <div class="container-fluid" v-if="slider.length > 0">
             <div class="container container-back" v-if="cars.length != 0">
                 <div class="row cars-root">
-                    <div class="col-md-4 cars-article" v-for="(car, index) in cars">
+                    <div class="col-md-4 cars-article" v-for="(car, index) in cars.data.data">
                         <router-link :to="'/cars/'+car.id" :key="car.id">
                             <div class="row">
                                 <div class="col-md-12 text-hover">
@@ -332,16 +332,20 @@
                         </router-link>
                     </div>
                 </div>
-                <nav aria-label="Page navigation example float-left">
-                    <ul class="pagination">
-                        <li v-if="offset != 1" class="page-item" @click="prewis"><a class="page-link">&laquo;</a>
-                        </li>
-                        <li @click="page(off)" class="page-item" v-for="(off, index) in offsetCars"><a
-                            :id="index" class="page-link">{{off+1}}</a></li>
-                        <li v-if="offset != offsetCars.length" class="page-item" @click="nextis"><a class="page-link">&raquo;</a>
-                        </li>
-                    </ul>
-                </nav>
+<!--                <nav aria-label="Page navigation example float-left">-->
+<!--                    <ul class="pagination">-->
+<!--                        <li v-if="offset != 1" class="page-item" @click="prewis"><a class="page-link">&laquo;</a>-->
+<!--                        </li>-->
+<!--                        <li @click="page(off)" class="page-item" v-for="(off, index) in offsetCars"><a-->
+<!--                            :id="index" class="page-link">{{off+1}}</a></li>-->
+<!--                        <li v-if="offset != offsetCars.length" class="page-item" @click="nextis"><a class="page-link">&raquo;</a>-->
+<!--                        </li>-->
+<!--                    </ul>-->
+<!--                </nav>-->
+<!--                        <ul>-->
+<!--                            <li v-for="car in cars.data.data" :key="car.id">{{ car.name }}</li>-->
+<!--                        </ul>-->
+                        <pagination :data="cars.data" @pagination-change-page="getResults"></pagination>
             </div>
             <div class="container container-back" v-if="cars.length == 0">
                 <div class="row cars-root">
@@ -384,7 +388,7 @@
                 currentPage: 0,
                 offset: 1,
                 allCarsLength: null,
-                forbody: 0
+                forbody: 0,
             }
         },
         created: function () {
@@ -392,14 +396,26 @@
             this.fetchModels();
             this.fetchParkings();
             this.fetchStates();
-            this.fetchCars();
-            this.fetchCarsPaginate();
             this.fetchSlider();
+            this.getResults();
         },
         component: {
             Cube
         },
         methods: {
+            getResults(page) {
+                if (typeof page === 'undefined') {
+                    page = 1;
+                }
+
+                axios.get('/fetchcars?page=' + page)
+                    .then(response => {
+                        return response;
+                    }).then(data => {
+                    this.cars = data;
+                    console.log(this.cars.data.data)
+                });
+            },
             beforeEnter: function (el) {
                 el.style.opacity = 0
             },
@@ -416,21 +432,6 @@
                     translateX: '30px',
                     opacity: 0
                 }, {complete: done})
-            },
-            page(off) {
-                this.currentPage = off * 6;
-                this.offset = this.currentPage / 6 + 1
-                this.fetchCarsPaginate();
-            },
-            prewis() {
-                this.currentPage = (this.currentPage / 6 - 1) * 6;
-                this.offset = this.offset - 1;
-                this.fetchCarsPaginate();
-            },
-            nextis() {
-                this.currentPage = (this.currentPage / 6 + 1) * 6;
-                this.offset = this.offset + 1;
-                this.fetchCarsPaginate();
             },
             fetchBodies() {
                 axios.get('/fetchbodies').then(response => {
@@ -450,11 +451,6 @@
             fetchStates() {
                 axios.get('/fetchstates').then(response => {
                     this.states = response.data;
-                })
-            },
-            fetchCarsPaginate() {
-                axios.get('/fetchcars/' + this.currentPage).then(response => {
-                    this.cars = response.data;
                 })
             },
             fetchCars() {

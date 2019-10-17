@@ -3,27 +3,36 @@
         <header-component></header-component>
         <div class="container-fluid profile_bg_white">
             <div class="container profile_container">
-            <div class="row">
-                <div class="col profile_menu">
-                    <div class="row mx-0">
-                        <div class="col-md-3 avatar_section">
-                            <img class="avatar_img" v-if="!user.avatar && user.gender == 'male'" src="/img/avatar/images.png">
-                            <img class="avatar_img" v-else-if="!user.avatar && user.gender == 'female'" src="/img/avatar/female-avatar-profile-icon-round-african-american-vector-18307298.jpg">
-                            <img class="avatar_img" v-else :src="'/img/avatar/'+user.avatar">
-                        </div>
-                        <div class="col-md-6 user_name_ul ">
-                            <h6 class="user_name_tag">{{user.name}} {{user.sname}}</h6>
-                            <button class="myprofile_btn">Мой профиль</button>
-                            <button class="profile_btn_followers">Мои подписки</button>
-                        </div>
-                        <div class="col-md-12 profile_menu_nav">
-                            <ul class="profile_menu_ul">
-                                <button class="tablinks" @click="openCity('profile')"><li id="profilebut" class="profile_menu_li active"><i class="fas fa-user"></i>Профиль</li></button>
-                                <button class="tablinks" @click="openCity('balance')"><li id="balancebut" class="profile_menu_li"><i class="fas fa-ruble-sign"></i>Лицевой счёт</li></button>
-                            </ul>
+                <div class="row">
+                    <div class="col profile_menu">
+                        <div class="row mx-0">
+                            <div class="col-md-3 avatar_section">
+                                <img class="avatar_img" v-if="!user.avatar && user.gender == 'male'"
+                                     src="/img/avatar/images.png">
+                                <img class="avatar_img" v-else-if="!user.avatar && user.gender == 'female'"
+                                     src="/img/avatar/female-avatar-profile-icon-round-african-american-vector-18307298.jpg">
+                                <img class="avatar_img" v-else :src="'/img/avatar/'+user.avatar">
+                            </div>
+                            <div class="col-md-6 user_name_ul ">
+                                <h6 class="user_name_tag">{{user.name}} {{user.sname}}</h6>
+                                <button class="myprofile_btn">Мой профиль</button>
+                                <button class="profile_btn_followers">Мои подписки</button>
+                            </div>
+                            <div class="col-md-12 profile_menu_nav">
+                                <ul class="profile_menu_ul">
+                                    <button class="tablinks" @click="openCity('profile')">
+                                        <li id="profilebut" class="profile_menu_li active"><i class="fas fa-user"></i>Профиль
+                                        </li>
+                                    </button>
+                                    <button class="tablinks" @click="openCity('balance')">
+                                        <li id="balancebut" class="profile_menu_li"><i class="fas fa-ruble-sign"></i>Лицевой
+                                            счёт
+                                        </li>
+                                    </button>
+                                </ul>
+                            </div>
                         </div>
                     </div>
-                                </div>
                     <div class="col profile_data">
                         <h3 class="personal_data_title">Личные данные</h3>
                         <table class="table table-striped table-hover">
@@ -311,7 +320,7 @@
                 })
             },
             openCity(tabname) {
-            // Declare all variables
+                // Declare all variables
                 var i, tabcontent, tablinks;
                 // Get all elements with class="tabcontent" and hide them
                 tabcontent = document.getElementsByClassName("tabcontent");
@@ -324,16 +333,16 @@
                     tablinks[i].className = tablinks[i].className.replace(" active", "");
 
                 }
-                    // Show the current tab, and add an "active" class to the button that opened the tab
-                    document.getElementById(tabname).style.display = "block";
-            var elem = document.getElementsByClassName('profile_menu_li');
-            for(let p=0; p<elem.length;p++){
-                elem[p].classList.remove("active");
-            }
-            document.getElementById(tabname+'but').classList.add("active");
+                // Show the current tab, and add an "active" class to the button that opened the tab
+                document.getElementById(tabname).style.display = "block";
+                var elem = document.getElementsByClassName('profile_menu_li');
+                for (let p = 0; p < elem.length; p++) {
+                    elem[p].classList.remove("active");
+                }
+                document.getElementById(tabname + 'but').classList.add("active");
             },
+        }
     }
-}
 </script>
 
 <style scoped>
