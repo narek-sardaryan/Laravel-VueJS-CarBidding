@@ -19,6 +19,7 @@ Vue.use(VueAgile);
 Vue.use(VueAxios, axios);
 Vue.use(VueRouter);
 
+
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue
@@ -44,6 +45,7 @@ Vue.component('filtercars', require('./components/FilterCars.vue').default);
 Vue.component('showcar', require('./components/ShowCar.vue').default);
 Vue.component('Cube', require('./components/Cube.vue').default);
 Vue.component('app', require('./components/app.vue').default);
+Vue.component('pagination', require('laravel-vue-pagination'));
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

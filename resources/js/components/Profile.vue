@@ -11,7 +11,9 @@
                                      src="/img/avatar/images.png">
                                 <img class="avatar_img" v-if="!user.avatar && user.gender == 'female'"
                                      src="/img/avatar/female-avatar-profile-icon-round-african-american-vector-18307298.jpg">
-                                <img class="avatar_img" v-else :src="'/img/avatar/'+user.avatar">
+                                <div v-else >
+                                    <img class="avatar_img" v-if="user.avatar"  :src="'/img/avatar/'+user.avatar">
+                                </div>
                             </div>
                             <div class="col-md-6 user_name_ul ">
                                 <h6 class="user_name_tag">{{user.name}}</h6>

@@ -292,9 +292,9 @@
             </div>
         </div>
         <div class="container-fluid" v-if="slider.length > 0">
-            <div class="container container-back" v-if="cars.length != 0">
+            <div class="container container-back" v-if="carssearch.length != 0">
                 <div class="row cars-root">
-                    <div class="col-md-4 cars-article" v-for="(car, index) in cars">
+                    <div class="col-md-4 cars-article" v-for="(car, index) in carssearch">
                         <router-link :to="'/cars/'+car.id" :key="car.id">
                             <div class="row">
                                 <div class="col-md-12 text-hover">
@@ -334,7 +334,7 @@
                     </div>
                 </div>
             </div>
-            <div class="container container-back" v-if="cars.length == 0">
+            <div class="container container-back" v-if="carssearch.length == 0">
                 <div class="row cars-root">
                     <div class="col-md-8 notfoundtxt">
                         <h1>По вашему запросу ничего не найдено</h1>
@@ -352,7 +352,7 @@
 <script>
     export default {
         name: "SearchCar",
-        props: ['cars'],
+        props: ['carssearch'],
         data() {
             return {
                 bodies: [],

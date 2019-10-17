@@ -47,11 +47,13 @@ export default new VueRouter({
             component: Profile
         },
         {
+            name: 'searchcar',
             path: '/searchcar',
             component: SearchCar,
             props: true
         },
         {
+            name: 'filtercar',
             path: '/filtercar',
             component: FilterCars,
             props: true
