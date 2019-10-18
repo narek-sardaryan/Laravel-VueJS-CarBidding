@@ -132,6 +132,7 @@ Route::get('/auction/{id}', 'AuctionController@fetchcar');
 Route::get('/auctionall/{id}', 'AuctionController@auctionall');
 Route::get('/car/{id}', 'CarsController@fetchcar');
 Route::get('/errors', 'RegisterController@validator');
+Route::post('changepassword', 'ChangePasswordController@store');
 Route::get('/searchcar', function (Request $request) {
     $carssearch = Car::query()
         ->where('name', 'LIKE', "%{$request->name}%")
@@ -190,7 +191,7 @@ Route::get('/filtercarau', function (Request $request) {
     return view('filtercars', [
         'cars' => $carsau]);
 });
-Auth::routes();
-Route::get('/home', 'HomeController@index')->name('home');
-//Auth::routes(['verify' => true]);
-//Route::get('/home', 'HomeController@index')->name('home')->middleware('verified');
+//Auth::routes();
+//Route::get('/home', 'HomeController@index')->name('home');
+Auth::routes(['verify' => true]);
+Route::get('/home', 'HomeController@index')->name('home')->middleware('verified');
