@@ -4334,6 +4334,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+<<<<<<< HEAD
 //
 //
 //
@@ -4418,6 +4419,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+=======
+>>>>>>> bdc7a798d588a73209fb8541c146ee3a4e521c88
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Profile",
   props: ['errorschangepass'],
@@ -4439,7 +4442,7 @@ __webpack_require__.r(__webpack_exports__);
         console.log(_this.user);
       });
     },
-    openTabs: function openTabs(tabname) {
+    openCity: function openCity(tabname) {
       // Declare all variables
       var i, tabcontent, tablinks; // Get all elements with class="tabcontent" and hide them
 
@@ -4457,7 +4460,7 @@ __webpack_require__.r(__webpack_exports__);
       } // Show the current tab, and add an "active" class to the button that opened the tab
 
 
-      document.getElementById(tabname + 'tab').style.display = "block";
+      document.getElementById(tabname).style.display = "block";
       var elem = document.getElementsByClassName('profile_menu_li');
 
       for (var p = 0; p < elem.length; p++) {
@@ -20875,45 +20878,816 @@ module.exports =
 /************************************************************************/
 /******/ ({
 
-/***/ "f6fd":
+/***/ "0d58":
+/***/ (function(module, exports, __webpack_require__) {
+
+// 19.1.2.14 / 15.2.3.14 Object.keys(O)
+var $keys = __webpack_require__("ce10");
+var enumBugKeys = __webpack_require__("e11e");
+
+module.exports = Object.keys || function keys(O) {
+  return $keys(O, enumBugKeys);
+};
+
+
+/***/ }),
+
+/***/ "11e9":
+/***/ (function(module, exports, __webpack_require__) {
+
+var pIE = __webpack_require__("52a7");
+var createDesc = __webpack_require__("4630");
+var toIObject = __webpack_require__("6821");
+var toPrimitive = __webpack_require__("6a99");
+var has = __webpack_require__("69a8");
+var IE8_DOM_DEFINE = __webpack_require__("c69a");
+var gOPD = Object.getOwnPropertyDescriptor;
+
+exports.f = __webpack_require__("9e1e") ? gOPD : function getOwnPropertyDescriptor(O, P) {
+  O = toIObject(O);
+  P = toPrimitive(P, true);
+  if (IE8_DOM_DEFINE) try {
+    return gOPD(O, P);
+  } catch (e) { /* empty */ }
+  if (has(O, P)) return createDesc(!pIE.f.call(O, P), O[P]);
+};
+
+
+/***/ }),
+
+/***/ "1495":
+/***/ (function(module, exports, __webpack_require__) {
+
+var dP = __webpack_require__("86cc");
+var anObject = __webpack_require__("cb7c");
+var getKeys = __webpack_require__("0d58");
+
+module.exports = __webpack_require__("9e1e") ? Object.defineProperties : function defineProperties(O, Properties) {
+  anObject(O);
+  var keys = getKeys(Properties);
+  var length = keys.length;
+  var i = 0;
+  var P;
+  while (length > i) dP.f(O, P = keys[i++], Properties[P]);
+  return O;
+};
+
+
+/***/ }),
+
+/***/ "230e":
+/***/ (function(module, exports, __webpack_require__) {
+
+var isObject = __webpack_require__("d3f4");
+var document = __webpack_require__("7726").document;
+// typeof document.createElement is 'object' in old IE
+var is = isObject(document) && isObject(document.createElement);
+module.exports = function (it) {
+  return is ? document.createElement(it) : {};
+};
+
+
+/***/ }),
+
+/***/ "2aba":
+/***/ (function(module, exports, __webpack_require__) {
+
+var global = __webpack_require__("7726");
+var hide = __webpack_require__("32e9");
+var has = __webpack_require__("69a8");
+var SRC = __webpack_require__("ca5a")('src');
+var $toString = __webpack_require__("fa5b");
+var TO_STRING = 'toString';
+var TPL = ('' + $toString).split(TO_STRING);
+
+__webpack_require__("8378").inspectSource = function (it) {
+  return $toString.call(it);
+};
+
+(module.exports = function (O, key, val, safe) {
+  var isFunction = typeof val == 'function';
+  if (isFunction) has(val, 'name') || hide(val, 'name', key);
+  if (O[key] === val) return;
+  if (isFunction) has(val, SRC) || hide(val, SRC, O[key] ? '' + O[key] : TPL.join(String(key)));
+  if (O === global) {
+    O[key] = val;
+  } else if (!safe) {
+    delete O[key];
+    hide(O, key, val);
+  } else if (O[key]) {
+    O[key] = val;
+  } else {
+    hide(O, key, val);
+  }
+// add fake Function#toString for correct work wrapped methods / constructors with methods like LoDash isNative
+})(Function.prototype, TO_STRING, function toString() {
+  return typeof this == 'function' && this[SRC] || $toString.call(this);
+});
+
+
+/***/ }),
+
+/***/ "2aeb":
+/***/ (function(module, exports, __webpack_require__) {
+
+// 19.1.2.2 / 15.2.3.5 Object.create(O [, Properties])
+var anObject = __webpack_require__("cb7c");
+var dPs = __webpack_require__("1495");
+var enumBugKeys = __webpack_require__("e11e");
+var IE_PROTO = __webpack_require__("613b")('IE_PROTO');
+var Empty = function () { /* empty */ };
+var PROTOTYPE = 'prototype';
+
+// Create object with fake `null` prototype: use iframe Object with cleared prototype
+var createDict = function () {
+  // Thrash, waste and sodomy: IE GC bug
+  var iframe = __webpack_require__("230e")('iframe');
+  var i = enumBugKeys.length;
+  var lt = '<';
+  var gt = '>';
+  var iframeDocument;
+  iframe.style.display = 'none';
+  __webpack_require__("fab2").appendChild(iframe);
+  iframe.src = 'javascript:'; // eslint-disable-line no-script-url
+  // createDict = iframe.contentWindow.Object;
+  // html.removeChild(iframe);
+  iframeDocument = iframe.contentWindow.document;
+  iframeDocument.open();
+  iframeDocument.write(lt + 'script' + gt + 'document.F=Object' + lt + '/script' + gt);
+  iframeDocument.close();
+  createDict = iframeDocument.F;
+  while (i--) delete createDict[PROTOTYPE][enumBugKeys[i]];
+  return createDict();
+};
+
+module.exports = Object.create || function create(O, Properties) {
+  var result;
+  if (O !== null) {
+    Empty[PROTOTYPE] = anObject(O);
+    result = new Empty();
+    Empty[PROTOTYPE] = null;
+    // add "__proto__" for Object.getPrototypeOf polyfill
+    result[IE_PROTO] = O;
+  } else result = createDict();
+  return Properties === undefined ? result : dPs(result, Properties);
+};
+
+
+/***/ }),
+
+/***/ "2d00":
 /***/ (function(module, exports) {
 
-// document.currentScript polyfill by Adam Miller
+module.exports = false;
 
-// MIT license
 
-(function(document){
-  var currentScript = "currentScript",
-      scripts = document.getElementsByTagName('script'); // Live NodeList collection
+/***/ }),
 
-  // If browser needs currentScript polyfill, add get currentScript() to the document object
-  if (!(currentScript in document)) {
-    Object.defineProperty(document, currentScript, {
-      get: function(){
+/***/ "2d95":
+/***/ (function(module, exports) {
 
-        // IE 6-10 supports script readyState
-        // IE 10+ support stack trace
-        try { throw new Error(); }
-        catch (err) {
+var toString = {}.toString;
 
-          // Find the second match for the "at" string to get file src url from stack.
-          // Specifically works with the format of stack traces in IE.
-          var i, res = ((/.*at [^\(]*\((.*):.+:.+\)$/ig).exec(err.stack) || [false])[1];
+module.exports = function (it) {
+  return toString.call(it).slice(8, -1);
+};
 
-          // For all scripts on the page, if src matches or if ready state is interactive, return the script tag
-          for(i in scripts){
-            if(scripts[i].src == res || scripts[i].readyState == "interactive"){
-              return scripts[i];
-            }
-          }
 
-          // If no match, return null
-          return null;
-        }
-      }
-    });
+/***/ }),
+
+/***/ "32e9":
+/***/ (function(module, exports, __webpack_require__) {
+
+var dP = __webpack_require__("86cc");
+var createDesc = __webpack_require__("4630");
+module.exports = __webpack_require__("9e1e") ? function (object, key, value) {
+  return dP.f(object, key, createDesc(1, value));
+} : function (object, key, value) {
+  object[key] = value;
+  return object;
+};
+
+
+/***/ }),
+
+/***/ "4588":
+/***/ (function(module, exports) {
+
+// 7.1.4 ToInteger
+var ceil = Math.ceil;
+var floor = Math.floor;
+module.exports = function (it) {
+  return isNaN(it = +it) ? 0 : (it > 0 ? floor : ceil)(it);
+};
+
+
+/***/ }),
+
+/***/ "4630":
+/***/ (function(module, exports) {
+
+module.exports = function (bitmap, value) {
+  return {
+    enumerable: !(bitmap & 1),
+    configurable: !(bitmap & 2),
+    writable: !(bitmap & 4),
+    value: value
+  };
+};
+
+
+/***/ }),
+
+/***/ "52a7":
+/***/ (function(module, exports) {
+
+exports.f = {}.propertyIsEnumerable;
+
+
+/***/ }),
+
+/***/ "5537":
+/***/ (function(module, exports, __webpack_require__) {
+
+var core = __webpack_require__("8378");
+var global = __webpack_require__("7726");
+var SHARED = '__core-js_shared__';
+var store = global[SHARED] || (global[SHARED] = {});
+
+(module.exports = function (key, value) {
+  return store[key] || (store[key] = value !== undefined ? value : {});
+})('versions', []).push({
+  version: core.version,
+  mode: __webpack_require__("2d00") ? 'pure' : 'global',
+  copyright: '© 2019 Denis Pushkarev (zloirock.ru)'
+});
+
+
+/***/ }),
+
+/***/ "5ca1":
+/***/ (function(module, exports, __webpack_require__) {
+
+var global = __webpack_require__("7726");
+var core = __webpack_require__("8378");
+var hide = __webpack_require__("32e9");
+var redefine = __webpack_require__("2aba");
+var ctx = __webpack_require__("9b43");
+var PROTOTYPE = 'prototype';
+
+var $export = function (type, name, source) {
+  var IS_FORCED = type & $export.F;
+  var IS_GLOBAL = type & $export.G;
+  var IS_STATIC = type & $export.S;
+  var IS_PROTO = type & $export.P;
+  var IS_BIND = type & $export.B;
+  var target = IS_GLOBAL ? global : IS_STATIC ? global[name] || (global[name] = {}) : (global[name] || {})[PROTOTYPE];
+  var exports = IS_GLOBAL ? core : core[name] || (core[name] = {});
+  var expProto = exports[PROTOTYPE] || (exports[PROTOTYPE] = {});
+  var key, own, out, exp;
+  if (IS_GLOBAL) source = name;
+  for (key in source) {
+    // contains in native
+    own = !IS_FORCED && target && target[key] !== undefined;
+    // export native or passed
+    out = (own ? target : source)[key];
+    // bind timers to global for call from export context
+    exp = IS_BIND && own ? ctx(out, global) : IS_PROTO && typeof out == 'function' ? ctx(Function.call, out) : out;
+    // extend global
+    if (target) redefine(target, key, out, type & $export.U);
+    // export
+    if (exports[key] != out) hide(exports, key, exp);
+    if (IS_PROTO && expProto[key] != out) expProto[key] = out;
   }
-})(document);
+};
+global.core = core;
+// type bitmap
+$export.F = 1;   // forced
+$export.G = 2;   // global
+$export.S = 4;   // static
+$export.P = 8;   // proto
+$export.B = 16;  // bind
+$export.W = 32;  // wrap
+$export.U = 64;  // safe
+$export.R = 128; // real proto method for `library`
+module.exports = $export;
+
+
+/***/ }),
+
+/***/ "5dbc":
+/***/ (function(module, exports, __webpack_require__) {
+
+var isObject = __webpack_require__("d3f4");
+var setPrototypeOf = __webpack_require__("8b97").set;
+module.exports = function (that, target, C) {
+  var S = target.constructor;
+  var P;
+  if (S !== C && typeof S == 'function' && (P = S.prototype) !== C.prototype && isObject(P) && setPrototypeOf) {
+    setPrototypeOf(that, P);
+  } return that;
+};
+
+
+/***/ }),
+
+/***/ "613b":
+/***/ (function(module, exports, __webpack_require__) {
+
+var shared = __webpack_require__("5537")('keys');
+var uid = __webpack_require__("ca5a");
+module.exports = function (key) {
+  return shared[key] || (shared[key] = uid(key));
+};
+
+
+/***/ }),
+
+/***/ "626a":
+/***/ (function(module, exports, __webpack_require__) {
+
+// fallback for non-array-like ES3 and non-enumerable old V8 strings
+var cof = __webpack_require__("2d95");
+// eslint-disable-next-line no-prototype-builtins
+module.exports = Object('z').propertyIsEnumerable(0) ? Object : function (it) {
+  return cof(it) == 'String' ? it.split('') : Object(it);
+};
+
+
+/***/ }),
+
+/***/ "6821":
+/***/ (function(module, exports, __webpack_require__) {
+
+// to indexed object, toObject with fallback for non-array-like ES3 strings
+var IObject = __webpack_require__("626a");
+var defined = __webpack_require__("be13");
+module.exports = function (it) {
+  return IObject(defined(it));
+};
+
+
+/***/ }),
+
+/***/ "69a8":
+/***/ (function(module, exports) {
+
+var hasOwnProperty = {}.hasOwnProperty;
+module.exports = function (it, key) {
+  return hasOwnProperty.call(it, key);
+};
+
+
+/***/ }),
+
+/***/ "6a99":
+/***/ (function(module, exports, __webpack_require__) {
+
+// 7.1.1 ToPrimitive(input [, PreferredType])
+var isObject = __webpack_require__("d3f4");
+// instead of the ES6 spec version, we didn't implement @@toPrimitive case
+// and the second argument - flag - preferred type is a string
+module.exports = function (it, S) {
+  if (!isObject(it)) return it;
+  var fn, val;
+  if (S && typeof (fn = it.toString) == 'function' && !isObject(val = fn.call(it))) return val;
+  if (typeof (fn = it.valueOf) == 'function' && !isObject(val = fn.call(it))) return val;
+  if (!S && typeof (fn = it.toString) == 'function' && !isObject(val = fn.call(it))) return val;
+  throw TypeError("Can't convert object to primitive value");
+};
+
+
+/***/ }),
+
+/***/ "7726":
+/***/ (function(module, exports) {
+
+// https://github.com/zloirock/core-js/issues/86#issuecomment-115759028
+var global = module.exports = typeof window != 'undefined' && window.Math == Math
+  ? window : typeof self != 'undefined' && self.Math == Math ? self
+  // eslint-disable-next-line no-new-func
+  : Function('return this')();
+if (typeof __g == 'number') __g = global; // eslint-disable-line no-undef
+
+
+/***/ }),
+
+/***/ "77f1":
+/***/ (function(module, exports, __webpack_require__) {
+
+var toInteger = __webpack_require__("4588");
+var max = Math.max;
+var min = Math.min;
+module.exports = function (index, length) {
+  index = toInteger(index);
+  return index < 0 ? max(index + length, 0) : min(index, length);
+};
+
+
+/***/ }),
+
+/***/ "79e5":
+/***/ (function(module, exports) {
+
+module.exports = function (exec) {
+  try {
+    return !!exec();
+  } catch (e) {
+    return true;
+  }
+};
+
+
+/***/ }),
+
+/***/ "8378":
+/***/ (function(module, exports) {
+
+var core = module.exports = { version: '2.6.5' };
+if (typeof __e == 'number') __e = core; // eslint-disable-line no-undef
+
+
+/***/ }),
+
+/***/ "86cc":
+/***/ (function(module, exports, __webpack_require__) {
+
+var anObject = __webpack_require__("cb7c");
+var IE8_DOM_DEFINE = __webpack_require__("c69a");
+var toPrimitive = __webpack_require__("6a99");
+var dP = Object.defineProperty;
+
+exports.f = __webpack_require__("9e1e") ? Object.defineProperty : function defineProperty(O, P, Attributes) {
+  anObject(O);
+  P = toPrimitive(P, true);
+  anObject(Attributes);
+  if (IE8_DOM_DEFINE) try {
+    return dP(O, P, Attributes);
+  } catch (e) { /* empty */ }
+  if ('get' in Attributes || 'set' in Attributes) throw TypeError('Accessors not supported!');
+  if ('value' in Attributes) O[P] = Attributes.value;
+  return O;
+};
+
+
+/***/ }),
+
+/***/ "8b97":
+/***/ (function(module, exports, __webpack_require__) {
+
+// Works with __proto__ only. Old v8 can't work with null proto objects.
+/* eslint-disable no-proto */
+var isObject = __webpack_require__("d3f4");
+var anObject = __webpack_require__("cb7c");
+var check = function (O, proto) {
+  anObject(O);
+  if (!isObject(proto) && proto !== null) throw TypeError(proto + ": can't set as prototype!");
+};
+module.exports = {
+  set: Object.setPrototypeOf || ('__proto__' in {} ? // eslint-disable-line
+    function (test, buggy, set) {
+      try {
+        set = __webpack_require__("9b43")(Function.call, __webpack_require__("11e9").f(Object.prototype, '__proto__').set, 2);
+        set(test, []);
+        buggy = !(test instanceof Array);
+      } catch (e) { buggy = true; }
+      return function setPrototypeOf(O, proto) {
+        check(O, proto);
+        if (buggy) O.__proto__ = proto;
+        else set(O, proto);
+        return O;
+      };
+    }({}, false) : undefined),
+  check: check
+};
+
+
+/***/ }),
+
+/***/ "9093":
+/***/ (function(module, exports, __webpack_require__) {
+
+// 19.1.2.7 / 15.2.3.4 Object.getOwnPropertyNames(O)
+var $keys = __webpack_require__("ce10");
+var hiddenKeys = __webpack_require__("e11e").concat('length', 'prototype');
+
+exports.f = Object.getOwnPropertyNames || function getOwnPropertyNames(O) {
+  return $keys(O, hiddenKeys);
+};
+
+
+/***/ }),
+
+/***/ "9b43":
+/***/ (function(module, exports, __webpack_require__) {
+
+// optional / simple context binding
+var aFunction = __webpack_require__("d8e8");
+module.exports = function (fn, that, length) {
+  aFunction(fn);
+  if (that === undefined) return fn;
+  switch (length) {
+    case 1: return function (a) {
+      return fn.call(that, a);
+    };
+    case 2: return function (a, b) {
+      return fn.call(that, a, b);
+    };
+    case 3: return function (a, b, c) {
+      return fn.call(that, a, b, c);
+    };
+  }
+  return function (/* ...args */) {
+    return fn.apply(that, arguments);
+  };
+};
+
+
+/***/ }),
+
+/***/ "9def":
+/***/ (function(module, exports, __webpack_require__) {
+
+// 7.1.15 ToLength
+var toInteger = __webpack_require__("4588");
+var min = Math.min;
+module.exports = function (it) {
+  return it > 0 ? min(toInteger(it), 0x1fffffffffffff) : 0; // pow(2, 53) - 1 == 9007199254740991
+};
+
+
+/***/ }),
+
+/***/ "9e1e":
+/***/ (function(module, exports, __webpack_require__) {
+
+// Thank's IE8 for his funny defineProperty
+module.exports = !__webpack_require__("79e5")(function () {
+  return Object.defineProperty({}, 'a', { get: function () { return 7; } }).a != 7;
+});
+
+
+/***/ }),
+
+/***/ "aa77":
+/***/ (function(module, exports, __webpack_require__) {
+
+var $export = __webpack_require__("5ca1");
+var defined = __webpack_require__("be13");
+var fails = __webpack_require__("79e5");
+var spaces = __webpack_require__("fdef");
+var space = '[' + spaces + ']';
+var non = '\u200b\u0085';
+var ltrim = RegExp('^' + space + space + '*');
+var rtrim = RegExp(space + space + '*$');
+
+var exporter = function (KEY, exec, ALIAS) {
+  var exp = {};
+  var FORCE = fails(function () {
+    return !!spaces[KEY]() || non[KEY]() != non;
+  });
+  var fn = exp[KEY] = FORCE ? exec(trim) : spaces[KEY];
+  if (ALIAS) exp[ALIAS] = fn;
+  $export($export.P + $export.F * FORCE, 'String', exp);
+};
+
+// 1 -> String#trimLeft
+// 2 -> String#trimRight
+// 3 -> String#trim
+var trim = exporter.trim = function (string, TYPE) {
+  string = String(defined(string));
+  if (TYPE & 1) string = string.replace(ltrim, '');
+  if (TYPE & 2) string = string.replace(rtrim, '');
+  return string;
+};
+
+module.exports = exporter;
+
+
+/***/ }),
+
+/***/ "be13":
+/***/ (function(module, exports) {
+
+// 7.2.1 RequireObjectCoercible(argument)
+module.exports = function (it) {
+  if (it == undefined) throw TypeError("Can't call method on  " + it);
+  return it;
+};
+
+
+/***/ }),
+
+/***/ "c366":
+/***/ (function(module, exports, __webpack_require__) {
+
+// false -> Array#indexOf
+// true  -> Array#includes
+var toIObject = __webpack_require__("6821");
+var toLength = __webpack_require__("9def");
+var toAbsoluteIndex = __webpack_require__("77f1");
+module.exports = function (IS_INCLUDES) {
+  return function ($this, el, fromIndex) {
+    var O = toIObject($this);
+    var length = toLength(O.length);
+    var index = toAbsoluteIndex(fromIndex, length);
+    var value;
+    // Array#includes uses SameValueZero equality algorithm
+    // eslint-disable-next-line no-self-compare
+    if (IS_INCLUDES && el != el) while (length > index) {
+      value = O[index++];
+      // eslint-disable-next-line no-self-compare
+      if (value != value) return true;
+    // Array#indexOf ignores holes, Array#includes - not
+    } else for (;length > index; index++) if (IS_INCLUDES || index in O) {
+      if (O[index] === el) return IS_INCLUDES || index || 0;
+    } return !IS_INCLUDES && -1;
+  };
+};
+
+
+/***/ }),
+
+/***/ "c5f6":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var global = __webpack_require__("7726");
+var has = __webpack_require__("69a8");
+var cof = __webpack_require__("2d95");
+var inheritIfRequired = __webpack_require__("5dbc");
+var toPrimitive = __webpack_require__("6a99");
+var fails = __webpack_require__("79e5");
+var gOPN = __webpack_require__("9093").f;
+var gOPD = __webpack_require__("11e9").f;
+var dP = __webpack_require__("86cc").f;
+var $trim = __webpack_require__("aa77").trim;
+var NUMBER = 'Number';
+var $Number = global[NUMBER];
+var Base = $Number;
+var proto = $Number.prototype;
+// Opera ~12 has broken Object#toString
+var BROKEN_COF = cof(__webpack_require__("2aeb")(proto)) == NUMBER;
+var TRIM = 'trim' in String.prototype;
+
+// 7.1.3 ToNumber(argument)
+var toNumber = function (argument) {
+  var it = toPrimitive(argument, false);
+  if (typeof it == 'string' && it.length > 2) {
+    it = TRIM ? it.trim() : $trim(it, 3);
+    var first = it.charCodeAt(0);
+    var third, radix, maxCode;
+    if (first === 43 || first === 45) {
+      third = it.charCodeAt(2);
+      if (third === 88 || third === 120) return NaN; // Number('+0x1') should be NaN, old V8 fix
+    } else if (first === 48) {
+      switch (it.charCodeAt(1)) {
+        case 66: case 98: radix = 2; maxCode = 49; break; // fast equal /^0b[01]+$/i
+        case 79: case 111: radix = 8; maxCode = 55; break; // fast equal /^0o[0-7]+$/i
+        default: return +it;
+      }
+      for (var digits = it.slice(2), i = 0, l = digits.length, code; i < l; i++) {
+        code = digits.charCodeAt(i);
+        // parseInt parses a string to a first unavailable symbol
+        // but ToNumber should return NaN if a string contains unavailable symbols
+        if (code < 48 || code > maxCode) return NaN;
+      } return parseInt(digits, radix);
+    }
+  } return +it;
+};
+
+if (!$Number(' 0o1') || !$Number('0b1') || $Number('+0x1')) {
+  $Number = function Number(value) {
+    var it = arguments.length < 1 ? 0 : value;
+    var that = this;
+    return that instanceof $Number
+      // check on 1..constructor(foo) case
+      && (BROKEN_COF ? fails(function () { proto.valueOf.call(that); }) : cof(that) != NUMBER)
+        ? inheritIfRequired(new Base(toNumber(it)), that, $Number) : toNumber(it);
+  };
+  for (var keys = __webpack_require__("9e1e") ? gOPN(Base) : (
+    // ES3:
+    'MAX_VALUE,MIN_VALUE,NaN,NEGATIVE_INFINITY,POSITIVE_INFINITY,' +
+    // ES6 (in case, if modules with ES6 Number statics required before):
+    'EPSILON,isFinite,isInteger,isNaN,isSafeInteger,MAX_SAFE_INTEGER,' +
+    'MIN_SAFE_INTEGER,parseFloat,parseInt,isInteger'
+  ).split(','), j = 0, key; keys.length > j; j++) {
+    if (has(Base, key = keys[j]) && !has($Number, key)) {
+      dP($Number, key, gOPD(Base, key));
+    }
+  }
+  $Number.prototype = proto;
+  proto.constructor = $Number;
+  __webpack_require__("2aba")(global, NUMBER, $Number);
+}
+
+
+/***/ }),
+
+/***/ "c69a":
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = !__webpack_require__("9e1e") && !__webpack_require__("79e5")(function () {
+  return Object.defineProperty(__webpack_require__("230e")('div'), 'a', { get: function () { return 7; } }).a != 7;
+});
+
+
+/***/ }),
+
+/***/ "ca5a":
+/***/ (function(module, exports) {
+
+var id = 0;
+var px = Math.random();
+module.exports = function (key) {
+  return 'Symbol('.concat(key === undefined ? '' : key, ')_', (++id + px).toString(36));
+};
+
+
+/***/ }),
+
+/***/ "cb7c":
+/***/ (function(module, exports, __webpack_require__) {
+
+var isObject = __webpack_require__("d3f4");
+module.exports = function (it) {
+  if (!isObject(it)) throw TypeError(it + ' is not an object!');
+  return it;
+};
+
+
+/***/ }),
+
+/***/ "ce10":
+/***/ (function(module, exports, __webpack_require__) {
+
+var has = __webpack_require__("69a8");
+var toIObject = __webpack_require__("6821");
+var arrayIndexOf = __webpack_require__("c366")(false);
+var IE_PROTO = __webpack_require__("613b")('IE_PROTO');
+
+module.exports = function (object, names) {
+  var O = toIObject(object);
+  var i = 0;
+  var result = [];
+  var key;
+  for (key in O) if (key != IE_PROTO) has(O, key) && result.push(key);
+  // Don't enum bug & hidden keys
+  while (names.length > i) if (has(O, key = names[i++])) {
+    ~arrayIndexOf(result, key) || result.push(key);
+  }
+  return result;
+};
+
+
+/***/ }),
+
+/***/ "d3f4":
+/***/ (function(module, exports) {
+
+module.exports = function (it) {
+  return typeof it === 'object' ? it !== null : typeof it === 'function';
+};
+
+
+/***/ }),
+
+/***/ "d8e8":
+/***/ (function(module, exports) {
+
+module.exports = function (it) {
+  if (typeof it != 'function') throw TypeError(it + ' is not a function!');
+  return it;
+};
+
+
+/***/ }),
+
+/***/ "e11e":
+/***/ (function(module, exports) {
+
+// IE 8- don't enum bug keys
+module.exports = (
+  'constructor,hasOwnProperty,isPrototypeOf,propertyIsEnumerable,toLocaleString,toString,valueOf'
+).split(',');
+
+
+/***/ }),
+
+/***/ "fa5b":
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__("5537")('native-function-to-string', Function.toString);
+
+
+/***/ }),
+
+/***/ "fab2":
+/***/ (function(module, exports, __webpack_require__) {
+
+var document = __webpack_require__("7726").document;
+module.exports = document && document.documentElement;
 
 
 /***/ }),
@@ -20928,10 +21702,6 @@ __webpack_require__.r(__webpack_exports__);
 // This file is imported into lib/wc client bundles.
 
 if (typeof window !== 'undefined') {
-  if (true) {
-    __webpack_require__("f6fd")
-  }
-
   var i
   if ((i = window.document.currentScript) && (i = i.src.match(/(.+\/)[^/]+\.js(\?.*)?$/))) {
     __webpack_require__.p = i[1] // eslint-disable-line
@@ -20941,7 +21711,7 @@ if (typeof window !== 'undefined') {
 // Indicate to webpack that this file can be concatenated
 /* harmony default export */ var setPublicPath = (null);
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"604a59b1-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/LaravelVuePagination.vue?vue&type=template&id=7f71b5a7&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"0fa2e68e-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/LaravelVuePagination.vue?vue&type=template&id=7f71b5a7&
 var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('renderless-laravel-vue-pagination',{attrs:{"data":_vm.data,"limit":_vm.limit,"show-disabled":_vm.showDisabled,"size":_vm.size,"align":_vm.align},on:{"pagination-change-page":_vm.onPaginationChangePage},scopedSlots:_vm._u([{key:"default",fn:function(ref){
 var data = ref.data;
 var limit = ref.limit;
@@ -20963,7 +21733,11 @@ var staticRenderFns = []
 
 // CONCATENATED MODULE: ./src/LaravelVuePagination.vue?vue&type=template&id=7f71b5a7&
 
+// EXTERNAL MODULE: ./node_modules/core-js/modules/es6.number.constructor.js
+var es6_number_constructor = __webpack_require__("c5f6");
+
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/RenderlessLaravelVuePagination.vue?vue&type=script&lang=js&
+
 /* harmony default export */ var RenderlessLaravelVuePaginationvue_type_script_lang_js_ = ({
   props: {
     data: {
@@ -21248,6 +22022,7 @@ var component = normalizeComponent(
 
 /* harmony default export */ var RenderlessLaravelVuePagination = (component.exports);
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/LaravelVuePagination.vue?vue&type=script&lang=js&
+
 //
 //
 //
@@ -21363,6 +22138,15 @@ var LaravelVuePagination_component = normalizeComponent(
 
 /* harmony default export */ var entry_lib = __webpack_exports__["default"] = (LaravelVuePagination);
 
+
+
+/***/ }),
+
+/***/ "fdef":
+/***/ (function(module, exports) {
+
+module.exports = '\x09\x0A\x0B\x0C\x0D\x20\xA0\u1680\u180E\u2000\u2001\u2002\u2003' +
+  '\u2004\u2005\u2006\u2007\u2008\u2009\u200A\u202F\u205F\u3000\u2028\u2029\uFEFF';
 
 
 /***/ })
@@ -48486,7 +49270,7 @@ var render = function() {
                         staticClass: "tablinks",
                         on: {
                           click: function($event) {
-                            return _vm.openTabs("profile")
+                            return _vm.openCity("profile")
                           }
                         }
                       },
@@ -48499,24 +49283,11 @@ var render = function() {
                         staticClass: "tablinks",
                         on: {
                           click: function($event) {
-                            return _vm.openTabs("balance")
+                            return _vm.openCity("balance")
                           }
                         }
                       },
                       [_vm._m(1)]
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "button",
-                      {
-                        staticClass: "tablinks",
-                        on: {
-                          click: function($event) {
-                            return _vm.openTabs("changepass")
-                          }
-                        }
-                      },
-                      [_vm._m(2)]
                     )
                   ])
                 ])
@@ -48537,7 +49308,7 @@ var render = function() {
                       _vm._v(_vm._s(_vm.user.sname))
                     ]),
                     _vm._v(" "),
-                    _vm._m(3)
+                    _vm._m(2)
                   ]),
                   _vm._v(" "),
                   _c("tr", [
@@ -48547,7 +49318,7 @@ var render = function() {
                       _vm._v(_vm._s(_vm.user.name))
                     ]),
                     _vm._v(" "),
-                    _vm._m(4)
+                    _vm._m(3)
                   ]),
                   _vm._v(" "),
                   _c("tr", [
@@ -48557,14 +49328,12 @@ var render = function() {
                       _vm._v(_vm._s(_vm.user.date_of_birth))
                     ]),
                     _vm._v(" "),
-                    _vm._m(5)
+                    _vm._m(4)
                   ]),
                   _vm._v(" "),
-                  _vm._m(6),
+                  _vm._m(5),
                   _vm._v(" "),
-                  _vm._m(7),
-                  _vm._v(" "),
-                  _vm._m(8)
+                  _vm._m(6)
                 ])
               ])
             ])
@@ -48572,10 +49341,7 @@ var render = function() {
           _vm._v(" "),
           _c(
             "div",
-            {
-              staticClass: "tabcontent activetabis",
-              attrs: { id: "profiletab" }
-            },
+            { staticClass: "tabcontent activetabis", attrs: { id: "profile" } },
             [
               _c("div", { staticClass: "row contact_info_row" }, [
                 _c("div", { staticClass: "col-md-6 profile_data" }, [
@@ -48592,50 +49358,50 @@ var render = function() {
                           _c("th", [_vm._v("Паспорт *")]),
                           _vm._v(" "),
                           _c("td", { staticClass: "showView" }, [
-                            _vm._v(_vm._s(_vm.user.passport))
+                            _vm._v(_vm._s(_vm.user.sname))
                           ]),
                           _vm._v(" "),
-                          _vm._m(9)
+                          _vm._m(7)
                         ]),
                         _vm._v(" "),
                         _c("tr", [
                           _c("th", [_vm._v("Кем выдан *")]),
                           _vm._v(" "),
                           _c("td", { staticClass: "showView" }, [
-                            _vm._v(_vm._s(_vm.user.issuedBy))
+                            _vm._v(_vm._s(_vm.user.name))
                           ]),
                           _vm._v(" "),
-                          _vm._m(10)
+                          _vm._m(8)
                         ]),
                         _vm._v(" "),
                         _c("tr", [
                           _c("th", [_vm._v("Дата выдачи *")]),
                           _vm._v(" "),
                           _c("td", { staticClass: "showView" }, [
-                            _vm._v(_vm._s(_vm.user.dateOfIssue))
+                            _vm._v(_vm._s(_vm.user.sname))
                           ]),
                           _vm._v(" "),
-                          _vm._m(11)
+                          _vm._m(9)
                         ]),
                         _vm._v(" "),
                         _c("tr", [
                           _c("th", [_vm._v("Код подразделения *")]),
                           _vm._v(" "),
                           _c("td", { staticClass: "showView" }, [
-                            _vm._v(_vm._s(_vm.user.unitCode))
+                            _vm._v(_vm._s(_vm.user.sname))
                           ]),
                           _vm._v(" "),
-                          _vm._m(12)
+                          _vm._m(10)
                         ]),
                         _vm._v(" "),
                         _c("tr", [
                           _c("th", [_vm._v("Место регистрации *")]),
                           _vm._v(" "),
                           _c("td", { staticClass: "showView" }, [
-                            _vm._v(_vm._s(_vm.user.placeOfRegistration))
+                            _vm._v(_vm._s(_vm.user.sname))
                           ]),
                           _vm._v(" "),
-                          _vm._m(13)
+                          _vm._m(11)
                         ])
                       ])
                     ]
@@ -48659,7 +49425,7 @@ var render = function() {
                             _vm._v(_vm._s(_vm.user.phone))
                           ]),
                           _vm._v(" "),
-                          _vm._m(14)
+                          _vm._m(12)
                         ]),
                         _vm._v(" "),
                         _c("tr", [
@@ -48669,7 +49435,7 @@ var render = function() {
                             _vm._v(_vm._s(_vm.user.email))
                           ]),
                           _vm._v(" "),
-                          _vm._m(15)
+                          _vm._m(13)
                         ]),
                         _vm._v(" "),
                         _c("tr", [
@@ -48679,27 +49445,27 @@ var render = function() {
                             _vm._v(_vm._s(_vm.user.postcode))
                           ]),
                           _vm._v(" "),
-                          _vm._m(16)
+                          _vm._m(14)
                         ]),
                         _vm._v(" "),
                         _c("tr", [
                           _c("th", [_vm._v("Почтовый адрес *")]),
                           _vm._v(" "),
                           _c("td", { staticClass: "showView" }, [
-                            _vm._v(_vm._s(_vm.user.email))
+                            _vm._v(_vm._s(_vm.user.date_of_birth))
                           ]),
                           _vm._v(" "),
-                          _vm._m(17)
+                          _vm._m(15)
                         ]),
                         _vm._v(" "),
                         _c("tr", [
                           _c("th", [_vm._v("Дополнительно *")]),
                           _vm._v(" "),
                           _c("td", { staticClass: "showView" }, [
-                            _vm._v(_vm._s(_vm.user.additionally))
+                            _vm._v(_vm._s(_vm.user.sname))
                           ]),
                           _vm._v(" "),
-                          _vm._m(18)
+                          _vm._m(16)
                         ])
                       ])
                     ]
@@ -48709,165 +49475,146 @@ var render = function() {
             ]
           ),
           _vm._v(" "),
-          _c(
-            "div",
-            { staticClass: "tabcontent", attrs: { id: "balancetab" } },
-            [
-              _c("div", { staticClass: "row count_row" }, [
-                _c("div", { staticClass: "col-md-6 profile_data" }, [
-                  _c("h3", { staticClass: "personal_data_title" }, [
-                    _vm._v("Лицевой счет")
-                  ]),
-                  _vm._v(" "),
-                  _c(
-                    "table",
-                    { staticClass: "table table-striped table-hover" },
-                    [
-                      _c("tbody", [
-                        _c("tr", [
-                          _c("th", [
-                            _vm._v(
-                              "Лицевой счет № " + _vm._s(_vm.user.id) + " *"
-                            )
-                          ]),
-                          _vm._v(" "),
-                          _c("td", { staticClass: "showView" }, [
-                            _vm._v(_vm._s(_vm.user.sname))
-                          ]),
-                          _vm._v(" "),
-                          _vm._m(19)
-                        ]),
-                        _vm._v(" "),
-                        _c("tr", [
-                          _c("th", [_vm._v("Субсчет депозита *")]),
-                          _vm._v(" "),
-                          _c("td", { staticClass: "showView" }, [
-                            _vm._v(_vm._s(_vm.user.name))
-                          ]),
-                          _vm._v(" "),
-                          _vm._m(20)
-                        ]),
-                        _vm._v(" "),
-                        _c("tr", [
-                          _c("th", [_vm._v("Субсчет свободных средств *")]),
-                          _vm._v(" "),
-                          _c("td", { staticClass: "showView" }, [
-                            _vm._v(_vm._s(_vm.user.sname))
-                          ]),
-                          _vm._v(" "),
-                          _vm._m(21)
-                        ]),
-                        _vm._v(" "),
-                        _c("tr", [
-                          _c("th", [
-                            _vm._v(
-                              "Субсчет заблокированных средств в счет задатка *"
-                            )
-                          ]),
-                          _vm._v(" "),
-                          _c("td", { staticClass: "showView" }, [
-                            _vm._v(_vm._s(_vm.user.sname))
-                          ]),
-                          _vm._v(" "),
-                          _vm._m(22)
-                        ])
-                      ])
-                    ]
-                  )
+          _c("div", { staticClass: "tabcontent", attrs: { id: "balance" } }, [
+            _c("div", { staticClass: "row count_row" }, [
+              _c("div", { staticClass: "col-md-6 profile_data" }, [
+                _c("h3", { staticClass: "personal_data_title" }, [
+                  _vm._v("Лицевой счет")
                 ]),
                 _vm._v(" "),
-                _c("div", { staticClass: "col-md-6 profile_data" }, [
-                  _c("h3", { staticClass: "personal_data_title" }, [
-                    _vm._v("Реквизиты для пополнения лицевого счета")
-                  ]),
-                  _vm._v(" "),
-                  _c(
-                    "table",
-                    { staticClass: "table table-striped table-hover" },
-                    [
-                      _c("tbody", [
-                        _c("tr", [
-                          _c("th", [_vm._v("Расчетный счет *")]),
-                          _vm._v(" "),
-                          _c("td", { staticClass: "showView" }, [
-                            _vm._v(_vm._s(_vm.user.phone))
-                          ]),
-                          _vm._v(" "),
-                          _vm._m(23)
+                _c(
+                  "table",
+                  { staticClass: "table table-striped table-hover" },
+                  [
+                    _c("tbody", [
+                      _c("tr", [
+                        _c("th", [
+                          _vm._v("Лицевой счет № " + _vm._s(_vm.user.id) + " *")
                         ]),
                         _vm._v(" "),
-                        _c("tr", [
-                          _c("th", [_vm._v("Корреспондентский счет *")]),
-                          _vm._v(" "),
-                          _c("td", { staticClass: "showView" }, [
-                            _vm._v(_vm._s(_vm.user.email))
-                          ]),
-                          _vm._v(" "),
-                          _vm._m(24)
+                        _c("td", { staticClass: "showView" }, [
+                          _vm._v(_vm._s(_vm.user.sname))
                         ]),
                         _vm._v(" "),
-                        _c("tr", [
-                          _c("th", [_vm._v("БИК *")]),
-                          _vm._v(" "),
-                          _c("td", { staticClass: "showView" }, [
-                            _vm._v(_vm._s(_vm.user.postcode))
-                          ]),
-                          _vm._v(" "),
-                          _vm._m(25)
+                        _vm._m(17)
+                      ]),
+                      _vm._v(" "),
+                      _c("tr", [
+                        _c("th", [_vm._v("Субсчет депозита *")]),
+                        _vm._v(" "),
+                        _c("td", { staticClass: "showView" }, [
+                          _vm._v(_vm._s(_vm.user.name))
                         ]),
                         _vm._v(" "),
-                        _c("tr", [
-                          _c("th", [_vm._v("ИНН *")]),
-                          _vm._v(" "),
-                          _c("td", { staticClass: "showView" }, [
-                            _vm._v(_vm._s(_vm.user.date_of_birth))
-                          ]),
-                          _vm._v(" "),
-                          _vm._m(26)
+                        _vm._m(18)
+                      ]),
+                      _vm._v(" "),
+                      _c("tr", [
+                        _c("th", [_vm._v("Субсчет свободных средств *")]),
+                        _vm._v(" "),
+                        _c("td", { staticClass: "showView" }, [
+                          _vm._v(_vm._s(_vm.user.sname))
                         ]),
                         _vm._v(" "),
-                        _c("tr", [
-                          _c("th", [_vm._v("КПП *")]),
-                          _vm._v(" "),
-                          _c("td", { staticClass: "showView" }, [
-                            _vm._v(_vm._s(_vm.user.sname))
-                          ]),
-                          _vm._v(" "),
-                          _vm._m(27)
+                        _vm._m(19)
+                      ]),
+                      _vm._v(" "),
+                      _c("tr", [
+                        _c("th", [
+                          _vm._v(
+                            "Субсчет заблокированных средств в счет задатка *"
+                          )
                         ]),
                         _vm._v(" "),
-                        _c("tr", [
-                          _c("th", [_vm._v("Наименование банка *")]),
-                          _vm._v(" "),
-                          _c("td", { staticClass: "showView" }, [
-                            _vm._v(_vm._s(_vm.user.sname))
-                          ]),
-                          _vm._v(" "),
-                          _vm._m(28)
+                        _c("td", { staticClass: "showView" }, [
+                          _vm._v(_vm._s(_vm.user.sname))
                         ]),
                         _vm._v(" "),
-                        _c("tr", [
-                          _c("th", [_vm._v("Наименование получателя *")]),
-                          _vm._v(" "),
-                          _c("td", { staticClass: "showView" }, [
-                            _vm._v(_vm._s(_vm.user.sname))
-                          ]),
-                          _vm._v(" "),
-                          _vm._m(29)
+                        _vm._m(20)
+                      ])
+                    ])
+                  ]
+                )
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "col-md-6 profile_data" }, [
+                _c("h3", { staticClass: "personal_data_title" }, [
+                  _vm._v("Реквизиты для пополнения лицевого счета")
+                ]),
+                _vm._v(" "),
+                _c(
+                  "table",
+                  { staticClass: "table table-striped table-hover" },
+                  [
+                    _c("tbody", [
+                      _c("tr", [
+                        _c("th", [_vm._v("Расчетный счет *")]),
+                        _vm._v(" "),
+                        _c("td", { staticClass: "showView" }, [
+                          _vm._v(_vm._s(_vm.user.phone))
                         ]),
                         _vm._v(" "),
-                        _c("tr", [
-                          _c("th", [
-                            _vm._v("Назначение платежа для субсчета депозита *")
-                          ]),
-                          _vm._v(" "),
-                          _c("td", { staticClass: "showView" }, [
-                            _vm._v(_vm._s(_vm.user.sname))
-                          ]),
-                          _vm._v(" "),
-                          _vm._m(30)
+                        _vm._m(21)
+                      ]),
+                      _vm._v(" "),
+                      _c("tr", [
+                        _c("th", [_vm._v("Корреспондентский счет *")]),
+                        _vm._v(" "),
+                        _c("td", { staticClass: "showView" }, [
+                          _vm._v(_vm._s(_vm.user.email))
                         ]),
                         _vm._v(" "),
+                        _vm._m(22)
+                      ]),
+                      _vm._v(" "),
+                      _c("tr", [
+                        _c("th", [_vm._v("БИК *")]),
+                        _vm._v(" "),
+                        _c("td", { staticClass: "showView" }, [
+                          _vm._v(_vm._s(_vm.user.postcode))
+                        ]),
+                        _vm._v(" "),
+                        _vm._m(23)
+                      ]),
+                      _vm._v(" "),
+                      _c("tr", [
+                        _c("th", [_vm._v("ИНН *")]),
+                        _vm._v(" "),
+                        _c("td", { staticClass: "showView" }, [
+                          _vm._v(_vm._s(_vm.user.date_of_birth))
+                        ]),
+                        _vm._v(" "),
+                        _vm._m(24)
+                      ]),
+                      _vm._v(" "),
+                      _c("tr", [
+                        _c("th", [_vm._v("КПП *")]),
+                        _vm._v(" "),
+                        _c("td", { staticClass: "showView" }, [
+                          _vm._v(_vm._s(_vm.user.sname))
+                        ]),
+                        _vm._v(" "),
+                        _vm._m(25)
+                      ]),
+                      _vm._v(" "),
+                      _c("tr", [
+                        _c("th", [_vm._v("Наименование банка *")]),
+                        _vm._v(" "),
+                        _c("td", { staticClass: "showView" }, [
+                          _vm._v(_vm._s(_vm.user.sname))
+                        ]),
+                        _vm._v(" "),
+                        _vm._m(26)
+                      ]),
+                      _vm._v(" "),
+                      _c("tr", [
+                        _c("th", [_vm._v("Наименование получателя *")]),
+                        _vm._v(" "),
+                        _c("td", { staticClass: "showView" }, [
+                          _vm._v(_vm._s(_vm.user.sname))
+                        ]),
+                        _vm._v(" "),
+<<<<<<< HEAD
                         _c("tr", [
                           _c("th", [
                             _vm._v(
@@ -48917,18 +49664,42 @@ var render = function() {
                         attrs: { type: "hidden", name: "_token" },
                         domProps: { value: _vm.csrf }
                       }),
+=======
+                        _vm._m(27)
+                      ]),
+>>>>>>> bdc7a798d588a73209fb8541c146ee3a4e521c88
                       _vm._v(" "),
-                      _c("h3", { staticClass: "personal_data_title" }, [
-                        _vm._v("Изменить пароль")
+                      _c("tr", [
+                        _c("th", [
+                          _vm._v("Назначение платежа для субсчета депозита *")
+                        ]),
+                        _vm._v(" "),
+                        _c("td", { staticClass: "showView" }, [
+                          _vm._v(_vm._s(_vm.user.sname))
+                        ]),
+                        _vm._v(" "),
+                        _vm._m(28)
                       ]),
                       _vm._v(" "),
-                      _vm._m(32)
-                    ]
-                  )
-                ])
+                      _c("tr", [
+                        _c("th", [
+                          _vm._v(
+                            "Назначение платежа для субсчета свободных средств *"
+                          )
+                        ]),
+                        _vm._v(" "),
+                        _c("td", { staticClass: "showView" }, [
+                          _vm._v(_vm._s(_vm.user.sname))
+                        ]),
+                        _vm._v(" "),
+                        _vm._m(29)
+                      ])
+                    ])
+                  ]
+                )
               ])
-            ]
-          )
+            ])
+          ])
         ])
       ]),
       _vm._v(" "),
@@ -48945,10 +49716,7 @@ var staticRenderFns = [
     return _c(
       "li",
       { staticClass: "profile_menu_li active", attrs: { id: "profilebut" } },
-      [
-        _c("i", { staticClass: "fas fa-user" }),
-        _vm._v("Профиль\n                                    ")
-      ]
+      [_c("i", { staticClass: "fas fa-user" }), _vm._v("Профиль")]
     )
   },
   function() {
@@ -48958,6 +49726,7 @@ var staticRenderFns = [
     return _c(
       "li",
       { staticClass: "profile_menu_li", attrs: { id: "balancebut" } },
+<<<<<<< HEAD
       [
         _c("i", { staticClass: "fas fa-ruble-sign" }),
         _vm._v(
@@ -48979,6 +49748,9 @@ var staticRenderFns = [
           "\n                                        Изменить пароль\n                                    "
         )
       ]
+=======
+      [_c("i", { staticClass: "fas fa-ruble-sign" }), _vm._v("Лицевой счёт")]
+>>>>>>> bdc7a798d588a73209fb8541c146ee3a4e521c88
     )
   },
   function() {
@@ -49022,23 +49794,6 @@ var staticRenderFns = [
       _c("th", [_vm._v("ИНН физ. лица *")]),
       _vm._v(" "),
       _c("td", { staticClass: "showView" }, [_vm._v("AAAA")]),
-      _vm._v(" "),
-      _c("td", { staticClass: "showEdit" }, [
-        _c("input", {
-          staticClass: "form-control  required",
-          attrs: { type: "text", name: "lastName", value: "Sardaryan" }
-        })
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("tr", [
-      _c("th", [_vm._v("Расчетный/лицевой счет *")]),
-      _vm._v(" "),
-      _c("td", { staticClass: "showView" }, [_vm._v("999888777")]),
       _vm._v(" "),
       _c("td", { staticClass: "showEdit" }, [
         _c("input", {
@@ -49127,7 +49882,7 @@ var staticRenderFns = [
     return _c("td", { staticClass: "showEdit" }, [
       _c("input", {
         staticClass: "form-control  required",
-        attrs: { type: "tel", name: "phone", value: "Sardaryan" }
+        attrs: { type: "phone", name: "phone", value: "Sardaryan" }
       })
     ])
   },
@@ -49226,7 +49981,7 @@ var staticRenderFns = [
     return _c("td", { staticClass: "showEdit" }, [
       _c("input", {
         staticClass: "form-control  required",
-        attrs: { type: "tel", name: "phone", value: "Sardaryan" }
+        attrs: { type: "phone", name: "phone", value: "Sardaryan" }
       })
     ])
   },
@@ -49316,78 +50071,6 @@ var staticRenderFns = [
         staticClass: "form-control required",
         attrs: { type: "text", name: "additional", value: "Sardaryan" }
       })
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("table", { staticClass: "table table-striped table-hover" }, [
-      _c("tbody", [
-        _c("tr", [
-          _c("th", [_vm._v("Текущий пароль *")]),
-          _vm._v(" "),
-          _c("td", { staticClass: "showView" }, [
-            _c("input", {
-              staticClass: "form-control",
-              attrs: {
-                id: "password",
-                type: "password",
-                name: "current_password",
-                autocomplete: "current-password"
-              }
-            })
-          ])
-        ]),
-        _vm._v(" "),
-        _c("tr", [
-          _c("th", [_vm._v("Новый пароль *")]),
-          _vm._v(" "),
-          _c("td", { staticClass: "showView" }, [
-            _c("input", {
-              staticClass: "form-control",
-              attrs: {
-                id: "new_password",
-                type: "password",
-                name: "new_password",
-                autocomplete: "current-password"
-              }
-            })
-          ])
-        ]),
-        _vm._v(" "),
-        _c("tr", [
-          _c("th", [_vm._v("Подтвердите Пароль *")]),
-          _vm._v(" "),
-          _c("td", { staticClass: "showView" }, [
-            _c("input", {
-              staticClass: "form-control",
-              attrs: {
-                id: "new_confirm_password",
-                type: "password",
-                name: "new_confirm_password",
-                autocomplete: "current-password"
-              }
-            })
-          ])
-        ]),
-        _vm._v(" "),
-        _c("tr", [
-          _c("th"),
-          _vm._v(" "),
-          _c("td", { staticClass: "showView" }, [
-            _c(
-              "button",
-              { staticClass: "btn btn-primary", attrs: { type: "submit" } },
-              [
-                _vm._v(
-                  "\n                                            Изменить\n                                        "
-                )
-              ]
-            )
-          ])
-        ])
-      ])
     ])
   }
 ]
@@ -69121,8 +69804,8 @@ var axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\xampp\htdocs\CarBidding\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\xampp\htdocs\CarBidding\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\xampp\htdocs\Laravel-VueJS-CarBidding\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\xampp\htdocs\Laravel-VueJS-CarBidding\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
