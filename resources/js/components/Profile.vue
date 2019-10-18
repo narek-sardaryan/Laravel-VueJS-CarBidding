@@ -23,7 +23,7 @@
                             </ul>
                         </div>
                     </div>
-                                </div>
+                    </div>
                     <div class="col profile_data">
                         <h3 class="personal_data_title">Личные данные</h3>
                         <table class="table table-striped table-hover">
@@ -174,32 +174,28 @@
                                     <th>Лицевой счет № {{user.id}} *</th>
                                     <td class="showView">{{user.sname}}</td>
                                     <td class="showEdit">
-                                        <input class="form-control  required" type="text" name="passportNumber"
-                                               value="Sardaryan">
+                                        <input class="form-control  required" type="text" name="passportNumber" value="Sardaryan">
                                     </td>
                                 </tr>
                                 <tr>
                                     <th>Субсчет депозита *</th>
                                     <td class="showView">{{user.name}}</td>
                                     <td class="showEdit">
-                                        <input class="form-control  required" type="text" name="givenFrom"
-                                               value="Sardaryan">
+                                        <input class="form-control  required" type="text" name="givenFrom" value="Sardaryan">
                                     </td>
                                 </tr>
                                 <tr>
                                     <th>Субсчет свободных средств *</th>
                                     <td class="showView">{{user.sname}}</td>
                                     <td class="showEdit">
-                                        <input class="form-control  required" type="text" name="givenDate"
-                                               value="Sardaryan">
+                                        <input class="form-control  required" type="text" name="givenDate" value="Sardaryan">
                                     </td>
                                 </tr>
                                 <tr>
                                     <th>Субсчет заблокированных средств в счет задатка *</th>
                                     <td class="showView">{{user.sname}}</td>
                                     <td class="showEdit">
-                                        <input class="form-control  required" type="text" name="placeCode"
-                                               value="Sardaryan">
+                                        <input class="form-control  required" type="text" name="placeCode" value="Sardaryan">
                                     </td>
                                 </tr>
                                 </tbody>
@@ -213,24 +209,21 @@
                                     <th>Расчетный счет *</th>
                                     <td class="showView">{{user.phone}}</td>
                                     <td class="showEdit">
-                                        <input class="form-control  required" type="phone" name="phone"
-                                               value="Sardaryan">
+                                        <input class="form-control  required" type="phone" name="phone" value="Sardaryan">
                                     </td>
                                 </tr>
                                 <tr>
                                     <th>Корреспондентский счет *</th>
                                     <td class="showView">{{user.email}}</td>
                                     <td class="showEdit">
-                                        <input class="form-control  required" type="email" name="email"
-                                               value="Sardaryan">
+                                        <input class="form-control  required" type="email" name="email" value="Sardaryan">
                                     </td>
                                 </tr>
                                 <tr>
                                     <th>БИК *</th>
                                     <td class="showView">{{user.postcode}}</td>
                                     <td class="showEdit">
-                                        <input class="form-control  required" type="text" name="postIndex"
-                                               value="Sardaryan">
+                                        <input class="form-control  required" type="text" name="postIndex" value="Sardaryan">
                                     </td>
                                 </tr>
                                 <tr>
@@ -244,40 +237,35 @@
                                     <th>КПП *</th>
                                     <td class="showView">{{user.sname}}</td>
                                     <td class="showEdit">
-                                        <input class="form-control required" type="text" name="additional"
-                                               value="Sardaryan">
+                                        <input class="form-control required" type="text" name="additional" value="Sardaryan">
                                     </td>
                                 </tr>
                                 <tr>
                                     <th>Наименование банка *</th>
                                     <td class="showView">{{user.sname}}</td>
                                     <td class="showEdit">
-                                        <input class="form-control required" type="text" name="additional"
-                                               value="Sardaryan">
+                                        <input class="form-control required" type="text" name="additional" value="Sardaryan">
                                     </td>
                                 </tr>
                                 <tr>
                                     <th>Наименование получателя *</th>
                                     <td class="showView">{{user.sname}}</td>
                                     <td class="showEdit">
-                                        <input class="form-control required" type="text" name="additional"
-                                               value="Sardaryan">
+                                        <input class="form-control required" type="text" name="additional" value="Sardaryan">
                                     </td>
                                 </tr>
                                 <tr>
                                     <th>Назначение платежа для субсчета депозита *</th>
                                     <td class="showView">{{user.sname}}</td>
                                     <td class="showEdit">
-                                        <input class="form-control required" type="text" name="additional"
-                                               value="Sardaryan">
+                                        <input class="form-control required" type="text" name="additional" value="Sardaryan">
                                     </td>
                                 </tr>
                                 <tr>
                                     <th>Назначение платежа для субсчета свободных средств *</th>
                                     <td class="showView">{{user.sname}}</td>
                                     <td class="showEdit">
-                                        <input class="form-control required" type="text" name="additional"
-                                               value="Sardaryan">
+                                        <input class="form-control required" type="text" name="additional" value="Sardaryan">
                                     </td>
                                 </tr>
                                 </tbody>

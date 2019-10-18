@@ -112,7 +112,9 @@ Route::get('/about', 'AboutController@index');
 Route::get('/contacts', 'ContactsController@index');
 Route::get('/rules', 'RulesController@index');
 Route::get('/faq', 'FaqController@index');
-Route::get('/profile', 'UserController@showme');
+Route::group(['middleware' => ['auth']], function () {
+    Route::get('/profile', 'UserController@showme');
+});
 Route::get('/images', 'CarsController@fetchimages');
 Route::get('/fetchauctions', 'AuctionController@fetchauctions');
 Route::get('/fetchslider', 'AuctionController@fetchslider');
@@ -120,22 +122,23 @@ Route::get('/fetchbodies', 'AuctionController@fetchbodies');
 Route::get('/fetchmodels', 'AuctionController@fetchmodels');
 Route::get('/fetchparkings', 'AuctionController@fetchparkings');
 Route::get('/fetchstates', 'AuctionController@fetchstates');
-Route::get('/fetchcars/{id}', 'AuctionController@fetchcars');
+Route::get('/fetchcars', 'AuctionController@fetchcars');
 Route::get('/fetchcarsall', 'AuctionController@fetchcarsall');
 Route::get('/fetchUser', 'UserController@fetchUser');
 Route::get('/fetchusers', 'AdminController@fetchAllUsers');
 Route::get('/cars/{id}', 'CarsController@showcar');
 Route::get('/auctions/{id}', 'AuctionController@index');
-Route::get('/auction/{pid}/{id}', 'AuctionController@fetchcar');
+Route::get('/auction/{id}', 'AuctionController@fetchcar');
 Route::get('/auctionall/{id}', 'AuctionController@auctionall');
 Route::get('/car/{id}', 'CarsController@fetchcar');
 Route::get('/errors', 'RegisterController@validator');
+Route::post('changepassword', 'ChangePasswordController@store');
 Route::get('/searchcar', function (Request $request) {
-    $cars = Car::query()
+    $carssearch = Car::query()
         ->where('name', 'LIKE', "%{$request->name}%")
         ->get();
-    return view('searchcar', [
-        'cars' => $cars]);
+    return view('layouts.app', [
+        'carssearch' => $carssearch]);
 });
 Route::get('/filtercar', function (Request $request) {
     $carssel = Car::query();
@@ -157,9 +160,9 @@ Route::get('/filtercar', function (Request $request) {
     if (!empty($request->endval)) {
         $carssel->where('endOfAuction', '<=', $request->endval);
     }
-    $cars = $carssel->get();
-    return view('filtercars', [
-        'cars' => $cars]);
+    $carsfilter = $carssel->get();
+    return view('layouts.app', [
+        'carsfilter' => $carsfilter]);
 });
 Route::get('/filtercarau', function (Request $request) {
     $carsauctions = Car::query();
@@ -188,7 +191,7 @@ Route::get('/filtercarau', function (Request $request) {
     return view('filtercars', [
         'cars' => $carsau]);
 });
-Auth::routes();
-Route::get('/home', 'HomeController@index')->name('home');
-//Auth::routes(['verify' => true]);
-//Route::get('/home', 'HomeController@index')->name('home')->middleware('verified');
+//Auth::routes();
+//Route::get('/home', 'HomeController@index')->name('home');
+Auth::routes(['verify' => true]);
+Route::get('/home', 'HomeController@index')->name('home')->middleware('verified');

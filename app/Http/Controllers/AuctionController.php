@@ -23,13 +23,11 @@ class AuctionController extends Controller
         return view('auctions');
     }
 
-    public function fetchcar($pid, $id)
+    public function fetchcar($id)
     {
         $cars = Car::orderBy('id', 'desc')
             ->where('categorId', '=', $id)
-            ->offset($pid)
-            ->limit(6)
-            ->get();
+            ->paginate(6);
         return $cars;
     }
 
@@ -77,13 +75,11 @@ class AuctionController extends Controller
         return $states;
     }
 
-    public function fetchcars($id)
+    public function fetchcars()
     {
         $cars = Car::orderBy('id', 'desc')->where('completed', '1')
-            ->offset($id)
-            ->limit(6)
-            ->get();
-        return $cars;
+            ->paginate(6);
+        return ($cars);
     }
 
     public function fetchcarsall()
