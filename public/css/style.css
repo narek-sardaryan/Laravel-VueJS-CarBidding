@@ -1237,7 +1237,7 @@ span i {
 }
 .profile_menu {
     background: #1969abb0;
-    padding: 40px 0 80px 0;
+    padding: 40px 0 0 0;
 }
 .avatar_section {
     margin-left: 70px;
@@ -1343,3 +1343,6 @@ span i {
     display: block;
 }
 
+.table{
+    margin-bottom: 0;
+}
