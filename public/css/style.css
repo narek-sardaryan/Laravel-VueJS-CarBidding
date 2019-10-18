@@ -1349,3 +1349,6 @@ span i {
     display: block;
 }
 
+.table{
+    margin-bottom: 0;
+}
