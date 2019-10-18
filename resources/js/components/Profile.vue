@@ -3,24 +3,39 @@
         <header-component></header-component>
         <div class="container-fluid profile_bg_white">
             <div class="container profile_container">
-            <div class="row">
-                <div class="col profile_menu">
-                    <div class="row mx-0">
-                        <div class="col-md-3 avatar_section">
-                            <img class="avatar_img" v-if="!user.avatar && user.gender == 'male'" src="/img/avatar/images.png">
-                            <img class="avatar_img" v-else-if="!user.avatar && user.gender == 'female'" src="/img/avatar/female-avatar-profile-icon-round-african-american-vector-18307298.jpg">
-                            <img class="avatar_img" v-else :src="'/img/avatar/'+user.avatar">
-                        </div>
-                        <div class="col-md-6 user_name_ul ">
-                            <h6 class="user_name_tag">{{user.name}} {{user.sname}}</h6>
-                            <button class="myprofile_btn">Мой профиль</button>
-                            <button class="profile_btn_followers">Мои подписки</button>
-                        </div>
-                        <div class="col-md-12 profile_menu_nav">
-                            <ul class="profile_menu_ul">
-                                <button class="tablinks" @click="openCity('profile')"><li id="profilebut" class="profile_menu_li active"><i class="fas fa-user"></i>Профиль</li></button>
-                                <button class="tablinks" @click="openCity('balance')"><li id="balancebut" class="profile_menu_li"><i class="fas fa-ruble-sign"></i>Лицевой счёт</li></button>
-                            </ul>
+                <div class="row">
+                    <div class="col profile_menu">
+                        <div class="row mx-0">
+                            <div class="col-md-3 avatar_section">
+                                <img class="avatar_img" v-if="!user.avatar && user.gender == 'male'"
+                                     src="/img/avatar/images.png">
+                                <img class="avatar_img" v-else-if="!user.avatar && user.gender == 'female'"
+                                     src="/img/avatar/female-avatar-profile-icon-round-african-american-vector-18307298.jpg">
+                                <img class="avatar_img" v-else :src="'/img/avatar/'+user.avatar">
+                            </div>
+                            <div class="col-md-6 user_name_ul ">
+                                <h6 class="user_name_tag">{{user.name}} {{user.sname}} </h6>
+                                <button class="myprofile_btn">Мой профиль</button>
+                                <button class="profile_btn_followers">Мои подписки</button>
+                            </div>
+                            <div class="col-md-12 profile_menu_nav">
+                                <ul class="profile_menu_ul">
+                                    <button class="tablinks" @click="openTabs('profile')">
+                                        <li id="profilebut" class="profile_menu_li active"><i class="fas fa-user"></i>Профиль
+                                        </li>
+                                    </button>
+                                    <button class="tablinks" @click="openTabs('balance')">
+                                        <li id="balancebut" class="profile_menu_li"><i class="fas fa-ruble-sign"></i>Лицевой
+                                            счёт
+                                        </li>
+                                    </button>
+                                    <button class="tablinks" @click="openTabs('changepass')">
+                                        <li id="changepassbut" class="profile_menu_li"><i class="fas fa-unlock"></i>
+                                            Изменить пароль
+                                        </li>
+                                    </button>
+                                </ul>
+                            </div>
                         </div>
                     </div>
                     </div>
@@ -209,7 +224,7 @@
                                     <th>Расчетный счет *</th>
                                     <td class="showView">{{user.phone}}</td>
                                     <td class="showEdit">
-                                        <input class="form-control  required" type="phone" name="phone" value="Sardaryan">
+                                        <input class="form-control  required" type="tel" name="phone" value="Sardaryan">
                                     </td>
                                 </tr>
                                 <tr>
@@ -273,6 +288,60 @@
                         </div>
                     </div>
                 </div>
+<<<<<<< HEAD
+                <div id="changepasstab" class="tabcontent">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="danger">
+                                <ul>
+                                   <li v-for="error in errorschangepass"></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row count_row">
+                        <div class="col-md-12 profile_data">
+                            <form method="POST" action="changepassword">
+                                <input type="hidden" name="_token" :value="csrf">
+                                <h3 class="personal_data_title">Изменить пароль</h3>
+                                <table class="table table-striped table-hover">
+                                    <tbody>
+                                    <tr>
+                                        <th>Текущий пароль *</th>
+                                        <td class="showView"><input id="password" type="password" class="form-control"
+                                                                    name="current_password"
+                                                                    autocomplete="current-password"></td>
+                                    </tr>
+                                    <tr>
+                                        <th>Новый пароль *</th>
+                                        <td class="showView"><input id="new_password" type="password"
+                                                                    class="form-control"
+                                                                    name="new_password"
+                                                                    autocomplete="current-password"></td>
+                                    </tr>
+                                    <tr>
+                                        <th>Подтвердите Пароль *</th>
+                                        <td class="showView"><input id="new_confirm_password" type="password"
+                                                                    class="form-control"
+                                                                    name="new_confirm_password"
+                                                                    autocomplete="current-password"></td>
+                                    </tr>
+                                    <tr>
+                                        <th></th>
+                                        <td class="showView">
+                                            <button type="submit" class="btn btn-primary">
+                                                Изменить
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+=======
+>>>>>>> bdc7a798d588a73209fb8541c146ee3a4e521c88
             </div>
         </div>
         <footer-component></footer-component>
@@ -282,6 +351,7 @@
 <script>
     export default {
         name: "Profile",
+        props:['errorschangepass'],
         data() {
             return {
                 user: [],

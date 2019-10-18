@@ -83,11 +83,11 @@
     <main>
         {{--        @yield('content')--}}
         @if(!empty($carssearch))
-            <app :errorsreg="{{$errors}}" :errors="{{$errors}}" :carssearch="{{$carssearch}}"></app>
+            <app :errorsreg="{{$errors}}" :errorschangepass="{{$errors}}" :errors="{{$errors}}" :carssearch="{{$carssearch}}"></app>
         @elseif(!empty($carsfilter))
-            <app :errorsreg="{{$errors}}" :errors="{{$errors}}" :carsfilter="{{$carsfilter}}"></app>
+            <app :errorsreg="{{$errors}}" :errors="{{$errors}}" :errorschangepass="{{$errors}}" :carsfilter="{{$carsfilter}}"></app>
         @else
-            <app :errorsreg="{{$errors}}" :errors="{{$errors}}"></app>
+            <app :errorsreg="{{$errors}}" :errors="{{$errors}}" :errorschangepass="{{$errors}}"></app>
         @endif
     </main>
 </div>
