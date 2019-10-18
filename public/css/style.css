@@ -1231,56 +1231,68 @@ span i {
 .profile_bg_white {
     background: #ffffffad;
 }
+
 .profile_container {
     margin-top: 77px;
     padding: 50px 0 50px 0;
 }
+
 .profile_menu {
     background: #1969abb0;
     padding: 20px 0 0 0;
 }
+
 .avatar_section {
     margin-left: 70px;
     margin-bottom: 15px;
 }
+
 .avatar_img {
     width: 100px;
     height: 100px;
     border-radius: 50px;
 }
+
 .user_name_tag {
     font-size: 25px;
     color: #fff;
 }
+
 .user_name_ul {
     list-style: none;
     font-size: 16px;
 }
-.myprofile_btn, .profile_btn_followers  {
+
+.myprofile_btn, .profile_btn_followers {
     width: 100px;
     padding: 10px 0;
     font-size: 12px;
     border-radius: 5px;
 }
+
 .myprofile_btn {
     background: #fff;
     color: #0f92ff;
     border: 1px solid #fff;
 }
+
 .profile_btn_followers {
     color: #fff;
     background: transparent;
     border: 1px solid #fff;
 }
+
 .profile_menu_nav {
     padding-right: 0;
     padding-left: 0;
 }
+
 .profile_menu_ul {
     padding-inline-start: 0;
     list-style: none;
     color: #fff;
 }
+
 .profile_menu_ul .active {
     color: #0f92ff;
 }
@@ -1295,16 +1307,19 @@ span i {
     cursor: pointer;
     font-size: 17px;
 }
+
 .tablinks .profile_menu_li:hover {
     background: #fff;
     box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
     transition: 0.5s;
     color: #0f92ff;
 }
+
 .profile_container .active {
     background: #fff;
 }
- .fa-user, .fa-ruble-sign {
+
+.fa-user, .fa-ruble-sign {
     padding-right: 15px;
 }
 
@@ -1317,6 +1332,7 @@ span i {
 .showEdit {
     display: none;
 }
+
 .table-hover tbody tr:hover {
     background: rgba(0, 0, 0, 0.13);
     color: #000;
@@ -1332,6 +1348,7 @@ span i {
     display: none;
     margin-top: 20px;
 }
+
 .tablinks {
     border: none;
     width: 100%;
@@ -1341,11 +1358,22 @@ span i {
     text-align: left;
     color: white;
 }
+
 .tablinks:focus {
     outline: none;
 }
 
-.activetabis{
+.activetabis {
     display: block;
 }
 
+.fa-unlock {
+    padding-right: 10px;
+}
+
+.body_icons {
+    color: #0f92ff;
+    font-size: 45px;
+    justify-content: center;
+    margin: 10px 0;
+}

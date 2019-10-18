@@ -3718,16 +3718,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Home",
@@ -4419,8 +4409,18 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Profile",
+  props: ['errorschangepass'],
   data: function data() {
     return {
       user: [],
@@ -5539,7 +5539,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "app",
-  props: ['errors', 'errorsreg', 'carssearch', 'carsfilter'],
+  props: ['errors', 'errorsreg', 'carssearch', 'carsfilter', 'errorschangepass'],
   computed: {
     myProps: function myProps() {
       if (this.$route.name === 'log') {
@@ -5563,6 +5563,12 @@ __webpack_require__.r(__webpack_exports__);
       if (this.$route.name === 'filtercar') {
         return {
           carsfilter: this.carsfilter
+        };
+      }
+
+      if (this.$route.name === 'changepassword') {
+        return {
+          errorschangepass: this.errorschangepass
         };
       }
     }
@@ -48030,11 +48036,8 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row" }, [
-      _c("div", {
-        staticClass: "col activeback body-car-back1",
-        attrs: { "back-id": "0" }
-      })
+    return _c("div", { staticClass: "row body_icons" }, [
+      _c("i", { staticClass: "fas fa-car" })
     ])
   },
   function() {
@@ -48053,11 +48056,8 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row" }, [
-      _c("div", {
-        staticClass: "col activeback body-car-back2",
-        attrs: { "back-id": "3" }
-      })
+    return _c("div", { staticClass: "row body_icons" }, [
+      _c("i", { staticClass: "fas fa-car" })
     ])
   },
   function() {
@@ -48076,11 +48076,8 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row" }, [
-      _c("div", {
-        staticClass: "col activeback body-car-back3",
-        attrs: { "back-id": "8" }
-      })
+    return _c("div", { staticClass: "row body_icons" }, [
+      _c("i", { staticClass: "fas fa-bus" })
     ])
   },
   function() {
@@ -48099,7 +48096,7 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row" }, [
+    return _c("div", { staticClass: "row body_icons" }, [
       _c("div", {
         staticClass: "col activeback body-car-back4",
         attrs: { "back-id": "4" }
@@ -48122,11 +48119,8 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row" }, [
-      _c("div", {
-        staticClass: "col activeback body-car-back5",
-        attrs: { "back-id": "5" }
-      })
+    return _c("div", { staticClass: "row body_icons" }, [
+      _c("i", { staticClass: "fas fa-truck" })
     ])
   },
   function() {
@@ -48145,7 +48139,7 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row" }, [
+    return _c("div", { staticClass: "row body_icons" }, [
       _c("div", {
         staticClass: "col activeback body-car-back6",
         attrs: { "back-id": "6" }
@@ -48168,7 +48162,7 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row" }, [
+    return _c("div", { staticClass: "row body_icons" }, [
       _c("div", {
         staticClass: "col activeback body-car-back7",
         attrs: { "back-id": "7" }
@@ -48191,11 +48185,8 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row" }, [
-      _c("div", {
-        staticClass: "col activeback body-car-back8",
-        attrs: { "back-id": "9" }
-      })
+    return _c("div", { staticClass: "row body_icons" }, [
+      _c("i", { staticClass: "fas fa-tractor" })
     ])
   },
   function() {
@@ -48473,7 +48464,9 @@ var render = function() {
                 _vm._v(" "),
                 _c("div", { staticClass: "col-md-6 user_name_ul " }, [
                   _c("h6", { staticClass: "user_name_tag" }, [
-                    _vm._v(_vm._s(_vm.user.name) + " " + _vm._s(_vm.user.sname))
+                    _vm._v(
+                      _vm._s(_vm.user.name) + " " + _vm._s(_vm.user.sname) + " "
+                    )
                   ]),
                   _vm._v(" "),
                   _c("button", { staticClass: "myprofile_btn" }, [
@@ -48900,6 +48893,20 @@ var render = function() {
             "div",
             { staticClass: "tabcontent", attrs: { id: "changepasstab" } },
             [
+              _c("div", { staticClass: "row" }, [
+                _c("div", { staticClass: "col-md-12" }, [
+                  _c("div", { staticClass: "danger" }, [
+                    _c(
+                      "ul",
+                      _vm._l(_vm.errorschangepass, function(error) {
+                        return _c("li")
+                      }),
+                      0
+                    )
+                  ])
+                ])
+              ]),
+              _vm._v(" "),
               _c("div", { staticClass: "row count_row" }, [
                 _c("div", { staticClass: "col-md-12 profile_data" }, [
                   _c(
@@ -48967,7 +48974,7 @@ var staticRenderFns = [
       "li",
       { staticClass: "profile_menu_li", attrs: { id: "changepassbut" } },
       [
-        _c("i", { staticClass: "fas fa-ruble-sign" }),
+        _c("i", { staticClass: "fas fa-unlock" }),
         _vm._v(
           "\n                                        Изменить пароль\n                                    "
         )
@@ -68963,6 +68970,10 @@ __webpack_require__.r(__webpack_exports__);
     path: '/filtercar',
     component: _components_FilterCars__WEBPACK_IMPORTED_MODULE_11__["default"],
     props: true
+  }, {
+    name: 'changepassword',
+    path: '/changepassword',
+    component: _components_Profile__WEBPACK_IMPORTED_MODULE_12__["default"]
   }, {
     path: '/filtercarau',
     component: _components_FilterCars__WEBPACK_IMPORTED_MODULE_11__["default"],

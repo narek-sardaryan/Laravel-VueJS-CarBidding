@@ -14,7 +14,7 @@
                                 <img class="avatar_img" v-else :src="'/img/avatar/'+user.avatar">
                             </div>
                             <div class="col-md-6 user_name_ul ">
-                                <h6 class="user_name_tag">{{user.name}} {{user.sname}}</h6>
+                                <h6 class="user_name_tag">{{user.name}} {{user.sname}} </h6>
                                 <button class="myprofile_btn">Мой профиль</button>
                                 <button class="profile_btn_followers">Мои подписки</button>
                             </div>
@@ -30,7 +30,7 @@
                                         </li>
                                     </button>
                                     <button class="tablinks" @click="openTabs('changepass')">
-                                        <li id="changepassbut" class="profile_menu_li"><i class="fas fa-ruble-sign"></i>
+                                        <li id="changepassbut" class="profile_menu_li"><i class="fas fa-unlock"></i>
                                             Изменить пароль
                                         </li>
                                     </button>
@@ -307,6 +307,15 @@
                     </div>
                 </div>
                 <div id="changepasstab" class="tabcontent">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="danger">
+                                <ul>
+                                   <li v-for="error in errorschangepass"></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
                     <div class="row count_row">
                         <div class="col-md-12 profile_data">
                             <form method="POST" action="changepassword">
@@ -357,6 +366,7 @@
 <script>
     export default {
         name: "Profile",
+        props:['errorschangepass'],
         data() {
             return {
                 user: [],

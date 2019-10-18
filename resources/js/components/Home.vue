@@ -132,10 +132,8 @@
             <div class="container container-back" v-if="slider.length > 0">
                 <div class="row body-cats">
                     <div class="col-md-1 body-cars" data-id="0" @click="filterByBodies(0)">
-                        <div class="row">
-                            <div back-id="0" class="col activeback body-car-back1">
-
-                            </div>
+                        <div class="row body_icons">
+                            <i class="fas fa-car"></i>
                         </div>
                         <div class="row">
                             <div class="col-md-12 text-name">
@@ -144,10 +142,8 @@
                         </div>
                     </div>
                     <div class="col-md-1 body-cars" data-id="3" @click="filterByBodies(3)">
-                        <div class="row">
-                            <div back-id="3" class="col activeback body-car-back2">
-
-                            </div>
+                        <div class="row body_icons">
+                            <i class="fas fa-car"></i>
                         </div>
                         <div class="row">
                             <div class="col-md-12 text-name">
@@ -156,10 +152,8 @@
                         </div>
                     </div>
                     <div class="col-md-1 body-cars" data-id="8" @click="filterByBodies(8)">
-                        <div class="row">
-                            <div back-id="8" class="col activeback body-car-back3">
-
-                            </div>
+                        <div class="row body_icons">
+                            <i class="fas fa-bus"></i>
                         </div>
                         <div class="row">
                             <div class="col-md-12 text-name">
@@ -168,7 +162,7 @@
                         </div>
                     </div>
                     <div class="col-md-1 body-cars" data-id="4" @click="filterByBodies(4)">
-                        <div class="row">
+                        <div class="row body_icons">
                             <div back-id="4" class="col activeback body-car-back4">
 
                             </div>
@@ -180,10 +174,8 @@
                         </div>
                     </div>
                     <div class="col-md-1 body-cars" data-id="5" @click="filterByBodies(5)">
-                        <div class="row">
-                            <div back-id="5" class="col activeback body-car-back5">
-
-                            </div>
+                        <div class="row body_icons">
+                            <i class="fas fa-truck"></i>
                         </div>
                         <div class="row">
                             <div class="col-md-12 text-name">
@@ -192,7 +184,7 @@
                         </div>
                     </div>
                     <div class="col-md-1 body-cars" data-id="6" @click="filterByBodies(6)">
-                        <div class="row">
+                        <div class="row body_icons">
                             <div back-id="6" class="col activeback body-car-back6">
 
                             </div>
@@ -204,7 +196,7 @@
                         </div>
                     </div>
                     <div class="col-md-1 body-cars" data-id="7" @click="filterByBodies(7)">
-                        <div class="row">
+                        <div class="row body_icons">
                             <div back-id="7" class="col activeback body-car-back7">
 
                             </div>
@@ -216,10 +208,8 @@
                         </div>
                     </div>
                     <div class="col-md-1 body-cars" data-id="9" @click="filterByBodies(9)">
-                        <div class="row">
-                            <div back-id="9" class="col activeback body-car-back8">
-
-                            </div>
+                        <div class="row body_icons">
+                            <i class="fas fa-tractor"></i>
                         </div>
                         <div class="row">
                             <div class="col-md-12 text-name">
