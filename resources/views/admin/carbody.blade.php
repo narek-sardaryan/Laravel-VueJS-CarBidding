@@ -67,7 +67,7 @@
                                             {{ $body->name }}
                                         </td>
                                         <td>
-                                            <img src="/img/design_img/{{$body->icons}}" class="iconbody" alt="iconbody">
+                                            <img src="/img/{{$body->icons}}" class="iconbody" alt="iconbody">
                                         </td>
                                         <td>
                                             <button type="button" data-id="{{$body->id}}"

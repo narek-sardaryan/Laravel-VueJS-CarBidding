@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Intervention\Image\Facades\Image;
 
 class RegisterController extends Controller
 {
@@ -85,6 +86,13 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        $image = $data['avatar'];
+        $resize_img = Image::make($image->getRealPath());
+        $image_name = time() .'.'. $image->getClientOriginalExtension();
+        $destin = public_path('img/avatar');
+        $resize_img->resize(100, 100, function($constrain){
+            $constrain->aspectRatio();
+        })->save($destin .'/'. $image_name);
         return User::create([
             'name' => $data['name'],
             'gender' => $data['gender'],
@@ -93,7 +101,7 @@ class RegisterController extends Controller
             'additionally' => $data['additionally'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
-            'avatar' => $data['avatar'],
+            'avatar' => 'avatar/'.$image_name,
             'date_of_birth' => $data['datebirth'],
         ]);
     }

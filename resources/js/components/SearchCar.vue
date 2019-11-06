@@ -1,8 +1,8 @@
 <template>
     <div>
-<!--        <transition name="fade">-->
-            <Cube v-if="slider.length == 0"></Cube>
-<!--        </transition>-->
+        <!--        <transition name="fade">-->
+        <Cube v-if="slider.length == 0"></Cube>
+        <!--        </transition>-->
         <header-component v-if="slider.length > 0"></header-component>
         <div class="container-fluid carbidding-container" v-if="slider.length > 0">
             <section id="lastcars">
@@ -28,7 +28,7 @@
                             <div class="carousel-item active" v-if="index == 0" v-for="(slid, index) in slider">
                                 <div class="row">
                                     <div class="col slider-col">
-                                        <img class="img-fluid" :src="'/img/auctions/'+slid.mainpics"
+                                        <img class="img-fluid" :src="'/img/'+slid.mainpics"
                                              :alt="slid.name">
                                         <div class="car-informacion">
                                             <div class="inform-text">
@@ -74,7 +74,7 @@
                             <div class="carousel-item" v-if="index !== 0" v-for="(slid, index) in slider">
                                 <div class="row">
                                     <div class="col slider-col">
-                                        <img class="img-fluid" :src="'/img/auctions/'+slid.mainpics"
+                                        <img class="img-fluid" :src="'/img/'+slid.mainpics"
                                              :alt="slid.name">
                                         <div class="car-informacion">
                                             <div class="inform-text">
@@ -134,52 +134,50 @@
                 <div class="row body-cats">
                     <div class="car_types_div">
                         <ul class="nav nav-tabs" id="carTypes">
-                            <li  @click="classLi(0)" role="presentation" class="body-cars carTypeActive" data-id="0">
-                                <a class="carType-all activeback body-car-back1 body-name" title="Все типы">
+                            <li @click="classLi(0)" role="presentation" class="body-cars carTypeActive" data-id="0">
+                                <a title="Все типы">
                                     <i class="fas fa-car-side" icon-id="0"></i>
                                     <p class="carTypesText">Все типы</p>
                                 </a>
                             </li>
-                            <li  @click="classLi(3)" role="presentation" class="body-cars" data-id="3">
-                                <a class="carType-car activeback body-car-back2" title="Легковые">
+                            <li @click="classLi(3)" role="presentation" class="body-cars" data-id="3">
+                                <a title="Легковые">
                                     <i class="fas fa-car" icon-id="3"></i>
                                     <p class="carTypesText">Легковые</p>
                                 </a>
                             </li>
-                            <li  @click="classLi(4)" role="presentation" class="body-cars" data-id="4">
-                                <a class="carType-commercialCar activeback body-car-back3"
-                                   title="Легкие коммерческие">
+                            <li @click="classLi(4)" role="presentation" class="body-cars" data-id="4">
+                                <a title="Легкие коммерческие">
                                     <i class="fas fa-truck"></i>
                                     <p class="carTypesText">Легкие коммерческие</p>
                                 </a>
                             </li>
-                            <li  @click="classLi(5)" role="presentation" class="body-cars" data-id="5">
-                                <a class="carType-truck activeback body-car-back4" title="Грузовые">
+                            <li @click="classLi(5)" role="presentation" class="body-cars" data-id="5">
+                                <a title="Грузовые">
                                     <i class="fas fa-truck-moving" icon-id="4"></i>
                                     <p class="carTypesText">Грузовые</p>
                                 </a>
                             </li>
                             <li @click="classLi(6)" role="presentation" class="body-cars" data-id="6">
-                                <a class="carType-truckTractor activeback body-car-back5"
-                                   title="Седельные тягачи">
+                                <a title="Седельные тягачи">
                                     <i class="fas fa-truck-pickup" icon-id="5"></i>
                                     <p class="carTypesText">Седельные тягачи</p>
                                 </a>
                             </li>
-                            <li  @click="classLi(7)" role="presentation" class="body-cars" data-id="7">
-                                <a class="carType-trailer activeback body-car-back6" title="Прицепы">
+                            <li @click="classLi(7)" role="presentation" class="body-cars" data-id="7">
+                                <a title="Прицепы">
                                     <i class="fas fa-truck-loading" icon-id="6"></i>
                                     <p class="carTypesText">Прицепы</p>
                                 </a>
                             </li>
                             <li @click="classLi(8)" role="presentation" class="body-cars" data-id="8">
-                                <a class="carType-bus activeback body-car-back7" title="Автобусы">
+                                <a title="Автобусы">
                                     <i class="fas fa-bus" icon-id="7"></i>
                                     <p class="carTypesText">Автобусы</p>
                                 </a>
                             </li>
-                            <li  @click="classLi(9)" role="presentation" class="body-cars" data-id="9" >
-                                <a class="carType-special activeback body-car-back8" title="Спецтехника">
+                            <li @click="classLi(9)" role="presentation" class="body-cars" data-id="9">
+                                <a title="Спецтехника">
                                     <i class="fas fa-tractor" icon-id="9"></i>
                                     <p class="carTypesText">Спецтехника</p>
                                 </a>
@@ -242,7 +240,7 @@
                         </div>
                         <div class="col filter-date filter-date-btn">
                             <button class="btn btn-light searchcarsauction" type="submit">
-                                Показать: {{this.allCarsLength}}
+                                <i class="fas fa-search" style="display: inline-block;"></i> {{this.allCarsLength}}
                             </button>
                         </div>
                     </div>
@@ -256,7 +254,7 @@
                         <router-link :to="'/cars/'+car.id" :key="car.id">
                             <div class="row">
                                 <div class="col-md-12 text-hover">
-                                    <img :src="'/img/auctions/'+car.mainpics" :alt="car.name">
+                                    <img :src="'/img/'+car.mainpics" :alt="car.name">
                                     <div class="car-informacion-article">
                                         <div class="inform-text-article">
                                             <div class="drop-text">
@@ -298,7 +296,8 @@
                         <h1>По вашему запросу ничего не найдено</h1>
                     </div>
                     <div class="col-md-2 notfoundimg">
-                        <img src="/img/design_img/27-272926_confused-clipart-confused-person-confused-png.png" alt="notfound">
+                        <img src="/img/design_img/27-272926_confused-clipart-confused-person-confused-png.png"
+                             alt="notfound">
                     </div>
                 </div>
             </div>
@@ -327,8 +326,6 @@
                 modelId: '',
                 parkingId: '',
                 bodiesId: '',
-                currentPage: 0,
-                offset: 1,
                 allCarsLength: null
             }
         },
@@ -337,13 +334,12 @@
             this.fetchModels();
             this.fetchParkings();
             this.fetchStates();
-            // this.fetchCars();
             this.fetchSlider();
         },
         methods: {
             classLi(id) {
                 const li = document.getElementsByClassName("body-cars");
-                for(let i=0;i<li.length;i++){
+                for (let i = 0; i < li.length; i++) {
                     li[i].classList.remove("carTypeActive");
                 }
                 document.querySelector('li[data-id="' + id + '"]').classList.add("carTypeActive");

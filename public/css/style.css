@@ -53,7 +53,7 @@ body {
 
 .selects {
     -webkit-appearance: none;
-    background: url(../img/design_img/rowselects.PNG);
+    background-image: url(../img/design_img/rowselects.PNG);
     background-repeat: no-repeat;
     background-position: right 0;
     background-size: 20px 32px;
@@ -287,12 +287,33 @@ body {
     font-weight: 600;
 }
 
+.menunavbar li:hover p {
+    transform: rotate(0deg) !important;
+    transition: 0.4s;
+}
+
 .menunavbar li:hover ol {
     opacity: 1;
     display: block;
 }
 
-/*car types design*/
+.menunavbar {
+    padding-top: 4px;
+    display: flex;
+}
+
+.body-cars img {
+    width: 50px;
+}
+
+.body_icons {
+    color: #0f92ff;
+    font-size: 35px;
+    justify-content: center;
+    margin: 10px 0;
+    transition: 0.4s;
+}
+
 .body-cars {
     border: 1px solid #0f92ff;
     background-color: white;
@@ -372,6 +393,38 @@ body {
     background: #0f92ff;
 }
 
+.body-cars:hover .carTypesText {
+    transform: translateX(-5px);
+    transition: 0.4s;
+}
+
+.body-cars:hover i {
+    transform: scale(1.1);
+    color: white;
+    transition: 0.4s;
+}
+
+.body-cars i {
+    transition: 0.4s;
+}
+
+.body-cars:hover p {
+    color: white;
+    transition: 0.4s;
+}
+
+.body-cars:hover {
+    background-color: #0f92ff;
+    transition: 0.4s;
+}
+
+.body-name {
+    color: black;
+    text-align: center;
+    font-size: 10px;
+    transition: 0.4s;
+}
+
 .text-name {
     padding-left: 10px !important;
     padding-right: 10px !important;
@@ -445,7 +498,7 @@ body {
 }
 
 .article-price:hover {
-    top: 19px;
+    transform: translateY(-10px);
     transition: 0.3s ease-out;
 }
 
@@ -521,7 +574,7 @@ body {
     top: 0;
     right: 118px;
     background-color: #0f92ff59;
-    width: 260.5px;
+    width: 260px;
     height: 100%;
     display: flex;
     align-items: center;
@@ -544,7 +597,6 @@ body {
     left: 15px;
     top: 82%;
     width: 92.5%;
-    /*background-color: #6161619c;*/
     background-image: linear-gradient(#0f92ff61, #0f92ff1f);
     padding-top: 10px;
     padding-bottom: 20px;
@@ -574,15 +626,10 @@ body {
     flex-wrap: nowrap;
 }
 
-/*.input-date::-webkit-datetime-edit-text { display: none;  }*/
-/*.input-date::-webkit-datetime-edit-month-field { display: none; }*/
-/*.input-date::-webkit-datetime-edit-day-field { display: none; }*/
-/*.input-date::-webkit-datetime-edit-year-field { display: none; }*/
 .input-date::-webkit-inner-spin-button {
     display: none;
 }
 
-/*.input-date::-webkit-calendar-picker-indicator { display: none; }*/
 .input-date {
     width: 92%;
 }
@@ -671,7 +718,6 @@ body {
     outline: none;
 }
 
-/*partners section*/
 .partners {
     background: #fff;
     padding: 50px 0;
@@ -805,7 +851,6 @@ span i {
     height: 400px;
 }
 
-/* Show cars page */
 .margin {
     margin-top: 100px;
     background: #ffffffad;
@@ -921,11 +966,6 @@ span i {
 
 .page-link {
     background: #eaeaea;
-}
-
-.page-link:hover {
-    color: white !important;
-    background: #0f92ff;
 }
 
 .page-item {
@@ -1062,7 +1102,6 @@ span i {
     width: 100%;
 }
 
-/* login page styles */
 .login_page_container {
     margin-top: 100px;
     margin-bottom: 100px;
@@ -1147,7 +1186,6 @@ span i {
     margin-bottom: 10px;
 }
 
-/* design of profile section */
 .profile_bg_white {
     background: #ffffffad;
 }
@@ -1243,11 +1281,11 @@ span i {
     padding-right: 15px;
 }
 
+
 .fa-unlock {
     padding-right: 10px;
 }
 
-/* personal data styles */
 .personal_data_title {
     font-size: 22px;
     color: #0f92ff;
@@ -1294,3 +1332,12 @@ span i {
 .table {
     margin-bottom: 0;
 }
+
+.fa-unlock {
+    padding-right: 10px;
+}
+
+.table {
+    margin-bottom: 0;
+}
+

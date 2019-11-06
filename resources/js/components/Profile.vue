@@ -11,7 +11,7 @@
                                      src="/img/avatar/images.png">
                                 <img class="avatar_img" v-else-if="!user.avatar && user.gender == 'female'"
                                      src="/img/avatar/female-avatar-profile-icon-round-african-american-vector-18307298.jpg">
-                                <img class="avatar_img" v-else :src="'/img/avatar/'+user.avatar">
+                                <img class="avatar_img" v-else :src="'/img/'+user.avatar">
                             </div>
                             <div class="col-md-6 user_name_ul ">
                                 <h6 class="user_name_tag">{{user.name}} {{user.sname}}</h6>
@@ -370,24 +370,19 @@
             fetchUser() {
                 axios.get('/fetchUser').then(response => {
                     this.user = response.data;
-                    console.log(this.user)
                 })
             },
             openTabs(tabname) {
-                // Declare all variables
                 var i, tabcontent, tablinks;
-                // Get all elements with class="tabcontent" and hide them
                 tabcontent = document.getElementsByClassName("tabcontent");
                 for (i = 0; i < tabcontent.length; i++) {
                     tabcontent[i].style.display = "none";
                 }
-                // Get all elements with class="tablinks" and remove the class "active"
                 tablinks = document.getElementsByClassName("tablinks");
                 for (i = 0; i < tablinks.length; i++) {
                     tablinks[i].className = tablinks[i].className.replace(" active", "");
 
                 }
-                // Show the current tab, and add an "active" class to the button that opened the tab
                 document.getElementById(tabname + 'tab').style.display = "block";
                 var elem = document.getElementsByClassName('profile_menu_li');
                 for (let p = 0; p < elem.length; p++) {

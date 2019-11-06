@@ -27,10 +27,10 @@
             <h3 class="partners_title">Наши партнеры</h3>
             <div class="container">
                 <div class="pics text-center">
-                    <img src="/img/about_img/bmw].png">
-                    <img src="/img/about_img/lexus.png">
-                    <img src="/img/about_img/mercedes.png">
-                    <img src="/img/about_img/toyota.png">
+                    <img v-lazy-src="'/img/about_img/bmw].png'">
+                    <img v-lazy-src="'/img/about_img/lexus.png'">
+                    <img v-lazy-src="'/img/about_img/mercedes.png'">
+                    <img v-lazy-src="'/img/about_img/toyota.png'">
                 </div>
             </div>
         </section>

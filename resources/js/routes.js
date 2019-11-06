@@ -59,6 +59,11 @@ export default new VueRouter({
             props: true
         },
         {
+            name: 'changepassword',
+            path: '/changepassword',
+            component: Profile,
+        },
+        {
             path: '/filtercarau',
             component: FilterCars,
             props: true

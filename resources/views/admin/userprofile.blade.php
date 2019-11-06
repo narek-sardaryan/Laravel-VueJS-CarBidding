@@ -115,7 +115,7 @@
                                          alt="...">
                                 @endif
                             @else
-                                <img class="avatar border-gray" src="/img/avatar/{{$user->avatar}}" alt="...">
+                                <img class="avatar border-gray" src="/img/{{$user->avatar}}" alt="...">
                             @endif
                             <h5 class="title">{{$user->name}} {{$user->sname}}</h5>
                         </a>

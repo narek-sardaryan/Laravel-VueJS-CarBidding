@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div class="container-fluid headerback" v-if="auctions.length > 0">
+        <div class="container-fluid headerback">
             <div class="container-fluid  fixed-top" id="carnavbar">
                 <div class="container">
                     <div class="row">
@@ -118,9 +118,9 @@
             this.fetchUser();
         },
         updated() {
-            if (window.scrollY > 0) {
+            if (window.scrollY >= 1) {
                 document.getElementById('carnavbar').style.background = 'white'
-            };
+            }
         },
         methods: {
             fetchAuctions() {
@@ -133,9 +133,6 @@
                     this.user = response.data;
                 })
             },
-            //reloadForAuctions() {
-            // window.location.reload();
-            // },
         }
     }
 </script>
