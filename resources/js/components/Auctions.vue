@@ -1,8 +1,6 @@
 <template>
     <div>
-        <!--        <transition name="fade">-->
         <Cube v-if="slider.length == 0"></Cube>
-        <!--        </transition>-->
         <header-component v-if="slider.length > 0"></header-component>
         <div class="container-fluid carbidding-container" v-if="slider.length > 0">
             <section id="lastcars">
@@ -28,7 +26,7 @@
                             <div class="carousel-item active" v-if="index == 0" v-for="(slid, index) in slider">
                                 <div class="row">
                                     <div class="col slider-col">
-                                        <img class="img-fluid" :src="'/img/auctions/'+slid.mainpics"
+                                        <img class="img-fluid" :src="'/img/'+slid.mainpics"
                                              :alt="slid.name">
                                         <div class="car-informacion">
                                             <div class="inform-text">
@@ -74,7 +72,7 @@
                             <div class="carousel-item" v-if="index !== 0" v-for="(slid, index) in slider">
                                 <div class="row">
                                     <div class="col slider-col">
-                                        <img class="img-fluid" :src="'/img/auctions/'+slid.mainpics"
+                                        <img class="img-fluid" :src="'/img/'+slid.mainpics"
                                              :alt="slid.name">
                                         <div class="car-informacion">
                                             <div class="inform-text">
@@ -299,7 +297,7 @@
                         <router-link :to="'/cars/'+auction.id" :key="auction.id">
                             <div class="row">
                                 <div class="col-md-12 text-hover">
-                                    <img :src="'/img/auctions/'+auction.mainpics" :alt="auction.name">
+                                    <img :src="'/img/'+auction.mainpics" :alt="auction.name">
                                     <div class="car-informacion-article">
                                         <div class="inform-text-article">
                                             <div class="drop-text">
@@ -380,15 +378,14 @@
                 id: this.$router.currentRoute.params['id']
             }
         },
-        created: function (){
+        created: function () {
             this.fetchBodies();
             this.fetchModels();
             this.fetchParkings();
             this.fetchStates();
-            // this.fetchCars(this.id);
             this.fetchSlider();
             this.fetchAuctionCars(this.id);
-            this.getResults(1,this.id);
+            this.getResults(1, this.id);
         },
         methods: {
             getResults(page, id) {
@@ -396,9 +393,9 @@
                     page = 1;
                 }
 
-                axios.get('/auction/'+id+'/?page=' + page)
+                axios.get('/auction/' + id + '/?page=' + page)
                     .then(response => {
-                        return  this.auctioncars = response;
+                        return this.auctioncars = response;
                     })
             },
             getResultsPagein(page) {
@@ -406,9 +403,9 @@
                     page = 1;
                 }
 
-                axios.get('/auction/'+this.id+'/?page=' + page)
+                axios.get('/auction/' + this.id + '/?page=' + page)
                     .then(response => {
-                        return  this.auctioncars = response;
+                        return this.auctioncars = response;
                     })
             },
             fetchBodies() {
@@ -431,11 +428,6 @@
                     this.states = response.data;
                 })
             },
-            // fetchCars(id) {
-            //     axios.get('/auction/0/' + this.id).then(response => {
-            //         this.allCarsLength = response.data.length;
-            //     })
-            // },
             fetchSlider() {
                 axios.get('/fetchslider').then(response => {
                     this.firstSlider = response.data[0];
@@ -515,7 +507,6 @@
             },
             fetchAuctionCars(id) {
                 axios.get('/auctionall/' + id).then(response => {
-                    // this.auctioncars = response.data;
                     this.allCarsLength = response.data.length;
                     this.offsetCars = [];
                     for (let i = 0; i < Math.ceil(response.data.length / 6); i++) {
@@ -529,7 +520,6 @@
                 this.id = toR.params['id'];
                 this.fetchAuctionCars(this.id);
                 this.getResults(1, this.id);
-                // this.fetchCars(this.id);
             },
         }
     }

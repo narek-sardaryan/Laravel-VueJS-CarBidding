@@ -111,7 +111,7 @@
                                                     class="avatarusers" alt="...">
                                             @endif
                                         @else
-                                            <img src="/img/avatar/{{$user->avatar}}" class="avatarusers" alt="...">
+                                            <img src="/img/{{$user->avatar}}" class="avatarusers" alt="...">
                                         @endif
                                     </td>
                                     <td class="text-right">

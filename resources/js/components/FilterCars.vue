@@ -1,8 +1,6 @@
 <template>
     <div>
-<!--        <transition name="fade">-->
             <Cube v-if="slider.length == 0"></Cube>
-<!--        </transition>-->
         <header-component v-if="slider.length > 0"></header-component>
         <div class="container-fluid carbidding-container" v-if="slider.length > 0">
             <section id="lastcars">
@@ -28,7 +26,7 @@
                             <div class="carousel-item active" v-if="index == 0" v-for="(slid, index) in slider">
                                 <div class="row">
                                     <div class="col slider-col">
-                                        <img class="img-fluid" :src="'/img/auctions/'+slid.mainpics"
+                                        <img class="img-fluid" :src="'/img/'+slid.mainpics"
                                              :alt="slid.name">
                                         <div class="car-informacion">
                                             <div class="inform-text">
@@ -74,7 +72,7 @@
                             <div class="carousel-item" v-if="index !== 0" v-for="(slid, index) in slider">
                                 <div class="row">
                                     <div class="col slider-col">
-                                        <img class="img-fluid" :src="'/img/auctions/'+slid.mainpics"
+                                        <img class="img-fluid" :src="'/img/'+slid.mainpics"
                                              :alt="slid.name">
                                         <div class="car-informacion">
                                             <div class="inform-text">
@@ -298,7 +296,7 @@
                         <router-link :to="'/cars/'+car.id" :key="car.id">
                             <div class="row">
                                 <div class="col-md-12 text-hover">
-                                    <img :src="'/img/auctions/'+car.mainpics" :alt="car.name">
+                                    <img :src="'/img/'+car.mainpics" :alt="car.name">
                                     <div class="car-informacion-article">
                                         <div class="inform-text-article">
                                             <div class="drop-text">
@@ -362,15 +360,12 @@
                 offsetCars: [],
                 firstSlider: [],
                 slider: [],
-                filters: [],
                 startAu: '',
                 endAu: '',
                 stateId: '',
                 modelId: '',
                 parkingId: '',
                 bodiesId: '',
-                currentPage: 0,
-                offset: 1,
                 allCarsLength: null
             }
         },
@@ -379,7 +374,6 @@
             this.fetchModels();
             this.fetchParkings();
             this.fetchStates();
-            // this.fetchCars();
             this.fetchSlider();
         },
         methods: {
@@ -403,11 +397,6 @@
                     this.states = response.data;
                 })
             },
-            // fetchCars() {
-            //     axios.get('/fetchcars').then(response => {
-            //         this.cars = response.data;
-            //     })
-            // },
             fetchSlider() {
                 axios.get('/fetchslider').then(response => {
                     this.firstSlider = response.data[0];

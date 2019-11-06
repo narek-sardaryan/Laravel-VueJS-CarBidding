@@ -71,7 +71,7 @@
                                         {{ $model->name }}
                                     </td>
                                     <td>
-                                        <img src="/img/design_img/{{$model->icons}}" class="iconmodel"
+                                        <img src="/img/{{$model->icons}}" class="iconmodel"
                                              alt="iconmodel">
                                     </td>
                                     <td>

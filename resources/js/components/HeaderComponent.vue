@@ -1,11 +1,11 @@
 <template>
     <div>
-        <div class="container-fluid headerback" v-if="auctions.length > 0">
+        <div class="container-fluid headerback">
             <div class="container-fluid  fixed-top" id="carnavbar">
                 <div class="container">
                     <div class="row">
                         <div class="col-md-2">
-                            <router-link to="/#"><img src="/img/design_img/header_logo.png" id="headerlogo"
+                            <router-link to="/#" ><img ref="headerlogo" src="/img/design_img/header_logo.png" id="headerlogo"
                                                       alt="logo"></router-link>
                         </div>
                         <div class="col-md-9 offset-1">
@@ -114,7 +114,6 @@
             if (window.scrollY > 0) {
                 document.getElementById('carnavbar').style.background = '#fffffff5'
             }
-            ;
         },
         methods: {
             fetchAuctions() {
@@ -127,9 +126,6 @@
                     this.user = response.data;
                 })
             },
-            //reloadForAuctions() {
-            // window.location.reload();
-            // },
         }
     }
 </script>

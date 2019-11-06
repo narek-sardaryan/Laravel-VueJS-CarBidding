@@ -5,7 +5,6 @@
         <div class="container-fluid carbidding-container" v-if="slider.length > 0">
             <section id="lastcars">
                 <div class="container container-back">
-                    <h1>{{carsall}}</h1>
                     <div id="bs4-slide-carousel" class="carousel slide d-block d-sm-none slide"
                          data-ride="carousel">
                         <div class="carousel-inner text-center">
@@ -27,7 +26,7 @@
                             <div class="carousel-item active" v-if="index == 0" v-for="(slid, index) in slider">
                                 <div class="row">
                                     <div class="col slider-col">
-                                        <img class="img-fluid" :src="'/img/auctions/'+slid.mainpics"
+                                        <img class="img-fluid" v-lazy-src="'/img/'+slid.mainpics"
                                              :alt="slid.name">
                                         <div class="car-informacion">
                                             <div class="inform-text">
@@ -73,7 +72,7 @@
                             <div class="carousel-item" v-if="index !== 0" v-for="(slid, index) in slider">
                                 <div class="row">
                                     <div class="col slider-col">
-                                        <img class="img-fluid" :src="'/img/auctions/'+slid.mainpics"
+                                        <img class="img-fluid" v-lazy-src="'/img/'+slid.mainpics"
                                              :alt="slid.name">
                                         <div class="car-informacion">
                                             <div class="inform-text">
@@ -133,7 +132,7 @@
                 <div class="row body-cats">
                     <div class="col-md-1 body-cars" data-id="0" @click="filterByBodies(0)">
                         <div class="row body_icons">
-                            <i class="fas fa-car"></i>
+                            <i class="fas fa-car-side" icon-id="0"></i>
                         </div>
                         <div class="row">
                             <div class="col-md-12 text-name">
@@ -143,7 +142,7 @@
                     </div>
                     <div class="col-md-1 body-cars" data-id="3" @click="filterByBodies(3)">
                         <div class="row body_icons">
-                            <i class="fas fa-car"></i>
+                            <i class="fas fa-car" icon-id="3"></i>
                         </div>
                         <div class="row">
                             <div class="col-md-12 text-name">
@@ -153,7 +152,7 @@
                     </div>
                     <div class="col-md-1 body-cars" data-id="8" @click="filterByBodies(8)">
                         <div class="row body_icons">
-                            <i class="fas fa-bus"></i>
+                            <i class="fas fa-bus" icon-id="8"></i>
                         </div>
                         <div class="row">
                             <div class="col-md-12 text-name">
@@ -163,9 +162,7 @@
                     </div>
                     <div class="col-md-1 body-cars" data-id="4" @click="filterByBodies(4)">
                         <div class="row body_icons">
-                            <div back-id="4" class="col activeback body-car-back4">
-
-                            </div>
+                            <i class="fas fa-truck" icon-id="4"></i>
                         </div>
                         <div class="row">
                             <div class="col-md-12 text-name">
@@ -175,7 +172,7 @@
                     </div>
                     <div class="col-md-1 body-cars" data-id="5" @click="filterByBodies(5)">
                         <div class="row body_icons">
-                            <i class="fas fa-truck"></i>
+                            <i class="fas fa-truck-moving" icon-id="5"></i>
                         </div>
                         <div class="row">
                             <div class="col-md-12 text-name">
@@ -185,9 +182,7 @@
                     </div>
                     <div class="col-md-1 body-cars" data-id="6" @click="filterByBodies(6)">
                         <div class="row body_icons">
-                            <div back-id="6" class="col activeback body-car-back6">
-
-                            </div>
+                            <i class="fas fa-truck-pickup" icon-id="6"></i>
                         </div>
                         <div class="row">
                             <div class="col-md-12 text-name">
@@ -197,9 +192,7 @@
                     </div>
                     <div class="col-md-1 body-cars" data-id="7" @click="filterByBodies(7)">
                         <div class="row body_icons">
-                            <div back-id="7" class="col activeback body-car-back7">
-
-                            </div>
+                            <i class="fas fa-truck-loading" icon-id="7"></i>
                         </div>
                         <div class="row">
                             <div class="col-md-12 text-name">
@@ -209,7 +202,7 @@
                     </div>
                     <div class="col-md-1 body-cars" data-id="9" @click="filterByBodies(9)">
                         <div class="row body_icons">
-                            <i class="fas fa-tractor"></i>
+                            <i class="fas fa-tractor" icon-id="9"></i>
                         </div>
                         <div class="row">
                             <div class="col-md-12 text-name">
@@ -271,7 +264,7 @@
                                 </div>
                                 <div class="col filter-date">
                                     <button class="btn btn-light searchcarsauction" type="submit">
-                                        Показать: {{this.allCarsLength}}
+                                        <i class="fas fa-search" style="display: inline-block;"></i> {{this.allCarsLength}}
                                     </button>
                                 </div>
                             </div>
@@ -287,7 +280,7 @@
                         <router-link :to="'/cars/'+car.id" :key="car.id">
                             <div class="row">
                                 <div class="col-md-12 text-hover">
-                                    <img :src="'/img/auctions/'+car.mainpics" :alt="car.name">
+                                    <img v-lazy-src="'/img/'+car.mainpics" :alt="car.name">
                                     <div class="car-informacion-article">
                                         <div class="inform-text-article">
                                             <div class="drop-text">
@@ -322,19 +315,6 @@
                         </router-link>
                     </div>
                 </div>
-<!--                <nav aria-label="Page navigation example float-left">-->
-<!--                    <ul class="pagination">-->
-<!--                        <li v-if="offset != 1" class="page-item" @click="prewis"><a class="page-link">&laquo;</a>-->
-<!--                        </li>-->
-<!--                        <li @click="page(off)" class="page-item" v-for="(off, index) in offsetCars"><a-->
-<!--                            :id="index" class="page-link">{{off+1}}</a></li>-->
-<!--                        <li v-if="offset != offsetCars.length" class="page-item" @click="nextis"><a class="page-link">&raquo;</a>-->
-<!--                        </li>-->
-<!--                    </ul>-->
-<!--                </nav>-->
-<!--                        <ul>-->
-<!--                            <li v-for="car in cars.data.data" :key="car.id">{{ car.name }}</li>-->
-<!--                        </ul>-->
                         <pagination :data="cars.data" @pagination-change-page="getResults"></pagination>
             </div>
             <div class="container container-back" v-if="cars.length == 0">
@@ -343,7 +323,7 @@
                         <h1>По вашему запросу ничего не найдено</h1>
                     </div>
                     <div class="col-md-2 notfoundimg">
-                        <img src="/img/design_img/27-272926_confused-clipart-confused-person-confused-png.png" alt="notfound">
+                        <img v-lazy-src="'/img/design_img/27-272926_confused-clipart-confused-person-confused-png.png'" alt="notfound">
                     </div>
                 </div>
             </div>
@@ -354,7 +334,6 @@
 
 <script>
     import Cube from './Cube';
-
     export default {
         name: "Home",
         props:["carsall"],
@@ -375,13 +354,10 @@
                 modelId: '',
                 parkingId: '',
                 bodiesId: '',
-                currentPage: 0,
-                offset: 1,
                 allCarsLength: null,
-                forbody: 0,
             }
         },
-        created: function () {
+         created: function () {
             this.fetchBodies();
             this.fetchModels();
             this.fetchParkings();
@@ -403,25 +379,7 @@
                         return response;
                     }).then(data => {
                     this.cars = data;
-                    console.log(this.cars.data.data)
                 });
-            },
-            beforeEnter: function (el) {
-                el.style.opacity = 0
-            },
-            enter: function (el, done) {
-                Velocity(el, {opacity: 1, fontSize: '1.4em'}, {duration: 300})
-                Velocity(el, {fontSize: '1em'}, {complete: done})
-            },
-            leave: function (el, done) {
-                Velocity(el, {translateX: '15px', rotateZ: '50deg'}, {duration: 600})
-                Velocity(el, {rotateZ: '100deg'}, {loop: 2})
-                Velocity(el, {
-                    rotateZ: '45deg',
-                    translateY: '30px',
-                    translateX: '30px',
-                    opacity: 0
-                }, {complete: done})
             },
             fetchBodies() {
                 axios.get('/fetchbodies').then(response => {
@@ -479,21 +437,13 @@
                     })
                 }
                 var disStyle = document.getElementsByClassName("body-cars");
-                var dispStyle = document.getElementsByClassName("body-name");
-                var disbackStyle = document.getElementsByClassName("activeback");
-                for (var i = 0; i < disbackStyle.length; i++) {
-                    var backid = disbackStyle[i].getAttribute('back-id');
-                    var disbackimg = document.querySelector('div[back-id="' + backid + '"]');
-                    disbackimg.style.backgroundImage = "url('/img/design_img/" + backid + backid + ".png')"
-                }
-                for (var j = 0; j < dispStyle.length; j++) {
-                    dispStyle[j].style.color = 'black';
-                }
                 for (var k = 0; k < disStyle.length; k++) {
                     disStyle[k].style.background = 'white';
+                    document.querySelector('p[p-id="' + disStyle[k].getAttribute('data-id') + '"]').style.color = 'black';
+                    document.querySelector('i[icon-id="' + disStyle[k].getAttribute('data-id') + '"]').style.color = '#0f92ff';
                 }
-                var backimg = document.querySelector('div[back-id="' + id + '"]');
-                backimg.style.backgroundImage = "url('/img/design_img/" + id + ".png')";
+                var iStyle = document.querySelector('i[icon-id="' + id + '"]');
+                iStyle.style.color = 'white';
                 var pStyle = document.querySelector('p[p-id="' + id + '"]');
                 pStyle.style.color = 'white';
                 var bodyStyle = document.querySelector('div[data-id="' + id + '"]');

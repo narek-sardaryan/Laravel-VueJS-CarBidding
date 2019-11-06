@@ -31,24 +31,27 @@
                             </div>
                         </div>
                     </div>
-                    <div class="row searching">
-                        <div class="col-md-4 pr-1">
-                            <div class="form-group">
-                                <label>Добавить модель машины</label>
-                                <input type="text" class="form-control" id="valmodelinp" placeholder="Add car model">
+                    <form action="{{route('upload.image')}}" method="post" enctype="multipart/form-data">
+                        {{ csrf_field() }}
+                        <div class="row searching">
+                            <div class="col-md-4 pr-1">
+                                <div class="form-group">
+                                    <label>Добавить модель машины</label>
+                                    <input type="text" class="form-control" id="valmodelinp" name="model" placeholder="Add car model">
+                                </div>
                             </div>
-                        </div>
-                        <div class="col-md-4">
-                            <label></label>
-                            <input type="file" name="avatar" id="modelicon" value="Add-img">
-                        </div>
-                        <div class="col-md-2 pr-1">
-                            <div class="form-group">
+                            <div class="col-md-4">
                                 <label></label>
-                                <button id="modeladd" type="button" class="btn btn-success">Добавить</button>
+                                <input type="file" name="modelicon" id="modelicon" value="Add-img">
+                            </div>
+                            <div class="col-md-2 pr-1">
+                                <div class="form-group">
+                                    <label></label>
+                                    <button id="modeladd" name="modeladd" type="submit" class="btn btn-success">Добавить</button>
+                                </div>
                             </div>
                         </div>
-                    </div>
+                    </form>
                     @if(count($models) == 0)
                         <div class="row onetime">
                             <div class="col-md-7"><h1>Создайте ваш первый модель </h1></div>
@@ -85,7 +88,7 @@
                                             {{ $model->name }}
                                         </td>
                                         <td>
-                                            <img src="/img/design_img/{{$model->icons}}" class="iconmodel"
+                                            <img src="/img/{{$model->icons}}" class="iconmodel"
                                                  alt="iconmodel">
                                         </td>
                                         <td>
@@ -105,6 +108,8 @@
                         </div>
                 </div>
             </div>
+        </div>
+    </div>
 @endsection
 
 @section('scripts')

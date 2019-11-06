@@ -1,14 +1,12 @@
 <template>
     <div>
-<!--        <transition name="fade">-->
-            <Cube v-if="car.length == 0"></Cube>
-<!--        </transition>-->
+        <Cube v-if="car.length == 0"></Cube>
         <header-component v-if="car.length != 0"></header-component>
         <div class="container-fluid margin" v-if="car.length != 0">
             <div class="container">
                 <div class="row main_row">
                     <div class="col cars_section">
-                        <img class="img-fluid" id="main_pic" :src="'/img/auctions/'+car.mainpics" alt="BMW">
+                        <img class="img-fluid" id="main_pic" :src="'/img/'+car.mainpics" alt="BMW">
                         <div class="row small_pics_row">
                             <div v-for="image in images" class="col-md-3 smallSlide">
                                 <img @click="slide(image.id)" :id="image.id" class="img-fluid smallImages"
@@ -113,11 +111,11 @@
 
 <script>
     import Cube from './Cube';
+
     export default {
         name: "ShowCar",
         data() {
             return {
-                // id:this.$router.currentRoute.params['id'],
                 id: this.$route.params['id'],
                 car: [],
                 images: [],
@@ -127,14 +125,13 @@
             this.fetchCar();
             this.fetchImages();
         },
-        component:{
+        component: {
             Cube
         },
         methods: {
             fetchCar() {
                 axios.get('/car/' + this.id).then(response => {
                     this.car = response.data;
-                    console.log(this.car);
                 })
             },
             fetchImages() {
@@ -143,9 +140,9 @@
                 })
             },
             slide(id) {
-                var current = document.getElementById('main_pic');
-                var that = document.getElementById(id);
-                var src = that.getAttribute('src');
+                let current = document.getElementById('main_pic');
+                let that = document.getElementById(id);
+                let src = that.getAttribute('src');
                 current.setAttribute('src', src);
             }
         },

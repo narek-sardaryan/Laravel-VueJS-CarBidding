@@ -91,7 +91,7 @@ Route::group(['middleware' => ['auth', 'admin']], function () {
     Route::get('/admin/carbody', 'AdminController@carbody');
     Route::post('/admin/delbody', 'AdminController@delbody');
     Route::post('/admin/addbody', 'AdminController@addbody');
-    Route::post('/admin/addmodel', 'AdminController@addmodel');
+    Route::post('/admin/addmodel', 'AdminController@addmodel')->name('upload.image');
     Route::post('/admin/delmodel', 'AdminController@delmodel');
     Route::post('/admin/addstate', 'AdminController@addstate');
     Route::post('/admin/delstate', 'AdminController@delstate');
