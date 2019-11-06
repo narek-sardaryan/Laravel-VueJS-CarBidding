@@ -6,11 +6,12 @@ use App\Auctioncat;
 use App\Body;
 use App\Car;
 use App\Carmodel;
-use App\Image;
+//use App\Image;
 use App\Parking;
 use App\State;
 use App\User;
 use Illuminate\Http\Request;
+use Intervention\Image\Facades\Image;
 
 class AdminController extends Controller
 {
@@ -75,7 +76,15 @@ class AdminController extends Controller
 
     public function addmodel(Request $request)
     {
-        Carmodel::insert([['name' => $request->model, 'icons' => $request->iconm]]);
+        $image = $request->file('modelicon');
+        $resize_img = Image::make($image->getRealPath());
+        $image_name = time() .'.'. $image->getClientOriginalExtension();
+        $destin = public_path('img/avatar');
+        $resize_img->resize(100, 100, function($constrain){
+            $constrain->aspectRatio();
+        })->save($destin .'/'. $image_name);
+        Carmodel::insert([['name' => $request->model, 'icons' => 'avatar/'.$image_name]]);
+        return redirect('/admin/models');
     }
 
     public function delmodel(Request $request)

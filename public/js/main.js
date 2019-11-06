@@ -27,18 +27,18 @@ $(function () {
             }
         })
     })
-    $('#modeladd').click(function () {
-        var model = $('#valmodelinp').val();
-        var iconm = $('#modelicon').val().replace('C:\\fakepath\\', '');
-        $.ajax({
-            url: '/admin/addmodel',
-            type: 'post',
-            data: {model: model, iconm: iconm},
-            success: function () {
-                window.location.reload();
-            }
-        })
-    });
+    // $('#modeladd').click(function () {
+    //     var model = $('#valmodelinp').val();
+    //     var iconm = $('#modelicon').val();
+    //     $.ajax({
+    //         url: '/admin/addmodel',
+    //         type: 'post',
+    //         data: {model: model, iconm: iconm},
+    //         success: function () {
+    //             window.location.reload();
+    //         }
+    //     })
+    // });
     $('.delmodelcar').click(function () {
         var modelid = $(this).attr('data-id');
         $.ajax({

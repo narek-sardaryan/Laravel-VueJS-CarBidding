@@ -16,7 +16,7 @@
                     <div class="car-blok">
                         <div class="row">
                             <div class="col-md-3">
-                                <img src="/img/auctions/{{ $car->mainpics }}" class="mainpicadmin"
+                                <img src="/img/{{ $car->mainpics }}" class="mainpicadmin"
                                      alt="mainpic">
                             </div>
                             <div class="col-md-4">

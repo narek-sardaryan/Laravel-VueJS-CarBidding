@@ -13,7 +13,9 @@ import store from './store'
 import VueAxios from 'vue-axios'
 import VueAgile from 'vue-agile'
 import Vuex from 'vuex';
+import LazyloadVue from 'lazyload-vue'
 
+Vue.use(LazyloadVue);
 Vue.use(Vuex);
 Vue.use(VueAgile);
 Vue.use(VueAxios, axios);

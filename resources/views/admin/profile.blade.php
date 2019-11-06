@@ -115,7 +115,7 @@
                                          alt="...">
                                 @endif
                             @else
-                                <img class="avatar border-gray" src="/img/avatar/{{Auth::user()->avatar}}" alt="...">
+                                <img class="avatar border-gray" src="/img/{{Auth::user()->avatar}}" alt="...">
                             @endif
                             <h5 class="title">{{Auth::user()->name}} {{Auth::user()->sname}}</h5>
                         </a>

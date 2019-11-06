@@ -14,7 +14,7 @@
                 if (this.$route.name === 'filtercar') { return { carsfilter: this.carsfilter }}
                 if (this.$route.name === 'changepassword') { return { errorschangepass: this.errorschangepass }}
             },
-        }
+        },
     }
 </script>
 
