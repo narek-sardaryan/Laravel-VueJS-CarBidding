@@ -1885,6 +1885,61 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "About",
   data: function data() {
@@ -46852,7 +46907,7 @@ var render = function() {
       _vm._v(" "),
       _c(
         "div",
-        { staticClass: "bg_img", staticStyle: { "margin-top": "100px" } },
+        { staticClass: "bg_img", staticStyle: { "margin-top": "79px" } },
         [
           _c("div", { staticClass: "container" }, [
             _c("div", { staticClass: "row justify-content-end" }, [
@@ -46867,11 +46922,11 @@ var render = function() {
                   _c("p", { staticClass: "about_txt" }),
                   _c("p", { staticClass: "hello" }, [_vm._v("Здравствуйте!")]),
                   _vm._v(
-                    "\n                      Мы создали нашу компанию в 2006 году. У нас была цель, сделать красивый и современный бизнес."
+                    "\n                    Мы создали нашу компанию в 2006 году. У нас была цель, сделать красивый и современный\n                    бизнес."
                   ),
                   _c("br"),
                   _vm._v(
-                    "\n                      Воплощая эту идею, мы создали в сети Интернет торговую площадку по продаже аварийных автомобилей. Нас с самого начала не интересовали простые доски объявлений – мы стремились создать именно сайт по оценке и продаже автомобилей после ДТП, где конечную стоимость продаваемого поврежденного автомобиля, будет определять рынок – именно такая цена является справедливой и для продавцов – страховых и лизинговых компаний, и для покупателей.\n                      Воплощая эту идею, мы создали в сети Интернет торговую площадку по продаже аварийных автомобилей. Нас с самого начала не интересовали простые доски объявлений – мы стремились создать именно сайт по оценке и продаже автомобилей после ДТП, где конечную стоимость продаваемого поврежденного автомобиля, будет определять рынок – именно такая цена является справедливой и для продавцов – страховых и лизинговых компаний, и для покупателей.\n                      Воплощая эту идею, мы создали в сети Интернет торговую площадку по продаже аварийных автомобилей. Нас с самого начала не интересовали простые доски объявлений – мы стремились создать именно сайт по оценке и продаже автомобилей после ДТП, где конечную стоимость продаваемого поврежденного автомобиля, будет определять рынок – именно такая цена является справедливой и для продавцов – страховых и лизинговых компаний, и для покупателей.\n                      "
+                    "\n                    Воплощая эту идею, мы создали в сети Интернет торговую площадку по продаже аварийных\n                    автомобилей. Нас с самого начала не интересовали простые доски объявлений – мы стремились\n                    создать именно сайт по оценке и продаже автомобилей после ДТП, где конечную стоимость\n                    продаваемого поврежденного автомобиля, будет определять рынок – именно такая цена является\n                    справедливой и для продавцов – страховых и лизинговых компаний, и для покупателей.\n                    Воплощая эту идею, мы создали в сети Интернет торговую площадку по продаже аварийных\n                    автомобилей. Нас с самого начала не интересовали простые доски объявлений – мы стремились\n                    создать именно сайт по оценке и продаже автомобилей после ДТП, где конечную стоимость\n                    продаваемого поврежденного автомобиля, будет определять рынок – именно такая цена является\n                    справедливой и для продавцов – страховых и лизинговых компаний, и для покупателей.\n                    Воплощая эту идею, мы создали в сети Интернет торговую площадку по продаже аварийных\n                    автомобилей. Нас с самого начала не интересовали простые доски объявлений – мы стремились\n                    создать именно сайт по оценке и продаже автомобилей после ДТП, где конечную стоимость\n                    продаваемого поврежденного автомобиля, будет определять рынок – именно такая цена является\n                    справедливой и для продавцов – страховых и лизинговых компаний, и для покупателей.\n                    "
                   ),
                   _c("p"),
                   _vm._v(" "),
@@ -46879,7 +46934,7 @@ var render = function() {
                     _vm.show
                       ? _c("p", { staticClass: "add_txt_show" }, [
                           _vm._v(
-                            "\n                        Воплощая эту идею, мы создали в сети Интернет торговую площадку по продаже аварийных автомобилей. Нас с самого начала не интересовали простые доски объявлений – мы стремились создать именно сайт по оценке и продаже автомобилей после ДТП, где конечную стоимость продаваемого поврежденного автомобиля, будет определять рынок – именно такая цена является справедливой и для продавцов – страховых и лизинговых компаний, и для покупателей.\n                      "
+                            "\n                            Воплощая эту идею, мы создали в сети Интернет торговую площадку по продаже аварийных\n                            автомобилей. Нас с самого начала не интересовали простые доски объявлений – мы\n                            стремились создать именно сайт по оценке и продаже автомобилей после ДТП, где конечную\n                            стоимость продаваемого поврежденного автомобиля, будет определять рынок – именно такая\n                            цена является справедливой и для продавцов – страховых и лизинговых компаний, и для\n                            покупателей.\n                        "
                           )
                         ])
                       : _vm._e()
@@ -46906,86 +46961,190 @@ var render = function() {
       ),
       _vm._v(" "),
       _c("section", { staticClass: "partners" }, [
-        _c("h3", { staticClass: "partners_title" }, [_vm._v("Наши партнеры")]),
-        _vm._v(" "),
         _c("div", { staticClass: "container" }, [
-          _c("div", { staticClass: "pics text-center" }, [
-            _c("img", {
-              directives: [
-                {
-                  name: "lazy-src",
-                  rawName: "v-lazy-src",
-                  value: "/img/about_img/bmw].png",
-                  expression: "'/img/about_img/bmw].png'"
-                }
-              ]
-            }),
-            _vm._v(" "),
-            _c("img", {
-              directives: [
-                {
-                  name: "lazy-src",
-                  rawName: "v-lazy-src",
-                  value: "/img/about_img/lexus.png",
-                  expression: "'/img/about_img/lexus.png'"
-                }
-              ]
-            }),
-            _vm._v(" "),
-            _c("img", {
-              directives: [
-                {
-                  name: "lazy-src",
-                  rawName: "v-lazy-src",
-                  value: "/img/about_img/mercedes.png",
-                  expression: "'/img/about_img/mercedes.png'"
-                }
-              ]
-            }),
-            _vm._v(" "),
-            _c("img", {
-              directives: [
-                {
-                  name: "lazy-src",
-                  rawName: "v-lazy-src",
-                  value: "/img/about_img/toyota.png",
-                  expression: "'/img/about_img/toyota.png'"
-                }
-              ]
-            })
-          ])
+          _c("h3", { staticClass: "partners_title" }, [
+            _vm._v("Наши партнеры")
+          ]),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              staticClass: "carousel slide d-none d-sm-block m-50 slide",
+              attrs: { id: "carouselAbout", "data-ride": "carousel" }
+            },
+            [
+              _c("div", { staticClass: "carousel-inner text-center" }, [
+                _c("div", { staticClass: "carousel-item active" }, [
+                  _c("div", { staticClass: "row" }, [
+                    _c("div", { staticClass: "col" }, [
+                      _c("img", {
+                        directives: [
+                          {
+                            name: "lazy-src",
+                            rawName: "v-lazy-src",
+                            value: "/img/about_img/bmw].png",
+                            expression: "'/img/about_img/bmw].png'"
+                          }
+                        ]
+                      })
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col" }, [
+                      _c("img", {
+                        directives: [
+                          {
+                            name: "lazy-src",
+                            rawName: "v-lazy-src",
+                            value: "/img/about_img/lexus.png",
+                            expression: "'/img/about_img/lexus.png'"
+                          }
+                        ]
+                      })
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col" }, [
+                      _c("img", {
+                        directives: [
+                          {
+                            name: "lazy-src",
+                            rawName: "v-lazy-src",
+                            value: "/img/about_img/mercedes.png",
+                            expression: "'/img/about_img/mercedes.png'"
+                          }
+                        ]
+                      })
+                    ])
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "carousel-item" }, [
+                  _c("div", { staticClass: "row" }, [
+                    _c("div", { staticClass: "col" }, [
+                      _c("img", {
+                        directives: [
+                          {
+                            name: "lazy-src",
+                            rawName: "v-lazy-src",
+                            value: "/img/about_img/bmw].png",
+                            expression: "'/img/about_img/bmw].png'"
+                          }
+                        ]
+                      })
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col" }, [
+                      _c("img", {
+                        directives: [
+                          {
+                            name: "lazy-src",
+                            rawName: "v-lazy-src",
+                            value: "/img/about_img/lexus.png",
+                            expression: "'/img/about_img/lexus.png'"
+                          }
+                        ]
+                      })
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col" }, [
+                      _c("img", {
+                        directives: [
+                          {
+                            name: "lazy-src",
+                            rawName: "v-lazy-src",
+                            value: "/img/about_img/mercedes.png",
+                            expression: "'/img/about_img/mercedes.png'"
+                          }
+                        ]
+                      })
+                    ])
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "carousel-item" }, [
+                  _c("div", { staticClass: "row" }, [
+                    _c("div", { staticClass: "col" }, [
+                      _c("img", {
+                        directives: [
+                          {
+                            name: "lazy-src",
+                            rawName: "v-lazy-src",
+                            value: "/img/about_img/bmw].png",
+                            expression: "'/img/about_img/bmw].png'"
+                          }
+                        ]
+                      })
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col" }, [
+                      _c("img", {
+                        directives: [
+                          {
+                            name: "lazy-src",
+                            rawName: "v-lazy-src",
+                            value: "/img/about_img/lexus.png",
+                            expression: "'/img/about_img/lexus.png'"
+                          }
+                        ]
+                      })
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col" }, [
+                      _c("img", {
+                        directives: [
+                          {
+                            name: "lazy-src",
+                            rawName: "v-lazy-src",
+                            value: "/img/about_img/mercedes.png",
+                            expression: "'/img/about_img/mercedes.png'"
+                          }
+                        ]
+                      })
+                    ])
+                  ])
+                ]),
+                _vm._v(" "),
+                _vm._m(0),
+                _vm._v(" "),
+                _vm._m(1)
+              ])
+            ]
+          )
         ])
       ]),
-      _vm._v(" "),
-      _c(
-        "transition-group",
-        { attrs: { name: "fade", tag: "div" } },
-        _vm._l([_vm.currentIndex], function(i) {
-          return _c("div", { key: i }, [
-            _c("img", { attrs: { src: _vm.currentImg } })
-          ])
-        }),
-        0
-      ),
-      _vm._v(" "),
-      _c(
-        "a",
-        { staticClass: "prev", attrs: { href: "#" }, on: { click: _vm.prev } },
-        [_vm._v("❮ Previous")]
-      ),
-      _vm._v(" "),
-      _c(
-        "a",
-        { staticClass: "next", attrs: { href: "#" }, on: { click: _vm.next } },
-        [_vm._v("❯ Next")]
-      ),
       _vm._v(" "),
       _c("footer-component")
     ],
     1
   )
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "a",
+      {
+        staticClass: "carousel-arrow-left",
+        attrs: { href: "#carouselAbout", role: "button", "data-slide": "next" }
+      },
+      [_c("i", { staticClass: "fas fa-chevron-left" })]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "a",
+      {
+        staticClass: "carousel-arrow-right",
+        attrs: { href: "#carouselAbout", role: "button", "data-slide": "prev" }
+      },
+      [_c("i", { staticClass: "fas fa-chevron-right" })]
+    )
+  }
+]
 render._withStripped = true
 
 
