@@ -1,0 +1,248 @@
+@media only screen and (min-width: 320px) and (max-width: 480px) {
+    .mobile_nav {
+        width: 100%;
+    }
+
+    .mobile_nav .navbar-toggler {
+        color: #4e555b;
+        font-size: 30px;
+    }
+
+    .mobile_nav .navbar-toggler:focus {
+        outline: none;
+    }
+
+    .responsive {
+        padding: 0;
+        order: 2;
+    }
+
+    #headerlogo {
+        width: 70px;
+    }
+
+    .navbar {
+        padding: 0.5rem 0;
+    }
+
+    .navbar-collapse .menunavbar ul {
+        display: block;
+        background: #0f92ff;
+        position: relative;
+        padding: 7px 10px;
+    }
+
+    .navbar-collapse {
+        position: absolute;
+        right: 0;
+        top: 87px;
+    }
+
+    .navbar-collapse .menunavbar:before {
+        content: "";
+        width: 0;
+        height: 0;
+        border-left: 15px solid transparent;
+        border-right: 15px solid transparent;
+        border-bottom: 15px solid #0f92ff;
+        position: absolute;
+        top: -14px;
+        left: 70px;
+    }
+
+    .navbar-collapse .menunavbar ul li {
+        padding: 20px 0 10px;
+    }
+
+    .navbar-collapse .menunavbar ul li a {
+        color: #fff;
+    }
+
+    .navbar-collapse .menunavbar ul li ol a {
+        color: #000;
+    }
+
+    .navbar-collapse .menunavbar ul li:hover ol li {
+        padding: 10px;
+        color: #fff;
+    }
+
+    .navbar-collapse .menunavbar ul li ol li:hover a {
+        color: #fff;
+    }
+
+    .searchbox_div .searchbox .searchdiv {
+        margin-top: 0;
+        border: 1px solid #0f92ff;
+    }
+
+    .searchbox_div .searchbox {
+        background: transparent;
+        width: 120px;
+        padding: 0;
+        margin: 0;
+        height: 0;
+    }
+
+    .searchbox_div .searchbox .input-group-append .searchicon {
+        height: 23px;
+    }
+
+    .searchinput {
+        height: 26px;
+    }
+
+    .car_types_div .carTypesLScroll, .car_types_div .carTypesRScroll {
+        display: block;
+    }
+
+    #lastcars {
+        padding-bottom: 10px;
+    }
+
+    #carTypes {
+        margin-top: 30px;
+    }
+
+    .filter_row {
+        display: block;
+    }
+
+    .car-filters {
+        height: 370px;
+    }
+
+    .body-cats {
+        justify-content: center;
+    }
+
+    .body-cars {
+        width: 100%;
+    }
+
+    .select-options-filter {
+        padding-top: 0;
+    }
+
+    .filter-date-btn {
+        margin-top: 30px;
+    }
+
+    .filter-date-btn button {
+        margin-top: 30px;
+        width: 100%;
+    }
+
+    .filter-date-d {
+        width: 45%;
+    }
+}
+
+@media only screen and (min-width: 468px) and (max-width: 768px) {
+    .mobile_nav .navbar-toggler {
+        color: #4e555b;
+        font-size: 50px;
+    }
+
+    .mobile_nav .navbar-toggler:focus {
+        outline: none;
+    }
+
+    .mobile_nav {
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    .responsive {
+        padding: 0;
+        order: 2;
+    }
+
+    .navbar {
+        padding: 0.5rem 0;
+    }
+
+    .navbar-collapse .menunavbar ul {
+        display: block;
+        background: #0f92ff;
+        position: relative;
+        padding: 7px 10px;
+    }
+
+    .navbar-collapse {
+        position: absolute;
+        right: 0;
+        top: 87px;
+    }
+
+    .navbar-collapse .menunavbar:before {
+        content: "";
+        width: 0;
+        height: 0;
+        border-left: 15px solid transparent;
+        border-right: 15px solid transparent;
+        border-bottom: 15px solid #0f92ff;
+        position: absolute;
+        top: -14px;
+        left: 70px;
+    }
+
+    .navbar-collapse .menunavbar ul li {
+        padding: 20px 0 10px;
+    }
+
+    .navbar-collapse .menunavbar ul li a {
+        color: #fff;
+    }
+
+    .navbar-collapse .menunavbar ul li ol a {
+        color: #000;
+    }
+
+    .navbar-collapse .menunavbar ul li:hover ol li {
+        padding: 10px;
+        color: #fff;
+    }
+
+    .navbar-collapse .menunavbar ul li ol li:hover a {
+        color: #fff;
+    }
+
+    .searchbox_div .searchbox .searchdiv {
+        margin-top: 0;
+        margin-left: 20px;
+        border: 1px solid #0f92ff;
+    }
+
+    .searchbox_div .searchbox {
+        background: transparent;
+        width: 210px;
+        margin: 0;
+        height: 0;
+    }
+
+    .searchbox_div .searchbox .input-group-append .searchicon {
+        height: 23px;
+    }
+
+    .searchinput {
+        height: 26px;
+    }
+
+    .body-cars {
+        width: 100%;
+    }
+
+    .filter-date-btn {
+        margin-top: 0;
+    }
+
+    .filter-date-btn button {
+        margin-top: 30px;
+        width: 100%;
+    }
+
+    .filter-date-d {
+        width: 45%;
+    }
+}

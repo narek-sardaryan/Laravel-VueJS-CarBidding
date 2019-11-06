@@ -1,7 +1,7 @@
 <template>
     <div>
         <header-component></header-component>
-        <div class="bg_img" style="margin-top: 79px;">
+        <div class="bg_img" style="margin-top: 100px;">
             <div class="container">
                 <div class="row justify-content-end">
                     <div class="col-md-6 about_div">
@@ -34,6 +34,13 @@
                 </div>
             </div>
         </section>
+        <transition-group name="fade" tag="div">
+            <div v-for="i in [currentIndex]" :key="i">
+                <img :src="currentImg" />
+            </div>
+        </transition-group>
+        <a class="prev" @click="prev" href="#">&#10094; Previous</a>
+        <a class="next" @click="next" href="#">&#10095; Next</a>
         <footer-component></footer-component>
     </div>
 </template>

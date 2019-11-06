@@ -200,15 +200,13 @@ body {
     background-color: transparent;
 }
 
-.menunavbar ul > li {
-    position: relative;
-    float: left;
-    padding: 16px 0;
-}
-
 .menunavbar a {
     color: black;
     text-decoration: none;
+}
+
+.responsive {
+    padding: 0 40px;
 }
 
 .menunavbar ul > li > a {
@@ -226,15 +224,23 @@ body {
 .menunavbar ul {
     padding: 0 !important;
     margin-bottom: 0 !important;
+    display: flex;
 }
 
-.arrow_nav {
-    display: inline-block;
+.fa-angle-down {
     transition: 0.6s;
     color: #2099FE;
-    transform: rotate(-90deg);
     font-size: 16px;
     cursor: pointer;
+}
+
+.navbar {
+    padding: 0 1rem;
+}
+
+.menunavbar li:hover .fa-angle-down {
+    transform: rotate(90deg) !important;
+    transition: 0.6s;
 }
 
 .menunavbar ol > li {
@@ -254,11 +260,11 @@ body {
     display: none;
     transition: opacity 1s ease-out;
     position: absolute;
-    padding: 0 !important;
+    padding: 0;
     background-color: #f1f1f1;
     box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
     z-index: 1;
-    top: 60px;
+    top: 65px;
 }
 
 .menunavbar ol:before {
@@ -314,11 +320,80 @@ body {
     margin: 0 10px;
     text-align: center;
     border-bottom: none;
-    height: 96px;
     cursor: pointer;
+    transition: 0.5s;
+    padding: 5px 10px;
 }
 
-.body-cars:hover .body-name {
+.car_types_div {
+    position: relative;
+}
+
+.body-cars i {
+    color: #0f92ff;
+    padding-top: 7px;
+    font-size: 40px;
+}
+
+.body-cars a {
+    text-decoration: none;
+}
+
+.body-cars .carTypesText {
+    color: #0f92ff;
+    font-size: 14px;
+}
+
+.car_types_div .carTypesLScroll {
+    display: none;
+    position: absolute;
+    top: 50px;
+    bottom: 0;
+    width: 20px;
+    color: blue;
+    font-size: 20px;
+    line-height: 50px;
+    text-align: center;
+    border-radius: 5px;
+    left: 0;
+}
+
+.nav-tabs {
+    border: none;
+}
+
+.car_types_div .carTypesRScroll {
+    position: absolute;
+    top: 50px;
+    bottom: 0;
+    width: 20px;
+    color: blue;
+    font-size: 20px;
+    line-height: 50px;
+    text-align: center;
+    border-radius: 5px;
+    right: 0;
+}
+
+.body-cars:hover a i, .body-cars:hover a .carTypesText {
+    color: #fff;
+    transition: 0.5s;
+}
+
+.body-cars.carTypeActive a i, .body-cars.carTypeActive a .carTypesText {
+    color: #fff;
+}
+
+.body-cars:hover {
+    background: #0f92ff;
+    transition: 0.5s;
+}
+
+.body-cars.carTypeActive {
+    background: #0f92ff;
+}
+
+.body-cars:hover .carTypesText {
     transform: translateX(-5px);
     transition: 0.4s;
 }
@@ -360,10 +435,6 @@ body {
     height: 140px;
 }
 
-.body-cats {
-    justify-content: space-between;
-}
-
 .select-options-filter {
     padding-top: 25px;
     flex-wrap: nowrap !important;
@@ -379,6 +450,10 @@ body {
     color: white;
 }
 
+.filter-date-btn {
+    margin-top: 33px;
+}
+
 .car-filters p {
     color: white;
     display: block;
@@ -386,10 +461,6 @@ body {
 
 .selectbox {
     margin-top: 8px;
-}
-
-.filter-date {
-    max-width: 45%;
 }
 
 .now-ui-icons.ui-1_zoom-bold:before {
@@ -698,14 +769,16 @@ body {
     outline: -webkit-focus-ring-color auto 1px;
 }
 
-.searchbox {
-    position: absolute !important;
-    left: 470px;
+.searchbox_div .searchbox {
     background: #0F91FF;
-    margin-top: -5px;
-    margin-left: -9px;
+    margin-top: 0px;
+    margin-left: 20px;
+    padding: 0 15px;
     height: 78px;
     width: 261px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .searchicon {
@@ -779,7 +852,7 @@ span i {
 }
 
 .margin {
-    margin-top: 79px;
+    margin-top: 100px;
     background: #ffffffad;
 }
 
@@ -1118,7 +1191,7 @@ span i {
 }
 
 .profile_container {
-    margin-top: 77px;
+    margin-top: 100px;
     padding: 50px 0 50px 0;
 }
 
@@ -1208,6 +1281,11 @@ span i {
     padding-right: 15px;
 }
 
+
+.fa-unlock {
+    padding-right: 10px;
+}
+
 .personal_data_title {
     font-size: 22px;
     color: #0f92ff;
@@ -1249,6 +1327,10 @@ span i {
 
 .activetabis {
     display: block;
+}
+
+.table {
+    margin-bottom: 0;
 }
 
 .fa-unlock {

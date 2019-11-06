@@ -10,7 +10,7 @@
                         <div class="row small_pics_row">
                             <div v-for="image in images" class="col-md-3 smallSlide">
                                 <img @click="slide(image.id)" :id="image.id" class="img-fluid smallImages"
-                                     :src="'/img/auctions/'+image.name" alt="Slide">
+                                     :src="'/img/'+image.name" alt="Slide">
                             </div>
                         </div>
                     </div>

@@ -130,85 +130,57 @@
             </section>
             <div class="container container-back" v-if="slider.length > 0">
                 <div class="row body-cats">
-                    <div class="col-md-1 body-cars" data-id="0" @click="filterByBodies(0)">
-                        <div class="row body_icons">
-                            <i class="fas fa-car-side" icon-id="0"></i>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-12 text-name">
-                                <p class="body-name" p-id="0">Все типы</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-1 body-cars" data-id="3" @click="filterByBodies(3)">
-                        <div class="row body_icons">
-                            <i class="fas fa-car" icon-id="3"></i>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-12 text-name">
-                                <p class="body-name" p-id="3">Легковые</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-1 body-cars" data-id="8" @click="filterByBodies(8)">
-                        <div class="row body_icons">
-                            <i class="fas fa-bus" icon-id="8"></i>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-12 text-name">
-                                <p class="body-name" p-id="8">Автобусы</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-1 body-cars" data-id="4" @click="filterByBodies(4)">
-                        <div class="row body_icons">
-                            <i class="fas fa-truck" icon-id="4"></i>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-12 text-name">
-                                <p class="body-name" p-id="4">Легкие коммерческие</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-1 body-cars" data-id="5" @click="filterByBodies(5)">
-                        <div class="row body_icons">
-                            <i class="fas fa-truck-moving" icon-id="5"></i>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-12 text-name">
-                                <p class="body-name" p-id="5">Грузовые</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-1 body-cars" data-id="6" @click="filterByBodies(6)">
-                        <div class="row body_icons">
-                            <i class="fas fa-truck-pickup" icon-id="6"></i>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-12 text-name">
-                                <p class="body-name" p-id="6">Седельные тягачи</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-1 body-cars" data-id="7" @click="filterByBodies(7)">
-                        <div class="row body_icons">
-                            <i class="fas fa-truck-loading" icon-id="7"></i>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-12 text-name">
-                                <p class="body-name" p-id="7">Прицепы</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-1 body-cars" data-id="9" @click="filterByBodies(9)">
-                        <div class="row body_icons">
-                            <i class="fas fa-tractor" icon-id="9"></i>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-12 text-name">
-                                <p class="body-name" p-id="9">Спецтехника</p>
-                            </div>
-                        </div>
+                    <div class="car_types_div">
+                        <ul class="nav nav-tabs" id="carTypes">
+                            <li @click="classLi(0)" role="presentation" class="body-cars carTypeActive" data-id="0">
+                                <a title="Все типы">
+                                    <i class="fas fa-car-side" icon-id="0"></i>
+                                    <p class="carTypesText">Все типы</p>
+                                </a>
+                            </li>
+                            <li @click="classLi(3)" role="presentation" class="body-cars" data-id="3">
+                                <a  title="Легковые">
+                                    <i class="fas fa-car" icon-id="3"></i>
+                                    <p class="carTypesText">Легковые</p>
+                                </a>
+                            </li>
+                            <li @click="classLi(4)" role="presentation" class="body-cars" data-id="4">
+                                <a title="Легкие коммерческие">
+                                    <i class="fas fa-truck"></i>
+                                    <p class="carTypesText">Легкие коммерческие</p>
+                                </a>
+                            </li>
+                            <li @click="classLi(5)" role="presentation" class="body-cars" data-id="5">
+                                <a title="Грузовые">
+                                    <i class="fas fa-truck-moving" icon-id="4"></i>
+                                    <p class="carTypesText">Грузовые</p>
+                                </a>
+                            </li>
+                            <li @click="classLi(6)" role="presentation" class="body-cars" data-id="6">
+                                <a  title="Седельные тягачи">
+                                    <i class="fas fa-truck-pickup" icon-id="5"></i>
+                                    <p class="carTypesText">Седельные тягачи</p>
+                                </a>
+                            </li>
+                            <li @click="classLi(7)" role="presentation" class="body-cars" data-id="7">
+                                <a  title="Прицепы">
+                                    <i class="fas fa-truck-loading" icon-id="6"></i>
+                                    <p class="carTypesText">Прицепы</p>
+                                </a>
+                            </li>
+                            <li @click="classLi(8)" role="presentation" class="body-cars" data-id="8">
+                                <a title="Автобусы">
+                                    <i class="fas fa-bus" icon-id="7"></i>
+                                    <p class="carTypesText">Автобусы</p>
+                                </a>
+                            </li>
+                            <li @click="classLi(9)" role="presentation" class="body-cars" data-id="9">
+                                <a title="Спецтехника">
+                                    <i class="fas fa-tractor" icon-id="9"></i>
+                                    <p class="carTypesText">Спецтехника</p>
+                                </a>
+                            </li>
+                        </ul>
                     </div>
                 </div>
             </div>
@@ -216,7 +188,7 @@
         <div class="container-fluid car-filters" v-if="slider.length > 0">
             <div class="container container-back">
                 <form action="/filtercar" type="GET">
-                    <div class="row select-options-filter">
+                    <div class="row select-options-filter filter_row">
                         <div class="col">
                             <label></label>
                             <select @change="filterByModels($event)" id="model" name="modelval"
@@ -251,23 +223,23 @@
                             <label>Дата завершения</label>
                             <div class="row input-row">
                                 <p>С</p>
-                                <div class="col filter-date">
+                                <div class="col filter-date filter-date-d">
                                     <input @change="filterByStarts($event)" name="startval" type="date" id="start"
                                            value=""
                                            class="input-date form-control options">
                                 </div>
                                 <p>ПО</p>
-                                <div class="col filter-date">
+                                <div class="col filter-date filter-date-d">
                                     <input @change="filterByEnds($event)" name="endval" type="date" id="finish" value=""
                                            class="input-date form-control options">
                                     <input type="hidden" :value="bodiesId" name="bodyval">
                                 </div>
-                                <div class="col filter-date">
-                                    <button class="btn btn-light searchcarsauction" type="submit">
-                                        <i class="fas fa-search" style="display: inline-block;"></i> {{this.allCarsLength}}
-                                    </button>
-                                </div>
                             </div>
+                        </div>
+                        <div class="col filter-date filter-date-btn">
+                            <button class="btn btn-light searchcarsauction" type="submit">
+                                <i class="fas fa-search" style="display: inline-block;"></i> {{this.allCarsLength}}
+                            </button>
                         </div>
                     </div>
                 </form>
@@ -315,7 +287,7 @@
                         </router-link>
                     </div>
                 </div>
-                        <pagination :data="cars.data" @pagination-change-page="getResults"></pagination>
+                <pagination :data="cars.data" @pagination-change-page="getResults"></pagination>
             </div>
             <div class="container container-back" v-if="cars.length == 0">
                 <div class="row cars-root">
@@ -323,7 +295,8 @@
                         <h1>По вашему запросу ничего не найдено</h1>
                     </div>
                     <div class="col-md-2 notfoundimg">
-                        <img v-lazy-src="'/img/design_img/27-272926_confused-clipart-confused-person-confused-png.png'" alt="notfound">
+                        <img v-lazy-src="'/img/design_img/27-272926_confused-clipart-confused-person-confused-png.png'"
+                             alt="notfound">
                     </div>
                 </div>
             </div>
@@ -334,9 +307,10 @@
 
 <script>
     import Cube from './Cube';
+
     export default {
         name: "Home",
-        props:["carsall"],
+        props: ["carsall"],
         data() {
             return {
                 bodies: [],
@@ -357,7 +331,7 @@
                 allCarsLength: null,
             }
         },
-         created: function () {
+        created: function () {
             this.fetchBodies();
             this.fetchModels();
             this.fetchParkings();
@@ -416,39 +390,6 @@
                     this.slider = response.data;
                 })
             },
-            filterByBodies: function(id) {
-                this.bodiesId = id;
-                if (!id) {
-                    axios.get('/fetchcarsall').then(response => {
-                        this.offsetCars = [];
-                        for (let i = 0; i < Math.ceil(response.data.length / 6); i++) {
-                            this.offsetCars.push(i);
-                        }
-                        return this.allCarsLength = response.data.length;
-                    })
-                }
-                if (id) {
-                    axios.get('/fetchcarsall').then(response => {
-                        this.offsetCars = [];
-                        for (let i = 0; i < Math.ceil(response.data.length / 6); i++) {
-                            this.offsetCars.push(i);
-                        }
-                        return this.allCarsLength = response.data.filter(obj => (obj.bodyId === id) && (this.stateId == obj.stateId || this.stateId == '') && (this.parkingId == obj.parkingId || this.parkingId == '') && (this.modelId == obj.modelId || this.modelId == '') && (this.parkingId == obj.parkingId || this.parkingId == '') && (!this.startAu || this.startAu >= new Date(obj.auctionStart).getTime()) && (!this.endAu || this.endAu <= new Date(obj.endOfAuction).getTime())).length;
-                    })
-                }
-                var disStyle = document.getElementsByClassName("body-cars");
-                for (var k = 0; k < disStyle.length; k++) {
-                    disStyle[k].style.background = 'white';
-                    document.querySelector('p[p-id="' + disStyle[k].getAttribute('data-id') + '"]').style.color = 'black';
-                    document.querySelector('i[icon-id="' + disStyle[k].getAttribute('data-id') + '"]').style.color = '#0f92ff';
-                }
-                var iStyle = document.querySelector('i[icon-id="' + id + '"]');
-                iStyle.style.color = 'white';
-                var pStyle = document.querySelector('p[p-id="' + id + '"]');
-                pStyle.style.color = 'white';
-                var bodyStyle = document.querySelector('div[data-id="' + id + '"]');
-                bodyStyle.style.background = '#0f92ff';
-            },
             filterByParkings(event) {
                 this.parkingId = event.target.value;
                 axios.get('/fetchcarsall').then(response => {
@@ -479,6 +420,32 @@
                 axios.get('/fetchcarsall').then(response => {
                     this.allCarsLength = response.data.filter(obj => (obj.stateId == this.stateId) && (this.bodiesId == obj.bodyId || this.bodiesId == '') && (this.parkingId == obj.parkingId || this.parkingId == '') && (this.modelId == obj.modelId || this.modelId == '') && (!this.startAu || this.startAu >= new Date(obj.auctionStart).getTime()) && (!this.endAu || this.endAu <= new Date(obj.endOfAuction).getTime())).length;
                 })
+            },
+            classLi(id) {
+                const li = document.getElementsByClassName("body-cars");
+                for (let i = 0; i < li.length; i++) {
+                    li[i].classList.remove("carTypeActive");
+                }
+                document.querySelector('li[data-id="' + id + '"]').classList.add("carTypeActive");
+                this.bodiesId = id;
+                if (!id) {
+                    axios.get('/fetchcarsall').then(response => {
+                        this.offsetCars = [];
+                        for (let i = 0; i < Math.ceil(response.data.length / 6); i++) {
+                            this.offsetCars.push(i);
+                        }
+                        return this.allCarsLength = response.data.length;
+                    })
+                }
+                if (id) {
+                    axios.get('/fetchcarsall').then(response => {
+                        this.offsetCars = [];
+                        for (let i = 0; i < Math.ceil(response.data.length / 6); i++) {
+                            this.offsetCars.push(i);
+                        }
+                        return this.allCarsLength = response.data.filter(obj => (obj.bodyId === id) && (this.stateId == obj.stateId || this.stateId == '') && (this.parkingId == obj.parkingId || this.parkingId == '') && (this.modelId == obj.modelId || this.modelId == '') && (this.parkingId == obj.parkingId || this.parkingId == '') && (!this.startAu || this.startAu >= new Date(obj.auctionStart).getTime()) && (!this.endAu || this.endAu <= new Date(obj.endOfAuction).getTime())).length;
+                    })
+                }
             },
         }
     }

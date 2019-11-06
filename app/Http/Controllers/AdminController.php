@@ -79,11 +79,11 @@ class AdminController extends Controller
         $image = $request->file('modelicon');
         $resize_img = Image::make($image->getRealPath());
         $image_name = time() .'.'. $image->getClientOriginalExtension();
-        $destin = public_path('img/avatar');
+        $destin = public_path('img/design_img');
         $resize_img->resize(100, 100, function($constrain){
             $constrain->aspectRatio();
         })->save($destin .'/'. $image_name);
-        Carmodel::insert([['name' => $request->model, 'icons' => 'avatar/'.$image_name]]);
+        Carmodel::insert([['name' => $request->model, 'icons' => 'design_img/'.$image_name]]);
         return redirect('/admin/models');
     }
 
