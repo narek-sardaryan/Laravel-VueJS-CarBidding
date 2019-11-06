@@ -2,7 +2,7 @@
 	<div>
         <header-component></header-component>
 		<div class="container-fluid contacts_bg_img">
-			<div class="container" style="margin-top: 79px;">
+			<div class="container" style="margin-top: 100px;">
 				<div class="row">
 					<div class="col-md-4 contacts_div">
 						<h6 class="address_title">Наш адрес:</h6>

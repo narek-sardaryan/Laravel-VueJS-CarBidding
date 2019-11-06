@@ -1890,6 +1890,13 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "About",
   data: function data() {
@@ -1910,49 +1917,6 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -2301,124 +2265,101 @@ __webpack_require__.r(__webpack_exports__);
     this.getResults(1, this.id);
   },
   methods: {
-    getResults: function getResults(page, id) {
+    classLi: function classLi(id) {
       var _this = this;
 
-      if (typeof page === 'undefined') {
-        page = 1;
+      var li = document.getElementsByClassName("body-cars");
+
+      for (var i = 0; i < li.length; i++) {
+        li[i].classList.remove("carTypeActive");
       }
 
-      axios.get('/auction/' + id + '/?page=' + page).then(function (response) {
-        return _this.auctioncars = response;
-      });
+      document.querySelector('li[data-id="' + id + '"]').classList.add("carTypeActive");
+      this.bodiesId = id;
+
+      if (!id) {
+        axios.get('/fetchcarsall').then(function (response) {
+          _this.offsetCars = [];
+
+          for (var _i = 0; _i < Math.ceil(response.data.length / 6); _i++) {
+            _this.offsetCars.push(_i);
+          }
+
+          return _this.allCarsLength = response.data.length;
+        });
+      }
+
+      if (id) {
+        axios.get('/fetchcarsall').then(function (response) {
+          _this.offsetCars = [];
+
+          for (var _i2 = 0; _i2 < Math.ceil(response.data.length / 6); _i2++) {
+            _this.offsetCars.push(_i2);
+          }
+
+          return _this.allCarsLength = response.data.filter(function (obj) {
+            return obj.bodyId === id && (_this.stateId == obj.stateId || _this.stateId == '') && (_this.parkingId == obj.parkingId || _this.parkingId == '') && (_this.modelId == obj.modelId || _this.modelId == '') && (_this.parkingId == obj.parkingId || _this.parkingId == '') && (!_this.startAu || _this.startAu >= new Date(obj.auctionStart).getTime()) && (!_this.endAu || _this.endAu <= new Date(obj.endOfAuction).getTime());
+          }).length;
+        });
+      }
     },
-    getResultsPagein: function getResultsPagein(page) {
+    getResults: function getResults(page, id) {
       var _this2 = this;
 
       if (typeof page === 'undefined') {
         page = 1;
       }
 
-      axios.get('/auction/' + this.id + '/?page=' + page).then(function (response) {
+      axios.get('/auction/' + id + '/?page=' + page).then(function (response) {
         return _this2.auctioncars = response;
       });
     },
-    fetchBodies: function fetchBodies() {
+    getResultsPagein: function getResultsPagein(page) {
       var _this3 = this;
 
+      if (typeof page === 'undefined') {
+        page = 1;
+      }
+
+      axios.get('/auction/' + this.id + '/?page=' + page).then(function (response) {
+        return _this3.auctioncars = response;
+      });
+    },
+    fetchBodies: function fetchBodies() {
+      var _this4 = this;
+
       axios.get('/fetchbodies').then(function (response) {
-        _this3.bodies = response.data;
+        _this4.bodies = response.data;
       });
     },
     fetchModels: function fetchModels() {
-      var _this4 = this;
+      var _this5 = this;
 
       axios.get('/fetchmodels').then(function (response) {
-        _this4.models = response.data;
+        _this5.models = response.data;
       });
     },
     fetchParkings: function fetchParkings() {
-      var _this5 = this;
+      var _this6 = this;
 
       axios.get('/fetchparkings').then(function (response) {
-        _this5.parkings = response.data;
+        _this6.parkings = response.data;
       });
     },
     fetchStates: function fetchStates() {
-      var _this6 = this;
-
-      axios.get('/fetchstates').then(function (response) {
-        _this6.states = response.data;
-      });
-    },
-    // fetchCars(id) {
-    //     axios.get('/auction/0/' + this.id).then(response => {
-    //         this.allCarsLength = response.data.length;
-    //     })
-    // },
-    fetchSlider: function fetchSlider() {
       var _this7 = this;
 
-      axios.get('/fetchslider').then(function (response) {
-        _this7.firstSlider = response.data[0];
-        _this7.slider = response.data;
+      axios.get('/fetchstates').then(function (response) {
+        _this7.states = response.data;
       });
     },
-    filterByBodies: function filterByBodies(id) {
+    fetchSlider: function fetchSlider() {
       var _this8 = this;
 
-      this.bodiesId = id;
-
-      if (!id) {
-        axios.get('/auctionall/' + this.id).then(function (response) {
-          _this8.offsetCars = [];
-
-          for (var _i = 0; _i < Math.ceil(response.data.length / 6); _i++) {
-            _this8.offsetCars.push(_i);
-          }
-
-          return _this8.allCarsLength = response.data.length;
-        });
-      }
-
-      if (id) {
-        axios.get('/auctionall/' + this.id).then(function (response) {
-          _this8.offsetCars = [];
-
-          for (var _i2 = 0; _i2 < Math.ceil(response.data.length / 6); _i2++) {
-            _this8.offsetCars.push(_i2);
-          }
-
-          return _this8.allCarsLength = response.data.filter(function (obj) {
-            return obj.bodyId === id && (_this8.stateId == obj.stateId || _this8.stateId == '') && (_this8.parkingId == obj.parkingId || _this8.parkingId == '') && (_this8.modelId == obj.modelId || _this8.modelId == '') && (_this8.parkingId == obj.parkingId || _this8.parkingId == '') && (!_this8.startAu || _this8.startAu >= new Date(obj.auctionStart).getTime()) && (!_this8.endAu || _this8.endAu <= new Date(obj.endOfAuction).getTime());
-          }).length;
-        });
-      }
-
-      var disStyle = document.getElementsByClassName("body-cars");
-      var dispStyle = document.getElementsByClassName("body-name");
-      var disbackStyle = document.getElementsByClassName("activeback");
-
-      for (var i = 0; i < disbackStyle.length; i++) {
-        var backid = disbackStyle[i].getAttribute('back-id');
-        var disbackimg = document.querySelector('div[back-id="' + backid + '"]');
-        disbackimg.style.backgroundImage = "url('/img/design_img/" + backid + backid + ".png')";
-      }
-
-      for (var j = 0; j < dispStyle.length; j++) {
-        dispStyle[j].style.color = 'black';
-      }
-
-      for (var k = 0; k < disStyle.length; k++) {
-        disStyle[k].style.background = 'white';
-      }
-
-      var backimg = document.querySelector('div[back-id="' + id + '"]');
-      backimg.style.backgroundImage = "url('/img/design_img/" + id + ".png')";
-      var pStyle = document.querySelector('p[p-id="' + id + '"]');
-      pStyle.style.color = 'white';
-      var bodyStyle = document.querySelector('div[data-id="' + id + '"]');
-      bodyStyle.style.background = '#0f92ff';
+      axios.get('/fetchslider').then(function (response) {
+        _this8.firstSlider = response.data[0];
+        _this8.slider = response.data;
+      });
     },
     filterByParkings: function filterByParkings(event) {
       var _this9 = this;
@@ -2933,48 +2874,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "FilterCars",
   props: ['carsfilter'],
@@ -3008,32 +2907,70 @@ __webpack_require__.r(__webpack_exports__);
     this.fetchSlider();
   },
   methods: {
-    fetchBodies: function fetchBodies() {
+    classLi: function classLi(id) {
       var _this = this;
 
+      var li = document.getElementsByClassName("body-cars");
+
+      for (var i = 0; i < li.length; i++) {
+        li[i].classList.remove("carTypeActive");
+      }
+
+      document.querySelector('li[data-id="' + id + '"]').classList.add("carTypeActive");
+      this.bodiesId = id;
+
+      if (!id) {
+        axios.get('/fetchcarsall').then(function (response) {
+          _this.offsetCars = [];
+
+          for (var _i = 0; _i < Math.ceil(response.data.length / 6); _i++) {
+            _this.offsetCars.push(_i);
+          }
+
+          return _this.allCarsLength = response.data.length;
+        });
+      }
+
+      if (id) {
+        axios.get('/fetchcarsall').then(function (response) {
+          _this.offsetCars = [];
+
+          for (var _i2 = 0; _i2 < Math.ceil(response.data.length / 6); _i2++) {
+            _this.offsetCars.push(_i2);
+          }
+
+          return _this.allCarsLength = response.data.filter(function (obj) {
+            return obj.bodyId === id && (_this.stateId == obj.stateId || _this.stateId == '') && (_this.parkingId == obj.parkingId || _this.parkingId == '') && (_this.modelId == obj.modelId || _this.modelId == '') && (_this.parkingId == obj.parkingId || _this.parkingId == '') && (!_this.startAu || _this.startAu >= new Date(obj.auctionStart).getTime()) && (!_this.endAu || _this.endAu <= new Date(obj.endOfAuction).getTime());
+          }).length;
+        });
+      }
+    },
+    fetchBodies: function fetchBodies() {
+      var _this2 = this;
+
       axios.get('/fetchbodies').then(function (response) {
-        _this.bodies = response.data;
+        _this2.bodies = response.data;
       });
     },
     fetchModels: function fetchModels() {
-      var _this2 = this;
+      var _this3 = this;
 
       axios.get('/fetchmodels').then(function (response) {
-        _this2.models = response.data;
+        _this3.models = response.data;
       });
     },
     fetchParkings: function fetchParkings() {
-      var _this3 = this;
+      var _this4 = this;
 
       axios.get('/fetchparkings').then(function (response) {
-        _this3.parkings = response.data;
+        _this4.parkings = response.data;
       });
     },
     fetchStates: function fetchStates() {
-      var _this4 = this;
+      var _this5 = this;
 
       axios.get('/fetchstates').then(function (response) {
-        _this4.states = response.data;
+        _this5.states = response.data;
       });
     },
     // fetchCars() {
@@ -3042,40 +2979,40 @@ __webpack_require__.r(__webpack_exports__);
     //     })
     // },
     fetchSlider: function fetchSlider() {
-      var _this5 = this;
+      var _this6 = this;
 
       axios.get('/fetchslider').then(function (response) {
-        _this5.firstSlider = response.data[0];
-        _this5.slider = response.data;
+        _this6.firstSlider = response.data[0];
+        _this6.slider = response.data;
       });
     },
     filterByBodies: function filterByBodies(id) {
-      var _this6 = this;
+      var _this7 = this;
 
       this.bodiesId = id;
 
       if (!id) {
         axios.get('/fetchcarsall').then(function (response) {
-          _this6.offsetCars = [];
+          _this7.offsetCars = [];
 
-          for (var _i = 0; _i < Math.ceil(response.data.length / 6); _i++) {
-            _this6.offsetCars.push(_i);
+          for (var _i3 = 0; _i3 < Math.ceil(response.data.length / 6); _i3++) {
+            _this7.offsetCars.push(_i3);
           }
 
-          return _this6.allCarsLength = response.data.length;
+          return _this7.allCarsLength = response.data.length;
         });
       }
 
       if (id) {
         axios.get('/fetchcarsall').then(function (response) {
-          _this6.offsetCars = [];
+          _this7.offsetCars = [];
 
-          for (var _i2 = 0; _i2 < Math.ceil(response.data.length / 6); _i2++) {
-            _this6.offsetCars.push(_i2);
+          for (var _i4 = 0; _i4 < Math.ceil(response.data.length / 6); _i4++) {
+            _this7.offsetCars.push(_i4);
           }
 
-          return _this6.allCarsLength = response.data.filter(function (obj) {
-            return obj.bodyId === id && (_this6.stateId == obj.stateId || _this6.stateId == '') && (_this6.parkingId == obj.parkingId || _this6.parkingId == '') && (_this6.modelId == obj.modelId || _this6.modelId == '') && (_this6.parkingId == obj.parkingId || _this6.parkingId == '') && (!_this6.startAu || _this6.startAu >= new Date(obj.auctionStart).getTime()) && (!_this6.endAu || _this6.endAu <= new Date(obj.endOfAuction).getTime());
+          return _this7.allCarsLength = response.data.filter(function (obj) {
+            return obj.bodyId === id && (_this7.stateId == obj.stateId || _this7.stateId == '') && (_this7.parkingId == obj.parkingId || _this7.parkingId == '') && (_this7.modelId == obj.modelId || _this7.modelId == '') && (_this7.parkingId == obj.parkingId || _this7.parkingId == '') && (!_this7.startAu || _this7.startAu >= new Date(obj.auctionStart).getTime()) && (!_this7.endAu || _this7.endAu <= new Date(obj.endOfAuction).getTime());
           }).length;
         });
       }
@@ -3106,53 +3043,53 @@ __webpack_require__.r(__webpack_exports__);
       bodyStyle.style.background = '#0f92ff';
     },
     filterByParkings: function filterByParkings(event) {
-      var _this7 = this;
+      var _this8 = this;
 
       this.parkingId = event.target.value;
       axios.get('/fetchcarsall').then(function (response) {
-        _this7.allCarsLength = response.data.filter(function (obj) {
-          return obj.parkingId == _this7.parkingId && (_this7.stateId == obj.stateId || _this7.stateId == '') && (_this7.modelId == obj.modelId || _this7.modelId == '') && (_this7.bodiesId == obj.bodyId || _this7.bodiesId == '') && (!_this7.startAu || _this7.startAu >= new Date(obj.auctionStart).getTime()) && (!_this7.endAu || _this7.endAu <= new Date(obj.endOfAuction).getTime());
+        _this8.allCarsLength = response.data.filter(function (obj) {
+          return obj.parkingId == _this8.parkingId && (_this8.stateId == obj.stateId || _this8.stateId == '') && (_this8.modelId == obj.modelId || _this8.modelId == '') && (_this8.bodiesId == obj.bodyId || _this8.bodiesId == '') && (!_this8.startAu || _this8.startAu >= new Date(obj.auctionStart).getTime()) && (!_this8.endAu || _this8.endAu <= new Date(obj.endOfAuction).getTime());
         }).length;
       });
     },
     filterByStarts: function filterByStarts(event) {
-      var _this8 = this;
+      var _this9 = this;
 
       this.startAu = new Date(event.target.value).getTime();
       axios.get('/fetchcarsall').then(function (response) {
-        _this8.allCarsLength = response.data.filter(function (obj) {
-          return new Date(obj.auctionStart).getTime() >= _this8.startAu && (_this8.stateId == obj.stateId || _this8.stateId == '') && (_this8.parkingId == obj.parkingId || _this8.parkingId == '') && (_this8.modelId == obj.modelId || _this8.modelId == '') && (_this8.bodiesId == obj.bodyId || _this8.bodiesId == '') && (!_this8.endAu || _this8.endAu <= new Date(obj.endOfAuction).getTime());
+        _this9.allCarsLength = response.data.filter(function (obj) {
+          return new Date(obj.auctionStart).getTime() >= _this9.startAu && (_this9.stateId == obj.stateId || _this9.stateId == '') && (_this9.parkingId == obj.parkingId || _this9.parkingId == '') && (_this9.modelId == obj.modelId || _this9.modelId == '') && (_this9.bodiesId == obj.bodyId || _this9.bodiesId == '') && (!_this9.endAu || _this9.endAu <= new Date(obj.endOfAuction).getTime());
         }).length;
       });
     },
     filterByEnds: function filterByEnds(event) {
-      var _this9 = this;
+      var _this10 = this;
 
       this.endAu = new Date(event.target.value).getTime();
       axios.get('/fetchcarsall').then(function (response) {
-        _this9.allCarsLength = response.data.filter(function (obj) {
-          return new Date(obj.endOfAuction).getTime() <= _this9.endAu && (_this9.stateId == obj.stateId || _this9.stateId == '') && (_this9.parkingId == obj.parkingId || _this9.parkingId == '') && (_this9.modelId == obj.modelId || _this9.modelId == '') && (_this9.bodiesId == obj.bodyId || _this9.bodiesId == '') && (!_this9.startAu || _this9.startAu >= new Date(obj.auctionStart).getTime());
+        _this10.allCarsLength = response.data.filter(function (obj) {
+          return new Date(obj.endOfAuction).getTime() <= _this10.endAu && (_this10.stateId == obj.stateId || _this10.stateId == '') && (_this10.parkingId == obj.parkingId || _this10.parkingId == '') && (_this10.modelId == obj.modelId || _this10.modelId == '') && (_this10.bodiesId == obj.bodyId || _this10.bodiesId == '') && (!_this10.startAu || _this10.startAu >= new Date(obj.auctionStart).getTime());
         }).length;
       });
     },
     filterByModels: function filterByModels(event) {
-      var _this10 = this;
+      var _this11 = this;
 
       this.modelId = event.target.value;
       axios.get('/fetchcarsall').then(function (response) {
-        _this10.allCarsLength = response.data.filter(function (obj) {
-          return obj.modelId == _this10.modelId && (_this10.stateId == obj.stateId || _this10.stateId == '') && (_this10.parkingId == obj.parkingId || _this10.parkingId == '') && (_this10.bodiesId == obj.bodyId || _this10.bodiesId == '') && (!_this10.startAu || _this10.startAu >= new Date(obj.auctionStart).getTime()) && (!_this10.endAu || _this10.endAu <= new Date(obj.endOfAuction).getTime());
+        _this11.allCarsLength = response.data.filter(function (obj) {
+          return obj.modelId == _this11.modelId && (_this11.stateId == obj.stateId || _this11.stateId == '') && (_this11.parkingId == obj.parkingId || _this11.parkingId == '') && (_this11.bodiesId == obj.bodyId || _this11.bodiesId == '') && (!_this11.startAu || _this11.startAu >= new Date(obj.auctionStart).getTime()) && (!_this11.endAu || _this11.endAu <= new Date(obj.endOfAuction).getTime());
         }).length;
       });
     },
     filterByStates: function filterByStates(event) {
-      var _this11 = this;
+      var _this12 = this;
 
       this.stateId = event.target.value;
       console.log(this.stateId);
       axios.get('/fetchcarsall').then(function (response) {
-        _this11.allCarsLength = response.data.filter(function (obj) {
-          return obj.stateId == _this11.stateId && (_this11.bodiesId == obj.bodyId || _this11.bodiesId == '') && (_this11.parkingId == obj.parkingId || _this11.parkingId == '') && (_this11.modelId == obj.modelId || _this11.modelId == '') && (!_this11.startAu || _this11.startAu >= new Date(obj.auctionStart).getTime()) && (!_this11.endAu || _this11.endAu <= new Date(obj.endOfAuction).getTime());
+        _this12.allCarsLength = response.data.filter(function (obj) {
+          return obj.stateId == _this12.stateId && (_this12.bodiesId == obj.bodyId || _this12.bodiesId == '') && (_this12.parkingId == obj.parkingId || _this12.parkingId == '') && (_this12.modelId == obj.modelId || _this12.modelId == '') && (!_this12.startAu || _this12.startAu >= new Date(obj.auctionStart).getTime()) && (!_this12.endAu || _this12.endAu <= new Date(obj.endOfAuction).getTime());
         }).length;
       });
     }
@@ -3311,6 +3248,13 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "HeaderComponent",
   data: function data() {
@@ -3326,7 +3270,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   updated: function updated() {
     if (window.scrollY > 0) {
-      document.getElementById('carnavbar').style.background = '#fffffff5';
+      document.getElementById('carnavbar').style.background = 'white';
     }
 
     ;
@@ -3364,60 +3308,6 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Cube__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Cube */ "./resources/js/components/Cube.vue");
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -3897,22 +3787,12 @@ __webpack_require__.r(__webpack_exports__);
         });
       }
 
-      var disStyle = document.getElementsByClassName("body-cars");
-      var dispStyle = document.getElementsByClassName("body-name");
       var disbackStyle = document.getElementsByClassName("activeback");
 
       for (var i = 0; i < disbackStyle.length; i++) {
         var backid = disbackStyle[i].getAttribute('back-id');
         var disbackimg = document.querySelector('div[back-id="' + backid + '"]');
         disbackimg.style.backgroundImage = "url('/img/design_img/" + backid + backid + ".png')";
-      }
-
-      for (var j = 0; j < dispStyle.length; j++) {
-        dispStyle[j].style.color = 'black';
-      }
-
-      for (var k = 0; k < disStyle.length; k++) {
-        disStyle[k].style.background = 'white';
       }
 
       var backimg = document.querySelector('div[back-id="' + id + '"]');
@@ -3972,6 +3852,44 @@ __webpack_require__.r(__webpack_exports__);
           return obj.stateId == _this13.stateId && (_this13.bodiesId == obj.bodyId || _this13.bodiesId == '') && (_this13.parkingId == obj.parkingId || _this13.parkingId == '') && (_this13.modelId == obj.modelId || _this13.modelId == '') && (!_this13.startAu || _this13.startAu >= new Date(obj.auctionStart).getTime()) && (!_this13.endAu || _this13.endAu <= new Date(obj.endOfAuction).getTime());
         }).length;
       });
+    },
+    classLi: function classLi(id) {
+      var _this14 = this;
+
+      var li = document.getElementsByClassName("body-cars");
+
+      for (var i = 0; i < li.length; i++) {
+        li[i].classList.remove("carTypeActive");
+      }
+
+      document.querySelector('li[data-id="' + id + '"]').classList.add("carTypeActive");
+      this.bodiesId = id;
+
+      if (!id) {
+        axios.get('/fetchcarsall').then(function (response) {
+          _this14.offsetCars = [];
+
+          for (var _i3 = 0; _i3 < Math.ceil(response.data.length / 6); _i3++) {
+            _this14.offsetCars.push(_i3);
+          }
+
+          return _this14.allCarsLength = response.data.length;
+        });
+      }
+
+      if (id) {
+        axios.get('/fetchcarsall').then(function (response) {
+          _this14.offsetCars = [];
+
+          for (var _i4 = 0; _i4 < Math.ceil(response.data.length / 6); _i4++) {
+            _this14.offsetCars.push(_i4);
+          }
+
+          return _this14.allCarsLength = response.data.filter(function (obj) {
+            return obj.bodyId === id && (_this14.stateId == obj.stateId || _this14.stateId == '') && (_this14.parkingId == obj.parkingId || _this14.parkingId == '') && (_this14.modelId == obj.modelId || _this14.modelId == '') && (_this14.parkingId == obj.parkingId || _this14.parkingId == '') && (!_this14.startAu || _this14.startAu >= new Date(obj.auctionStart).getTime()) && (!_this14.endAu || _this14.endAu <= new Date(obj.endOfAuction).getTime());
+          }).length;
+        });
+      }
     }
   }
 });
@@ -4344,6 +4262,81 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Profile",
   data: function data() {
@@ -4364,7 +4357,7 @@ __webpack_require__.r(__webpack_exports__);
         console.log(_this.user);
       });
     },
-    openCity: function openCity(tabname) {
+    openTabs: function openTabs(tabname) {
       // Declare all variables
       var i, tabcontent, tablinks; // Get all elements with class="tabcontent" and hide them
 
@@ -4382,7 +4375,7 @@ __webpack_require__.r(__webpack_exports__);
       } // Show the current tab, and add an "active" class to the button that opened the tab
 
 
-      document.getElementById(tabname).style.display = "block";
+      document.getElementById(tabname + 'tab').style.display = "block";
       var elem = document.getElementsByClassName('profile_menu_li');
 
       for (var p = 0; p < elem.length; p++) {
@@ -5046,48 +5039,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "SearchCar",
   props: ['carssearch'],
@@ -5121,74 +5072,107 @@ __webpack_require__.r(__webpack_exports__);
     this.fetchSlider();
   },
   methods: {
-    fetchBodies: function fetchBodies() {
+    classLi: function classLi(id) {
       var _this = this;
 
-      axios.get('/fetchbodies').then(function (response) {
-        _this.bodies = response.data;
-      });
-    },
-    fetchModels: function fetchModels() {
-      var _this2 = this;
+      var li = document.getElementsByClassName("body-cars");
 
-      axios.get('/fetchmodels').then(function (response) {
-        _this2.models = response.data;
-      });
-    },
-    fetchParkings: function fetchParkings() {
-      var _this3 = this;
+      for (var i = 0; i < li.length; i++) {
+        li[i].classList.remove("carTypeActive");
+      }
 
-      axios.get('/fetchparkings').then(function (response) {
-        _this3.parkings = response.data;
-      });
-    },
-    fetchStates: function fetchStates() {
-      var _this4 = this;
-
-      axios.get('/fetchstates').then(function (response) {
-        _this4.states = response.data;
-      });
-    },
-    // fetchCars() {
-    //     axios.get('/fetchcars').then(response => {
-    //         this.cars = response.data;
-    //     })
-    // },
-    fetchSlider: function fetchSlider() {
-      var _this5 = this;
-
-      axios.get('/fetchslider').then(function (response) {
-        _this5.firstSlider = response.data[0];
-        _this5.slider = response.data;
-      });
-    },
-    filterByBodies: function filterByBodies(id) {
-      var _this6 = this;
-
+      document.querySelector('li[data-id="' + id + '"]').classList.add("carTypeActive");
       this.bodiesId = id;
 
       if (!id) {
         axios.get('/fetchcarsall').then(function (response) {
-          _this6.offsetCars = [];
+          _this.offsetCars = [];
 
           for (var _i = 0; _i < Math.ceil(response.data.length / 6); _i++) {
-            _this6.offsetCars.push(_i);
+            _this.offsetCars.push(_i);
           }
 
-          return _this6.allCarsLength = response.data.length;
+          return _this.allCarsLength = response.data.length;
         });
       }
 
       if (id) {
         axios.get('/fetchcarsall').then(function (response) {
-          _this6.offsetCars = [];
+          _this.offsetCars = [];
 
           for (var _i2 = 0; _i2 < Math.ceil(response.data.length / 6); _i2++) {
-            _this6.offsetCars.push(_i2);
+            _this.offsetCars.push(_i2);
           }
 
-          return _this6.allCarsLength = response.data.filter(function (obj) {
-            return obj.bodyId === id && (_this6.stateId == obj.stateId || _this6.stateId == '') && (_this6.parkingId == obj.parkingId || _this6.parkingId == '') && (_this6.modelId == obj.modelId || _this6.modelId == '') && (_this6.parkingId == obj.parkingId || _this6.parkingId == '') && (!_this6.startAu || _this6.startAu >= new Date(obj.auctionStart).getTime()) && (!_this6.endAu || _this6.endAu <= new Date(obj.endOfAuction).getTime());
+          return _this.allCarsLength = response.data.filter(function (obj) {
+            return obj.bodyId === id && (_this.stateId == obj.stateId || _this.stateId == '') && (_this.parkingId == obj.parkingId || _this.parkingId == '') && (_this.modelId == obj.modelId || _this.modelId == '') && (_this.parkingId == obj.parkingId || _this.parkingId == '') && (!_this.startAu || _this.startAu >= new Date(obj.auctionStart).getTime()) && (!_this.endAu || _this.endAu <= new Date(obj.endOfAuction).getTime());
+          }).length;
+        });
+      }
+    },
+    fetchBodies: function fetchBodies() {
+      var _this2 = this;
+
+      axios.get('/fetchbodies').then(function (response) {
+        _this2.bodies = response.data;
+      });
+    },
+    fetchModels: function fetchModels() {
+      var _this3 = this;
+
+      axios.get('/fetchmodels').then(function (response) {
+        _this3.models = response.data;
+      });
+    },
+    fetchParkings: function fetchParkings() {
+      var _this4 = this;
+
+      axios.get('/fetchparkings').then(function (response) {
+        _this4.parkings = response.data;
+      });
+    },
+    fetchStates: function fetchStates() {
+      var _this5 = this;
+
+      axios.get('/fetchstates').then(function (response) {
+        _this5.states = response.data;
+      });
+    },
+    fetchSlider: function fetchSlider() {
+      var _this6 = this;
+
+      axios.get('/fetchslider').then(function (response) {
+        _this6.firstSlider = response.data[0];
+        _this6.slider = response.data;
+      });
+    },
+    filterByBodies: function filterByBodies(id) {
+      var _this7 = this;
+
+      this.bodiesId = id;
+
+      if (!id) {
+        axios.get('/fetchcarsall').then(function (response) {
+          _this7.offsetCars = [];
+
+          for (var _i3 = 0; _i3 < Math.ceil(response.data.length / 6); _i3++) {
+            _this7.offsetCars.push(_i3);
+          }
+
+          return _this7.allCarsLength = response.data.length;
+        });
+      }
+
+      if (id) {
+        axios.get('/fetchcarsall').then(function (response) {
+          _this7.offsetCars = [];
+
+          for (var _i4 = 0; _i4 < Math.ceil(response.data.length / 6); _i4++) {
+            _this7.offsetCars.push(_i4);
+          }
+
+          return _this7.allCarsLength = response.data.filter(function (obj) {
+            return obj.bodyId === id && (_this7.stateId == obj.stateId || _this7.stateId == '') && (_this7.parkingId == obj.parkingId || _this7.parkingId == '') && (_this7.modelId == obj.modelId || _this7.modelId == '') && (_this7.parkingId == obj.parkingId || _this7.parkingId == '') && (!_this7.startAu || _this7.startAu >= new Date(obj.auctionStart).getTime()) && (!_this7.endAu || _this7.endAu <= new Date(obj.endOfAuction).getTime());
           }).length;
         });
       }
@@ -5219,53 +5203,53 @@ __webpack_require__.r(__webpack_exports__);
       bodyStyle.style.background = '#0f92ff';
     },
     filterByParkings: function filterByParkings(event) {
-      var _this7 = this;
+      var _this8 = this;
 
       this.parkingId = event.target.value;
       axios.get('/fetchcarsall').then(function (response) {
-        _this7.allCarsLength = response.data.filter(function (obj) {
-          return obj.parkingId == _this7.parkingId && (_this7.stateId == obj.stateId || _this7.stateId == '') && (_this7.modelId == obj.modelId || _this7.modelId == '') && (_this7.bodiesId == obj.bodyId || _this7.bodiesId == '') && (!_this7.startAu || _this7.startAu >= new Date(obj.auctionStart).getTime()) && (!_this7.endAu || _this7.endAu <= new Date(obj.endOfAuction).getTime());
+        _this8.allCarsLength = response.data.filter(function (obj) {
+          return obj.parkingId == _this8.parkingId && (_this8.stateId == obj.stateId || _this8.stateId == '') && (_this8.modelId == obj.modelId || _this8.modelId == '') && (_this8.bodiesId == obj.bodyId || _this8.bodiesId == '') && (!_this8.startAu || _this8.startAu >= new Date(obj.auctionStart).getTime()) && (!_this8.endAu || _this8.endAu <= new Date(obj.endOfAuction).getTime());
         }).length;
       });
     },
     filterByStarts: function filterByStarts(event) {
-      var _this8 = this;
+      var _this9 = this;
 
       this.startAu = new Date(event.target.value).getTime();
       axios.get('/fetchcarsall').then(function (response) {
-        _this8.allCarsLength = response.data.filter(function (obj) {
-          return new Date(obj.auctionStart).getTime() >= _this8.startAu && (_this8.stateId == obj.stateId || _this8.stateId == '') && (_this8.parkingId == obj.parkingId || _this8.parkingId == '') && (_this8.modelId == obj.modelId || _this8.modelId == '') && (_this8.bodiesId == obj.bodyId || _this8.bodiesId == '') && (!_this8.endAu || _this8.endAu <= new Date(obj.endOfAuction).getTime());
+        _this9.allCarsLength = response.data.filter(function (obj) {
+          return new Date(obj.auctionStart).getTime() >= _this9.startAu && (_this9.stateId == obj.stateId || _this9.stateId == '') && (_this9.parkingId == obj.parkingId || _this9.parkingId == '') && (_this9.modelId == obj.modelId || _this9.modelId == '') && (_this9.bodiesId == obj.bodyId || _this9.bodiesId == '') && (!_this9.endAu || _this9.endAu <= new Date(obj.endOfAuction).getTime());
         }).length;
       });
     },
     filterByEnds: function filterByEnds(event) {
-      var _this9 = this;
+      var _this10 = this;
 
       this.endAu = new Date(event.target.value).getTime();
       axios.get('/fetchcarsall').then(function (response) {
-        _this9.allCarsLength = response.data.filter(function (obj) {
-          return new Date(obj.endOfAuction).getTime() <= _this9.endAu && (_this9.stateId == obj.stateId || _this9.stateId == '') && (_this9.parkingId == obj.parkingId || _this9.parkingId == '') && (_this9.modelId == obj.modelId || _this9.modelId == '') && (_this9.bodiesId == obj.bodyId || _this9.bodiesId == '') && (!_this9.startAu || _this9.startAu >= new Date(obj.auctionStart).getTime());
+        _this10.allCarsLength = response.data.filter(function (obj) {
+          return new Date(obj.endOfAuction).getTime() <= _this10.endAu && (_this10.stateId == obj.stateId || _this10.stateId == '') && (_this10.parkingId == obj.parkingId || _this10.parkingId == '') && (_this10.modelId == obj.modelId || _this10.modelId == '') && (_this10.bodiesId == obj.bodyId || _this10.bodiesId == '') && (!_this10.startAu || _this10.startAu >= new Date(obj.auctionStart).getTime());
         }).length;
       });
     },
     filterByModels: function filterByModels(event) {
-      var _this10 = this;
+      var _this11 = this;
 
       this.modelId = event.target.value;
       axios.get('/fetchcarsall').then(function (response) {
-        _this10.allCarsLength = response.data.filter(function (obj) {
-          return obj.modelId == _this10.modelId && (_this10.stateId == obj.stateId || _this10.stateId == '') && (_this10.parkingId == obj.parkingId || _this10.parkingId == '') && (_this10.bodiesId == obj.bodyId || _this10.bodiesId == '') && (!_this10.startAu || _this10.startAu >= new Date(obj.auctionStart).getTime()) && (!_this10.endAu || _this10.endAu <= new Date(obj.endOfAuction).getTime());
+        _this11.allCarsLength = response.data.filter(function (obj) {
+          return obj.modelId == _this11.modelId && (_this11.stateId == obj.stateId || _this11.stateId == '') && (_this11.parkingId == obj.parkingId || _this11.parkingId == '') && (_this11.bodiesId == obj.bodyId || _this11.bodiesId == '') && (!_this11.startAu || _this11.startAu >= new Date(obj.auctionStart).getTime()) && (!_this11.endAu || _this11.endAu <= new Date(obj.endOfAuction).getTime());
         }).length;
       });
     },
     filterByStates: function filterByStates(event) {
-      var _this11 = this;
+      var _this12 = this;
 
       this.stateId = event.target.value;
       console.log(this.stateId);
       axios.get('/fetchcarsall').then(function (response) {
-        _this11.allCarsLength = response.data.filter(function (obj) {
-          return obj.stateId == _this11.stateId && (_this11.bodiesId == obj.bodyId || _this11.bodiesId == '') && (_this11.parkingId == obj.parkingId || _this11.parkingId == '') && (_this11.modelId == obj.modelId || _this11.modelId == '') && (!_this11.startAu || _this11.startAu >= new Date(obj.auctionStart).getTime()) && (!_this11.endAu || _this11.endAu <= new Date(obj.endOfAuction).getTime());
+        _this12.allCarsLength = response.data.filter(function (obj) {
+          return obj.stateId == _this12.stateId && (_this12.bodiesId == obj.bodyId || _this12.bodiesId == '') && (_this12.parkingId == obj.parkingId || _this12.parkingId == '') && (_this12.modelId == obj.modelId || _this12.modelId == '') && (!_this12.startAu || _this12.startAu >= new Date(obj.auctionStart).getTime()) && (!_this12.endAu || _this12.endAu <= new Date(obj.endOfAuction).getTime());
         }).length;
       });
     }
@@ -44779,7 +44763,7 @@ var render = function() {
       _vm._v(" "),
       _c(
         "div",
-        { staticClass: "bg_img", staticStyle: { "margin-top": "79px" } },
+        { staticClass: "bg_img", staticStyle: { "margin-top": "100px" } },
         [
           _c("div", { staticClass: "container" }, [
             _c("div", { staticClass: "row justify-content-end" }, [
@@ -44833,6 +44817,29 @@ var render = function() {
       ),
       _vm._v(" "),
       _vm._m(0),
+      _vm._v(" "),
+      _c(
+        "transition-group",
+        { attrs: { name: "fade", tag: "div" } },
+        _vm._l([_vm.currentIndex], function(i) {
+          return _c("div", { key: i }, [
+            _c("img", { attrs: { src: _vm.currentImg } })
+          ])
+        }),
+        0
+      ),
+      _vm._v(" "),
+      _c(
+        "a",
+        { staticClass: "prev", attrs: { href: "#" }, on: { click: _vm.prev } },
+        [_vm._v("❮ Previous")]
+      ),
+      _vm._v(" "),
+      _c(
+        "a",
+        { staticClass: "next", attrs: { href: "#" }, on: { click: _vm.next } },
+        [_vm._v("❯ Next")]
+      ),
       _vm._v(" "),
       _c("footer-component")
     ],
@@ -45256,117 +45263,128 @@ var render = function() {
             _vm.slider.length > 0
               ? _c("div", { staticClass: "container container-back" }, [
                   _c("div", { staticClass: "row body-cats" }, [
-                    _c(
-                      "div",
-                      {
-                        staticClass: "col-md-1 body-cars",
-                        attrs: { "data-id": "0" },
-                        on: {
-                          click: function($event) {
-                            return _vm.filterByBodies(0)
-                          }
-                        }
-                      },
-                      [_vm._m(3), _vm._v(" "), _vm._m(4)]
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "div",
-                      {
-                        staticClass: "col-md-1 body-cars",
-                        attrs: { "data-id": "3" },
-                        on: {
-                          click: function($event) {
-                            return _vm.filterByBodies(3)
-                          }
-                        }
-                      },
-                      [_vm._m(5), _vm._v(" "), _vm._m(6)]
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "div",
-                      {
-                        staticClass: "col-md-1 body-cars",
-                        attrs: { "data-id": "8" },
-                        on: {
-                          click: function($event) {
-                            return _vm.filterByBodies(8)
-                          }
-                        }
-                      },
-                      [_vm._m(7), _vm._v(" "), _vm._m(8)]
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "div",
-                      {
-                        staticClass: "col-md-1 body-cars",
-                        attrs: { "data-id": "4" },
-                        on: {
-                          click: function($event) {
-                            return _vm.filterByBodies(4)
-                          }
-                        }
-                      },
-                      [_vm._m(9), _vm._v(" "), _vm._m(10)]
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "div",
-                      {
-                        staticClass: "col-md-1 body-cars",
-                        attrs: { "data-id": "5" },
-                        on: {
-                          click: function($event) {
-                            return _vm.filterByBodies(5)
-                          }
-                        }
-                      },
-                      [_vm._m(11), _vm._v(" "), _vm._m(12)]
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "div",
-                      {
-                        staticClass: "col-md-1 body-cars",
-                        attrs: { "data-id": "6" },
-                        on: {
-                          click: function($event) {
-                            return _vm.filterByBodies(6)
-                          }
-                        }
-                      },
-                      [_vm._m(13), _vm._v(" "), _vm._m(14)]
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "div",
-                      {
-                        staticClass: "col-md-1 body-cars",
-                        attrs: { "data-id": "7" },
-                        on: {
-                          click: function($event) {
-                            return _vm.filterByBodies(7)
-                          }
-                        }
-                      },
-                      [_vm._m(15), _vm._v(" "), _vm._m(16)]
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "div",
-                      {
-                        staticClass: "col-md-1 body-cars",
-                        attrs: { "data-id": "9" },
-                        on: {
-                          click: function($event) {
-                            return _vm.filterByBodies(9)
-                          }
-                        }
-                      },
-                      [_vm._m(17), _vm._v(" "), _vm._m(18)]
-                    )
+                    _c("div", { staticClass: "car_types_div" }, [
+                      _c(
+                        "ul",
+                        {
+                          staticClass: "nav nav-tabs",
+                          attrs: { id: "carTypes" }
+                        },
+                        [
+                          _c(
+                            "li",
+                            {
+                              staticClass: "body-cars carTypeActive",
+                              attrs: { role: "presentation", "data-id": "0" },
+                              on: {
+                                click: function($event) {
+                                  return _vm.classLi(0)
+                                }
+                              }
+                            },
+                            [_vm._m(3)]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "li",
+                            {
+                              staticClass: "body-cars",
+                              attrs: { role: "presentation", "data-id": "3" },
+                              on: {
+                                click: function($event) {
+                                  return _vm.classLi(3)
+                                }
+                              }
+                            },
+                            [_vm._m(4)]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "li",
+                            {
+                              staticClass: "body-cars",
+                              attrs: { role: "presentation", "data-id": "4" },
+                              on: {
+                                click: function($event) {
+                                  return _vm.classLi(4)
+                                }
+                              }
+                            },
+                            [_vm._m(5)]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "li",
+                            {
+                              staticClass: "body-cars",
+                              attrs: { role: "presentation", "data-id": "5" },
+                              on: {
+                                click: function($event) {
+                                  return _vm.classLi(5)
+                                }
+                              }
+                            },
+                            [_vm._m(6)]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "li",
+                            {
+                              staticClass: "body-cars",
+                              attrs: { role: "presentation", "data-id": "6" },
+                              on: {
+                                click: function($event) {
+                                  return _vm.classLi(6)
+                                }
+                              }
+                            },
+                            [_vm._m(7)]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "li",
+                            {
+                              staticClass: "body-cars",
+                              attrs: { role: "presentation", "data-id": "7" },
+                              on: {
+                                click: function($event) {
+                                  return _vm.classLi(7)
+                                }
+                              }
+                            },
+                            [_vm._m(8)]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "li",
+                            {
+                              staticClass: "body-cars",
+                              attrs: { role: "presentation", "data-id": "8" },
+                              on: {
+                                click: function($event) {
+                                  return _vm.classLi(8)
+                                }
+                              }
+                            },
+                            [_vm._m(9)]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "li",
+                            {
+                              staticClass: "body-cars",
+                              attrs: { role: "presentation", "data-id": "9" },
+                              on: {
+                                click: function($event) {
+                                  return _vm.classLi(9)
+                                }
+                              }
+                            },
+                            [_vm._m(10)]
+                          )
+                        ]
+                      )
+                    ])
                   ])
                 ])
               : _vm._e()
@@ -45376,170 +45394,181 @@ var render = function() {
       _vm.slider.length > 0
         ? _c("div", { staticClass: "container-fluid car-filters" }, [
             _c("div", { staticClass: "container container-back" }, [
-              _c("form", { attrs: { action: "/filtercarau", type: "GET" } }, [
-                _c("div", { staticClass: "row select-options-filter" }, [
-                  _c("div", { staticClass: "col" }, [
-                    _c("label"),
-                    _vm._v(" "),
-                    _c(
-                      "select",
-                      {
-                        staticClass: "form-control options selectbox",
-                        attrs: { id: "model", name: "modelval" },
-                        on: {
-                          change: function($event) {
-                            return _vm.filterByModels($event)
-                          }
-                        }
-                      },
-                      [
-                        _c("option", { attrs: { value: "" } }, [
-                          _vm._v("Все марки")
-                        ]),
-                        _vm._v(" "),
-                        _vm._l(_vm.models, function(model, index) {
-                          return _c(
-                            "option",
-                            { domProps: { value: model.id } },
-                            [
-                              _vm._v(
-                                _vm._s(model.name) +
-                                  "\n                            "
-                              )
-                            ]
-                          )
-                        })
-                      ],
-                      2
-                    )
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "col" }, [
-                    _c("label"),
-                    _vm._v(" "),
-                    _c(
-                      "select",
-                      {
-                        staticClass: "form-control options selectbox",
-                        attrs: { id: "state", name: "stateval" },
-                        on: {
-                          change: function($event) {
-                            return _vm.filterByStates($event)
-                          }
-                        }
-                      },
-                      [
-                        _c("option", { attrs: { value: "" } }, [
-                          _vm._v("Все состояния")
-                        ]),
-                        _vm._v(" "),
-                        _vm._l(_vm.states, function(state, index) {
-                          return _c(
-                            "option",
-                            { domProps: { value: state.id } },
-                            [
-                              _vm._v(
-                                _vm._s(state.name) +
-                                  "\n                            "
-                              )
-                            ]
-                          )
-                        })
-                      ],
-                      2
-                    )
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "col" }, [
-                    _c("label"),
-                    _vm._v(" "),
-                    _c(
-                      "select",
-                      {
-                        staticClass: "form-control options selectbox",
-                        attrs: { id: "parking", name: "parkingval" },
-                        on: {
-                          change: function($event) {
-                            return _vm.filterByParkings($event)
-                          }
-                        }
-                      },
-                      [
-                        _c("option", { attrs: { value: "" } }, [
-                          _vm._v("Все стоянки")
-                        ]),
-                        _vm._v(" "),
-                        _vm._l(_vm.parkings, function(parking, index) {
-                          return _c(
-                            "option",
-                            { domProps: { value: parking.id } },
-                            [
-                              _vm._v(
-                                "\n                                " +
-                                  _vm._s(parking.address) +
-                                  "\n                            "
-                              )
-                            ]
-                          )
-                        })
-                      ],
-                      2
-                    )
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "col" }, [
-                    _c("label", [_vm._v("Дата завершения")]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "row input-row" }, [
-                      _c("p", [_vm._v("С")]),
+              _c("form", { attrs: { action: "/filtercar", type: "GET" } }, [
+                _c(
+                  "div",
+                  { staticClass: "row select-options-filter filter_row" },
+                  [
+                    _c("div", { staticClass: "col" }, [
+                      _c("label"),
                       _vm._v(" "),
-                      _c("div", { staticClass: "col filter-date" }, [
-                        _c("input", {
-                          staticClass: "input-date form-control options",
-                          attrs: {
-                            name: "startval",
-                            type: "date",
-                            id: "start",
-                            value: ""
-                          },
+                      _c(
+                        "select",
+                        {
+                          staticClass: "form-control options selectbox",
+                          attrs: { id: "model", name: "modelval" },
                           on: {
                             change: function($event) {
-                              return _vm.filterByStarts($event)
+                              return _vm.filterByModels($event)
                             }
                           }
-                        })
-                      ]),
+                        },
+                        [
+                          _c("option", { attrs: { value: "" } }, [
+                            _vm._v("Все марки")
+                          ]),
+                          _vm._v(" "),
+                          _vm._l(_vm.models, function(model, index) {
+                            return _c(
+                              "option",
+                              { domProps: { value: model.id } },
+                              [
+                                _vm._v(
+                                  _vm._s(model.name) +
+                                    "\n                            "
+                                )
+                              ]
+                            )
+                          })
+                        ],
+                        2
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col" }, [
+                      _c("label"),
                       _vm._v(" "),
-                      _c("p", [_vm._v("ПО")]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "col filter-date" }, [
-                        _c("input", {
-                          staticClass: "input-date form-control options",
-                          attrs: {
-                            name: "endval",
-                            type: "date",
-                            id: "finish",
-                            value: ""
-                          },
+                      _c(
+                        "select",
+                        {
+                          staticClass: "form-control options selectbox",
+                          attrs: { id: "state", name: "stateval" },
                           on: {
                             change: function($event) {
-                              return _vm.filterByEnds($event)
+                              return _vm.filterByStates($event)
                             }
                           }
-                        }),
-                        _vm._v(" "),
-                        _c("input", {
-                          attrs: { type: "hidden", name: "bodyval" },
-                          domProps: { value: _vm.bodiesId }
-                        }),
-                        _vm._v(" "),
-                        _c("input", {
-                          attrs: { type: "hidden", name: "categorval" },
-                          domProps: { value: _vm.id }
-                        })
-                      ]),
+                        },
+                        [
+                          _c("option", { attrs: { value: "" } }, [
+                            _vm._v("Все состояния")
+                          ]),
+                          _vm._v(" "),
+                          _vm._l(_vm.states, function(state, index) {
+                            return _c(
+                              "option",
+                              { domProps: { value: state.id } },
+                              [
+                                _vm._v(
+                                  _vm._s(state.name) +
+                                    "\n                            "
+                                )
+                              ]
+                            )
+                          })
+                        ],
+                        2
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col" }, [
+                      _c("label"),
                       _vm._v(" "),
-                      _c("div", { staticClass: "col filter-date" }, [
+                      _c(
+                        "select",
+                        {
+                          staticClass: "form-control options selectbox",
+                          attrs: { id: "parking", name: "parkingval" },
+                          on: {
+                            change: function($event) {
+                              return _vm.filterByParkings($event)
+                            }
+                          }
+                        },
+                        [
+                          _c("option", { attrs: { value: "" } }, [
+                            _vm._v("Все стоянки")
+                          ]),
+                          _vm._v(" "),
+                          _vm._l(_vm.parkings, function(parking, index) {
+                            return _c(
+                              "option",
+                              { domProps: { value: parking.id } },
+                              [
+                                _vm._v(
+                                  "\n                                " +
+                                    _vm._s(parking.address) +
+                                    "\n                            "
+                                )
+                              ]
+                            )
+                          })
+                        ],
+                        2
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col" }, [
+                      _c("label", [_vm._v("Дата завершения")]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "row input-row" }, [
+                        _c("p", [_vm._v("С")]),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          { staticClass: "col filter-date filter-date-d" },
+                          [
+                            _c("input", {
+                              staticClass: "input-date form-control options",
+                              attrs: {
+                                name: "startval",
+                                type: "date",
+                                id: "start",
+                                value: ""
+                              },
+                              on: {
+                                change: function($event) {
+                                  return _vm.filterByStarts($event)
+                                }
+                              }
+                            })
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c("p", [_vm._v("ПО")]),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          { staticClass: "col filter-date filter-date-d" },
+                          [
+                            _c("input", {
+                              staticClass: "input-date form-control options",
+                              attrs: {
+                                name: "endval",
+                                type: "date",
+                                id: "finish",
+                                value: ""
+                              },
+                              on: {
+                                change: function($event) {
+                                  return _vm.filterByEnds($event)
+                                }
+                              }
+                            }),
+                            _vm._v(" "),
+                            _c("input", {
+                              attrs: { type: "hidden", name: "bodyval" },
+                              domProps: { value: _vm.bodiesId }
+                            })
+                          ]
+                        )
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      { staticClass: "col filter-date filter-date-btn" },
+                      [
                         _c(
                           "button",
                           {
@@ -45548,16 +45577,16 @@ var render = function() {
                           },
                           [
                             _vm._v(
-                              "\n                                    Показать: " +
+                              "\n                            Показать: " +
                                 _vm._s(this.allCarsLength) +
-                                "\n                                "
+                                "\n                        "
                             )
                           ]
                         )
-                      ])
-                    ])
-                  ])
-                ])
+                      ]
+                    )
+                  ]
+                )
               ])
             ])
           ])
@@ -45739,7 +45768,7 @@ var render = function() {
             _vm._v(" "),
             _vm.auctioncars.length == 0
               ? _c("div", { staticClass: "container container-back" }, [
-                  _vm._m(19)
+                  _vm._m(11)
                 ])
               : _vm._e()
           ])
@@ -45858,185 +45887,148 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row" }, [
-      _c("div", {
-        staticClass: "col activeback body-car-back1",
-        attrs: { "back-id": "0" }
-      })
-    ])
+    return _c(
+      "a",
+      {
+        staticClass: "carType-all activeback body-car-back1 body-name",
+        attrs: { title: "Все типы" }
+      },
+      [
+        _c("i", { staticClass: "fas fa-car-side", attrs: { "icon-id": "0" } }),
+        _vm._v(" "),
+        _c("p", { staticClass: "carTypesText" }, [_vm._v("Все типы")])
+      ]
+    )
   },
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col-md-12 text-name" }, [
-        _c("p", { staticClass: "body-name", attrs: { "p-id": "0" } }, [
-          _vm._v("Все типы")
-        ])
-      ])
-    ])
+    return _c(
+      "a",
+      {
+        staticClass: "carType-car activeback body-car-back2",
+        attrs: { title: "Легковые" }
+      },
+      [
+        _c("i", { staticClass: "fas fa-car", attrs: { "icon-id": "3" } }),
+        _vm._v(" "),
+        _c("p", { staticClass: "carTypesText" }, [_vm._v("Легковые")])
+      ]
+    )
   },
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row" }, [
-      _c("div", {
-        staticClass: "col activeback body-car-back2",
-        attrs: { "back-id": "3" }
-      })
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col-md-12 text-name" }, [
-        _c("p", { staticClass: "body-name", attrs: { "p-id": "3" } }, [
-          _vm._v("Легковые")
-        ])
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row" }, [
-      _c("div", {
-        staticClass: "col activeback body-car-back3",
-        attrs: { "back-id": "8" }
-      })
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col-md-12 text-name" }, [
-        _c("p", { staticClass: "body-name", attrs: { "p-id": "8" } }, [
-          _vm._v("Автобусы")
-        ])
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row" }, [
-      _c("div", {
-        staticClass: "col activeback body-car-back4",
-        attrs: { "back-id": "4" }
-      })
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col-md-12 text-name" }, [
-        _c("p", { staticClass: "body-name", attrs: { "p-id": "4" } }, [
+    return _c(
+      "a",
+      {
+        staticClass: "carType-commercialCar activeback body-car-back3",
+        attrs: { title: "Легкие коммерческие" }
+      },
+      [
+        _c("i", { staticClass: "fas fa-truck" }),
+        _vm._v(" "),
+        _c("p", { staticClass: "carTypesText" }, [
           _vm._v("Легкие коммерческие")
         ])
-      ])
-    ])
+      ]
+    )
   },
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row" }, [
-      _c("div", {
-        staticClass: "col activeback body-car-back5",
-        attrs: { "back-id": "5" }
-      })
-    ])
+    return _c(
+      "a",
+      {
+        staticClass: "carType-truck activeback body-car-back4",
+        attrs: { title: "Грузовые" }
+      },
+      [
+        _c("i", {
+          staticClass: "fas fa-truck-moving",
+          attrs: { "icon-id": "4" }
+        }),
+        _vm._v(" "),
+        _c("p", { staticClass: "carTypesText" }, [_vm._v("Грузовые")])
+      ]
+    )
   },
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col-md-12 text-name" }, [
-        _c("p", { staticClass: "body-name", attrs: { "p-id": "5" } }, [
-          _vm._v("Грузовые")
-        ])
-      ])
-    ])
+    return _c(
+      "a",
+      {
+        staticClass: "carType-truckTractor activeback body-car-back5",
+        attrs: { title: "Седельные тягачи" }
+      },
+      [
+        _c("i", {
+          staticClass: "fas fa-truck-pickup",
+          attrs: { "icon-id": "5" }
+        }),
+        _vm._v(" "),
+        _c("p", { staticClass: "carTypesText" }, [_vm._v("Седельные тягачи")])
+      ]
+    )
   },
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row" }, [
-      _c("div", {
-        staticClass: "col activeback body-car-back6",
-        attrs: { "back-id": "6" }
-      })
-    ])
+    return _c(
+      "a",
+      {
+        staticClass: "carType-trailer activeback body-car-back6",
+        attrs: { title: "Прицепы" }
+      },
+      [
+        _c("i", {
+          staticClass: "fas fa-truck-loading",
+          attrs: { "icon-id": "6" }
+        }),
+        _vm._v(" "),
+        _c("p", { staticClass: "carTypesText" }, [_vm._v("Прицепы")])
+      ]
+    )
   },
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col-md-12 text-name" }, [
-        _c("p", { staticClass: "body-name", attrs: { "p-id": "6" } }, [
-          _vm._v("Седельные тягачи")
-        ])
-      ])
-    ])
+    return _c(
+      "a",
+      {
+        staticClass: "carType-bus activeback body-car-back7",
+        attrs: { title: "Автобусы" }
+      },
+      [
+        _c("i", { staticClass: "fas fa-bus", attrs: { "icon-id": "7" } }),
+        _vm._v(" "),
+        _c("p", { staticClass: "carTypesText" }, [_vm._v("Автобусы")])
+      ]
+    )
   },
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row" }, [
-      _c("div", {
-        staticClass: "col activeback body-car-back7",
-        attrs: { "back-id": "7" }
-      })
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col-md-12 text-name" }, [
-        _c("p", { staticClass: "body-name", attrs: { "p-id": "7" } }, [
-          _vm._v("Прицепы")
-        ])
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row" }, [
-      _c("div", {
-        staticClass: "col activeback body-car-back8",
-        attrs: { "back-id": "9" }
-      })
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col-md-12 text-name" }, [
-        _c("p", { staticClass: "body-name", attrs: { "p-id": "9" } }, [
-          _vm._v("Спецтехника")
-        ])
-      ])
-    ])
+    return _c(
+      "a",
+      {
+        staticClass: "carType-special activeback body-car-back8",
+        attrs: { title: "Спецтехника" }
+      },
+      [
+        _c("i", { staticClass: "fas fa-tractor", attrs: { "icon-id": "9" } }),
+        _vm._v(" "),
+        _c("p", { staticClass: "carTypesText" }, [_vm._v("Спецтехника")])
+      ]
+    )
   },
   function() {
     var _vm = this
@@ -46102,7 +46094,7 @@ var staticRenderFns = [
     return _c("div", { staticClass: "container-fluid contacts_bg_img" }, [
       _c(
         "div",
-        { staticClass: "container", staticStyle: { "margin-top": "79px" } },
+        { staticClass: "container", staticStyle: { "margin-top": "100px" } },
         [
           _c("div", { staticClass: "row" }, [
             _c("div", { staticClass: "col-md-4 contacts_div" }, [
@@ -46620,117 +46612,128 @@ var render = function() {
             _vm.slider.length > 0
               ? _c("div", { staticClass: "container container-back" }, [
                   _c("div", { staticClass: "row body-cats" }, [
-                    _c(
-                      "div",
-                      {
-                        staticClass: "col-md-1 body-cars",
-                        attrs: { "data-id": "0" },
-                        on: {
-                          click: function($event) {
-                            return _vm.filterByBodies(0)
-                          }
-                        }
-                      },
-                      [_vm._m(3), _vm._v(" "), _vm._m(4)]
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "div",
-                      {
-                        staticClass: "col-md-1 body-cars",
-                        attrs: { "data-id": "3" },
-                        on: {
-                          click: function($event) {
-                            return _vm.filterByBodies(3)
-                          }
-                        }
-                      },
-                      [_vm._m(5), _vm._v(" "), _vm._m(6)]
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "div",
-                      {
-                        staticClass: "col-md-1 body-cars",
-                        attrs: { "data-id": "8" },
-                        on: {
-                          click: function($event) {
-                            return _vm.filterByBodies(8)
-                          }
-                        }
-                      },
-                      [_vm._m(7), _vm._v(" "), _vm._m(8)]
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "div",
-                      {
-                        staticClass: "col-md-1 body-cars",
-                        attrs: { "data-id": "4" },
-                        on: {
-                          click: function($event) {
-                            return _vm.filterByBodies(4)
-                          }
-                        }
-                      },
-                      [_vm._m(9), _vm._v(" "), _vm._m(10)]
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "div",
-                      {
-                        staticClass: "col-md-1 body-cars",
-                        attrs: { "data-id": "5" },
-                        on: {
-                          click: function($event) {
-                            return _vm.filterByBodies(5)
-                          }
-                        }
-                      },
-                      [_vm._m(11), _vm._v(" "), _vm._m(12)]
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "div",
-                      {
-                        staticClass: "col-md-1 body-cars",
-                        attrs: { "data-id": "6" },
-                        on: {
-                          click: function($event) {
-                            return _vm.filterByBodies(6)
-                          }
-                        }
-                      },
-                      [_vm._m(13), _vm._v(" "), _vm._m(14)]
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "div",
-                      {
-                        staticClass: "col-md-1 body-cars",
-                        attrs: { "data-id": "7" },
-                        on: {
-                          click: function($event) {
-                            return _vm.filterByBodies(7)
-                          }
-                        }
-                      },
-                      [_vm._m(15), _vm._v(" "), _vm._m(16)]
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "div",
-                      {
-                        staticClass: "col-md-1 body-cars",
-                        attrs: { "data-id": "9" },
-                        on: {
-                          click: function($event) {
-                            return _vm.filterByBodies(9)
-                          }
-                        }
-                      },
-                      [_vm._m(17), _vm._v(" "), _vm._m(18)]
-                    )
+                    _c("div", { staticClass: "car_types_div" }, [
+                      _c(
+                        "ul",
+                        {
+                          staticClass: "nav nav-tabs",
+                          attrs: { id: "carTypes" }
+                        },
+                        [
+                          _c(
+                            "li",
+                            {
+                              staticClass: "body-cars carTypeActive",
+                              attrs: { role: "presentation", "data-id": "0" },
+                              on: {
+                                click: function($event) {
+                                  return _vm.classLi(0)
+                                }
+                              }
+                            },
+                            [_vm._m(3)]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "li",
+                            {
+                              staticClass: "body-cars",
+                              attrs: { role: "presentation", "data-id": "3" },
+                              on: {
+                                click: function($event) {
+                                  return _vm.classLi(3)
+                                }
+                              }
+                            },
+                            [_vm._m(4)]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "li",
+                            {
+                              staticClass: "body-cars",
+                              attrs: { role: "presentation", "data-id": "4" },
+                              on: {
+                                click: function($event) {
+                                  return _vm.classLi(4)
+                                }
+                              }
+                            },
+                            [_vm._m(5)]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "li",
+                            {
+                              staticClass: "body-cars",
+                              attrs: { role: "presentation", "data-id": "5" },
+                              on: {
+                                click: function($event) {
+                                  return _vm.classLi(5)
+                                }
+                              }
+                            },
+                            [_vm._m(6)]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "li",
+                            {
+                              staticClass: "body-cars",
+                              attrs: { role: "presentation", "data-id": "6" },
+                              on: {
+                                click: function($event) {
+                                  return _vm.classLi(6)
+                                }
+                              }
+                            },
+                            [_vm._m(7)]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "li",
+                            {
+                              staticClass: "body-cars",
+                              attrs: { role: "presentation", "data-id": "7" },
+                              on: {
+                                click: function($event) {
+                                  return _vm.classLi(7)
+                                }
+                              }
+                            },
+                            [_vm._m(8)]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "li",
+                            {
+                              staticClass: "body-cars",
+                              attrs: { role: "presentation", "data-id": "8" },
+                              on: {
+                                click: function($event) {
+                                  return _vm.classLi(8)
+                                }
+                              }
+                            },
+                            [_vm._m(9)]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "li",
+                            {
+                              staticClass: "body-cars",
+                              attrs: { role: "presentation", "data-id": "9" },
+                              on: {
+                                click: function($event) {
+                                  return _vm.classLi(9)
+                                }
+                              }
+                            },
+                            [_vm._m(10)]
+                          )
+                        ]
+                      )
+                    ])
                   ])
                 ])
               : _vm._e()
@@ -46741,164 +46744,180 @@ var render = function() {
         ? _c("div", { staticClass: "container-fluid car-filters" }, [
             _c("div", { staticClass: "container container-back" }, [
               _c("form", { attrs: { action: "/filtercar", type: "GET" } }, [
-                _c("div", { staticClass: "row select-options-filter" }, [
-                  _c("div", { staticClass: "col" }, [
-                    _c("label"),
-                    _vm._v(" "),
-                    _c(
-                      "select",
-                      {
-                        staticClass: "form-control options selectbox",
-                        attrs: { id: "model", name: "modelval" },
-                        on: {
-                          change: function($event) {
-                            return _vm.filterByModels($event)
-                          }
-                        }
-                      },
-                      [
-                        _c("option", { attrs: { value: "" } }, [
-                          _vm._v("Все марки")
-                        ]),
-                        _vm._v(" "),
-                        _vm._l(_vm.models, function(model, index) {
-                          return _c(
-                            "option",
-                            { domProps: { value: model.id } },
-                            [
-                              _vm._v(
-                                _vm._s(model.name) +
-                                  "\n                                "
-                              )
-                            ]
-                          )
-                        })
-                      ],
-                      2
-                    )
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "col" }, [
-                    _c("label"),
-                    _vm._v(" "),
-                    _c(
-                      "select",
-                      {
-                        staticClass: "form-control options selectbox",
-                        attrs: { id: "state", name: "stateval" },
-                        on: {
-                          change: function($event) {
-                            return _vm.filterByStates($event)
-                          }
-                        }
-                      },
-                      [
-                        _c("option", { attrs: { value: "" } }, [
-                          _vm._v("Все состояния")
-                        ]),
-                        _vm._v(" "),
-                        _vm._l(_vm.states, function(state, index) {
-                          return _c(
-                            "option",
-                            { domProps: { value: state.id } },
-                            [
-                              _vm._v(
-                                _vm._s(state.name) +
-                                  "\n                                "
-                              )
-                            ]
-                          )
-                        })
-                      ],
-                      2
-                    )
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "col" }, [
-                    _c("label"),
-                    _vm._v(" "),
-                    _c(
-                      "select",
-                      {
-                        staticClass: "form-control options selectbox",
-                        attrs: { id: "parking", name: "parkingval" },
-                        on: {
-                          change: function($event) {
-                            return _vm.filterByParkings($event)
-                          }
-                        }
-                      },
-                      [
-                        _c("option", { attrs: { value: "" } }, [
-                          _vm._v("Все стоянки")
-                        ]),
-                        _vm._v(" "),
-                        _vm._l(_vm.parkings, function(parking, index) {
-                          return _c(
-                            "option",
-                            { domProps: { value: parking.id } },
-                            [
-                              _vm._v(
-                                "\n                                    " +
-                                  _vm._s(parking.address) +
-                                  "\n                                "
-                              )
-                            ]
-                          )
-                        })
-                      ],
-                      2
-                    )
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "col" }, [
-                    _c("label", [_vm._v("Дата завершения")]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "row input-row" }, [
-                      _c("p", [_vm._v("С")]),
+                _c(
+                  "div",
+                  { staticClass: "row select-options-filter filter_row" },
+                  [
+                    _c("div", { staticClass: "col" }, [
+                      _c("label"),
                       _vm._v(" "),
-                      _c("div", { staticClass: "col filter-date" }, [
-                        _c("input", {
-                          staticClass: "input-date form-control options",
-                          attrs: {
-                            name: "startval",
-                            type: "date",
-                            id: "start",
-                            value: ""
-                          },
+                      _c(
+                        "select",
+                        {
+                          staticClass: "form-control options selectbox",
+                          attrs: { id: "model", name: "modelval" },
                           on: {
                             change: function($event) {
-                              return _vm.filterByStarts($event)
+                              return _vm.filterByModels($event)
                             }
                           }
-                        })
-                      ]),
+                        },
+                        [
+                          _c("option", { attrs: { value: "" } }, [
+                            _vm._v("Все марки")
+                          ]),
+                          _vm._v(" "),
+                          _vm._l(_vm.models, function(model, index) {
+                            return _c(
+                              "option",
+                              { domProps: { value: model.id } },
+                              [
+                                _vm._v(
+                                  _vm._s(model.name) +
+                                    "\n                                "
+                                )
+                              ]
+                            )
+                          })
+                        ],
+                        2
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col" }, [
+                      _c("label"),
                       _vm._v(" "),
-                      _c("p", [_vm._v("ПО")]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "col filter-date" }, [
-                        _c("input", {
-                          staticClass: "input-date form-control options",
-                          attrs: {
-                            name: "endval",
-                            type: "date",
-                            id: "finish",
-                            value: ""
-                          },
+                      _c(
+                        "select",
+                        {
+                          staticClass: "form-control options selectbox",
+                          attrs: { id: "state", name: "stateval" },
                           on: {
                             change: function($event) {
-                              return _vm.filterByEnds($event)
+                              return _vm.filterByStates($event)
                             }
                           }
-                        }),
-                        _vm._v(" "),
-                        _c("input", {
-                          attrs: { type: "hidden", name: "bodyval" },
-                          domProps: { value: _vm.bodiesId }
-                        })
-                      ]),
+                        },
+                        [
+                          _c("option", { attrs: { value: "" } }, [
+                            _vm._v("Все состояния")
+                          ]),
+                          _vm._v(" "),
+                          _vm._l(_vm.states, function(state, index) {
+                            return _c(
+                              "option",
+                              { domProps: { value: state.id } },
+                              [
+                                _vm._v(
+                                  _vm._s(state.name) +
+                                    "\n                                "
+                                )
+                              ]
+                            )
+                          })
+                        ],
+                        2
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col" }, [
+                      _c("label"),
                       _vm._v(" "),
-                      _c("div", { staticClass: "col filter-date" }, [
+                      _c(
+                        "select",
+                        {
+                          staticClass: "form-control options selectbox",
+                          attrs: { id: "parking", name: "parkingval" },
+                          on: {
+                            change: function($event) {
+                              return _vm.filterByParkings($event)
+                            }
+                          }
+                        },
+                        [
+                          _c("option", { attrs: { value: "" } }, [
+                            _vm._v("Все стоянки")
+                          ]),
+                          _vm._v(" "),
+                          _vm._l(_vm.parkings, function(parking, index) {
+                            return _c(
+                              "option",
+                              { domProps: { value: parking.id } },
+                              [
+                                _vm._v(
+                                  "\n                                    " +
+                                    _vm._s(parking.address) +
+                                    "\n                                "
+                                )
+                              ]
+                            )
+                          })
+                        ],
+                        2
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col" }, [
+                      _c("label", [_vm._v("Дата завершения")]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "row input-row" }, [
+                        _c("p", [_vm._v("С")]),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          { staticClass: "col filter-date filter-date-d" },
+                          [
+                            _c("input", {
+                              staticClass: "input-date form-control options",
+                              attrs: {
+                                name: "startval",
+                                type: "date",
+                                id: "start",
+                                value: ""
+                              },
+                              on: {
+                                change: function($event) {
+                                  return _vm.filterByStarts($event)
+                                }
+                              }
+                            })
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c("p", [_vm._v("ПО")]),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          { staticClass: "col filter-date filter-date-d" },
+                          [
+                            _c("input", {
+                              staticClass: "input-date form-control options",
+                              attrs: {
+                                name: "endval",
+                                type: "date",
+                                id: "finish",
+                                value: ""
+                              },
+                              on: {
+                                change: function($event) {
+                                  return _vm.filterByEnds($event)
+                                }
+                              }
+                            }),
+                            _vm._v(" "),
+                            _c("input", {
+                              attrs: { type: "hidden", name: "bodyval" },
+                              domProps: { value: _vm.bodiesId }
+                            })
+                          ]
+                        )
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      { staticClass: "col filter-date filter-date-btn" },
+                      [
                         _c(
                           "button",
                           {
@@ -46907,16 +46926,16 @@ var render = function() {
                           },
                           [
                             _vm._v(
-                              "\n                                        Показать: " +
+                              "\n                                Показать: " +
                                 _vm._s(this.allCarsLength) +
-                                "\n                                    "
+                                "\n                            "
                             )
                           ]
                         )
-                      ])
-                    ])
-                  ])
-                ])
+                      ]
+                    )
+                  ]
+                )
               ])
             ])
           ])
@@ -47077,7 +47096,7 @@ var render = function() {
             _vm._v(" "),
             _vm.carsfilter.length == 0
               ? _c("div", { staticClass: "container container-back" }, [
-                  _vm._m(19)
+                  _vm._m(11)
                 ])
               : _vm._e()
           ])
@@ -47196,185 +47215,148 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row" }, [
-      _c("div", {
-        staticClass: "col activeback body-car-back1",
-        attrs: { "back-id": "0" }
-      })
-    ])
+    return _c(
+      "a",
+      {
+        staticClass: "carType-all activeback body-car-back1 body-name",
+        attrs: { title: "Все типы" }
+      },
+      [
+        _c("i", { staticClass: "fas fa-car-side", attrs: { "icon-id": "0" } }),
+        _vm._v(" "),
+        _c("p", { staticClass: "carTypesText" }, [_vm._v("Все типы")])
+      ]
+    )
   },
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col-md-12 text-name" }, [
-        _c("p", { staticClass: "body-name", attrs: { "p-id": "0" } }, [
-          _vm._v("Все типы")
-        ])
-      ])
-    ])
+    return _c(
+      "a",
+      {
+        staticClass: "carType-car activeback body-car-back2",
+        attrs: { title: "Легковые" }
+      },
+      [
+        _c("i", { staticClass: "fas fa-car", attrs: { "icon-id": "3" } }),
+        _vm._v(" "),
+        _c("p", { staticClass: "carTypesText" }, [_vm._v("Легковые")])
+      ]
+    )
   },
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row" }, [
-      _c("div", {
-        staticClass: "col activeback body-car-back2",
-        attrs: { "back-id": "3" }
-      })
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col-md-12 text-name" }, [
-        _c("p", { staticClass: "body-name", attrs: { "p-id": "3" } }, [
-          _vm._v("Легковые")
-        ])
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row" }, [
-      _c("div", {
-        staticClass: "col activeback body-car-back3",
-        attrs: { "back-id": "8" }
-      })
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col-md-12 text-name" }, [
-        _c("p", { staticClass: "body-name", attrs: { "p-id": "8" } }, [
-          _vm._v("Автобусы")
-        ])
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row" }, [
-      _c("div", {
-        staticClass: "col activeback body-car-back4",
-        attrs: { "back-id": "4" }
-      })
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col-md-12 text-name" }, [
-        _c("p", { staticClass: "body-name", attrs: { "p-id": "4" } }, [
+    return _c(
+      "a",
+      {
+        staticClass: "carType-commercialCar activeback body-car-back3",
+        attrs: { title: "Легкие коммерческие" }
+      },
+      [
+        _c("i", { staticClass: "fas fa-truck" }),
+        _vm._v(" "),
+        _c("p", { staticClass: "carTypesText" }, [
           _vm._v("Легкие коммерческие")
         ])
-      ])
-    ])
+      ]
+    )
   },
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row" }, [
-      _c("div", {
-        staticClass: "col activeback body-car-back5",
-        attrs: { "back-id": "5" }
-      })
-    ])
+    return _c(
+      "a",
+      {
+        staticClass: "carType-truck activeback body-car-back4",
+        attrs: { title: "Грузовые" }
+      },
+      [
+        _c("i", {
+          staticClass: "fas fa-truck-moving",
+          attrs: { "icon-id": "4" }
+        }),
+        _vm._v(" "),
+        _c("p", { staticClass: "carTypesText" }, [_vm._v("Грузовые")])
+      ]
+    )
   },
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col-md-12 text-name" }, [
-        _c("p", { staticClass: "body-name", attrs: { "p-id": "5" } }, [
-          _vm._v("Грузовые")
-        ])
-      ])
-    ])
+    return _c(
+      "a",
+      {
+        staticClass: "carType-truckTractor activeback body-car-back5",
+        attrs: { title: "Седельные тягачи" }
+      },
+      [
+        _c("i", {
+          staticClass: "fas fa-truck-pickup",
+          attrs: { "icon-id": "5" }
+        }),
+        _vm._v(" "),
+        _c("p", { staticClass: "carTypesText" }, [_vm._v("Седельные тягачи")])
+      ]
+    )
   },
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row" }, [
-      _c("div", {
-        staticClass: "col activeback body-car-back6",
-        attrs: { "back-id": "6" }
-      })
-    ])
+    return _c(
+      "a",
+      {
+        staticClass: "carType-trailer activeback body-car-back6",
+        attrs: { title: "Прицепы" }
+      },
+      [
+        _c("i", {
+          staticClass: "fas fa-truck-loading",
+          attrs: { "icon-id": "6" }
+        }),
+        _vm._v(" "),
+        _c("p", { staticClass: "carTypesText" }, [_vm._v("Прицепы")])
+      ]
+    )
   },
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col-md-12 text-name" }, [
-        _c("p", { staticClass: "body-name", attrs: { "p-id": "6" } }, [
-          _vm._v("Седельные тягачи")
-        ])
-      ])
-    ])
+    return _c(
+      "a",
+      {
+        staticClass: "carType-bus activeback body-car-back7",
+        attrs: { title: "Автобусы" }
+      },
+      [
+        _c("i", { staticClass: "fas fa-bus", attrs: { "icon-id": "7" } }),
+        _vm._v(" "),
+        _c("p", { staticClass: "carTypesText" }, [_vm._v("Автобусы")])
+      ]
+    )
   },
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row" }, [
-      _c("div", {
-        staticClass: "col activeback body-car-back7",
-        attrs: { "back-id": "7" }
-      })
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col-md-12 text-name" }, [
-        _c("p", { staticClass: "body-name", attrs: { "p-id": "7" } }, [
-          _vm._v("Прицепы")
-        ])
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row" }, [
-      _c("div", {
-        staticClass: "col activeback body-car-back8",
-        attrs: { "back-id": "9" }
-      })
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col-md-12 text-name" }, [
-        _c("p", { staticClass: "body-name", attrs: { "p-id": "9" } }, [
-          _vm._v("Спецтехника")
-        ])
-      ])
-    ])
+    return _c(
+      "a",
+      {
+        staticClass: "carType-special activeback body-car-back8",
+        attrs: { title: "Спецтехника" }
+      },
+      [
+        _c("i", { staticClass: "fas fa-tractor", attrs: { "icon-id": "9" } }),
+        _vm._v(" "),
+        _c("p", { staticClass: "carTypesText" }, [_vm._v("Спецтехника")])
+      ]
+    )
   },
   function() {
     var _vm = this
@@ -47498,201 +47480,245 @@ var render = function() {
               _c("div", { staticClass: "container" }, [
                 _c("div", { staticClass: "row" }, [
                   _c(
-                    "div",
-                    { staticClass: "col-md-2" },
+                    "nav",
+                    { staticClass: "navbar navbar-expand-lg mobile_nav" },
                     [
-                      _c("router-link", { attrs: { to: "/#" } }, [
-                        _c("img", {
-                          attrs: {
-                            src: "/img/design_img/header_logo.png",
-                            id: "headerlogo",
-                            alt: "logo"
-                          }
-                        })
-                      ])
-                    ],
-                    1
-                  ),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "col-md-9 offset-1" }, [
-                    _c("div", { staticClass: "col-md-12 menunavbar" }, [
-                      _c("ul", [
-                        _c("li", [
-                          _c("a", [_vm._v("Меню")]),
-                          _vm._v(" "),
-                          _c("p", { staticClass: "arrow_nav" }, [_vm._v("🡄")]),
-                          _vm._v(" "),
-                          _c("ol", [
-                            _c(
-                              "li",
-                              [
-                                _c("router-link", { attrs: { to: "/" } }, [
-                                  _vm._v("Главная")
-                                ])
-                              ],
-                              1
-                            ),
-                            _vm._v(" "),
-                            _c(
-                              "li",
-                              [
-                                _c("router-link", { attrs: { to: "/faq" } }, [
-                                  _vm._v("Вопрос-ответ")
-                                ])
-                              ],
-                              1
-                            ),
-                            _vm._v(" "),
-                            _c(
-                              "li",
-                              [
-                                _c("router-link", { attrs: { to: "/about" } }, [
-                                  _vm._v("О компании")
-                                ])
-                              ],
-                              1
-                            ),
-                            _vm._v(" "),
-                            _c(
-                              "li",
-                              [
-                                _c("router-link", { attrs: { to: "/rules" } }, [
-                                  _vm._v("Правила")
-                                ])
-                              ],
-                              1
-                            ),
-                            _vm._v(" "),
-                            _c(
-                              "li",
-                              [
-                                _c(
-                                  "router-link",
-                                  { attrs: { to: "/contacts" } },
-                                  [_vm._v("Контакты")]
-                                )
-                              ],
-                              1
-                            )
+                      _c(
+                        "div",
+                        { staticClass: "logo_img_div" },
+                        [
+                          _c("router-link", { attrs: { to: "/#" } }, [
+                            _c("img", {
+                              attrs: {
+                                src: "/img/design_img/header_logo.png",
+                                id: "headerlogo",
+                                alt: "logo"
+                              }
+                            })
                           ])
-                        ]),
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "responsive" }, [
+                        _vm._m(0),
                         _vm._v(" "),
-                        _c("li", [
-                          _c("a", [_vm._v("Все Аукционы")]),
-                          _vm._v(" "),
-                          _c("p", { staticClass: "arrow_nav" }, [_vm._v("🡄")]),
-                          _vm._v(" "),
-                          _c(
-                            "ol",
-                            _vm._l(_vm.auctions, function(auction) {
-                              return _c(
-                                "li",
-                                [
+                        _c(
+                          "div",
+                          {
+                            staticClass: "navbar-collapse collapse ",
+                            attrs: { id: "navbarSupportedContent22" }
+                          },
+                          [
+                            _c("div", { staticClass: "menunavbar" }, [
+                              _c("ul", { staticClass: "navbar-nav" }, [
+                                _c("li", { staticClass: "nav-item" }, [
+                                  _c("a", [_vm._v("Меню")]),
+                                  _vm._v(" "),
+                                  _c("i", { staticClass: "fas fa-angle-down" }),
+                                  _vm._v(" "),
+                                  _c("ol", [
+                                    _c(
+                                      "li",
+                                      { staticClass: "nav-item" },
+                                      [
+                                        _c(
+                                          "router-link",
+                                          { attrs: { to: "/" } },
+                                          [_vm._v("Главная")]
+                                        )
+                                      ],
+                                      1
+                                    ),
+                                    _vm._v(" "),
+                                    _c(
+                                      "li",
+                                      { staticClass: "nav-item" },
+                                      [
+                                        _c(
+                                          "router-link",
+                                          { attrs: { to: "/faq" } },
+                                          [_vm._v("Вопрос-ответ")]
+                                        )
+                                      ],
+                                      1
+                                    ),
+                                    _vm._v(" "),
+                                    _c(
+                                      "li",
+                                      { staticClass: "nav-item" },
+                                      [
+                                        _c(
+                                          "router-link",
+                                          { attrs: { to: "/about" } },
+                                          [_vm._v("О компании")]
+                                        )
+                                      ],
+                                      1
+                                    ),
+                                    _vm._v(" "),
+                                    _c(
+                                      "li",
+                                      { staticClass: "nav-item" },
+                                      [
+                                        _c(
+                                          "router-link",
+                                          { attrs: { to: "/rules" } },
+                                          [_vm._v("Правила")]
+                                        )
+                                      ],
+                                      1
+                                    ),
+                                    _vm._v(" "),
+                                    _c(
+                                      "li",
+                                      { staticClass: "nav-item" },
+                                      [
+                                        _c(
+                                          "router-link",
+                                          { attrs: { to: "/contacts" } },
+                                          [_vm._v("Контакты")]
+                                        )
+                                      ],
+                                      1
+                                    )
+                                  ])
+                                ]),
+                                _vm._v(" "),
+                                _c("li", { staticClass: "nav-item" }, [
+                                  _c("a", [_vm._v("Все Аукционы")]),
+                                  _vm._v(" "),
+                                  _c("i", { staticClass: "fas fa-angle-down" }),
+                                  _vm._v(" "),
                                   _c(
-                                    "router-link",
-                                    {
-                                      attrs: { to: "/auctions/" + auction.id }
-                                    },
-                                    [
-                                      _vm._v(
-                                        _vm._s(auction.name) +
-                                          "\n                                            "
+                                    "ol",
+                                    _vm._l(_vm.auctions, function(auction) {
+                                      return _c(
+                                        "li",
+                                        { staticClass: "nav-item" },
+                                        [
+                                          _c(
+                                            "router-link",
+                                            {
+                                              attrs: {
+                                                to: "/auctions/" + auction.id
+                                              }
+                                            },
+                                            [
+                                              _vm._v(
+                                                _vm._s(auction.name) +
+                                                  "\n                                                    "
+                                              )
+                                            ]
+                                          )
+                                        ],
+                                        1
                                       )
-                                    ]
+                                    }),
+                                    0
                                   )
-                                ],
-                                1
-                              )
-                            }),
-                            0
-                          )
-                        ]),
-                        _vm._v(" "),
-                        _vm.user.length == 0
-                          ? _c(
-                              "li",
-                              [
-                                _c("router-link", { attrs: { to: "/login" } }, [
-                                  _vm._v("Войти")
-                                ])
-                              ],
-                              1
-                            )
-                          : _vm._e(),
-                        _vm._v(" "),
-                        _vm.user.length == 0
-                          ? _c(
-                              "li",
-                              [
-                                _c(
-                                  "router-link",
-                                  { attrs: { to: "/register" } },
-                                  [_vm._v("Регистрация")]
-                                )
-                              ],
-                              1
-                            )
-                          : _vm._e(),
-                        _vm._v(" "),
-                        _vm.user.length != 0
-                          ? _c("li", [
-                              _c("a", [_vm._v(_vm._s(_vm.user.name))]),
-                              _vm._v(" "),
-                              _c("p", { staticClass: "arrow_nav" }, [
-                                _vm._v("🡄")
-                              ]),
-                              _vm._v(" "),
-                              _c("ol", [
-                                _vm.user.usertype == "admin"
-                                  ? _c("li", [
-                                      _c("a", { attrs: { href: "/admin" } }, [
-                                        _vm._v("Админ Панель")
-                                      ])
-                                    ])
+                                ]),
+                                _vm._v(" "),
+                                _vm.user.length == 0
+                                  ? _c(
+                                      "li",
+                                      { staticClass: "nav-item" },
+                                      [
+                                        _c(
+                                          "router-link",
+                                          { attrs: { to: "/login" } },
+                                          [_vm._v("Войти")]
+                                        )
+                                      ],
+                                      1
+                                    )
                                   : _vm._e(),
                                 _vm._v(" "),
-                                _c(
-                                  "li",
-                                  [
-                                    _c(
-                                      "router-link",
-                                      { attrs: { to: "/profile" } },
-                                      [_vm._v("Профиль")]
+                                _vm.user.length == 0
+                                  ? _c(
+                                      "li",
+                                      { staticClass: "nav-item" },
+                                      [
+                                        _c(
+                                          "router-link",
+                                          { attrs: { to: "/register" } },
+                                          [_vm._v("Регистрация")]
+                                        )
+                                      ],
+                                      1
                                     )
-                                  ],
-                                  1
-                                ),
+                                  : _vm._e(),
                                 _vm._v(" "),
-                                _c("li", [
-                                  _c(
-                                    "form",
-                                    {
-                                      attrs: {
-                                        action: "logout",
-                                        method: "POST"
-                                      }
-                                    },
-                                    [
-                                      _vm._m(0),
+                                _vm.user.length != 0
+                                  ? _c("li", { staticClass: "nav-item" }, [
+                                      _c("a", [_vm._v(_vm._s(_vm.user.name))]),
                                       _vm._v(" "),
-                                      _c("input", {
-                                        attrs: {
-                                          type: "hidden",
-                                          name: "_token"
-                                        },
-                                        domProps: { value: _vm.csrf }
-                                      })
-                                    ]
-                                  )
-                                ])
+                                      _c("i", {
+                                        staticClass: "fas fa-angle-down"
+                                      }),
+                                      _vm._v(" "),
+                                      _c("ol", [
+                                        _vm.user.usertype == "admin"
+                                          ? _c(
+                                              "li",
+                                              { staticClass: "nav-item" },
+                                              [
+                                                _c(
+                                                  "a",
+                                                  { attrs: { href: "/admin" } },
+                                                  [_vm._v("Админ Панель")]
+                                                )
+                                              ]
+                                            )
+                                          : _vm._e(),
+                                        _vm._v(" "),
+                                        _c(
+                                          "li",
+                                          { staticClass: "nav-item" },
+                                          [
+                                            _c(
+                                              "router-link",
+                                              { attrs: { to: "/profile" } },
+                                              [_vm._v("Профиль")]
+                                            )
+                                          ],
+                                          1
+                                        ),
+                                        _vm._v(" "),
+                                        _c("li", { staticClass: "nav-item" }, [
+                                          _c(
+                                            "form",
+                                            {
+                                              attrs: {
+                                                action: "logout",
+                                                method: "POST"
+                                              }
+                                            },
+                                            [
+                                              _vm._m(1),
+                                              _vm._v(" "),
+                                              _c("input", {
+                                                attrs: {
+                                                  type: "hidden",
+                                                  name: "_token"
+                                                },
+                                                domProps: { value: _vm.csrf }
+                                              })
+                                            ]
+                                          )
+                                        ])
+                                      ])
+                                    ])
+                                  : _vm._e()
                               ])
                             ])
-                          : _vm._e(),
-                        _vm._v(" "),
-                        _vm._m(1)
-                      ])
-                    ])
-                  ])
+                          ]
+                        )
+                      ]),
+                      _vm._v(" "),
+                      _vm._m(2)
+                    ]
+                  )
                 ])
               ])
             ]
@@ -47708,6 +47734,30 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c(
       "button",
+      {
+        staticClass: "navbar-toggler third-button",
+        attrs: {
+          type: "button",
+          "data-toggle": "collapse",
+          "data-target": "#navbarSupportedContent22",
+          "aria-controls": "navbarSupportedContent22",
+          "aria-expanded": "false",
+          "aria-label": "Toggle navigation"
+        }
+      },
+      [
+        _c("span", { staticClass: "icon" }, [
+          _c("i", { staticClass: "fas fa-bars fa-1x" })
+        ])
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "button",
       { staticClass: "logoutbut", attrs: { type: "submit" } },
       [_c("a", [_vm._v("Выход")])]
     )
@@ -47716,11 +47766,11 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("li", { staticClass: "searchbox" }, [
+    return _c("div", { staticClass: "searchbox_div" }, [
       _c(
         "form",
         {
-          staticStyle: { padding: "5px 10px 5px 10px" },
+          staticClass: "searchbox",
           attrs: { action: "/searchcar", method: "GET" }
         },
         [
@@ -47964,7 +48014,7 @@ var render = function() {
                                                               },
                                                               [
                                                                 _vm._v(
-                                                                  "Смотреть\n                                                            "
+                                                                  "Смотреть\n                                                        "
                                                                 )
                                                               ]
                                                             )
@@ -48116,7 +48166,7 @@ var render = function() {
                                                         },
                                                         [
                                                           _vm._v(
-                                                            "Смотреть\n                                                            "
+                                                            "Смотреть\n                                                        "
                                                           )
                                                         ]
                                                       )
@@ -48150,117 +48200,128 @@ var render = function() {
             _vm.slider.length > 0
               ? _c("div", { staticClass: "container container-back" }, [
                   _c("div", { staticClass: "row body-cats" }, [
-                    _c(
-                      "div",
-                      {
-                        staticClass: "col-md-1 body-cars",
-                        attrs: { "data-id": "0" },
-                        on: {
-                          click: function($event) {
-                            return _vm.filterByBodies(0)
-                          }
-                        }
-                      },
-                      [_vm._m(3), _vm._v(" "), _vm._m(4)]
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "div",
-                      {
-                        staticClass: "col-md-1 body-cars",
-                        attrs: { "data-id": "3" },
-                        on: {
-                          click: function($event) {
-                            return _vm.filterByBodies(3)
-                          }
-                        }
-                      },
-                      [_vm._m(5), _vm._v(" "), _vm._m(6)]
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "div",
-                      {
-                        staticClass: "col-md-1 body-cars",
-                        attrs: { "data-id": "8" },
-                        on: {
-                          click: function($event) {
-                            return _vm.filterByBodies(8)
-                          }
-                        }
-                      },
-                      [_vm._m(7), _vm._v(" "), _vm._m(8)]
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "div",
-                      {
-                        staticClass: "col-md-1 body-cars",
-                        attrs: { "data-id": "4" },
-                        on: {
-                          click: function($event) {
-                            return _vm.filterByBodies(4)
-                          }
-                        }
-                      },
-                      [_vm._m(9), _vm._v(" "), _vm._m(10)]
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "div",
-                      {
-                        staticClass: "col-md-1 body-cars",
-                        attrs: { "data-id": "5" },
-                        on: {
-                          click: function($event) {
-                            return _vm.filterByBodies(5)
-                          }
-                        }
-                      },
-                      [_vm._m(11), _vm._v(" "), _vm._m(12)]
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "div",
-                      {
-                        staticClass: "col-md-1 body-cars",
-                        attrs: { "data-id": "6" },
-                        on: {
-                          click: function($event) {
-                            return _vm.filterByBodies(6)
-                          }
-                        }
-                      },
-                      [_vm._m(13), _vm._v(" "), _vm._m(14)]
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "div",
-                      {
-                        staticClass: "col-md-1 body-cars",
-                        attrs: { "data-id": "7" },
-                        on: {
-                          click: function($event) {
-                            return _vm.filterByBodies(7)
-                          }
-                        }
-                      },
-                      [_vm._m(15), _vm._v(" "), _vm._m(16)]
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "div",
-                      {
-                        staticClass: "col-md-1 body-cars",
-                        attrs: { "data-id": "9" },
-                        on: {
-                          click: function($event) {
-                            return _vm.filterByBodies(9)
-                          }
-                        }
-                      },
-                      [_vm._m(17), _vm._v(" "), _vm._m(18)]
-                    )
+                    _c("div", { staticClass: "car_types_div" }, [
+                      _c(
+                        "ul",
+                        {
+                          staticClass: "nav nav-tabs",
+                          attrs: { id: "carTypes" }
+                        },
+                        [
+                          _c(
+                            "li",
+                            {
+                              staticClass: "body-cars carTypeActive",
+                              attrs: { role: "presentation", "data-id": "0" },
+                              on: {
+                                click: function($event) {
+                                  return _vm.classLi(0)
+                                }
+                              }
+                            },
+                            [_vm._m(3)]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "li",
+                            {
+                              staticClass: "body-cars",
+                              attrs: { role: "presentation", "data-id": "3" },
+                              on: {
+                                click: function($event) {
+                                  return _vm.classLi(3)
+                                }
+                              }
+                            },
+                            [_vm._m(4)]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "li",
+                            {
+                              staticClass: "body-cars",
+                              attrs: { role: "presentation", "data-id": "4" },
+                              on: {
+                                click: function($event) {
+                                  return _vm.classLi(4)
+                                }
+                              }
+                            },
+                            [_vm._m(5)]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "li",
+                            {
+                              staticClass: "body-cars",
+                              attrs: { role: "presentation", "data-id": "5" },
+                              on: {
+                                click: function($event) {
+                                  return _vm.classLi(5)
+                                }
+                              }
+                            },
+                            [_vm._m(6)]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "li",
+                            {
+                              staticClass: "body-cars",
+                              attrs: { role: "presentation", "data-id": "6" },
+                              on: {
+                                click: function($event) {
+                                  return _vm.classLi(6)
+                                }
+                              }
+                            },
+                            [_vm._m(7)]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "li",
+                            {
+                              staticClass: "body-cars",
+                              attrs: { role: "presentation", "data-id": "7" },
+                              on: {
+                                click: function($event) {
+                                  return _vm.classLi(7)
+                                }
+                              }
+                            },
+                            [_vm._m(8)]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "li",
+                            {
+                              staticClass: "body-cars",
+                              attrs: { role: "presentation", "data-id": "8" },
+                              on: {
+                                click: function($event) {
+                                  return _vm.classLi(8)
+                                }
+                              }
+                            },
+                            [_vm._m(9)]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "li",
+                            {
+                              staticClass: "body-cars",
+                              attrs: { role: "presentation", "data-id": "9" },
+                              on: {
+                                click: function($event) {
+                                  return _vm.classLi(9)
+                                }
+                              }
+                            },
+                            [_vm._m(10)]
+                          )
+                        ]
+                      )
+                    ])
                   ])
                 ])
               : _vm._e()
@@ -48271,164 +48332,180 @@ var render = function() {
         ? _c("div", { staticClass: "container-fluid car-filters" }, [
             _c("div", { staticClass: "container container-back" }, [
               _c("form", { attrs: { action: "/filtercar", type: "GET" } }, [
-                _c("div", { staticClass: "row select-options-filter" }, [
-                  _c("div", { staticClass: "col" }, [
-                    _c("label"),
-                    _vm._v(" "),
-                    _c(
-                      "select",
-                      {
-                        staticClass: "form-control options selectbox",
-                        attrs: { id: "model", name: "modelval" },
-                        on: {
-                          change: function($event) {
-                            return _vm.filterByModels($event)
-                          }
-                        }
-                      },
-                      [
-                        _c("option", { attrs: { value: "" } }, [
-                          _vm._v("Все марки")
-                        ]),
-                        _vm._v(" "),
-                        _vm._l(_vm.models, function(model, index) {
-                          return _c(
-                            "option",
-                            { domProps: { value: model.id } },
-                            [
-                              _vm._v(
-                                _vm._s(model.name) +
-                                  "\n                                "
-                              )
-                            ]
-                          )
-                        })
-                      ],
-                      2
-                    )
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "col" }, [
-                    _c("label"),
-                    _vm._v(" "),
-                    _c(
-                      "select",
-                      {
-                        staticClass: "form-control options selectbox",
-                        attrs: { id: "state", name: "stateval" },
-                        on: {
-                          change: function($event) {
-                            return _vm.filterByStates($event)
-                          }
-                        }
-                      },
-                      [
-                        _c("option", { attrs: { value: "" } }, [
-                          _vm._v("Все состояния")
-                        ]),
-                        _vm._v(" "),
-                        _vm._l(_vm.states, function(state, index) {
-                          return _c(
-                            "option",
-                            { domProps: { value: state.id } },
-                            [
-                              _vm._v(
-                                _vm._s(state.name) +
-                                  "\n                                "
-                              )
-                            ]
-                          )
-                        })
-                      ],
-                      2
-                    )
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "col" }, [
-                    _c("label"),
-                    _vm._v(" "),
-                    _c(
-                      "select",
-                      {
-                        staticClass: "form-control options selectbox",
-                        attrs: { id: "parking", name: "parkingval" },
-                        on: {
-                          change: function($event) {
-                            return _vm.filterByParkings($event)
-                          }
-                        }
-                      },
-                      [
-                        _c("option", { attrs: { value: "" } }, [
-                          _vm._v("Все стоянки")
-                        ]),
-                        _vm._v(" "),
-                        _vm._l(_vm.parkings, function(parking, index) {
-                          return _c(
-                            "option",
-                            { domProps: { value: parking.id } },
-                            [
-                              _vm._v(
-                                "\n                                    " +
-                                  _vm._s(parking.address) +
-                                  "\n                                "
-                              )
-                            ]
-                          )
-                        })
-                      ],
-                      2
-                    )
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "col" }, [
-                    _c("label", [_vm._v("Дата завершения")]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "row input-row" }, [
-                      _c("p", [_vm._v("С")]),
+                _c(
+                  "div",
+                  { staticClass: "row select-options-filter filter_row" },
+                  [
+                    _c("div", { staticClass: "col" }, [
+                      _c("label"),
                       _vm._v(" "),
-                      _c("div", { staticClass: "col filter-date" }, [
-                        _c("input", {
-                          staticClass: "input-date form-control options",
-                          attrs: {
-                            name: "startval",
-                            type: "date",
-                            id: "start",
-                            value: ""
-                          },
+                      _c(
+                        "select",
+                        {
+                          staticClass: "form-control options selectbox",
+                          attrs: { id: "model", name: "modelval" },
                           on: {
                             change: function($event) {
-                              return _vm.filterByStarts($event)
+                              return _vm.filterByModels($event)
                             }
                           }
-                        })
-                      ]),
+                        },
+                        [
+                          _c("option", { attrs: { value: "" } }, [
+                            _vm._v("Все марки")
+                          ]),
+                          _vm._v(" "),
+                          _vm._l(_vm.models, function(model, index) {
+                            return _c(
+                              "option",
+                              { domProps: { value: model.id } },
+                              [
+                                _vm._v(
+                                  _vm._s(model.name) +
+                                    "\n                            "
+                                )
+                              ]
+                            )
+                          })
+                        ],
+                        2
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col" }, [
+                      _c("label"),
                       _vm._v(" "),
-                      _c("p", [_vm._v("ПО")]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "col filter-date" }, [
-                        _c("input", {
-                          staticClass: "input-date form-control options",
-                          attrs: {
-                            name: "endval",
-                            type: "date",
-                            id: "finish",
-                            value: ""
-                          },
+                      _c(
+                        "select",
+                        {
+                          staticClass: "form-control options selectbox",
+                          attrs: { id: "state", name: "stateval" },
                           on: {
                             change: function($event) {
-                              return _vm.filterByEnds($event)
+                              return _vm.filterByStates($event)
                             }
                           }
-                        }),
-                        _vm._v(" "),
-                        _c("input", {
-                          attrs: { type: "hidden", name: "bodyval" },
-                          domProps: { value: _vm.bodiesId }
-                        })
-                      ]),
+                        },
+                        [
+                          _c("option", { attrs: { value: "" } }, [
+                            _vm._v("Все состояния")
+                          ]),
+                          _vm._v(" "),
+                          _vm._l(_vm.states, function(state, index) {
+                            return _c(
+                              "option",
+                              { domProps: { value: state.id } },
+                              [
+                                _vm._v(
+                                  _vm._s(state.name) +
+                                    "\n                            "
+                                )
+                              ]
+                            )
+                          })
+                        ],
+                        2
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col" }, [
+                      _c("label"),
                       _vm._v(" "),
-                      _c("div", { staticClass: "col filter-date" }, [
+                      _c(
+                        "select",
+                        {
+                          staticClass: "form-control options selectbox",
+                          attrs: { id: "parking", name: "parkingval" },
+                          on: {
+                            change: function($event) {
+                              return _vm.filterByParkings($event)
+                            }
+                          }
+                        },
+                        [
+                          _c("option", { attrs: { value: "" } }, [
+                            _vm._v("Все стоянки")
+                          ]),
+                          _vm._v(" "),
+                          _vm._l(_vm.parkings, function(parking, index) {
+                            return _c(
+                              "option",
+                              { domProps: { value: parking.id } },
+                              [
+                                _vm._v(
+                                  "\n                                " +
+                                    _vm._s(parking.address) +
+                                    "\n                            "
+                                )
+                              ]
+                            )
+                          })
+                        ],
+                        2
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col" }, [
+                      _c("label", [_vm._v("Дата завершения")]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "row input-row" }, [
+                        _c("p", [_vm._v("С")]),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          { staticClass: "col filter-date filter-date-d" },
+                          [
+                            _c("input", {
+                              staticClass: "input-date form-control options",
+                              attrs: {
+                                name: "startval",
+                                type: "date",
+                                id: "start",
+                                value: ""
+                              },
+                              on: {
+                                change: function($event) {
+                                  return _vm.filterByStarts($event)
+                                }
+                              }
+                            })
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c("p", [_vm._v("ПО")]),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          { staticClass: "col filter-date filter-date-d" },
+                          [
+                            _c("input", {
+                              staticClass: "input-date form-control options",
+                              attrs: {
+                                name: "endval",
+                                type: "date",
+                                id: "finish",
+                                value: ""
+                              },
+                              on: {
+                                change: function($event) {
+                                  return _vm.filterByEnds($event)
+                                }
+                              }
+                            }),
+                            _vm._v(" "),
+                            _c("input", {
+                              attrs: { type: "hidden", name: "bodyval" },
+                              domProps: { value: _vm.bodiesId }
+                            })
+                          ]
+                        )
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      { staticClass: "col filter-date filter-date-btn" },
+                      [
                         _c(
                           "button",
                           {
@@ -48437,16 +48514,16 @@ var render = function() {
                           },
                           [
                             _vm._v(
-                              "\n                                        Показать: " +
+                              "\n                            Показать: " +
                                 _vm._s(this.allCarsLength) +
-                                "\n                                    "
+                                "\n                        "
                             )
                           ]
                         )
-                      ])
-                    ])
-                  ])
-                ])
+                      ]
+                    )
+                  ]
+                )
               ])
             ])
           ])
@@ -48617,7 +48694,7 @@ var render = function() {
             _vm._v(" "),
             _vm.cars.length == 0
               ? _c("div", { staticClass: "container container-back" }, [
-                  _vm._m(19)
+                  _vm._m(11)
                 ])
               : _vm._e()
           ])
@@ -48736,185 +48813,148 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row" }, [
-      _c("div", {
-        staticClass: "col activeback body-car-back1",
-        attrs: { "back-id": "0" }
-      })
-    ])
+    return _c(
+      "a",
+      {
+        staticClass: "carType-all activeback body-car-back1 body-name",
+        attrs: { title: "Все типы" }
+      },
+      [
+        _c("i", { staticClass: "fas fa-car-side", attrs: { "icon-id": "0" } }),
+        _vm._v(" "),
+        _c("p", { staticClass: "carTypesText" }, [_vm._v("Все типы")])
+      ]
+    )
   },
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col-md-12 text-name" }, [
-        _c("p", { staticClass: "body-name", attrs: { "p-id": "0" } }, [
-          _vm._v("Все типы")
-        ])
-      ])
-    ])
+    return _c(
+      "a",
+      {
+        staticClass: "carType-car activeback body-car-back2",
+        attrs: { title: "Легковые" }
+      },
+      [
+        _c("i", { staticClass: "fas fa-car", attrs: { "icon-id": "3" } }),
+        _vm._v(" "),
+        _c("p", { staticClass: "carTypesText" }, [_vm._v("Легковые")])
+      ]
+    )
   },
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row" }, [
-      _c("div", {
-        staticClass: "col activeback body-car-back2",
-        attrs: { "back-id": "3" }
-      })
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col-md-12 text-name" }, [
-        _c("p", { staticClass: "body-name", attrs: { "p-id": "3" } }, [
-          _vm._v("Легковые")
-        ])
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row" }, [
-      _c("div", {
-        staticClass: "col activeback body-car-back3",
-        attrs: { "back-id": "8" }
-      })
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col-md-12 text-name" }, [
-        _c("p", { staticClass: "body-name", attrs: { "p-id": "8" } }, [
-          _vm._v("Автобусы")
-        ])
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row" }, [
-      _c("div", {
-        staticClass: "col activeback body-car-back4",
-        attrs: { "back-id": "4" }
-      })
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col-md-12 text-name" }, [
-        _c("p", { staticClass: "body-name", attrs: { "p-id": "4" } }, [
+    return _c(
+      "a",
+      {
+        staticClass: "carType-commercialCar activeback body-car-back3",
+        attrs: { title: "Легкие коммерческие" }
+      },
+      [
+        _c("i", { staticClass: "fas fa-truck" }),
+        _vm._v(" "),
+        _c("p", { staticClass: "carTypesText" }, [
           _vm._v("Легкие коммерческие")
         ])
-      ])
-    ])
+      ]
+    )
   },
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row" }, [
-      _c("div", {
-        staticClass: "col activeback body-car-back5",
-        attrs: { "back-id": "5" }
-      })
-    ])
+    return _c(
+      "a",
+      {
+        staticClass: "carType-truck activeback body-car-back4",
+        attrs: { title: "Грузовые" }
+      },
+      [
+        _c("i", {
+          staticClass: "fas fa-truck-moving",
+          attrs: { "icon-id": "4" }
+        }),
+        _vm._v(" "),
+        _c("p", { staticClass: "carTypesText" }, [_vm._v("Грузовые")])
+      ]
+    )
   },
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col-md-12 text-name" }, [
-        _c("p", { staticClass: "body-name", attrs: { "p-id": "5" } }, [
-          _vm._v("Грузовые")
-        ])
-      ])
-    ])
+    return _c(
+      "a",
+      {
+        staticClass: "carType-truckTractor activeback body-car-back5",
+        attrs: { title: "Седельные тягачи" }
+      },
+      [
+        _c("i", {
+          staticClass: "fas fa-truck-pickup",
+          attrs: { "icon-id": "5" }
+        }),
+        _vm._v(" "),
+        _c("p", { staticClass: "carTypesText" }, [_vm._v("Седельные тягачи")])
+      ]
+    )
   },
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row" }, [
-      _c("div", {
-        staticClass: "col activeback body-car-back6",
-        attrs: { "back-id": "6" }
-      })
-    ])
+    return _c(
+      "a",
+      {
+        staticClass: "carType-trailer activeback body-car-back6",
+        attrs: { title: "Прицепы" }
+      },
+      [
+        _c("i", {
+          staticClass: "fas fa-truck-loading",
+          attrs: { "icon-id": "6" }
+        }),
+        _vm._v(" "),
+        _c("p", { staticClass: "carTypesText" }, [_vm._v("Прицепы")])
+      ]
+    )
   },
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col-md-12 text-name" }, [
-        _c("p", { staticClass: "body-name", attrs: { "p-id": "6" } }, [
-          _vm._v("Седельные тягачи")
-        ])
-      ])
-    ])
+    return _c(
+      "a",
+      {
+        staticClass: "carType-bus activeback body-car-back7",
+        attrs: { title: "Автобусы" }
+      },
+      [
+        _c("i", { staticClass: "fas fa-bus", attrs: { "icon-id": "7" } }),
+        _vm._v(" "),
+        _c("p", { staticClass: "carTypesText" }, [_vm._v("Автобусы")])
+      ]
+    )
   },
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row" }, [
-      _c("div", {
-        staticClass: "col activeback body-car-back7",
-        attrs: { "back-id": "7" }
-      })
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col-md-12 text-name" }, [
-        _c("p", { staticClass: "body-name", attrs: { "p-id": "7" } }, [
-          _vm._v("Прицепы")
-        ])
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row" }, [
-      _c("div", {
-        staticClass: "col activeback body-car-back8",
-        attrs: { "back-id": "9" }
-      })
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col-md-12 text-name" }, [
-        _c("p", { staticClass: "body-name", attrs: { "p-id": "9" } }, [
-          _vm._v("Спецтехника")
-        ])
-      ])
-    ])
+    return _c(
+      "a",
+      {
+        staticClass: "carType-special activeback body-car-back8",
+        attrs: { title: "Спецтехника" }
+      },
+      [
+        _c("i", { staticClass: "fas fa-tractor", attrs: { "icon-id": "9" } }),
+        _vm._v(" "),
+        _c("p", { staticClass: "carTypesText" }, [_vm._v("Спецтехника")])
+      ]
+    )
   },
   function() {
     var _vm = this
@@ -49199,7 +49239,7 @@ var render = function() {
                         staticClass: "tablinks",
                         on: {
                           click: function($event) {
-                            return _vm.openCity("profile")
+                            return _vm.openTabs("profile")
                           }
                         }
                       },
@@ -49212,11 +49252,24 @@ var render = function() {
                         staticClass: "tablinks",
                         on: {
                           click: function($event) {
-                            return _vm.openCity("balance")
+                            return _vm.openTabs("balance")
                           }
                         }
                       },
                       [_vm._m(1)]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "button",
+                      {
+                        staticClass: "tablinks",
+                        on: {
+                          click: function($event) {
+                            return _vm.openTabs("changepass")
+                          }
+                        }
+                      },
+                      [_vm._m(2)]
                     )
                   ])
                 ])
@@ -49237,7 +49290,7 @@ var render = function() {
                       _vm._v(_vm._s(_vm.user.sname))
                     ]),
                     _vm._v(" "),
-                    _vm._m(2)
+                    _vm._m(3)
                   ]),
                   _vm._v(" "),
                   _c("tr", [
@@ -49247,7 +49300,7 @@ var render = function() {
                       _vm._v(_vm._s(_vm.user.name))
                     ]),
                     _vm._v(" "),
-                    _vm._m(3)
+                    _vm._m(4)
                   ]),
                   _vm._v(" "),
                   _c("tr", [
@@ -49257,12 +49310,14 @@ var render = function() {
                       _vm._v(_vm._s(_vm.user.date_of_birth))
                     ]),
                     _vm._v(" "),
-                    _vm._m(4)
+                    _vm._m(5)
                   ]),
                   _vm._v(" "),
-                  _vm._m(5),
+                  _vm._m(6),
                   _vm._v(" "),
-                  _vm._m(6)
+                  _vm._m(7),
+                  _vm._v(" "),
+                  _vm._m(8)
                 ])
               ])
             ])
@@ -49270,7 +49325,10 @@ var render = function() {
           _vm._v(" "),
           _c(
             "div",
-            { staticClass: "tabcontent activetabis", attrs: { id: "profile" } },
+            {
+              staticClass: "tabcontent activetabis",
+              attrs: { id: "profiletab" }
+            },
             [
               _c("div", { staticClass: "row contact_info_row" }, [
                 _c("div", { staticClass: "col-md-6 profile_data" }, [
@@ -49287,50 +49345,50 @@ var render = function() {
                           _c("th", [_vm._v("Паспорт *")]),
                           _vm._v(" "),
                           _c("td", { staticClass: "showView" }, [
-                            _vm._v(_vm._s(_vm.user.sname))
-                          ]),
-                          _vm._v(" "),
-                          _vm._m(7)
-                        ]),
-                        _vm._v(" "),
-                        _c("tr", [
-                          _c("th", [_vm._v("Кем выдан *")]),
-                          _vm._v(" "),
-                          _c("td", { staticClass: "showView" }, [
-                            _vm._v(_vm._s(_vm.user.name))
-                          ]),
-                          _vm._v(" "),
-                          _vm._m(8)
-                        ]),
-                        _vm._v(" "),
-                        _c("tr", [
-                          _c("th", [_vm._v("Дата выдачи *")]),
-                          _vm._v(" "),
-                          _c("td", { staticClass: "showView" }, [
-                            _vm._v(_vm._s(_vm.user.sname))
+                            _vm._v(_vm._s(_vm.user.passport))
                           ]),
                           _vm._v(" "),
                           _vm._m(9)
                         ]),
                         _vm._v(" "),
                         _c("tr", [
-                          _c("th", [_vm._v("Код подразделения *")]),
+                          _c("th", [_vm._v("Кем выдан *")]),
                           _vm._v(" "),
                           _c("td", { staticClass: "showView" }, [
-                            _vm._v(_vm._s(_vm.user.sname))
+                            _vm._v(_vm._s(_vm.user.issuedBy))
                           ]),
                           _vm._v(" "),
                           _vm._m(10)
                         ]),
                         _vm._v(" "),
                         _c("tr", [
-                          _c("th", [_vm._v("Место регистрации *")]),
+                          _c("th", [_vm._v("Дата выдачи *")]),
                           _vm._v(" "),
                           _c("td", { staticClass: "showView" }, [
-                            _vm._v(_vm._s(_vm.user.sname))
+                            _vm._v(_vm._s(_vm.user.dateOfIssue))
                           ]),
                           _vm._v(" "),
                           _vm._m(11)
+                        ]),
+                        _vm._v(" "),
+                        _c("tr", [
+                          _c("th", [_vm._v("Код подразделения *")]),
+                          _vm._v(" "),
+                          _c("td", { staticClass: "showView" }, [
+                            _vm._v(_vm._s(_vm.user.unitCode))
+                          ]),
+                          _vm._v(" "),
+                          _vm._m(12)
+                        ]),
+                        _vm._v(" "),
+                        _c("tr", [
+                          _c("th", [_vm._v("Место регистрации *")]),
+                          _vm._v(" "),
+                          _c("td", { staticClass: "showView" }, [
+                            _vm._v(_vm._s(_vm.user.placeOfRegistration))
+                          ]),
+                          _vm._v(" "),
+                          _vm._m(13)
                         ])
                       ])
                     ]
@@ -49354,7 +49412,7 @@ var render = function() {
                             _vm._v(_vm._s(_vm.user.phone))
                           ]),
                           _vm._v(" "),
-                          _vm._m(12)
+                          _vm._m(14)
                         ]),
                         _vm._v(" "),
                         _c("tr", [
@@ -49364,7 +49422,7 @@ var render = function() {
                             _vm._v(_vm._s(_vm.user.email))
                           ]),
                           _vm._v(" "),
-                          _vm._m(13)
+                          _vm._m(15)
                         ]),
                         _vm._v(" "),
                         _c("tr", [
@@ -49374,27 +49432,27 @@ var render = function() {
                             _vm._v(_vm._s(_vm.user.postcode))
                           ]),
                           _vm._v(" "),
-                          _vm._m(14)
+                          _vm._m(16)
                         ]),
                         _vm._v(" "),
                         _c("tr", [
                           _c("th", [_vm._v("Почтовый адрес *")]),
                           _vm._v(" "),
                           _c("td", { staticClass: "showView" }, [
-                            _vm._v(_vm._s(_vm.user.date_of_birth))
+                            _vm._v(_vm._s(_vm.user.email))
                           ]),
                           _vm._v(" "),
-                          _vm._m(15)
+                          _vm._m(17)
                         ]),
                         _vm._v(" "),
                         _c("tr", [
                           _c("th", [_vm._v("Дополнительно *")]),
                           _vm._v(" "),
                           _c("td", { staticClass: "showView" }, [
-                            _vm._v(_vm._s(_vm.user.sname))
+                            _vm._v(_vm._s(_vm.user.additionally))
                           ]),
                           _vm._v(" "),
-                          _vm._m(16)
+                          _vm._m(18)
                         ])
                       ])
                     ]
@@ -49404,179 +49462,212 @@ var render = function() {
             ]
           ),
           _vm._v(" "),
-          _c("div", { staticClass: "tabcontent", attrs: { id: "balance" } }, [
-            _c("div", { staticClass: "row count_row" }, [
-              _c("div", { staticClass: "col-md-6 profile_data" }, [
-                _c("h3", { staticClass: "personal_data_title" }, [
-                  _vm._v("Лицевой счет")
+          _c(
+            "div",
+            { staticClass: "tabcontent", attrs: { id: "balancetab" } },
+            [
+              _c("div", { staticClass: "row count_row" }, [
+                _c("div", { staticClass: "col-md-6 profile_data" }, [
+                  _c("h3", { staticClass: "personal_data_title" }, [
+                    _vm._v("Лицевой счет")
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "table",
+                    { staticClass: "table table-striped table-hover" },
+                    [
+                      _c("tbody", [
+                        _c("tr", [
+                          _c("th", [
+                            _vm._v(
+                              "Лицевой счет № " + _vm._s(_vm.user.id) + " *"
+                            )
+                          ]),
+                          _vm._v(" "),
+                          _c("td", { staticClass: "showView" }, [
+                            _vm._v(_vm._s(_vm.user.sname))
+                          ]),
+                          _vm._v(" "),
+                          _vm._m(19)
+                        ]),
+                        _vm._v(" "),
+                        _c("tr", [
+                          _c("th", [_vm._v("Субсчет депозита *")]),
+                          _vm._v(" "),
+                          _c("td", { staticClass: "showView" }, [
+                            _vm._v(_vm._s(_vm.user.name))
+                          ]),
+                          _vm._v(" "),
+                          _vm._m(20)
+                        ]),
+                        _vm._v(" "),
+                        _c("tr", [
+                          _c("th", [_vm._v("Субсчет свободных средств *")]),
+                          _vm._v(" "),
+                          _c("td", { staticClass: "showView" }, [
+                            _vm._v(_vm._s(_vm.user.sname))
+                          ]),
+                          _vm._v(" "),
+                          _vm._m(21)
+                        ]),
+                        _vm._v(" "),
+                        _c("tr", [
+                          _c("th", [
+                            _vm._v(
+                              "Субсчет заблокированных средств в счет задатка *"
+                            )
+                          ]),
+                          _vm._v(" "),
+                          _c("td", { staticClass: "showView" }, [
+                            _vm._v(_vm._s(_vm.user.sname))
+                          ]),
+                          _vm._v(" "),
+                          _vm._m(22)
+                        ])
+                      ])
+                    ]
+                  )
                 ]),
                 _vm._v(" "),
-                _c(
-                  "table",
-                  { staticClass: "table table-striped table-hover" },
-                  [
-                    _c("tbody", [
-                      _c("tr", [
-                        _c("th", [
-                          _vm._v("Лицевой счет № " + _vm._s(_vm.user.id) + " *")
+                _c("div", { staticClass: "col-md-6 profile_data" }, [
+                  _c("h3", { staticClass: "personal_data_title" }, [
+                    _vm._v("Реквизиты для пополнения лицевого счета")
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "table",
+                    { staticClass: "table table-striped table-hover" },
+                    [
+                      _c("tbody", [
+                        _c("tr", [
+                          _c("th", [_vm._v("Расчетный счет *")]),
+                          _vm._v(" "),
+                          _c("td", { staticClass: "showView" }, [
+                            _vm._v(_vm._s(_vm.user.phone))
+                          ]),
+                          _vm._v(" "),
+                          _vm._m(23)
                         ]),
                         _vm._v(" "),
-                        _c("td", { staticClass: "showView" }, [
-                          _vm._v(_vm._s(_vm.user.sname))
+                        _c("tr", [
+                          _c("th", [_vm._v("Корреспондентский счет *")]),
+                          _vm._v(" "),
+                          _c("td", { staticClass: "showView" }, [
+                            _vm._v(_vm._s(_vm.user.email))
+                          ]),
+                          _vm._v(" "),
+                          _vm._m(24)
                         ]),
                         _vm._v(" "),
-                        _vm._m(17)
-                      ]),
-                      _vm._v(" "),
-                      _c("tr", [
-                        _c("th", [_vm._v("Субсчет депозита *")]),
-                        _vm._v(" "),
-                        _c("td", { staticClass: "showView" }, [
-                          _vm._v(_vm._s(_vm.user.name))
+                        _c("tr", [
+                          _c("th", [_vm._v("БИК *")]),
+                          _vm._v(" "),
+                          _c("td", { staticClass: "showView" }, [
+                            _vm._v(_vm._s(_vm.user.postcode))
+                          ]),
+                          _vm._v(" "),
+                          _vm._m(25)
                         ]),
                         _vm._v(" "),
-                        _vm._m(18)
-                      ]),
-                      _vm._v(" "),
-                      _c("tr", [
-                        _c("th", [_vm._v("Субсчет свободных средств *")]),
-                        _vm._v(" "),
-                        _c("td", { staticClass: "showView" }, [
-                          _vm._v(_vm._s(_vm.user.sname))
+                        _c("tr", [
+                          _c("th", [_vm._v("ИНН *")]),
+                          _vm._v(" "),
+                          _c("td", { staticClass: "showView" }, [
+                            _vm._v(_vm._s(_vm.user.date_of_birth))
+                          ]),
+                          _vm._v(" "),
+                          _vm._m(26)
                         ]),
                         _vm._v(" "),
-                        _vm._m(19)
-                      ]),
-                      _vm._v(" "),
-                      _c("tr", [
-                        _c("th", [
-                          _vm._v(
-                            "Субсчет заблокированных средств в счет задатка *"
-                          )
+                        _c("tr", [
+                          _c("th", [_vm._v("КПП *")]),
+                          _vm._v(" "),
+                          _c("td", { staticClass: "showView" }, [
+                            _vm._v(_vm._s(_vm.user.sname))
+                          ]),
+                          _vm._v(" "),
+                          _vm._m(27)
                         ]),
                         _vm._v(" "),
-                        _c("td", { staticClass: "showView" }, [
-                          _vm._v(_vm._s(_vm.user.sname))
+                        _c("tr", [
+                          _c("th", [_vm._v("Наименование банка *")]),
+                          _vm._v(" "),
+                          _c("td", { staticClass: "showView" }, [
+                            _vm._v(_vm._s(_vm.user.sname))
+                          ]),
+                          _vm._v(" "),
+                          _vm._m(28)
                         ]),
                         _vm._v(" "),
-                        _vm._m(20)
+                        _c("tr", [
+                          _c("th", [_vm._v("Наименование получателя *")]),
+                          _vm._v(" "),
+                          _c("td", { staticClass: "showView" }, [
+                            _vm._v(_vm._s(_vm.user.sname))
+                          ]),
+                          _vm._v(" "),
+                          _vm._m(29)
+                        ]),
+                        _vm._v(" "),
+                        _c("tr", [
+                          _c("th", [
+                            _vm._v("Назначение платежа для субсчета депозита *")
+                          ]),
+                          _vm._v(" "),
+                          _c("td", { staticClass: "showView" }, [
+                            _vm._v(_vm._s(_vm.user.sname))
+                          ]),
+                          _vm._v(" "),
+                          _vm._m(30)
+                        ]),
+                        _vm._v(" "),
+                        _c("tr", [
+                          _c("th", [
+                            _vm._v(
+                              "Назначение платежа для субсчета свободных средств *"
+                            )
+                          ]),
+                          _vm._v(" "),
+                          _c("td", { staticClass: "showView" }, [
+                            _vm._v(_vm._s(_vm.user.sname))
+                          ]),
+                          _vm._v(" "),
+                          _vm._m(31)
+                        ])
                       ])
-                    ])
-                  ]
-                )
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "col-md-6 profile_data" }, [
-                _c("h3", { staticClass: "personal_data_title" }, [
-                  _vm._v("Реквизиты для пополнения лицевого счета")
-                ]),
-                _vm._v(" "),
-                _c(
-                  "table",
-                  { staticClass: "table table-striped table-hover" },
-                  [
-                    _c("tbody", [
-                      _c("tr", [
-                        _c("th", [_vm._v("Расчетный счет *")]),
-                        _vm._v(" "),
-                        _c("td", { staticClass: "showView" }, [
-                          _vm._v(_vm._s(_vm.user.phone))
-                        ]),
-                        _vm._v(" "),
-                        _vm._m(21)
-                      ]),
-                      _vm._v(" "),
-                      _c("tr", [
-                        _c("th", [_vm._v("Корреспондентский счет *")]),
-                        _vm._v(" "),
-                        _c("td", { staticClass: "showView" }, [
-                          _vm._v(_vm._s(_vm.user.email))
-                        ]),
-                        _vm._v(" "),
-                        _vm._m(22)
-                      ]),
-                      _vm._v(" "),
-                      _c("tr", [
-                        _c("th", [_vm._v("БИК *")]),
-                        _vm._v(" "),
-                        _c("td", { staticClass: "showView" }, [
-                          _vm._v(_vm._s(_vm.user.postcode))
-                        ]),
-                        _vm._v(" "),
-                        _vm._m(23)
-                      ]),
-                      _vm._v(" "),
-                      _c("tr", [
-                        _c("th", [_vm._v("ИНН *")]),
-                        _vm._v(" "),
-                        _c("td", { staticClass: "showView" }, [
-                          _vm._v(_vm._s(_vm.user.date_of_birth))
-                        ]),
-                        _vm._v(" "),
-                        _vm._m(24)
-                      ]),
-                      _vm._v(" "),
-                      _c("tr", [
-                        _c("th", [_vm._v("КПП *")]),
-                        _vm._v(" "),
-                        _c("td", { staticClass: "showView" }, [
-                          _vm._v(_vm._s(_vm.user.sname))
-                        ]),
-                        _vm._v(" "),
-                        _vm._m(25)
-                      ]),
-                      _vm._v(" "),
-                      _c("tr", [
-                        _c("th", [_vm._v("Наименование банка *")]),
-                        _vm._v(" "),
-                        _c("td", { staticClass: "showView" }, [
-                          _vm._v(_vm._s(_vm.user.sname))
-                        ]),
-                        _vm._v(" "),
-                        _vm._m(26)
-                      ]),
-                      _vm._v(" "),
-                      _c("tr", [
-                        _c("th", [_vm._v("Наименование получателя *")]),
-                        _vm._v(" "),
-                        _c("td", { staticClass: "showView" }, [
-                          _vm._v(_vm._s(_vm.user.sname))
-                        ]),
-                        _vm._v(" "),
-                        _vm._m(27)
-                      ]),
-                      _vm._v(" "),
-                      _c("tr", [
-                        _c("th", [
-                          _vm._v("Назначение платежа для субсчета депозита *")
-                        ]),
-                        _vm._v(" "),
-                        _c("td", { staticClass: "showView" }, [
-                          _vm._v(_vm._s(_vm.user.sname))
-                        ]),
-                        _vm._v(" "),
-                        _vm._m(28)
-                      ]),
-                      _vm._v(" "),
-                      _c("tr", [
-                        _c("th", [
-                          _vm._v(
-                            "Назначение платежа для субсчета свободных средств *"
-                          )
-                        ]),
-                        _vm._v(" "),
-                        _c("td", { staticClass: "showView" }, [
-                          _vm._v(_vm._s(_vm.user.sname))
-                        ]),
-                        _vm._v(" "),
-                        _vm._m(29)
-                      ])
-                    ])
-                  ]
-                )
+                    ]
+                  )
+                ])
               ])
-            ])
-          ])
+            ]
+          ),
+          _vm._v(" "),
+          _c(
+            "div",
+            { staticClass: "tabcontent", attrs: { id: "changepasstab" } },
+            [
+              _c("div", { staticClass: "row count_row" }, [
+                _c("div", { staticClass: "col-md-12 profile_data" }, [
+                  _c(
+                    "form",
+                    { attrs: { method: "POST", action: "changepassword" } },
+                    [
+                      _c("input", {
+                        attrs: { type: "hidden", name: "_token" },
+                        domProps: { value: _vm.csrf }
+                      }),
+                      _vm._v(" "),
+                      _c("h3", { staticClass: "personal_data_title" }, [
+                        _vm._v("Изменить пароль")
+                      ]),
+                      _vm._v(" "),
+                      _vm._m(32)
+                    ]
+                  )
+                ])
+              ])
+            ]
+          )
         ])
       ]),
       _vm._v(" "),
@@ -49593,7 +49684,10 @@ var staticRenderFns = [
     return _c(
       "li",
       { staticClass: "profile_menu_li active", attrs: { id: "profilebut" } },
-      [_c("i", { staticClass: "fas fa-user" }), _vm._v("Профиль")]
+      [
+        _c("i", { staticClass: "fas fa-user" }),
+        _vm._v("Профиль\n                                    ")
+      ]
     )
   },
   function() {
@@ -49603,7 +49697,27 @@ var staticRenderFns = [
     return _c(
       "li",
       { staticClass: "profile_menu_li", attrs: { id: "balancebut" } },
-      [_c("i", { staticClass: "fas fa-ruble-sign" }), _vm._v("Лицевой счёт")]
+      [
+        _c("i", { staticClass: "fas fa-ruble-sign" }),
+        _vm._v(
+          "Лицевой\n                                        счёт\n                                    "
+        )
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "li",
+      { staticClass: "profile_menu_li", attrs: { id: "changepassbut" } },
+      [
+        _c("i", { staticClass: "fas fa-unlock" }),
+        _vm._v(
+          "\n                                        Изменить пароль\n                                    "
+        )
+      ]
     )
   },
   function() {
@@ -49647,6 +49761,23 @@ var staticRenderFns = [
       _c("th", [_vm._v("ИНН физ. лица *")]),
       _vm._v(" "),
       _c("td", { staticClass: "showView" }, [_vm._v("AAAA")]),
+      _vm._v(" "),
+      _c("td", { staticClass: "showEdit" }, [
+        _c("input", {
+          staticClass: "form-control  required",
+          attrs: { type: "text", name: "lastName", value: "Sardaryan" }
+        })
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("tr", [
+      _c("th", [_vm._v("Расчетный/лицевой счет *")]),
+      _vm._v(" "),
+      _c("td", { staticClass: "showView" }, [_vm._v("999888777")]),
       _vm._v(" "),
       _c("td", { staticClass: "showEdit" }, [
         _c("input", {
@@ -49735,7 +49866,7 @@ var staticRenderFns = [
     return _c("td", { staticClass: "showEdit" }, [
       _c("input", {
         staticClass: "form-control  required",
-        attrs: { type: "phone", name: "phone", value: "Sardaryan" }
+        attrs: { type: "tel", name: "phone", value: "Sardaryan" }
       })
     ])
   },
@@ -49834,7 +49965,7 @@ var staticRenderFns = [
     return _c("td", { staticClass: "showEdit" }, [
       _c("input", {
         staticClass: "form-control  required",
-        attrs: { type: "phone", name: "phone", value: "Sardaryan" }
+        attrs: { type: "tel", name: "phone", value: "Sardaryan" }
       })
     ])
   },
@@ -49924,6 +50055,78 @@ var staticRenderFns = [
         staticClass: "form-control required",
         attrs: { type: "text", name: "additional", value: "Sardaryan" }
       })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("table", { staticClass: "table table-striped table-hover" }, [
+      _c("tbody", [
+        _c("tr", [
+          _c("th", [_vm._v("Текущий пароль *")]),
+          _vm._v(" "),
+          _c("td", { staticClass: "showView" }, [
+            _c("input", {
+              staticClass: "form-control",
+              attrs: {
+                id: "password",
+                type: "password",
+                name: "current_password",
+                autocomplete: "current-password"
+              }
+            })
+          ])
+        ]),
+        _vm._v(" "),
+        _c("tr", [
+          _c("th", [_vm._v("Новый пароль *")]),
+          _vm._v(" "),
+          _c("td", { staticClass: "showView" }, [
+            _c("input", {
+              staticClass: "form-control",
+              attrs: {
+                id: "new_password",
+                type: "password",
+                name: "new_password",
+                autocomplete: "current-password"
+              }
+            })
+          ])
+        ]),
+        _vm._v(" "),
+        _c("tr", [
+          _c("th", [_vm._v("Подтвердите Пароль *")]),
+          _vm._v(" "),
+          _c("td", { staticClass: "showView" }, [
+            _c("input", {
+              staticClass: "form-control",
+              attrs: {
+                id: "new_confirm_password",
+                type: "password",
+                name: "new_confirm_password",
+                autocomplete: "current-password"
+              }
+            })
+          ])
+        ]),
+        _vm._v(" "),
+        _c("tr", [
+          _c("th"),
+          _vm._v(" "),
+          _c("td", { staticClass: "showView" }, [
+            _c(
+              "button",
+              { staticClass: "btn btn-primary", attrs: { type: "submit" } },
+              [
+                _vm._v(
+                  "\n                                            Изменить\n                                        "
+                )
+              ]
+            )
+          ])
+        ])
+      ])
     ])
   }
 ]
@@ -51039,117 +51242,128 @@ var render = function() {
             _vm.slider.length > 0
               ? _c("div", { staticClass: "container container-back" }, [
                   _c("div", { staticClass: "row body-cats" }, [
-                    _c(
-                      "div",
-                      {
-                        staticClass: "col-md-1 body-cars",
-                        attrs: { "data-id": "0" },
-                        on: {
-                          click: function($event) {
-                            return _vm.filterByBodies(0)
-                          }
-                        }
-                      },
-                      [_vm._m(3), _vm._v(" "), _vm._m(4)]
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "div",
-                      {
-                        staticClass: "col-md-1 body-cars",
-                        attrs: { "data-id": "3" },
-                        on: {
-                          click: function($event) {
-                            return _vm.filterByBodies(3)
-                          }
-                        }
-                      },
-                      [_vm._m(5), _vm._v(" "), _vm._m(6)]
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "div",
-                      {
-                        staticClass: "col-md-1 body-cars",
-                        attrs: { "data-id": "8" },
-                        on: {
-                          click: function($event) {
-                            return _vm.filterByBodies(8)
-                          }
-                        }
-                      },
-                      [_vm._m(7), _vm._v(" "), _vm._m(8)]
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "div",
-                      {
-                        staticClass: "col-md-1 body-cars",
-                        attrs: { "data-id": "4" },
-                        on: {
-                          click: function($event) {
-                            return _vm.filterByBodies(4)
-                          }
-                        }
-                      },
-                      [_vm._m(9), _vm._v(" "), _vm._m(10)]
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "div",
-                      {
-                        staticClass: "col-md-1 body-cars",
-                        attrs: { "data-id": "5" },
-                        on: {
-                          click: function($event) {
-                            return _vm.filterByBodies(5)
-                          }
-                        }
-                      },
-                      [_vm._m(11), _vm._v(" "), _vm._m(12)]
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "div",
-                      {
-                        staticClass: "col-md-1 body-cars",
-                        attrs: { "data-id": "6" },
-                        on: {
-                          click: function($event) {
-                            return _vm.filterByBodies(6)
-                          }
-                        }
-                      },
-                      [_vm._m(13), _vm._v(" "), _vm._m(14)]
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "div",
-                      {
-                        staticClass: "col-md-1 body-cars",
-                        attrs: { "data-id": "7" },
-                        on: {
-                          click: function($event) {
-                            return _vm.filterByBodies(7)
-                          }
-                        }
-                      },
-                      [_vm._m(15), _vm._v(" "), _vm._m(16)]
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "div",
-                      {
-                        staticClass: "col-md-1 body-cars",
-                        attrs: { "data-id": "9" },
-                        on: {
-                          click: function($event) {
-                            return _vm.filterByBodies(9)
-                          }
-                        }
-                      },
-                      [_vm._m(17), _vm._v(" "), _vm._m(18)]
-                    )
+                    _c("div", { staticClass: "car_types_div" }, [
+                      _c(
+                        "ul",
+                        {
+                          staticClass: "nav nav-tabs",
+                          attrs: { id: "carTypes" }
+                        },
+                        [
+                          _c(
+                            "li",
+                            {
+                              staticClass: "body-cars carTypeActive",
+                              attrs: { role: "presentation", "data-id": "0" },
+                              on: {
+                                click: function($event) {
+                                  return _vm.classLi(0)
+                                }
+                              }
+                            },
+                            [_vm._m(3)]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "li",
+                            {
+                              staticClass: "body-cars",
+                              attrs: { role: "presentation", "data-id": "3" },
+                              on: {
+                                click: function($event) {
+                                  return _vm.classLi(3)
+                                }
+                              }
+                            },
+                            [_vm._m(4)]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "li",
+                            {
+                              staticClass: "body-cars",
+                              attrs: { role: "presentation", "data-id": "4" },
+                              on: {
+                                click: function($event) {
+                                  return _vm.classLi(4)
+                                }
+                              }
+                            },
+                            [_vm._m(5)]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "li",
+                            {
+                              staticClass: "body-cars",
+                              attrs: { role: "presentation", "data-id": "5" },
+                              on: {
+                                click: function($event) {
+                                  return _vm.classLi(5)
+                                }
+                              }
+                            },
+                            [_vm._m(6)]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "li",
+                            {
+                              staticClass: "body-cars",
+                              attrs: { role: "presentation", "data-id": "6" },
+                              on: {
+                                click: function($event) {
+                                  return _vm.classLi(6)
+                                }
+                              }
+                            },
+                            [_vm._m(7)]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "li",
+                            {
+                              staticClass: "body-cars",
+                              attrs: { role: "presentation", "data-id": "7" },
+                              on: {
+                                click: function($event) {
+                                  return _vm.classLi(7)
+                                }
+                              }
+                            },
+                            [_vm._m(8)]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "li",
+                            {
+                              staticClass: "body-cars",
+                              attrs: { role: "presentation", "data-id": "8" },
+                              on: {
+                                click: function($event) {
+                                  return _vm.classLi(8)
+                                }
+                              }
+                            },
+                            [_vm._m(9)]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "li",
+                            {
+                              staticClass: "body-cars",
+                              attrs: { role: "presentation", "data-id": "9" },
+                              on: {
+                                click: function($event) {
+                                  return _vm.classLi(9)
+                                }
+                              }
+                            },
+                            [_vm._m(10)]
+                          )
+                        ]
+                      )
+                    ])
                   ])
                 ])
               : _vm._e()
@@ -51160,164 +51374,180 @@ var render = function() {
         ? _c("div", { staticClass: "container-fluid car-filters" }, [
             _c("div", { staticClass: "container container-back" }, [
               _c("form", { attrs: { action: "/filtercar", type: "GET" } }, [
-                _c("div", { staticClass: "row select-options-filter" }, [
-                  _c("div", { staticClass: "col" }, [
-                    _c("label"),
-                    _vm._v(" "),
-                    _c(
-                      "select",
-                      {
-                        staticClass: "form-control options selectbox",
-                        attrs: { id: "model", name: "modelval" },
-                        on: {
-                          change: function($event) {
-                            return _vm.filterByModels($event)
-                          }
-                        }
-                      },
-                      [
-                        _c("option", { attrs: { value: "" } }, [
-                          _vm._v("Все марки")
-                        ]),
-                        _vm._v(" "),
-                        _vm._l(_vm.models, function(model, index) {
-                          return _c(
-                            "option",
-                            { domProps: { value: model.id } },
-                            [
-                              _vm._v(
-                                _vm._s(model.name) +
-                                  "\n                                "
-                              )
-                            ]
-                          )
-                        })
-                      ],
-                      2
-                    )
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "col" }, [
-                    _c("label"),
-                    _vm._v(" "),
-                    _c(
-                      "select",
-                      {
-                        staticClass: "form-control options selectbox",
-                        attrs: { id: "state", name: "stateval" },
-                        on: {
-                          change: function($event) {
-                            return _vm.filterByStates($event)
-                          }
-                        }
-                      },
-                      [
-                        _c("option", { attrs: { value: "" } }, [
-                          _vm._v("Все состояния")
-                        ]),
-                        _vm._v(" "),
-                        _vm._l(_vm.states, function(state, index) {
-                          return _c(
-                            "option",
-                            { domProps: { value: state.id } },
-                            [
-                              _vm._v(
-                                _vm._s(state.name) +
-                                  "\n                                "
-                              )
-                            ]
-                          )
-                        })
-                      ],
-                      2
-                    )
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "col" }, [
-                    _c("label"),
-                    _vm._v(" "),
-                    _c(
-                      "select",
-                      {
-                        staticClass: "form-control options selectbox",
-                        attrs: { id: "parking", name: "parkingval" },
-                        on: {
-                          change: function($event) {
-                            return _vm.filterByParkings($event)
-                          }
-                        }
-                      },
-                      [
-                        _c("option", { attrs: { value: "" } }, [
-                          _vm._v("Все стоянки")
-                        ]),
-                        _vm._v(" "),
-                        _vm._l(_vm.parkings, function(parking, index) {
-                          return _c(
-                            "option",
-                            { domProps: { value: parking.id } },
-                            [
-                              _vm._v(
-                                "\n                                    " +
-                                  _vm._s(parking.address) +
-                                  "\n                                "
-                              )
-                            ]
-                          )
-                        })
-                      ],
-                      2
-                    )
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "col" }, [
-                    _c("label", [_vm._v("Дата завершения")]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "row input-row" }, [
-                      _c("p", [_vm._v("С")]),
+                _c(
+                  "div",
+                  { staticClass: "row select-options-filter filter_row" },
+                  [
+                    _c("div", { staticClass: "col" }, [
+                      _c("label"),
                       _vm._v(" "),
-                      _c("div", { staticClass: "col filter-date" }, [
-                        _c("input", {
-                          staticClass: "input-date form-control options",
-                          attrs: {
-                            name: "startval",
-                            type: "date",
-                            id: "start",
-                            value: ""
-                          },
+                      _c(
+                        "select",
+                        {
+                          staticClass: "form-control options selectbox",
+                          attrs: { id: "model", name: "modelval" },
                           on: {
                             change: function($event) {
-                              return _vm.filterByStarts($event)
+                              return _vm.filterByModels($event)
                             }
                           }
-                        })
-                      ]),
+                        },
+                        [
+                          _c("option", { attrs: { value: "" } }, [
+                            _vm._v("Все марки")
+                          ]),
+                          _vm._v(" "),
+                          _vm._l(_vm.models, function(model, index) {
+                            return _c(
+                              "option",
+                              { domProps: { value: model.id } },
+                              [
+                                _vm._v(
+                                  _vm._s(model.name) +
+                                    "\n                                "
+                                )
+                              ]
+                            )
+                          })
+                        ],
+                        2
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col" }, [
+                      _c("label"),
                       _vm._v(" "),
-                      _c("p", [_vm._v("ПО")]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "col filter-date" }, [
-                        _c("input", {
-                          staticClass: "input-date form-control options",
-                          attrs: {
-                            name: "endval",
-                            type: "date",
-                            id: "finish",
-                            value: ""
-                          },
+                      _c(
+                        "select",
+                        {
+                          staticClass: "form-control options selectbox",
+                          attrs: { id: "state", name: "stateval" },
                           on: {
                             change: function($event) {
-                              return _vm.filterByEnds($event)
+                              return _vm.filterByStates($event)
                             }
                           }
-                        }),
-                        _vm._v(" "),
-                        _c("input", {
-                          attrs: { type: "hidden", name: "bodyval" },
-                          domProps: { value: _vm.bodiesId }
-                        })
-                      ]),
+                        },
+                        [
+                          _c("option", { attrs: { value: "" } }, [
+                            _vm._v("Все состояния")
+                          ]),
+                          _vm._v(" "),
+                          _vm._l(_vm.states, function(state, index) {
+                            return _c(
+                              "option",
+                              { domProps: { value: state.id } },
+                              [
+                                _vm._v(
+                                  _vm._s(state.name) +
+                                    "\n                                "
+                                )
+                              ]
+                            )
+                          })
+                        ],
+                        2
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col" }, [
+                      _c("label"),
                       _vm._v(" "),
-                      _c("div", { staticClass: "col filter-date" }, [
+                      _c(
+                        "select",
+                        {
+                          staticClass: "form-control options selectbox",
+                          attrs: { id: "parking", name: "parkingval" },
+                          on: {
+                            change: function($event) {
+                              return _vm.filterByParkings($event)
+                            }
+                          }
+                        },
+                        [
+                          _c("option", { attrs: { value: "" } }, [
+                            _vm._v("Все стоянки")
+                          ]),
+                          _vm._v(" "),
+                          _vm._l(_vm.parkings, function(parking, index) {
+                            return _c(
+                              "option",
+                              { domProps: { value: parking.id } },
+                              [
+                                _vm._v(
+                                  "\n                                    " +
+                                    _vm._s(parking.address) +
+                                    "\n                                "
+                                )
+                              ]
+                            )
+                          })
+                        ],
+                        2
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col" }, [
+                      _c("label", [_vm._v("Дата завершения")]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "row input-row" }, [
+                        _c("p", [_vm._v("С")]),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          { staticClass: "col filter-date filter-date-d" },
+                          [
+                            _c("input", {
+                              staticClass: "input-date form-control options",
+                              attrs: {
+                                name: "startval",
+                                type: "date",
+                                id: "start",
+                                value: ""
+                              },
+                              on: {
+                                change: function($event) {
+                                  return _vm.filterByStarts($event)
+                                }
+                              }
+                            })
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c("p", [_vm._v("ПО")]),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          { staticClass: "col filter-date filter-date-d" },
+                          [
+                            _c("input", {
+                              staticClass: "input-date form-control options",
+                              attrs: {
+                                name: "endval",
+                                type: "date",
+                                id: "finish",
+                                value: ""
+                              },
+                              on: {
+                                change: function($event) {
+                                  return _vm.filterByEnds($event)
+                                }
+                              }
+                            }),
+                            _vm._v(" "),
+                            _c("input", {
+                              attrs: { type: "hidden", name: "bodyval" },
+                              domProps: { value: _vm.bodiesId }
+                            })
+                          ]
+                        )
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      { staticClass: "col filter-date filter-date-btn" },
+                      [
                         _c(
                           "button",
                           {
@@ -51326,16 +51556,16 @@ var render = function() {
                           },
                           [
                             _vm._v(
-                              "\n                                        Показать: " +
+                              "\n                                Показать: " +
                                 _vm._s(this.allCarsLength) +
-                                "\n                                    "
+                                "\n                            "
                             )
                           ]
                         )
-                      ])
-                    ])
-                  ])
-                ])
+                      ]
+                    )
+                  ]
+                )
               ])
             ])
           ])
@@ -51496,7 +51726,7 @@ var render = function() {
             _vm._v(" "),
             _vm.carssearch.length == 0
               ? _c("div", { staticClass: "container container-back" }, [
-                  _vm._m(19)
+                  _vm._m(11)
                 ])
               : _vm._e()
           ])
@@ -51615,185 +51845,148 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row" }, [
-      _c("div", {
-        staticClass: "col activeback body-car-back1",
-        attrs: { "back-id": "0" }
-      })
-    ])
+    return _c(
+      "a",
+      {
+        staticClass: "carType-all activeback body-car-back1 body-name",
+        attrs: { title: "Все типы" }
+      },
+      [
+        _c("i", { staticClass: "fas fa-car-side", attrs: { "icon-id": "0" } }),
+        _vm._v(" "),
+        _c("p", { staticClass: "carTypesText" }, [_vm._v("Все типы")])
+      ]
+    )
   },
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col-md-12 text-name" }, [
-        _c("p", { staticClass: "body-name", attrs: { "p-id": "0" } }, [
-          _vm._v("Все типы")
-        ])
-      ])
-    ])
+    return _c(
+      "a",
+      {
+        staticClass: "carType-car activeback body-car-back2",
+        attrs: { title: "Легковые" }
+      },
+      [
+        _c("i", { staticClass: "fas fa-car", attrs: { "icon-id": "3" } }),
+        _vm._v(" "),
+        _c("p", { staticClass: "carTypesText" }, [_vm._v("Легковые")])
+      ]
+    )
   },
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row" }, [
-      _c("div", {
-        staticClass: "col activeback body-car-back2",
-        attrs: { "back-id": "3" }
-      })
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col-md-12 text-name" }, [
-        _c("p", { staticClass: "body-name", attrs: { "p-id": "3" } }, [
-          _vm._v("Легковые")
-        ])
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row" }, [
-      _c("div", {
-        staticClass: "col activeback body-car-back3",
-        attrs: { "back-id": "8" }
-      })
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col-md-12 text-name" }, [
-        _c("p", { staticClass: "body-name", attrs: { "p-id": "8" } }, [
-          _vm._v("Автобусы")
-        ])
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row" }, [
-      _c("div", {
-        staticClass: "col activeback body-car-back4",
-        attrs: { "back-id": "4" }
-      })
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col-md-12 text-name" }, [
-        _c("p", { staticClass: "body-name", attrs: { "p-id": "4" } }, [
+    return _c(
+      "a",
+      {
+        staticClass: "carType-commercialCar activeback body-car-back3",
+        attrs: { title: "Легкие коммерческие" }
+      },
+      [
+        _c("i", { staticClass: "fas fa-truck" }),
+        _vm._v(" "),
+        _c("p", { staticClass: "carTypesText" }, [
           _vm._v("Легкие коммерческие")
         ])
-      ])
-    ])
+      ]
+    )
   },
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row" }, [
-      _c("div", {
-        staticClass: "col activeback body-car-back5",
-        attrs: { "back-id": "5" }
-      })
-    ])
+    return _c(
+      "a",
+      {
+        staticClass: "carType-truck activeback body-car-back4",
+        attrs: { title: "Грузовые" }
+      },
+      [
+        _c("i", {
+          staticClass: "fas fa-truck-moving",
+          attrs: { "icon-id": "4" }
+        }),
+        _vm._v(" "),
+        _c("p", { staticClass: "carTypesText" }, [_vm._v("Грузовые")])
+      ]
+    )
   },
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col-md-12 text-name" }, [
-        _c("p", { staticClass: "body-name", attrs: { "p-id": "5" } }, [
-          _vm._v("Грузовые")
-        ])
-      ])
-    ])
+    return _c(
+      "a",
+      {
+        staticClass: "carType-truckTractor activeback body-car-back5",
+        attrs: { title: "Седельные тягачи" }
+      },
+      [
+        _c("i", {
+          staticClass: "fas fa-truck-pickup",
+          attrs: { "icon-id": "5" }
+        }),
+        _vm._v(" "),
+        _c("p", { staticClass: "carTypesText" }, [_vm._v("Седельные тягачи")])
+      ]
+    )
   },
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row" }, [
-      _c("div", {
-        staticClass: "col activeback body-car-back6",
-        attrs: { "back-id": "6" }
-      })
-    ])
+    return _c(
+      "a",
+      {
+        staticClass: "carType-trailer activeback body-car-back6",
+        attrs: { title: "Прицепы" }
+      },
+      [
+        _c("i", {
+          staticClass: "fas fa-truck-loading",
+          attrs: { "icon-id": "6" }
+        }),
+        _vm._v(" "),
+        _c("p", { staticClass: "carTypesText" }, [_vm._v("Прицепы")])
+      ]
+    )
   },
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col-md-12 text-name" }, [
-        _c("p", { staticClass: "body-name", attrs: { "p-id": "6" } }, [
-          _vm._v("Седельные тягачи")
-        ])
-      ])
-    ])
+    return _c(
+      "a",
+      {
+        staticClass: "carType-bus activeback body-car-back7",
+        attrs: { title: "Автобусы" }
+      },
+      [
+        _c("i", { staticClass: "fas fa-bus", attrs: { "icon-id": "7" } }),
+        _vm._v(" "),
+        _c("p", { staticClass: "carTypesText" }, [_vm._v("Автобусы")])
+      ]
+    )
   },
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row" }, [
-      _c("div", {
-        staticClass: "col activeback body-car-back7",
-        attrs: { "back-id": "7" }
-      })
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col-md-12 text-name" }, [
-        _c("p", { staticClass: "body-name", attrs: { "p-id": "7" } }, [
-          _vm._v("Прицепы")
-        ])
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row" }, [
-      _c("div", {
-        staticClass: "col activeback body-car-back8",
-        attrs: { "back-id": "9" }
-      })
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col-md-12 text-name" }, [
-        _c("p", { staticClass: "body-name", attrs: { "p-id": "9" } }, [
-          _vm._v("Спецтехника")
-        ])
-      ])
-    ])
+    return _c(
+      "a",
+      {
+        staticClass: "carType-special activeback body-car-back8",
+        attrs: { title: "Спецтехника" }
+      },
+      [
+        _c("i", { staticClass: "fas fa-tractor", attrs: { "icon-id": "9" } }),
+        _vm._v(" "),
+        _c("p", { staticClass: "carTypesText" }, [_vm._v("Спецтехника")])
+      ]
+    )
   },
   function() {
     var _vm = this
