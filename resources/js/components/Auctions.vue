@@ -358,7 +358,7 @@
                         for (let i = 0; i < Math.ceil(response.data.length / 6); i++) {
                             this.offsetCars.push(i);
                         }
-                        return this.allCarsLength = response.data.length;
+                        return this.allCarsLength = response.data.filter(obj => (obj.categorId == this.id)).length;
                     })
                 }
                 if (id) {
@@ -367,7 +367,7 @@
                         for (let i = 0; i < Math.ceil(response.data.length / 6); i++) {
                             this.offsetCars.push(i);
                         }
-                        return this.allCarsLength = response.data.filter(obj => (obj.bodyId === id) && (this.stateId == obj.stateId || this.stateId == '') && (this.parkingId == obj.parkingId || this.parkingId == '') && (this.modelId == obj.modelId || this.modelId == '') && (this.parkingId == obj.parkingId || this.parkingId == '') && (!this.startAu || this.startAu >= new Date(obj.auctionStart).getTime()) && (!this.endAu || this.endAu <= new Date(obj.endOfAuction).getTime())).length;
+                        return this.allCarsLength = response.data.filter(obj => (obj.bodyId === id) && (this.stateId == obj.stateId || this.stateId == '') && (obj.categorId == this.id) && (this.parkingId == obj.parkingId || this.parkingId == '') && (this.modelId == obj.modelId || this.modelId == '') && (this.parkingId == obj.parkingId || this.parkingId == '') && (!this.startAu || this.startAu >= new Date(obj.auctionStart).getTime()) && (!this.endAu || this.endAu <= new Date(obj.endOfAuction).getTime())).length;
                     })
                 }
             },

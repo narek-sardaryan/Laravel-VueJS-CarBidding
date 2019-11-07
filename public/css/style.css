@@ -306,6 +306,21 @@ body {
     width: 50px;
 }
 
+.quantity_cars {
+    position: absolute;
+    right: -1px;
+    top: 0;
+    font-size: 14px;
+    color: #0f92ff;
+    padding: 1px 5px 0 5px;
+}
+
+.quantity_cars p {
+    color: #0f92ff;
+    margin: 0;
+    transition: 0.5s;
+}
+
 .body_icons {
     color: #0f92ff;
     font-size: 35px;
@@ -323,6 +338,7 @@ body {
     cursor: pointer;
     transition: 0.5s;
     padding: 5px 10px;
+    position: relative;
 }
 
 .car_types_div {
@@ -342,6 +358,7 @@ body {
 .body-cars .carTypesText {
     color: #0f92ff;
     font-size: 14px;
+    margin-bottom: 0;
 }
 
 .car_types_div .carTypesLScroll {
@@ -381,7 +398,12 @@ body {
 }
 
 .body-cars.carTypeActive a i, .body-cars.carTypeActive a .carTypesText {
-    color: #fff;
+    color: #fff!important;
+}
+
+.body-cars:hover .quantity_cars p {
+    transform: scale(1.2);
+    transition: 0.5s;
 }
 
 .body-cars:hover {
@@ -396,6 +418,7 @@ body {
 .body-cars:hover .carTypesText {
     transform: translateX(-5px);
     transition: 0.4s;
+    margin-bottom: 0;
 }
 
 .body-cars:hover i {
@@ -406,6 +429,7 @@ body {
 
 .body-cars i {
     transition: 0.4s;
+    margin-top: 10px;
 }
 
 .body-cars:hover p {
@@ -509,6 +533,8 @@ body {
 .footer-background {
     background-color: #DAE2F0;
     border-top: 4px solid #0f92ff;
+    padding-left: 0;
+    padding-right: 0;
 }
 
 .footer-logo {
@@ -666,6 +692,15 @@ body {
     height: 940px;
 }
 
+.pics img {
+    -webkit-filter: grayscale(1);
+    height: 90px;
+}
+
+.pics img:hover {
+    -webkit-filter: grayscale(0);
+}
+
 .about_div {
     color: #fff;
     padding: 95px 0;
@@ -771,7 +806,7 @@ body {
 
 .searchbox_div .searchbox {
     background: #0F91FF;
-    margin-top: 0px;
+    margin-top: 0;
     margin-left: 20px;
     padding: 0 15px;
     height: 78px;
@@ -852,7 +887,7 @@ span i {
 }
 
 .margin {
-    margin-top: 100px;
+    margin-top: 79px;
     background: #ffffffad;
 }
 
@@ -944,7 +979,7 @@ span i {
 }
 
 .mobiles_data_row {
-    margin: 30px 0;
+    margin-top: 30px;
     background: #0C74CA;
     padding: 30px 0;
 }

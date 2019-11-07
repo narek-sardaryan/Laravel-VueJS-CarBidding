@@ -133,48 +133,72 @@
                     <div class="car_types_div">
                         <ul class="nav nav-tabs" id="carTypes">
                             <li @click="classLi(0)" role="presentation" class="body-cars carTypeActive" data-id="0">
+                                <div class="quantity_cars">
+                                    <p class="count_cars_body">{{ quanitityAll }}</p>
+                                </div>
                                 <a title="Все типы">
                                     <i class="fas fa-car-side" icon-id="0"></i>
                                     <p class="carTypesText">Все типы</p>
                                 </a>
                             </li>
                             <li @click="classLi(3)" role="presentation" class="body-cars" data-id="3">
-                                <a  title="Легковые">
+                                <div class="quantity_cars">
+                                    <p class="count_cars_body">{{ quanititySedan }}</p>
+                                </div>
+                                <a title="Легковые">
                                     <i class="fas fa-car" icon-id="3"></i>
                                     <p class="carTypesText">Легковые</p>
                                 </a>
                             </li>
                             <li @click="classLi(4)" role="presentation" class="body-cars" data-id="4">
+                                <div class="quantity_cars">
+                                    <p class="count_cars_body">{{ quanitityLightComm }}</p>
+                                </div>
                                 <a title="Легкие коммерческие">
                                     <i class="fas fa-truck"></i>
                                     <p class="carTypesText">Легкие коммерческие</p>
                                 </a>
                             </li>
                             <li @click="classLi(5)" role="presentation" class="body-cars" data-id="5">
+                                <div class="quantity_cars">
+                                    <p class="count_cars_body">{{ quanitityTruck }}</p>
+                                </div>
                                 <a title="Грузовые">
                                     <i class="fas fa-truck-moving" icon-id="4"></i>
                                     <p class="carTypesText">Грузовые</p>
                                 </a>
                             </li>
                             <li @click="classLi(6)" role="presentation" class="body-cars" data-id="6">
-                                <a  title="Седельные тягачи">
+                                <div class="quantity_cars">
+                                    <p class="count_cars_body">{{ quanititySedTyag }}</p>
+                                </div>
+                                <a title="Седельные тягачи">
                                     <i class="fas fa-truck-pickup" icon-id="5"></i>
                                     <p class="carTypesText">Седельные тягачи</p>
                                 </a>
                             </li>
                             <li @click="classLi(7)" role="presentation" class="body-cars" data-id="7">
-                                <a  title="Прицепы">
+                                <div class="quantity_cars">
+                                    <p class="count_cars_body">{{ quanitityTrailers }}</p>
+                                </div>
+                                <a title="Прицепы">
                                     <i class="fas fa-truck-loading" icon-id="6"></i>
                                     <p class="carTypesText">Прицепы</p>
                                 </a>
                             </li>
                             <li @click="classLi(8)" role="presentation" class="body-cars" data-id="8">
+                                <div class="quantity_cars">
+                                    <p class="count_cars_body">{{ quanitityBus }}</p>
+                                </div>
                                 <a title="Автобусы">
                                     <i class="fas fa-bus" icon-id="7"></i>
                                     <p class="carTypesText">Автобусы</p>
                                 </a>
                             </li>
                             <li @click="classLi(9)" role="presentation" class="body-cars" data-id="9">
+                                <div class="quantity_cars">
+                                    <p class="count_cars_body">{{ quanititySprecialTech }}</p>
+                                </div>
                                 <a title="Спецтехника">
                                     <i class="fas fa-tractor" icon-id="9"></i>
                                     <p class="carTypesText">Спецтехника</p>
@@ -329,15 +353,28 @@
                 parkingId: '',
                 bodiesId: '',
                 allCarsLength: null,
+                quanitityAll: 0,
+                quanititySedan: 0,
+                quanitityLightComm: 0,
+                quanitityTruck: 0,
+                quanititySedTyag: 0,
+                quanitityTrailers: 0,
+                quanitityBus: 0,
+                quanititySprecialTech: 0,
+                timeoutAll: null,
+                timeoutSedan: null,
+                timeoutLightComm: null,
+                timeoutTruck: null,
+                timeoutSedTyag: null,
+                timeoutTrailers: null,
+                timeoutBus: null,
+                timeoutSprecialTech: null,
             }
         },
         created: function () {
-            this.fetchBodies();
-            this.fetchModels();
-            this.fetchParkings();
-            this.fetchStates();
-            this.fetchSlider();
+            this.fetchs();
             this.getResults();
+            this.fetchCars();
         },
         component: {
             Cube
@@ -355,41 +392,83 @@
                     this.cars = data;
                 });
             },
-            fetchBodies() {
-                axios.get('/fetchbodies').then(response => {
-                    this.bodies = response.data;
-                })
-            },
-            fetchModels() {
+            fetchs() {
+                // console.log(req("fetchmodels"))
                 axios.get('/fetchmodels').then(response => {
                     this.models = response.data;
                 })
-            },
-            fetchParkings() {
-                axios.get('/fetchparkings').then(response => {
-                    this.parkings = response.data;
-                })
-            },
-            fetchStates() {
                 axios.get('/fetchstates').then(response => {
                     this.states = response.data;
                 })
-            },
-            fetchCars() {
-                axios.get('/fetchcarsall').then(response => {
-                    this.allCarsLength = response.data.length;
-                    this.offsetCars = [];
-                    for (let i = 0; i < Math.ceil(response.data.length / 6); i++) {
-                        this.offsetCars.push(i);
-                    }
+                axios.get('/fetchparkings').then(response => {
+                    this.parkings = response.data;
                 })
-            },
-            fetchSlider() {
                 axios.get('/fetchslider').then(response => {
                     this.firstSlider = response.data[0];
                     this.slider = response.data;
                 })
             },
+            fetchCars() {
+                axios.get('/fetchcarsall').then(response => {
+                    // let timeoutAll = setInterval(() => {
+                    //     if (this.quanitityAll >= response.data.length) {
+                    //         return clearInterval(timeoutAll);
+                    //     }
+                    //     this.quanitityAll++;
+                    // },4000/response.data.length);
+                    // this.timeoutSedan = setInterval(() => {
+                    //     if (this.quanititySedan >= response.data.filter(obj => (obj.bodyId == 3)).length) {
+                    //         return clearInterval(this.timeoutSedan);
+                    //     }
+                    //     this.quanititySedan++;
+                    // },4000/response.data.filter(obj => (obj.bodyId == 3)).length);
+                    // this.timeoutLightComm = setInterval(() => {
+                    //     if (this.quanitityLightComm >= 300) {
+                    //         return  clearInterval(this.timeoutLightComm);
+                    //     }
+                    //     this.quanitityLightComm++;
+                    // },4000/response.data.filter(obj => (obj.bodyId == 4)).length);
+                    // this.timeoutTruck = setInterval(() => {
+                    //     if (this.quanitityTruck >= response.data.filter(obj => (obj.bodyId == 5)).length) {
+                    //         return clearInterval(this.timeoutTruck);
+                    //     }
+                    //     this.quanitityTruck++;
+                    // },4000/response.data.filter(obj => (obj.bodyId == 5)).length);
+                    // this.timeoutSedTyag = setInterval(() => {
+                    //     if (this.quanititySedTyag >= response.data.filter(obj => (obj.bodyId == 6)).length) {
+                    //         return clearInterval(this.timeoutSedTyag);
+                    //     }
+                    //     this.quanititySedTyag++;
+                    // },4000/response.data.filter(obj => (obj.bodyId == 6)).length);
+                    // this.timeoutTrailers = setInterval(() => {
+                    //     if (this.quanitityTrailers >=  response.data.filter(obj => (obj.bodyId == 7)).length) {
+                    //         return clearInterval(this.timeoutTrailers);
+                    //     }
+                    //     this.quanitityTrailers++;
+                    // },4000/response.data.filter(obj => (obj.bodyId == 7)).length);
+                    // this.timeoutBus = setInterval(() => {
+                    //     if (this.quanitityBus >=  response.data.filter(obj => (obj.bodyId == 8)).length) {
+                    //         return clearInterval(this.timeoutBus);
+                    //     }
+                    //     this.quanitityBus++;
+                    // },4000/response.data.filter(obj => (obj.bodyId == 8)).length);
+                    // this.timeoutSprecialTech = setInterval(() => {
+                    //     if (this.quanititySprecialTech >=  response.data.filter(obj => (obj.bodyId == 9)).length) {
+                    //         return clearInterval(this.timeoutSprecialTech);
+                    //     }
+                    //     this.quanititySprecialTech++;
+                    // },4000/response.data.filter(obj => (obj.bodyId == 9)).length);
+                    this.quanitityAll = response.data.length
+                    this.quanititySedan = response.data.filter(obj => (obj.bodyId == 3)).length
+                    this.quanitityLightComm = response.data.filter(obj => (obj.bodyId == 4)).length
+                    this.quanitityTruck = response.data.filter(obj => (obj.bodyId == 5)).length
+                    this.quanititySedTyag = response.data.filter(obj => (obj.bodyId == 6)).length
+                    this.quanitityTrailers = response.data.filter(obj => (obj.bodyId == 7)).length
+                    this.quanitityBus = response.data.filter(obj => (obj.bodyId == 8)).length
+                    this.quanititySprecialTech = response.data.filter(obj => (obj.bodyId == 9)).length
+                })
+            },
+
             filterByParkings(event) {
                 this.parkingId = event.target.value;
                 axios.get('/fetchcarsall').then(response => {

@@ -45,62 +45,42 @@
                     </div>
                 </div>
                 <div class="row mobiles_data_row">
-                    <div class="col m_data_list">
-                        <h5 class="car_data_title">Данные по автомобилю</h5>
-                        <ul>
-                            <li>Марка:</li>
-                            <li>Модель:</li>
-                            <li>тип по ПСМ/ПТС:</li>
-                            <li>Категория:</li>
-                            <li>Год выпуска:</li>
-                            <li>Пробег:</li>
-                            <li>VIN:</li>
-                            <li>Номер ПСМ/ПТС:</li>
-                            <li>Рама (шасси):</li>
-                            <li>Кузов (кабина, прицеп):</li>
-                        </ul>
-                    </div>
-                    <div class="col m_data_list">
-                        <ul>
-                            <li>{{ car.name }}</li>
-                            <li>{{ car.name }}</li>
-                            <li>{{ car.name }}</li>
-                            <li>{{ car.categorId }}</li>
-                            <li>{{ car.year }}</li>
-                            <li>{{ car.milage }}</li>
-                            <li>{{ car.name }}</li>
-                            <li>{{ car.name }}</li>
-                            <li>{{ car.name }}</li>
-                            <li>{{ car.name }}</li>
-                        </ul>
-                    </div>
-                    <div class="col m_data_list">
-                        <ul>
-                            <li>Марка:</li>
-                            <li>Модель:</li>
-                            <li>тип по ПСМ/ПТС:</li>
-                            <li>Категория:</li>
-                            <li>Год выпуска:</li>
-                            <li>Пробег:</li>
-                            <li>VIN:</li>
-                            <li>Номер ПСМ/ПТС:</li>
-                            <li>Рама (шасси):</li>
-                            <li>Кузов (кабина, прицеп):</li>
-                        </ul>
-                    </div>
-                    <div class="col m_data_list">
-                        <ul>
-                            <li>{{ car.name }}</li>
-                            <li>{{ car.name }}</li>
-                            <li>{{ car.name }}</li>
-                            <li>{{ car.categorId }}</li>
-                            <li>{{ car.year }}</li>
-                            <li>{{ car.milage }}</li>
-                            <li>{{ car.name }}</li>
-                            <li>{{ car.name }}</li>
-                            <li>{{ car.name }}</li>
-                            <li>{{ car.name }}</li>
-                        </ul>
+                    <div class="col-md-12">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <h5 class="car_data_title">Данные по автомобилю</h5>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="row">
+                                    <div class="col m_data_list">
+                                        <ul>
+                                            <li>Номер Лота | #{{ car.id }}</li>
+                                            <li>Марка | {{ car.modelId }}</li>
+                                            <li>Модель | {{ car.name }}</li>
+                                            <li>Марка и модель по ПТС/ПСМ | {{ car.name }} / {{ car.year }}г.</li>
+                                            <li>Кузов | {{ car.bodyId }}</li>
+                                            <li>Год выпуска | {{ car.year }}г.</li>
+                                            <li>Пробег |  {{ car.milage }}км.</li>
+                                            <li>VIN | </li>
+                                        </ul>
+                                    </div>
+                                    <div class="col m_data_list">
+                                        <ul>
+                                            <li>Цвет | {{ car.color }}</li>
+                                            <li>Тип аукциона | {{ car.categorId }}</li>
+                                            <li>Место осмотра | {{ car.parkingId }}</li>
+                                            <li>Комментарии | {{ car.comments }}</li>
+                                            <li>Номер ПСМ/ПТС | </li>
+                                            <li>Модель, номер двигателя | {{ car.engNumber }}</li>
+                                            <li>Двигатель | {{ car.engine }}</li>
+                                            <li>Коробка передач: | {{ car.transmission }}</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
