@@ -306,6 +306,20 @@ body {
     width: 50px;
 }
 
+.quantity_cars {
+    position: absolute;
+    right: 5px;
+    top: 3px;
+    font-size: 14px;
+    color: #0f92ff;
+}
+
+.quantity_cars p {
+    color: #0f92ff;
+    margin: 0;
+    transition: 0.5s;
+}
+
 .body_icons {
     color: #0f92ff;
     font-size: 35px;
@@ -321,11 +335,12 @@ body {
     border-bottom: none;
     cursor: pointer;
     transition: 0.5s;
-    padding: 5px 0;
     width: 11.6%;
     display: flex;
     justify-content: center;
     align-items: center;
+    padding: 10px;
+    position: relative;
 }
 
 .car_types_div {
@@ -335,8 +350,8 @@ body {
 
 .body-cars i {
     color: #0f92ff;
-    padding-top: 7px;
     font-size: 40px;
+    transition: 0.4s;
 }
 
 .body-cars a {
@@ -345,7 +360,8 @@ body {
 
 .body-cars .carTypesText {
     color: #0f92ff;
-    font-size: 13px;
+    font-size: 14px;
+    margin-bottom: 0;
 }
 
 .car_types_div .carTypesLScroll {
@@ -385,7 +401,12 @@ body {
 }
 
 .body-cars.carTypeActive a i, .body-cars.carTypeActive a .carTypesText {
-    color: #fff;
+    color: #fff !important;
+}
+
+.body-cars:hover .quantity_cars p {
+    transform: scale(1.2);
+    transition: 0.5s;
 }
 
 .body-cars:hover {
@@ -395,20 +416,21 @@ body {
 
 .body-cars.carTypeActive {
     background: #0f92ff;
+    background-image: url(../img/design_img/jjj.png);
 }
 
 .body-cars:hover .carTypesText {
     transform: translateX(-5px);
     transition: 0.4s;
+    margin-bottom: 0;
+}
+.body-cars.carTypeActive .quantity_cars p {
+    color: #fff;
 }
 
 .body-cars:hover i {
     transform: scale(1.1);
     color: white;
-    transition: 0.4s;
-}
-
-.body-cars i {
     transition: 0.4s;
 }
 
@@ -435,6 +457,7 @@ body {
 }
 
 .car-filters {
+    background-image: url("../img/design_img/jjj.png");
     background-color: #0f92ff;
     height: 140px;
 }
@@ -519,6 +542,8 @@ body {
 .footer-background {
     background-color: #DAE2F0;
     border-top: 4px solid #0f92ff;
+    padding-left: 0;
+    padding-right: 0;
 }
 
 .footer-logo {
@@ -546,7 +571,7 @@ body {
 
 #lastcars {
     margin-top: 60px;
-    padding-bottom: 120px;
+    padding-bottom: 60px;
 }
 
 .slider-col {
@@ -676,6 +701,15 @@ body {
     height: 940px;
 }
 
+.pics img {
+    -webkit-filter: grayscale(1);
+    height: 120px;
+}
+
+.pics img:hover {
+    -webkit-filter: grayscale(0);
+}
+
 .about_div {
     color: #fff;
     padding: 95px 0;
@@ -743,6 +777,7 @@ body {
 
 .carousel-arrow-left, .carousel-arrow-right {
     position: absolute;
+    top: 30%;
 }
 
 .carousel-arrow-left {
@@ -755,12 +790,12 @@ body {
 
 .carousel-arrow-left .fa-chevron-left, .carousel-arrow-right .fa-chevron-right {
     color: #0C74CA;
-    font-size: 35px;
+    font-size: 47px;
 }
 
-.pics {
-    padding: 30px 0;
-}
+/*.pics {*/
+/*    padding: 30px 0;*/
+/*}*/
 
 .pics > img {
     padding-right: 35px;
@@ -799,7 +834,7 @@ body {
 
 .searchbox_div .searchbox {
     background: #0F91FF;
-    margin-top: 0px;
+    margin-top: 0;
     margin-left: 50px;
     padding: 0 15px;
     height: 78px;
@@ -877,6 +912,12 @@ span i {
     -webkit-background-size: cover;
     background-size: cover;
     height: 400px;
+}
+
+.about-row{
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .margin {
@@ -972,7 +1013,7 @@ span i {
 }
 
 .mobiles_data_row {
-    margin: 30px 0;
+    margin-top: 30px;
     background: #0C74CA;
     padding: 30px 0;
 }
@@ -1369,3 +1410,31 @@ span i {
     margin-bottom: 0;
 }
 
+.iCountUp {
+    font-size: 20px;
+    color: white;
+}
+
+.count-up-back{
+    /*background-image: url(../img/design_img/jjj.png);*/
+    width: 170px;
+    height: 170px;
+    background-color: #2e7bbb;
+    margin-left: 15px;
+    margin-right: 15px;
+    margin-bottom: 60px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-radius: 100%;
+    box-shadow: inset 0px 0px 7px 2px rgba(0, 0, 0, 0.2)
+}
+
+.count-up-row{
+    justify-content: space-around;
+}
+
+.statisti-icons{
+    padding: 0;
+}

@@ -46,52 +46,49 @@
                 <h3 class="partners_title">Наши партнеры</h3>
                 <div id="carouselAbout" class="carousel slide m-50 slide"
                      data-ride="carousel">
-                    <div class="carousel-inner text-center">
+                    <div class="carousel-inner text-center pics">
                         <div class="carousel-item active">
                             <div class="row">
                                 <div class="col">
                                     <img v-lazy-src="'/img/about_img/bmw].png'">
                                 </div>
                                 <div class="col">
-                                    <img v-lazy-src="'/img/about_img/lexus.png'">
+                                    <img v-lazy-src="'/img/about_img/Porsche-logo.png'">
                                 </div>
                                 <div class="col">
-                                    <img v-lazy-src="'/img/about_img/mercedes.png'">
+                                    <img v-lazy-src="'/img/about_img/toyota.png'">
+                                </div>
+                                <div class="col">
+                                    <img v-lazy-src="'/img/about_img/Ferrari-logo.png'">
                                 </div>
                             </div>
                         </div>
                         <div class="carousel-item">
                             <div class="row">
                                 <div class="col">
-                                    <img v-lazy-src="'/img/about_img/bmw].png'">
+                                    <img v-lazy-src="'/img/about_img/Lamborghini-logo.png'">
                                 </div>
                                 <div class="col">
-                                    <img v-lazy-src="'/img/about_img/lexus.png'">
+                                    <img v-lazy-src="'/img/about_img/Volkswagen-logo.png'">
                                 </div>
                                 <div class="col">
-                                    <img v-lazy-src="'/img/about_img/mercedes.png'">
+                                    <img v-lazy-src="'/img/about_img/Bugatti-logo.png'">
+                                </div>
+                                <div class="col">
+                                    <img v-lazy-src="'/img/about_img/Mitsubishi-logo.png'">
                                 </div>
                             </div>
                         </div>
-                        <div class="carousel-item">
-                            <div class="row">
-                                <div class="col">
-                                    <img v-lazy-src="'/img/about_img/bmw].png'">
-                                </div>
-                                <div class="col">
-                                    <img v-lazy-src="'/img/about_img/lexus.png'">
-                                </div>
-                                <div class="col">
-                                    <img v-lazy-src="'/img/about_img/mercedes.png'">
-                                </div>
-                            </div>
+                        <div class="about-row">
+                            <a class="carousel-arrow-left" href="#carouselAbout" role="button" data-slide="next">
+                                <i class="fas fa-chevron-left"></i>
+                            </a>
                         </div>
-                        <a class="carousel-arrow-left" href="#carouselAbout" role="button" data-slide="next">
-                            <i class="fas fa-chevron-left"></i>
-                        </a>
-                        <a class="carousel-arrow-right" href="#carouselAbout" role="button" data-slide="prev">
-                            <i class="fas fa-chevron-right"></i>
-                        </a>
+                        <div class="about-row">
+                            <a class="carousel-arrow-right" href="#carouselAbout" role="button" data-slide="prev">
+                                <i class="fas fa-chevron-right"></i>
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>

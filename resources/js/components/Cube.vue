@@ -18,6 +18,7 @@
         left: 50%;
         transform: translate(-50%, -50%);
         background-color: white;
+        background-size: 100% 100%;
         z-index: 1;
     }
 </style>
