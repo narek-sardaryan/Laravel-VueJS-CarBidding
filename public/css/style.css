@@ -309,11 +309,10 @@ body {
 
 .quantity_cars {
     position: absolute;
-    right: -1px;
-    top: 0;
+    right: 5px;
+    top: 3px;
     font-size: 14px;
     color: #0f92ff;
-    padding: 1px 5px 0 5px;
 }
 
 .quantity_cars p {
@@ -332,24 +331,28 @@ body {
 
 .body-cars {
     border: 1px solid #0f92ff;
-    background-color: white;
-    margin: 0 10px;
+    margin: 0 5px;
     text-align: center;
     border-bottom: none;
     cursor: pointer;
     transition: 0.5s;
-    padding: 5px 10px;
+    width: 11.6%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
     position: relative;
 }
 
 .car_types_div {
     position: relative;
+    width: 100%;
 }
 
 .body-cars i {
     color: #0f92ff;
-    padding-top: 7px;
     font-size: 40px;
+    transition: 0.4s;
 }
 
 .body-cars a {
@@ -422,16 +425,14 @@ body {
     transition: 0.4s;
     margin-bottom: 0;
 }
+.body-cars.carTypeActive .quantity_cars p {
+    color: #fff;
+}
 
 .body-cars:hover i {
     transform: scale(1.1);
     color: white;
     transition: 0.4s;
-}
-
-.body-cars i {
-    transition: 0.4s;
-    margin-top: 10px;
 }
 
 .body-cars:hover p {

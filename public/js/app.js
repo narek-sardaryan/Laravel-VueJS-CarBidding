@@ -4174,6 +4174,18 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Statistic",
@@ -49680,7 +49692,28 @@ var render = function() {
                 }
               }),
               _vm._v(" "),
-              _c("h5", [_vm._v("Пазвательи")])
+              _c("h5", [_vm._v("Пользовательи")])
+            ],
+            1
+          )
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "count-up-back" }, [
+          _c(
+            "div",
+            { staticClass: "iCountUp" },
+            [
+              _c("i", { staticClass: "fas fa-user statisti-icons" }),
+              _vm._v(" "),
+              _c("ICountUp", {
+                attrs: {
+                  delay: _vm.delay,
+                  endVal: _vm.endValUsers,
+                  options: _vm.options
+                }
+              }),
+              _vm._v(" "),
+              _c("h5", [_vm._v("Пользовательи")])
             ],
             1
           )

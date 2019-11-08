@@ -1,3 +1,4 @@
+npm install --save countup.js vue-countup-v2
 <template>
     <div class="container-fluid">
         <div class="container">
@@ -10,7 +11,18 @@
                             :endVal="endValUsers"
                             :options="options"
                         />
-                        <h5>Пазвательи</h5>
+                        <h5>Пользовательи</h5>
+                    </div>
+                </div>
+                <div class="count-up-back">
+                    <div class="iCountUp">
+                        <i class="fas fa-user statisti-icons"></i>
+                        <ICountUp
+                            :delay="delay"
+                            :endVal="endValUsers"
+                            :options="options"
+                        />
+                        <h5>Пользовательи</h5>
                     </div>
                 </div>
                 <div class="count-up-back">
