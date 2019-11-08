@@ -281,7 +281,7 @@
                                     </div>
                                 </div>
                                 <div class="article-price">
-                                    <p>{{car.currentPrice}}₽</p>
+                                    {{car.currentPrice}}₽
                                 </div>
                             </div>
                         </router-link>
