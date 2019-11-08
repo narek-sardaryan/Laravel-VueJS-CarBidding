@@ -27,6 +27,17 @@ npm install --save countup.js vue-countup-v2
                 </div>
                 <div class="count-up-back">
                     <div class="iCountUp">
+                        <i class="fas fa-user statisti-icons"></i>
+                        <ICountUp
+                            :delay="delay"
+                            :endVal="endValUsers"
+                            :options="options"
+                        />
+                        <h5>Пазвательи</h5>
+                    </div>
+                </div>
+                <div class="count-up-back">
+                    <div class="iCountUp">
                         <i class="fas fa-car"></i>
                         <ICountUp
                             :delay="delay"

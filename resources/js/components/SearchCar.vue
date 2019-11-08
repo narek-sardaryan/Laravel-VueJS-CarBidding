@@ -67,7 +67,12 @@
 <script>
     export default {
         name: "SearchCar",
-        props: ['carssearch'],
+        // props: ['carssearch'],
+        props:{
+            carssearch:{
+                required: false
+            }
+        },
         data() {
             return {
                 slider: [],

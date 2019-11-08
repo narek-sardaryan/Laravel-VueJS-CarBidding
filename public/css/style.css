@@ -8,7 +8,7 @@ body {
 }
 
 .carbidding-container {
-    margin-top: 120px;
+    margin-top: 110px;
 }
 
 .gender {
@@ -198,6 +198,7 @@ body {
 #carnavbar {
     border-bottom: 2px solid #A4A4A4;
     background-color: transparent;
+    padding-bottom: 12px;
 }
 
 .menunavbar a {
@@ -264,7 +265,7 @@ body {
     background-color: #f1f1f1;
     box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
     z-index: 1;
-    top: 65px;
+    top: 55px;
 }
 
 .menunavbar ol:before {
@@ -415,7 +416,7 @@ body {
 }
 
 .body-cars.carTypeActive {
-    background: #0f92ff;
+    background-color: #0f92ff;
     background-image: url(../img/design_img/jjj.png);
 }
 
@@ -503,8 +504,6 @@ body {
     height: 280px;
     position: relative;
     margin-top: 40px;
-    border-top-left-radius: 14px;
-    border-top-right-radius: 14px;
 }
 
 .cars-root {
@@ -587,8 +586,6 @@ body {
 
 #carouselExampleControls {
     box-shadow: 0 0 21px -2px black;
-    border-top-left-radius: 14px;
-    border-top-right-radius: 14px;
 }
 
 .carousel-control-prev-icon, .carousel-control-next-icon {
@@ -615,6 +612,7 @@ body {
     align-items: center;
     text-align: center;
     justify-content: center;
+    box-shadow: 0 0 16px 1px rgb(0, 0, 0);
 }
 
 .car-informacion p {
@@ -688,11 +686,6 @@ body {
     left: 0;
     width: 100%;
     transition: 0.7s cubic-bezier(0.18, 0.89, 0.32, 1.28);
-}
-
-.carouselin {
-    border-top-left-radius: 14px;
-    border-top-right-radius: 14px;
 }
 
 .bg_img {
@@ -835,13 +828,18 @@ body {
 .searchbox_div .searchbox {
     background: #0F91FF;
     margin-top: 0;
-    margin-left: 50px;
     padding: 0 15px;
     height: 78px;
     width: 261px;
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.searchbox_div{
+    position: absolute;
+    top: 0;
+    left: 685px;
 }
 
 .searchicon {
@@ -1416,7 +1414,7 @@ span i {
 }
 
 .count-up-back{
-    /*background-image: url(../img/design_img/jjj.png);*/
+    background-image: url(../img/design_img/jjj.png);
     width: 170px;
     height: 170px;
     background-color: #2e7bbb;
@@ -1428,7 +1426,7 @@ span i {
     flex-direction: column;
     justify-content: center;
     border-radius: 100%;
-    box-shadow: inset 0px 0px 7px 2px rgba(0, 0, 0, 0.2)
+    box-shadow: inset 0 0 11px 3px rgba(0, 0, 0, 0.79);
 }
 
 .count-up-row{
