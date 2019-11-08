@@ -1937,9 +1937,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "About",
   data: function data() {
@@ -45160,8 +45157,8 @@ var render = function() {
                           {
                             name: "lazy-src",
                             rawName: "v-lazy-src",
-                            value: "/img/about_img/lexus.png",
-                            expression: "'/img/about_img/lexus.png'"
+                            value: "/img/about_img/Porsche-logo.png",
+                            expression: "'/img/about_img/Porsche-logo.png'"
                           }
                         ]
                       })
@@ -45173,8 +45170,21 @@ var render = function() {
                           {
                             name: "lazy-src",
                             rawName: "v-lazy-src",
-                            value: "/img/about_img/mercedes.png",
-                            expression: "'/img/about_img/mercedes.png'"
+                            value: "/img/about_img/toyota.png",
+                            expression: "'/img/about_img/toyota.png'"
+                          }
+                        ]
+                      })
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col" }, [
+                      _c("img", {
+                        directives: [
+                          {
+                            name: "lazy-src",
+                            rawName: "v-lazy-src",
+                            value: "/img/about_img/Ferrari-logo.png",
+                            expression: "'/img/about_img/Ferrari-logo.png'"
                           }
                         ]
                       })
@@ -45190,8 +45200,8 @@ var render = function() {
                           {
                             name: "lazy-src",
                             rawName: "v-lazy-src",
-                            value: "/img/about_img/bmw].png",
-                            expression: "'/img/about_img/bmw].png'"
+                            value: "/img/about_img/Lamborghini-logo.png",
+                            expression: "'/img/about_img/Lamborghini-logo.png'"
                           }
                         ]
                       })
@@ -45203,8 +45213,8 @@ var render = function() {
                           {
                             name: "lazy-src",
                             rawName: "v-lazy-src",
-                            value: "/img/about_img/lexus.png",
-                            expression: "'/img/about_img/lexus.png'"
+                            value: "/img/about_img/Volkswagen-logo.png",
+                            expression: "'/img/about_img/Volkswagen-logo.png'"
                           }
                         ]
                       })
@@ -45216,25 +45226,8 @@ var render = function() {
                           {
                             name: "lazy-src",
                             rawName: "v-lazy-src",
-                            value: "/img/about_img/mercedes.png",
-                            expression: "'/img/about_img/mercedes.png'"
-                          }
-                        ]
-                      })
-                    ])
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "carousel-item" }, [
-                  _c("div", { staticClass: "row" }, [
-                    _c("div", { staticClass: "col" }, [
-                      _c("img", {
-                        directives: [
-                          {
-                            name: "lazy-src",
-                            rawName: "v-lazy-src",
-                            value: "/img/about_img/bmw].png",
-                            expression: "'/img/about_img/bmw].png'"
+                            value: "/img/about_img/Bugatti-logo.png",
+                            expression: "'/img/about_img/Bugatti-logo.png'"
                           }
                         ]
                       })
@@ -45246,21 +45239,8 @@ var render = function() {
                           {
                             name: "lazy-src",
                             rawName: "v-lazy-src",
-                            value: "/img/about_img/lexus.png",
-                            expression: "'/img/about_img/lexus.png'"
-                          }
-                        ]
-                      })
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "col" }, [
-                      _c("img", {
-                        directives: [
-                          {
-                            name: "lazy-src",
-                            rawName: "v-lazy-src",
-                            value: "/img/about_img/mercedes.png",
-                            expression: "'/img/about_img/mercedes.png'"
+                            value: "/img/about_img/Mitsubishi-logo.png",
+                            expression: "'/img/about_img/Mitsubishi-logo.png'"
                           }
                         ]
                       })
@@ -45287,27 +45267,39 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c(
-      "a",
-      {
-        staticClass: "carousel-arrow-left",
-        attrs: { href: "#carouselAbout", role: "button", "data-slide": "next" }
-      },
-      [_c("i", { staticClass: "fas fa-chevron-left" })]
-    )
+    return _c("div", { staticClass: "about-row" }, [
+      _c(
+        "a",
+        {
+          staticClass: "carousel-arrow-left",
+          attrs: {
+            href: "#carouselAbout",
+            role: "button",
+            "data-slide": "next"
+          }
+        },
+        [_c("i", { staticClass: "fas fa-chevron-left" })]
+      )
+    ])
   },
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c(
-      "a",
-      {
-        staticClass: "carousel-arrow-right",
-        attrs: { href: "#carouselAbout", role: "button", "data-slide": "prev" }
-      },
-      [_c("i", { staticClass: "fas fa-chevron-right" })]
-    )
+    return _c("div", { staticClass: "about-row" }, [
+      _c(
+        "a",
+        {
+          staticClass: "carousel-arrow-right",
+          attrs: {
+            href: "#carouselAbout",
+            role: "button",
+            "data-slide": "prev"
+          }
+        },
+        [_c("i", { staticClass: "fas fa-chevron-right" })]
+      )
+    ])
   }
 ]
 render._withStripped = true

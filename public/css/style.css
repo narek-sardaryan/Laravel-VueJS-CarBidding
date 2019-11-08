@@ -702,7 +702,7 @@ body {
 
 .pics img {
     -webkit-filter: grayscale(1);
-    height: 90px;
+    height: 120px;
 }
 
 .pics img:hover {
@@ -776,6 +776,7 @@ body {
 
 .carousel-arrow-left, .carousel-arrow-right {
     position: absolute;
+    top: 30%;
 }
 
 .carousel-arrow-left {
@@ -788,12 +789,12 @@ body {
 
 .carousel-arrow-left .fa-chevron-left, .carousel-arrow-right .fa-chevron-right {
     color: #0C74CA;
-    font-size: 35px;
+    font-size: 47px;
 }
 
-.pics {
-    padding: 30px 0;
-}
+/*.pics {*/
+/*    padding: 30px 0;*/
+/*}*/
 
 .pics > img {
     padding-right: 35px;
@@ -910,6 +911,12 @@ span i {
     -webkit-background-size: cover;
     background-size: cover;
     height: 400px;
+}
+
+.about-row{
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .margin {
