@@ -323,6 +323,9 @@ body {
     transition: 0.5s;
     padding: 5px 0;
     width: 11.6%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .car_types_div {
