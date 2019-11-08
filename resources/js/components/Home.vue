@@ -39,9 +39,15 @@
                                             </div>
                                         </div>
                                     </div>
+                                    <div class="inform_txt_responsive">
+                                        <p class="inform_txt_p">{{car.name}} | {{car.year}}</p>
+                                        <p class="inform_txt_p">Текущая цена |  {{car.currentPrice}} ₽</p>
+                                        <p class="inform_txt_p">Начало торгов | {{car.auctionStart}}</p>
+                                        <p class="inform_txt_p">Завершение торгов: | {{car.endOfAuction}}</p>
+                                    </div>
                                 </div>
                                 <div class="article-price">
-                                    <p>{{car.currentPrice}}₽</p>
+                                    {{car.currentPrice}}₽
                                 </div>
                             </div>
                         </router-link>

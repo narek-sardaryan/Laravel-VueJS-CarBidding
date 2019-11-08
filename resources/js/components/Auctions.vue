@@ -41,7 +41,7 @@
                                     </div>
                                 </div>
                                 <div class="article-price">
-                                    <p>{{auction.currentPrice}}₽</p>
+                                   {{auction.currentPrice}}₽
                                 </div>
                             </div>
                         </router-link>

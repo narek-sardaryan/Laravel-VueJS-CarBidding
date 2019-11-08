@@ -206,7 +206,7 @@ body {
 }
 
 .responsive {
-    padding: 0 40px;
+    padding: 0 50px;
 }
 
 .menunavbar ul > li > a {
@@ -508,23 +508,29 @@ body {
 
 .cars-root {
     margin-top: 50px;
+    text-align: center;
 }
 
 .article-price {
-    width: 110px;
-    height: 33px;
+    width: 115px;
+    height: auto;
     background-color: #2099FE;
     position: absolute;
     top: 26px;
-    left: 120px;
+    left: 135px;
     text-align: center;
-    padding-top: 5px;
     box-shadow: 0 0 21px -2px black;
     transition: 0.7s cubic-bezier(0.18, 0.89, 0.32, 1.28);
+    color: #fff;
+    padding: 5px 7px;
+}
+
+.inform_txt_responsive {
+    display: none;
 }
 
 .article-price:hover {
-    transform: translateY(-10px);
+    transform: translateY(-15px);
     transition: 0.3s ease-out;
 }
 
@@ -600,7 +606,7 @@ body {
 .car-informacion {
     position: absolute;
     top: 0;
-    right: 118px;
+    right: 195px;
     background-color: #0f92ff59;
     width: 260px;
     height: 100%;
@@ -757,14 +763,32 @@ body {
 
 .partners {
     background: #fff;
-    padding: 50px 0;
+    padding: 10px 0 10px;
+    margin: 40px 0 40px;
 }
 
 .partners_title {
     color: #0C74CA;
     font-size: 35px;
     text-align: center;
-    padding: 30px 0 10px;
+    padding: 0 0 50px;
+}
+
+.carousel-arrow-left, .carousel-arrow-right {
+    position: absolute;
+}
+
+.carousel-arrow-left {
+    left: 0;
+}
+
+.carousel-arrow-right {
+    right: 0;
+}
+
+.carousel-arrow-left .fa-chevron-left, .carousel-arrow-right .fa-chevron-right {
+    color: #0C74CA;
+    font-size: 35px;
 }
 
 .pics {
@@ -809,7 +833,7 @@ body {
 .searchbox_div .searchbox {
     background: #0F91FF;
     margin-top: 0;
-    margin-left: 20px;
+    margin-left: 50px;
     padding: 0 15px;
     height: 78px;
     width: 261px;
