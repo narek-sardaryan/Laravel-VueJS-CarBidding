@@ -1965,323 +1965,31 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Auctions",
   data: function data() {
     return {
-      bodies: [],
-      states: [],
-      parkings: [],
-      models: [],
+      allcars: [],
       cars: [],
       offsetCars: [],
-      firstSlider: [],
       slider: [],
       filters: [],
-      startAu: '',
-      endAu: '',
-      stateId: '',
-      modelId: '',
-      parkingId: '',
-      bodiesId: '',
-      currentPage: 0,
-      offset: 1,
-      allCarsLength: null,
       auctioncars: [],
       id: this.$router.currentRoute.params['id']
     };
   },
   created: function created() {
-    this.fetchBodies();
-    this.fetchModels();
-    this.fetchParkings();
-    this.fetchStates();
-    this.fetchSlider();
     this.fetchAuctionCars(this.id);
+    this.fetchSlider();
     this.getResults(1, this.id);
   },
   methods: {
-    classLi: function classLi(id) {
+    fetchAuctionCars: function fetchAuctionCars() {
       var _this = this;
 
-      var li = document.getElementsByClassName("body-cars");
-
-      for (var i = 0; i < li.length; i++) {
-        li[i].classList.remove("carTypeActive");
-      }
-
-      document.querySelector('li[data-id="' + id + '"]').classList.add("carTypeActive");
-      this.bodiesId = id;
-
-      if (!id) {
-        axios.get('/fetchcarsall').then(function (response) {
-          _this.offsetCars = [];
-
-          for (var _i = 0; _i < Math.ceil(response.data.length / 6); _i++) {
-            _this.offsetCars.push(_i);
-          }
-
-          return _this.allCarsLength = response.data.filter(function (obj) {
-            return obj.categorId == _this.id;
-          }).length;
-        });
-      }
-
-      if (id) {
-        axios.get('/fetchcarsall').then(function (response) {
-          _this.offsetCars = [];
-
-          for (var _i2 = 0; _i2 < Math.ceil(response.data.length / 6); _i2++) {
-            _this.offsetCars.push(_i2);
-          }
-
-          return _this.allCarsLength = response.data.filter(function (obj) {
-            return obj.bodyId === id && (_this.stateId == obj.stateId || _this.stateId == '') && obj.categorId == _this.id && (_this.parkingId == obj.parkingId || _this.parkingId == '') && (_this.modelId == obj.modelId || _this.modelId == '') && (_this.parkingId == obj.parkingId || _this.parkingId == '') && (!_this.startAu || _this.startAu >= new Date(obj.auctionStart).getTime()) && (!_this.endAu || _this.endAu <= new Date(obj.endOfAuction).getTime());
-          }).length;
-        });
-      }
+      axios.get('/fetchcarsall').then(function (response) {
+        return _this.allcars = response.data;
+      });
     },
     getResults: function getResults(page, id) {
       var _this2 = this;
@@ -2305,109 +2013,17 @@ __webpack_require__.r(__webpack_exports__);
         return _this3.auctioncars = response;
       });
     },
-    fetchBodies: function fetchBodies() {
+    fetchSlider: function fetchSlider() {
       var _this4 = this;
 
-      axios.get('/fetchbodies').then(function (response) {
-        _this4.bodies = response.data;
-      });
-    },
-    fetchModels: function fetchModels() {
-      var _this5 = this;
-
-      axios.get('/fetchmodels').then(function (response) {
-        _this5.models = response.data;
-      });
-    },
-    fetchParkings: function fetchParkings() {
-      var _this6 = this;
-
-      axios.get('/fetchparkings').then(function (response) {
-        _this6.parkings = response.data;
-      });
-    },
-    fetchStates: function fetchStates() {
-      var _this7 = this;
-
-      axios.get('/fetchstates').then(function (response) {
-        _this7.states = response.data;
-      });
-    },
-    fetchSlider: function fetchSlider() {
-      var _this8 = this;
-
       axios.get('/fetchslider').then(function (response) {
-        _this8.firstSlider = response.data[0];
-        _this8.slider = response.data;
-      });
-    },
-    filterByParkings: function filterByParkings(event) {
-      var _this9 = this;
-
-      this.parkingId = event.target.value;
-      axios.get('/auctionall/' + this.id).then(function (response) {
-        _this9.allCarsLength = response.data.filter(function (obj) {
-          return obj.parkingId == _this9.parkingId && (_this9.stateId == obj.stateId || _this9.stateId == '') && (_this9.modelId == obj.modelId || _this9.modelId == '') && (_this9.bodiesId == obj.bodyId || _this9.bodiesId == '') && (!_this9.startAu || _this9.startAu >= new Date(obj.auctionStart).getTime()) && (!_this9.endAu || _this9.endAu <= new Date(obj.endOfAuction).getTime());
-        }).length;
-      });
-    },
-    filterByStarts: function filterByStarts(event) {
-      var _this10 = this;
-
-      this.startAu = new Date(event.target.value).getTime();
-      axios.get('/auctionall/' + this.id).then(function (response) {
-        _this10.allCarsLength = response.data.filter(function (obj) {
-          return new Date(obj.auctionStart).getTime() >= _this10.startAu && (_this10.stateId == obj.stateId || _this10.stateId == '') && (_this10.parkingId == obj.parkingId || _this10.parkingId == '') && (_this10.modelId == obj.modelId || _this10.modelId == '') && (_this10.bodiesId == obj.bodyId || _this10.bodiesId == '') && (!_this10.endAu || _this10.endAu <= new Date(obj.endOfAuction).getTime());
-        }).length;
-      });
-    },
-    filterByEnds: function filterByEnds(event) {
-      var _this11 = this;
-
-      this.endAu = new Date(event.target.value).getTime();
-      axios.get('/auctionall/' + this.id).then(function (response) {
-        _this11.allCarsLength = response.data.filter(function (obj) {
-          return new Date(obj.endOfAuction).getTime() <= _this11.endAu && (_this11.stateId == obj.stateId || _this11.stateId == '') && (_this11.parkingId == obj.parkingId || _this11.parkingId == '') && (_this11.modelId == obj.modelId || _this11.modelId == '') && (_this11.bodiesId == obj.bodyId || _this11.bodiesId == '') && (!_this11.startAu || _this11.startAu >= new Date(obj.auctionStart).getTime());
-        }).length;
-      });
-    },
-    filterByModels: function filterByModels(event) {
-      var _this12 = this;
-
-      this.modelId = event.target.value;
-      axios.get('/auctionall/' + this.id).then(function (response) {
-        _this12.allCarsLength = response.data.filter(function (obj) {
-          return obj.modelId == _this12.modelId && (_this12.stateId == obj.stateId || _this12.stateId == '') && (_this12.parkingId == obj.parkingId || _this12.parkingId == '') && (_this12.bodiesId == obj.bodyId || _this12.bodiesId == '') && (!_this12.startAu || _this12.startAu >= new Date(obj.auctionStart).getTime()) && (!_this12.endAu || _this12.endAu <= new Date(obj.endOfAuction).getTime());
-        }).length;
-      });
-    },
-    filterByStates: function filterByStates(event) {
-      var _this13 = this;
-
-      this.stateId = event.target.value;
-      axios.get('/auctionall/' + this.id).then(function (response) {
-        _this13.allCarsLength = response.data.filter(function (obj) {
-          return obj.stateId == _this13.stateId && (_this13.bodiesId == obj.bodyId || _this13.bodiesId == '') && (_this13.parkingId == obj.parkingId || _this13.parkingId == '') && (_this13.modelId == obj.modelId || _this13.modelId == '') && (!_this13.startAu || _this13.startAu >= new Date(obj.auctionStart).getTime()) && (!_this13.endAu || _this13.endAu <= new Date(obj.endOfAuction).getTime());
-        }).length;
-      });
-    },
-    fetchAuctionCars: function fetchAuctionCars(id) {
-      var _this14 = this;
-
-      axios.get('/auctionall/' + id).then(function (response) {
-        _this14.allCarsLength = response.data.length;
-        _this14.offsetCars = [];
-
-        for (var i = 0; i < Math.ceil(response.data.length / 6); i++) {
-          _this14.offsetCars.push(i);
-        }
+        _this4.slider = response.data;
       });
     }
   },
   watch: {
     $route: function $route(toR, fromR) {
       this.id = toR.params['id'];
-      this.fetchAuctionCars(this.id);
       this.getResults(1, this.id);
     }
   }
@@ -2579,101 +2195,48 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: "FilterCars",
+  props: ['carsfilter'],
+  data: function data() {
+    return {
+      allcars: [],
+      slider: []
+    };
+  },
+  created: function created() {
+    this.fetchcars();
+    this.fetchslider();
+  },
+  methods: {
+    fetchcars: function fetchcars() {
+      var _this = this;
+
+      axios.get('/fetchcarsall').then(function (response) {
+        _this.allcars = response.data;
+      });
+    },
+    fetchslider: function fetchslider() {
+      var _this2 = this;
+
+      axios.get('/fetchslider').then(function (response) {
+        _this2.slider = response.data;
+      });
+    }
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Filters.vue?vue&type=script&lang=js&":
+/*!******************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Filters.vue?vue&type=script&lang=js& ***!
+  \******************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
 //
 //
 //
@@ -2820,36 +2383,127 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: "FilterCars",
-  props: ['carsfilter'],
+  name: "Filters",
+  props: ['allcars'],
   data: function data() {
     return {
-      bodies: [],
+      allCarsLength: null,
+      quanitityAll: 0,
+      quanititySedan: 0,
+      quanitityLightComm: 0,
+      quanitityTruck: 0,
+      quanititySedTyag: 0,
+      quanitityTrailers: 0,
+      quanitityBus: 0,
+      quanititySprecialTech: 0,
       states: [],
       parkings: [],
       models: [],
-      offsetCars: [],
-      firstSlider: [],
-      slider: [],
       startAu: '',
       endAu: '',
       stateId: '',
       modelId: '',
       parkingId: '',
       bodiesId: '',
-      allCarsLength: null
+      id: this.$router.currentRoute.params['id']
     };
   },
   created: function created() {
-    this.fetchBodies();
-    this.fetchModels();
-    this.fetchParkings();
-    this.fetchStates();
-    this.fetchSlider();
+    this.counts();
+    this.fetchsFilters();
+    this.allCarsLength = this.allcars.length;
   },
   methods: {
-    classLi: function classLi(id) {
+    counts: function counts() {
+      this.quanitityAll = this.allcars.length;
+      this.quanititySedan = this.allcars.filter(function (obj) {
+        return obj.bodyId == 3;
+      }).length;
+      this.quanitityLightComm = this.allcars.filter(function (obj) {
+        return obj.bodyId == 4;
+      }).length;
+      this.quanitityTruck = this.allcars.filter(function (obj) {
+        return obj.bodyId == 5;
+      }).length;
+      this.quanititySedTyag = this.allcars.filter(function (obj) {
+        return obj.bodyId == 6;
+      }).length;
+      this.quanitityTrailers = this.allcars.filter(function (obj) {
+        return obj.bodyId == 7;
+      }).length;
+      this.quanitityBus = this.allcars.filter(function (obj) {
+        return obj.bodyId == 8;
+      }).length;
+      this.quanititySprecialTech = this.allcars.filter(function (obj) {
+        return obj.bodyId == 9;
+      }).length;
+    },
+    fetchsFilters: function fetchsFilters() {
       var _this = this;
+
+      axios.get('/fetchmodels').then(function (response) {
+        _this.models = response.data;
+      });
+      axios.get('/fetchstates').then(function (response) {
+        _this.states = response.data;
+      });
+      axios.get('/fetchparkings').then(function (response) {
+        _this.parkings = response.data;
+      });
+    },
+    filterByParkings: function filterByParkings(event) {
+      var _this2 = this;
+
+      this.parkingId = event.target.value;
+      axios.get('/fetchcarsall').then(function (response) {
+        _this2.allCarsLength = response.data.filter(function (obj) {
+          return obj.parkingId == _this2.parkingId && (_this2.stateId == obj.stateId || _this2.stateId == '') && (_this2.modelId == obj.modelId || _this2.modelId == '') && (_this2.bodiesId == obj.bodyId || _this2.bodiesId == '') && (!_this2.startAu || _this2.startAu >= new Date(obj.auctionStart).getTime()) && (!_this2.endAu || _this2.endAu <= new Date(obj.endOfAuction).getTime());
+        }).length;
+      });
+    },
+    filterByStarts: function filterByStarts(event) {
+      var _this3 = this;
+
+      this.startAu = new Date(event.target.value).getTime();
+      axios.get('/fetchcarsall').then(function (response) {
+        _this3.allCarsLength = response.data.filter(function (obj) {
+          return new Date(obj.auctionStart).getTime() >= _this3.startAu && (_this3.stateId == obj.stateId || _this3.stateId == '') && (_this3.parkingId == obj.parkingId || _this3.parkingId == '') && (_this3.modelId == obj.modelId || _this3.modelId == '') && (_this3.bodiesId == obj.bodyId || _this3.bodiesId == '') && (!_this3.endAu || _this3.endAu <= new Date(obj.endOfAuction).getTime());
+        }).length;
+      });
+    },
+    filterByEnds: function filterByEnds(event) {
+      var _this4 = this;
+
+      this.endAu = new Date(event.target.value).getTime();
+      axios.get('/fetchcarsall').then(function (response) {
+        _this4.allCarsLength = response.data.filter(function (obj) {
+          return new Date(obj.endOfAuction).getTime() <= _this4.endAu && (_this4.stateId == obj.stateId || _this4.stateId == '') && (_this4.parkingId == obj.parkingId || _this4.parkingId == '') && (_this4.modelId == obj.modelId || _this4.modelId == '') && (_this4.bodiesId == obj.bodyId || _this4.bodiesId == '') && (!_this4.startAu || _this4.startAu >= new Date(obj.auctionStart).getTime());
+        }).length;
+      });
+    },
+    filterByModels: function filterByModels(event) {
+      var _this5 = this;
+
+      this.modelId = event.target.value;
+      axios.get('/fetchcarsall').then(function (response) {
+        _this5.allCarsLength = response.data.filter(function (obj) {
+          return obj.modelId == _this5.modelId && (_this5.stateId == obj.stateId || _this5.stateId == '') && (_this5.parkingId == obj.parkingId || _this5.parkingId == '') && (_this5.bodiesId == obj.bodyId || _this5.bodiesId == '') && (!_this5.startAu || _this5.startAu >= new Date(obj.auctionStart).getTime()) && (!_this5.endAu || _this5.endAu <= new Date(obj.endOfAuction).getTime());
+        }).length;
+      });
+    },
+    filterByStates: function filterByStates(event) {
+      var _this6 = this;
+
+      this.stateId = event.target.value;
+      console.log(this.stateId);
+      axios.get('/fetchcarsall').then(function (response) {
+        _this6.allCarsLength = response.data.filter(function (obj) {
+          return obj.stateId == _this6.stateId && (_this6.bodiesId == obj.bodyId || _this6.bodiesId == '') && (_this6.parkingId == obj.parkingId || _this6.parkingId == '') && (_this6.modelId == obj.modelId || _this6.modelId == '') && (!_this6.startAu || _this6.startAu >= new Date(obj.auctionStart).getTime()) && (!_this6.endAu || _this6.endAu <= new Date(obj.endOfAuction).getTime());
+        }).length;
+      });
+    },
+    classLi: function classLi(id) {
+      var _this7 = this;
 
       var li = document.getElementsByClassName("body-cars");
 
@@ -2861,173 +2515,14 @@ __webpack_require__.r(__webpack_exports__);
       this.bodiesId = id;
 
       if (!id) {
-        axios.get('/fetchcarsall').then(function (response) {
-          _this.offsetCars = [];
-
-          for (var _i = 0; _i < Math.ceil(response.data.length / 6); _i++) {
-            _this.offsetCars.push(_i);
-          }
-
-          return _this.allCarsLength = response.data.length;
-        });
+        return this.allCarsLength = this.allcars.length;
       }
 
       if (id) {
-        axios.get('/fetchcarsall').then(function (response) {
-          _this.offsetCars = [];
-
-          for (var _i2 = 0; _i2 < Math.ceil(response.data.length / 6); _i2++) {
-            _this.offsetCars.push(_i2);
-          }
-
-          return _this.allCarsLength = response.data.filter(function (obj) {
-            return obj.bodyId === id && (_this.stateId == obj.stateId || _this.stateId == '') && (_this.parkingId == obj.parkingId || _this.parkingId == '') && (_this.modelId == obj.modelId || _this.modelId == '') && (_this.parkingId == obj.parkingId || _this.parkingId == '') && (!_this.startAu || _this.startAu >= new Date(obj.auctionStart).getTime()) && (!_this.endAu || _this.endAu <= new Date(obj.endOfAuction).getTime());
-          }).length;
-        });
-      }
-    },
-    fetchBodies: function fetchBodies() {
-      var _this2 = this;
-
-      axios.get('/fetchbodies').then(function (response) {
-        _this2.bodies = response.data;
-      });
-    },
-    fetchModels: function fetchModels() {
-      var _this3 = this;
-
-      axios.get('/fetchmodels').then(function (response) {
-        _this3.models = response.data;
-      });
-    },
-    fetchParkings: function fetchParkings() {
-      var _this4 = this;
-
-      axios.get('/fetchparkings').then(function (response) {
-        _this4.parkings = response.data;
-      });
-    },
-    fetchStates: function fetchStates() {
-      var _this5 = this;
-
-      axios.get('/fetchstates').then(function (response) {
-        _this5.states = response.data;
-      });
-    },
-    fetchSlider: function fetchSlider() {
-      var _this6 = this;
-
-      axios.get('/fetchslider').then(function (response) {
-        _this6.firstSlider = response.data[0];
-        _this6.slider = response.data;
-      });
-    },
-    filterByBodies: function filterByBodies(id) {
-      var _this7 = this;
-
-      this.bodiesId = id;
-
-      if (!id) {
-        axios.get('/fetchcarsall').then(function (response) {
-          _this7.offsetCars = [];
-
-          for (var _i3 = 0; _i3 < Math.ceil(response.data.length / 6); _i3++) {
-            _this7.offsetCars.push(_i3);
-          }
-
-          return _this7.allCarsLength = response.data.length;
-        });
-      }
-
-      if (id) {
-        axios.get('/fetchcarsall').then(function (response) {
-          _this7.offsetCars = [];
-
-          for (var _i4 = 0; _i4 < Math.ceil(response.data.length / 6); _i4++) {
-            _this7.offsetCars.push(_i4);
-          }
-
-          return _this7.allCarsLength = response.data.filter(function (obj) {
-            return obj.bodyId === id && (_this7.stateId == obj.stateId || _this7.stateId == '') && (_this7.parkingId == obj.parkingId || _this7.parkingId == '') && (_this7.modelId == obj.modelId || _this7.modelId == '') && (_this7.parkingId == obj.parkingId || _this7.parkingId == '') && (!_this7.startAu || _this7.startAu >= new Date(obj.auctionStart).getTime()) && (!_this7.endAu || _this7.endAu <= new Date(obj.endOfAuction).getTime());
-          }).length;
-        });
-      }
-
-      var disStyle = document.getElementsByClassName("body-cars");
-      var dispStyle = document.getElementsByClassName("body-name");
-      var disbackStyle = document.getElementsByClassName("activeback");
-
-      for (var i = 0; i < disbackStyle.length; i++) {
-        var backid = disbackStyle[i].getAttribute('back-id');
-        var disbackimg = document.querySelector('div[back-id="' + backid + '"]');
-        disbackimg.style.backgroundImage = "url('/img/design_img/" + backid + backid + ".png')";
-      }
-
-      for (var j = 0; j < dispStyle.length; j++) {
-        dispStyle[j].style.color = 'black';
-      }
-
-      for (var k = 0; k < disStyle.length; k++) {
-        disStyle[k].style.background = 'white';
-      }
-
-      var backimg = document.querySelector('div[back-id="' + id + '"]');
-      backimg.style.backgroundImage = "url('/img/design_img/" + id + ".png')";
-      var pStyle = document.querySelector('p[p-id="' + id + '"]');
-      pStyle.style.color = 'white';
-      var bodyStyle = document.querySelector('div[data-id="' + id + '"]');
-      bodyStyle.style.background = '#0f92ff';
-    },
-    filterByParkings: function filterByParkings(event) {
-      var _this8 = this;
-
-      this.parkingId = event.target.value;
-      axios.get('/fetchcarsall').then(function (response) {
-        _this8.allCarsLength = response.data.filter(function (obj) {
-          return obj.parkingId == _this8.parkingId && (_this8.stateId == obj.stateId || _this8.stateId == '') && (_this8.modelId == obj.modelId || _this8.modelId == '') && (_this8.bodiesId == obj.bodyId || _this8.bodiesId == '') && (!_this8.startAu || _this8.startAu >= new Date(obj.auctionStart).getTime()) && (!_this8.endAu || _this8.endAu <= new Date(obj.endOfAuction).getTime());
+        return this.allCarsLength = this.allcars.filter(function (obj) {
+          return obj.bodyId === id && (_this7.stateId == obj.stateId || _this7.stateId == '') && (_this7.parkingId == obj.parkingId || _this7.parkingId == '') && (_this7.modelId == obj.modelId || _this7.modelId == '') && (_this7.parkingId == obj.parkingId || _this7.parkingId == '') && (!_this7.startAu || _this7.startAu >= new Date(obj.auctionStart).getTime()) && (!_this7.endAu || _this7.endAu <= new Date(obj.endOfAuction).getTime());
         }).length;
-      });
-    },
-    filterByStarts: function filterByStarts(event) {
-      var _this9 = this;
-
-      this.startAu = new Date(event.target.value).getTime();
-      axios.get('/fetchcarsall').then(function (response) {
-        _this9.allCarsLength = response.data.filter(function (obj) {
-          return new Date(obj.auctionStart).getTime() >= _this9.startAu && (_this9.stateId == obj.stateId || _this9.stateId == '') && (_this9.parkingId == obj.parkingId || _this9.parkingId == '') && (_this9.modelId == obj.modelId || _this9.modelId == '') && (_this9.bodiesId == obj.bodyId || _this9.bodiesId == '') && (!_this9.endAu || _this9.endAu <= new Date(obj.endOfAuction).getTime());
-        }).length;
-      });
-    },
-    filterByEnds: function filterByEnds(event) {
-      var _this10 = this;
-
-      this.endAu = new Date(event.target.value).getTime();
-      axios.get('/fetchcarsall').then(function (response) {
-        _this10.allCarsLength = response.data.filter(function (obj) {
-          return new Date(obj.endOfAuction).getTime() <= _this10.endAu && (_this10.stateId == obj.stateId || _this10.stateId == '') && (_this10.parkingId == obj.parkingId || _this10.parkingId == '') && (_this10.modelId == obj.modelId || _this10.modelId == '') && (_this10.bodiesId == obj.bodyId || _this10.bodiesId == '') && (!_this10.startAu || _this10.startAu >= new Date(obj.auctionStart).getTime());
-        }).length;
-      });
-    },
-    filterByModels: function filterByModels(event) {
-      var _this11 = this;
-
-      this.modelId = event.target.value;
-      axios.get('/fetchcarsall').then(function (response) {
-        _this11.allCarsLength = response.data.filter(function (obj) {
-          return obj.modelId == _this11.modelId && (_this11.stateId == obj.stateId || _this11.stateId == '') && (_this11.parkingId == obj.parkingId || _this11.parkingId == '') && (_this11.bodiesId == obj.bodyId || _this11.bodiesId == '') && (!_this11.startAu || _this11.startAu >= new Date(obj.auctionStart).getTime()) && (!_this11.endAu || _this11.endAu <= new Date(obj.endOfAuction).getTime());
-        }).length;
-      });
-    },
-    filterByStates: function filterByStates(event) {
-      var _this12 = this;
-
-      this.stateId = event.target.value;
-      console.log(this.stateId);
-      axios.get('/fetchcarsall').then(function (response) {
-        _this12.allCarsLength = response.data.filter(function (obj) {
-          return obj.stateId == _this12.stateId && (_this12.bodiesId == obj.bodyId || _this12.bodiesId == '') && (_this12.parkingId == obj.parkingId || _this12.parkingId == '') && (_this12.modelId == obj.modelId || _this12.modelId == '') && (!_this12.startAu || _this12.startAu >= new Date(obj.auctionStart).getTime()) && (!_this12.endAu || _this12.endAu <= new Date(obj.endOfAuction).getTime());
-        }).length;
-      });
+      }
     }
   }
 });
@@ -3238,7 +2733,6 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _Cube__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Cube */ "./resources/js/components/Cube.vue");
 //
 //
 //
@@ -3306,317 +2800,20 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Home",
   props: ["carsall"],
   data: function data() {
     return {
-      bodies: [],
-      states: [],
-      parkings: [],
-      models: [],
       cars: [],
-      offsetCars: [],
-      firstSlider: [],
       slider: [],
-      filters: [],
-      startAu: '',
-      endAu: '',
-      stateId: '',
-      modelId: '',
-      parkingId: '',
-      bodiesId: '',
-      allCarsLength: null,
-      quanitityAll: 0,
-      quanititySedan: 0,
-      quanitityLightComm: 0,
-      quanitityTruck: 0,
-      quanititySedTyag: 0,
-      quanitityTrailers: 0,
-      quanitityBus: 0,
-      quanititySprecialTech: 0,
-      timeoutAll: null,
-      timeoutSedan: null,
-      timeoutLightComm: null,
-      timeoutTruck: null,
-      timeoutSedTyag: null,
-      timeoutTrailers: null,
-      timeoutBus: null,
-      timeoutSprecialTech: null
+      allcars: []
     };
   },
   created: function created() {
+    this.fetchCars();
     this.fetchs();
     this.getResults();
-    this.fetchCars();
-  },
-  component: {
-    Cube: _Cube__WEBPACK_IMPORTED_MODULE_0__["default"]
   },
   methods: {
     getResults: function getResults(page) {
@@ -3635,18 +2832,7 @@ __webpack_require__.r(__webpack_exports__);
     fetchs: function fetchs() {
       var _this2 = this;
 
-      // console.log(req("fetchmodels"))
-      axios.get('/fetchmodels').then(function (response) {
-        _this2.models = response.data;
-      });
-      axios.get('/fetchstates').then(function (response) {
-        _this2.states = response.data;
-      });
-      axios.get('/fetchparkings').then(function (response) {
-        _this2.parkings = response.data;
-      });
       axios.get('/fetchslider').then(function (response) {
-        _this2.firstSlider = response.data[0];
         _this2.slider = response.data;
       });
     },
@@ -3654,166 +2840,8 @@ __webpack_require__.r(__webpack_exports__);
       var _this3 = this;
 
       axios.get('/fetchcarsall').then(function (response) {
-        // let timeoutAll = setInterval(() => {
-        //     if (this.quanitityAll >= response.data.length) {
-        //         return clearInterval(timeoutAll);
-        //     }
-        //     this.quanitityAll++;
-        // },4000/response.data.length);
-        // this.timeoutSedan = setInterval(() => {
-        //     if (this.quanititySedan >= response.data.filter(obj => (obj.bodyId == 3)).length) {
-        //         return clearInterval(this.timeoutSedan);
-        //     }
-        //     this.quanititySedan++;
-        // },4000/response.data.filter(obj => (obj.bodyId == 3)).length);
-        // this.timeoutLightComm = setInterval(() => {
-        //     if (this.quanitityLightComm >= 300) {
-        //         return  clearInterval(this.timeoutLightComm);
-        //     }
-        //     this.quanitityLightComm++;
-        // },4000/response.data.filter(obj => (obj.bodyId == 4)).length);
-        // this.timeoutTruck = setInterval(() => {
-        //     if (this.quanitityTruck >= response.data.filter(obj => (obj.bodyId == 5)).length) {
-        //         return clearInterval(this.timeoutTruck);
-        //     }
-        //     this.quanitityTruck++;
-        // },4000/response.data.filter(obj => (obj.bodyId == 5)).length);
-        // this.timeoutSedTyag = setInterval(() => {
-        //     if (this.quanititySedTyag >= response.data.filter(obj => (obj.bodyId == 6)).length) {
-        //         return clearInterval(this.timeoutSedTyag);
-        //     }
-        //     this.quanititySedTyag++;
-        // },4000/response.data.filter(obj => (obj.bodyId == 6)).length);
-        // this.timeoutTrailers = setInterval(() => {
-        //     if (this.quanitityTrailers >=  response.data.filter(obj => (obj.bodyId == 7)).length) {
-        //         return clearInterval(this.timeoutTrailers);
-        //     }
-        //     this.quanitityTrailers++;
-        // },4000/response.data.filter(obj => (obj.bodyId == 7)).length);
-        // this.timeoutBus = setInterval(() => {
-        //     if (this.quanitityBus >=  response.data.filter(obj => (obj.bodyId == 8)).length) {
-        //         return clearInterval(this.timeoutBus);
-        //     }
-        //     this.quanitityBus++;
-        // },4000/response.data.filter(obj => (obj.bodyId == 8)).length);
-        // this.timeoutSprecialTech = setInterval(() => {
-        //     if (this.quanititySprecialTech >=  response.data.filter(obj => (obj.bodyId == 9)).length) {
-        //         return clearInterval(this.timeoutSprecialTech);
-        //     }
-        //     this.quanititySprecialTech++;
-        // },4000/response.data.filter(obj => (obj.bodyId == 9)).length);
-        _this3.quanitityAll = response.data.length;
-        _this3.quanititySedan = response.data.filter(function (obj) {
-          return obj.bodyId == 3;
-        }).length;
-        _this3.quanitityLightComm = response.data.filter(function (obj) {
-          return obj.bodyId == 4;
-        }).length;
-        _this3.quanitityTruck = response.data.filter(function (obj) {
-          return obj.bodyId == 5;
-        }).length;
-        _this3.quanititySedTyag = response.data.filter(function (obj) {
-          return obj.bodyId == 6;
-        }).length;
-        _this3.quanitityTrailers = response.data.filter(function (obj) {
-          return obj.bodyId == 7;
-        }).length;
-        _this3.quanitityBus = response.data.filter(function (obj) {
-          return obj.bodyId == 8;
-        }).length;
-        _this3.quanititySprecialTech = response.data.filter(function (obj) {
-          return obj.bodyId == 9;
-        }).length;
+        _this3.allcars = response.data;
       });
-    },
-    filterByParkings: function filterByParkings(event) {
-      var _this4 = this;
-
-      this.parkingId = event.target.value;
-      axios.get('/fetchcarsall').then(function (response) {
-        _this4.allCarsLength = response.data.filter(function (obj) {
-          return obj.parkingId == _this4.parkingId && (_this4.stateId == obj.stateId || _this4.stateId == '') && (_this4.modelId == obj.modelId || _this4.modelId == '') && (_this4.bodiesId == obj.bodyId || _this4.bodiesId == '') && (!_this4.startAu || _this4.startAu >= new Date(obj.auctionStart).getTime()) && (!_this4.endAu || _this4.endAu <= new Date(obj.endOfAuction).getTime());
-        }).length;
-      });
-    },
-    filterByStarts: function filterByStarts(event) {
-      var _this5 = this;
-
-      this.startAu = new Date(event.target.value).getTime();
-      axios.get('/fetchcarsall').then(function (response) {
-        _this5.allCarsLength = response.data.filter(function (obj) {
-          return new Date(obj.auctionStart).getTime() >= _this5.startAu && (_this5.stateId == obj.stateId || _this5.stateId == '') && (_this5.parkingId == obj.parkingId || _this5.parkingId == '') && (_this5.modelId == obj.modelId || _this5.modelId == '') && (_this5.bodiesId == obj.bodyId || _this5.bodiesId == '') && (!_this5.endAu || _this5.endAu <= new Date(obj.endOfAuction).getTime());
-        }).length;
-      });
-    },
-    filterByEnds: function filterByEnds(event) {
-      var _this6 = this;
-
-      this.endAu = new Date(event.target.value).getTime();
-      axios.get('/fetchcarsall').then(function (response) {
-        _this6.allCarsLength = response.data.filter(function (obj) {
-          return new Date(obj.endOfAuction).getTime() <= _this6.endAu && (_this6.stateId == obj.stateId || _this6.stateId == '') && (_this6.parkingId == obj.parkingId || _this6.parkingId == '') && (_this6.modelId == obj.modelId || _this6.modelId == '') && (_this6.bodiesId == obj.bodyId || _this6.bodiesId == '') && (!_this6.startAu || _this6.startAu >= new Date(obj.auctionStart).getTime());
-        }).length;
-      });
-    },
-    filterByModels: function filterByModels(event) {
-      var _this7 = this;
-
-      this.modelId = event.target.value;
-      axios.get('/fetchcarsall').then(function (response) {
-        _this7.allCarsLength = response.data.filter(function (obj) {
-          return obj.modelId == _this7.modelId && (_this7.stateId == obj.stateId || _this7.stateId == '') && (_this7.parkingId == obj.parkingId || _this7.parkingId == '') && (_this7.bodiesId == obj.bodyId || _this7.bodiesId == '') && (!_this7.startAu || _this7.startAu >= new Date(obj.auctionStart).getTime()) && (!_this7.endAu || _this7.endAu <= new Date(obj.endOfAuction).getTime());
-        }).length;
-      });
-    },
-    filterByStates: function filterByStates(event) {
-      var _this8 = this;
-
-      this.stateId = event.target.value;
-      console.log(this.stateId);
-      axios.get('/fetchcarsall').then(function (response) {
-        _this8.allCarsLength = response.data.filter(function (obj) {
-          return obj.stateId == _this8.stateId && (_this8.bodiesId == obj.bodyId || _this8.bodiesId == '') && (_this8.parkingId == obj.parkingId || _this8.parkingId == '') && (_this8.modelId == obj.modelId || _this8.modelId == '') && (!_this8.startAu || _this8.startAu >= new Date(obj.auctionStart).getTime()) && (!_this8.endAu || _this8.endAu <= new Date(obj.endOfAuction).getTime());
-        }).length;
-      });
-    },
-    classLi: function classLi(id) {
-      var _this9 = this;
-
-      var li = document.getElementsByClassName("body-cars");
-
-      for (var i = 0; i < li.length; i++) {
-        li[i].classList.remove("carTypeActive");
-      }
-
-      document.querySelector('li[data-id="' + id + '"]').classList.add("carTypeActive");
-      this.bodiesId = id;
-
-      if (!id) {
-        axios.get('/fetchcarsall').then(function (response) {
-          _this9.offsetCars = [];
-
-          for (var _i = 0; _i < Math.ceil(response.data.length / 6); _i++) {
-            _this9.offsetCars.push(_i);
-          }
-
-          return _this9.allCarsLength = response.data.length;
-        });
-      }
-
-      if (id) {
-        axios.get('/fetchcarsall').then(function (response) {
-          _this9.offsetCars = [];
-
-          for (var _i2 = 0; _i2 < Math.ceil(response.data.length / 6); _i2++) {
-            _this9.offsetCars.push(_i2);
-          }
-
-          return _this9.allCarsLength = response.data.filter(function (obj) {
-            return obj.bodyId === id && (_this9.stateId == obj.stateId || _this9.stateId == '') && (_this9.parkingId == obj.parkingId || _this9.parkingId == '') && (_this9.modelId == obj.modelId || _this9.modelId == '') && (_this9.parkingId == obj.parkingId || _this9.parkingId == '') && (!_this9.startAu || _this9.startAu >= new Date(obj.auctionStart).getTime()) && (!_this9.endAu || _this9.endAu <= new Date(obj.endOfAuction).getTime());
-          }).length;
-        });
-      }
     }
   }
 });
@@ -4715,457 +3743,32 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "SearchCar",
   props: ['carssearch'],
   data: function data() {
     return {
-      bodies: [],
-      states: [],
-      parkings: [],
-      models: [],
-      offsetCars: [],
-      firstSlider: [],
       slider: [],
-      filters: [],
-      startAu: '',
-      endAu: '',
-      stateId: '',
-      modelId: '',
-      parkingId: '',
-      bodiesId: '',
-      allCarsLength: null
+      filters: []
     };
   },
   created: function created() {
-    this.fetchBodies();
-    this.fetchModels();
-    this.fetchParkings();
-    this.fetchStates();
-    this.fetchSlider();
+    this.fetchcars();
+    this.fetchslider();
   },
   methods: {
-    classLi: function classLi(id) {
+    fetchcars: function fetchcars() {
       var _this = this;
 
-      var li = document.getElementsByClassName("body-cars");
-
-      for (var i = 0; i < li.length; i++) {
-        li[i].classList.remove("carTypeActive");
-      }
-
-      document.querySelector('li[data-id="' + id + '"]').classList.add("carTypeActive");
-      this.bodiesId = id;
-
-      if (!id) {
-        axios.get('/fetchcarsall').then(function (response) {
-          _this.offsetCars = [];
-
-          for (var _i = 0; _i < Math.ceil(response.data.length / 6); _i++) {
-            _this.offsetCars.push(_i);
-          }
-
-          return _this.allCarsLength = response.data.length;
-        });
-      }
-
-      if (id) {
-        axios.get('/fetchcarsall').then(function (response) {
-          _this.offsetCars = [];
-
-          for (var _i2 = 0; _i2 < Math.ceil(response.data.length / 6); _i2++) {
-            _this.offsetCars.push(_i2);
-          }
-
-          return _this.allCarsLength = response.data.filter(function (obj) {
-            return obj.bodyId === id && (_this.stateId == obj.stateId || _this.stateId == '') && (_this.parkingId == obj.parkingId || _this.parkingId == '') && (_this.modelId == obj.modelId || _this.modelId == '') && (_this.parkingId == obj.parkingId || _this.parkingId == '') && (!_this.startAu || _this.startAu >= new Date(obj.auctionStart).getTime()) && (!_this.endAu || _this.endAu <= new Date(obj.endOfAuction).getTime());
-          }).length;
-        });
-      }
+      axios.get('/fetchcarsall').then(function (response) {
+        _this.allcars = response.data;
+      });
     },
-    fetchBodies: function fetchBodies() {
+    fetchslider: function fetchslider() {
       var _this2 = this;
 
-      axios.get('/fetchbodies').then(function (response) {
-        _this2.bodies = response.data;
-      });
-    },
-    fetchModels: function fetchModels() {
-      var _this3 = this;
-
-      axios.get('/fetchmodels').then(function (response) {
-        _this3.models = response.data;
-      });
-    },
-    fetchParkings: function fetchParkings() {
-      var _this4 = this;
-
-      axios.get('/fetchparkings').then(function (response) {
-        _this4.parkings = response.data;
-      });
-    },
-    fetchStates: function fetchStates() {
-      var _this5 = this;
-
-      axios.get('/fetchstates').then(function (response) {
-        _this5.states = response.data;
-      });
-    },
-    fetchSlider: function fetchSlider() {
-      var _this6 = this;
-
       axios.get('/fetchslider').then(function (response) {
-        _this6.firstSlider = response.data[0];
-        _this6.slider = response.data;
-      });
-    },
-    filterByBodies: function filterByBodies(id) {
-      var _this7 = this;
-
-      this.bodiesId = id;
-
-      if (!id) {
-        axios.get('/fetchcarsall').then(function (response) {
-          _this7.offsetCars = [];
-
-          for (var _i3 = 0; _i3 < Math.ceil(response.data.length / 6); _i3++) {
-            _this7.offsetCars.push(_i3);
-          }
-
-          return _this7.allCarsLength = response.data.length;
-        });
-      }
-
-      if (id) {
-        axios.get('/fetchcarsall').then(function (response) {
-          _this7.offsetCars = [];
-
-          for (var _i4 = 0; _i4 < Math.ceil(response.data.length / 6); _i4++) {
-            _this7.offsetCars.push(_i4);
-          }
-
-          return _this7.allCarsLength = response.data.filter(function (obj) {
-            return obj.bodyId === id && (_this7.stateId == obj.stateId || _this7.stateId == '') && (_this7.parkingId == obj.parkingId || _this7.parkingId == '') && (_this7.modelId == obj.modelId || _this7.modelId == '') && (_this7.parkingId == obj.parkingId || _this7.parkingId == '') && (!_this7.startAu || _this7.startAu >= new Date(obj.auctionStart).getTime()) && (!_this7.endAu || _this7.endAu <= new Date(obj.endOfAuction).getTime());
-          }).length;
-        });
-      }
-
-      var disStyle = document.getElementsByClassName("body-cars");
-      var dispStyle = document.getElementsByClassName("body-name");
-      var disbackStyle = document.getElementsByClassName("activeback");
-
-      for (var i = 0; i < disbackStyle.length; i++) {
-        var backid = disbackStyle[i].getAttribute('back-id');
-        var disbackimg = document.querySelector('div[back-id="' + backid + '"]');
-        disbackimg.style.backgroundImage = "url('/img/design_img/" + backid + backid + ".png')";
-      }
-
-      for (var j = 0; j < dispStyle.length; j++) {
-        dispStyle[j].style.color = 'black';
-      }
-
-      for (var k = 0; k < disStyle.length; k++) {
-        disStyle[k].style.background = 'white';
-      }
-
-      var backimg = document.querySelector('div[back-id="' + id + '"]');
-      backimg.style.backgroundImage = "url('/img/design_img/" + id + ".png')";
-      var pStyle = document.querySelector('p[p-id="' + id + '"]');
-      pStyle.style.color = 'white';
-      var bodyStyle = document.querySelector('div[data-id="' + id + '"]');
-      bodyStyle.style.background = '#0f92ff';
-    },
-    filterByParkings: function filterByParkings(event) {
-      var _this8 = this;
-
-      this.parkingId = event.target.value;
-      axios.get('/fetchcarsall').then(function (response) {
-        _this8.allCarsLength = response.data.filter(function (obj) {
-          return obj.parkingId == _this8.parkingId && (_this8.stateId == obj.stateId || _this8.stateId == '') && (_this8.modelId == obj.modelId || _this8.modelId == '') && (_this8.bodiesId == obj.bodyId || _this8.bodiesId == '') && (!_this8.startAu || _this8.startAu >= new Date(obj.auctionStart).getTime()) && (!_this8.endAu || _this8.endAu <= new Date(obj.endOfAuction).getTime());
-        }).length;
-      });
-    },
-    filterByStarts: function filterByStarts(event) {
-      var _this9 = this;
-
-      this.startAu = new Date(event.target.value).getTime();
-      axios.get('/fetchcarsall').then(function (response) {
-        _this9.allCarsLength = response.data.filter(function (obj) {
-          return new Date(obj.auctionStart).getTime() >= _this9.startAu && (_this9.stateId == obj.stateId || _this9.stateId == '') && (_this9.parkingId == obj.parkingId || _this9.parkingId == '') && (_this9.modelId == obj.modelId || _this9.modelId == '') && (_this9.bodiesId == obj.bodyId || _this9.bodiesId == '') && (!_this9.endAu || _this9.endAu <= new Date(obj.endOfAuction).getTime());
-        }).length;
-      });
-    },
-    filterByEnds: function filterByEnds(event) {
-      var _this10 = this;
-
-      this.endAu = new Date(event.target.value).getTime();
-      axios.get('/fetchcarsall').then(function (response) {
-        _this10.allCarsLength = response.data.filter(function (obj) {
-          return new Date(obj.endOfAuction).getTime() <= _this10.endAu && (_this10.stateId == obj.stateId || _this10.stateId == '') && (_this10.parkingId == obj.parkingId || _this10.parkingId == '') && (_this10.modelId == obj.modelId || _this10.modelId == '') && (_this10.bodiesId == obj.bodyId || _this10.bodiesId == '') && (!_this10.startAu || _this10.startAu >= new Date(obj.auctionStart).getTime());
-        }).length;
-      });
-    },
-    filterByModels: function filterByModels(event) {
-      var _this11 = this;
-
-      this.modelId = event.target.value;
-      axios.get('/fetchcarsall').then(function (response) {
-        _this11.allCarsLength = response.data.filter(function (obj) {
-          return obj.modelId == _this11.modelId && (_this11.stateId == obj.stateId || _this11.stateId == '') && (_this11.parkingId == obj.parkingId || _this11.parkingId == '') && (_this11.bodiesId == obj.bodyId || _this11.bodiesId == '') && (!_this11.startAu || _this11.startAu >= new Date(obj.auctionStart).getTime()) && (!_this11.endAu || _this11.endAu <= new Date(obj.endOfAuction).getTime());
-        }).length;
-      });
-    },
-    filterByStates: function filterByStates(event) {
-      var _this12 = this;
-
-      this.stateId = event.target.value;
-      console.log(this.stateId);
-      axios.get('/fetchcarsall').then(function (response) {
-        _this12.allCarsLength = response.data.filter(function (obj) {
-          return obj.stateId == _this12.stateId && (_this12.bodiesId == obj.bodyId || _this12.bodiesId == '') && (_this12.parkingId == obj.parkingId || _this12.parkingId == '') && (_this12.modelId == obj.modelId || _this12.modelId == '') && (!_this12.startAu || _this12.startAu >= new Date(obj.auctionStart).getTime()) && (!_this12.endAu || _this12.endAu <= new Date(obj.endOfAuction).getTime());
-        }).length;
+        _this2.slider = response.data;
       });
     }
   }
@@ -5324,10 +3927,10 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Statistics.vue?vue&type=script&lang=js&":
-/*!*********************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Statistics.vue?vue&type=script&lang=js& ***!
-  \*********************************************************************************************************************************************************************/
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Slider.vue?vue&type=script&lang=js&":
+/*!*****************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Slider.vue?vue&type=script&lang=js& ***!
+  \*****************************************************************************************************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -5337,8 +3940,234 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: "Statistics"
+  name: "Slider",
+  props: ['sliders'],
+  data: function data() {
+    return {
+      slider: []
+    };
+  },
+  created: function created() {
+    this.slider = this.sliders;
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Statistic.vue?vue&type=script&lang=js&":
+/*!********************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Statistic.vue?vue&type=script&lang=js& ***!
+  \********************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var vue_countup_v2__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue-countup-v2 */ "./node_modules/vue-countup-v2/dist/countup.umd.min.js");
+/* harmony import */ var vue_countup_v2__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vue_countup_v2__WEBPACK_IMPORTED_MODULE_0__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: "Statistic",
+  components: {
+    ICountUp: vue_countup_v2__WEBPACK_IMPORTED_MODULE_0___default.a
+  },
+  data: function data() {
+    return {
+      delay: 2000,
+      endValUsers: 5,
+      endValCars: 5,
+      options: {
+        useEasing: true,
+        useGrouping: true,
+        separator: ',',
+        decimal: '.',
+        prefix: '',
+        suffix: ''
+      }
+    };
+  },
+  created: function created() {
+    this.fetchCars();
+    this.fetchUsers();
+  },
+  methods: {
+    // onReady: function (instance, CountUp) {
+    //     const that = this;
+    //     instance.update(that.endVal);
+    // },
+    fetchCars: function fetchCars() {
+      var _this = this;
+
+      axios.get('/fetchcarsall').then(function (response) {
+        _this.endValUsers = response.data.length;
+      });
+    },
+    fetchUsers: function fetchUsers() {
+      var _this2 = this;
+
+      axios.get('/fetchusers').then(function (response) {
+        _this2.endValCars = response.data.length;
+      });
+    }
+  }
 });
 
 /***/ }),
@@ -9838,6 +8667,20 @@ __webpack_require__.r(__webpack_exports__);
 }));
 //# sourceMappingURL=bootstrap.js.map
 
+
+/***/ }),
+
+/***/ "./node_modules/countup.js/dist/countUp.min.js":
+/*!*****************************************************!*\
+  !*** ./node_modules/countup.js/dist/countUp.min.js ***!
+  \*****************************************************/
+/*! exports provided: CountUp */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CountUp", function() { return CountUp; });
+var __assign=undefined&&undefined.__assign||function(){return(__assign=Object.assign||function(t){for(var i,a=1,s=arguments.length;a<s;a++)for(var n in i=arguments[a])Object.prototype.hasOwnProperty.call(i,n)&&(t[n]=i[n]);return t}).apply(this,arguments)},CountUp=function(){function t(t,i,a){var s=this;this.target=t,this.endVal=i,this.options=a,this.version="2.0.4",this.defaults={startVal:0,decimalPlaces:0,duration:2,useEasing:!0,useGrouping:!0,smartEasingThreshold:999,smartEasingAmount:333,separator:",",decimal:".",prefix:"",suffix:""},this.finalEndVal=null,this.useEasing=!0,this.countDown=!1,this.error="",this.startVal=0,this.paused=!0,this.count=function(t){s.startTime||(s.startTime=t);var i=t-s.startTime;s.remaining=s.duration-i,s.useEasing?s.countDown?s.frameVal=s.startVal-s.easingFn(i,0,s.startVal-s.endVal,s.duration):s.frameVal=s.easingFn(i,s.startVal,s.endVal-s.startVal,s.duration):s.countDown?s.frameVal=s.startVal-(s.startVal-s.endVal)*(i/s.duration):s.frameVal=s.startVal+(s.endVal-s.startVal)*(i/s.duration),s.countDown?s.frameVal=s.frameVal<s.endVal?s.endVal:s.frameVal:s.frameVal=s.frameVal>s.endVal?s.endVal:s.frameVal,s.frameVal=Math.round(s.frameVal*s.decimalMult)/s.decimalMult,s.printValue(s.frameVal),i<s.duration?s.rAF=requestAnimationFrame(s.count):null!==s.finalEndVal?s.update(s.finalEndVal):s.callback&&s.callback()},this.formatNumber=function(t){var i,a,n,e,r,o=t<0?"-":"";if(i=Math.abs(t).toFixed(s.options.decimalPlaces),n=(a=(i+="").split("."))[0],e=a.length>1?s.options.decimal+a[1]:"",s.options.useGrouping){r="";for(var l=0,h=n.length;l<h;++l)0!==l&&l%3==0&&(r=s.options.separator+r),r=n[h-l-1]+r;n=r}return s.options.numerals&&s.options.numerals.length&&(n=n.replace(/[0-9]/g,function(t){return s.options.numerals[+t]}),e=e.replace(/[0-9]/g,function(t){return s.options.numerals[+t]})),o+s.options.prefix+n+e+s.options.suffix},this.easeOutExpo=function(t,i,a,s){return a*(1-Math.pow(2,-10*t/s))*1024/1023+i},this.options=__assign({},this.defaults,a),this.formattingFn=this.options.formattingFn?this.options.formattingFn:this.formatNumber,this.easingFn=this.options.easingFn?this.options.easingFn:this.easeOutExpo,this.startVal=this.validateValue(this.options.startVal),this.frameVal=this.startVal,this.endVal=this.validateValue(i),this.options.decimalPlaces=Math.max(this.options.decimalPlaces),this.decimalMult=Math.pow(10,this.options.decimalPlaces),this.resetDuration(),this.options.separator=String(this.options.separator),this.useEasing=this.options.useEasing,""===this.options.separator&&(this.options.useGrouping=!1),this.el="string"==typeof t?document.getElementById(t):t,this.el?this.printValue(this.startVal):this.error="[CountUp] target is null or undefined"}return t.prototype.determineDirectionAndSmartEasing=function(){var t=this.finalEndVal?this.finalEndVal:this.endVal;this.countDown=this.startVal>t;var i=t-this.startVal;if(Math.abs(i)>this.options.smartEasingThreshold){this.finalEndVal=t;var a=this.countDown?1:-1;this.endVal=t+a*this.options.smartEasingAmount,this.duration=this.duration/2}else this.endVal=t,this.finalEndVal=null;this.finalEndVal?this.useEasing=!1:this.useEasing=this.options.useEasing},t.prototype.start=function(t){this.error||(this.callback=t,this.duration>0?(this.determineDirectionAndSmartEasing(),this.paused=!1,this.rAF=requestAnimationFrame(this.count)):this.printValue(this.endVal))},t.prototype.pauseResume=function(){this.paused?(this.startTime=null,this.duration=this.remaining,this.startVal=this.frameVal,this.determineDirectionAndSmartEasing(),this.rAF=requestAnimationFrame(this.count)):cancelAnimationFrame(this.rAF),this.paused=!this.paused},t.prototype.reset=function(){cancelAnimationFrame(this.rAF),this.paused=!0,this.resetDuration(),this.startVal=this.validateValue(this.options.startVal),this.frameVal=this.startVal,this.printValue(this.startVal)},t.prototype.update=function(t){cancelAnimationFrame(this.rAF),this.startTime=null,this.endVal=this.validateValue(t),this.endVal!==this.frameVal&&(this.startVal=this.frameVal,this.finalEndVal||this.resetDuration(),this.determineDirectionAndSmartEasing(),this.rAF=requestAnimationFrame(this.count))},t.prototype.printValue=function(t){var i=this.formattingFn(t);"INPUT"===this.el.tagName?this.el.value=i:"text"===this.el.tagName||"tspan"===this.el.tagName?this.el.textContent=i:this.el.innerHTML=i},t.prototype.ensureNumber=function(t){return"number"==typeof t&&!isNaN(t)},t.prototype.validateValue=function(t){var i=Number(t);return this.ensureNumber(i)?i:(this.error="[CountUp] invalid start or end value: "+t,null)},t.prototype.resetDuration=function(){this.startTime=null,this.duration=1e3*Number(this.options.duration),this.remaining=this.duration},t}();
 
 /***/ }),
 
@@ -45626,6 +44469,19 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;var _typeof="fun
 
 /***/ }),
 
+/***/ "./node_modules/vue-countup-v2/dist/countup.umd.min.js":
+/*!*************************************************************!*\
+  !*** ./node_modules/vue-countup-v2/dist/countup.umd.min.js ***!
+  \*************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+!function(e,t){ true?module.exports=t(__webpack_require__(/*! countup.js */ "./node_modules/countup.js/dist/countUp.min.js")):undefined}(this,function(e){"use strict";var t,n=(t="Function",function(e){return Object.prototype.toString.call(e)==="[object ".concat(t,"]")}),i={__countup__:e.CountUp,name:"VueCountUp",props:{delay:{type:Number,required:!1,default:0},endVal:{type:Number,required:!0},options:{type:Object,required:!1}},data:function(){return{instance:null}},watch:{endVal:{handler:function(e){this.instance&&n(this.instance.update)&&this.instance.update(e)},deep:!1}},methods:{create:function(){var t=this;if(!t.instance){var n=t.$el,i=new e.CountUp(n,t.endVal,t.options);i.error||(t.instance=i,t.delay<0?t.$emit("ready",i,e.CountUp):setTimeout(function(){return i.start(function(){return t.$emit("ready",i,e.CountUp)})},t.delay))}},destroy:function(){this.instance=null},printValue:function(e){if(this.instance&&n(this.instance.printValue))return this.instance.printValue(e)},start:function(e){if(this.instance&&n(this.instance.start))return this.instance.start(e)},pauseResume:function(){if(this.instance&&n(this.instance.pauseResume))return this.instance.pauseResume()},reset:function(){if(this.instance&&n(this.instance.reset))return this.instance.reset()},update:function(e){if(this.instance&&n(this.instance.update))return this.instance.update(e)}},mounted:function(){this.create()},beforeDestroy:function(){this.destroy()}};!function(e,t){void 0===t&&(t={});var n=t.insertAt;if(e&&"undefined"!=typeof document){var i=document.head||document.getElementsByTagName("head")[0],s=document.createElement("style");s.type="text/css","top"===n&&i.firstChild?i.insertBefore(s,i.firstChild):i.appendChild(s),s.styleSheet?s.styleSheet.cssText=e:s.appendChild(document.createTextNode(e))}}("");return function(e,t,n,i,s,r,o,a,u,c){"boolean"!=typeof o&&(u=a,a=o,o=!1);var d,f="function"==typeof n?n.options:n;if(e&&e.render&&(f.render=e.render,f.staticRenderFns=e.staticRenderFns,f._compiled=!0,s&&(f.functional=!0)),i&&(f._scopeId=i),r?(d=function(e){(e=e||this.$vnode&&this.$vnode.ssrContext||this.parent&&this.parent.$vnode&&this.parent.$vnode.ssrContext)||"undefined"==typeof __VUE_SSR_CONTEXT__||(e=__VUE_SSR_CONTEXT__),t&&t.call(this,u(e)),e&&e._registeredComponents&&e._registeredComponents.add(r)},f._ssrRegister=d):t&&(d=o?function(){t.call(this,c(this.$root.$options.shadowRoot))}:function(e){t.call(this,a(e))}),d)if(f.functional){var p=f.render;f.render=function(e,t){return d.call(t),p(e,t)}}else{var h=f.beforeCreate;f.beforeCreate=h?[].concat(h,d):[d]}return n}({render:function(){var e=this.$createElement;return(this._self._c||e)("span")},staticRenderFns:[]},void 0,i,"data-v-0abbdf5a",!1,void 0,void 0,void 0)});
+//# sourceMappingURL=countup.umd.min.js.map
+
+
+/***/ }),
+
 /***/ "./node_modules/vue-loader/lib/index.js?!./node_modules/vue-agile/src/Agile.vue?vue&type=script&lang=js&":
 /*!*************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib??vue-loader-options!./node_modules/vue-agile/src/Agile.vue?vue&type=script&lang=js& ***!
@@ -46288,702 +45144,13 @@ var render = function() {
       _vm.slider.length > 0 ? _c("header-component") : _vm._e(),
       _vm._v(" "),
       _vm.slider.length > 0
-        ? _c("div", { staticClass: "container-fluid carbidding-container" }, [
-            _c("section", { attrs: { id: "lastcars" } }, [
-              _c("div", { staticClass: "container container-back" }, [
-                _vm._m(0),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  {
-                    staticClass: "carousel slide d-none d-sm-block m-50 slide",
-                    attrs: {
-                      id: "carouselExampleControls",
-                      "data-ride": "carousel"
-                    }
-                  },
-                  [
-                    _c(
-                      "div",
-                      { staticClass: "carousel-inner text-center carouselin" },
-                      [
-                        _vm._l(_vm.slider, function(slid, index) {
-                          return index == 0
-                            ? _c(
-                                "div",
-                                { staticClass: "carousel-item active" },
-                                [
-                                  _c("div", { staticClass: "row" }, [
-                                    _c(
-                                      "div",
-                                      { staticClass: "col slider-col" },
-                                      [
-                                        _c("img", {
-                                          staticClass: "img-fluid",
-                                          attrs: {
-                                            src: "/img/" + slid.mainpics,
-                                            alt: slid.name
-                                          }
-                                        }),
-                                        _vm._v(" "),
-                                        _c(
-                                          "div",
-                                          { staticClass: "car-informacion" },
-                                          [
-                                            _c(
-                                              "div",
-                                              { staticClass: "inform-text" },
-                                              [
-                                                _c(
-                                                  "div",
-                                                  { staticClass: "row" },
-                                                  [
-                                                    _c(
-                                                      "div",
-                                                      { staticClass: "col" },
-                                                      [
-                                                        _c("p", [
-                                                          _vm._v(
-                                                            "Лот | #" +
-                                                              _vm._s(slid.id)
-                                                          )
-                                                        ])
-                                                      ]
-                                                    )
-                                                  ]
-                                                ),
-                                                _vm._v(" "),
-                                                _c(
-                                                  "div",
-                                                  { staticClass: "row" },
-                                                  [
-                                                    _c(
-                                                      "div",
-                                                      { staticClass: "col" },
-                                                      [
-                                                        _c("p", [
-                                                          _vm._v(
-                                                            _vm._s(slid.name) +
-                                                              " | " +
-                                                              _vm._s(slid.year)
-                                                          )
-                                                        ])
-                                                      ]
-                                                    )
-                                                  ]
-                                                ),
-                                                _vm._v(" "),
-                                                _c(
-                                                  "div",
-                                                  { staticClass: "row" },
-                                                  [
-                                                    _c(
-                                                      "div",
-                                                      { staticClass: "col" },
-                                                      [
-                                                        _c("p", [
-                                                          _vm._v(
-                                                            "Текущая цена | " +
-                                                              _vm._s(
-                                                                slid.currentPrice
-                                                              ) +
-                                                              " ₽"
-                                                          )
-                                                        ])
-                                                      ]
-                                                    )
-                                                  ]
-                                                ),
-                                                _vm._v(" "),
-                                                _c(
-                                                  "div",
-                                                  { staticClass: "row" },
-                                                  [
-                                                    _c(
-                                                      "div",
-                                                      { staticClass: "col" },
-                                                      [
-                                                        _c("p", [
-                                                          _vm._v(
-                                                            "Начало торгов | " +
-                                                              _vm._s(
-                                                                slid.auctionStart
-                                                              )
-                                                          )
-                                                        ])
-                                                      ]
-                                                    )
-                                                  ]
-                                                ),
-                                                _vm._v(" "),
-                                                _c(
-                                                  "div",
-                                                  { staticClass: "row" },
-                                                  [
-                                                    _c(
-                                                      "div",
-                                                      { staticClass: "col" },
-                                                      [
-                                                        _c("p", [
-                                                          _vm._v(
-                                                            "Завершение торгов: | " +
-                                                              _vm._s(
-                                                                slid.endOfAuction
-                                                              )
-                                                          )
-                                                        ])
-                                                      ]
-                                                    )
-                                                  ]
-                                                ),
-                                                _vm._v(" "),
-                                                _c(
-                                                  "div",
-                                                  { staticClass: "row" },
-                                                  [
-                                                    _c(
-                                                      "div",
-                                                      { staticClass: "col" },
-                                                      [
-                                                        _c(
-                                                          "router-link",
-                                                          {
-                                                            key: slid.id,
-                                                            attrs: {
-                                                              to:
-                                                                "/cars/" +
-                                                                slid.id
-                                                            }
-                                                          },
-                                                          [
-                                                            _c(
-                                                              "button",
-                                                              {
-                                                                staticClass:
-                                                                  "btn btn-light",
-                                                                attrs: {
-                                                                  type: "button"
-                                                                }
-                                                              },
-                                                              [
-                                                                _vm._v(
-                                                                  "Смотреть\n                                                        "
-                                                                )
-                                                              ]
-                                                            )
-                                                          ]
-                                                        )
-                                                      ],
-                                                      1
-                                                    )
-                                                  ]
-                                                )
-                                              ]
-                                            )
-                                          ]
-                                        )
-                                      ]
-                                    )
-                                  ])
-                                ]
-                              )
-                            : _vm._e()
-                        }),
-                        _vm._v(" "),
-                        _vm._l(_vm.slider, function(slid, index) {
-                          return index !== 0
-                            ? _c("div", { staticClass: "carousel-item" }, [
-                                _c("div", { staticClass: "row" }, [
-                                  _c("div", { staticClass: "col slider-col" }, [
-                                    _c("img", {
-                                      staticClass: "img-fluid",
-                                      attrs: {
-                                        src: "/img/" + slid.mainpics,
-                                        alt: slid.name
-                                      }
-                                    }),
-                                    _vm._v(" "),
-                                    _c(
-                                      "div",
-                                      { staticClass: "car-informacion" },
-                                      [
-                                        _c(
-                                          "div",
-                                          { staticClass: "inform-text" },
-                                          [
-                                            _c("div", { staticClass: "row" }, [
-                                              _c(
-                                                "div",
-                                                { staticClass: "col" },
-                                                [
-                                                  _c("p", [
-                                                    _vm._v(
-                                                      "Лот | #" +
-                                                        _vm._s(slid.id)
-                                                    )
-                                                  ])
-                                                ]
-                                              )
-                                            ]),
-                                            _vm._v(" "),
-                                            _c("div", { staticClass: "row" }, [
-                                              _c(
-                                                "div",
-                                                { staticClass: "col" },
-                                                [
-                                                  _c("p", [
-                                                    _vm._v(
-                                                      _vm._s(slid.name) +
-                                                        " | " +
-                                                        _vm._s(slid.year)
-                                                    )
-                                                  ])
-                                                ]
-                                              )
-                                            ]),
-                                            _vm._v(" "),
-                                            _c("div", { staticClass: "row" }, [
-                                              _c(
-                                                "div",
-                                                { staticClass: "col" },
-                                                [
-                                                  _c("p", [
-                                                    _vm._v(
-                                                      "Текущая цена | " +
-                                                        _vm._s(
-                                                          slid.currentPrice
-                                                        ) +
-                                                        " ₽"
-                                                    )
-                                                  ])
-                                                ]
-                                              )
-                                            ]),
-                                            _vm._v(" "),
-                                            _c("div", { staticClass: "row" }, [
-                                              _c(
-                                                "div",
-                                                { staticClass: "col" },
-                                                [
-                                                  _c("p", [
-                                                    _vm._v(
-                                                      "Начало торгов | " +
-                                                        _vm._s(
-                                                          slid.auctionStart
-                                                        )
-                                                    )
-                                                  ])
-                                                ]
-                                              )
-                                            ]),
-                                            _vm._v(" "),
-                                            _c("div", { staticClass: "row" }, [
-                                              _c(
-                                                "div",
-                                                { staticClass: "col" },
-                                                [
-                                                  _c("p", [
-                                                    _vm._v(
-                                                      "Завершение торгов: | " +
-                                                        _vm._s(
-                                                          slid.endOfAuction
-                                                        )
-                                                    )
-                                                  ])
-                                                ]
-                                              )
-                                            ]),
-                                            _vm._v(" "),
-                                            _c("div", { staticClass: "row" }, [
-                                              _c(
-                                                "div",
-                                                { staticClass: "col" },
-                                                [
-                                                  _c(
-                                                    "router-link",
-                                                    {
-                                                      key: slid.id,
-                                                      attrs: {
-                                                        to: "/cars/" + slid.id
-                                                      }
-                                                    },
-                                                    [
-                                                      _c(
-                                                        "button",
-                                                        {
-                                                          staticClass:
-                                                            "btn btn-light",
-                                                          attrs: {
-                                                            type: "button"
-                                                          }
-                                                        },
-                                                        [
-                                                          _vm._v(
-                                                            "Смотреть\n                                                        "
-                                                          )
-                                                        ]
-                                                      )
-                                                    ]
-                                                  )
-                                                ],
-                                                1
-                                              )
-                                            ])
-                                          ]
-                                        )
-                                      ]
-                                    )
-                                  ])
-                                ])
-                              ])
-                            : _vm._e()
-                        }),
-                        _vm._v(" "),
-                        _vm._m(1),
-                        _vm._v(" "),
-                        _vm._m(2)
-                      ],
-                      2
-                    )
-                  ]
-                )
-              ])
-            ]),
-            _vm._v(" "),
-            _vm.slider.length > 0
-              ? _c("div", { staticClass: "container container-back" }, [
-                  _c("div", { staticClass: "row body-cats" }, [
-                    _c("div", { staticClass: "car_types_div" }, [
-                      _c(
-                        "ul",
-                        {
-                          staticClass: "nav nav-tabs",
-                          attrs: { id: "carTypes" }
-                        },
-                        [
-                          _c(
-                            "li",
-                            {
-                              staticClass: "body-cars carTypeActive",
-                              attrs: { role: "presentation", "data-id": "0" },
-                              on: {
-                                click: function($event) {
-                                  return _vm.classLi(0)
-                                }
-                              }
-                            },
-                            [_vm._m(3)]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "li",
-                            {
-                              staticClass: "body-cars",
-                              attrs: { role: "presentation", "data-id": "3" },
-                              on: {
-                                click: function($event) {
-                                  return _vm.classLi(3)
-                                }
-                              }
-                            },
-                            [_vm._m(4)]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "li",
-                            {
-                              staticClass: "body-cars",
-                              attrs: { role: "presentation", "data-id": "4" },
-                              on: {
-                                click: function($event) {
-                                  return _vm.classLi(4)
-                                }
-                              }
-                            },
-                            [_vm._m(5)]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "li",
-                            {
-                              staticClass: "body-cars",
-                              attrs: { role: "presentation", "data-id": "5" },
-                              on: {
-                                click: function($event) {
-                                  return _vm.classLi(5)
-                                }
-                              }
-                            },
-                            [_vm._m(6)]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "li",
-                            {
-                              staticClass: "body-cars",
-                              attrs: { role: "presentation", "data-id": "6" },
-                              on: {
-                                click: function($event) {
-                                  return _vm.classLi(6)
-                                }
-                              }
-                            },
-                            [_vm._m(7)]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "li",
-                            {
-                              staticClass: "body-cars",
-                              attrs: { role: "presentation", "data-id": "7" },
-                              on: {
-                                click: function($event) {
-                                  return _vm.classLi(7)
-                                }
-                              }
-                            },
-                            [_vm._m(8)]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "li",
-                            {
-                              staticClass: "body-cars",
-                              attrs: { role: "presentation", "data-id": "8" },
-                              on: {
-                                click: function($event) {
-                                  return _vm.classLi(8)
-                                }
-                              }
-                            },
-                            [_vm._m(9)]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "li",
-                            {
-                              staticClass: "body-cars",
-                              attrs: { role: "presentation", "data-id": "9" },
-                              on: {
-                                click: function($event) {
-                                  return _vm.classLi(9)
-                                }
-                              }
-                            },
-                            [_vm._m(10)]
-                          )
-                        ]
-                      )
-                    ])
-                  ])
-                ])
-              : _vm._e()
-          ])
+        ? _c("slider", { attrs: { sliders: this.slider } })
         : _vm._e(),
       _vm._v(" "),
+      _vm.slider.length > 0 ? _c("statistic") : _vm._e(),
+      _vm._v(" "),
       _vm.slider.length > 0
-        ? _c("div", { staticClass: "container-fluid car-filters" }, [
-            _c("div", { staticClass: "container container-back" }, [
-              _c("form", { attrs: { action: "/filtercar", type: "GET" } }, [
-                _c(
-                  "div",
-                  { staticClass: "row select-options-filter filter_row" },
-                  [
-                    _c("div", { staticClass: "col" }, [
-                      _c("label"),
-                      _vm._v(" "),
-                      _c(
-                        "select",
-                        {
-                          staticClass: "form-control options selectbox",
-                          attrs: { id: "model", name: "modelval" },
-                          on: {
-                            change: function($event) {
-                              return _vm.filterByModels($event)
-                            }
-                          }
-                        },
-                        [
-                          _c("option", { attrs: { value: "" } }, [
-                            _vm._v("Все марки")
-                          ]),
-                          _vm._v(" "),
-                          _vm._l(_vm.models, function(model, index) {
-                            return _c(
-                              "option",
-                              { domProps: { value: model.id } },
-                              [
-                                _vm._v(
-                                  _vm._s(model.name) +
-                                    "\n                            "
-                                )
-                              ]
-                            )
-                          })
-                        ],
-                        2
-                      )
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "col" }, [
-                      _c("label"),
-                      _vm._v(" "),
-                      _c(
-                        "select",
-                        {
-                          staticClass: "form-control options selectbox",
-                          attrs: { id: "state", name: "stateval" },
-                          on: {
-                            change: function($event) {
-                              return _vm.filterByStates($event)
-                            }
-                          }
-                        },
-                        [
-                          _c("option", { attrs: { value: "" } }, [
-                            _vm._v("Все состояния")
-                          ]),
-                          _vm._v(" "),
-                          _vm._l(_vm.states, function(state, index) {
-                            return _c(
-                              "option",
-                              { domProps: { value: state.id } },
-                              [
-                                _vm._v(
-                                  _vm._s(state.name) +
-                                    "\n                            "
-                                )
-                              ]
-                            )
-                          })
-                        ],
-                        2
-                      )
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "col" }, [
-                      _c("label"),
-                      _vm._v(" "),
-                      _c(
-                        "select",
-                        {
-                          staticClass: "form-control options selectbox",
-                          attrs: { id: "parking", name: "parkingval" },
-                          on: {
-                            change: function($event) {
-                              return _vm.filterByParkings($event)
-                            }
-                          }
-                        },
-                        [
-                          _c("option", { attrs: { value: "" } }, [
-                            _vm._v("Все стоянки")
-                          ]),
-                          _vm._v(" "),
-                          _vm._l(_vm.parkings, function(parking, index) {
-                            return _c(
-                              "option",
-                              { domProps: { value: parking.id } },
-                              [
-                                _vm._v(
-                                  "\n                                " +
-                                    _vm._s(parking.address) +
-                                    "\n                            "
-                                )
-                              ]
-                            )
-                          })
-                        ],
-                        2
-                      )
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "col" }, [
-                      _c("label", [_vm._v("Дата завершения")]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "row input-row" }, [
-                        _c("p", [_vm._v("С")]),
-                        _vm._v(" "),
-                        _c(
-                          "div",
-                          { staticClass: "col filter-date filter-date-d" },
-                          [
-                            _c("input", {
-                              staticClass: "input-date form-control options",
-                              attrs: {
-                                name: "startval",
-                                type: "date",
-                                id: "start",
-                                value: ""
-                              },
-                              on: {
-                                change: function($event) {
-                                  return _vm.filterByStarts($event)
-                                }
-                              }
-                            })
-                          ]
-                        ),
-                        _vm._v(" "),
-                        _c("p", [_vm._v("ПО")]),
-                        _vm._v(" "),
-                        _c(
-                          "div",
-                          { staticClass: "col filter-date filter-date-d" },
-                          [
-                            _c("input", {
-                              staticClass: "input-date form-control options",
-                              attrs: {
-                                name: "endval",
-                                type: "date",
-                                id: "finish",
-                                value: ""
-                              },
-                              on: {
-                                change: function($event) {
-                                  return _vm.filterByEnds($event)
-                                }
-                              }
-                            }),
-                            _vm._v(" "),
-                            _c("input", {
-                              attrs: { type: "hidden", name: "bodyval" },
-                              domProps: { value: _vm.bodiesId }
-                            })
-                          ]
-                        )
-                      ])
-                    ]),
-                    _vm._v(" "),
-                    _c(
-                      "div",
-                      { staticClass: "col filter-date filter-date-btn" },
-                      [
-                        _c(
-                          "button",
-                          {
-                            staticClass: "btn btn-light searchcarsauction",
-                            attrs: { type: "submit" }
-                          },
-                          [
-                            _c("i", {
-                              staticClass: "fas fa-search",
-                              staticStyle: { display: "inline-block" }
-                            }),
-                            _vm._v(
-                              " " +
-                                _vm._s(this.allCarsLength) +
-                                "\n                        "
-                            )
-                          ]
-                        )
-                      ]
-                    )
-                  ]
-                )
-              ])
-            ])
-          ])
+        ? _c("filters", { attrs: { allcars: _vm.allcars } })
         : _vm._e(),
       _vm._v(" "),
       _vm.slider.length > 0
@@ -47161,7 +45328,7 @@ var render = function() {
             _vm._v(" "),
             _vm.auctioncars.length == 0
               ? _c("div", { staticClass: "container container-back" }, [
-                  _vm._m(11)
+                  _vm._m(0)
                 ])
               : _vm._e()
           ])
@@ -47173,212 +45340,6 @@ var render = function() {
   )
 }
 var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      {
-        staticClass: "carousel slide d-block d-sm-none slide",
-        attrs: { id: "bs4-slide-carousel", "data-ride": "carousel" }
-      },
-      [
-        _c("div", { staticClass: "carousel-inner text-center" }, [
-          _c(
-            "a",
-            {
-              staticClass: "carousel-control-prev",
-              attrs: {
-                href: "#bs4-slide-carousel",
-                role: "button",
-                "data-slide": "prev"
-              }
-            },
-            [
-              _c("span", {
-                staticClass: "carousel-control-prev-icon",
-                attrs: { "aria-hidden": "true" }
-              }),
-              _vm._v(" "),
-              _c("span", { staticClass: "sr-only" }, [_vm._v("Previous")])
-            ]
-          ),
-          _vm._v(" "),
-          _c(
-            "a",
-            {
-              staticClass: "carousel-control-next",
-              attrs: {
-                href: "#bs4-slide-carousel",
-                role: "button",
-                "data-slide": "next"
-              }
-            },
-            [
-              _c("span", {
-                staticClass: "carousel-control-next-icon",
-                attrs: { "aria-hidden": "true" }
-              }),
-              _vm._v(" "),
-              _c("span", { staticClass: "sr-only" }, [_vm._v("Next")])
-            ]
-          )
-        ])
-      ]
-    )
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "a",
-      {
-        staticClass: "carousel-control-next",
-        attrs: {
-          href: "#carouselExampleControls",
-          role: "button",
-          "data-slide": "next"
-        }
-      },
-      [
-        _c("span", {
-          staticClass: "carousel-control-next-icon",
-          attrs: { "aria-hidden": "true" }
-        }),
-        _vm._v(" "),
-        _c("span", { staticClass: "sr-only" })
-      ]
-    )
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "a",
-      {
-        staticClass: "carousel-control-prev",
-        attrs: {
-          href: "#carouselExampleControls",
-          role: "button",
-          "data-slide": "prev"
-        }
-      },
-      [
-        _c("span", {
-          staticClass: "carousel-control-prev-icon",
-          attrs: { "aria-hidden": "true" }
-        }),
-        _vm._v(" "),
-        _c("span", { staticClass: "sr-only" })
-      ]
-    )
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("a", { attrs: { title: "Все типы" } }, [
-      _c("i", { staticClass: "fas fa-car-side", attrs: { "icon-id": "0" } }),
-      _vm._v(" "),
-      _c("p", { staticClass: "carTypesText" }, [_vm._v("Все типы")])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("a", { attrs: { title: "Легковые" } }, [
-      _c("i", { staticClass: "fas fa-car", attrs: { "icon-id": "3" } }),
-      _vm._v(" "),
-      _c("p", { staticClass: "carTypesText" }, [_vm._v("Легковые")])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("a", { attrs: { title: "Легкие коммерческие" } }, [
-      _c("i", { staticClass: "fas fa-truck" }),
-      _vm._v(" "),
-      _c("p", { staticClass: "carTypesText" }, [_vm._v("Легкие коммерческие")])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("a", { attrs: { title: "Грузовые" } }, [
-      _c("i", {
-        staticClass: "fas fa-truck-moving",
-        attrs: { "icon-id": "4" }
-      }),
-      _vm._v(" "),
-      _c("p", { staticClass: "carTypesText" }, [_vm._v("Грузовые")])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("a", { attrs: { title: "Седельные тягачи" } }, [
-      _c("i", {
-        staticClass: "fas fa-truck-pickup",
-        attrs: { "icon-id": "5" }
-      }),
-      _vm._v(" "),
-      _c("p", { staticClass: "carTypesText" }, [_vm._v("Седельные тягачи")])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("a", { attrs: { title: "Прицепы" } }, [
-      _c("i", {
-        staticClass: "fas fa-truck-loading",
-        attrs: { "icon-id": "6" }
-      }),
-      _vm._v(" "),
-      _c("p", { staticClass: "carTypesText" }, [_vm._v("Прицепы")])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "a",
-      {
-        staticClass: "carType-bus activeback body-car-back7",
-        attrs: { title: "Автобусы" }
-      },
-      [
-        _c("i", { staticClass: "fas fa-bus", attrs: { "icon-id": "7" } }),
-        _vm._v(" "),
-        _c("p", { staticClass: "carTypesText" }, [_vm._v("Автобусы")])
-      ]
-    )
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "a",
-      {
-        staticClass: "carType-special activeback body-car-back8",
-        attrs: { title: "Спецтехника" }
-      },
-      [
-        _c("i", { staticClass: "fas fa-tractor", attrs: { "icon-id": "9" } }),
-        _vm._v(" "),
-        _c("p", { staticClass: "carTypesText" }, [_vm._v("Спецтехника")])
-      ]
-    )
-  },
   function() {
     var _vm = this
     var _h = _vm.$createElement
@@ -47599,702 +45560,13 @@ var render = function() {
       _vm.slider.length > 0 ? _c("header-component") : _vm._e(),
       _vm._v(" "),
       _vm.slider.length > 0
-        ? _c("div", { staticClass: "container-fluid carbidding-container" }, [
-            _c("section", { attrs: { id: "lastcars" } }, [
-              _c("div", { staticClass: "container container-back" }, [
-                _vm._m(0),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  {
-                    staticClass: "carousel slide d-none d-sm-block m-50 slide",
-                    attrs: {
-                      id: "carouselExampleControls",
-                      "data-ride": "carousel"
-                    }
-                  },
-                  [
-                    _c(
-                      "div",
-                      { staticClass: "carousel-inner text-center carouselin" },
-                      [
-                        _vm._l(_vm.slider, function(slid, index) {
-                          return index == 0
-                            ? _c(
-                                "div",
-                                { staticClass: "carousel-item active" },
-                                [
-                                  _c("div", { staticClass: "row" }, [
-                                    _c(
-                                      "div",
-                                      { staticClass: "col slider-col" },
-                                      [
-                                        _c("img", {
-                                          staticClass: "img-fluid",
-                                          attrs: {
-                                            src: "/img/" + slid.mainpics,
-                                            alt: slid.name
-                                          }
-                                        }),
-                                        _vm._v(" "),
-                                        _c(
-                                          "div",
-                                          { staticClass: "car-informacion" },
-                                          [
-                                            _c(
-                                              "div",
-                                              { staticClass: "inform-text" },
-                                              [
-                                                _c(
-                                                  "div",
-                                                  { staticClass: "row" },
-                                                  [
-                                                    _c(
-                                                      "div",
-                                                      { staticClass: "col" },
-                                                      [
-                                                        _c("p", [
-                                                          _vm._v(
-                                                            "Лот | #" +
-                                                              _vm._s(slid.id)
-                                                          )
-                                                        ])
-                                                      ]
-                                                    )
-                                                  ]
-                                                ),
-                                                _vm._v(" "),
-                                                _c(
-                                                  "div",
-                                                  { staticClass: "row" },
-                                                  [
-                                                    _c(
-                                                      "div",
-                                                      { staticClass: "col" },
-                                                      [
-                                                        _c("p", [
-                                                          _vm._v(
-                                                            _vm._s(slid.name) +
-                                                              " | " +
-                                                              _vm._s(slid.year)
-                                                          )
-                                                        ])
-                                                      ]
-                                                    )
-                                                  ]
-                                                ),
-                                                _vm._v(" "),
-                                                _c(
-                                                  "div",
-                                                  { staticClass: "row" },
-                                                  [
-                                                    _c(
-                                                      "div",
-                                                      { staticClass: "col" },
-                                                      [
-                                                        _c("p", [
-                                                          _vm._v(
-                                                            "Текущая цена | " +
-                                                              _vm._s(
-                                                                slid.currentPrice
-                                                              ) +
-                                                              " ₽"
-                                                          )
-                                                        ])
-                                                      ]
-                                                    )
-                                                  ]
-                                                ),
-                                                _vm._v(" "),
-                                                _c(
-                                                  "div",
-                                                  { staticClass: "row" },
-                                                  [
-                                                    _c(
-                                                      "div",
-                                                      { staticClass: "col" },
-                                                      [
-                                                        _c("p", [
-                                                          _vm._v(
-                                                            "Начало торгов | " +
-                                                              _vm._s(
-                                                                slid.auctionStart
-                                                              )
-                                                          )
-                                                        ])
-                                                      ]
-                                                    )
-                                                  ]
-                                                ),
-                                                _vm._v(" "),
-                                                _c(
-                                                  "div",
-                                                  { staticClass: "row" },
-                                                  [
-                                                    _c(
-                                                      "div",
-                                                      { staticClass: "col" },
-                                                      [
-                                                        _c("p", [
-                                                          _vm._v(
-                                                            "Завершение торгов: | " +
-                                                              _vm._s(
-                                                                slid.endOfAuction
-                                                              )
-                                                          )
-                                                        ])
-                                                      ]
-                                                    )
-                                                  ]
-                                                ),
-                                                _vm._v(" "),
-                                                _c(
-                                                  "div",
-                                                  { staticClass: "row" },
-                                                  [
-                                                    _c(
-                                                      "div",
-                                                      { staticClass: "col" },
-                                                      [
-                                                        _c(
-                                                          "router-link",
-                                                          {
-                                                            key: slid.id,
-                                                            attrs: {
-                                                              to:
-                                                                "/cars/" +
-                                                                slid.id
-                                                            }
-                                                          },
-                                                          [
-                                                            _c(
-                                                              "button",
-                                                              {
-                                                                staticClass:
-                                                                  "btn btn-light",
-                                                                attrs: {
-                                                                  type: "button"
-                                                                }
-                                                              },
-                                                              [
-                                                                _vm._v(
-                                                                  "Смотреть\n                                                        "
-                                                                )
-                                                              ]
-                                                            )
-                                                          ]
-                                                        )
-                                                      ],
-                                                      1
-                                                    )
-                                                  ]
-                                                )
-                                              ]
-                                            )
-                                          ]
-                                        )
-                                      ]
-                                    )
-                                  ])
-                                ]
-                              )
-                            : _vm._e()
-                        }),
-                        _vm._v(" "),
-                        _vm._l(_vm.slider, function(slid, index) {
-                          return index !== 0
-                            ? _c("div", { staticClass: "carousel-item" }, [
-                                _c("div", { staticClass: "row" }, [
-                                  _c("div", { staticClass: "col slider-col" }, [
-                                    _c("img", {
-                                      staticClass: "img-fluid",
-                                      attrs: {
-                                        src: "/img/" + slid.mainpics,
-                                        alt: slid.name
-                                      }
-                                    }),
-                                    _vm._v(" "),
-                                    _c(
-                                      "div",
-                                      { staticClass: "car-informacion" },
-                                      [
-                                        _c(
-                                          "div",
-                                          { staticClass: "inform-text" },
-                                          [
-                                            _c("div", { staticClass: "row" }, [
-                                              _c(
-                                                "div",
-                                                { staticClass: "col" },
-                                                [
-                                                  _c("p", [
-                                                    _vm._v(
-                                                      "Лот | #" +
-                                                        _vm._s(slid.id)
-                                                    )
-                                                  ])
-                                                ]
-                                              )
-                                            ]),
-                                            _vm._v(" "),
-                                            _c("div", { staticClass: "row" }, [
-                                              _c(
-                                                "div",
-                                                { staticClass: "col" },
-                                                [
-                                                  _c("p", [
-                                                    _vm._v(
-                                                      _vm._s(slid.name) +
-                                                        " | " +
-                                                        _vm._s(slid.year)
-                                                    )
-                                                  ])
-                                                ]
-                                              )
-                                            ]),
-                                            _vm._v(" "),
-                                            _c("div", { staticClass: "row" }, [
-                                              _c(
-                                                "div",
-                                                { staticClass: "col" },
-                                                [
-                                                  _c("p", [
-                                                    _vm._v(
-                                                      "Текущая цена | " +
-                                                        _vm._s(
-                                                          slid.currentPrice
-                                                        ) +
-                                                        " ₽"
-                                                    )
-                                                  ])
-                                                ]
-                                              )
-                                            ]),
-                                            _vm._v(" "),
-                                            _c("div", { staticClass: "row" }, [
-                                              _c(
-                                                "div",
-                                                { staticClass: "col" },
-                                                [
-                                                  _c("p", [
-                                                    _vm._v(
-                                                      "Начало торгов | " +
-                                                        _vm._s(
-                                                          slid.auctionStart
-                                                        )
-                                                    )
-                                                  ])
-                                                ]
-                                              )
-                                            ]),
-                                            _vm._v(" "),
-                                            _c("div", { staticClass: "row" }, [
-                                              _c(
-                                                "div",
-                                                { staticClass: "col" },
-                                                [
-                                                  _c("p", [
-                                                    _vm._v(
-                                                      "Завершение торгов: | " +
-                                                        _vm._s(
-                                                          slid.endOfAuction
-                                                        )
-                                                    )
-                                                  ])
-                                                ]
-                                              )
-                                            ]),
-                                            _vm._v(" "),
-                                            _c("div", { staticClass: "row" }, [
-                                              _c(
-                                                "div",
-                                                { staticClass: "col" },
-                                                [
-                                                  _c(
-                                                    "router-link",
-                                                    {
-                                                      key: slid.id,
-                                                      attrs: {
-                                                        to: "/cars/" + slid.id
-                                                      }
-                                                    },
-                                                    [
-                                                      _c(
-                                                        "button",
-                                                        {
-                                                          staticClass:
-                                                            "btn btn-light",
-                                                          attrs: {
-                                                            type: "button"
-                                                          }
-                                                        },
-                                                        [
-                                                          _vm._v(
-                                                            "Смотреть\n                                                        "
-                                                          )
-                                                        ]
-                                                      )
-                                                    ]
-                                                  )
-                                                ],
-                                                1
-                                              )
-                                            ])
-                                          ]
-                                        )
-                                      ]
-                                    )
-                                  ])
-                                ])
-                              ])
-                            : _vm._e()
-                        }),
-                        _vm._v(" "),
-                        _vm._m(1),
-                        _vm._v(" "),
-                        _vm._m(2)
-                      ],
-                      2
-                    )
-                  ]
-                )
-              ])
-            ]),
-            _vm._v(" "),
-            _vm.slider.length > 0
-              ? _c("div", { staticClass: "container container-back" }, [
-                  _c("div", { staticClass: "row body-cats" }, [
-                    _c("div", { staticClass: "car_types_div" }, [
-                      _c(
-                        "ul",
-                        {
-                          staticClass: "nav nav-tabs",
-                          attrs: { id: "carTypes" }
-                        },
-                        [
-                          _c(
-                            "li",
-                            {
-                              staticClass: "body-cars carTypeActive",
-                              attrs: { role: "presentation", "data-id": "0" },
-                              on: {
-                                click: function($event) {
-                                  return _vm.classLi(0)
-                                }
-                              }
-                            },
-                            [_vm._m(3)]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "li",
-                            {
-                              staticClass: "body-cars",
-                              attrs: { role: "presentation", "data-id": "3" },
-                              on: {
-                                click: function($event) {
-                                  return _vm.classLi(3)
-                                }
-                              }
-                            },
-                            [_vm._m(4)]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "li",
-                            {
-                              staticClass: "body-cars",
-                              attrs: { role: "presentation", "data-id": "4" },
-                              on: {
-                                click: function($event) {
-                                  return _vm.classLi(4)
-                                }
-                              }
-                            },
-                            [_vm._m(5)]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "li",
-                            {
-                              staticClass: "body-cars",
-                              attrs: { role: "presentation", "data-id": "5" },
-                              on: {
-                                click: function($event) {
-                                  return _vm.classLi(5)
-                                }
-                              }
-                            },
-                            [_vm._m(6)]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "li",
-                            {
-                              staticClass: "body-cars",
-                              attrs: { role: "presentation", "data-id": "6" },
-                              on: {
-                                click: function($event) {
-                                  return _vm.classLi(6)
-                                }
-                              }
-                            },
-                            [_vm._m(7)]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "li",
-                            {
-                              staticClass: "body-cars",
-                              attrs: { role: "presentation", "data-id": "7" },
-                              on: {
-                                click: function($event) {
-                                  return _vm.classLi(7)
-                                }
-                              }
-                            },
-                            [_vm._m(8)]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "li",
-                            {
-                              staticClass: "body-cars",
-                              attrs: { role: "presentation", "data-id": "8" },
-                              on: {
-                                click: function($event) {
-                                  return _vm.classLi(8)
-                                }
-                              }
-                            },
-                            [_vm._m(9)]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "li",
-                            {
-                              staticClass: "body-cars",
-                              attrs: { role: "presentation", "data-id": "9" },
-                              on: {
-                                click: function($event) {
-                                  return _vm.classLi(9)
-                                }
-                              }
-                            },
-                            [_vm._m(10)]
-                          )
-                        ]
-                      )
-                    ])
-                  ])
-                ])
-              : _vm._e()
-          ])
+        ? _c("slider", { attrs: { sliders: this.slider } })
         : _vm._e(),
       _vm._v(" "),
+      _vm.slider.length > 0 ? _c("statistic") : _vm._e(),
+      _vm._v(" "),
       _vm.slider.length > 0
-        ? _c("div", { staticClass: "container-fluid car-filters" }, [
-            _c("div", { staticClass: "container container-back" }, [
-              _c("form", { attrs: { action: "/filtercar", type: "GET" } }, [
-                _c(
-                  "div",
-                  { staticClass: "row select-options-filter filter_row" },
-                  [
-                    _c("div", { staticClass: "col" }, [
-                      _c("label"),
-                      _vm._v(" "),
-                      _c(
-                        "select",
-                        {
-                          staticClass: "form-control options selectbox",
-                          attrs: { id: "model", name: "modelval" },
-                          on: {
-                            change: function($event) {
-                              return _vm.filterByModels($event)
-                            }
-                          }
-                        },
-                        [
-                          _c("option", { attrs: { value: "" } }, [
-                            _vm._v("Все марки")
-                          ]),
-                          _vm._v(" "),
-                          _vm._l(_vm.models, function(model, index) {
-                            return _c(
-                              "option",
-                              { domProps: { value: model.id } },
-                              [
-                                _vm._v(
-                                  _vm._s(model.name) +
-                                    "\n                            "
-                                )
-                              ]
-                            )
-                          })
-                        ],
-                        2
-                      )
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "col" }, [
-                      _c("label"),
-                      _vm._v(" "),
-                      _c(
-                        "select",
-                        {
-                          staticClass: "form-control options selectbox",
-                          attrs: { id: "state", name: "stateval" },
-                          on: {
-                            change: function($event) {
-                              return _vm.filterByStates($event)
-                            }
-                          }
-                        },
-                        [
-                          _c("option", { attrs: { value: "" } }, [
-                            _vm._v("Все состояния")
-                          ]),
-                          _vm._v(" "),
-                          _vm._l(_vm.states, function(state, index) {
-                            return _c(
-                              "option",
-                              { domProps: { value: state.id } },
-                              [
-                                _vm._v(
-                                  _vm._s(state.name) +
-                                    "\n                            "
-                                )
-                              ]
-                            )
-                          })
-                        ],
-                        2
-                      )
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "col" }, [
-                      _c("label"),
-                      _vm._v(" "),
-                      _c(
-                        "select",
-                        {
-                          staticClass: "form-control options selectbox",
-                          attrs: { id: "parking", name: "parkingval" },
-                          on: {
-                            change: function($event) {
-                              return _vm.filterByParkings($event)
-                            }
-                          }
-                        },
-                        [
-                          _c("option", { attrs: { value: "" } }, [
-                            _vm._v("Все стоянки")
-                          ]),
-                          _vm._v(" "),
-                          _vm._l(_vm.parkings, function(parking, index) {
-                            return _c(
-                              "option",
-                              { domProps: { value: parking.id } },
-                              [
-                                _vm._v(
-                                  "\n                                " +
-                                    _vm._s(parking.address) +
-                                    "\n                            "
-                                )
-                              ]
-                            )
-                          })
-                        ],
-                        2
-                      )
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "col" }, [
-                      _c("label", [_vm._v("Дата завершения")]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "row input-row" }, [
-                        _c("p", [_vm._v("С")]),
-                        _vm._v(" "),
-                        _c(
-                          "div",
-                          { staticClass: "col filter-date filter-date-d" },
-                          [
-                            _c("input", {
-                              staticClass: "input-date form-control options",
-                              attrs: {
-                                name: "startval",
-                                type: "date",
-                                id: "start",
-                                value: ""
-                              },
-                              on: {
-                                change: function($event) {
-                                  return _vm.filterByStarts($event)
-                                }
-                              }
-                            })
-                          ]
-                        ),
-                        _vm._v(" "),
-                        _c("p", [_vm._v("ПО")]),
-                        _vm._v(" "),
-                        _c(
-                          "div",
-                          { staticClass: "col filter-date filter-date-d" },
-                          [
-                            _c("input", {
-                              staticClass: "input-date form-control options",
-                              attrs: {
-                                name: "endval",
-                                type: "date",
-                                id: "finish",
-                                value: ""
-                              },
-                              on: {
-                                change: function($event) {
-                                  return _vm.filterByEnds($event)
-                                }
-                              }
-                            }),
-                            _vm._v(" "),
-                            _c("input", {
-                              attrs: { type: "hidden", name: "bodyval" },
-                              domProps: { value: _vm.bodiesId }
-                            })
-                          ]
-                        )
-                      ])
-                    ]),
-                    _vm._v(" "),
-                    _c(
-                      "div",
-                      { staticClass: "col filter-date filter-date-btn" },
-                      [
-                        _c(
-                          "button",
-                          {
-                            staticClass: "btn btn-light searchcarsauction",
-                            attrs: { type: "submit" }
-                          },
-                          [
-                            _c("i", {
-                              staticClass: "fas fa-search",
-                              staticStyle: { display: "inline-block" }
-                            }),
-                            _vm._v(
-                              " " +
-                                _vm._s(this.allCarsLength) +
-                                "\n                        "
-                            )
-                          ]
-                        )
-                      ]
-                    )
-                  ]
-                )
-              ])
-            ])
-          ])
+        ? _c("filters", { attrs: { allcars: this.allcars } })
         : _vm._e(),
       _vm._v(" "),
       _vm.slider.length > 0
@@ -48452,7 +45724,7 @@ var render = function() {
             _vm._v(" "),
             _vm.carsfilter.length == 0
               ? _c("div", { staticClass: "container container-back" }, [
-                  _vm._m(11)
+                  _vm._m(0)
                 ])
               : _vm._e()
           ])
@@ -48468,105 +45740,402 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      {
-        staticClass: "carousel slide d-block d-sm-none slide",
-        attrs: { id: "bs4-slide-carousel", "data-ride": "carousel" }
-      },
-      [
-        _c("div", { staticClass: "carousel-inner text-center" }, [
-          _c(
-            "a",
-            {
-              staticClass: "carousel-control-prev",
-              attrs: {
-                href: "#bs4-slide-carousel",
-                role: "button",
-                "data-slide": "prev"
-              }
-            },
-            [
-              _c("span", {
-                staticClass: "carousel-control-prev-icon",
-                attrs: { "aria-hidden": "true" }
-              }),
-              _vm._v(" "),
-              _c("span", { staticClass: "sr-only" }, [_vm._v("Previous")])
-            ]
-          ),
-          _vm._v(" "),
-          _c(
-            "a",
-            {
-              staticClass: "carousel-control-next",
-              attrs: {
-                href: "#bs4-slide-carousel",
-                role: "button",
-                "data-slide": "next"
-              }
-            },
-            [
-              _c("span", {
-                staticClass: "carousel-control-next-icon",
-                attrs: { "aria-hidden": "true" }
-              }),
-              _vm._v(" "),
-              _c("span", { staticClass: "sr-only" }, [_vm._v("Next")])
-            ]
-          )
+    return _c("div", { staticClass: "row cars-root" }, [
+      _c("div", { staticClass: "col-md-8 notfoundtxt" }, [
+        _c("h1", [_vm._v("По вашему запросу ничего не найдено")])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-md-2 notfoundimg" }, [
+        _c("img", {
+          attrs: {
+            src:
+              "/img/design_img/27-272926_confused-clipart-confused-person-confused-png.png",
+            alt: "notfound"
+          }
+        })
+      ])
+    ])
+  }
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Filters.vue?vue&type=template&id=b9055040&scoped=true&":
+/*!**********************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Filters.vue?vue&type=template&id=b9055040&scoped=true& ***!
+  \**********************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", [
+    _c("div", { staticClass: "container container-back" }, [
+      _c("div", { staticClass: "row body-cats" }, [
+        _c("div", { staticClass: "car_types_div" }, [
+          _c("ul", { staticClass: "nav nav-tabs", attrs: { id: "carTypes" } }, [
+            _c(
+              "li",
+              {
+                staticClass: "body-cars carTypeActive",
+                attrs: { role: "presentation", "data-id": "0" },
+                on: {
+                  click: function($event) {
+                    return _vm.classLi(0)
+                  }
+                }
+              },
+              [
+                _c("div", { staticClass: "quantity_cars" }, [
+                  _c("p", { staticClass: "count_cars_body" }, [
+                    _vm._v(_vm._s(_vm.quanitityAll))
+                  ])
+                ]),
+                _vm._v(" "),
+                _vm._m(0)
+              ]
+            ),
+            _vm._v(" "),
+            _c(
+              "li",
+              {
+                staticClass: "body-cars",
+                attrs: { role: "presentation", "data-id": "3" },
+                on: {
+                  click: function($event) {
+                    return _vm.classLi(3)
+                  }
+                }
+              },
+              [
+                _c("div", { staticClass: "quantity_cars" }, [
+                  _c("p", { staticClass: "count_cars_body" }, [
+                    _vm._v(_vm._s(_vm.quanititySedan))
+                  ])
+                ]),
+                _vm._v(" "),
+                _vm._m(1)
+              ]
+            ),
+            _vm._v(" "),
+            _c(
+              "li",
+              {
+                staticClass: "body-cars",
+                attrs: { role: "presentation", "data-id": "4" },
+                on: {
+                  click: function($event) {
+                    return _vm.classLi(4)
+                  }
+                }
+              },
+              [
+                _c("div", { staticClass: "quantity_cars" }, [
+                  _c("p", { staticClass: "count_cars_body" }, [
+                    _vm._v(_vm._s(_vm.quanitityLightComm))
+                  ])
+                ]),
+                _vm._v(" "),
+                _vm._m(2)
+              ]
+            ),
+            _vm._v(" "),
+            _c(
+              "li",
+              {
+                staticClass: "body-cars",
+                attrs: { role: "presentation", "data-id": "5" },
+                on: {
+                  click: function($event) {
+                    return _vm.classLi(5)
+                  }
+                }
+              },
+              [
+                _c("div", { staticClass: "quantity_cars" }, [
+                  _c("p", { staticClass: "count_cars_body" }, [
+                    _vm._v(_vm._s(_vm.quanitityTruck))
+                  ])
+                ]),
+                _vm._v(" "),
+                _vm._m(3)
+              ]
+            ),
+            _vm._v(" "),
+            _c(
+              "li",
+              {
+                staticClass: "body-cars",
+                attrs: { role: "presentation", "data-id": "6" },
+                on: {
+                  click: function($event) {
+                    return _vm.classLi(6)
+                  }
+                }
+              },
+              [
+                _c("div", { staticClass: "quantity_cars" }, [
+                  _c("p", { staticClass: "count_cars_body" }, [
+                    _vm._v(_vm._s(_vm.quanititySedTyag))
+                  ])
+                ]),
+                _vm._v(" "),
+                _vm._m(4)
+              ]
+            ),
+            _vm._v(" "),
+            _c(
+              "li",
+              {
+                staticClass: "body-cars",
+                attrs: { role: "presentation", "data-id": "7" },
+                on: {
+                  click: function($event) {
+                    return _vm.classLi(7)
+                  }
+                }
+              },
+              [
+                _c("div", { staticClass: "quantity_cars" }, [
+                  _c("p", { staticClass: "count_cars_body" }, [
+                    _vm._v(_vm._s(_vm.quanitityTrailers))
+                  ])
+                ]),
+                _vm._v(" "),
+                _vm._m(5)
+              ]
+            ),
+            _vm._v(" "),
+            _c(
+              "li",
+              {
+                staticClass: "body-cars",
+                attrs: { role: "presentation", "data-id": "8" },
+                on: {
+                  click: function($event) {
+                    return _vm.classLi(8)
+                  }
+                }
+              },
+              [
+                _c("div", { staticClass: "quantity_cars" }, [
+                  _c("p", { staticClass: "count_cars_body" }, [
+                    _vm._v(_vm._s(_vm.quanitityBus))
+                  ])
+                ]),
+                _vm._v(" "),
+                _vm._m(6)
+              ]
+            ),
+            _vm._v(" "),
+            _c(
+              "li",
+              {
+                staticClass: "body-cars",
+                attrs: { role: "presentation", "data-id": "9" },
+                on: {
+                  click: function($event) {
+                    return _vm.classLi(9)
+                  }
+                }
+              },
+              [
+                _c("div", { staticClass: "quantity_cars" }, [
+                  _c("p", { staticClass: "count_cars_body" }, [
+                    _vm._v(_vm._s(_vm.quanititySprecialTech))
+                  ])
+                ]),
+                _vm._v(" "),
+                _vm._m(7)
+              ]
+            )
+          ])
         ])
-      ]
-    )
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "a",
-      {
-        staticClass: "carousel-control-next",
-        attrs: {
-          href: "#carouselExampleControls",
-          role: "button",
-          "data-slide": "next"
-        }
-      },
-      [
-        _c("span", {
-          staticClass: "carousel-control-next-icon",
-          attrs: { "aria-hidden": "true" }
-        }),
-        _vm._v(" "),
-        _c("span", { staticClass: "sr-only" })
-      ]
-    )
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "a",
-      {
-        staticClass: "carousel-control-prev",
-        attrs: {
-          href: "#carouselExampleControls",
-          role: "button",
-          "data-slide": "prev"
-        }
-      },
-      [
-        _c("span", {
-          staticClass: "carousel-control-prev-icon",
-          attrs: { "aria-hidden": "true" }
-        }),
-        _vm._v(" "),
-        _c("span", { staticClass: "sr-only" })
-      ]
-    )
-  },
+      ])
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "container-fluid car-filters" }, [
+      _c("div", { staticClass: "container container-back" }, [
+        _c("form", { attrs: { action: "/filtercar", type: "GET" } }, [
+          _c("div", { staticClass: "row select-options-filter filter_row" }, [
+            _c("div", { staticClass: "col" }, [
+              _c("label"),
+              _vm._v(" "),
+              _c(
+                "select",
+                {
+                  staticClass: "form-control options selectbox",
+                  attrs: { id: "model", name: "modelval" },
+                  on: {
+                    change: function($event) {
+                      return _vm.filterByModels($event)
+                    }
+                  }
+                },
+                [
+                  _c("option", { attrs: { value: "" } }, [_vm._v("Все марки")]),
+                  _vm._v(" "),
+                  _vm._l(_vm.models, function(model, index) {
+                    return _c("option", { domProps: { value: model.id } }, [
+                      _vm._v(
+                        _vm._s(model.name) + "\n                            "
+                      )
+                    ])
+                  })
+                ],
+                2
+              )
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "col" }, [
+              _c("label"),
+              _vm._v(" "),
+              _c(
+                "select",
+                {
+                  staticClass: "form-control options selectbox",
+                  attrs: { id: "state", name: "stateval" },
+                  on: {
+                    change: function($event) {
+                      return _vm.filterByStates($event)
+                    }
+                  }
+                },
+                [
+                  _c("option", { attrs: { value: "" } }, [
+                    _vm._v("Все состояния")
+                  ]),
+                  _vm._v(" "),
+                  _vm._l(_vm.states, function(state, index) {
+                    return _c("option", { domProps: { value: state.id } }, [
+                      _vm._v(
+                        _vm._s(state.name) + "\n                            "
+                      )
+                    ])
+                  })
+                ],
+                2
+              )
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "col" }, [
+              _c("label"),
+              _vm._v(" "),
+              _c(
+                "select",
+                {
+                  staticClass: "form-control options selectbox",
+                  attrs: { id: "parking", name: "parkingval" },
+                  on: {
+                    change: function($event) {
+                      return _vm.filterByParkings($event)
+                    }
+                  }
+                },
+                [
+                  _c("option", { attrs: { value: "" } }, [
+                    _vm._v("Все стоянки")
+                  ]),
+                  _vm._v(" "),
+                  _vm._l(_vm.parkings, function(parking, index) {
+                    return _c("option", { domProps: { value: parking.id } }, [
+                      _vm._v(
+                        "\n                                " +
+                          _vm._s(parking.address) +
+                          "\n                            "
+                      )
+                    ])
+                  })
+                ],
+                2
+              )
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "col" }, [
+              _c("label", [_vm._v("Дата завершения")]),
+              _vm._v(" "),
+              _c("div", { staticClass: "row input-row" }, [
+                _c("p", [_vm._v("С")]),
+                _vm._v(" "),
+                _c("div", { staticClass: "col filter-date filter-date-d" }, [
+                  _c("input", {
+                    staticClass: "input-date form-control options",
+                    attrs: {
+                      name: "startval",
+                      type: "date",
+                      id: "start",
+                      value: ""
+                    },
+                    on: {
+                      change: function($event) {
+                        return _vm.filterByStarts($event)
+                      }
+                    }
+                  })
+                ]),
+                _vm._v(" "),
+                _c("p", [_vm._v("ПО")]),
+                _vm._v(" "),
+                _c("div", { staticClass: "col filter-date filter-date-d" }, [
+                  _c("input", {
+                    staticClass: "input-date form-control options",
+                    attrs: {
+                      name: "endval",
+                      type: "date",
+                      id: "finish",
+                      value: ""
+                    },
+                    on: {
+                      change: function($event) {
+                        return _vm.filterByEnds($event)
+                      }
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c("input", {
+                    attrs: { type: "hidden", name: "bodyval" },
+                    domProps: { value: _vm.bodiesId }
+                  })
+                ])
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "col filter-date filter-date-btn" }, [
+              _c(
+                "button",
+                {
+                  staticClass: "btn btn-light searchcarsauction",
+                  attrs: { type: "submit" }
+                },
+                [
+                  _c("i", {
+                    staticClass: "fas fa-search",
+                    staticStyle: { display: "inline-block" }
+                  }),
+                  _vm._v(
+                    " " +
+                      _vm._s(this.allCarsLength) +
+                      "\n                        "
+                  )
+                ]
+              )
+            ])
+          ])
+        ])
+      ])
+    ])
+  ])
+}
+var staticRenderFns = [
   function() {
     var _vm = this
     var _h = _vm.$createElement
@@ -48654,26 +46223,6 @@ var staticRenderFns = [
       _c("i", { staticClass: "fas fa-tractor", attrs: { "icon-id": "9" } }),
       _vm._v(" "),
       _c("p", { staticClass: "carTypesText" }, [_vm._v("Спецтехника")])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row cars-root" }, [
-      _c("div", { staticClass: "col-md-8 notfoundtxt" }, [
-        _c("h1", [_vm._v("По вашему запросу ничего не найдено")])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-md-2 notfoundimg" }, [
-        _c("img", {
-          attrs: {
-            src:
-              "/img/design_img/27-272926_confused-clipart-confused-person-confused-png.png",
-            alt: "notfound"
-          }
-        })
-      ])
     ])
   }
 ]
@@ -49110,777 +46659,13 @@ var render = function() {
       _vm.slider.length > 0 ? _c("header-component") : _vm._e(),
       _vm._v(" "),
       _vm.slider.length > 0
-        ? _c("div", { staticClass: "container-fluid carbidding-container" }, [
-            _c("section", { attrs: { id: "lastcars" } }, [
-              _c("div", { staticClass: "container container-back" }, [
-                _vm._m(0),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  {
-                    staticClass: "carousel slide d-none d-sm-block m-50 slide",
-                    attrs: {
-                      id: "carouselExampleControls",
-                      "data-ride": "carousel"
-                    }
-                  },
-                  [
-                    _c(
-                      "div",
-                      { staticClass: "carousel-inner text-center carouselin" },
-                      [
-                        _vm._l(_vm.slider, function(slid, index) {
-                          return index == 0
-                            ? _c(
-                                "div",
-                                { staticClass: "carousel-item active" },
-                                [
-                                  _c("div", { staticClass: "row" }, [
-                                    _c(
-                                      "div",
-                                      { staticClass: "col slider-col" },
-                                      [
-                                        _c("img", {
-                                          directives: [
-                                            {
-                                              name: "lazy-src",
-                                              rawName: "v-lazy-src",
-                                              value: "/img/" + slid.mainpics,
-                                              expression:
-                                                "'/img/'+slid.mainpics"
-                                            }
-                                          ],
-                                          staticClass: "img-fluid",
-                                          attrs: { alt: slid.name }
-                                        }),
-                                        _vm._v(" "),
-                                        _c(
-                                          "div",
-                                          { staticClass: "car-informacion" },
-                                          [
-                                            _c(
-                                              "div",
-                                              { staticClass: "inform-text" },
-                                              [
-                                                _c(
-                                                  "div",
-                                                  { staticClass: "row" },
-                                                  [
-                                                    _c(
-                                                      "div",
-                                                      { staticClass: "col" },
-                                                      [
-                                                        _c("p", [
-                                                          _vm._v(
-                                                            "Лот | #" +
-                                                              _vm._s(slid.id)
-                                                          )
-                                                        ])
-                                                      ]
-                                                    )
-                                                  ]
-                                                ),
-                                                _vm._v(" "),
-                                                _c(
-                                                  "div",
-                                                  { staticClass: "row" },
-                                                  [
-                                                    _c(
-                                                      "div",
-                                                      { staticClass: "col" },
-                                                      [
-                                                        _c("p", [
-                                                          _vm._v(
-                                                            _vm._s(slid.name) +
-                                                              " | " +
-                                                              _vm._s(slid.year)
-                                                          )
-                                                        ])
-                                                      ]
-                                                    )
-                                                  ]
-                                                ),
-                                                _vm._v(" "),
-                                                _c(
-                                                  "div",
-                                                  { staticClass: "row" },
-                                                  [
-                                                    _c(
-                                                      "div",
-                                                      { staticClass: "col" },
-                                                      [
-                                                        _c("p", [
-                                                          _vm._v(
-                                                            "Текущая цена | " +
-                                                              _vm._s(
-                                                                slid.currentPrice
-                                                              ) +
-                                                              " ₽"
-                                                          )
-                                                        ])
-                                                      ]
-                                                    )
-                                                  ]
-                                                ),
-                                                _vm._v(" "),
-                                                _c(
-                                                  "div",
-                                                  { staticClass: "row" },
-                                                  [
-                                                    _c(
-                                                      "div",
-                                                      { staticClass: "col" },
-                                                      [
-                                                        _c("p", [
-                                                          _vm._v(
-                                                            "Начало торгов | " +
-                                                              _vm._s(
-                                                                slid.auctionStart
-                                                              )
-                                                          )
-                                                        ])
-                                                      ]
-                                                    )
-                                                  ]
-                                                ),
-                                                _vm._v(" "),
-                                                _c(
-                                                  "div",
-                                                  { staticClass: "row" },
-                                                  [
-                                                    _c(
-                                                      "div",
-                                                      { staticClass: "col" },
-                                                      [
-                                                        _c("p", [
-                                                          _vm._v(
-                                                            "Завершение торгов: | " +
-                                                              _vm._s(
-                                                                slid.endOfAuction
-                                                              )
-                                                          )
-                                                        ])
-                                                      ]
-                                                    )
-                                                  ]
-                                                ),
-                                                _vm._v(" "),
-                                                _c(
-                                                  "div",
-                                                  { staticClass: "row" },
-                                                  [
-                                                    _c(
-                                                      "div",
-                                                      { staticClass: "col" },
-                                                      [
-                                                        _c(
-                                                          "router-link",
-                                                          {
-                                                            key: slid.id,
-                                                            attrs: {
-                                                              to:
-                                                                "/cars/" +
-                                                                slid.id
-                                                            }
-                                                          },
-                                                          [
-                                                            _c(
-                                                              "button",
-                                                              {
-                                                                staticClass:
-                                                                  "btn btn-light",
-                                                                attrs: {
-                                                                  type: "button"
-                                                                }
-                                                              },
-                                                              [
-                                                                _vm._v(
-                                                                  "Смотреть\n                                                        "
-                                                                )
-                                                              ]
-                                                            )
-                                                          ]
-                                                        )
-                                                      ],
-                                                      1
-                                                    )
-                                                  ]
-                                                )
-                                              ]
-                                            )
-                                          ]
-                                        )
-                                      ]
-                                    )
-                                  ])
-                                ]
-                              )
-                            : _vm._e()
-                        }),
-                        _vm._v(" "),
-                        _vm._l(_vm.slider, function(slid, index) {
-                          return index !== 0
-                            ? _c("div", { staticClass: "carousel-item" }, [
-                                _c("div", { staticClass: "row" }, [
-                                  _c("div", { staticClass: "col slider-col" }, [
-                                    _c("img", {
-                                      directives: [
-                                        {
-                                          name: "lazy-src",
-                                          rawName: "v-lazy-src",
-                                          value: "/img/" + slid.mainpics,
-                                          expression: "'/img/'+slid.mainpics"
-                                        }
-                                      ],
-                                      staticClass: "img-fluid",
-                                      attrs: { alt: slid.name }
-                                    }),
-                                    _vm._v(" "),
-                                    _c(
-                                      "div",
-                                      { staticClass: "car-informacion" },
-                                      [
-                                        _c(
-                                          "div",
-                                          { staticClass: "inform-text" },
-                                          [
-                                            _c("div", { staticClass: "row" }, [
-                                              _c(
-                                                "div",
-                                                { staticClass: "col" },
-                                                [
-                                                  _c("p", [
-                                                    _vm._v(
-                                                      "Лот | #" +
-                                                        _vm._s(slid.id)
-                                                    )
-                                                  ])
-                                                ]
-                                              )
-                                            ]),
-                                            _vm._v(" "),
-                                            _c("div", { staticClass: "row" }, [
-                                              _c(
-                                                "div",
-                                                { staticClass: "col" },
-                                                [
-                                                  _c("p", [
-                                                    _vm._v(
-                                                      _vm._s(slid.name) +
-                                                        " | " +
-                                                        _vm._s(slid.year)
-                                                    )
-                                                  ])
-                                                ]
-                                              )
-                                            ]),
-                                            _vm._v(" "),
-                                            _c("div", { staticClass: "row" }, [
-                                              _c(
-                                                "div",
-                                                { staticClass: "col" },
-                                                [
-                                                  _c("p", [
-                                                    _vm._v(
-                                                      "Текущая цена | " +
-                                                        _vm._s(
-                                                          slid.currentPrice
-                                                        ) +
-                                                        " ₽"
-                                                    )
-                                                  ])
-                                                ]
-                                              )
-                                            ]),
-                                            _vm._v(" "),
-                                            _c("div", { staticClass: "row" }, [
-                                              _c(
-                                                "div",
-                                                { staticClass: "col" },
-                                                [
-                                                  _c("p", [
-                                                    _vm._v(
-                                                      "Начало торгов | " +
-                                                        _vm._s(
-                                                          slid.auctionStart
-                                                        )
-                                                    )
-                                                  ])
-                                                ]
-                                              )
-                                            ]),
-                                            _vm._v(" "),
-                                            _c("div", { staticClass: "row" }, [
-                                              _c(
-                                                "div",
-                                                { staticClass: "col" },
-                                                [
-                                                  _c("p", [
-                                                    _vm._v(
-                                                      "Завершение торгов: | " +
-                                                        _vm._s(
-                                                          slid.endOfAuction
-                                                        )
-                                                    )
-                                                  ])
-                                                ]
-                                              )
-                                            ]),
-                                            _vm._v(" "),
-                                            _c("div", { staticClass: "row" }, [
-                                              _c(
-                                                "div",
-                                                { staticClass: "col" },
-                                                [
-                                                  _c(
-                                                    "router-link",
-                                                    {
-                                                      key: slid.id,
-                                                      attrs: {
-                                                        to: "/cars/" + slid.id
-                                                      }
-                                                    },
-                                                    [
-                                                      _c(
-                                                        "button",
-                                                        {
-                                                          staticClass:
-                                                            "btn btn-light",
-                                                          attrs: {
-                                                            type: "button"
-                                                          }
-                                                        },
-                                                        [
-                                                          _vm._v(
-                                                            "Смотреть\n                                                        "
-                                                          )
-                                                        ]
-                                                      )
-                                                    ]
-                                                  )
-                                                ],
-                                                1
-                                              )
-                                            ])
-                                          ]
-                                        )
-                                      ]
-                                    )
-                                  ])
-                                ])
-                              ])
-                            : _vm._e()
-                        }),
-                        _vm._v(" "),
-                        _vm._m(1),
-                        _vm._v(" "),
-                        _vm._m(2)
-                      ],
-                      2
-                    )
-                  ]
-                )
-              ])
-            ]),
-            _vm._v(" "),
-            _vm.slider.length > 0
-              ? _c("div", { staticClass: "container container-back" }, [
-                  _c("div", { staticClass: "row body-cats" }, [
-                    _c("div", { staticClass: "car_types_div" }, [
-                      _c(
-                        "ul",
-                        {
-                          staticClass: "nav nav-tabs",
-                          attrs: { id: "carTypes" }
-                        },
-                        [
-                          _c(
-                            "li",
-                            {
-                              staticClass: "body-cars carTypeActive",
-                              attrs: { role: "presentation", "data-id": "0" },
-                              on: {
-                                click: function($event) {
-                                  return _vm.classLi(0)
-                                }
-                              }
-                            },
-                            [
-                              _c("div", { staticClass: "quantity_cars" }, [
-                                _c("p", { staticClass: "count_cars_body" }, [
-                                  _vm._v(_vm._s(_vm.quanitityAll))
-                                ])
-                              ]),
-                              _vm._v(" "),
-                              _vm._m(3)
-                            ]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "li",
-                            {
-                              staticClass: "body-cars",
-                              attrs: { role: "presentation", "data-id": "3" },
-                              on: {
-                                click: function($event) {
-                                  return _vm.classLi(3)
-                                }
-                              }
-                            },
-                            [
-                              _c("div", { staticClass: "quantity_cars" }, [
-                                _c("p", { staticClass: "count_cars_body" }, [
-                                  _vm._v(_vm._s(_vm.quanititySedan))
-                                ])
-                              ]),
-                              _vm._v(" "),
-                              _vm._m(4)
-                            ]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "li",
-                            {
-                              staticClass: "body-cars",
-                              attrs: { role: "presentation", "data-id": "4" },
-                              on: {
-                                click: function($event) {
-                                  return _vm.classLi(4)
-                                }
-                              }
-                            },
-                            [
-                              _c("div", { staticClass: "quantity_cars" }, [
-                                _c("p", { staticClass: "count_cars_body" }, [
-                                  _vm._v(_vm._s(_vm.quanitityLightComm))
-                                ])
-                              ]),
-                              _vm._v(" "),
-                              _vm._m(5)
-                            ]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "li",
-                            {
-                              staticClass: "body-cars",
-                              attrs: { role: "presentation", "data-id": "5" },
-                              on: {
-                                click: function($event) {
-                                  return _vm.classLi(5)
-                                }
-                              }
-                            },
-                            [
-                              _c("div", { staticClass: "quantity_cars" }, [
-                                _c("p", { staticClass: "count_cars_body" }, [
-                                  _vm._v(_vm._s(_vm.quanitityTruck))
-                                ])
-                              ]),
-                              _vm._v(" "),
-                              _vm._m(6)
-                            ]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "li",
-                            {
-                              staticClass: "body-cars",
-                              attrs: { role: "presentation", "data-id": "6" },
-                              on: {
-                                click: function($event) {
-                                  return _vm.classLi(6)
-                                }
-                              }
-                            },
-                            [
-                              _c("div", { staticClass: "quantity_cars" }, [
-                                _c("p", { staticClass: "count_cars_body" }, [
-                                  _vm._v(_vm._s(_vm.quanititySedTyag))
-                                ])
-                              ]),
-                              _vm._v(" "),
-                              _vm._m(7)
-                            ]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "li",
-                            {
-                              staticClass: "body-cars",
-                              attrs: { role: "presentation", "data-id": "7" },
-                              on: {
-                                click: function($event) {
-                                  return _vm.classLi(7)
-                                }
-                              }
-                            },
-                            [
-                              _c("div", { staticClass: "quantity_cars" }, [
-                                _c("p", { staticClass: "count_cars_body" }, [
-                                  _vm._v(_vm._s(_vm.quanitityTrailers))
-                                ])
-                              ]),
-                              _vm._v(" "),
-                              _vm._m(8)
-                            ]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "li",
-                            {
-                              staticClass: "body-cars",
-                              attrs: { role: "presentation", "data-id": "8" },
-                              on: {
-                                click: function($event) {
-                                  return _vm.classLi(8)
-                                }
-                              }
-                            },
-                            [
-                              _c("div", { staticClass: "quantity_cars" }, [
-                                _c("p", { staticClass: "count_cars_body" }, [
-                                  _vm._v(_vm._s(_vm.quanitityBus))
-                                ])
-                              ]),
-                              _vm._v(" "),
-                              _vm._m(9)
-                            ]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "li",
-                            {
-                              staticClass: "body-cars",
-                              attrs: { role: "presentation", "data-id": "9" },
-                              on: {
-                                click: function($event) {
-                                  return _vm.classLi(9)
-                                }
-                              }
-                            },
-                            [
-                              _c("div", { staticClass: "quantity_cars" }, [
-                                _c("p", { staticClass: "count_cars_body" }, [
-                                  _vm._v(_vm._s(_vm.quanititySprecialTech))
-                                ])
-                              ]),
-                              _vm._v(" "),
-                              _vm._m(10)
-                            ]
-                          )
-                        ]
-                      )
-                    ])
-                  ])
-                ])
-              : _vm._e()
-          ])
+        ? _c("slider", { attrs: { sliders: this.slider } })
         : _vm._e(),
       _vm._v(" "),
+      _vm.slider.length > 0 ? _c("statistic") : _vm._e(),
+      _vm._v(" "),
       _vm.slider.length > 0
-        ? _c("div", { staticClass: "container-fluid car-filters" }, [
-            _c("div", { staticClass: "container container-back" }, [
-              _c("form", { attrs: { action: "/filtercar", type: "GET" } }, [
-                _c(
-                  "div",
-                  { staticClass: "row select-options-filter filter_row" },
-                  [
-                    _c("div", { staticClass: "col" }, [
-                      _c("label"),
-                      _vm._v(" "),
-                      _c(
-                        "select",
-                        {
-                          staticClass: "form-control options selectbox",
-                          attrs: { id: "model", name: "modelval" },
-                          on: {
-                            change: function($event) {
-                              return _vm.filterByModels($event)
-                            }
-                          }
-                        },
-                        [
-                          _c("option", { attrs: { value: "" } }, [
-                            _vm._v("Все марки")
-                          ]),
-                          _vm._v(" "),
-                          _vm._l(_vm.models, function(model, index) {
-                            return _c(
-                              "option",
-                              { domProps: { value: model.id } },
-                              [
-                                _vm._v(
-                                  _vm._s(model.name) +
-                                    "\n                            "
-                                )
-                              ]
-                            )
-                          })
-                        ],
-                        2
-                      )
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "col" }, [
-                      _c("label"),
-                      _vm._v(" "),
-                      _c(
-                        "select",
-                        {
-                          staticClass: "form-control options selectbox",
-                          attrs: { id: "state", name: "stateval" },
-                          on: {
-                            change: function($event) {
-                              return _vm.filterByStates($event)
-                            }
-                          }
-                        },
-                        [
-                          _c("option", { attrs: { value: "" } }, [
-                            _vm._v("Все состояния")
-                          ]),
-                          _vm._v(" "),
-                          _vm._l(_vm.states, function(state, index) {
-                            return _c(
-                              "option",
-                              { domProps: { value: state.id } },
-                              [
-                                _vm._v(
-                                  _vm._s(state.name) +
-                                    "\n                            "
-                                )
-                              ]
-                            )
-                          })
-                        ],
-                        2
-                      )
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "col" }, [
-                      _c("label"),
-                      _vm._v(" "),
-                      _c(
-                        "select",
-                        {
-                          staticClass: "form-control options selectbox",
-                          attrs: { id: "parking", name: "parkingval" },
-                          on: {
-                            change: function($event) {
-                              return _vm.filterByParkings($event)
-                            }
-                          }
-                        },
-                        [
-                          _c("option", { attrs: { value: "" } }, [
-                            _vm._v("Все стоянки")
-                          ]),
-                          _vm._v(" "),
-                          _vm._l(_vm.parkings, function(parking, index) {
-                            return _c(
-                              "option",
-                              { domProps: { value: parking.id } },
-                              [
-                                _vm._v(
-                                  "\n                                " +
-                                    _vm._s(parking.address) +
-                                    "\n                            "
-                                )
-                              ]
-                            )
-                          })
-                        ],
-                        2
-                      )
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "col" }, [
-                      _c("label", [_vm._v("Дата завершения")]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "row input-row" }, [
-                        _c("p", [_vm._v("С")]),
-                        _vm._v(" "),
-                        _c(
-                          "div",
-                          { staticClass: "col filter-date filter-date-d" },
-                          [
-                            _c("input", {
-                              staticClass: "input-date form-control options",
-                              attrs: {
-                                name: "startval",
-                                type: "date",
-                                id: "start",
-                                value: ""
-                              },
-                              on: {
-                                change: function($event) {
-                                  return _vm.filterByStarts($event)
-                                }
-                              }
-                            })
-                          ]
-                        ),
-                        _vm._v(" "),
-                        _c("p", [_vm._v("ПО")]),
-                        _vm._v(" "),
-                        _c(
-                          "div",
-                          { staticClass: "col filter-date filter-date-d" },
-                          [
-                            _c("input", {
-                              staticClass: "input-date form-control options",
-                              attrs: {
-                                name: "endval",
-                                type: "date",
-                                id: "finish",
-                                value: ""
-                              },
-                              on: {
-                                change: function($event) {
-                                  return _vm.filterByEnds($event)
-                                }
-                              }
-                            }),
-                            _vm._v(" "),
-                            _c("input", {
-                              attrs: { type: "hidden", name: "bodyval" },
-                              domProps: { value: _vm.bodiesId }
-                            })
-                          ]
-                        )
-                      ])
-                    ]),
-                    _vm._v(" "),
-                    _c(
-                      "div",
-                      { staticClass: "col filter-date filter-date-btn" },
-                      [
-                        _c(
-                          "button",
-                          {
-                            staticClass: "btn btn-light searchcarsauction",
-                            attrs: { type: "submit" }
-                          },
-                          [
-                            _c("i", {
-                              staticClass: "fas fa-search",
-                              staticStyle: { display: "inline-block" }
-                            }),
-                            _vm._v(
-                              " " +
-                                _vm._s(this.allCarsLength) +
-                                "\n                        "
-                            )
-                          ]
-                        )
-                      ]
-                    )
-                  ]
-                )
-              ])
-            ])
-          ])
+        ? _c("filters", { attrs: { allcars: this.allcars } })
         : _vm._e(),
       _vm._v(" "),
       _vm.slider.length > 0
@@ -50054,7 +46839,7 @@ var render = function() {
             _vm.cars.length == 0
               ? _c("div", { staticClass: "container container-back" }, [
                   _c("div", { staticClass: "row cars-root" }, [
-                    _vm._m(11),
+                    _vm._m(0),
                     _vm._v(" "),
                     _c("div", { staticClass: "col-md-2 notfoundimg" }, [
                       _c("img", {
@@ -50083,198 +46868,6 @@ var render = function() {
   )
 }
 var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      {
-        staticClass: "carousel slide d-block d-sm-none slide",
-        attrs: { id: "bs4-slide-carousel", "data-ride": "carousel" }
-      },
-      [
-        _c("div", { staticClass: "carousel-inner text-center" }, [
-          _c(
-            "a",
-            {
-              staticClass: "carousel-control-prev",
-              attrs: {
-                href: "#bs4-slide-carousel",
-                role: "button",
-                "data-slide": "prev"
-              }
-            },
-            [
-              _c("span", {
-                staticClass: "carousel-control-prev-icon",
-                attrs: { "aria-hidden": "true" }
-              }),
-              _vm._v(" "),
-              _c("span", { staticClass: "sr-only" }, [_vm._v("Previous")])
-            ]
-          ),
-          _vm._v(" "),
-          _c(
-            "a",
-            {
-              staticClass: "carousel-control-next",
-              attrs: {
-                href: "#bs4-slide-carousel",
-                role: "button",
-                "data-slide": "next"
-              }
-            },
-            [
-              _c("span", {
-                staticClass: "carousel-control-next-icon",
-                attrs: { "aria-hidden": "true" }
-              }),
-              _vm._v(" "),
-              _c("span", { staticClass: "sr-only" }, [_vm._v("Next")])
-            ]
-          )
-        ])
-      ]
-    )
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "a",
-      {
-        staticClass: "carousel-control-next",
-        attrs: {
-          href: "#carouselExampleControls",
-          role: "button",
-          "data-slide": "next"
-        }
-      },
-      [
-        _c("span", {
-          staticClass: "carousel-control-next-icon",
-          attrs: { "aria-hidden": "true" }
-        }),
-        _vm._v(" "),
-        _c("span", { staticClass: "sr-only" })
-      ]
-    )
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "a",
-      {
-        staticClass: "carousel-control-prev",
-        attrs: {
-          href: "#carouselExampleControls",
-          role: "button",
-          "data-slide": "prev"
-        }
-      },
-      [
-        _c("span", {
-          staticClass: "carousel-control-prev-icon",
-          attrs: { "aria-hidden": "true" }
-        }),
-        _vm._v(" "),
-        _c("span", { staticClass: "sr-only" })
-      ]
-    )
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("a", { attrs: { title: "Все типы" } }, [
-      _c("i", { staticClass: "fas fa-car-side", attrs: { "icon-id": "0" } }),
-      _vm._v(" "),
-      _c("p", { staticClass: "carTypesText" }, [_vm._v("Все типы")])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("a", { attrs: { title: "Легковые" } }, [
-      _c("i", { staticClass: "fas fa-car", attrs: { "icon-id": "3" } }),
-      _vm._v(" "),
-      _c("p", { staticClass: "carTypesText" }, [_vm._v("Легковые")])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("a", { attrs: { title: "Легкие коммерческие" } }, [
-      _c("i", { staticClass: "fas fa-truck" }),
-      _vm._v(" "),
-      _c("p", { staticClass: "carTypesText" }, [_vm._v("Легкие коммерческие")])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("a", { attrs: { title: "Грузовые" } }, [
-      _c("i", {
-        staticClass: "fas fa-truck-moving",
-        attrs: { "icon-id": "4" }
-      }),
-      _vm._v(" "),
-      _c("p", { staticClass: "carTypesText" }, [_vm._v("Грузовые")])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("a", { attrs: { title: "Седельные тягачи" } }, [
-      _c("i", {
-        staticClass: "fas fa-truck-pickup",
-        attrs: { "icon-id": "5" }
-      }),
-      _vm._v(" "),
-      _c("p", { staticClass: "carTypesText" }, [_vm._v("Седельные тягачи")])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("a", { attrs: { title: "Прицепы" } }, [
-      _c("i", {
-        staticClass: "fas fa-truck-loading",
-        attrs: { "icon-id": "6" }
-      }),
-      _vm._v(" "),
-      _c("p", { staticClass: "carTypesText" }, [_vm._v("Прицепы")])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("a", { attrs: { title: "Автобусы" } }, [
-      _c("i", { staticClass: "fas fa-bus", attrs: { "icon-id": "7" } }),
-      _vm._v(" "),
-      _c("p", { staticClass: "carTypesText" }, [_vm._v("Автобусы")])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("a", { attrs: { title: "Спецтехника" } }, [
-      _c("i", { staticClass: "fas fa-tractor", attrs: { "icon-id": "9" } }),
-      _vm._v(" "),
-      _c("p", { staticClass: "carTypesText" }, [_vm._v("Спецтехника")])
-    ])
-  },
   function() {
     var _vm = this
     var _h = _vm.$createElement
@@ -52200,702 +48793,13 @@ var render = function() {
       _vm.slider.length > 0 ? _c("header-component") : _vm._e(),
       _vm._v(" "),
       _vm.slider.length > 0
-        ? _c("div", { staticClass: "container-fluid carbidding-container" }, [
-            _c("section", { attrs: { id: "lastcars" } }, [
-              _c("div", { staticClass: "container container-back" }, [
-                _vm._m(0),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  {
-                    staticClass: "carousel slide d-none d-sm-block m-50 slide",
-                    attrs: {
-                      id: "carouselExampleControls",
-                      "data-ride": "carousel"
-                    }
-                  },
-                  [
-                    _c(
-                      "div",
-                      { staticClass: "carousel-inner text-center carouselin" },
-                      [
-                        _vm._l(_vm.slider, function(slid, index) {
-                          return index == 0
-                            ? _c(
-                                "div",
-                                { staticClass: "carousel-item active" },
-                                [
-                                  _c("div", { staticClass: "row" }, [
-                                    _c(
-                                      "div",
-                                      { staticClass: "col slider-col" },
-                                      [
-                                        _c("img", {
-                                          staticClass: "img-fluid",
-                                          attrs: {
-                                            src: "/img/" + slid.mainpics,
-                                            alt: slid.name
-                                          }
-                                        }),
-                                        _vm._v(" "),
-                                        _c(
-                                          "div",
-                                          { staticClass: "car-informacion" },
-                                          [
-                                            _c(
-                                              "div",
-                                              { staticClass: "inform-text" },
-                                              [
-                                                _c(
-                                                  "div",
-                                                  { staticClass: "row" },
-                                                  [
-                                                    _c(
-                                                      "div",
-                                                      { staticClass: "col" },
-                                                      [
-                                                        _c("p", [
-                                                          _vm._v(
-                                                            "Лот | #" +
-                                                              _vm._s(slid.id)
-                                                          )
-                                                        ])
-                                                      ]
-                                                    )
-                                                  ]
-                                                ),
-                                                _vm._v(" "),
-                                                _c(
-                                                  "div",
-                                                  { staticClass: "row" },
-                                                  [
-                                                    _c(
-                                                      "div",
-                                                      { staticClass: "col" },
-                                                      [
-                                                        _c("p", [
-                                                          _vm._v(
-                                                            _vm._s(slid.name) +
-                                                              " | " +
-                                                              _vm._s(slid.year)
-                                                          )
-                                                        ])
-                                                      ]
-                                                    )
-                                                  ]
-                                                ),
-                                                _vm._v(" "),
-                                                _c(
-                                                  "div",
-                                                  { staticClass: "row" },
-                                                  [
-                                                    _c(
-                                                      "div",
-                                                      { staticClass: "col" },
-                                                      [
-                                                        _c("p", [
-                                                          _vm._v(
-                                                            "Текущая цена | " +
-                                                              _vm._s(
-                                                                slid.currentPrice
-                                                              ) +
-                                                              " ₽"
-                                                          )
-                                                        ])
-                                                      ]
-                                                    )
-                                                  ]
-                                                ),
-                                                _vm._v(" "),
-                                                _c(
-                                                  "div",
-                                                  { staticClass: "row" },
-                                                  [
-                                                    _c(
-                                                      "div",
-                                                      { staticClass: "col" },
-                                                      [
-                                                        _c("p", [
-                                                          _vm._v(
-                                                            "Начало торгов | " +
-                                                              _vm._s(
-                                                                slid.auctionStart
-                                                              )
-                                                          )
-                                                        ])
-                                                      ]
-                                                    )
-                                                  ]
-                                                ),
-                                                _vm._v(" "),
-                                                _c(
-                                                  "div",
-                                                  { staticClass: "row" },
-                                                  [
-                                                    _c(
-                                                      "div",
-                                                      { staticClass: "col" },
-                                                      [
-                                                        _c("p", [
-                                                          _vm._v(
-                                                            "Завершение торгов: | " +
-                                                              _vm._s(
-                                                                slid.endOfAuction
-                                                              )
-                                                          )
-                                                        ])
-                                                      ]
-                                                    )
-                                                  ]
-                                                ),
-                                                _vm._v(" "),
-                                                _c(
-                                                  "div",
-                                                  { staticClass: "row" },
-                                                  [
-                                                    _c(
-                                                      "div",
-                                                      { staticClass: "col" },
-                                                      [
-                                                        _c(
-                                                          "router-link",
-                                                          {
-                                                            key: slid.id,
-                                                            attrs: {
-                                                              to:
-                                                                "/cars/" +
-                                                                slid.id
-                                                            }
-                                                          },
-                                                          [
-                                                            _c(
-                                                              "button",
-                                                              {
-                                                                staticClass:
-                                                                  "btn btn-light",
-                                                                attrs: {
-                                                                  type: "button"
-                                                                }
-                                                              },
-                                                              [
-                                                                _vm._v(
-                                                                  "Смотреть\n                                                        "
-                                                                )
-                                                              ]
-                                                            )
-                                                          ]
-                                                        )
-                                                      ],
-                                                      1
-                                                    )
-                                                  ]
-                                                )
-                                              ]
-                                            )
-                                          ]
-                                        )
-                                      ]
-                                    )
-                                  ])
-                                ]
-                              )
-                            : _vm._e()
-                        }),
-                        _vm._v(" "),
-                        _vm._l(_vm.slider, function(slid, index) {
-                          return index !== 0
-                            ? _c("div", { staticClass: "carousel-item" }, [
-                                _c("div", { staticClass: "row" }, [
-                                  _c("div", { staticClass: "col slider-col" }, [
-                                    _c("img", {
-                                      staticClass: "img-fluid",
-                                      attrs: {
-                                        src: "/img/" + slid.mainpics,
-                                        alt: slid.name
-                                      }
-                                    }),
-                                    _vm._v(" "),
-                                    _c(
-                                      "div",
-                                      { staticClass: "car-informacion" },
-                                      [
-                                        _c(
-                                          "div",
-                                          { staticClass: "inform-text" },
-                                          [
-                                            _c("div", { staticClass: "row" }, [
-                                              _c(
-                                                "div",
-                                                { staticClass: "col" },
-                                                [
-                                                  _c("p", [
-                                                    _vm._v(
-                                                      "Лот | #" +
-                                                        _vm._s(slid.id)
-                                                    )
-                                                  ])
-                                                ]
-                                              )
-                                            ]),
-                                            _vm._v(" "),
-                                            _c("div", { staticClass: "row" }, [
-                                              _c(
-                                                "div",
-                                                { staticClass: "col" },
-                                                [
-                                                  _c("p", [
-                                                    _vm._v(
-                                                      _vm._s(slid.name) +
-                                                        " | " +
-                                                        _vm._s(slid.year)
-                                                    )
-                                                  ])
-                                                ]
-                                              )
-                                            ]),
-                                            _vm._v(" "),
-                                            _c("div", { staticClass: "row" }, [
-                                              _c(
-                                                "div",
-                                                { staticClass: "col" },
-                                                [
-                                                  _c("p", [
-                                                    _vm._v(
-                                                      "Текущая цена | " +
-                                                        _vm._s(
-                                                          slid.currentPrice
-                                                        ) +
-                                                        " ₽"
-                                                    )
-                                                  ])
-                                                ]
-                                              )
-                                            ]),
-                                            _vm._v(" "),
-                                            _c("div", { staticClass: "row" }, [
-                                              _c(
-                                                "div",
-                                                { staticClass: "col" },
-                                                [
-                                                  _c("p", [
-                                                    _vm._v(
-                                                      "Начало торгов | " +
-                                                        _vm._s(
-                                                          slid.auctionStart
-                                                        )
-                                                    )
-                                                  ])
-                                                ]
-                                              )
-                                            ]),
-                                            _vm._v(" "),
-                                            _c("div", { staticClass: "row" }, [
-                                              _c(
-                                                "div",
-                                                { staticClass: "col" },
-                                                [
-                                                  _c("p", [
-                                                    _vm._v(
-                                                      "Завершение торгов: | " +
-                                                        _vm._s(
-                                                          slid.endOfAuction
-                                                        )
-                                                    )
-                                                  ])
-                                                ]
-                                              )
-                                            ]),
-                                            _vm._v(" "),
-                                            _c("div", { staticClass: "row" }, [
-                                              _c(
-                                                "div",
-                                                { staticClass: "col" },
-                                                [
-                                                  _c(
-                                                    "router-link",
-                                                    {
-                                                      key: slid.id,
-                                                      attrs: {
-                                                        to: "/cars/" + slid.id
-                                                      }
-                                                    },
-                                                    [
-                                                      _c(
-                                                        "button",
-                                                        {
-                                                          staticClass:
-                                                            "btn btn-light",
-                                                          attrs: {
-                                                            type: "button"
-                                                          }
-                                                        },
-                                                        [
-                                                          _vm._v(
-                                                            "Смотреть\n                                                        "
-                                                          )
-                                                        ]
-                                                      )
-                                                    ]
-                                                  )
-                                                ],
-                                                1
-                                              )
-                                            ])
-                                          ]
-                                        )
-                                      ]
-                                    )
-                                  ])
-                                ])
-                              ])
-                            : _vm._e()
-                        }),
-                        _vm._v(" "),
-                        _vm._m(1),
-                        _vm._v(" "),
-                        _vm._m(2)
-                      ],
-                      2
-                    )
-                  ]
-                )
-              ])
-            ]),
-            _vm._v(" "),
-            _vm.slider.length > 0
-              ? _c("div", { staticClass: "container container-back" }, [
-                  _c("div", { staticClass: "row body-cats" }, [
-                    _c("div", { staticClass: "car_types_div" }, [
-                      _c(
-                        "ul",
-                        {
-                          staticClass: "nav nav-tabs",
-                          attrs: { id: "carTypes" }
-                        },
-                        [
-                          _c(
-                            "li",
-                            {
-                              staticClass: "body-cars carTypeActive",
-                              attrs: { role: "presentation", "data-id": "0" },
-                              on: {
-                                click: function($event) {
-                                  return _vm.classLi(0)
-                                }
-                              }
-                            },
-                            [_vm._m(3)]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "li",
-                            {
-                              staticClass: "body-cars",
-                              attrs: { role: "presentation", "data-id": "3" },
-                              on: {
-                                click: function($event) {
-                                  return _vm.classLi(3)
-                                }
-                              }
-                            },
-                            [_vm._m(4)]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "li",
-                            {
-                              staticClass: "body-cars",
-                              attrs: { role: "presentation", "data-id": "4" },
-                              on: {
-                                click: function($event) {
-                                  return _vm.classLi(4)
-                                }
-                              }
-                            },
-                            [_vm._m(5)]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "li",
-                            {
-                              staticClass: "body-cars",
-                              attrs: { role: "presentation", "data-id": "5" },
-                              on: {
-                                click: function($event) {
-                                  return _vm.classLi(5)
-                                }
-                              }
-                            },
-                            [_vm._m(6)]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "li",
-                            {
-                              staticClass: "body-cars",
-                              attrs: { role: "presentation", "data-id": "6" },
-                              on: {
-                                click: function($event) {
-                                  return _vm.classLi(6)
-                                }
-                              }
-                            },
-                            [_vm._m(7)]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "li",
-                            {
-                              staticClass: "body-cars",
-                              attrs: { role: "presentation", "data-id": "7" },
-                              on: {
-                                click: function($event) {
-                                  return _vm.classLi(7)
-                                }
-                              }
-                            },
-                            [_vm._m(8)]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "li",
-                            {
-                              staticClass: "body-cars",
-                              attrs: { role: "presentation", "data-id": "8" },
-                              on: {
-                                click: function($event) {
-                                  return _vm.classLi(8)
-                                }
-                              }
-                            },
-                            [_vm._m(9)]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "li",
-                            {
-                              staticClass: "body-cars",
-                              attrs: { role: "presentation", "data-id": "9" },
-                              on: {
-                                click: function($event) {
-                                  return _vm.classLi(9)
-                                }
-                              }
-                            },
-                            [_vm._m(10)]
-                          )
-                        ]
-                      )
-                    ])
-                  ])
-                ])
-              : _vm._e()
-          ])
+        ? _c("slider", { attrs: { sliders: this.slider } })
         : _vm._e(),
       _vm._v(" "),
+      _vm.slider.length > 0 ? _c("statistic") : _vm._e(),
+      _vm._v(" "),
       _vm.slider.length > 0
-        ? _c("div", { staticClass: "container-fluid car-filters" }, [
-            _c("div", { staticClass: "container container-back" }, [
-              _c("form", { attrs: { action: "/filtercar", type: "GET" } }, [
-                _c(
-                  "div",
-                  { staticClass: "row select-options-filter filter_row" },
-                  [
-                    _c("div", { staticClass: "col" }, [
-                      _c("label"),
-                      _vm._v(" "),
-                      _c(
-                        "select",
-                        {
-                          staticClass: "form-control options selectbox",
-                          attrs: { id: "model", name: "modelval" },
-                          on: {
-                            change: function($event) {
-                              return _vm.filterByModels($event)
-                            }
-                          }
-                        },
-                        [
-                          _c("option", { attrs: { value: "" } }, [
-                            _vm._v("Все марки")
-                          ]),
-                          _vm._v(" "),
-                          _vm._l(_vm.models, function(model, index) {
-                            return _c(
-                              "option",
-                              { domProps: { value: model.id } },
-                              [
-                                _vm._v(
-                                  _vm._s(model.name) +
-                                    "\n                            "
-                                )
-                              ]
-                            )
-                          })
-                        ],
-                        2
-                      )
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "col" }, [
-                      _c("label"),
-                      _vm._v(" "),
-                      _c(
-                        "select",
-                        {
-                          staticClass: "form-control options selectbox",
-                          attrs: { id: "state", name: "stateval" },
-                          on: {
-                            change: function($event) {
-                              return _vm.filterByStates($event)
-                            }
-                          }
-                        },
-                        [
-                          _c("option", { attrs: { value: "" } }, [
-                            _vm._v("Все состояния")
-                          ]),
-                          _vm._v(" "),
-                          _vm._l(_vm.states, function(state, index) {
-                            return _c(
-                              "option",
-                              { domProps: { value: state.id } },
-                              [
-                                _vm._v(
-                                  _vm._s(state.name) +
-                                    "\n                            "
-                                )
-                              ]
-                            )
-                          })
-                        ],
-                        2
-                      )
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "col" }, [
-                      _c("label"),
-                      _vm._v(" "),
-                      _c(
-                        "select",
-                        {
-                          staticClass: "form-control options selectbox",
-                          attrs: { id: "parking", name: "parkingval" },
-                          on: {
-                            change: function($event) {
-                              return _vm.filterByParkings($event)
-                            }
-                          }
-                        },
-                        [
-                          _c("option", { attrs: { value: "" } }, [
-                            _vm._v("Все стоянки")
-                          ]),
-                          _vm._v(" "),
-                          _vm._l(_vm.parkings, function(parking, index) {
-                            return _c(
-                              "option",
-                              { domProps: { value: parking.id } },
-                              [
-                                _vm._v(
-                                  "\n                                " +
-                                    _vm._s(parking.address) +
-                                    "\n                            "
-                                )
-                              ]
-                            )
-                          })
-                        ],
-                        2
-                      )
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "col" }, [
-                      _c("label", [_vm._v("Дата завершения")]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "row input-row" }, [
-                        _c("p", [_vm._v("С")]),
-                        _vm._v(" "),
-                        _c(
-                          "div",
-                          { staticClass: "col filter-date filter-date-d" },
-                          [
-                            _c("input", {
-                              staticClass: "input-date form-control options",
-                              attrs: {
-                                name: "startval",
-                                type: "date",
-                                id: "start",
-                                value: ""
-                              },
-                              on: {
-                                change: function($event) {
-                                  return _vm.filterByStarts($event)
-                                }
-                              }
-                            })
-                          ]
-                        ),
-                        _vm._v(" "),
-                        _c("p", [_vm._v("ПО")]),
-                        _vm._v(" "),
-                        _c(
-                          "div",
-                          { staticClass: "col filter-date filter-date-d" },
-                          [
-                            _c("input", {
-                              staticClass: "input-date form-control options",
-                              attrs: {
-                                name: "endval",
-                                type: "date",
-                                id: "finish",
-                                value: ""
-                              },
-                              on: {
-                                change: function($event) {
-                                  return _vm.filterByEnds($event)
-                                }
-                              }
-                            }),
-                            _vm._v(" "),
-                            _c("input", {
-                              attrs: { type: "hidden", name: "bodyval" },
-                              domProps: { value: _vm.bodiesId }
-                            })
-                          ]
-                        )
-                      ])
-                    ]),
-                    _vm._v(" "),
-                    _c(
-                      "div",
-                      { staticClass: "col filter-date filter-date-btn" },
-                      [
-                        _c(
-                          "button",
-                          {
-                            staticClass: "btn btn-light searchcarsauction",
-                            attrs: { type: "submit" }
-                          },
-                          [
-                            _c("i", {
-                              staticClass: "fas fa-search",
-                              staticStyle: { display: "inline-block" }
-                            }),
-                            _vm._v(
-                              " " +
-                                _vm._s(this.allCarsLength) +
-                                "\n                        "
-                            )
-                          ]
-                        )
-                      ]
-                    )
-                  ]
-                )
-              ])
-            ])
-          ])
+        ? _c("filters", { attrs: { allcars: this.allcars } })
         : _vm._e(),
       _vm._v(" "),
       _vm.slider.length > 0
@@ -53053,7 +48957,7 @@ var render = function() {
             _vm._v(" "),
             _vm.carssearch.length == 0
               ? _c("div", { staticClass: "container container-back" }, [
-                  _vm._m(11)
+                  _vm._m(0)
                 ])
               : _vm._e()
           ])
@@ -53065,198 +48969,6 @@ var render = function() {
   )
 }
 var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      {
-        staticClass: "carousel slide d-block d-sm-none slide",
-        attrs: { id: "bs4-slide-carousel", "data-ride": "carousel" }
-      },
-      [
-        _c("div", { staticClass: "carousel-inner text-center" }, [
-          _c(
-            "a",
-            {
-              staticClass: "carousel-control-prev",
-              attrs: {
-                href: "#bs4-slide-carousel",
-                role: "button",
-                "data-slide": "prev"
-              }
-            },
-            [
-              _c("span", {
-                staticClass: "carousel-control-prev-icon",
-                attrs: { "aria-hidden": "true" }
-              }),
-              _vm._v(" "),
-              _c("span", { staticClass: "sr-only" }, [_vm._v("Previous")])
-            ]
-          ),
-          _vm._v(" "),
-          _c(
-            "a",
-            {
-              staticClass: "carousel-control-next",
-              attrs: {
-                href: "#bs4-slide-carousel",
-                role: "button",
-                "data-slide": "next"
-              }
-            },
-            [
-              _c("span", {
-                staticClass: "carousel-control-next-icon",
-                attrs: { "aria-hidden": "true" }
-              }),
-              _vm._v(" "),
-              _c("span", { staticClass: "sr-only" }, [_vm._v("Next")])
-            ]
-          )
-        ])
-      ]
-    )
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "a",
-      {
-        staticClass: "carousel-control-next",
-        attrs: {
-          href: "#carouselExampleControls",
-          role: "button",
-          "data-slide": "next"
-        }
-      },
-      [
-        _c("span", {
-          staticClass: "carousel-control-next-icon",
-          attrs: { "aria-hidden": "true" }
-        }),
-        _vm._v(" "),
-        _c("span", { staticClass: "sr-only" })
-      ]
-    )
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "a",
-      {
-        staticClass: "carousel-control-prev",
-        attrs: {
-          href: "#carouselExampleControls",
-          role: "button",
-          "data-slide": "prev"
-        }
-      },
-      [
-        _c("span", {
-          staticClass: "carousel-control-prev-icon",
-          attrs: { "aria-hidden": "true" }
-        }),
-        _vm._v(" "),
-        _c("span", { staticClass: "sr-only" })
-      ]
-    )
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("a", { attrs: { title: "Все типы" } }, [
-      _c("i", { staticClass: "fas fa-car-side", attrs: { "icon-id": "0" } }),
-      _vm._v(" "),
-      _c("p", { staticClass: "carTypesText" }, [_vm._v("Все типы")])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("a", { attrs: { title: "Легковые" } }, [
-      _c("i", { staticClass: "fas fa-car", attrs: { "icon-id": "3" } }),
-      _vm._v(" "),
-      _c("p", { staticClass: "carTypesText" }, [_vm._v("Легковые")])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("a", { attrs: { title: "Легкие коммерческие" } }, [
-      _c("i", { staticClass: "fas fa-truck" }),
-      _vm._v(" "),
-      _c("p", { staticClass: "carTypesText" }, [_vm._v("Легкие коммерческие")])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("a", { attrs: { title: "Грузовые" } }, [
-      _c("i", {
-        staticClass: "fas fa-truck-moving",
-        attrs: { "icon-id": "4" }
-      }),
-      _vm._v(" "),
-      _c("p", { staticClass: "carTypesText" }, [_vm._v("Грузовые")])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("a", { attrs: { title: "Седельные тягачи" } }, [
-      _c("i", {
-        staticClass: "fas fa-truck-pickup",
-        attrs: { "icon-id": "5" }
-      }),
-      _vm._v(" "),
-      _c("p", { staticClass: "carTypesText" }, [_vm._v("Седельные тягачи")])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("a", { attrs: { title: "Прицепы" } }, [
-      _c("i", {
-        staticClass: "fas fa-truck-loading",
-        attrs: { "icon-id": "6" }
-      }),
-      _vm._v(" "),
-      _c("p", { staticClass: "carTypesText" }, [_vm._v("Прицепы")])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("a", { attrs: { title: "Автобусы" } }, [
-      _c("i", { staticClass: "fas fa-bus", attrs: { "icon-id": "7" } }),
-      _vm._v(" "),
-      _c("p", { staticClass: "carTypesText" }, [_vm._v("Автобусы")])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("a", { attrs: { title: "Спецтехника" } }, [
-      _c("i", { staticClass: "fas fa-tractor", attrs: { "icon-id": "9" } }),
-      _vm._v(" "),
-      _c("p", { staticClass: "carTypesText" }, [_vm._v("Спецтехника")])
-    ])
-  },
   function() {
     var _vm = this
     var _h = _vm.$createElement
@@ -53558,10 +49270,10 @@ render._withStripped = true
 
 /***/ }),
 
-/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Statistics.vue?vue&type=template&id=8f59d764&scoped=true&":
-/*!*************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Statistics.vue?vue&type=template&id=8f59d764&scoped=true& ***!
-  \*************************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Slider.vue?vue&type=template&id=872262e8&scoped=true&":
+/*!*********************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Slider.vue?vue&type=template&id=872262e8&scoped=true& ***!
+  \*********************************************************************************************************************************************************************************************************************/
 /*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -53573,7 +49285,427 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div")
+  return _c("div", { staticClass: "container-fluid carbidding-container" }, [
+    _c("section", { attrs: { id: "lastcars" } }, [
+      _c("div", { staticClass: "container container-back" }, [
+        _vm._m(0),
+        _vm._v(" "),
+        _c(
+          "div",
+          {
+            staticClass: "carousel slide d-none d-sm-block m-50 slide",
+            attrs: { id: "carouselExampleControls", "data-ride": "carousel" }
+          },
+          [
+            _c(
+              "div",
+              { staticClass: "carousel-inner text-center carouselin" },
+              [
+                _c("div", { staticClass: "carousel-item active" }, [
+                  _c("div", { staticClass: "row" }, [
+                    _c("div", { staticClass: "col slider-col" }, [
+                      _c("img", {
+                        directives: [
+                          {
+                            name: "lazy-src",
+                            rawName: "v-lazy-src",
+                            value: "/img/" + _vm.slider[0].mainpics,
+                            expression: "'/img/'+slider[0].mainpics"
+                          }
+                        ],
+                        staticClass: "img-fluid",
+                        attrs: { alt: _vm.slider[0].name }
+                      }),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "car-informacion" }, [
+                        _c("div", { staticClass: "inform-text" }, [
+                          _c("div", { staticClass: "row" }, [
+                            _c("div", { staticClass: "col" }, [
+                              _c("p", [
+                                _vm._v("Лот | #" + _vm._s(_vm.slider[0].id))
+                              ])
+                            ])
+                          ]),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "row" }, [
+                            _c("div", { staticClass: "col" }, [
+                              _c("p", [
+                                _vm._v(
+                                  _vm._s(_vm.slider[0].name) +
+                                    " | " +
+                                    _vm._s(_vm.slider[0].year)
+                                )
+                              ])
+                            ])
+                          ]),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "row" }, [
+                            _c("div", { staticClass: "col" }, [
+                              _c("p", [
+                                _vm._v(
+                                  "Текущая цена | " +
+                                    _vm._s(_vm.slider[0].currentPrice) +
+                                    " ₽"
+                                )
+                              ])
+                            ])
+                          ]),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "row" }, [
+                            _c("div", { staticClass: "col" }, [
+                              _c("p", [
+                                _vm._v(
+                                  "Начало торгов | " +
+                                    _vm._s(_vm.slider[0].auctionStart)
+                                )
+                              ])
+                            ])
+                          ]),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "row" }, [
+                            _c("div", { staticClass: "col" }, [
+                              _c("p", [
+                                _vm._v(
+                                  "Завершение торгов: | " +
+                                    _vm._s(_vm.slider[0].endOfAuction)
+                                )
+                              ])
+                            ])
+                          ]),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "row" }, [
+                            _c(
+                              "div",
+                              { staticClass: "col" },
+                              [
+                                _c(
+                                  "router-link",
+                                  {
+                                    key: _vm.slider[0].id,
+                                    attrs: { to: "/cars/" + _vm.slider[0].id }
+                                  },
+                                  [
+                                    _c(
+                                      "button",
+                                      {
+                                        staticClass: "btn btn-light",
+                                        attrs: { type: "button" }
+                                      },
+                                      [
+                                        _vm._v(
+                                          "Смотреть\n                                                    "
+                                        )
+                                      ]
+                                    )
+                                  ]
+                                )
+                              ],
+                              1
+                            )
+                          ])
+                        ])
+                      ])
+                    ])
+                  ])
+                ]),
+                _vm._v(" "),
+                _vm._l(_vm.slider, function(slid, index) {
+                  return index !== 0 && index < 10
+                    ? _c("div", { staticClass: "carousel-item" }, [
+                        _c("div", { staticClass: "row" }, [
+                          _c("div", { staticClass: "col slider-col" }, [
+                            _c("img", {
+                              directives: [
+                                {
+                                  name: "lazy-src",
+                                  rawName: "v-lazy-src",
+                                  value: "/img/" + slid.mainpics,
+                                  expression: "'/img/'+slid.mainpics"
+                                }
+                              ],
+                              staticClass: "img-fluid",
+                              attrs: { alt: slid.name }
+                            }),
+                            _vm._v(" "),
+                            _c("div", { staticClass: "car-informacion" }, [
+                              _c("div", { staticClass: "inform-text" }, [
+                                _c("div", { staticClass: "row" }, [
+                                  _c("div", { staticClass: "col" }, [
+                                    _c("p", [
+                                      _vm._v("Лот | #" + _vm._s(slid.id))
+                                    ])
+                                  ])
+                                ]),
+                                _vm._v(" "),
+                                _c("div", { staticClass: "row" }, [
+                                  _c("div", { staticClass: "col" }, [
+                                    _c("p", [
+                                      _vm._v(
+                                        _vm._s(slid.name) +
+                                          " | " +
+                                          _vm._s(slid.year)
+                                      )
+                                    ])
+                                  ])
+                                ]),
+                                _vm._v(" "),
+                                _c("div", { staticClass: "row" }, [
+                                  _c("div", { staticClass: "col" }, [
+                                    _c("p", [
+                                      _vm._v(
+                                        "Текущая цена | " +
+                                          _vm._s(slid.currentPrice) +
+                                          " ₽"
+                                      )
+                                    ])
+                                  ])
+                                ]),
+                                _vm._v(" "),
+                                _c("div", { staticClass: "row" }, [
+                                  _c("div", { staticClass: "col" }, [
+                                    _c("p", [
+                                      _vm._v(
+                                        "Начало торгов | " +
+                                          _vm._s(slid.auctionStart)
+                                      )
+                                    ])
+                                  ])
+                                ]),
+                                _vm._v(" "),
+                                _c("div", { staticClass: "row" }, [
+                                  _c("div", { staticClass: "col" }, [
+                                    _c("p", [
+                                      _vm._v(
+                                        "Завершение торгов: | " +
+                                          _vm._s(slid.endOfAuction)
+                                      )
+                                    ])
+                                  ])
+                                ]),
+                                _vm._v(" "),
+                                _c("div", { staticClass: "row" }, [
+                                  _c(
+                                    "div",
+                                    { staticClass: "col" },
+                                    [
+                                      _c(
+                                        "router-link",
+                                        {
+                                          key: slid.id,
+                                          attrs: { to: "/cars/" + slid.id }
+                                        },
+                                        [
+                                          _c(
+                                            "button",
+                                            {
+                                              staticClass: "btn btn-light",
+                                              attrs: { type: "button" }
+                                            },
+                                            [
+                                              _vm._v(
+                                                "Смотреть\n                                                    "
+                                              )
+                                            ]
+                                          )
+                                        ]
+                                      )
+                                    ],
+                                    1
+                                  )
+                                ])
+                              ])
+                            ])
+                          ])
+                        ])
+                      ])
+                    : _vm._e()
+                }),
+                _vm._v(" "),
+                _vm._m(1),
+                _vm._v(" "),
+                _vm._m(2)
+              ],
+              2
+            )
+          ]
+        )
+      ])
+    ])
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      {
+        staticClass: "carousel slide d-block d-sm-none slide",
+        attrs: { id: "bs4-slide-carousel", "data-ride": "carousel" }
+      },
+      [
+        _c("div", { staticClass: "carousel-inner text-center" }, [
+          _c(
+            "a",
+            {
+              staticClass: "carousel-control-prev",
+              attrs: {
+                href: "#bs4-slide-carousel",
+                role: "button",
+                "data-slide": "prev"
+              }
+            },
+            [
+              _c("span", {
+                staticClass: "carousel-control-prev-icon",
+                attrs: { "aria-hidden": "true" }
+              }),
+              _vm._v(" "),
+              _c("span", { staticClass: "sr-only" }, [_vm._v("Previous")])
+            ]
+          ),
+          _vm._v(" "),
+          _c(
+            "a",
+            {
+              staticClass: "carousel-control-next",
+              attrs: {
+                href: "#bs4-slide-carousel",
+                role: "button",
+                "data-slide": "next"
+              }
+            },
+            [
+              _c("span", {
+                staticClass: "carousel-control-next-icon",
+                attrs: { "aria-hidden": "true" }
+              }),
+              _vm._v(" "),
+              _c("span", { staticClass: "sr-only" }, [_vm._v("Next")])
+            ]
+          )
+        ])
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "a",
+      {
+        staticClass: "carousel-control-next",
+        attrs: {
+          href: "#carouselExampleControls",
+          role: "button",
+          "data-slide": "next"
+        }
+      },
+      [
+        _c("span", {
+          staticClass: "carousel-control-next-icon",
+          attrs: { "aria-hidden": "true" }
+        }),
+        _vm._v(" "),
+        _c("span", { staticClass: "sr-only" })
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "a",
+      {
+        staticClass: "carousel-control-prev",
+        attrs: {
+          href: "#carouselExampleControls",
+          role: "button",
+          "data-slide": "prev"
+        }
+      },
+      [
+        _c("span", {
+          staticClass: "carousel-control-prev-icon",
+          attrs: { "aria-hidden": "true" }
+        }),
+        _vm._v(" "),
+        _c("span", { staticClass: "sr-only" })
+      ]
+    )
+  }
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Statistic.vue?vue&type=template&id=1657fb75&scoped=true&":
+/*!************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Statistic.vue?vue&type=template&id=1657fb75&scoped=true& ***!
+  \************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "container-fluid" }, [
+    _c("div", { staticClass: "container" }, [
+      _c("div", { staticClass: "row count-up-row" }, [
+        _c("div", { staticClass: "count-up-back" }, [
+          _c(
+            "div",
+            { staticClass: "iCountUp" },
+            [
+              _c("i", { staticClass: "fas fa-user statisti-icons" }),
+              _vm._v(" "),
+              _c("ICountUp", {
+                attrs: {
+                  delay: _vm.delay,
+                  endVal: _vm.endValUsers,
+                  options: _vm.options
+                }
+              }),
+              _vm._v(" "),
+              _c("h5", [_vm._v("Пазвательи")])
+            ],
+            1
+          )
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "count-up-back" }, [
+          _c(
+            "div",
+            { staticClass: "iCountUp" },
+            [
+              _c("i", { staticClass: "fas fa-car" }),
+              _vm._v(" "),
+              _c("ICountUp", {
+                attrs: {
+                  delay: _vm.delay,
+                  endVal: _vm.endValCars,
+                  options: _vm.options
+                }
+              }),
+              _vm._v(" "),
+              _c("h5", [_vm._v("Машины")])
+            ],
+            1
+          )
+        ])
+      ])
+    ])
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -69730,7 +65862,9 @@ Vue.component('filtercars', __webpack_require__(/*! ./components/FilterCars.vue 
 Vue.component('showcar', __webpack_require__(/*! ./components/ShowCar.vue */ "./resources/js/components/ShowCar.vue")["default"]);
 Vue.component('Cube', __webpack_require__(/*! ./components/Cube.vue */ "./resources/js/components/Cube.vue")["default"]);
 Vue.component('app', __webpack_require__(/*! ./components/app.vue */ "./resources/js/components/app.vue")["default"]);
-Vue.component('statistics', __webpack_require__(/*! ./components/Statistics.vue */ "./resources/js/components/Statistics.vue")["default"]);
+Vue.component('filters', __webpack_require__(/*! ./components/Filters.vue */ "./resources/js/components/Filters.vue")["default"]);
+Vue.component('slider', __webpack_require__(/*! ./components/Slider.vue */ "./resources/js/components/Slider.vue")["default"]);
+Vue.component('statistic', __webpack_require__(/*! ./components/Statistic.vue */ "./resources/js/components/Statistic.vue")["default"]);
 Vue.component('pagination', __webpack_require__(/*! laravel-vue-pagination */ "./node_modules/laravel-vue-pagination/dist/laravel-vue-pagination.common.js"));
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -70231,6 +66365,75 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_FilterCars_vue_vue_type_template_id_7ff3b7e2_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_FilterCars_vue_vue_type_template_id_7ff3b7e2_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/Filters.vue":
+/*!*********************************************!*\
+  !*** ./resources/js/components/Filters.vue ***!
+  \*********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _Filters_vue_vue_type_template_id_b9055040_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Filters.vue?vue&type=template&id=b9055040&scoped=true& */ "./resources/js/components/Filters.vue?vue&type=template&id=b9055040&scoped=true&");
+/* harmony import */ var _Filters_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Filters.vue?vue&type=script&lang=js& */ "./resources/js/components/Filters.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _Filters_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _Filters_vue_vue_type_template_id_b9055040_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _Filters_vue_vue_type_template_id_b9055040_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  "b9055040",
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/Filters.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/Filters.vue?vue&type=script&lang=js&":
+/*!**********************************************************************!*\
+  !*** ./resources/js/components/Filters.vue?vue&type=script&lang=js& ***!
+  \**********************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Filters_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./Filters.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Filters.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Filters_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/Filters.vue?vue&type=template&id=b9055040&scoped=true&":
+/*!****************************************************************************************!*\
+  !*** ./resources/js/components/Filters.vue?vue&type=template&id=b9055040&scoped=true& ***!
+  \****************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Filters_vue_vue_type_template_id_b9055040_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./Filters.vue?vue&type=template&id=b9055040&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Filters.vue?vue&type=template&id=b9055040&scoped=true&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Filters_vue_vue_type_template_id_b9055040_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Filters_vue_vue_type_template_id_b9055040_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 
@@ -70857,17 +67060,17 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./resources/js/components/Statistics.vue":
-/*!************************************************!*\
-  !*** ./resources/js/components/Statistics.vue ***!
-  \************************************************/
+/***/ "./resources/js/components/Slider.vue":
+/*!********************************************!*\
+  !*** ./resources/js/components/Slider.vue ***!
+  \********************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _Statistics_vue_vue_type_template_id_8f59d764_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Statistics.vue?vue&type=template&id=8f59d764&scoped=true& */ "./resources/js/components/Statistics.vue?vue&type=template&id=8f59d764&scoped=true&");
-/* harmony import */ var _Statistics_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Statistics.vue?vue&type=script&lang=js& */ "./resources/js/components/Statistics.vue?vue&type=script&lang=js&");
+/* harmony import */ var _Slider_vue_vue_type_template_id_872262e8_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Slider.vue?vue&type=template&id=872262e8&scoped=true& */ "./resources/js/components/Slider.vue?vue&type=template&id=872262e8&scoped=true&");
+/* harmony import */ var _Slider_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Slider.vue?vue&type=script&lang=js& */ "./resources/js/components/Slider.vue?vue&type=script&lang=js&");
 /* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
@@ -70877,50 +67080,119 @@ __webpack_require__.r(__webpack_exports__);
 /* normalize component */
 
 var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
-  _Statistics_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
-  _Statistics_vue_vue_type_template_id_8f59d764_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"],
-  _Statistics_vue_vue_type_template_id_8f59d764_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  _Slider_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _Slider_vue_vue_type_template_id_872262e8_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _Slider_vue_vue_type_template_id_872262e8_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
   false,
   null,
-  "8f59d764",
+  "872262e8",
   null
   
 )
 
 /* hot reload */
 if (false) { var api; }
-component.options.__file = "resources/js/components/Statistics.vue"
+component.options.__file = "resources/js/components/Slider.vue"
 /* harmony default export */ __webpack_exports__["default"] = (component.exports);
 
 /***/ }),
 
-/***/ "./resources/js/components/Statistics.vue?vue&type=script&lang=js&":
-/*!*************************************************************************!*\
-  !*** ./resources/js/components/Statistics.vue?vue&type=script&lang=js& ***!
-  \*************************************************************************/
+/***/ "./resources/js/components/Slider.vue?vue&type=script&lang=js&":
+/*!*********************************************************************!*\
+  !*** ./resources/js/components/Slider.vue?vue&type=script&lang=js& ***!
+  \*********************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Statistics_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./Statistics.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Statistics.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Statistics_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Slider_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./Slider.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Slider.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Slider_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
 
 /***/ }),
 
-/***/ "./resources/js/components/Statistics.vue?vue&type=template&id=8f59d764&scoped=true&":
-/*!*******************************************************************************************!*\
-  !*** ./resources/js/components/Statistics.vue?vue&type=template&id=8f59d764&scoped=true& ***!
-  \*******************************************************************************************/
+/***/ "./resources/js/components/Slider.vue?vue&type=template&id=872262e8&scoped=true&":
+/*!***************************************************************************************!*\
+  !*** ./resources/js/components/Slider.vue?vue&type=template&id=872262e8&scoped=true& ***!
+  \***************************************************************************************/
 /*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Statistics_vue_vue_type_template_id_8f59d764_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./Statistics.vue?vue&type=template&id=8f59d764&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Statistics.vue?vue&type=template&id=8f59d764&scoped=true&");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Statistics_vue_vue_type_template_id_8f59d764_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Slider_vue_vue_type_template_id_872262e8_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./Slider.vue?vue&type=template&id=872262e8&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Slider.vue?vue&type=template&id=872262e8&scoped=true&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Slider_vue_vue_type_template_id_872262e8_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Statistics_vue_vue_type_template_id_8f59d764_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Slider_vue_vue_type_template_id_872262e8_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/Statistic.vue":
+/*!***********************************************!*\
+  !*** ./resources/js/components/Statistic.vue ***!
+  \***********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _Statistic_vue_vue_type_template_id_1657fb75_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Statistic.vue?vue&type=template&id=1657fb75&scoped=true& */ "./resources/js/components/Statistic.vue?vue&type=template&id=1657fb75&scoped=true&");
+/* harmony import */ var _Statistic_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Statistic.vue?vue&type=script&lang=js& */ "./resources/js/components/Statistic.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _Statistic_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _Statistic_vue_vue_type_template_id_1657fb75_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _Statistic_vue_vue_type_template_id_1657fb75_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  "1657fb75",
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/Statistic.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/Statistic.vue?vue&type=script&lang=js&":
+/*!************************************************************************!*\
+  !*** ./resources/js/components/Statistic.vue?vue&type=script&lang=js& ***!
+  \************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Statistic_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./Statistic.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Statistic.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Statistic_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/Statistic.vue?vue&type=template&id=1657fb75&scoped=true&":
+/*!******************************************************************************************!*\
+  !*** ./resources/js/components/Statistic.vue?vue&type=template&id=1657fb75&scoped=true& ***!
+  \******************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Statistic_vue_vue_type_template_id_1657fb75_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./Statistic.vue?vue&type=template&id=1657fb75&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Statistic.vue?vue&type=template&id=1657fb75&scoped=true&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Statistic_vue_vue_type_template_id_1657fb75_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Statistic_vue_vue_type_template_id_1657fb75_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 

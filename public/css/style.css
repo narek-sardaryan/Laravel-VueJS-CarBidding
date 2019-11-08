@@ -398,7 +398,7 @@ body {
 }
 
 .body-cars.carTypeActive a i, .body-cars.carTypeActive a .carTypesText {
-    color: #fff!important;
+    color: #fff !important;
 }
 
 .body-cars:hover .quantity_cars p {
@@ -455,6 +455,7 @@ body {
 }
 
 .car-filters {
+    background-image: url("../img/design_img/jjj.png");
     background-color: #0f92ff;
     height: 140px;
 }
@@ -562,7 +563,7 @@ body {
 
 #lastcars {
     margin-top: 60px;
-    padding-bottom: 120px;
+    padding-bottom: 60px;
 }
 
 .slider-col {
@@ -1376,3 +1377,31 @@ span i {
     margin-bottom: 0;
 }
 
+.iCountUp {
+    font-size: 20px;
+    color: white;
+}
+
+.count-up-back{
+    /*background-image: url(../img/design_img/jjj.png);*/
+    width: 170px;
+    height: 170px;
+    background-color: #2e7bbb;
+    margin-left: 15px;
+    margin-right: 15px;
+    margin-bottom: 60px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-radius: 100%;
+    box-shadow: inset 0px 0px 7px 2px rgba(0, 0, 0, 0.2)
+}
+
+.count-up-row{
+    justify-content: space-around;
+}
+
+.statisti-icons{
+    padding: 0;
+}
