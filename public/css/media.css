@@ -49,6 +49,9 @@
         top: -14px;
         left: 70px;
     }
+    .menunavbar {
+        padding-top: 0px;
+    }
 
     .navbar-collapse .menunavbar ul li {
         padding: 20px 0 10px;
@@ -135,6 +138,40 @@
 
     .filter-date-d {
         width: 45%;
+    }
+    .cars-article img {
+        width: 85%;
+        height: 185px;
+        margin-top: 20px;
+    }
+    .car-informacion-article p {
+        font-size: 14px;
+    }
+    .carbidding-container {
+        margin-top: 60px;
+    }
+    .article-price {
+        width: 95px;
+        top: 2%;
+        left: 35%;
+    }
+    .drop-text {
+        display: none;
+    }
+    .inform_txt_responsive {
+        display: block;
+        background-image: linear-gradient(#0f92ff61, #0f92ff1f);
+        width: 76.2%;
+        position: absolute;
+        height: 135px;
+        top: 35%;
+        left: 12%;
+        padding: 10px 0;
+    }
+    .inform_txt_p {
+        color: #fff;
+        font-size: 10px;
+        text-align: center;
     }
 }
 
@@ -244,5 +281,12 @@
 
     .filter-date-d {
         width: 45%;
+    }
+    .drop-text {
+        left: 15px;
+        width: 87.5%;
+    }
+    .article-price {
+        left: 65px;
     }
 }
