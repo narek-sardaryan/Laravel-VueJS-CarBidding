@@ -413,6 +413,7 @@ body {
 
 .body-cars.carTypeActive {
     background: #0f92ff;
+    background-image: url(../img/design_img/jjj.png);
 }
 
 .body-cars:hover .carTypesText {
