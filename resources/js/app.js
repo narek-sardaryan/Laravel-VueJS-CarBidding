@@ -47,6 +47,9 @@ Vue.component('filtercars', require('./components/FilterCars.vue').default);
 Vue.component('showcar', require('./components/ShowCar.vue').default);
 Vue.component('Cube', require('./components/Cube.vue').default);
 Vue.component('app', require('./components/app.vue').default);
+Vue.component('filters', require('./components/Filters.vue').default);
+Vue.component('slider', require('./components/Slider.vue').default);
+Vue.component('statistic', require('./components/Statistic.vue').default);
 Vue.component('pagination', require('laravel-vue-pagination'));
 
 /**

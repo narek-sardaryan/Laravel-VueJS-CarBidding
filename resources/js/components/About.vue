@@ -46,7 +46,7 @@
                 <h3 class="partners_title">Наши партнеры</h3>
                 <div id="carouselAbout" class="carousel slide m-50 slide"
                      data-ride="carousel">
-                    <div class="carousel-inner text-center">
+                    <div class="carousel-inner text-center pics">
                         <div class="carousel-item active">
                             <div class="row">
                                 <div class="col">
