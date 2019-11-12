@@ -198,7 +198,6 @@ body {
 #carnavbar {
     border-bottom: 2px solid #A4A4A4;
     background-color: transparent;
-    padding-bottom: 12px;
 }
 
 .menunavbar a {
@@ -207,7 +206,7 @@ body {
 }
 
 .responsive {
-    padding: 0 50px;
+    padding: 0 77px;
 }
 
 .menunavbar ul > li > a {
@@ -219,7 +218,7 @@ body {
 
 .menunavbar ul li, ol li {
     list-style: none;
-
+    position: relative;
 }
 
 .menunavbar ul {
@@ -265,7 +264,7 @@ body {
     background-color: #f1f1f1;
     box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
     z-index: 1;
-    top: 55px;
+    top: 40px;
 }
 
 .menunavbar ol:before {
@@ -294,7 +293,6 @@ body {
 }
 
 .menunavbar li:hover ol {
-    opacity: 1;
     display: block;
 }
 
@@ -507,7 +505,7 @@ body {
 }
 
 .cars-root {
-    margin-top: 50px;
+    margin: 50px 0;
     text-align: center;
 }
 
@@ -550,7 +548,7 @@ body {
     font-weight: 600;
     background-position: center;
     background-image: url(../img/design_img/carbiddinglogo.png);
-    background-size: 500px;
+    background-size: 50%;
     background-repeat: no-repeat;
 }
 
@@ -690,13 +688,15 @@ body {
 
 .bg_img {
     background-image: url(../img/about_img/about_txt.png);
+    background-repeat: no-repeat;
     background-size: cover;
-    height: 940px;
+    height: 920px;
+    margin-top: 80px;
 }
 
 .pics img {
     -webkit-filter: grayscale(1);
-    height: 120px;
+    height: 75px;
 }
 
 .pics img:hover {
@@ -705,7 +705,7 @@ body {
 
 .about_div {
     color: #fff;
-    padding: 95px 0;
+    padding: 45px 0;
     text-align: center;
 }
 
@@ -834,12 +834,6 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-}
-
-.searchbox_div{
-    position: absolute;
-    top: 0;
-    left: 685px;
 }
 
 .searchicon {

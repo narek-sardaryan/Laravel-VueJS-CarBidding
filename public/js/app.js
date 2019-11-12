@@ -1937,6 +1937,39 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "About",
   data: function data() {
@@ -45065,60 +45098,56 @@ var render = function() {
     [
       _c("header-component"),
       _vm._v(" "),
-      _c(
-        "div",
-        { staticClass: "bg_img", staticStyle: { "margin-top": "79px" } },
-        [
-          _c("div", { staticClass: "container" }, [
-            _c("div", { staticClass: "row justify-content-end" }, [
-              _c(
-                "div",
-                { staticClass: "col-md-6 about_div" },
-                [
-                  _c("h1", { staticClass: "about_paragraph" }, [
-                    _vm._v("О компании")
-                  ]),
-                  _vm._v(" "),
-                  _c("p", { staticClass: "about_txt" }),
-                  _c("p", { staticClass: "hello" }, [_vm._v("Здравствуйте!")]),
-                  _vm._v(
-                    "\n                    Мы создали нашу компанию в 2006 году. У нас была цель, сделать красивый и современный\n                    бизнес."
-                  ),
-                  _c("br"),
-                  _vm._v(
-                    "\n                    Воплощая эту идею, мы создали в сети Интернет торговую площадку по продаже аварийных\n                    автомобилей. Нас с самого начала не интересовали простые доски объявлений – мы стремились\n                    создать именно сайт по оценке и продаже автомобилей после ДТП, где конечную стоимость\n                    продаваемого поврежденного автомобиля, будет определять рынок – именно такая цена является\n                    справедливой и для продавцов – страховых и лизинговых компаний, и для покупателей.\n                    Воплощая эту идею, мы создали в сети Интернет торговую площадку по продаже аварийных\n                    автомобилей. Нас с самого начала не интересовали простые доски объявлений – мы стремились\n                    создать именно сайт по оценке и продаже автомобилей после ДТП, где конечную стоимость\n                    продаваемого поврежденного автомобиля, будет определять рынок – именно такая цена является\n                    справедливой и для продавцов – страховых и лизинговых компаний, и для покупателей.\n                    Воплощая эту идею, мы создали в сети Интернет торговую площадку по продаже аварийных\n                    автомобилей. Нас с самого начала не интересовали простые доски объявлений – мы стремились\n                    создать именно сайт по оценке и продаже автомобилей после ДТП, где конечную стоимость\n                    продаваемого поврежденного автомобиля, будет определять рынок – именно такая цена является\n                    справедливой и для продавцов – страховых и лизинговых компаний, и для покупателей.\n                    "
-                  ),
-                  _c("p"),
-                  _vm._v(" "),
-                  _c("transition", { attrs: { name: "slide-fade" } }, [
-                    _vm.show
-                      ? _c("p", { staticClass: "add_txt_show" }, [
-                          _vm._v(
-                            "\n                            Воплощая эту идею, мы создали в сети Интернет торговую площадку по продаже аварийных\n                            автомобилей. Нас с самого начала не интересовали простые доски объявлений – мы\n                            стремились создать именно сайт по оценке и продаже автомобилей после ДТП, где конечную\n                            стоимость продаваемого поврежденного автомобиля, будет определять рынок – именно такая\n                            цена является справедливой и для продавцов – страховых и лизинговых компаний, и для\n                            покупателей.\n                        "
-                          )
-                        ])
-                      : _vm._e()
-                  ]),
-                  _vm._v(" "),
-                  _c(
-                    "button",
-                    {
-                      staticClass: "show_more_btn",
-                      on: {
-                        click: function($event) {
-                          _vm.show = !_vm.show
-                        }
+      _c("div", { staticClass: "bg_img" }, [
+        _c("div", { staticClass: "container" }, [
+          _c("div", { staticClass: "row justify-content-end" }, [
+            _c(
+              "div",
+              { staticClass: "col-md-6 about_div" },
+              [
+                _c("h1", { staticClass: "about_paragraph" }, [
+                  _vm._v("О компании")
+                ]),
+                _vm._v(" "),
+                _c("p", { staticClass: "about_txt" }),
+                _c("p", { staticClass: "hello" }, [_vm._v("Здравствуйте!")]),
+                _vm._v(
+                  "\n                    Мы создали нашу компанию в 2006 году. У нас была цель, сделать красивый и современный\n                    бизнес."
+                ),
+                _c("br"),
+                _vm._v(
+                  "\n                    Воплощая эту идею, мы создали в сети Интернет торговую площадку по продаже аварийных\n                    автомобилей. Нас с самого начала не интересовали простые доски объявлений – мы стремились\n                    создать именно сайт по оценке и продаже автомобилей после ДТП, где конечную стоимость\n                    продаваемого поврежденного автомобиля, будет определять рынок – именно такая цена является\n                    справедливой и для продавцов – страховых и лизинговых компаний, и для покупателей.\n                    Воплощая эту идею, мы создали в сети Интернет торговую площадку по продаже аварийных\n                    автомобилей. Нас с самого начала не интересовали простые доски объявлений – мы стремились\n                    создать именно сайт по оценке и продаже автомобилей после ДТП, где конечную стоимость\n                    продаваемого поврежденного автомобиля, будет определять рынок – именно такая цена является\n                    справедливой и для продавцов – страховых и лизинговых компаний, и для покупателей.\n                    "
+                ),
+                _c("p"),
+                _vm._v(" "),
+                _c("transition", { attrs: { name: "slide-fade" } }, [
+                  _vm.show
+                    ? _c("p", { staticClass: "add_txt_show" }, [
+                        _vm._v(
+                          "\n                            Воплощая эту идею, мы создали в сети Интернет торговую площадку по продаже аварийных\n                            автомобилей. Нас с самого начала не интересовали простые доски объявлений – мы\n                            стремились создать именно сайт по оценке и продаже автомобилей после ДТП, где конечную\n                            стоимость продаваемого поврежденного автомобиля, будет определять рынок – именно такая\n                            цена является справедливой и для продавцов – страховых и лизинговых компаний, и для\n                            покупателей.\n                        "
+                        )
+                      ])
+                    : _vm._e()
+                ]),
+                _vm._v(" "),
+                _c(
+                  "button",
+                  {
+                    staticClass: "show_more_btn",
+                    on: {
+                      click: function($event) {
+                        _vm.show = !_vm.show
                       }
-                    },
-                    [_vm._v("Show More")]
-                  )
-                ],
-                1
-              )
-            ])
+                    }
+                  },
+                  [_vm._v("Show More")]
+                )
+              ],
+              1
+            )
           ])
-        ]
-      ),
+        ])
+      ]),
       _vm._v(" "),
       _c("section", { staticClass: "partners" }, [
         _c("div", { staticClass: "container" }, [
@@ -45129,7 +45158,7 @@ var render = function() {
           _c(
             "div",
             {
-              staticClass: "carousel slide m-50 slide",
+              staticClass: "carousel slide d-none d-sm-block m-50 slide",
               attrs: { id: "carouselAbout", "data-ride": "carousel" }
             },
             [
@@ -45251,6 +45280,125 @@ var render = function() {
                 _vm._m(1)
               ])
             ]
+          ),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              staticClass: "carousel slide d-block d-sm-none slide",
+              attrs: { id: "about_slide_responsive", "data-ride": "carousel" }
+            },
+            [
+              _c("div", { staticClass: "carousel-inner text-center" }, [
+                _c("div", { staticClass: "carousel-item active" }, [
+                  _c("img", {
+                    directives: [
+                      {
+                        name: "lazy-src",
+                        rawName: "v-lazy-src",
+                        value: "/img/about_img/bmw].png",
+                        expression: "'/img/about_img/bmw].png'"
+                      }
+                    ]
+                  })
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "carousel-item" }, [
+                  _c("img", {
+                    directives: [
+                      {
+                        name: "lazy-src",
+                        rawName: "v-lazy-src",
+                        value: "/img/about_img/Porsche-logo.png",
+                        expression: "'/img/about_img/Porsche-logo.png'"
+                      }
+                    ]
+                  })
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "carousel-item" }, [
+                  _c("img", {
+                    directives: [
+                      {
+                        name: "lazy-src",
+                        rawName: "v-lazy-src",
+                        value: "/img/about_img/toyota.png",
+                        expression: "'/img/about_img/toyota.png'"
+                      }
+                    ]
+                  })
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "carousel-item" }, [
+                  _c("img", {
+                    directives: [
+                      {
+                        name: "lazy-src",
+                        rawName: "v-lazy-src",
+                        value: "/img/about_img/Ferrari-logo.png",
+                        expression: "'/img/about_img/Ferrari-logo.png'"
+                      }
+                    ]
+                  })
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "carousel-item" }, [
+                  _c("img", {
+                    directives: [
+                      {
+                        name: "lazy-src",
+                        rawName: "v-lazy-src",
+                        value: "/img/about_img/Lamborghini-logo.png",
+                        expression: "'/img/about_img/Lamborghini-logo.png'"
+                      }
+                    ]
+                  })
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "carousel-item" }, [
+                  _c("img", {
+                    directives: [
+                      {
+                        name: "lazy-src",
+                        rawName: "v-lazy-src",
+                        value: "/img/about_img/Volkswagen-logo.png",
+                        expression: "'/img/about_img/Volkswagen-logo.png'"
+                      }
+                    ]
+                  })
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "carousel-item" }, [
+                  _c("img", {
+                    directives: [
+                      {
+                        name: "lazy-src",
+                        rawName: "v-lazy-src",
+                        value: "/img/about_img/Bugatti-logo.png",
+                        expression: "'/img/about_img/Bugatti-logo.png'"
+                      }
+                    ]
+                  })
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "carousel-item" }, [
+                  _c("img", {
+                    directives: [
+                      {
+                        name: "lazy-src",
+                        rawName: "v-lazy-src",
+                        value: "/img/about_img/Mitsubishi-logo.png",
+                        expression: "'/img/about_img/Mitsubishi-logo.png'"
+                      }
+                    ]
+                  })
+                ]),
+                _vm._v(" "),
+                _vm._m(2),
+                _vm._v(" "),
+                _vm._m(3)
+              ])
+            ]
           )
         ])
       ]),
@@ -45291,6 +45439,44 @@ var staticRenderFns = [
           staticClass: "carousel-arrow-right",
           attrs: {
             href: "#carouselAbout",
+            role: "button",
+            "data-slide": "prev"
+          }
+        },
+        [_c("i", { staticClass: "fas fa-chevron-right" })]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "about-row" }, [
+      _c(
+        "a",
+        {
+          staticClass: "carousel-arrow-left",
+          attrs: {
+            href: "#about_slide_responsive",
+            role: "button",
+            "data-slide": "next"
+          }
+        },
+        [_c("i", { staticClass: "fas fa-chevron-left" })]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "about-row" }, [
+      _c(
+        "a",
+        {
+          staticClass: "carousel-arrow-right",
+          attrs: {
+            href: "#about_slide_responsive",
             role: "button",
             "data-slide": "prev"
           }
@@ -46192,7 +46378,7 @@ var render = function() {
                   _vm._l(_vm.models, function(model, index) {
                     return _c("option", { domProps: { value: model.id } }, [
                       _vm._v(
-                        _vm._s(model.name) + "\n                            "
+                        _vm._s(model.name) + "\r\n                            "
                       )
                     ])
                   })
@@ -46223,7 +46409,7 @@ var render = function() {
                   _vm._l(_vm.states, function(state, index) {
                     return _c("option", { domProps: { value: state.id } }, [
                       _vm._v(
-                        _vm._s(state.name) + "\n                            "
+                        _vm._s(state.name) + "\r\n                            "
                       )
                     ])
                   })
@@ -46254,9 +46440,9 @@ var render = function() {
                   _vm._l(_vm.parkings, function(parking, index) {
                     return _c("option", { domProps: { value: parking.id } }, [
                       _vm._v(
-                        "\n                                " +
+                        "\r\n                                " +
                           _vm._s(parking.address) +
-                          "\n                            "
+                          "\r\n                            "
                       )
                     ])
                   })
@@ -46329,7 +46515,7 @@ var render = function() {
                   _vm._v(
                     " " +
                       _vm._s(this.allCarsLength) +
-                      "\n                        "
+                      "\r\n                        "
                   )
                 ]
               )
@@ -49734,7 +49920,7 @@ var render = function() {
                 }
               }),
               _vm._v(" "),
-              _c("h5", [_vm._v("Пазвательи")])
+              _c("h5", [_vm._v("Пользовательи")])
             ],
             1
           )
@@ -67536,8 +67722,8 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vuex__WEBPACK_IMPORTED_MODULE_1__
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\xampp\htdocs\CarBidding\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\xampp\htdocs\CarBidding\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\xampp\htdocs\Laravel-VueJS-CarBidding\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\xampp\htdocs\Laravel-VueJS-CarBidding\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
