@@ -202,6 +202,13 @@
     .hello {
         font-size: 15px;
     }
+    .contacts_div {
+        order: 2;
+    }
+    .contacts_div_txt .add_services_title {
+        font-size: 18px;
+        margin: 10px 0 30px;
+    }
 }
 
 @media only screen and (min-width: 468px) and (max-width: 768px) {
