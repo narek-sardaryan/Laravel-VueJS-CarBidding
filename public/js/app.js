@@ -2867,7 +2867,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Home",
   props: ["carsall"],
@@ -47053,8 +47052,6 @@ var render = function() {
         ? _c("slider", { attrs: { sliders: this.slider } })
         : _vm._e(),
       _vm._v(" "),
-      _vm.slider.length > 0 ? _c("statistic") : _vm._e(),
-      _vm._v(" "),
       _vm.slider.length > 0
         ? _c("filters", { attrs: { allcars: this.allcars } })
         : _vm._e(),
@@ -49223,7 +49220,7 @@ var render = function() {
         ? _c("div", { staticClass: "container-fluid margin" }, [
             _c("div", { staticClass: "container" }, [
               _c("div", { staticClass: "row main_row" }, [
-                _c("div", { staticClass: "col cars_section" }, [
+                _c("div", { staticClass: "col-lg-5 cars_section" }, [
                   _c("img", {
                     staticClass: "img-fluid",
                     attrs: {
@@ -49234,10 +49231,10 @@ var render = function() {
                   }),
                   _vm._v(" "),
                   _c(
-                    "div",
-                    { staticClass: "row small_pics_row" },
+                    "ul",
+                    { staticClass: "small_pics_row" },
                     _vm._l(_vm.images, function(image) {
-                      return _c("div", { staticClass: "col-md-3 smallSlide" }, [
+                      return _c("li", { staticClass: "smallSlide" }, [
                         _c("img", {
                           staticClass: "img-fluid smallImages",
                           attrs: {
@@ -49257,7 +49254,7 @@ var render = function() {
                   )
                 ]),
                 _vm._v(" "),
-                _c("div", { staticClass: "col car_info" }, [
+                _c("div", { staticClass: "col-lg-5 car_info" }, [
                   _c("span", { staticClass: "lot_number" }, [
                     _vm._v("Лот №1907-0906")
                   ]),
@@ -49447,9 +49444,9 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "ending_counter_div" }, [
-      _c("span", { staticClass: "hour_span" }, [_vm._v("21ч.0м.")]),
+      _c("span", { staticClass: "hour_span" }, [_vm._v(" 21ч. 0м. ")]),
       _vm._v(" "),
-      _c("span", { staticClass: "txt_span" }, [_vm._v("до завершения")])
+      _c("span", { staticClass: "txt_span" }, [_vm._v(" до завершения")])
     ])
   },
   function() {

@@ -913,7 +913,7 @@ span i {
 }
 
 .margin {
-    margin-top: 79px;
+    margin-top: 80px;
     background: #ffffffad;
 }
 
@@ -933,6 +933,9 @@ span i {
 
 .small_pics_row {
     margin-top: 20px;
+    list-style: none;
+    display: flex;
+    padding-inline-start: 0px;
 }
 
 .smallImages {
@@ -1252,7 +1255,7 @@ span i {
 }
 
 .profile_container {
-    margin-top: 100px;
+    margin-top: 80px;
     padding: 50px 0 50px 0;
 }
 
