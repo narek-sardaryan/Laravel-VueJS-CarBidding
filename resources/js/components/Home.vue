@@ -3,7 +3,7 @@
         <Cube v-if="slider.length == 0"></Cube>
         <header-component v-if="slider.length > 0"></header-component>
         <slider v-if="slider.length > 0" :sliders="this.slider"></slider>
-        <statistic v-if="slider.length > 0"></statistic>
+<!--        <statistic v-if="slider.length > 0"></statistic>-->
         <filters v-if="slider.length > 0" :allcars="this.allcars"></filters>
         <cars-root @page="getResults($event)" :cars="this.cars" v-if="slider.length > 0"></cars-root>
         <footer-component v-if="slider.length > 0"></footer-component>

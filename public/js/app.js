@@ -45332,8 +45332,6 @@ var render = function() {
         ? _c("slider", { attrs: { sliders: this.slider } })
         : _vm._e(),
       _vm._v(" "),
-      _vm.slider.length > 0 ? _c("statistic") : _vm._e(),
-      _vm._v(" "),
       _vm.slider.length > 0
         ? _c("filters", { attrs: { allcars: _vm.allcars } })
         : _vm._e(),
@@ -45766,8 +45764,6 @@ var render = function() {
         ? _c("slider", { attrs: { sliders: this.slider } })
         : _vm._e(),
       _vm._v(" "),
-      _vm.slider.length > 0 ? _c("statistic") : _vm._e(),
-      _vm._v(" "),
       _vm.slider.length > 0
         ? _c("filters", { attrs: { allcars: this.allcars } })
         : _vm._e(),
@@ -45910,9 +45906,9 @@ var render = function() {
                                 _vm._v(" "),
                                 _c("div", { staticClass: "article-price" }, [
                                   _vm._v(
-                                    "\n                                " +
+                                    "\n                                    " +
                                       _vm._s(car.currentPrice) +
-                                      "₽\n                            "
+                                      "₽\n                                "
                                   )
                                 ])
                               ])
@@ -46866,8 +46862,6 @@ var render = function() {
       _vm.slider.length > 0
         ? _c("slider", { attrs: { sliders: this.slider } })
         : _vm._e(),
-      _vm._v(" "),
-      _vm.slider.length > 0 ? _c("statistic") : _vm._e(),
       _vm._v(" "),
       _vm.slider.length > 0
         ? _c("filters", { attrs: { allcars: this.allcars } })
@@ -48809,8 +48803,6 @@ var render = function() {
         ? _c("slider", { attrs: { sliders: this.slider } })
         : _vm._e(),
       _vm._v(" "),
-      _vm.slider.length > 0 ? _c("statistic") : _vm._e(),
-      _vm._v(" "),
       _vm.slider.length > 0
         ? _c("filters", { attrs: { allcars: this.allcars } })
         : _vm._e(),
@@ -48953,9 +48945,9 @@ var render = function() {
                                 _vm._v(" "),
                                 _c("div", { staticClass: "article-price" }, [
                                   _vm._v(
-                                    "\n                                " +
+                                    "\n                                    " +
                                       _vm._s(car.currentPrice) +
-                                      "₽\n                            "
+                                      "₽\n                                "
                                   )
                                 ])
                               ])
