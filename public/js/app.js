@@ -46538,7 +46538,7 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [
+  return _c("div", { attrs: { id: "header_design_one" } }, [
     _c("div", { staticClass: "container-fluid headerback" }, [
       _c(
         "div",
@@ -47119,6 +47119,7 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
+    { attrs: { id: "header_design_two" } },
     [
       _c("header-component"),
       _vm._v(" "),

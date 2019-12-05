@@ -200,27 +200,27 @@ body {
     background-color: transparent;
 }
 
-.menunavbar a {
+ .menunavbar a {
     color: black;
     text-decoration: none;
 }
 
-.menunavbar ul > li > a {
+ .menunavbar ul > li > a {
     cursor: pointer;
     font-size: 16px;
     font-weight: 600;
 }
-.menunavbar ul > li > .fa-angle-down {
+ .menunavbar ul > li > .fa-angle-down {
    padding-left: 7px;
 }
 
-.menunavbar ul li, ol li {
+ .menunavbar ul li, ol li {
     list-style: none;
     position: relative;
-    padding: 15px 20px;
+    padding: 15px 25px;
 }
 
-.menunavbar ul {
+ .menunavbar ul {
     padding: 0 !important;
     margin-bottom: 0 !important;
 }

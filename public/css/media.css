@@ -34,6 +34,9 @@
         color: #fff;
         font-size: 11px;
     }
+    .logoutbut a:not([href]):not([tabindex]) {
+        font-size: 11px;
+    }
 
     .navbar-collapse {
         position: absolute;
@@ -297,6 +300,9 @@
         color: #fff;
         font-size: 11px;
     }
+    .logoutbut a:not([href]):not([tabindex]) {
+        font-size: 11px;
+    }
 
     .navbar-collapse .menunavbar:before {
         content: "";
@@ -476,8 +482,8 @@
 }
 
 @media only screen and (min-width: 769px) and (max-width: 1200px) {
-    .menunavbar ul li, ol li {
-        padding: 0 12px;
+     .menunavbar ul li, ol li {
+        padding: 15px 13px;
     }
     .menunavbar ul li a, ol li a {
        font-size: 13px;

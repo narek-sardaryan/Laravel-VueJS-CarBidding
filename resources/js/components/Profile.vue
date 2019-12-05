@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div id="header_design_two">
         <header-component></header-component>
         <div class="container-fluid profile_bg_white">
             <div class="container profile_container">
