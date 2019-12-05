@@ -205,26 +205,24 @@ body {
     text-decoration: none;
 }
 
-.responsive {
-    padding: 0 77px;
-}
-
 .menunavbar ul > li > a {
     cursor: pointer;
-    padding: 0 2px 0 10px;
     font-size: 16px;
     font-weight: 600;
+}
+.menunavbar ul > li > .fa-angle-down {
+   padding-left: 7px;
 }
 
 .menunavbar ul li, ol li {
     list-style: none;
     position: relative;
+    padding: 15px 20px;
 }
 
 .menunavbar ul {
     padding: 0 !important;
     margin-bottom: 0 !important;
-    display: flex;
 }
 
 .fa-angle-down {
@@ -235,7 +233,8 @@ body {
 }
 
 .navbar {
-    padding: 0 1rem;
+    width: 100%;
+    padding: 0.4rem 1rem;
 }
 
 .menunavbar li:hover .fa-angle-down {
@@ -264,7 +263,7 @@ body {
     background-color: #f1f1f1;
     box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
     z-index: 1;
-    top: 40px;
+    top: 55px;
 }
 
 .menunavbar ol:before {
@@ -294,11 +293,6 @@ body {
 
 .menunavbar li:hover ol {
     display: block;
-}
-
-.menunavbar {
-    padding-top: 4px;
-    display: flex;
 }
 
 .body-cars img {
@@ -510,17 +504,21 @@ body {
 }
 
 .article-price {
-    width: 115px;
-    height: auto;
+    width: 100%;
+    max-width: 30%;
+    height: 35px;
     background-color: #2099FE;
     position: absolute;
-    top: 26px;
-    left: 135px;
-    text-align: center;
+    top: 7%;
+    left: 37%;
     box-shadow: 0 0 21px -2px black;
     transition: 0.7s cubic-bezier(0.18, 0.89, 0.32, 1.28);
     color: #fff;
     padding: 5px 7px;
+}
+.article-price-tag {
+    text-align: center;
+    color: #fff;
 }
 
 .inform_txt_responsive {
@@ -530,10 +528,6 @@ body {
 .article-price:hover {
     transform: translateY(-15px);
     transition: 0.3s ease-out;
-}
-
-.article-price p {
-    color: white;
 }
 
 .footer-background {
@@ -553,7 +547,7 @@ body {
 }
 
 .footer-opacity {
-    background-color: #dae2f0e0;;
+    background-color: #dae2f0e0;
     padding-top: 50px;
     padding-bottom: 70px;
 }
@@ -602,7 +596,7 @@ body {
 .car-informacion {
     position: absolute;
     top: 0;
-    right: 195px;
+    right: 17%;
     background-color: #0f92ff59;
     width: 260px;
     height: 100%;
@@ -614,42 +608,35 @@ body {
 }
 
 .car-informacion p {
-    color: white;
+    color: #fff;
     font-weight: 600;
 }
 
 .text-hover {
     position: relative;
     overflow: hidden;
+    margin-right: 15px;
 }
 
 .drop-text {
     position: absolute;
-    left: 15px;
-    top: 82%;
-    width: 92.5%;
+    left: 0;
+    top: 85%;
+    width: 100%;
     background-image: linear-gradient(#0f92ff61, #0f92ff1f);
-    padding-top: 10px;
-    padding-bottom: 20px;
+    padding: 10px 0;
     transition: 0.7s cubic-bezier(0.18, 0.89, 0.32, 1.28);
-}
-
-.car-informacion-article p {
-    color: white;
-    font-weight: 600;
-    font-size: 20px;
-}
-
-.car-informacion-article {
-    display: flex;
-    align-items: center;
-    text-align: center;
-    justify-content: center;
 }
 
 .drop-text:hover {
     top: 38%;
     transition: 0.7s cubic-bezier(0.18, 0.89, 0.32, 1.28);
+}
+
+.cars-article-texts {
+    color: #fff;
+    font-weight: 600;
+    font-size: 18px;
 }
 
 .input-row {
@@ -677,12 +664,6 @@ body {
 
 .cars-article:hover img {
     transform: scale(1.1);
-    transition: 0.7s cubic-bezier(0.18, 0.89, 0.32, 1.28);
-}
-
-.cars-article:hover .drop-text {
-    left: 0;
-    width: 100%;
     transition: 0.7s cubic-bezier(0.18, 0.89, 0.32, 1.28);
 }
 
@@ -786,10 +767,6 @@ body {
     font-size: 47px;
 }
 
-/*.pics {*/
-/*    padding: 30px 0;*/
-/*}*/
-
 .pics > img {
     padding-right: 35px;
 }
@@ -830,10 +807,14 @@ body {
     margin-top: 0;
     padding: 0 15px;
     height: 78px;
-    width: 261px;
+    width: 100%;
+    max-width: 260px;
     display: flex;
     justify-content: center;
     align-items: center;
+    position: absolute;
+    top: 0;
+    right: 17%;
 }
 
 .searchicon {
@@ -894,10 +875,6 @@ body {
     margin-top: 75px;
 }
 
-span i {
-    padding-right: 10px;
-}
-
 .map_img {
     background-image: url(../img/about_img/map.jpg);
     background-repeat: no-repeat;
@@ -935,7 +912,7 @@ span i {
     margin-top: 20px;
     list-style: none;
     display: flex;
-    padding-inline-start: 0px;
+    padding-inline-start: 0;
 }
 
 .smallImages {
@@ -1132,7 +1109,7 @@ span i {
     padding: 5px 10px;
     box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
     margin-bottom: 10px;
-    width: 225px;
+    width: 70%;
 }
 
 .register_inputs :focus {
@@ -1167,8 +1144,8 @@ span i {
 }
 
 .login_page_container {
-    margin-top: 100px;
-    margin-bottom: 100px;
+    margin-top: 85px;
+    margin-bottom: 85px;
 }
 
 .lg_div {
@@ -1286,10 +1263,11 @@ span i {
 }
 
 .myprofile_btn, .profile_btn_followers {
-    width: 100px;
-    padding: 10px 0;
+    max-width: 97px;
     font-size: 12px;
+    padding: 10px 0;
     border-radius: 5px;
+    width: 100%;
 }
 
 .myprofile_btn {
@@ -1345,7 +1323,6 @@ span i {
     padding-right: 15px;
 }
 
-
 .fa-unlock {
     padding-right: 10px;
 }
@@ -1372,7 +1349,6 @@ span i {
 
 .tabcontent {
     display: none;
-    margin-top: 20px;
 }
 
 .tablinks {
@@ -1382,7 +1358,7 @@ span i {
     cursor: pointer;
     background-color: transparent;
     text-align: left;
-    color: white;
+    color: #fff;
 }
 
 .tablinks:focus {
@@ -1391,6 +1367,10 @@ span i {
 
 .activetabis {
     display: block;
+    margin-top: 20px;
+}
+.tabcontent {
+    margin-top: 20px;
 }
 
 .table {

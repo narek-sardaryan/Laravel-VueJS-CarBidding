@@ -124,7 +124,7 @@
                 let that = document.getElementById(id);
                 let src = that.getAttribute('src');
                 current.setAttribute('src', src);
-            }
+            },
         },
         watch: {
             $route(toR, fromR) {

@@ -27,16 +27,21 @@
     }
 
     .navbar-collapse .menunavbar ul {
-        display: block;
-        background: #0f92ff;
         position: relative;
-        padding: 7px 10px;
+        width: 100%;
+    }
+    .navbar-nav .fa-angle-down {
+        color: #fff;
+        font-size: 11px;
     }
 
     .navbar-collapse {
         position: absolute;
         right: 0;
-        top: 87px;
+        top: 58px;
+        display: block;
+        background: #0f92ff;
+        width: 100%;
     }
 
     .navbar-collapse .menunavbar:before {
@@ -47,19 +52,16 @@
         border-right: 15px solid transparent;
         border-bottom: 15px solid #0f92ff;
         position: absolute;
-        top: -14px;
-        left: 70px;
+        top: -15px;
+        right: 10px;
     }
     .menunavbar {
-        padding-top: 0px;
-    }
-
-    .navbar-collapse .menunavbar ul li {
-        padding: 20px 0 10px;
+        padding-top: 0;
     }
 
     .navbar-collapse .menunavbar ul li a {
         color: #fff;
+        font-size: 11px;
     }
 
     .navbar-collapse .menunavbar ul li ol a {
@@ -81,8 +83,10 @@
     }
 
     .searchbox_div .searchbox {
+        position: relative;
+        right: 0;
         background: transparent;
-        width: 120px;
+        max-width: 120px;
         padding: 0;
         margin: 0;
         height: 0;
@@ -108,71 +112,51 @@
         margin-top: 30px;
     }
 
+   /* filter section mb*/
     .filter_row {
         display: block;
     }
-
     .car-filters {
         height: 370px;
     }
-
     .body-cats {
         justify-content: center;
     }
-
     .body-cars {
         width: 100%;
     }
-
     .select-options-filter {
         padding-top: 0;
     }
-
     .filter-date-btn {
         margin-top: 30px;
     }
-
     .filter-date-btn button {
         margin-top: 30px;
         width: 100%;
     }
-
     .filter-date-d {
         width: 45%;
     }
+
+    /*cars models section mb*/
     .cars-article img {
-        width: 85%;
+        width: 100%;
         height: 185px;
         margin-top: 20px;
     }
-    .car-informacion-article p {
-        font-size: 14px;
+    .drop-text-responsive .cars-article-texts{
+        font-size: 10px;
+    }
+    .drop-text-responsive {
+        top: 28%;
     }
     .carbidding-container {
         margin-top: 60px;
     }
     .article-price {
-        width: 95px;
-        top: 2%;
-        left: 35%;
-    }
-    .drop-text {
-        display: none;
-    }
-    .inform_txt_responsive {
-        display: block;
-        background-image: linear-gradient(#0f92ff61, #0f92ff1f);
-        width: 76.2%;
-        position: absolute;
-        height: 135px;
-        top: 35%;
-        left: 12%;
-        padding: 10px 0;
-    }
-    .inform_txt_p {
-        color: #fff;
-        font-size: 10px;
-        text-align: center;
+        top: 1%;
+        left: 37%;
     }
 
     /*about page design*/
@@ -203,6 +187,8 @@
     .hello {
         font-size: 15px;
     }
+
+    /*contatcs section mb*/
     .contacts_div {
         order: 2;
     }
@@ -210,10 +196,72 @@
         font-size: 18px;
         margin: 10px 0 30px;
     }
+
+    /*login page mb*/
+    .lg_div {
+        display: block;
+    }
+
+    /*register page mb*/
+    .register_inputs {
+        width: 100%;
+    }
+    .attention_main_txt {
+        padding: 10px 10px;
+        font-size: 12px;
+    }
+    .attention_main_txt + h6 {
+        font-size: 15px;
+    }
+    .attention_main_txt:before {
+        top: 15px;
+        left: 4px;
+    }
+
+    /*footer style*/
+    .footer-opacity {
+        padding: 15px 0;
+    }
+    .footer_txts {
+        font-size: 10px;
+    }
+
+   /* user profile mb*/
+    .profile_container {
+        margin-top: 80px;
+    }
+    .profile_data {
+        margin-top: 20px;
+    }
+    .avatar_section {
+        margin-left: 0;
+        margin-bottom: 15px;
+        text-align: center;
+    }
+    .user_name_ul {
+        margin-bottom: 10px;
+        text-align: center;
+    }
+    .user_name_tag {
+        font-size: 15px;
+    }
+    .myprofile_btn, .profile_btn_followers {
+        width: 100%;
+        max-width: 85px;
+        padding: 7px 0;
+        font-size: 10px;
+    }
+    .profile_menu_ul .profile_menu_li {
+        padding: 15px;
+        font-size: 10px;
+    }
+    .profile_row{
+        display: block;
+    }
 }
 
 /*tablet version design*/
-@media only screen and (min-width: 468px) and (max-width: 768px) {
+@media only screen and (min-width: 481px) and (max-width: 991px) {
     .mobile_nav .navbar-toggler {
         color: #4e555b;
         font-size: 50px;
@@ -237,17 +285,17 @@
         padding: 0.5rem 0;
     }
 
-    .navbar-collapse .menunavbar ul {
-        display: block;
-        background: #0f92ff;
-        position: relative;
-        padding: 7px 10px;
-    }
-
     .navbar-collapse {
         position: absolute;
         right: 0;
-        top: 87px;
+        top: 83px;
+        display: block;
+        background: #0f92ff;
+        width: 100%;
+    }
+    .navbar-nav .fa-angle-down {
+        color: #fff;
+        font-size: 11px;
     }
 
     .navbar-collapse .menunavbar:before {
@@ -258,16 +306,17 @@
         border-right: 15px solid transparent;
         border-bottom: 15px solid #0f92ff;
         position: absolute;
-        top: -10px;
-        left: 70px;
+        top: -14px;
+        right: 17px;
     }
-
-    .navbar-collapse .menunavbar ul li {
-        padding: 20px 0 10px;
+    .navbar-collapse .menunavbar ul {
+        position: relative;
+        width: 100%;
     }
 
     .navbar-collapse .menunavbar ul li a {
         color: #fff;
+        font-size: 11px;
     }
 
     .navbar-collapse .menunavbar ul li ol a {
@@ -290,8 +339,9 @@
     }
 
     .searchbox_div .searchbox {
+        position: relative;
+        right: 0;
         background: transparent;
-        width: 210px;
         margin: 0;
         height: 0;
     }
@@ -308,6 +358,11 @@
         width: 100%;
     }
 
+    /*filter section design*/
+    .filter_row {
+        display: block;
+    }
+
     .filter-date-btn {
         margin-top: 0;
     }
@@ -320,43 +375,117 @@
     .filter-date-d {
         width: 45%;
     }
-    .drop-text {
-        left: 15px;
-        width: 87.5%;
+    .car-filters {
+        height: 370px;
+    }
+    .select-options-filter {
+        padding-top: 0;
     }
     .article-price {
-        left: 65px;
+        top: 7%;
+        left: 37%;
     }
+
     .carousel-arrow-left .fa-chevron-left, .carousel-arrow-right .fa-chevron-right {
         font-size: 40px;
     }
+    /*about page design*/
     .bg_img {
+        background-image: url(../img/design_img/bg1.jpg);
         background-repeat: no-repeat;
-        height: 535px;
+        height: 380px;
         background-size: cover;
         background-position: center;
+        margin-top: 83px;
     }
     .about_div {
-        padding: 40px 0 10px;
-        height: 500px;
+        padding: 40px 0;
+        background-image: linear-gradient(#0f92ffd9, #0f92ff59);
+        height: 375px;
         overflow-y: scroll;
     }
     .about_paragraph {
+        font-size: 18px;
         padding-bottom: 0;
     }
+    .hello {
+        font-size: 15px;
+    }
+    /*contatcs section mb*/
+    .contacts_div_txt .add_services_title {
+        font-size: 18px;
+        margin: 10px 0 30px;
+    }
 
-    /*profile page responsive design*/
+    /*register page mb*/
+    .register_inputs {
+        width: 100%;
+    }
+    .attention_main_txt {
+        padding: 10px 10px;
+        font-size: 12px;
+    }
+    .attention_main_txt + h6 {
+        font-size: 15px;
+    }
+    .attention_main_txt:before {
+        top: 15px;
+        left: 4px;
+    }
+
+    /*view cars page responsive design*/
     #main_pic {
         height: 300px;
     }
-    smallImages {
+    .smallImages {
         height: 70px;
+    }
+
+    /* user profile mb*/
+    .profile_container {
+        margin-top: 80px;
+    }
+    .profile_data {
+        margin-top: 20px;
+    }
+    .avatar_section {
+        margin-left: 0;
+        margin-bottom: 15px;
+        text-align: center;
+    }
+    .user_name_ul {
+        margin-bottom: 10px;
+        text-align: center;
+    }
+    .user_name_tag {
+        font-size: 15px;
+    }
+    .myprofile_btn, .profile_btn_followers {
+        width: 100%;
+        max-width: 85px;
+        padding: 7px 0;
+        font-size: 10px;
+    }
+    .profile_menu_ul .profile_menu_li {
+        padding: 15px;
+        font-size: 10px;
+    }
+    .profile_row{
+        display: block;
     }
 }
 
-
-@media only screen and (min-width: 920px) and (max-width: 1200px) {
-    .responsive {
-        padding: 0 60px;
+@media only screen and (min-width: 769px) and (max-width: 1200px) {
+    .menunavbar ul li, ol li {
+        padding: 0 12px;
+    }
+    .menunavbar ul li a, ol li a {
+       font-size: 13px;
+    }
+    .body-cars {
+        margin: 0 3px;
+    }
+    .body-cars .carTypesText {
+        font-size: 10px;
     }
 }

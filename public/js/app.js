@@ -2116,32 +2116,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Carsroot",
   props: ['cars'],
@@ -2252,27 +2226,6 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -45580,7 +45533,7 @@ var render = function() {
                       { key: car.id, attrs: { to: "/cars/" + car.id } },
                       [
                         _c("div", { staticClass: "row" }, [
-                          _c("div", { staticClass: "col-md-12 text-hover" }, [
+                          _c("div", { staticClass: "text-hover" }, [
                             _c("img", {
                               directives: [
                                 {
@@ -45595,90 +45548,30 @@ var render = function() {
                             _vm._v(" "),
                             _c(
                               "div",
-                              { staticClass: "car-informacion-article" },
+                              { staticClass: "drop-text drop-text-responsive" },
                               [
-                                _c(
-                                  "div",
-                                  { staticClass: "inform-text-article" },
-                                  [
-                                    _c("div", { staticClass: "drop-text" }, [
-                                      _c("div", { staticClass: "row" }, [
-                                        _c("div", { staticClass: "col" }, [
-                                          _c("p", [
-                                            _vm._v(
-                                              _vm._s(car.name) +
-                                                " | " +
-                                                _vm._s(car.year)
-                                            )
-                                          ])
-                                        ])
-                                      ]),
-                                      _vm._v(" "),
-                                      _c("div", { staticClass: "row" }, [
-                                        _c("div", { staticClass: "col" }, [
-                                          _c("p", [
-                                            _vm._v(
-                                              "Текущая цена | " +
-                                                _vm._s(car.currentPrice) +
-                                                " ₽"
-                                            )
-                                          ])
-                                        ])
-                                      ]),
-                                      _vm._v(" "),
-                                      _c("div", { staticClass: "row" }, [
-                                        _c("div", { staticClass: "col" }, [
-                                          _c("p", [
-                                            _vm._v(
-                                              "Начало торгов | " +
-                                                _vm._s(car.auctionStart)
-                                            )
-                                          ])
-                                        ])
-                                      ]),
-                                      _vm._v(" "),
-                                      _c("div", { staticClass: "row" }, [
-                                        _c("div", { staticClass: "col" }, [
-                                          _c("p", [
-                                            _vm._v(
-                                              "Завершение торгов: | " +
-                                                _vm._s(car.endOfAuction)
-                                            )
-                                          ])
-                                        ])
-                                      ])
-                                    ])
-                                  ]
-                                )
-                              ]
-                            ),
-                            _vm._v(" "),
-                            _c(
-                              "div",
-                              { staticClass: "inform_txt_responsive" },
-                              [
-                                _c("p", { staticClass: "inform_txt_p" }, [
+                                _c("p", { staticClass: "cars-article-texts" }, [
                                   _vm._v(
                                     _vm._s(car.name) + " | " + _vm._s(car.year)
                                   )
                                 ]),
                                 _vm._v(" "),
-                                _c("p", { staticClass: "inform_txt_p" }, [
+                                _c("p", { staticClass: "cars-article-texts" }, [
                                   _vm._v(
-                                    "Текущая цена |  " +
+                                    "Текущая цена | " +
                                       _vm._s(car.currentPrice) +
                                       " ₽"
                                   )
                                 ]),
                                 _vm._v(" "),
-                                _c("p", { staticClass: "inform_txt_p" }, [
+                                _c("p", { staticClass: "cars-article-texts" }, [
                                   _vm._v(
                                     "Начало торгов | " +
                                       _vm._s(car.auctionStart)
                                   )
                                 ]),
                                 _vm._v(" "),
-                                _c("p", { staticClass: "inform_txt_p" }, [
+                                _c("p", { staticClass: "cars-article-texts" }, [
                                   _vm._v(
                                     "Завершение торгов: | " +
                                       _vm._s(car.endOfAuction)
@@ -45689,11 +45582,9 @@ var render = function() {
                           ]),
                           _vm._v(" "),
                           _c("div", { staticClass: "article-price" }, [
-                            _vm._v(
-                              "\n                            " +
-                                _vm._s(car.currentPrice) +
-                                "₽\n                        "
-                            )
+                            _c("p", { staticClass: "article-price-tag" }, [
+                              _vm._v(_vm._s(car.currentPrice) + "₽")
+                            ])
                           ])
                         ])
                       ]
@@ -45792,7 +45683,7 @@ var staticRenderFns = [
     return _c("div", { staticClass: "container-fluid contacts_bg_img" }, [
       _c(
         "div",
-        { staticClass: "container", staticStyle: { "margin-top": "79px" } },
+        { staticClass: "container", staticStyle: { "margin-top": "80px" } },
         [
           _c("div", { staticClass: "row" }, [
             _c("div", { staticClass: "col-md-4 contacts_div" }, [
@@ -45951,8 +45842,6 @@ var render = function() {
         ? _c("slider", { attrs: { sliders: this.slider } })
         : _vm._e(),
       _vm._v(" "),
-      _vm.slider.length > 0 ? _c("statistic") : _vm._e(),
-      _vm._v(" "),
       _vm.slider.length > 0
         ? _c("filters", { attrs: { allcars: this.allcars } })
         : _vm._e(),
@@ -45974,131 +45863,76 @@ var render = function() {
                             { key: car.id, attrs: { to: "/cars/" + car.id } },
                             [
                               _c("div", { staticClass: "row" }, [
-                                _c(
-                                  "div",
-                                  { staticClass: "col-md-12 text-hover" },
-                                  [
-                                    _c("img", {
-                                      attrs: {
-                                        src: "/img/" + car.mainpics,
-                                        alt: car.name
-                                      }
-                                    }),
-                                    _vm._v(" "),
+                                _c("div", { staticClass: "text-hover" }, [
+                                  _c("img", {
+                                    attrs: {
+                                      src: "/img/" + car.mainpics,
+                                      alt: car.name
+                                    }
+                                  }),
+                                  _vm._v(" "),
+                                  _c(
+                                    "div",
+                                    {
+                                      staticClass:
+                                        "drop-text drop-text-responsive"
+                                    },
+                                    [
+                                      _c(
+                                        "p",
+                                        { staticClass: "cars-article-texts" },
+                                        [
+                                          _vm._v(
+                                            _vm._s(car.name) +
+                                              " | " +
+                                              _vm._s(car.year)
+                                          )
+                                        ]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "p",
+                                        { staticClass: "cars-article-texts" },
+                                        [
+                                          _vm._v(
+                                            "Текущая цена | " +
+                                              _vm._s(car.currentPrice) +
+                                              " ₽"
+                                          )
+                                        ]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "p",
+                                        { staticClass: "cars-article-texts" },
+                                        [
+                                          _vm._v(
+                                            "Начало торгов | " +
+                                              _vm._s(car.auctionStart)
+                                          )
+                                        ]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "p",
+                                        { staticClass: "cars-article-texts" },
+                                        [
+                                          _vm._v(
+                                            "Завершение торгов: | " +
+                                              _vm._s(car.endOfAuction)
+                                          )
+                                        ]
+                                      )
+                                    ]
+                                  ),
+                                  _vm._v(" "),
+                                  _c("div", { staticClass: "article-price" }, [
                                     _c(
-                                      "div",
-                                      {
-                                        staticClass: "car-informacion-article"
-                                      },
-                                      [
-                                        _c(
-                                          "div",
-                                          {
-                                            staticClass: "inform-text-article"
-                                          },
-                                          [
-                                            _c(
-                                              "div",
-                                              { staticClass: "drop-text" },
-                                              [
-                                                _c(
-                                                  "div",
-                                                  { staticClass: "row" },
-                                                  [
-                                                    _c(
-                                                      "div",
-                                                      { staticClass: "col" },
-                                                      [
-                                                        _c("p", [
-                                                          _vm._v(
-                                                            _vm._s(car.name) +
-                                                              " | " +
-                                                              _vm._s(car.year)
-                                                          )
-                                                        ])
-                                                      ]
-                                                    )
-                                                  ]
-                                                ),
-                                                _vm._v(" "),
-                                                _c(
-                                                  "div",
-                                                  { staticClass: "row" },
-                                                  [
-                                                    _c(
-                                                      "div",
-                                                      { staticClass: "col" },
-                                                      [
-                                                        _c("p", [
-                                                          _vm._v(
-                                                            "Текущая цена | " +
-                                                              _vm._s(
-                                                                car.currentPrice
-                                                              ) +
-                                                              " ₽"
-                                                          )
-                                                        ])
-                                                      ]
-                                                    )
-                                                  ]
-                                                ),
-                                                _vm._v(" "),
-                                                _c(
-                                                  "div",
-                                                  { staticClass: "row" },
-                                                  [
-                                                    _c(
-                                                      "div",
-                                                      { staticClass: "col" },
-                                                      [
-                                                        _c("p", [
-                                                          _vm._v(
-                                                            "Начало торгов | " +
-                                                              _vm._s(
-                                                                car.auctionStart
-                                                              )
-                                                          )
-                                                        ])
-                                                      ]
-                                                    )
-                                                  ]
-                                                ),
-                                                _vm._v(" "),
-                                                _c(
-                                                  "div",
-                                                  { staticClass: "row" },
-                                                  [
-                                                    _c(
-                                                      "div",
-                                                      { staticClass: "col" },
-                                                      [
-                                                        _c("p", [
-                                                          _vm._v(
-                                                            "Завершение торгов: | " +
-                                                              _vm._s(
-                                                                car.endOfAuction
-                                                              )
-                                                          )
-                                                        ])
-                                                      ]
-                                                    )
-                                                  ]
-                                                )
-                                              ]
-                                            )
-                                          ]
-                                        )
-                                      ]
+                                      "p",
+                                      { staticClass: "article-price-tag" },
+                                      [_vm._v(_vm._s(car.currentPrice) + "₽")]
                                     )
-                                  ]
-                                ),
-                                _vm._v(" "),
-                                _c("div", { staticClass: "article-price" }, [
-                                  _vm._v(
-                                    "\n                                " +
-                                      _vm._s(car.currentPrice) +
-                                      "₽\n                            "
-                                  )
+                                  ])
                                 ])
                               ])
                             ]
@@ -46377,7 +46211,7 @@ var render = function() {
                   _vm._l(_vm.models, function(model, index) {
                     return _c("option", { domProps: { value: model.id } }, [
                       _vm._v(
-                        _vm._s(model.name) + "\r\n                            "
+                        _vm._s(model.name) + "\n                            "
                       )
                     ])
                   })
@@ -46408,7 +46242,7 @@ var render = function() {
                   _vm._l(_vm.states, function(state, index) {
                     return _c("option", { domProps: { value: state.id } }, [
                       _vm._v(
-                        _vm._s(state.name) + "\r\n                            "
+                        _vm._s(state.name) + "\n                            "
                       )
                     ])
                   })
@@ -46439,9 +46273,9 @@ var render = function() {
                   _vm._l(_vm.parkings, function(parking, index) {
                     return _c("option", { domProps: { value: parking.id } }, [
                       _vm._v(
-                        "\r\n                                " +
+                        "\n                                " +
                           _vm._s(parking.address) +
-                          "\r\n                            "
+                          "\n                            "
                       )
                     ])
                   })
@@ -46514,7 +46348,7 @@ var render = function() {
                   _vm._v(
                     " " +
                       _vm._s(this.allCarsLength) +
-                      "\r\n                        "
+                      "\n                        "
                   )
                 ]
               )
@@ -46650,7 +46484,7 @@ var staticRenderFns = [
           _c("div", { staticClass: "container footer-opacity" }, [
             _c("div", { staticClass: "row" }, [
               _c("div", { staticClass: "col-md-12" }, [
-                _c("p", [
+                _c("p", { staticClass: "footer_txts" }, [
                   _vm._v("© 2019 ООО «CarBidding» Все права защищены."),
                   _c("br"),
                   _vm._v(
@@ -46666,7 +46500,7 @@ var staticRenderFns = [
             _vm._v(" "),
             _c("div", { staticClass: "row" }, [
               _c("div", { staticClass: "col-md-12" }, [
-                _c("p", [
+                _c("p", { staticClass: "footer_txts" }, [
                   _vm._v(
                     "Свидетельство о регистрации электронного СМИ ЭЛ № ФС 77-68898 выдано Федеральной\n                            службой"
                   ),
@@ -46952,7 +46786,7 @@ var staticRenderFns = [
     return _c(
       "button",
       {
-        staticClass: "navbar-toggler third-button",
+        staticClass: "navbar-toggler third-button navbar-expand-lg",
         attrs: {
           type: "button",
           "data-toggle": "collapse",
@@ -46994,7 +46828,7 @@ var staticRenderFns = [
           _c("div", { staticClass: "input-group no-border searchdiv" }, [
             _c("input", {
               staticClass: "form-control searchinput",
-              attrs: { type: "text", name: "name", placeholder: "Search..." }
+              attrs: { type: "text", name: "name", placeholder: "Поиск..." }
             }),
             _vm._v(" "),
             _c("div", { staticClass: "input-group-append" }, [
@@ -47290,7 +47124,7 @@ var render = function() {
       _vm._v(" "),
       _c("div", { staticClass: "container-fluid profile_bg_white" }, [
         _c("div", { staticClass: "container profile_container" }, [
-          _c("div", { staticClass: "row" }, [
+          _c("div", { staticClass: "row profile_row" }, [
             _c("div", { staticClass: "col profile_menu" }, [
               _c("div", { staticClass: "row mx-0" }, [
                 _c("div", { staticClass: "col-md-3 avatar_section" }, [
