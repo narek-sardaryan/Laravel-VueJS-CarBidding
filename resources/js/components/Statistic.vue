@@ -33,7 +33,7 @@ npm install --save countup.js vue-countup-v2
                             :endVal="endValUsers"
                             :options="options"
                         />
-                        <h5>Пазвательи</h5>
+                        <h5>Пользовательи</h5>
                     </div>
                 </div>
                 <div class="count-up-back">

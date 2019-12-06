@@ -1937,6 +1937,39 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "About",
   data: function data() {
@@ -2044,32 +2077,6 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -2219,27 +2226,6 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -2823,7 +2809,6 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-//
 //
 //
 //
@@ -45065,60 +45050,56 @@ var render = function() {
     [
       _c("header-component"),
       _vm._v(" "),
-      _c(
-        "div",
-        { staticClass: "bg_img", staticStyle: { "margin-top": "79px" } },
-        [
-          _c("div", { staticClass: "container" }, [
-            _c("div", { staticClass: "row justify-content-end" }, [
-              _c(
-                "div",
-                { staticClass: "col-md-6 about_div" },
-                [
-                  _c("h1", { staticClass: "about_paragraph" }, [
-                    _vm._v("О компании")
-                  ]),
-                  _vm._v(" "),
-                  _c("p", { staticClass: "about_txt" }),
-                  _c("p", { staticClass: "hello" }, [_vm._v("Здравствуйте!")]),
-                  _vm._v(
-                    "\n                    Мы создали нашу компанию в 2006 году. У нас была цель, сделать красивый и современный\n                    бизнес."
-                  ),
-                  _c("br"),
-                  _vm._v(
-                    "\n                    Воплощая эту идею, мы создали в сети Интернет торговую площадку по продаже аварийных\n                    автомобилей. Нас с самого начала не интересовали простые доски объявлений – мы стремились\n                    создать именно сайт по оценке и продаже автомобилей после ДТП, где конечную стоимость\n                    продаваемого поврежденного автомобиля, будет определять рынок – именно такая цена является\n                    справедливой и для продавцов – страховых и лизинговых компаний, и для покупателей.\n                    Воплощая эту идею, мы создали в сети Интернет торговую площадку по продаже аварийных\n                    автомобилей. Нас с самого начала не интересовали простые доски объявлений – мы стремились\n                    создать именно сайт по оценке и продаже автомобилей после ДТП, где конечную стоимость\n                    продаваемого поврежденного автомобиля, будет определять рынок – именно такая цена является\n                    справедливой и для продавцов – страховых и лизинговых компаний, и для покупателей.\n                    Воплощая эту идею, мы создали в сети Интернет торговую площадку по продаже аварийных\n                    автомобилей. Нас с самого начала не интересовали простые доски объявлений – мы стремились\n                    создать именно сайт по оценке и продаже автомобилей после ДТП, где конечную стоимость\n                    продаваемого поврежденного автомобиля, будет определять рынок – именно такая цена является\n                    справедливой и для продавцов – страховых и лизинговых компаний, и для покупателей.\n                    "
-                  ),
-                  _c("p"),
-                  _vm._v(" "),
-                  _c("transition", { attrs: { name: "slide-fade" } }, [
-                    _vm.show
-                      ? _c("p", { staticClass: "add_txt_show" }, [
-                          _vm._v(
-                            "\n                            Воплощая эту идею, мы создали в сети Интернет торговую площадку по продаже аварийных\n                            автомобилей. Нас с самого начала не интересовали простые доски объявлений – мы\n                            стремились создать именно сайт по оценке и продаже автомобилей после ДТП, где конечную\n                            стоимость продаваемого поврежденного автомобиля, будет определять рынок – именно такая\n                            цена является справедливой и для продавцов – страховых и лизинговых компаний, и для\n                            покупателей.\n                        "
-                          )
-                        ])
-                      : _vm._e()
-                  ]),
-                  _vm._v(" "),
-                  _c(
-                    "button",
-                    {
-                      staticClass: "show_more_btn",
-                      on: {
-                        click: function($event) {
-                          _vm.show = !_vm.show
-                        }
+      _c("div", { staticClass: "bg_img" }, [
+        _c("div", { staticClass: "container" }, [
+          _c("div", { staticClass: "row justify-content-end" }, [
+            _c(
+              "div",
+              { staticClass: "col-md-6 about_div" },
+              [
+                _c("h1", { staticClass: "about_paragraph" }, [
+                  _vm._v("О компании")
+                ]),
+                _vm._v(" "),
+                _c("p", { staticClass: "about_txt" }),
+                _c("p", { staticClass: "hello" }, [_vm._v("Здравствуйте!")]),
+                _vm._v(
+                  "\n                    Мы создали нашу компанию в 2006 году. У нас была цель, сделать красивый и современный\n                    бизнес."
+                ),
+                _c("br"),
+                _vm._v(
+                  "\n                    Воплощая эту идею, мы создали в сети Интернет торговую площадку по продаже аварийных\n                    автомобилей. Нас с самого начала не интересовали простые доски объявлений – мы стремились\n                    создать именно сайт по оценке и продаже автомобилей после ДТП, где конечную стоимость\n                    продаваемого поврежденного автомобиля, будет определять рынок – именно такая цена является\n                    справедливой и для продавцов – страховых и лизинговых компаний, и для покупателей.\n                    Воплощая эту идею, мы создали в сети Интернет торговую площадку по продаже аварийных\n                    автомобилей. Нас с самого начала не интересовали простые доски объявлений – мы стремились\n                    создать именно сайт по оценке и продаже автомобилей после ДТП, где конечную стоимость\n                    продаваемого поврежденного автомобиля, будет определять рынок – именно такая цена является\n                    справедливой и для продавцов – страховых и лизинговых компаний, и для покупателей.\n                    "
+                ),
+                _c("p"),
+                _vm._v(" "),
+                _c("transition", { attrs: { name: "slide-fade" } }, [
+                  _vm.show
+                    ? _c("p", { staticClass: "add_txt_show" }, [
+                        _vm._v(
+                          "\n                            Воплощая эту идею, мы создали в сети Интернет торговую площадку по продаже аварийных\n                            автомобилей. Нас с самого начала не интересовали простые доски объявлений – мы\n                            стремились создать именно сайт по оценке и продаже автомобилей после ДТП, где конечную\n                            стоимость продаваемого поврежденного автомобиля, будет определять рынок – именно такая\n                            цена является справедливой и для продавцов – страховых и лизинговых компаний, и для\n                            покупателей.\n                        "
+                        )
+                      ])
+                    : _vm._e()
+                ]),
+                _vm._v(" "),
+                _c(
+                  "button",
+                  {
+                    staticClass: "show_more_btn",
+                    on: {
+                      click: function($event) {
+                        _vm.show = !_vm.show
                       }
-                    },
-                    [_vm._v("Show More")]
-                  )
-                ],
-                1
-              )
-            ])
+                    }
+                  },
+                  [_vm._v("Show More")]
+                )
+              ],
+              1
+            )
           ])
-        ]
-      ),
+        ])
+      ]),
       _vm._v(" "),
       _c("section", { staticClass: "partners" }, [
         _c("div", { staticClass: "container" }, [
@@ -45129,7 +45110,7 @@ var render = function() {
           _c(
             "div",
             {
-              staticClass: "carousel slide m-50 slide",
+              staticClass: "carousel slide d-none d-sm-block m-50 slide",
               attrs: { id: "carouselAbout", "data-ride": "carousel" }
             },
             [
@@ -45251,6 +45232,125 @@ var render = function() {
                 _vm._m(1)
               ])
             ]
+          ),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              staticClass: "carousel slide d-block d-sm-none slide",
+              attrs: { id: "about_slide_responsive", "data-ride": "carousel" }
+            },
+            [
+              _c("div", { staticClass: "carousel-inner text-center" }, [
+                _c("div", { staticClass: "carousel-item active" }, [
+                  _c("img", {
+                    directives: [
+                      {
+                        name: "lazy-src",
+                        rawName: "v-lazy-src",
+                        value: "/img/about_img/bmw].png",
+                        expression: "'/img/about_img/bmw].png'"
+                      }
+                    ]
+                  })
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "carousel-item" }, [
+                  _c("img", {
+                    directives: [
+                      {
+                        name: "lazy-src",
+                        rawName: "v-lazy-src",
+                        value: "/img/about_img/Porsche-logo.png",
+                        expression: "'/img/about_img/Porsche-logo.png'"
+                      }
+                    ]
+                  })
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "carousel-item" }, [
+                  _c("img", {
+                    directives: [
+                      {
+                        name: "lazy-src",
+                        rawName: "v-lazy-src",
+                        value: "/img/about_img/toyota.png",
+                        expression: "'/img/about_img/toyota.png'"
+                      }
+                    ]
+                  })
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "carousel-item" }, [
+                  _c("img", {
+                    directives: [
+                      {
+                        name: "lazy-src",
+                        rawName: "v-lazy-src",
+                        value: "/img/about_img/Ferrari-logo.png",
+                        expression: "'/img/about_img/Ferrari-logo.png'"
+                      }
+                    ]
+                  })
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "carousel-item" }, [
+                  _c("img", {
+                    directives: [
+                      {
+                        name: "lazy-src",
+                        rawName: "v-lazy-src",
+                        value: "/img/about_img/Lamborghini-logo.png",
+                        expression: "'/img/about_img/Lamborghini-logo.png'"
+                      }
+                    ]
+                  })
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "carousel-item" }, [
+                  _c("img", {
+                    directives: [
+                      {
+                        name: "lazy-src",
+                        rawName: "v-lazy-src",
+                        value: "/img/about_img/Volkswagen-logo.png",
+                        expression: "'/img/about_img/Volkswagen-logo.png'"
+                      }
+                    ]
+                  })
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "carousel-item" }, [
+                  _c("img", {
+                    directives: [
+                      {
+                        name: "lazy-src",
+                        rawName: "v-lazy-src",
+                        value: "/img/about_img/Bugatti-logo.png",
+                        expression: "'/img/about_img/Bugatti-logo.png'"
+                      }
+                    ]
+                  })
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "carousel-item" }, [
+                  _c("img", {
+                    directives: [
+                      {
+                        name: "lazy-src",
+                        rawName: "v-lazy-src",
+                        value: "/img/about_img/Mitsubishi-logo.png",
+                        expression: "'/img/about_img/Mitsubishi-logo.png'"
+                      }
+                    ]
+                  })
+                ]),
+                _vm._v(" "),
+                _vm._m(2),
+                _vm._v(" "),
+                _vm._m(3)
+              ])
+            ]
           )
         ])
       ]),
@@ -45291,6 +45391,44 @@ var staticRenderFns = [
           staticClass: "carousel-arrow-right",
           attrs: {
             href: "#carouselAbout",
+            role: "button",
+            "data-slide": "prev"
+          }
+        },
+        [_c("i", { staticClass: "fas fa-chevron-right" })]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "about-row" }, [
+      _c(
+        "a",
+        {
+          staticClass: "carousel-arrow-left",
+          attrs: {
+            href: "#about_slide_responsive",
+            role: "button",
+            "data-slide": "next"
+          }
+        },
+        [_c("i", { staticClass: "fas fa-chevron-left" })]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "about-row" }, [
+      _c(
+        "a",
+        {
+          staticClass: "carousel-arrow-right",
+          attrs: {
+            href: "#about_slide_responsive",
             role: "button",
             "data-slide": "prev"
           }
@@ -45395,7 +45533,7 @@ var render = function() {
                       { key: car.id, attrs: { to: "/cars/" + car.id } },
                       [
                         _c("div", { staticClass: "row" }, [
-                          _c("div", { staticClass: "col-md-12 text-hover" }, [
+                          _c("div", { staticClass: "text-hover" }, [
                             _c("img", {
                               directives: [
                                 {
@@ -45410,90 +45548,30 @@ var render = function() {
                             _vm._v(" "),
                             _c(
                               "div",
-                              { staticClass: "car-informacion-article" },
+                              { staticClass: "drop-text drop-text-responsive" },
                               [
-                                _c(
-                                  "div",
-                                  { staticClass: "inform-text-article" },
-                                  [
-                                    _c("div", { staticClass: "drop-text" }, [
-                                      _c("div", { staticClass: "row" }, [
-                                        _c("div", { staticClass: "col" }, [
-                                          _c("p", [
-                                            _vm._v(
-                                              _vm._s(car.name) +
-                                                " | " +
-                                                _vm._s(car.year)
-                                            )
-                                          ])
-                                        ])
-                                      ]),
-                                      _vm._v(" "),
-                                      _c("div", { staticClass: "row" }, [
-                                        _c("div", { staticClass: "col" }, [
-                                          _c("p", [
-                                            _vm._v(
-                                              "Текущая цена | " +
-                                                _vm._s(car.currentPrice) +
-                                                " ₽"
-                                            )
-                                          ])
-                                        ])
-                                      ]),
-                                      _vm._v(" "),
-                                      _c("div", { staticClass: "row" }, [
-                                        _c("div", { staticClass: "col" }, [
-                                          _c("p", [
-                                            _vm._v(
-                                              "Начало торгов | " +
-                                                _vm._s(car.auctionStart)
-                                            )
-                                          ])
-                                        ])
-                                      ]),
-                                      _vm._v(" "),
-                                      _c("div", { staticClass: "row" }, [
-                                        _c("div", { staticClass: "col" }, [
-                                          _c("p", [
-                                            _vm._v(
-                                              "Завершение торгов: | " +
-                                                _vm._s(car.endOfAuction)
-                                            )
-                                          ])
-                                        ])
-                                      ])
-                                    ])
-                                  ]
-                                )
-                              ]
-                            ),
-                            _vm._v(" "),
-                            _c(
-                              "div",
-                              { staticClass: "inform_txt_responsive" },
-                              [
-                                _c("p", { staticClass: "inform_txt_p" }, [
+                                _c("p", { staticClass: "cars-article-texts" }, [
                                   _vm._v(
                                     _vm._s(car.name) + " | " + _vm._s(car.year)
                                   )
                                 ]),
                                 _vm._v(" "),
-                                _c("p", { staticClass: "inform_txt_p" }, [
+                                _c("p", { staticClass: "cars-article-texts" }, [
                                   _vm._v(
-                                    "Текущая цена |  " +
+                                    "Текущая цена | " +
                                       _vm._s(car.currentPrice) +
                                       " ₽"
                                   )
                                 ]),
                                 _vm._v(" "),
-                                _c("p", { staticClass: "inform_txt_p" }, [
+                                _c("p", { staticClass: "cars-article-texts" }, [
                                   _vm._v(
                                     "Начало торгов | " +
                                       _vm._s(car.auctionStart)
                                   )
                                 ]),
                                 _vm._v(" "),
-                                _c("p", { staticClass: "inform_txt_p" }, [
+                                _c("p", { staticClass: "cars-article-texts" }, [
                                   _vm._v(
                                     "Завершение торгов: | " +
                                       _vm._s(car.endOfAuction)
@@ -45504,11 +45582,9 @@ var render = function() {
                           ]),
                           _vm._v(" "),
                           _c("div", { staticClass: "article-price" }, [
-                            _vm._v(
-                              "\n                            " +
-                                _vm._s(car.currentPrice) +
-                                "₽\n                        "
-                            )
+                            _c("p", { staticClass: "article-price-tag" }, [
+                              _vm._v(_vm._s(car.currentPrice) + "₽")
+                            ])
                           ])
                         ])
                       ]
@@ -45607,7 +45683,7 @@ var staticRenderFns = [
     return _c("div", { staticClass: "container-fluid contacts_bg_img" }, [
       _c(
         "div",
-        { staticClass: "container", staticStyle: { "margin-top": "79px" } },
+        { staticClass: "container", staticStyle: { "margin-top": "80px" } },
         [
           _c("div", { staticClass: "row" }, [
             _c("div", { staticClass: "col-md-4 contacts_div" }, [
@@ -45766,8 +45842,6 @@ var render = function() {
         ? _c("slider", { attrs: { sliders: this.slider } })
         : _vm._e(),
       _vm._v(" "),
-      _vm.slider.length > 0 ? _c("statistic") : _vm._e(),
-      _vm._v(" "),
       _vm.slider.length > 0
         ? _c("filters", { attrs: { allcars: this.allcars } })
         : _vm._e(),
@@ -45789,131 +45863,76 @@ var render = function() {
                             { key: car.id, attrs: { to: "/cars/" + car.id } },
                             [
                               _c("div", { staticClass: "row" }, [
-                                _c(
-                                  "div",
-                                  { staticClass: "col-md-12 text-hover" },
-                                  [
-                                    _c("img", {
-                                      attrs: {
-                                        src: "/img/" + car.mainpics,
-                                        alt: car.name
-                                      }
-                                    }),
-                                    _vm._v(" "),
+                                _c("div", { staticClass: "text-hover" }, [
+                                  _c("img", {
+                                    attrs: {
+                                      src: "/img/" + car.mainpics,
+                                      alt: car.name
+                                    }
+                                  }),
+                                  _vm._v(" "),
+                                  _c(
+                                    "div",
+                                    {
+                                      staticClass:
+                                        "drop-text drop-text-responsive"
+                                    },
+                                    [
+                                      _c(
+                                        "p",
+                                        { staticClass: "cars-article-texts" },
+                                        [
+                                          _vm._v(
+                                            _vm._s(car.name) +
+                                              " | " +
+                                              _vm._s(car.year)
+                                          )
+                                        ]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "p",
+                                        { staticClass: "cars-article-texts" },
+                                        [
+                                          _vm._v(
+                                            "Текущая цена | " +
+                                              _vm._s(car.currentPrice) +
+                                              " ₽"
+                                          )
+                                        ]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "p",
+                                        { staticClass: "cars-article-texts" },
+                                        [
+                                          _vm._v(
+                                            "Начало торгов | " +
+                                              _vm._s(car.auctionStart)
+                                          )
+                                        ]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "p",
+                                        { staticClass: "cars-article-texts" },
+                                        [
+                                          _vm._v(
+                                            "Завершение торгов: | " +
+                                              _vm._s(car.endOfAuction)
+                                          )
+                                        ]
+                                      )
+                                    ]
+                                  ),
+                                  _vm._v(" "),
+                                  _c("div", { staticClass: "article-price" }, [
                                     _c(
-                                      "div",
-                                      {
-                                        staticClass: "car-informacion-article"
-                                      },
-                                      [
-                                        _c(
-                                          "div",
-                                          {
-                                            staticClass: "inform-text-article"
-                                          },
-                                          [
-                                            _c(
-                                              "div",
-                                              { staticClass: "drop-text" },
-                                              [
-                                                _c(
-                                                  "div",
-                                                  { staticClass: "row" },
-                                                  [
-                                                    _c(
-                                                      "div",
-                                                      { staticClass: "col" },
-                                                      [
-                                                        _c("p", [
-                                                          _vm._v(
-                                                            _vm._s(car.name) +
-                                                              " | " +
-                                                              _vm._s(car.year)
-                                                          )
-                                                        ])
-                                                      ]
-                                                    )
-                                                  ]
-                                                ),
-                                                _vm._v(" "),
-                                                _c(
-                                                  "div",
-                                                  { staticClass: "row" },
-                                                  [
-                                                    _c(
-                                                      "div",
-                                                      { staticClass: "col" },
-                                                      [
-                                                        _c("p", [
-                                                          _vm._v(
-                                                            "Текущая цена | " +
-                                                              _vm._s(
-                                                                car.currentPrice
-                                                              ) +
-                                                              " ₽"
-                                                          )
-                                                        ])
-                                                      ]
-                                                    )
-                                                  ]
-                                                ),
-                                                _vm._v(" "),
-                                                _c(
-                                                  "div",
-                                                  { staticClass: "row" },
-                                                  [
-                                                    _c(
-                                                      "div",
-                                                      { staticClass: "col" },
-                                                      [
-                                                        _c("p", [
-                                                          _vm._v(
-                                                            "Начало торгов | " +
-                                                              _vm._s(
-                                                                car.auctionStart
-                                                              )
-                                                          )
-                                                        ])
-                                                      ]
-                                                    )
-                                                  ]
-                                                ),
-                                                _vm._v(" "),
-                                                _c(
-                                                  "div",
-                                                  { staticClass: "row" },
-                                                  [
-                                                    _c(
-                                                      "div",
-                                                      { staticClass: "col" },
-                                                      [
-                                                        _c("p", [
-                                                          _vm._v(
-                                                            "Завершение торгов: | " +
-                                                              _vm._s(
-                                                                car.endOfAuction
-                                                              )
-                                                          )
-                                                        ])
-                                                      ]
-                                                    )
-                                                  ]
-                                                )
-                                              ]
-                                            )
-                                          ]
-                                        )
-                                      ]
+                                      "p",
+                                      { staticClass: "article-price-tag" },
+                                      [_vm._v(_vm._s(car.currentPrice) + "₽")]
                                     )
-                                  ]
-                                ),
-                                _vm._v(" "),
-                                _c("div", { staticClass: "article-price" }, [
-                                  _vm._v(
-                                    "\n                                " +
-                                      _vm._s(car.currentPrice) +
-                                      "₽\n                            "
-                                  )
+                                  ])
                                 ])
                               ])
                             ]
@@ -46465,7 +46484,7 @@ var staticRenderFns = [
           _c("div", { staticClass: "container footer-opacity" }, [
             _c("div", { staticClass: "row" }, [
               _c("div", { staticClass: "col-md-12" }, [
-                _c("p", [
+                _c("p", { staticClass: "footer_txts" }, [
                   _vm._v("© 2019 ООО «CarBidding» Все права защищены."),
                   _c("br"),
                   _vm._v(
@@ -46481,7 +46500,7 @@ var staticRenderFns = [
             _vm._v(" "),
             _c("div", { staticClass: "row" }, [
               _c("div", { staticClass: "col-md-12" }, [
-                _c("p", [
+                _c("p", { staticClass: "footer_txts" }, [
                   _vm._v(
                     "Свидетельство о регистрации электронного СМИ ЭЛ № ФС 77-68898 выдано Федеральной\n                            службой"
                   ),
@@ -46519,7 +46538,7 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [
+  return _c("div", { attrs: { id: "header_design_one" } }, [
     _c("div", { staticClass: "container-fluid headerback" }, [
       _c(
         "div",
@@ -46767,7 +46786,7 @@ var staticRenderFns = [
     return _c(
       "button",
       {
-        staticClass: "navbar-toggler third-button",
+        staticClass: "navbar-toggler third-button navbar-expand-lg",
         attrs: {
           type: "button",
           "data-toggle": "collapse",
@@ -46809,7 +46828,7 @@ var staticRenderFns = [
           _c("div", { staticClass: "input-group no-border searchdiv" }, [
             _c("input", {
               staticClass: "form-control searchinput",
-              attrs: { type: "text", name: "name", placeholder: "Search..." }
+              attrs: { type: "text", name: "name", placeholder: "Поиск..." }
             }),
             _vm._v(" "),
             _c("div", { staticClass: "input-group-append" }, [
@@ -46866,8 +46885,6 @@ var render = function() {
       _vm.slider.length > 0
         ? _c("slider", { attrs: { sliders: this.slider } })
         : _vm._e(),
-      _vm._v(" "),
-      _vm.slider.length > 0 ? _c("statistic") : _vm._e(),
       _vm._v(" "),
       _vm.slider.length > 0
         ? _c("filters", { attrs: { allcars: this.allcars } })
@@ -47102,12 +47119,13 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
+    { attrs: { id: "header_design_two" } },
     [
       _c("header-component"),
       _vm._v(" "),
       _c("div", { staticClass: "container-fluid profile_bg_white" }, [
         _c("div", { staticClass: "container profile_container" }, [
-          _c("div", { staticClass: "row" }, [
+          _c("div", { staticClass: "row profile_row" }, [
             _c("div", { staticClass: "col profile_menu" }, [
               _c("div", { staticClass: "row mx-0" }, [
                 _c("div", { staticClass: "col-md-3 avatar_section" }, [
@@ -49037,7 +49055,7 @@ var render = function() {
         ? _c("div", { staticClass: "container-fluid margin" }, [
             _c("div", { staticClass: "container" }, [
               _c("div", { staticClass: "row main_row" }, [
-                _c("div", { staticClass: "col cars_section" }, [
+                _c("div", { staticClass: "col-lg-5 cars_section" }, [
                   _c("img", {
                     staticClass: "img-fluid",
                     attrs: {
@@ -49048,10 +49066,10 @@ var render = function() {
                   }),
                   _vm._v(" "),
                   _c(
-                    "div",
-                    { staticClass: "row small_pics_row" },
+                    "ul",
+                    { staticClass: "small_pics_row" },
                     _vm._l(_vm.images, function(image) {
-                      return _c("div", { staticClass: "col-md-3 smallSlide" }, [
+                      return _c("li", { staticClass: "smallSlide" }, [
                         _c("img", {
                           staticClass: "img-fluid smallImages",
                           attrs: {
@@ -49071,7 +49089,7 @@ var render = function() {
                   )
                 ]),
                 _vm._v(" "),
-                _c("div", { staticClass: "col car_info" }, [
+                _c("div", { staticClass: "col-lg-5 car_info" }, [
                   _c("span", { staticClass: "lot_number" }, [
                     _vm._v("Лот №1907-0906")
                   ]),
@@ -49261,9 +49279,9 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "ending_counter_div" }, [
-      _c("span", { staticClass: "hour_span" }, [_vm._v("21ч.0м.")]),
+      _c("span", { staticClass: "hour_span" }, [_vm._v(" 21ч. 0м. ")]),
       _vm._v(" "),
-      _c("span", { staticClass: "txt_span" }, [_vm._v("до завершения")])
+      _c("span", { staticClass: "txt_span" }, [_vm._v(" до завершения")])
     ])
   },
   function() {
@@ -49734,7 +49752,7 @@ var render = function() {
                 }
               }),
               _vm._v(" "),
-              _c("h5", [_vm._v("Пазвательи")])
+              _c("h5", [_vm._v("Пользовательи")])
             ],
             1
           )
@@ -67536,8 +67554,8 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vuex__WEBPACK_IMPORTED_MODULE_1__
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\xampp\htdocs\CarBidding\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\xampp\htdocs\CarBidding\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\xampp\htdocs\Laravel-VueJS-CarBidding\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\xampp\htdocs\Laravel-VueJS-CarBidding\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div id="header_design_one">
         <div class="container-fluid headerback">
             <div class="container-fluid  fixed-top" id="carnavbar">
                 <div class="container">
@@ -9,7 +9,7 @@
                                 <router-link to="/#"><img src="/img/design_img/header_logo.png" id="headerlogo" alt="logo"></router-link>
                             </div>
                             <div class="responsive">
-                                <button class="navbar-toggler third-button" type="button" data-toggle="collapse" data-target="#navbarSupportedContent22"
+                                <button class="navbar-toggler third-button navbar-expand-lg" type="button" data-toggle="collapse" data-target="#navbarSupportedContent22"
                                         aria-controls="navbarSupportedContent22" aria-expanded="false" aria-label="Toggle navigation">
                                         <span class="icon"><i class="fas fa-bars fa-1x"></i></span>
                                 </button>
@@ -82,7 +82,7 @@
                                 <form class="searchbox"  action="/searchcar" method="GET" >
                                     <div class="input-group no-border searchdiv">
                                         <input type="text" name="name" class="form-control searchinput"
-                                               placeholder="Search...">
+                                               placeholder="Поиск...">
                                         <div class="input-group-append">
                                             <div class="input-group-text searchicon">
                                                 <button class="butsearch"

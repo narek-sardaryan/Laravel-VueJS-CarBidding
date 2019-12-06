@@ -1,9 +1,9 @@
 <template>
-    <div>
+    <div id="header_design_two">
         <header-component></header-component>
         <div class="container-fluid profile_bg_white">
             <div class="container profile_container">
-                <div class="row">
+                <div class="row profile_row">
                     <div class="col profile_menu">
                         <div class="row mx-0">
                             <div class="col-md-3 avatar_section">
