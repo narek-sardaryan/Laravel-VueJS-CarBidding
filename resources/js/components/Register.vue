@@ -268,19 +268,10 @@
                 passwordconfirm: '',
                 date: '',
                 gender: '',
-                users: [],
                 validationErrors: ''
             }
         },
-        created: function () {
-            this.fetchUsers();
-        },
         methods: {
-            fetchUsers() {
-                axios.get('/fetchusers').then(response => {
-                    this.users = response.data
-                })
-            },
             handleChange(e) {
                 if (e.target.checked === false) {
                     document.getElementById('reg-but').setAttribute('disabled', '')

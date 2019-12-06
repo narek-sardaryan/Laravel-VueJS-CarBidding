@@ -1,10 +1,10 @@
 <template>
     <div>
-        <Cube v-if="slider.length == 0"></Cube>
-        <header-component v-if="slider.length > 0"></header-component>
-        <slider v-if="slider.length > 0" :sliders="this.slider"></slider>
-        <filters v-if="slider.length > 0" :allcars="this.allcars"></filters>
-        <div class="container-fluid" v-if="slider.length > 0">
+        <Cube v-if="Slider.length == 0 || Cars.length == 0"></Cube>
+        <header-component v-if="Cars.length > 0 && Slider.length > 0"></header-component>
+        <slider v-if="Cars.length > 0 && Slider.length > 0" :sliders="this.Slider"></slider>
+        <filters v-if="Cars.length > 0 && Slider.length > 0" :allcars="Cars"></filters>
+        <div class="container-fluid" v-if="Slider.length > 0 && Cars.length > 0">
             <div class="container container-back" v-if="carsfilter.length != 0">
                 <div class="row cars-root">
                     <div class="col-md-4 cars-article" v-for="(car, index) in carsfilter">
@@ -39,36 +39,21 @@
                 </div>
             </div>
         </div>
-        <footer-component v-if="slider.length > 0"></footer-component>
+        <footer-component v-if="Cars.length > 0 && Slider.length > 0"></footer-component>
     </div>
 </template>
 
 <script>
+    import {mapGetters} from 'vuex';
+
     export default {
         name: "FilterCars",
         props: ['carsfilter'],
-        data() {
-            return {
-                allcars: [],
-                slider: [],
-            }
+        mounted() {
+            this.$store.dispatch('fetchSlider');
+            this.$store.dispatch('fetchCars');
         },
-        created: function () {
-            this.fetchcars();
-            this.fetchslider();
-        },
-        methods: {
-            fetchcars() {
-                axios.get('/fetchcarsall').then(response => {
-                    this.allcars = response.data
-                })
-            },
-            fetchslider(){
-                axios.get('/fetchslider').then(response => {
-                    this.slider = response.data;
-                })
-            },
-        }
+        computed: mapGetters(["Slider", "Cars"]),
     }
 </script>
 

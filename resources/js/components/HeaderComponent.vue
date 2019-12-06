@@ -4,7 +4,7 @@
             <div class="container-fluid  fixed-top" id="carnavbar">
                 <div class="container">
                     <div class="row">
-                        <nav class="navbar navbar-expand-lg mobile_nav">
+                        <nav ref="aaa" class="navbar navbar-expand-lg mobile_nav">
                             <div class="logo_img_div">
                                 <router-link to="/#"><img src="/img/design_img/header_logo.png" id="headerlogo" alt="logo"></router-link>
                             </div>
@@ -41,23 +41,23 @@
                                                 <a>Все Аукционы</a>
                                                 <i class="fas fa-angle-down"></i>
                                                 <ol>
-                                                    <li class="nav-item" v-for="auction in auctions">
+                                                    <li class="nav-item" v-for="auction in allAuctions">
                                                         <router-link :to="'/auctions/'+auction.id">{{auction.name}}
                                                         </router-link>
                                                     </li>
                                                 </ol>
                                             </li>
-                                            <li class="nav-item" v-if="user.length == 0">
+                                            <li class="nav-item" v-if="User.length == 0">
                                                 <router-link to="/login">Войти</router-link>
                                             </li>
-                                            <li class="nav-item" v-if="user.length == 0">
+                                            <li class="nav-item" v-if="User.length == 0">
                                                 <router-link to="/register">Регистрация</router-link>
                                             </li>
-                                            <li class="nav-item" v-if="user.length != 0">
-                                                <a>{{user.name}}</a>
+                                            <li class="nav-item" v-if="User.length != 0">
+                                                <a>{{User.name}}</a>
                                                 <i class="fas fa-angle-down"></i>
                                                 <ol>
-                                                    <li class="nav-item" v-if="user.usertype == 'admin'">
+                                                    <li class="nav-item" v-if="User.usertype == 'admin'">
                                                         <a href="/admin">Админ Панель</a>
                                                     </li>
                                                     <li class="nav-item">
@@ -104,36 +104,20 @@
 </template>
 
 <script>
+    import {mapGetters} from 'vuex';
     export default {
         name: "HeaderComponent",
         data() {
             return {
-                auctions: [],
-                user: [],
                 csrf: document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
             }
         },
-        created: function () {
-            this.fetchAuctions();
-            this.fetchUser();
+        mounted(){
+            this.$store.dispatch('fetchAuctions');
+            this.$store.dispatch('fetchUser');
+            console.log(this.$ref.aaa);
         },
-        updated() {
-            if (window.scrollY >= 1) {
-                document.getElementById('carnavbar').style.background = 'white'
-            }
-        },
-        methods: {
-            fetchAuctions() {
-                axios.get('/fetchauctions').then(response => {
-                    this.auctions = response.data;
-                })
-            },
-            fetchUser() {
-                axios.get('/fetchUser').then(response => {
-                    this.user = response.data;
-                })
-            },
-        }
+        computed: mapGetters(["allAuctions", "User"]),
     }
 </script>
 <style scoped>
