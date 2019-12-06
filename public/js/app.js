@@ -86,6 +86,18 @@
 /************************************************************************/
 /******/ ({
 
+/***/ "./node_modules/@babel/runtime/regenerator/index.js":
+/*!**********************************************************!*\
+  !*** ./node_modules/@babel/runtime/regenerator/index.js ***!
+  \**********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__(/*! regenerator-runtime */ "./node_modules/regenerator-runtime/runtime.js");
+
+
+/***/ }),
+
 /***/ "./node_modules/axios/index.js":
 /*!*************************************!*\
   !*** ./node_modules/axios/index.js ***!
@@ -1957,6 +1969,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
 //
 //
 //
@@ -1968,60 +1981,46 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Auctions",
   data: function data() {
     return {
-      allcars: [],
-      cars: [],
       offsetCars: [],
-      slider: [],
       filters: [],
       auctioncars: [],
       id: this.$router.currentRoute.params['id']
     };
   },
   created: function created() {
-    this.fetchAuctionCars(this.id);
-    this.fetchSlider();
     this.getResults(1, this.id);
   },
+  mounted: function mounted() {
+    this.$store.dispatch('fetchSlider');
+    this.$store.dispatch('fetchCars');
+  },
+  computed: Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapGetters"])(["Slider", "Cars"]),
   methods: {
-    fetchAuctionCars: function fetchAuctionCars() {
-      var _this = this;
-
-      axios.get('/fetchcarsall').then(function (response) {
-        return _this.allcars = response.data;
-      });
-    },
     getResults: function getResults(page, id) {
-      var _this2 = this;
+      var _this = this;
 
       if (typeof page === 'undefined') {
         page = 1;
       }
 
       axios.get('/auction/' + id + '/?page=' + page).then(function (response) {
-        return _this2.auctioncars = response;
+        return _this.auctioncars = response;
       });
     },
     getResultsPagein: function getResultsPagein(page) {
-      var _this3 = this;
+      var _this2 = this;
 
       if (typeof page === 'undefined') {
         page = 1;
       }
 
       axios.get('/auction/' + this.id + '/?page=' + page).then(function (response) {
-        return _this3.auctioncars = response;
-      });
-    },
-    fetchSlider: function fetchSlider() {
-      var _this4 = this;
-
-      axios.get('/fetchslider').then(function (response) {
-        _this4.slider = response.data;
+        return _this2.auctioncars = response;
       });
     }
   },
@@ -2219,6 +2218,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
 //
 //
 //
@@ -2283,37 +2283,15 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "FilterCars",
   props: ['carsfilter'],
-  data: function data() {
-    return {
-      allcars: [],
-      slider: []
-    };
+  mounted: function mounted() {
+    this.$store.dispatch('fetchSlider');
+    this.$store.dispatch('fetchCars');
   },
-  created: function created() {
-    this.fetchcars();
-    this.fetchslider();
-  },
-  methods: {
-    fetchcars: function fetchcars() {
-      var _this = this;
-
-      axios.get('/fetchcarsall').then(function (response) {
-        _this.allcars = response.data;
-      });
-    },
-    fetchslider: function fetchslider() {
-      var _this2 = this;
-
-      axios.get('/fetchslider').then(function (response) {
-        _this2.slider = response.data;
-      });
-    }
-  }
+  computed: Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapGetters"])(["Slider", "Cars"])
 });
 
 /***/ }),
@@ -2327,6 +2305,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
 //
 //
 //
@@ -2472,6 +2451,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Filters",
   props: ['allcars'],
@@ -2486,9 +2466,6 @@ __webpack_require__.r(__webpack_exports__);
       quanitityTrailers: 0,
       quanitityBus: 0,
       quanititySprecialTech: 0,
-      states: [],
-      parkings: [],
-      models: [],
       startAu: '',
       endAu: '',
       stateId: '',
@@ -2500,9 +2477,15 @@ __webpack_require__.r(__webpack_exports__);
   },
   created: function created() {
     this.counts();
-    this.fetchsFilters();
     this.allCarsLength = this.allcars.length;
   },
+  mounted: function mounted() {
+    this.$store.dispatch('fetchModels');
+    this.$store.dispatch('fetchStates');
+    this.$store.dispatch('fetchParkings');
+    this.$store.dispatch('fetchCars');
+  },
+  computed: Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapGetters"])(["Models", "States", "Parkings", "Cars"]),
   methods: {
     counts: function counts() {
       this.quanitityAll = this.allcars.length;
@@ -2528,72 +2511,48 @@ __webpack_require__.r(__webpack_exports__);
         return obj.bodyId == 9;
       }).length;
     },
-    fetchsFilters: function fetchsFilters() {
+    filterByParkings: function filterByParkings(event) {
       var _this = this;
 
-      axios.get('/fetchmodels').then(function (response) {
-        _this.models = response.data;
-      });
-      axios.get('/fetchstates').then(function (response) {
-        _this.states = response.data;
-      });
-      axios.get('/fetchparkings').then(function (response) {
-        _this.parkings = response.data;
-      });
-    },
-    filterByParkings: function filterByParkings(event) {
-      var _this2 = this;
-
       this.parkingId = event.target.value;
-      axios.get('/fetchcarsall').then(function (response) {
-        _this2.allCarsLength = response.data.filter(function (obj) {
-          return obj.parkingId == _this2.parkingId && (_this2.stateId == obj.stateId || _this2.stateId == '') && (_this2.modelId == obj.modelId || _this2.modelId == '') && (_this2.bodiesId == obj.bodyId || _this2.bodiesId == '') && (!_this2.startAu || _this2.startAu >= new Date(obj.auctionStart).getTime()) && (!_this2.endAu || _this2.endAu <= new Date(obj.endOfAuction).getTime());
-        }).length;
-      });
+      this.allCarsLength = this.Cars.filter(function (obj) {
+        return obj.parkingId == _this.parkingId && (_this.stateId == obj.stateId || _this.stateId == '') && (_this.modelId == obj.modelId || _this.modelId == '') && (_this.bodiesId == obj.bodyId || _this.bodiesId == '') && (!_this.startAu || _this.startAu >= new Date(obj.auctionStart).getTime()) && (!_this.endAu || _this.endAu <= new Date(obj.endOfAuction).getTime());
+      }).length;
     },
     filterByStarts: function filterByStarts(event) {
-      var _this3 = this;
+      var _this2 = this;
 
       this.startAu = new Date(event.target.value).getTime();
-      axios.get('/fetchcarsall').then(function (response) {
-        _this3.allCarsLength = response.data.filter(function (obj) {
-          return new Date(obj.auctionStart).getTime() >= _this3.startAu && (_this3.stateId == obj.stateId || _this3.stateId == '') && (_this3.parkingId == obj.parkingId || _this3.parkingId == '') && (_this3.modelId == obj.modelId || _this3.modelId == '') && (_this3.bodiesId == obj.bodyId || _this3.bodiesId == '') && (!_this3.endAu || _this3.endAu <= new Date(obj.endOfAuction).getTime());
-        }).length;
-      });
+      this.allCarsLength = this.Cars.filter(function (obj) {
+        return new Date(obj.auctionStart).getTime() >= _this2.startAu && (_this2.stateId == obj.stateId || _this2.stateId == '') && (_this2.parkingId == obj.parkingId || _this2.parkingId == '') && (_this2.modelId == obj.modelId || _this2.modelId == '') && (_this2.bodiesId == obj.bodyId || _this2.bodiesId == '') && (!_this2.endAu || _this2.endAu <= new Date(obj.endOfAuction).getTime());
+      }).length;
     },
     filterByEnds: function filterByEnds(event) {
-      var _this4 = this;
+      var _this3 = this;
 
       this.endAu = new Date(event.target.value).getTime();
-      axios.get('/fetchcarsall').then(function (response) {
-        _this4.allCarsLength = response.data.filter(function (obj) {
-          return new Date(obj.endOfAuction).getTime() <= _this4.endAu && (_this4.stateId == obj.stateId || _this4.stateId == '') && (_this4.parkingId == obj.parkingId || _this4.parkingId == '') && (_this4.modelId == obj.modelId || _this4.modelId == '') && (_this4.bodiesId == obj.bodyId || _this4.bodiesId == '') && (!_this4.startAu || _this4.startAu >= new Date(obj.auctionStart).getTime());
-        }).length;
-      });
+      this.allCarsLength = this.Cars.filter(function (obj) {
+        return new Date(obj.endOfAuction).getTime() <= _this3.endAu && (_this3.stateId == obj.stateId || _this3.stateId == '') && (_this3.parkingId == obj.parkingId || _this3.parkingId == '') && (_this3.modelId == obj.modelId || _this3.modelId == '') && (_this3.bodiesId == obj.bodyId || _this3.bodiesId == '') && (!_this3.startAu || _this3.startAu >= new Date(obj.auctionStart).getTime());
+      }).length;
     },
     filterByModels: function filterByModels(event) {
-      var _this5 = this;
+      var _this4 = this;
 
       this.modelId = event.target.value;
-      axios.get('/fetchcarsall').then(function (response) {
-        _this5.allCarsLength = response.data.filter(function (obj) {
-          return obj.modelId == _this5.modelId && (_this5.stateId == obj.stateId || _this5.stateId == '') && (_this5.parkingId == obj.parkingId || _this5.parkingId == '') && (_this5.bodiesId == obj.bodyId || _this5.bodiesId == '') && (!_this5.startAu || _this5.startAu >= new Date(obj.auctionStart).getTime()) && (!_this5.endAu || _this5.endAu <= new Date(obj.endOfAuction).getTime());
-        }).length;
-      });
+      this.allCarsLength = this.Cars.filter(function (obj) {
+        return obj.modelId == _this4.modelId && (_this4.stateId == obj.stateId || _this4.stateId == '') && (_this4.parkingId == obj.parkingId || _this4.parkingId == '') && (_this4.bodiesId == obj.bodyId || _this4.bodiesId == '') && (!_this4.startAu || _this4.startAu >= new Date(obj.auctionStart).getTime()) && (!_this4.endAu || _this4.endAu <= new Date(obj.endOfAuction).getTime());
+      }).length;
     },
     filterByStates: function filterByStates(event) {
-      var _this6 = this;
+      var _this5 = this;
 
       this.stateId = event.target.value;
-      console.log(this.stateId);
-      axios.get('/fetchcarsall').then(function (response) {
-        _this6.allCarsLength = response.data.filter(function (obj) {
-          return obj.stateId == _this6.stateId && (_this6.bodiesId == obj.bodyId || _this6.bodiesId == '') && (_this6.parkingId == obj.parkingId || _this6.parkingId == '') && (_this6.modelId == obj.modelId || _this6.modelId == '') && (!_this6.startAu || _this6.startAu >= new Date(obj.auctionStart).getTime()) && (!_this6.endAu || _this6.endAu <= new Date(obj.endOfAuction).getTime());
-        }).length;
-      });
+      this.allCarsLength = this.Cars.filter(function (obj) {
+        return obj.stateId == _this5.stateId && (_this5.bodiesId == obj.bodyId || _this5.bodiesId == '') && (_this5.parkingId == obj.parkingId || _this5.parkingId == '') && (_this5.modelId == obj.modelId || _this5.modelId == '') && (!_this5.startAu || _this5.startAu >= new Date(obj.auctionStart).getTime()) && (!_this5.endAu || _this5.endAu <= new Date(obj.endOfAuction).getTime());
+      }).length;
     },
     classLi: function classLi(id) {
-      var _this7 = this;
+      var _this6 = this;
 
       var li = document.getElementsByClassName("body-cars");
 
@@ -2610,7 +2569,7 @@ __webpack_require__.r(__webpack_exports__);
 
       if (id) {
         return this.allCarsLength = this.allcars.filter(function (obj) {
-          return obj.bodyId === id && (_this7.stateId == obj.stateId || _this7.stateId == '') && (_this7.parkingId == obj.parkingId || _this7.parkingId == '') && (_this7.modelId == obj.modelId || _this7.modelId == '') && (_this7.parkingId == obj.parkingId || _this7.parkingId == '') && (!_this7.startAu || _this7.startAu >= new Date(obj.auctionStart).getTime()) && (!_this7.endAu || _this7.endAu <= new Date(obj.endOfAuction).getTime());
+          return obj.bodyId === id && (_this6.stateId == obj.stateId || _this6.stateId == '') && (_this6.parkingId == obj.parkingId || _this6.parkingId == '') && (_this6.modelId == obj.modelId || _this6.modelId == '') && (_this6.parkingId == obj.parkingId || _this6.parkingId == '') && (!_this6.startAu || _this6.startAu >= new Date(obj.auctionStart).getTime()) && (!_this6.endAu || _this6.endAu <= new Date(obj.endOfAuction).getTime());
         }).length;
       }
     }
@@ -2671,6 +2630,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
 //
 //
 //
@@ -2776,40 +2736,20 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "HeaderComponent",
   data: function data() {
     return {
-      auctions: [],
-      user: [],
       csrf: document.querySelector('meta[name="csrf-token"]').getAttribute('content')
     };
   },
-  created: function created() {
-    this.fetchAuctions();
-    this.fetchUser();
+  mounted: function mounted() {
+    this.$store.dispatch('fetchAuctions');
+    this.$store.dispatch('fetchUser');
+    console.log(this.$ref.aaa);
   },
-  updated: function updated() {
-    if (window.scrollY >= 1) {
-      document.getElementById('carnavbar').style.background = 'white';
-    }
-  },
-  methods: {
-    fetchAuctions: function fetchAuctions() {
-      var _this = this;
-
-      axios.get('/fetchauctions').then(function (response) {
-        _this.auctions = response.data;
-      });
-    },
-    fetchUser: function fetchUser() {
-      var _this2 = this;
-
-      axios.get('/fetchUser').then(function (response) {
-        _this2.user = response.data;
-      });
-    }
-  }
+  computed: Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapGetters"])(["allAuctions", "User"])
 });
 
 /***/ }),
@@ -2823,6 +2763,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
 //
 //
 //
@@ -2834,22 +2775,23 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Home",
   props: ["carsall"],
   data: function data() {
     return {
-      cars: [],
-      slider: [],
-      allcars: []
+      cars: []
     };
   },
   created: function created() {
-    this.fetchCars();
-    this.fetchs();
     this.getResults();
   },
+  mounted: function mounted() {
+    this.$store.dispatch('fetchSlider');
+    this.$store.dispatch('fetchCars');
+  },
+  computed: Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapGetters"])(["Slider", "Cars"]),
   methods: {
     getResults: function getResults(page) {
       var _this = this;
@@ -2862,20 +2804,6 @@ __webpack_require__.r(__webpack_exports__);
         return response;
       }).then(function (data) {
         _this.cars = data;
-      });
-    },
-    fetchs: function fetchs() {
-      var _this2 = this;
-
-      axios.get('/fetchslider').then(function (response) {
-        _this2.slider = response.data;
-      });
-    },
-    fetchCars: function fetchCars() {
-      var _this3 = this;
-
-      axios.get('/fetchcarsall').then(function (response) {
-        _this3.allcars = response.data;
       });
     }
   }
@@ -2968,6 +2896,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
 //
 //
 //
@@ -3324,25 +3253,20 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Profile",
   data: function data() {
     return {
-      user: [],
       csrf: document.querySelector('meta[name="csrf-token"]').getAttribute('content')
     };
   },
-  created: function created() {
-    this.fetchUser();
+  mounted: function mounted() {
+    this.$store.dispatch('fetchUser');
   },
   methods: {
-    fetchUser: function fetchUser() {
-      var _this = this;
-
-      axios.get('/fetchUser').then(function (response) {
-        _this.user = response.data;
-      });
-    },
     openTabs: function openTabs(tabname) {
       var i, tabcontent, tablinks;
       tabcontent = document.getElementsByClassName("tabcontent");
@@ -3366,7 +3290,8 @@ __webpack_require__.r(__webpack_exports__);
 
       document.getElementById(tabname + 'but').classList.add("active");
     }
-  }
+  },
+  computed: Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapGetters"])(["User"])
 });
 
 /***/ }),
@@ -3649,21 +3574,10 @@ __webpack_require__.r(__webpack_exports__);
       passwordconfirm: '',
       date: '',
       gender: '',
-      users: [],
       validationErrors: ''
     };
   },
-  created: function created() {
-    this.fetchUsers();
-  },
   methods: {
-    fetchUsers: function fetchUsers() {
-      var _this = this;
-
-      axios.get('/fetchusers').then(function (response) {
-        _this.users = response.data;
-      });
-    },
     handleChange: function handleChange(e) {
       if (e.target.checked === false) {
         document.getElementById('reg-but').setAttribute('disabled', '');
@@ -3712,6 +3626,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
 //
 //
 //
@@ -3776,42 +3691,19 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "SearchCar",
-  // props: ['carssearch'],
   props: {
     carssearch: {
       required: false
     }
   },
-  data: function data() {
-    return {
-      slider: [],
-      filters: []
-    };
+  mounted: function mounted() {
+    this.$store.dispatch('fetchSlider');
+    this.$store.dispatch('fetchCars');
   },
-  created: function created() {
-    this.fetchcars();
-    this.fetchslider();
-  },
-  methods: {
-    fetchcars: function fetchcars() {
-      var _this = this;
-
-      axios.get('/fetchcarsall').then(function (response) {
-        _this.allcars = response.data;
-      });
-    },
-    fetchslider: function fetchslider() {
-      var _this2 = this;
-
-      axios.get('/fetchslider').then(function (response) {
-        _this2.slider = response.data;
-      });
-    }
-  }
+  computed: Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapGetters"])(["Slider", "Cars"])
 });
 
 /***/ }),
@@ -3825,7 +3717,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _Cube__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Cube */ "./resources/js/components/Cube.vue");
+/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
 //
 //
 //
@@ -3923,32 +3815,22 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       id: this.$route.params['id'],
-      car: [],
-      images: []
+      car: []
     };
   },
   created: function created() {
     this.fetchCar();
-    this.fetchImages();
   },
-  component: {
-    Cube: _Cube__WEBPACK_IMPORTED_MODULE_0__["default"]
+  mounted: function mounted() {
+    this.$store.dispatch('fetchImages');
   },
+  computed: Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapGetters"])(["Images"]),
   methods: {
     fetchCar: function fetchCar() {
       var _this = this;
 
       axios.get('/car/' + this.id).then(function (response) {
         _this.car = response.data;
-      });
-    },
-    fetchImages: function fetchImages() {
-      var _this2 = this;
-
-      axios.get('/images').then(function (response) {
-        _this2.images = response.data.filter(function (obj) {
-          return obj.carID == _this2.id;
-        });
       });
     },
     slide: function slide(id) {
@@ -4116,120 +3998,6 @@ __webpack_require__.r(__webpack_exports__);
   },
   created: function created() {
     this.slider = this.sliders;
-  }
-});
-
-/***/ }),
-
-/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Statistic.vue?vue&type=script&lang=js&":
-/*!********************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Statistic.vue?vue&type=script&lang=js& ***!
-  \********************************************************************************************************************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var vue_countup_v2__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue-countup-v2 */ "./node_modules/vue-countup-v2/dist/countup.umd.min.js");
-/* harmony import */ var vue_countup_v2__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vue_countup_v2__WEBPACK_IMPORTED_MODULE_0__);
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-  name: "Statistic",
-  components: {
-    ICountUp: vue_countup_v2__WEBPACK_IMPORTED_MODULE_0___default.a
-  },
-  data: function data() {
-    return {
-      delay: 2000,
-      endValUsers: 5,
-      endValCars: 5,
-      options: {
-        useEasing: true,
-        useGrouping: true,
-        separator: ',',
-        decimal: '.',
-        prefix: '',
-        suffix: ''
-      }
-    };
-  },
-  created: function created() {
-    this.fetchCars();
-    this.fetchUsers();
-  },
-  methods: {
-    // onReady: function (instance, CountUp) {
-    //     const that = this;
-    //     instance.update(that.endVal);
-    // },
-    fetchCars: function fetchCars() {
-      var _this = this;
-
-      axios.get('/fetchcarsall').then(function (response) {
-        _this.endValUsers = response.data.length;
-      });
-    },
-    fetchUsers: function fetchUsers() {
-      var _this2 = this;
-
-      axios.get('/fetchusers').then(function (response) {
-        _this2.endValCars = response.data.length;
-      });
-    }
   }
 });
 
@@ -8730,20 +8498,6 @@ __webpack_require__.r(__webpack_exports__);
 }));
 //# sourceMappingURL=bootstrap.js.map
 
-
-/***/ }),
-
-/***/ "./node_modules/countup.js/dist/countUp.min.js":
-/*!*****************************************************!*\
-  !*** ./node_modules/countup.js/dist/countUp.min.js ***!
-  \*****************************************************/
-/*! exports provided: CountUp */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CountUp", function() { return CountUp; });
-var __assign=undefined&&undefined.__assign||function(){return(__assign=Object.assign||function(t){for(var i,a=1,s=arguments.length;a<s;a++)for(var n in i=arguments[a])Object.prototype.hasOwnProperty.call(i,n)&&(t[n]=i[n]);return t}).apply(this,arguments)},CountUp=function(){function t(t,i,a){var s=this;this.target=t,this.endVal=i,this.options=a,this.version="2.0.4",this.defaults={startVal:0,decimalPlaces:0,duration:2,useEasing:!0,useGrouping:!0,smartEasingThreshold:999,smartEasingAmount:333,separator:",",decimal:".",prefix:"",suffix:""},this.finalEndVal=null,this.useEasing=!0,this.countDown=!1,this.error="",this.startVal=0,this.paused=!0,this.count=function(t){s.startTime||(s.startTime=t);var i=t-s.startTime;s.remaining=s.duration-i,s.useEasing?s.countDown?s.frameVal=s.startVal-s.easingFn(i,0,s.startVal-s.endVal,s.duration):s.frameVal=s.easingFn(i,s.startVal,s.endVal-s.startVal,s.duration):s.countDown?s.frameVal=s.startVal-(s.startVal-s.endVal)*(i/s.duration):s.frameVal=s.startVal+(s.endVal-s.startVal)*(i/s.duration),s.countDown?s.frameVal=s.frameVal<s.endVal?s.endVal:s.frameVal:s.frameVal=s.frameVal>s.endVal?s.endVal:s.frameVal,s.frameVal=Math.round(s.frameVal*s.decimalMult)/s.decimalMult,s.printValue(s.frameVal),i<s.duration?s.rAF=requestAnimationFrame(s.count):null!==s.finalEndVal?s.update(s.finalEndVal):s.callback&&s.callback()},this.formatNumber=function(t){var i,a,n,e,r,o=t<0?"-":"";if(i=Math.abs(t).toFixed(s.options.decimalPlaces),n=(a=(i+="").split("."))[0],e=a.length>1?s.options.decimal+a[1]:"",s.options.useGrouping){r="";for(var l=0,h=n.length;l<h;++l)0!==l&&l%3==0&&(r=s.options.separator+r),r=n[h-l-1]+r;n=r}return s.options.numerals&&s.options.numerals.length&&(n=n.replace(/[0-9]/g,function(t){return s.options.numerals[+t]}),e=e.replace(/[0-9]/g,function(t){return s.options.numerals[+t]})),o+s.options.prefix+n+e+s.options.suffix},this.easeOutExpo=function(t,i,a,s){return a*(1-Math.pow(2,-10*t/s))*1024/1023+i},this.options=__assign({},this.defaults,a),this.formattingFn=this.options.formattingFn?this.options.formattingFn:this.formatNumber,this.easingFn=this.options.easingFn?this.options.easingFn:this.easeOutExpo,this.startVal=this.validateValue(this.options.startVal),this.frameVal=this.startVal,this.endVal=this.validateValue(i),this.options.decimalPlaces=Math.max(this.options.decimalPlaces),this.decimalMult=Math.pow(10,this.options.decimalPlaces),this.resetDuration(),this.options.separator=String(this.options.separator),this.useEasing=this.options.useEasing,""===this.options.separator&&(this.options.useGrouping=!1),this.el="string"==typeof t?document.getElementById(t):t,this.el?this.printValue(this.startVal):this.error="[CountUp] target is null or undefined"}return t.prototype.determineDirectionAndSmartEasing=function(){var t=this.finalEndVal?this.finalEndVal:this.endVal;this.countDown=this.startVal>t;var i=t-this.startVal;if(Math.abs(i)>this.options.smartEasingThreshold){this.finalEndVal=t;var a=this.countDown?1:-1;this.endVal=t+a*this.options.smartEasingAmount,this.duration=this.duration/2}else this.endVal=t,this.finalEndVal=null;this.finalEndVal?this.useEasing=!1:this.useEasing=this.options.useEasing},t.prototype.start=function(t){this.error||(this.callback=t,this.duration>0?(this.determineDirectionAndSmartEasing(),this.paused=!1,this.rAF=requestAnimationFrame(this.count)):this.printValue(this.endVal))},t.prototype.pauseResume=function(){this.paused?(this.startTime=null,this.duration=this.remaining,this.startVal=this.frameVal,this.determineDirectionAndSmartEasing(),this.rAF=requestAnimationFrame(this.count)):cancelAnimationFrame(this.rAF),this.paused=!this.paused},t.prototype.reset=function(){cancelAnimationFrame(this.rAF),this.paused=!0,this.resetDuration(),this.startVal=this.validateValue(this.options.startVal),this.frameVal=this.startVal,this.printValue(this.startVal)},t.prototype.update=function(t){cancelAnimationFrame(this.rAF),this.startTime=null,this.endVal=this.validateValue(t),this.endVal!==this.frameVal&&(this.startVal=this.frameVal,this.finalEndVal||this.resetDuration(),this.determineDirectionAndSmartEasing(),this.rAF=requestAnimationFrame(this.count))},t.prototype.printValue=function(t){var i=this.formattingFn(t);"INPUT"===this.el.tagName?this.el.value=i:"text"===this.el.tagName||"tspan"===this.el.tagName?this.el.textContent=i:this.el.innerHTML=i},t.prototype.ensureNumber=function(t){return"number"==typeof t&&!isNaN(t)},t.prototype.validateValue=function(t){var i=Number(t);return this.ensureNumber(i)?i:(this.error="[CountUp] invalid start or end value: "+t,null)},t.prototype.resetDuration=function(){this.startTime=null,this.duration=1e3*Number(this.options.duration),this.remaining=this.duration},t}();
 
 /***/ }),
 
@@ -43013,6 +42767,743 @@ process.umask = function() { return 0; };
 
 /***/ }),
 
+/***/ "./node_modules/regenerator-runtime/runtime.js":
+/*!*****************************************************!*\
+  !*** ./node_modules/regenerator-runtime/runtime.js ***!
+  \*****************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+/**
+ * Copyright (c) 2014-present, Facebook, Inc.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+var runtime = (function (exports) {
+  "use strict";
+
+  var Op = Object.prototype;
+  var hasOwn = Op.hasOwnProperty;
+  var undefined; // More compressible than void 0.
+  var $Symbol = typeof Symbol === "function" ? Symbol : {};
+  var iteratorSymbol = $Symbol.iterator || "@@iterator";
+  var asyncIteratorSymbol = $Symbol.asyncIterator || "@@asyncIterator";
+  var toStringTagSymbol = $Symbol.toStringTag || "@@toStringTag";
+
+  function wrap(innerFn, outerFn, self, tryLocsList) {
+    // If outerFn provided and outerFn.prototype is a Generator, then outerFn.prototype instanceof Generator.
+    var protoGenerator = outerFn && outerFn.prototype instanceof Generator ? outerFn : Generator;
+    var generator = Object.create(protoGenerator.prototype);
+    var context = new Context(tryLocsList || []);
+
+    // The ._invoke method unifies the implementations of the .next,
+    // .throw, and .return methods.
+    generator._invoke = makeInvokeMethod(innerFn, self, context);
+
+    return generator;
+  }
+  exports.wrap = wrap;
+
+  // Try/catch helper to minimize deoptimizations. Returns a completion
+  // record like context.tryEntries[i].completion. This interface could
+  // have been (and was previously) designed to take a closure to be
+  // invoked without arguments, but in all the cases we care about we
+  // already have an existing method we want to call, so there's no need
+  // to create a new function object. We can even get away with assuming
+  // the method takes exactly one argument, since that happens to be true
+  // in every case, so we don't have to touch the arguments object. The
+  // only additional allocation required is the completion record, which
+  // has a stable shape and so hopefully should be cheap to allocate.
+  function tryCatch(fn, obj, arg) {
+    try {
+      return { type: "normal", arg: fn.call(obj, arg) };
+    } catch (err) {
+      return { type: "throw", arg: err };
+    }
+  }
+
+  var GenStateSuspendedStart = "suspendedStart";
+  var GenStateSuspendedYield = "suspendedYield";
+  var GenStateExecuting = "executing";
+  var GenStateCompleted = "completed";
+
+  // Returning this object from the innerFn has the same effect as
+  // breaking out of the dispatch switch statement.
+  var ContinueSentinel = {};
+
+  // Dummy constructor functions that we use as the .constructor and
+  // .constructor.prototype properties for functions that return Generator
+  // objects. For full spec compliance, you may wish to configure your
+  // minifier not to mangle the names of these two functions.
+  function Generator() {}
+  function GeneratorFunction() {}
+  function GeneratorFunctionPrototype() {}
+
+  // This is a polyfill for %IteratorPrototype% for environments that
+  // don't natively support it.
+  var IteratorPrototype = {};
+  IteratorPrototype[iteratorSymbol] = function () {
+    return this;
+  };
+
+  var getProto = Object.getPrototypeOf;
+  var NativeIteratorPrototype = getProto && getProto(getProto(values([])));
+  if (NativeIteratorPrototype &&
+      NativeIteratorPrototype !== Op &&
+      hasOwn.call(NativeIteratorPrototype, iteratorSymbol)) {
+    // This environment has a native %IteratorPrototype%; use it instead
+    // of the polyfill.
+    IteratorPrototype = NativeIteratorPrototype;
+  }
+
+  var Gp = GeneratorFunctionPrototype.prototype =
+    Generator.prototype = Object.create(IteratorPrototype);
+  GeneratorFunction.prototype = Gp.constructor = GeneratorFunctionPrototype;
+  GeneratorFunctionPrototype.constructor = GeneratorFunction;
+  GeneratorFunctionPrototype[toStringTagSymbol] =
+    GeneratorFunction.displayName = "GeneratorFunction";
+
+  // Helper for defining the .next, .throw, and .return methods of the
+  // Iterator interface in terms of a single ._invoke method.
+  function defineIteratorMethods(prototype) {
+    ["next", "throw", "return"].forEach(function(method) {
+      prototype[method] = function(arg) {
+        return this._invoke(method, arg);
+      };
+    });
+  }
+
+  exports.isGeneratorFunction = function(genFun) {
+    var ctor = typeof genFun === "function" && genFun.constructor;
+    return ctor
+      ? ctor === GeneratorFunction ||
+        // For the native GeneratorFunction constructor, the best we can
+        // do is to check its .name property.
+        (ctor.displayName || ctor.name) === "GeneratorFunction"
+      : false;
+  };
+
+  exports.mark = function(genFun) {
+    if (Object.setPrototypeOf) {
+      Object.setPrototypeOf(genFun, GeneratorFunctionPrototype);
+    } else {
+      genFun.__proto__ = GeneratorFunctionPrototype;
+      if (!(toStringTagSymbol in genFun)) {
+        genFun[toStringTagSymbol] = "GeneratorFunction";
+      }
+    }
+    genFun.prototype = Object.create(Gp);
+    return genFun;
+  };
+
+  // Within the body of any async function, `await x` is transformed to
+  // `yield regeneratorRuntime.awrap(x)`, so that the runtime can test
+  // `hasOwn.call(value, "__await")` to determine if the yielded value is
+  // meant to be awaited.
+  exports.awrap = function(arg) {
+    return { __await: arg };
+  };
+
+  function AsyncIterator(generator) {
+    function invoke(method, arg, resolve, reject) {
+      var record = tryCatch(generator[method], generator, arg);
+      if (record.type === "throw") {
+        reject(record.arg);
+      } else {
+        var result = record.arg;
+        var value = result.value;
+        if (value &&
+            typeof value === "object" &&
+            hasOwn.call(value, "__await")) {
+          return Promise.resolve(value.__await).then(function(value) {
+            invoke("next", value, resolve, reject);
+          }, function(err) {
+            invoke("throw", err, resolve, reject);
+          });
+        }
+
+        return Promise.resolve(value).then(function(unwrapped) {
+          // When a yielded Promise is resolved, its final value becomes
+          // the .value of the Promise<{value,done}> result for the
+          // current iteration.
+          result.value = unwrapped;
+          resolve(result);
+        }, function(error) {
+          // If a rejected Promise was yielded, throw the rejection back
+          // into the async generator function so it can be handled there.
+          return invoke("throw", error, resolve, reject);
+        });
+      }
+    }
+
+    var previousPromise;
+
+    function enqueue(method, arg) {
+      function callInvokeWithMethodAndArg() {
+        return new Promise(function(resolve, reject) {
+          invoke(method, arg, resolve, reject);
+        });
+      }
+
+      return previousPromise =
+        // If enqueue has been called before, then we want to wait until
+        // all previous Promises have been resolved before calling invoke,
+        // so that results are always delivered in the correct order. If
+        // enqueue has not been called before, then it is important to
+        // call invoke immediately, without waiting on a callback to fire,
+        // so that the async generator function has the opportunity to do
+        // any necessary setup in a predictable way. This predictability
+        // is why the Promise constructor synchronously invokes its
+        // executor callback, and why async functions synchronously
+        // execute code before the first await. Since we implement simple
+        // async functions in terms of async generators, it is especially
+        // important to get this right, even though it requires care.
+        previousPromise ? previousPromise.then(
+          callInvokeWithMethodAndArg,
+          // Avoid propagating failures to Promises returned by later
+          // invocations of the iterator.
+          callInvokeWithMethodAndArg
+        ) : callInvokeWithMethodAndArg();
+    }
+
+    // Define the unified helper method that is used to implement .next,
+    // .throw, and .return (see defineIteratorMethods).
+    this._invoke = enqueue;
+  }
+
+  defineIteratorMethods(AsyncIterator.prototype);
+  AsyncIterator.prototype[asyncIteratorSymbol] = function () {
+    return this;
+  };
+  exports.AsyncIterator = AsyncIterator;
+
+  // Note that simple async functions are implemented on top of
+  // AsyncIterator objects; they just return a Promise for the value of
+  // the final result produced by the iterator.
+  exports.async = function(innerFn, outerFn, self, tryLocsList) {
+    var iter = new AsyncIterator(
+      wrap(innerFn, outerFn, self, tryLocsList)
+    );
+
+    return exports.isGeneratorFunction(outerFn)
+      ? iter // If outerFn is a generator, return the full iterator.
+      : iter.next().then(function(result) {
+          return result.done ? result.value : iter.next();
+        });
+  };
+
+  function makeInvokeMethod(innerFn, self, context) {
+    var state = GenStateSuspendedStart;
+
+    return function invoke(method, arg) {
+      if (state === GenStateExecuting) {
+        throw new Error("Generator is already running");
+      }
+
+      if (state === GenStateCompleted) {
+        if (method === "throw") {
+          throw arg;
+        }
+
+        // Be forgiving, per 25.3.3.3.3 of the spec:
+        // https://people.mozilla.org/~jorendorff/es6-draft.html#sec-generatorresume
+        return doneResult();
+      }
+
+      context.method = method;
+      context.arg = arg;
+
+      while (true) {
+        var delegate = context.delegate;
+        if (delegate) {
+          var delegateResult = maybeInvokeDelegate(delegate, context);
+          if (delegateResult) {
+            if (delegateResult === ContinueSentinel) continue;
+            return delegateResult;
+          }
+        }
+
+        if (context.method === "next") {
+          // Setting context._sent for legacy support of Babel's
+          // function.sent implementation.
+          context.sent = context._sent = context.arg;
+
+        } else if (context.method === "throw") {
+          if (state === GenStateSuspendedStart) {
+            state = GenStateCompleted;
+            throw context.arg;
+          }
+
+          context.dispatchException(context.arg);
+
+        } else if (context.method === "return") {
+          context.abrupt("return", context.arg);
+        }
+
+        state = GenStateExecuting;
+
+        var record = tryCatch(innerFn, self, context);
+        if (record.type === "normal") {
+          // If an exception is thrown from innerFn, we leave state ===
+          // GenStateExecuting and loop back for another invocation.
+          state = context.done
+            ? GenStateCompleted
+            : GenStateSuspendedYield;
+
+          if (record.arg === ContinueSentinel) {
+            continue;
+          }
+
+          return {
+            value: record.arg,
+            done: context.done
+          };
+
+        } else if (record.type === "throw") {
+          state = GenStateCompleted;
+          // Dispatch the exception by looping back around to the
+          // context.dispatchException(context.arg) call above.
+          context.method = "throw";
+          context.arg = record.arg;
+        }
+      }
+    };
+  }
+
+  // Call delegate.iterator[context.method](context.arg) and handle the
+  // result, either by returning a { value, done } result from the
+  // delegate iterator, or by modifying context.method and context.arg,
+  // setting context.delegate to null, and returning the ContinueSentinel.
+  function maybeInvokeDelegate(delegate, context) {
+    var method = delegate.iterator[context.method];
+    if (method === undefined) {
+      // A .throw or .return when the delegate iterator has no .throw
+      // method always terminates the yield* loop.
+      context.delegate = null;
+
+      if (context.method === "throw") {
+        // Note: ["return"] must be used for ES3 parsing compatibility.
+        if (delegate.iterator["return"]) {
+          // If the delegate iterator has a return method, give it a
+          // chance to clean up.
+          context.method = "return";
+          context.arg = undefined;
+          maybeInvokeDelegate(delegate, context);
+
+          if (context.method === "throw") {
+            // If maybeInvokeDelegate(context) changed context.method from
+            // "return" to "throw", let that override the TypeError below.
+            return ContinueSentinel;
+          }
+        }
+
+        context.method = "throw";
+        context.arg = new TypeError(
+          "The iterator does not provide a 'throw' method");
+      }
+
+      return ContinueSentinel;
+    }
+
+    var record = tryCatch(method, delegate.iterator, context.arg);
+
+    if (record.type === "throw") {
+      context.method = "throw";
+      context.arg = record.arg;
+      context.delegate = null;
+      return ContinueSentinel;
+    }
+
+    var info = record.arg;
+
+    if (! info) {
+      context.method = "throw";
+      context.arg = new TypeError("iterator result is not an object");
+      context.delegate = null;
+      return ContinueSentinel;
+    }
+
+    if (info.done) {
+      // Assign the result of the finished delegate to the temporary
+      // variable specified by delegate.resultName (see delegateYield).
+      context[delegate.resultName] = info.value;
+
+      // Resume execution at the desired location (see delegateYield).
+      context.next = delegate.nextLoc;
+
+      // If context.method was "throw" but the delegate handled the
+      // exception, let the outer generator proceed normally. If
+      // context.method was "next", forget context.arg since it has been
+      // "consumed" by the delegate iterator. If context.method was
+      // "return", allow the original .return call to continue in the
+      // outer generator.
+      if (context.method !== "return") {
+        context.method = "next";
+        context.arg = undefined;
+      }
+
+    } else {
+      // Re-yield the result returned by the delegate method.
+      return info;
+    }
+
+    // The delegate iterator is finished, so forget it and continue with
+    // the outer generator.
+    context.delegate = null;
+    return ContinueSentinel;
+  }
+
+  // Define Generator.prototype.{next,throw,return} in terms of the
+  // unified ._invoke helper method.
+  defineIteratorMethods(Gp);
+
+  Gp[toStringTagSymbol] = "Generator";
+
+  // A Generator should always return itself as the iterator object when the
+  // @@iterator function is called on it. Some browsers' implementations of the
+  // iterator prototype chain incorrectly implement this, causing the Generator
+  // object to not be returned from this call. This ensures that doesn't happen.
+  // See https://github.com/facebook/regenerator/issues/274 for more details.
+  Gp[iteratorSymbol] = function() {
+    return this;
+  };
+
+  Gp.toString = function() {
+    return "[object Generator]";
+  };
+
+  function pushTryEntry(locs) {
+    var entry = { tryLoc: locs[0] };
+
+    if (1 in locs) {
+      entry.catchLoc = locs[1];
+    }
+
+    if (2 in locs) {
+      entry.finallyLoc = locs[2];
+      entry.afterLoc = locs[3];
+    }
+
+    this.tryEntries.push(entry);
+  }
+
+  function resetTryEntry(entry) {
+    var record = entry.completion || {};
+    record.type = "normal";
+    delete record.arg;
+    entry.completion = record;
+  }
+
+  function Context(tryLocsList) {
+    // The root entry object (effectively a try statement without a catch
+    // or a finally block) gives us a place to store values thrown from
+    // locations where there is no enclosing try statement.
+    this.tryEntries = [{ tryLoc: "root" }];
+    tryLocsList.forEach(pushTryEntry, this);
+    this.reset(true);
+  }
+
+  exports.keys = function(object) {
+    var keys = [];
+    for (var key in object) {
+      keys.push(key);
+    }
+    keys.reverse();
+
+    // Rather than returning an object with a next method, we keep
+    // things simple and return the next function itself.
+    return function next() {
+      while (keys.length) {
+        var key = keys.pop();
+        if (key in object) {
+          next.value = key;
+          next.done = false;
+          return next;
+        }
+      }
+
+      // To avoid creating an additional object, we just hang the .value
+      // and .done properties off the next function object itself. This
+      // also ensures that the minifier will not anonymize the function.
+      next.done = true;
+      return next;
+    };
+  };
+
+  function values(iterable) {
+    if (iterable) {
+      var iteratorMethod = iterable[iteratorSymbol];
+      if (iteratorMethod) {
+        return iteratorMethod.call(iterable);
+      }
+
+      if (typeof iterable.next === "function") {
+        return iterable;
+      }
+
+      if (!isNaN(iterable.length)) {
+        var i = -1, next = function next() {
+          while (++i < iterable.length) {
+            if (hasOwn.call(iterable, i)) {
+              next.value = iterable[i];
+              next.done = false;
+              return next;
+            }
+          }
+
+          next.value = undefined;
+          next.done = true;
+
+          return next;
+        };
+
+        return next.next = next;
+      }
+    }
+
+    // Return an iterator with no values.
+    return { next: doneResult };
+  }
+  exports.values = values;
+
+  function doneResult() {
+    return { value: undefined, done: true };
+  }
+
+  Context.prototype = {
+    constructor: Context,
+
+    reset: function(skipTempReset) {
+      this.prev = 0;
+      this.next = 0;
+      // Resetting context._sent for legacy support of Babel's
+      // function.sent implementation.
+      this.sent = this._sent = undefined;
+      this.done = false;
+      this.delegate = null;
+
+      this.method = "next";
+      this.arg = undefined;
+
+      this.tryEntries.forEach(resetTryEntry);
+
+      if (!skipTempReset) {
+        for (var name in this) {
+          // Not sure about the optimal order of these conditions:
+          if (name.charAt(0) === "t" &&
+              hasOwn.call(this, name) &&
+              !isNaN(+name.slice(1))) {
+            this[name] = undefined;
+          }
+        }
+      }
+    },
+
+    stop: function() {
+      this.done = true;
+
+      var rootEntry = this.tryEntries[0];
+      var rootRecord = rootEntry.completion;
+      if (rootRecord.type === "throw") {
+        throw rootRecord.arg;
+      }
+
+      return this.rval;
+    },
+
+    dispatchException: function(exception) {
+      if (this.done) {
+        throw exception;
+      }
+
+      var context = this;
+      function handle(loc, caught) {
+        record.type = "throw";
+        record.arg = exception;
+        context.next = loc;
+
+        if (caught) {
+          // If the dispatched exception was caught by a catch block,
+          // then let that catch block handle the exception normally.
+          context.method = "next";
+          context.arg = undefined;
+        }
+
+        return !! caught;
+      }
+
+      for (var i = this.tryEntries.length - 1; i >= 0; --i) {
+        var entry = this.tryEntries[i];
+        var record = entry.completion;
+
+        if (entry.tryLoc === "root") {
+          // Exception thrown outside of any try block that could handle
+          // it, so set the completion value of the entire function to
+          // throw the exception.
+          return handle("end");
+        }
+
+        if (entry.tryLoc <= this.prev) {
+          var hasCatch = hasOwn.call(entry, "catchLoc");
+          var hasFinally = hasOwn.call(entry, "finallyLoc");
+
+          if (hasCatch && hasFinally) {
+            if (this.prev < entry.catchLoc) {
+              return handle(entry.catchLoc, true);
+            } else if (this.prev < entry.finallyLoc) {
+              return handle(entry.finallyLoc);
+            }
+
+          } else if (hasCatch) {
+            if (this.prev < entry.catchLoc) {
+              return handle(entry.catchLoc, true);
+            }
+
+          } else if (hasFinally) {
+            if (this.prev < entry.finallyLoc) {
+              return handle(entry.finallyLoc);
+            }
+
+          } else {
+            throw new Error("try statement without catch or finally");
+          }
+        }
+      }
+    },
+
+    abrupt: function(type, arg) {
+      for (var i = this.tryEntries.length - 1; i >= 0; --i) {
+        var entry = this.tryEntries[i];
+        if (entry.tryLoc <= this.prev &&
+            hasOwn.call(entry, "finallyLoc") &&
+            this.prev < entry.finallyLoc) {
+          var finallyEntry = entry;
+          break;
+        }
+      }
+
+      if (finallyEntry &&
+          (type === "break" ||
+           type === "continue") &&
+          finallyEntry.tryLoc <= arg &&
+          arg <= finallyEntry.finallyLoc) {
+        // Ignore the finally entry if control is not jumping to a
+        // location outside the try/catch block.
+        finallyEntry = null;
+      }
+
+      var record = finallyEntry ? finallyEntry.completion : {};
+      record.type = type;
+      record.arg = arg;
+
+      if (finallyEntry) {
+        this.method = "next";
+        this.next = finallyEntry.finallyLoc;
+        return ContinueSentinel;
+      }
+
+      return this.complete(record);
+    },
+
+    complete: function(record, afterLoc) {
+      if (record.type === "throw") {
+        throw record.arg;
+      }
+
+      if (record.type === "break" ||
+          record.type === "continue") {
+        this.next = record.arg;
+      } else if (record.type === "return") {
+        this.rval = this.arg = record.arg;
+        this.method = "return";
+        this.next = "end";
+      } else if (record.type === "normal" && afterLoc) {
+        this.next = afterLoc;
+      }
+
+      return ContinueSentinel;
+    },
+
+    finish: function(finallyLoc) {
+      for (var i = this.tryEntries.length - 1; i >= 0; --i) {
+        var entry = this.tryEntries[i];
+        if (entry.finallyLoc === finallyLoc) {
+          this.complete(entry.completion, entry.afterLoc);
+          resetTryEntry(entry);
+          return ContinueSentinel;
+        }
+      }
+    },
+
+    "catch": function(tryLoc) {
+      for (var i = this.tryEntries.length - 1; i >= 0; --i) {
+        var entry = this.tryEntries[i];
+        if (entry.tryLoc === tryLoc) {
+          var record = entry.completion;
+          if (record.type === "throw") {
+            var thrown = record.arg;
+            resetTryEntry(entry);
+          }
+          return thrown;
+        }
+      }
+
+      // The context.catch method must only be called with a location
+      // argument that corresponds to a known catch block.
+      throw new Error("illegal catch attempt");
+    },
+
+    delegateYield: function(iterable, resultName, nextLoc) {
+      this.delegate = {
+        iterator: values(iterable),
+        resultName: resultName,
+        nextLoc: nextLoc
+      };
+
+      if (this.method === "next") {
+        // Deliberately forget the last sent value so that we don't
+        // accidentally pass it on to the delegate.
+        this.arg = undefined;
+      }
+
+      return ContinueSentinel;
+    }
+  };
+
+  // Regardless of whether this script is executing as a CommonJS module
+  // or not, return the runtime object so that we can declare the variable
+  // regeneratorRuntime in the outer scope, which allows this module to be
+  // injected easily by `bin/regenerator --include-runtime script.js`.
+  return exports;
+
+}(
+  // If this script is executing as a CommonJS module, use module.exports
+  // as the regeneratorRuntime namespace. Otherwise create a new empty
+  // object. Either way, the resulting object will be used to initialize
+  // the regeneratorRuntime variable at the top of this file.
+   true ? module.exports : undefined
+));
+
+try {
+  regeneratorRuntime = runtime;
+} catch (accidentalStrictMode) {
+  // This module should not be running in strict mode, so the above
+  // assignment should always work unless something is misconfigured. Just
+  // in case runtime.js accidentally runs in strict mode, we can escape
+  // strict mode using a global Function call. This could conceivably fail
+  // if a Content Security Policy forbids using Function, but in that case
+  // the proper solution is to fix the accidental strict mode problem. If
+  // you've misconfigured your bundler to force strict mode and applied a
+  // CSP to forbid Function, and you're not willing to fix either of those
+  // problems, please detail your unique predicament in a GitHub issue.
+  Function("r", "regeneratorRuntime = r")(runtime);
+}
+
+
+/***/ }),
+
 /***/ "./node_modules/setimmediate/setImmediate.js":
 /*!***************************************************!*\
   !*** ./node_modules/setimmediate/setImmediate.js ***!
@@ -44532,19 +45023,6 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;var _typeof="fun
 
 /***/ }),
 
-/***/ "./node_modules/vue-countup-v2/dist/countup.umd.min.js":
-/*!*************************************************************!*\
-  !*** ./node_modules/vue-countup-v2/dist/countup.umd.min.js ***!
-  \*************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-!function(e,t){ true?module.exports=t(__webpack_require__(/*! countup.js */ "./node_modules/countup.js/dist/countUp.min.js")):undefined}(this,function(e){"use strict";var t,n=(t="Function",function(e){return Object.prototype.toString.call(e)==="[object ".concat(t,"]")}),i={__countup__:e.CountUp,name:"VueCountUp",props:{delay:{type:Number,required:!1,default:0},endVal:{type:Number,required:!0},options:{type:Object,required:!1}},data:function(){return{instance:null}},watch:{endVal:{handler:function(e){this.instance&&n(this.instance.update)&&this.instance.update(e)},deep:!1}},methods:{create:function(){var t=this;if(!t.instance){var n=t.$el,i=new e.CountUp(n,t.endVal,t.options);i.error||(t.instance=i,t.delay<0?t.$emit("ready",i,e.CountUp):setTimeout(function(){return i.start(function(){return t.$emit("ready",i,e.CountUp)})},t.delay))}},destroy:function(){this.instance=null},printValue:function(e){if(this.instance&&n(this.instance.printValue))return this.instance.printValue(e)},start:function(e){if(this.instance&&n(this.instance.start))return this.instance.start(e)},pauseResume:function(){if(this.instance&&n(this.instance.pauseResume))return this.instance.pauseResume()},reset:function(){if(this.instance&&n(this.instance.reset))return this.instance.reset()},update:function(e){if(this.instance&&n(this.instance.update))return this.instance.update(e)}},mounted:function(){this.create()},beforeDestroy:function(){this.destroy()}};!function(e,t){void 0===t&&(t={});var n=t.insertAt;if(e&&"undefined"!=typeof document){var i=document.head||document.getElementsByTagName("head")[0],s=document.createElement("style");s.type="text/css","top"===n&&i.firstChild?i.insertBefore(s,i.firstChild):i.appendChild(s),s.styleSheet?s.styleSheet.cssText=e:s.appendChild(document.createTextNode(e))}}("");return function(e,t,n,i,s,r,o,a,u,c){"boolean"!=typeof o&&(u=a,a=o,o=!1);var d,f="function"==typeof n?n.options:n;if(e&&e.render&&(f.render=e.render,f.staticRenderFns=e.staticRenderFns,f._compiled=!0,s&&(f.functional=!0)),i&&(f._scopeId=i),r?(d=function(e){(e=e||this.$vnode&&this.$vnode.ssrContext||this.parent&&this.parent.$vnode&&this.parent.$vnode.ssrContext)||"undefined"==typeof __VUE_SSR_CONTEXT__||(e=__VUE_SSR_CONTEXT__),t&&t.call(this,u(e)),e&&e._registeredComponents&&e._registeredComponents.add(r)},f._ssrRegister=d):t&&(d=o?function(){t.call(this,c(this.$root.$options.shadowRoot))}:function(e){t.call(this,a(e))}),d)if(f.functional){var p=f.render;f.render=function(e,t){return d.call(t),p(e,t)}}else{var h=f.beforeCreate;f.beforeCreate=h?[].concat(h,d):[d]}return n}({render:function(){var e=this.$createElement;return(this._self._c||e)("span")},staticRenderFns:[]},void 0,i,"data-v-0abbdf5a",!1,void 0,void 0,void 0)});
-//# sourceMappingURL=countup.umd.min.js.map
-
-
-/***/ }),
-
 /***/ "./node_modules/vue-loader/lib/index.js?!./node_modules/vue-agile/src/Agile.vue?vue&type=script&lang=js&":
 /*!*************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib??vue-loader-options!./node_modules/vue-agile/src/Agile.vue?vue&type=script&lang=js& ***!
@@ -45324,19 +45802,21 @@ var render = function() {
   return _c(
     "div",
     [
-      _vm.slider.length == 0 ? _c("Cube") : _vm._e(),
+      _vm.Slider.length == 0 || _vm.Cars.length == 0 ? _c("Cube") : _vm._e(),
       _vm._v(" "),
-      _vm.slider.length > 0 ? _c("header-component") : _vm._e(),
-      _vm._v(" "),
-      _vm.slider.length > 0
-        ? _c("slider", { attrs: { sliders: this.slider } })
+      _vm.Cars.length > 0 && _vm.Slider.length > 0
+        ? _c("header-component")
         : _vm._e(),
       _vm._v(" "),
-      _vm.slider.length > 0
-        ? _c("filters", { attrs: { allcars: _vm.allcars } })
+      _vm.Cars.length > 0 && _vm.Slider.length > 0
+        ? _c("slider", { attrs: { sliders: this.Slider } })
         : _vm._e(),
       _vm._v(" "),
-      _vm.slider.length > 0
+      _vm.Cars.length > 0 && _vm.Slider.length > 0
+        ? _c("filters", { attrs: { allcars: _vm.Cars } })
+        : _vm._e(),
+      _vm._v(" "),
+      _vm.Cars.length > 0 && _vm.Slider.length > 0
         ? _c("cars-root", {
             attrs: { cars: this.auctioncars },
             on: {
@@ -45347,7 +45827,9 @@ var render = function() {
           })
         : _vm._e(),
       _vm._v(" "),
-      _vm.slider.length > 0 ? _c("footer-component") : _vm._e()
+      _vm.Cars.length > 0 && _vm.Slider.length > 0
+        ? _c("footer-component")
+        : _vm._e()
     ],
     1
   )
@@ -45756,19 +46238,19 @@ var render = function() {
   return _c(
     "div",
     [
-      _vm.slider.length == 0 ? _c("Cube") : _vm._e(),
-      _vm._v(" "),
-      _vm.slider.length > 0 ? _c("header-component") : _vm._e(),
-      _vm._v(" "),
-      _vm.slider.length > 0
-        ? _c("slider", { attrs: { sliders: this.slider } })
+      _vm.Cars.length > 0 && _vm.Slider.length > 0
+        ? _c("header-component")
         : _vm._e(),
       _vm._v(" "),
-      _vm.slider.length > 0
-        ? _c("filters", { attrs: { allcars: this.allcars } })
+      _vm.Cars.length > 0 && _vm.Slider.length > 0
+        ? _c("slider", { attrs: { sliders: this.Slider } })
         : _vm._e(),
       _vm._v(" "),
-      _vm.slider.length > 0
+      _vm.Cars.length > 0 && _vm.Slider.length > 0
+        ? _c("filters", { attrs: { allcars: _vm.Cars } })
+        : _vm._e(),
+      _vm._v(" "),
+      _vm.Slider.length > 0
         ? _c("div", { staticClass: "container-fluid" }, [
             _vm.carsfilter.length != 0
               ? _c("div", { staticClass: "container container-back" }, [
@@ -45906,9 +46388,9 @@ var render = function() {
                                 _vm._v(" "),
                                 _c("div", { staticClass: "article-price" }, [
                                   _vm._v(
-                                    "\n                                    " +
+                                    "\n                                " +
                                       _vm._s(car.currentPrice) +
-                                      "₽\n                                "
+                                      "₽\n                            "
                                   )
                                 ])
                               ])
@@ -45931,7 +46413,9 @@ var render = function() {
           ])
         : _vm._e(),
       _vm._v(" "),
-      _vm.slider.length > 0 ? _c("footer-component") : _vm._e()
+      _vm.Cars.length > 0 && _vm.Slider.length > 0
+        ? _c("footer-component")
+        : _vm._e()
     ],
     1
   )
@@ -46185,7 +46669,7 @@ var render = function() {
                 [
                   _c("option", { attrs: { value: "" } }, [_vm._v("Все марки")]),
                   _vm._v(" "),
-                  _vm._l(_vm.models, function(model, index) {
+                  _vm._l(_vm.Models, function(model, index) {
                     return _c("option", { domProps: { value: model.id } }, [
                       _vm._v(
                         _vm._s(model.name) + "\n                            "
@@ -46216,7 +46700,7 @@ var render = function() {
                     _vm._v("Все состояния")
                   ]),
                   _vm._v(" "),
-                  _vm._l(_vm.states, function(state, index) {
+                  _vm._l(_vm.States, function(state, index) {
                     return _c("option", { domProps: { value: state.id } }, [
                       _vm._v(
                         _vm._s(state.name) + "\n                            "
@@ -46247,7 +46731,7 @@ var render = function() {
                     _vm._v("Все стоянки")
                   ]),
                   _vm._v(" "),
-                  _vm._l(_vm.parkings, function(parking, index) {
+                  _vm._l(_vm.Parkings, function(parking, index) {
                     return _c("option", { domProps: { value: parking.id } }, [
                       _vm._v(
                         "\n                                " +
@@ -46526,228 +47010,241 @@ var render = function() {
         [
           _c("div", { staticClass: "container" }, [
             _c("div", { staticClass: "row" }, [
-              _c("nav", { staticClass: "navbar navbar-expand-lg mobile_nav" }, [
-                _c(
-                  "div",
-                  { staticClass: "logo_img_div" },
-                  [
-                    _c("router-link", { attrs: { to: "/#" } }, [
-                      _c("img", {
-                        attrs: {
-                          src: "/img/design_img/header_logo.png",
-                          id: "headerlogo",
-                          alt: "logo"
-                        }
-                      })
-                    ])
-                  ],
-                  1
-                ),
-                _vm._v(" "),
-                _c("div", { staticClass: "responsive" }, [
-                  _vm._m(0),
-                  _vm._v(" "),
+              _c(
+                "nav",
+                {
+                  ref: "aaa",
+                  staticClass: "navbar navbar-expand-lg mobile_nav"
+                },
+                [
                   _c(
                     "div",
-                    {
-                      staticClass: "navbar-collapse collapse ",
-                      attrs: { id: "navbarSupportedContent22" }
-                    },
+                    { staticClass: "logo_img_div" },
                     [
-                      _c("div", { staticClass: "menunavbar" }, [
-                        _c("ul", { staticClass: "navbar-nav" }, [
-                          _c("li", { staticClass: "nav-item" }, [
-                            _c("a", [_vm._v("Меню")]),
-                            _vm._v(" "),
-                            _c("i", { staticClass: "fas fa-angle-down" }),
-                            _vm._v(" "),
-                            _c("ol", [
-                              _c(
-                                "li",
-                                { staticClass: "nav-item" },
-                                [
-                                  _c("router-link", { attrs: { to: "/" } }, [
-                                    _vm._v("Главная")
-                                  ])
-                                ],
-                                1
-                              ),
+                      _c("router-link", { attrs: { to: "/#" } }, [
+                        _c("img", {
+                          attrs: {
+                            src: "/img/design_img/header_logo.png",
+                            id: "headerlogo",
+                            alt: "logo"
+                          }
+                        })
+                      ])
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "responsive" }, [
+                    _vm._m(0),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      {
+                        staticClass: "navbar-collapse collapse ",
+                        attrs: { id: "navbarSupportedContent22" }
+                      },
+                      [
+                        _c("div", { staticClass: "menunavbar" }, [
+                          _c("ul", { staticClass: "navbar-nav" }, [
+                            _c("li", { staticClass: "nav-item" }, [
+                              _c("a", [_vm._v("Меню")]),
                               _vm._v(" "),
-                              _c(
-                                "li",
-                                { staticClass: "nav-item" },
-                                [
-                                  _c("router-link", { attrs: { to: "/faq" } }, [
-                                    _vm._v("Вопрос-ответ")
-                                  ])
-                                ],
-                                1
-                              ),
+                              _c("i", { staticClass: "fas fa-angle-down" }),
                               _vm._v(" "),
-                              _c(
-                                "li",
-                                { staticClass: "nav-item" },
-                                [
-                                  _c(
-                                    "router-link",
-                                    { attrs: { to: "/about" } },
-                                    [_vm._v("О компании")]
-                                  )
-                                ],
-                                1
-                              ),
-                              _vm._v(" "),
-                              _c(
-                                "li",
-                                { staticClass: "nav-item" },
-                                [
-                                  _c(
-                                    "router-link",
-                                    { attrs: { to: "/rules" } },
-                                    [_vm._v("Правила")]
-                                  )
-                                ],
-                                1
-                              ),
-                              _vm._v(" "),
-                              _c(
-                                "li",
-                                { staticClass: "nav-item" },
-                                [
-                                  _c(
-                                    "router-link",
-                                    { attrs: { to: "/contacts" } },
-                                    [_vm._v("Контакты")]
-                                  )
-                                ],
-                                1
-                              )
-                            ])
-                          ]),
-                          _vm._v(" "),
-                          _c("li", { staticClass: "nav-item" }, [
-                            _c("a", [_vm._v("Все Аукционы")]),
-                            _vm._v(" "),
-                            _c("i", { staticClass: "fas fa-angle-down" }),
-                            _vm._v(" "),
-                            _c(
-                              "ol",
-                              _vm._l(_vm.auctions, function(auction) {
-                                return _c(
+                              _c("ol", [
+                                _c(
+                                  "li",
+                                  { staticClass: "nav-item" },
+                                  [
+                                    _c("router-link", { attrs: { to: "/" } }, [
+                                      _vm._v("Главная")
+                                    ])
+                                  ],
+                                  1
+                                ),
+                                _vm._v(" "),
+                                _c(
                                   "li",
                                   { staticClass: "nav-item" },
                                   [
                                     _c(
                                       "router-link",
-                                      {
-                                        attrs: { to: "/auctions/" + auction.id }
-                                      },
-                                      [
-                                        _vm._v(
-                                          _vm._s(auction.name) +
-                                            "\n                                                    "
-                                        )
-                                      ]
+                                      { attrs: { to: "/faq" } },
+                                      [_vm._v("Вопрос-ответ")]
+                                    )
+                                  ],
+                                  1
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "li",
+                                  { staticClass: "nav-item" },
+                                  [
+                                    _c(
+                                      "router-link",
+                                      { attrs: { to: "/about" } },
+                                      [_vm._v("О компании")]
+                                    )
+                                  ],
+                                  1
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "li",
+                                  { staticClass: "nav-item" },
+                                  [
+                                    _c(
+                                      "router-link",
+                                      { attrs: { to: "/rules" } },
+                                      [_vm._v("Правила")]
+                                    )
+                                  ],
+                                  1
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "li",
+                                  { staticClass: "nav-item" },
+                                  [
+                                    _c(
+                                      "router-link",
+                                      { attrs: { to: "/contacts" } },
+                                      [_vm._v("Контакты")]
                                     )
                                   ],
                                   1
                                 )
-                              }),
-                              0
-                            )
-                          ]),
-                          _vm._v(" "),
-                          _vm.user.length == 0
-                            ? _c(
-                                "li",
-                                { staticClass: "nav-item" },
-                                [
-                                  _c(
-                                    "router-link",
-                                    { attrs: { to: "/login" } },
-                                    [_vm._v("Войти")]
-                                  )
-                                ],
-                                1
-                              )
-                            : _vm._e(),
-                          _vm._v(" "),
-                          _vm.user.length == 0
-                            ? _c(
-                                "li",
-                                { staticClass: "nav-item" },
-                                [
-                                  _c(
-                                    "router-link",
-                                    { attrs: { to: "/register" } },
-                                    [_vm._v("Регистрация")]
-                                  )
-                                ],
-                                1
-                              )
-                            : _vm._e(),
-                          _vm._v(" "),
-                          _vm.user.length != 0
-                            ? _c("li", { staticClass: "nav-item" }, [
-                                _c("a", [_vm._v(_vm._s(_vm.user.name))]),
-                                _vm._v(" "),
-                                _c("i", { staticClass: "fas fa-angle-down" }),
-                                _vm._v(" "),
-                                _c("ol", [
-                                  _vm.user.usertype == "admin"
-                                    ? _c("li", { staticClass: "nav-item" }, [
-                                        _c("a", { attrs: { href: "/admin" } }, [
-                                          _vm._v("Админ Панель")
-                                        ])
-                                      ])
-                                    : _vm._e(),
-                                  _vm._v(" "),
-                                  _c(
+                              ])
+                            ]),
+                            _vm._v(" "),
+                            _c("li", { staticClass: "nav-item" }, [
+                              _c("a", [_vm._v("Все Аукционы")]),
+                              _vm._v(" "),
+                              _c("i", { staticClass: "fas fa-angle-down" }),
+                              _vm._v(" "),
+                              _c(
+                                "ol",
+                                _vm._l(_vm.allAuctions, function(auction) {
+                                  return _c(
                                     "li",
                                     { staticClass: "nav-item" },
                                     [
                                       _c(
                                         "router-link",
-                                        { attrs: { to: "/profile" } },
-                                        [_vm._v("Профиль")]
+                                        {
+                                          attrs: {
+                                            to: "/auctions/" + auction.id
+                                          }
+                                        },
+                                        [
+                                          _vm._v(
+                                            _vm._s(auction.name) +
+                                              "\n                                                    "
+                                          )
+                                        ]
                                       )
                                     ],
                                     1
-                                  ),
-                                  _vm._v(" "),
-                                  _c("li", { staticClass: "nav-item" }, [
+                                  )
+                                }),
+                                0
+                              )
+                            ]),
+                            _vm._v(" "),
+                            _vm.User.length == 0
+                              ? _c(
+                                  "li",
+                                  { staticClass: "nav-item" },
+                                  [
                                     _c(
-                                      "form",
-                                      {
-                                        attrs: {
-                                          action: "logout",
-                                          method: "POST"
-                                        }
-                                      },
-                                      [
-                                        _vm._m(1),
-                                        _vm._v(" "),
-                                        _c("input", {
-                                          attrs: {
-                                            type: "hidden",
-                                            name: "_token"
-                                          },
-                                          domProps: { value: _vm.csrf }
-                                        })
-                                      ]
+                                      "router-link",
+                                      { attrs: { to: "/login" } },
+                                      [_vm._v("Войти")]
                                     )
+                                  ],
+                                  1
+                                )
+                              : _vm._e(),
+                            _vm._v(" "),
+                            _vm.User.length == 0
+                              ? _c(
+                                  "li",
+                                  { staticClass: "nav-item" },
+                                  [
+                                    _c(
+                                      "router-link",
+                                      { attrs: { to: "/register" } },
+                                      [_vm._v("Регистрация")]
+                                    )
+                                  ],
+                                  1
+                                )
+                              : _vm._e(),
+                            _vm._v(" "),
+                            _vm.User.length != 0
+                              ? _c("li", { staticClass: "nav-item" }, [
+                                  _c("a", [_vm._v(_vm._s(_vm.User.name))]),
+                                  _vm._v(" "),
+                                  _c("i", { staticClass: "fas fa-angle-down" }),
+                                  _vm._v(" "),
+                                  _c("ol", [
+                                    _vm.User.usertype == "admin"
+                                      ? _c("li", { staticClass: "nav-item" }, [
+                                          _c(
+                                            "a",
+                                            { attrs: { href: "/admin" } },
+                                            [_vm._v("Админ Панель")]
+                                          )
+                                        ])
+                                      : _vm._e(),
+                                    _vm._v(" "),
+                                    _c(
+                                      "li",
+                                      { staticClass: "nav-item" },
+                                      [
+                                        _c(
+                                          "router-link",
+                                          { attrs: { to: "/profile" } },
+                                          [_vm._v("Профиль")]
+                                        )
+                                      ],
+                                      1
+                                    ),
+                                    _vm._v(" "),
+                                    _c("li", { staticClass: "nav-item" }, [
+                                      _c(
+                                        "form",
+                                        {
+                                          attrs: {
+                                            action: "logout",
+                                            method: "POST"
+                                          }
+                                        },
+                                        [
+                                          _vm._m(1),
+                                          _vm._v(" "),
+                                          _c("input", {
+                                            attrs: {
+                                              type: "hidden",
+                                              name: "_token"
+                                            },
+                                            domProps: { value: _vm.csrf }
+                                          })
+                                        ]
+                                      )
+                                    ])
                                   ])
                                 ])
-                              ])
-                            : _vm._e()
+                              : _vm._e()
+                          ])
                         ])
-                      ])
-                    ]
-                  )
-                ]),
-                _vm._v(" "),
-                _vm._m(2)
-              ])
+                      ]
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _vm._m(2)
+                ]
+              )
             ])
           ])
         ]
@@ -46855,19 +47352,21 @@ var render = function() {
   return _c(
     "div",
     [
-      _vm.slider.length == 0 ? _c("Cube") : _vm._e(),
+      _vm.Slider.length == 0 || _vm.Cars.length == 0 ? _c("Cube") : _vm._e(),
       _vm._v(" "),
-      _vm.slider.length > 0 ? _c("header-component") : _vm._e(),
-      _vm._v(" "),
-      _vm.slider.length > 0
-        ? _c("slider", { attrs: { sliders: this.slider } })
+      _vm.Cars.length > 0 && _vm.Slider.length > 0
+        ? _c("header-component")
         : _vm._e(),
       _vm._v(" "),
-      _vm.slider.length > 0
-        ? _c("filters", { attrs: { allcars: this.allcars } })
+      _vm.Cars.length > 0 && _vm.Slider.length > 0
+        ? _c("slider", { attrs: { sliders: this.Slider } })
         : _vm._e(),
       _vm._v(" "),
-      _vm.slider.length > 0
+      _vm.Cars.length > 0 && _vm.Slider.length > 0
+        ? _c("filters", { attrs: { allcars: _vm.Cars } })
+        : _vm._e(),
+      _vm._v(" "),
+      _vm.Cars.length > 0 && _vm.Slider.length > 0
         ? _c("cars-root", {
             attrs: { cars: this.cars },
             on: {
@@ -46878,7 +47377,9 @@ var render = function() {
           })
         : _vm._e(),
       _vm._v(" "),
-      _vm.slider.length > 0 ? _c("footer-component") : _vm._e()
+      _vm.Cars.length > 0 && _vm.Slider.length > 0
+        ? _c("footer-component")
+        : _vm._e()
     ],
     1
   )
@@ -47097,488 +47598,504 @@ var render = function() {
   return _c(
     "div",
     [
-      _c("header-component"),
+      _vm.User.length == 0 ? _c("Cube") : _vm._e(),
       _vm._v(" "),
-      _c("div", { staticClass: "container-fluid profile_bg_white" }, [
-        _c("div", { staticClass: "container profile_container" }, [
-          _c("div", { staticClass: "row" }, [
-            _c("div", { staticClass: "col profile_menu" }, [
-              _c("div", { staticClass: "row mx-0" }, [
-                _c("div", { staticClass: "col-md-3 avatar_section" }, [
-                  !_vm.user.avatar && _vm.user.gender == "male"
-                    ? _c("img", {
-                        staticClass: "avatar_img",
-                        attrs: { src: "/img/avatar/images.png" }
-                      })
-                    : !_vm.user.avatar && _vm.user.gender == "female"
-                    ? _c("img", {
-                        staticClass: "avatar_img",
-                        attrs: {
-                          src:
-                            "/img/avatar/female-avatar-profile-icon-round-african-american-vector-18307298.jpg"
-                        }
-                      })
-                    : _c("img", {
-                        staticClass: "avatar_img",
-                        attrs: { src: "/img/" + _vm.user.avatar }
-                      })
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "col-md-6 user_name_ul " }, [
-                  _c("h6", { staticClass: "user_name_tag" }, [
-                    _vm._v(_vm._s(_vm.user.name) + " " + _vm._s(_vm.user.sname))
-                  ]),
-                  _vm._v(" "),
-                  _c("button", { staticClass: "myprofile_btn" }, [
-                    _vm._v("Мой профиль")
-                  ]),
-                  _vm._v(" "),
-                  _c("button", { staticClass: "profile_btn_followers" }, [
-                    _vm._v("Мои подписки")
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "col-md-12 profile_menu_nav" }, [
-                  _c("ul", { staticClass: "profile_menu_ul" }, [
-                    _c(
-                      "button",
-                      {
-                        staticClass: "tablinks",
-                        on: {
-                          click: function($event) {
-                            return _vm.openTabs("profile")
-                          }
-                        }
-                      },
-                      [_vm._m(0)]
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "button",
-                      {
-                        staticClass: "tablinks",
-                        on: {
-                          click: function($event) {
-                            return _vm.openTabs("balance")
-                          }
-                        }
-                      },
-                      [_vm._m(1)]
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "button",
-                      {
-                        staticClass: "tablinks",
-                        on: {
-                          click: function($event) {
-                            return _vm.openTabs("changepass")
-                          }
-                        }
-                      },
-                      [_vm._m(2)]
-                    )
-                  ])
-                ])
-              ])
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "col profile_data" }, [
-              _c("h3", { staticClass: "personal_data_title" }, [
-                _vm._v("Личные данные")
-              ]),
-              _vm._v(" "),
-              _c("table", { staticClass: "table table-striped table-hover" }, [
-                _c("tbody", [
-                  _c("tr", [
-                    _c("th", [_vm._v("Фамилия *")]),
-                    _vm._v(" "),
-                    _c("td", { staticClass: "showView" }, [
-                      _vm._v(_vm._s(_vm.user.sname))
-                    ]),
-                    _vm._v(" "),
-                    _vm._m(3)
-                  ]),
-                  _vm._v(" "),
-                  _c("tr", [
-                    _c("th", [_vm._v("Имя *")]),
-                    _vm._v(" "),
-                    _c("td", { staticClass: "showView" }, [
-                      _vm._v(_vm._s(_vm.user.name))
-                    ]),
-                    _vm._v(" "),
-                    _vm._m(4)
-                  ]),
-                  _vm._v(" "),
-                  _c("tr", [
-                    _c("th", [_vm._v("Дата рождения *")]),
-                    _vm._v(" "),
-                    _c("td", { staticClass: "showView" }, [
-                      _vm._v(_vm._s(_vm.user.date_of_birth))
-                    ]),
-                    _vm._v(" "),
-                    _vm._m(5)
-                  ]),
-                  _vm._v(" "),
-                  _vm._m(6),
-                  _vm._v(" "),
-                  _vm._m(7),
-                  _vm._v(" "),
-                  _vm._m(8)
-                ])
-              ])
-            ])
-          ]),
-          _vm._v(" "),
-          _c(
-            "div",
-            {
-              staticClass: "tabcontent activetabis",
-              attrs: { id: "profiletab" }
-            },
-            [
-              _c("div", { staticClass: "row contact_info_row" }, [
-                _c("div", { staticClass: "col-md-6 profile_data" }, [
-                  _c("h3", { staticClass: "personal_data_title" }, [
-                    _vm._v("Паспортные данные")
-                  ]),
-                  _vm._v(" "),
-                  _c(
-                    "table",
-                    { staticClass: "table table-striped table-hover" },
-                    [
-                      _c("tbody", [
-                        _c("tr", [
-                          _c("th", [_vm._v("Паспорт *")]),
-                          _vm._v(" "),
-                          _c("td", { staticClass: "showView" }, [
-                            _vm._v(_vm._s(_vm.user.passport))
-                          ]),
-                          _vm._v(" "),
-                          _vm._m(9)
-                        ]),
-                        _vm._v(" "),
-                        _c("tr", [
-                          _c("th", [_vm._v("Кем выдан *")]),
-                          _vm._v(" "),
-                          _c("td", { staticClass: "showView" }, [
-                            _vm._v(_vm._s(_vm.user.issuedBy))
-                          ]),
-                          _vm._v(" "),
-                          _vm._m(10)
-                        ]),
-                        _vm._v(" "),
-                        _c("tr", [
-                          _c("th", [_vm._v("Дата выдачи *")]),
-                          _vm._v(" "),
-                          _c("td", { staticClass: "showView" }, [
-                            _vm._v(_vm._s(_vm.user.dateOfIssue))
-                          ]),
-                          _vm._v(" "),
-                          _vm._m(11)
-                        ]),
-                        _vm._v(" "),
-                        _c("tr", [
-                          _c("th", [_vm._v("Код подразделения *")]),
-                          _vm._v(" "),
-                          _c("td", { staticClass: "showView" }, [
-                            _vm._v(_vm._s(_vm.user.unitCode))
-                          ]),
-                          _vm._v(" "),
-                          _vm._m(12)
-                        ]),
-                        _vm._v(" "),
-                        _c("tr", [
-                          _c("th", [_vm._v("Место регистрации *")]),
-                          _vm._v(" "),
-                          _c("td", { staticClass: "showView" }, [
-                            _vm._v(_vm._s(_vm.user.placeOfRegistration))
-                          ]),
-                          _vm._v(" "),
-                          _vm._m(13)
-                        ])
-                      ])
-                    ]
-                  )
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "col-md-6 profile_data" }, [
-                  _c("h3", { staticClass: "personal_data_title" }, [
-                    _vm._v("Контактная информация")
-                  ]),
-                  _vm._v(" "),
-                  _c(
-                    "table",
-                    { staticClass: "table table-striped table-hover" },
-                    [
-                      _c("tbody", [
-                        _c("tr", [
-                          _c("th", [_vm._v("Телефон *")]),
-                          _vm._v(" "),
-                          _c("td", { staticClass: "showView" }, [
-                            _vm._v(_vm._s(_vm.user.phone))
-                          ]),
-                          _vm._v(" "),
-                          _vm._m(14)
-                        ]),
-                        _vm._v(" "),
-                        _c("tr", [
-                          _c("th", [_vm._v("E-mail *")]),
-                          _vm._v(" "),
-                          _c("td", { staticClass: "showView" }, [
-                            _vm._v(_vm._s(_vm.user.email))
-                          ]),
-                          _vm._v(" "),
-                          _vm._m(15)
-                        ]),
-                        _vm._v(" "),
-                        _c("tr", [
-                          _c("th", [_vm._v("Почтовый индекс *")]),
-                          _vm._v(" "),
-                          _c("td", { staticClass: "showView" }, [
-                            _vm._v(_vm._s(_vm.user.postcode))
-                          ]),
-                          _vm._v(" "),
-                          _vm._m(16)
-                        ]),
-                        _vm._v(" "),
-                        _c("tr", [
-                          _c("th", [_vm._v("Почтовый адрес *")]),
-                          _vm._v(" "),
-                          _c("td", { staticClass: "showView" }, [
-                            _vm._v(_vm._s(_vm.user.email))
-                          ]),
-                          _vm._v(" "),
-                          _vm._m(17)
-                        ]),
-                        _vm._v(" "),
-                        _c("tr", [
-                          _c("th", [_vm._v("Дополнительно *")]),
-                          _vm._v(" "),
-                          _c("td", { staticClass: "showView" }, [
-                            _vm._v(_vm._s(_vm.user.additionally))
-                          ]),
-                          _vm._v(" "),
-                          _vm._m(18)
-                        ])
-                      ])
-                    ]
-                  )
-                ])
-              ])
-            ]
-          ),
-          _vm._v(" "),
-          _c(
-            "div",
-            { staticClass: "tabcontent", attrs: { id: "balancetab" } },
-            [
-              _c("div", { staticClass: "row count_row" }, [
-                _c("div", { staticClass: "col-md-6 profile_data" }, [
-                  _c("h3", { staticClass: "personal_data_title" }, [
-                    _vm._v("Лицевой счет")
-                  ]),
-                  _vm._v(" "),
-                  _c(
-                    "table",
-                    { staticClass: "table table-striped table-hover" },
-                    [
-                      _c("tbody", [
-                        _c("tr", [
-                          _c("th", [
-                            _vm._v(
-                              "Лицевой счет № " + _vm._s(_vm.user.id) + " *"
-                            )
-                          ]),
-                          _vm._v(" "),
-                          _c("td", { staticClass: "showView" }, [
-                            _vm._v(_vm._s(_vm.user.sname))
-                          ]),
-                          _vm._v(" "),
-                          _vm._m(19)
-                        ]),
-                        _vm._v(" "),
-                        _c("tr", [
-                          _c("th", [_vm._v("Субсчет депозита *")]),
-                          _vm._v(" "),
-                          _c("td", { staticClass: "showView" }, [
-                            _vm._v(_vm._s(_vm.user.name))
-                          ]),
-                          _vm._v(" "),
-                          _vm._m(20)
-                        ]),
-                        _vm._v(" "),
-                        _c("tr", [
-                          _c("th", [_vm._v("Субсчет свободных средств *")]),
-                          _vm._v(" "),
-                          _c("td", { staticClass: "showView" }, [
-                            _vm._v(_vm._s(_vm.user.sname))
-                          ]),
-                          _vm._v(" "),
-                          _vm._m(21)
-                        ]),
-                        _vm._v(" "),
-                        _c("tr", [
-                          _c("th", [
-                            _vm._v(
-                              "Субсчет заблокированных средств в счет задатка *"
-                            )
-                          ]),
-                          _vm._v(" "),
-                          _c("td", { staticClass: "showView" }, [
-                            _vm._v(_vm._s(_vm.user.sname))
-                          ]),
-                          _vm._v(" "),
-                          _vm._m(22)
-                        ])
-                      ])
-                    ]
-                  )
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "col-md-6 profile_data" }, [
-                  _c("h3", { staticClass: "personal_data_title" }, [
-                    _vm._v("Реквизиты для пополнения лицевого счета")
-                  ]),
-                  _vm._v(" "),
-                  _c(
-                    "table",
-                    { staticClass: "table table-striped table-hover" },
-                    [
-                      _c("tbody", [
-                        _c("tr", [
-                          _c("th", [_vm._v("Расчетный счет *")]),
-                          _vm._v(" "),
-                          _c("td", { staticClass: "showView" }, [
-                            _vm._v(_vm._s(_vm.user.phone))
-                          ]),
-                          _vm._v(" "),
-                          _vm._m(23)
-                        ]),
-                        _vm._v(" "),
-                        _c("tr", [
-                          _c("th", [_vm._v("Корреспондентский счет *")]),
-                          _vm._v(" "),
-                          _c("td", { staticClass: "showView" }, [
-                            _vm._v(_vm._s(_vm.user.email))
-                          ]),
-                          _vm._v(" "),
-                          _vm._m(24)
-                        ]),
-                        _vm._v(" "),
-                        _c("tr", [
-                          _c("th", [_vm._v("БИК *")]),
-                          _vm._v(" "),
-                          _c("td", { staticClass: "showView" }, [
-                            _vm._v(_vm._s(_vm.user.postcode))
-                          ]),
-                          _vm._v(" "),
-                          _vm._m(25)
-                        ]),
-                        _vm._v(" "),
-                        _c("tr", [
-                          _c("th", [_vm._v("ИНН *")]),
-                          _vm._v(" "),
-                          _c("td", { staticClass: "showView" }, [
-                            _vm._v(_vm._s(_vm.user.date_of_birth))
-                          ]),
-                          _vm._v(" "),
-                          _vm._m(26)
-                        ]),
-                        _vm._v(" "),
-                        _c("tr", [
-                          _c("th", [_vm._v("КПП *")]),
-                          _vm._v(" "),
-                          _c("td", { staticClass: "showView" }, [
-                            _vm._v(_vm._s(_vm.user.sname))
-                          ]),
-                          _vm._v(" "),
-                          _vm._m(27)
-                        ]),
-                        _vm._v(" "),
-                        _c("tr", [
-                          _c("th", [_vm._v("Наименование банка *")]),
-                          _vm._v(" "),
-                          _c("td", { staticClass: "showView" }, [
-                            _vm._v(_vm._s(_vm.user.sname))
-                          ]),
-                          _vm._v(" "),
-                          _vm._m(28)
-                        ]),
-                        _vm._v(" "),
-                        _c("tr", [
-                          _c("th", [_vm._v("Наименование получателя *")]),
-                          _vm._v(" "),
-                          _c("td", { staticClass: "showView" }, [
-                            _vm._v(_vm._s(_vm.user.sname))
-                          ]),
-                          _vm._v(" "),
-                          _vm._m(29)
-                        ]),
-                        _vm._v(" "),
-                        _c("tr", [
-                          _c("th", [
-                            _vm._v("Назначение платежа для субсчета депозита *")
-                          ]),
-                          _vm._v(" "),
-                          _c("td", { staticClass: "showView" }, [
-                            _vm._v(_vm._s(_vm.user.sname))
-                          ]),
-                          _vm._v(" "),
-                          _vm._m(30)
-                        ]),
-                        _vm._v(" "),
-                        _c("tr", [
-                          _c("th", [
-                            _vm._v(
-                              "Назначение платежа для субсчета свободных средств *"
-                            )
-                          ]),
-                          _vm._v(" "),
-                          _c("td", { staticClass: "showView" }, [
-                            _vm._v(_vm._s(_vm.user.sname))
-                          ]),
-                          _vm._v(" "),
-                          _vm._m(31)
-                        ])
-                      ])
-                    ]
-                  )
-                ])
-              ])
-            ]
-          ),
-          _vm._v(" "),
-          _c(
-            "div",
-            { staticClass: "tabcontent", attrs: { id: "changepasstab" } },
-            [
-              _c("div", { staticClass: "row count_row" }, [
-                _c("div", { staticClass: "col-md-12 profile_data" }, [
-                  _c(
-                    "form",
-                    { attrs: { method: "POST", action: "changepassword" } },
-                    [
-                      _c("input", {
-                        attrs: { type: "hidden", name: "_token" },
-                        domProps: { value: _vm.csrf }
-                      }),
+      _vm.User.length != 0 ? _c("header-component") : _vm._e(),
+      _vm._v(" "),
+      _vm.User.length != 0
+        ? _c("div", { staticClass: "container-fluid profile_bg_white" }, [
+            _c("div", { staticClass: "container profile_container" }, [
+              _c("div", { staticClass: "row" }, [
+                _c("div", { staticClass: "col profile_menu" }, [
+                  _c("div", { staticClass: "row mx-0" }, [
+                    _c("div", { staticClass: "col-md-3 avatar_section" }, [
+                      _c("h1", [_vm._v(_vm._s(_vm.User.length))]),
                       _vm._v(" "),
-                      _c("h3", { staticClass: "personal_data_title" }, [
-                        _vm._v("Изменить пароль")
+                      !_vm.User.avatar && _vm.User.gender == "male"
+                        ? _c("img", {
+                            staticClass: "avatar_img",
+                            attrs: { src: "/img/avatar/images.png" }
+                          })
+                        : !_vm.User.avatar && _vm.User.gender == "female"
+                        ? _c("img", {
+                            staticClass: "avatar_img",
+                            attrs: {
+                              src:
+                                "/img/avatar/female-avatar-profile-icon-round-african-american-vector-18307298.jpg"
+                            }
+                          })
+                        : _vm.User.avatar
+                        ? _c("img", {
+                            staticClass: "avatar_img",
+                            attrs: { src: "/img/" + _vm.User.avatar }
+                          })
+                        : _vm._e()
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col-md-6 user_name_ul " }, [
+                      _c("h6", { staticClass: "user_name_tag" }, [
+                        _vm._v(
+                          _vm._s(_vm.User.name) + " " + _vm._s(_vm.User.sname)
+                        )
                       ]),
                       _vm._v(" "),
-                      _vm._m(32)
+                      _c("button", { staticClass: "myprofile_btn" }, [
+                        _vm._v("Мой профиль")
+                      ]),
+                      _vm._v(" "),
+                      _c("button", { staticClass: "profile_btn_followers" }, [
+                        _vm._v("Мои подписки")
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col-md-12 profile_menu_nav" }, [
+                      _c("ul", { staticClass: "profile_menu_ul" }, [
+                        _c(
+                          "button",
+                          {
+                            staticClass: "tablinks",
+                            on: {
+                              click: function($event) {
+                                return _vm.openTabs("profile")
+                              }
+                            }
+                          },
+                          [_vm._m(0)]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "button",
+                          {
+                            staticClass: "tablinks",
+                            on: {
+                              click: function($event) {
+                                return _vm.openTabs("balance")
+                              }
+                            }
+                          },
+                          [_vm._m(1)]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "button",
+                          {
+                            staticClass: "tablinks",
+                            on: {
+                              click: function($event) {
+                                return _vm.openTabs("changepass")
+                              }
+                            }
+                          },
+                          [_vm._m(2)]
+                        )
+                      ])
+                    ])
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "col profile_data" }, [
+                  _c("h3", { staticClass: "personal_data_title" }, [
+                    _vm._v("Личные данные")
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "table",
+                    { staticClass: "table table-striped table-hover" },
+                    [
+                      _c("tbody", [
+                        _c("tr", [
+                          _c("th", [_vm._v("Фамилия *")]),
+                          _vm._v(" "),
+                          _c("td", { staticClass: "showView" }, [
+                            _vm._v(_vm._s(_vm.User.sname))
+                          ]),
+                          _vm._v(" "),
+                          _vm._m(3)
+                        ]),
+                        _vm._v(" "),
+                        _c("tr", [
+                          _c("th", [_vm._v("Имя *")]),
+                          _vm._v(" "),
+                          _c("td", { staticClass: "showView" }, [
+                            _vm._v(_vm._s(_vm.User.name))
+                          ]),
+                          _vm._v(" "),
+                          _vm._m(4)
+                        ]),
+                        _vm._v(" "),
+                        _c("tr", [
+                          _c("th", [_vm._v("Дата рождения *")]),
+                          _vm._v(" "),
+                          _c("td", { staticClass: "showView" }, [
+                            _vm._v(_vm._s(_vm.User.date_of_birth))
+                          ]),
+                          _vm._v(" "),
+                          _vm._m(5)
+                        ]),
+                        _vm._v(" "),
+                        _vm._m(6),
+                        _vm._v(" "),
+                        _vm._m(7),
+                        _vm._v(" "),
+                        _vm._m(8)
+                      ])
                     ]
                   )
                 ])
-              ])
-            ]
-          )
-        ])
-      ]),
+              ]),
+              _vm._v(" "),
+              _c(
+                "div",
+                {
+                  staticClass: "tabcontent activetabis",
+                  attrs: { id: "profiletab" }
+                },
+                [
+                  _c("div", { staticClass: "row contact_info_row" }, [
+                    _c("div", { staticClass: "col-md-6 profile_data" }, [
+                      _c("h3", { staticClass: "personal_data_title" }, [
+                        _vm._v("Паспортные данные")
+                      ]),
+                      _vm._v(" "),
+                      _c(
+                        "table",
+                        { staticClass: "table table-striped table-hover" },
+                        [
+                          _c("tbody", [
+                            _c("tr", [
+                              _c("th", [_vm._v("Паспорт *")]),
+                              _vm._v(" "),
+                              _c("td", { staticClass: "showView" }, [
+                                _vm._v(_vm._s(_vm.User.passport))
+                              ]),
+                              _vm._v(" "),
+                              _vm._m(9)
+                            ]),
+                            _vm._v(" "),
+                            _c("tr", [
+                              _c("th", [_vm._v("Кем выдан *")]),
+                              _vm._v(" "),
+                              _c("td", { staticClass: "showView" }, [
+                                _vm._v(_vm._s(_vm.User.issuedBy))
+                              ]),
+                              _vm._v(" "),
+                              _vm._m(10)
+                            ]),
+                            _vm._v(" "),
+                            _c("tr", [
+                              _c("th", [_vm._v("Дата выдачи *")]),
+                              _vm._v(" "),
+                              _c("td", { staticClass: "showView" }, [
+                                _vm._v(_vm._s(_vm.User.dateOfIssue))
+                              ]),
+                              _vm._v(" "),
+                              _vm._m(11)
+                            ]),
+                            _vm._v(" "),
+                            _c("tr", [
+                              _c("th", [_vm._v("Код подразделения *")]),
+                              _vm._v(" "),
+                              _c("td", { staticClass: "showView" }, [
+                                _vm._v(_vm._s(_vm.User.unitCode))
+                              ]),
+                              _vm._v(" "),
+                              _vm._m(12)
+                            ]),
+                            _vm._v(" "),
+                            _c("tr", [
+                              _c("th", [_vm._v("Место регистрации *")]),
+                              _vm._v(" "),
+                              _c("td", { staticClass: "showView" }, [
+                                _vm._v(_vm._s(_vm.User.placeOfRegistration))
+                              ]),
+                              _vm._v(" "),
+                              _vm._m(13)
+                            ])
+                          ])
+                        ]
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col-md-6 profile_data" }, [
+                      _c("h3", { staticClass: "personal_data_title" }, [
+                        _vm._v("Контактная информация")
+                      ]),
+                      _vm._v(" "),
+                      _c(
+                        "table",
+                        { staticClass: "table table-striped table-hover" },
+                        [
+                          _c("tbody", [
+                            _c("tr", [
+                              _c("th", [_vm._v("Телефон *")]),
+                              _vm._v(" "),
+                              _c("td", { staticClass: "showView" }, [
+                                _vm._v(_vm._s(_vm.User.phone))
+                              ]),
+                              _vm._v(" "),
+                              _vm._m(14)
+                            ]),
+                            _vm._v(" "),
+                            _c("tr", [
+                              _c("th", [_vm._v("E-mail *")]),
+                              _vm._v(" "),
+                              _c("td", { staticClass: "showView" }, [
+                                _vm._v(_vm._s(_vm.User.email))
+                              ]),
+                              _vm._v(" "),
+                              _vm._m(15)
+                            ]),
+                            _vm._v(" "),
+                            _c("tr", [
+                              _c("th", [_vm._v("Почтовый индекс *")]),
+                              _vm._v(" "),
+                              _c("td", { staticClass: "showView" }, [
+                                _vm._v(_vm._s(_vm.User.postcode))
+                              ]),
+                              _vm._v(" "),
+                              _vm._m(16)
+                            ]),
+                            _vm._v(" "),
+                            _c("tr", [
+                              _c("th", [_vm._v("Почтовый адрес *")]),
+                              _vm._v(" "),
+                              _c("td", { staticClass: "showView" }, [
+                                _vm._v(_vm._s(_vm.User.email))
+                              ]),
+                              _vm._v(" "),
+                              _vm._m(17)
+                            ]),
+                            _vm._v(" "),
+                            _c("tr", [
+                              _c("th", [_vm._v("Дополнительно *")]),
+                              _vm._v(" "),
+                              _c("td", { staticClass: "showView" }, [
+                                _vm._v(_vm._s(_vm.User.additionally))
+                              ]),
+                              _vm._v(" "),
+                              _vm._m(18)
+                            ])
+                          ])
+                        ]
+                      )
+                    ])
+                  ])
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticClass: "tabcontent", attrs: { id: "balancetab" } },
+                [
+                  _c("div", { staticClass: "row count_row" }, [
+                    _c("div", { staticClass: "col-md-6 profile_data" }, [
+                      _c("h3", { staticClass: "personal_data_title" }, [
+                        _vm._v("Лицевой счет")
+                      ]),
+                      _vm._v(" "),
+                      _c(
+                        "table",
+                        { staticClass: "table table-striped table-hover" },
+                        [
+                          _c("tbody", [
+                            _c("tr", [
+                              _c("th", [
+                                _vm._v(
+                                  "Лицевой счет № " + _vm._s(_vm.User.id) + " *"
+                                )
+                              ]),
+                              _vm._v(" "),
+                              _c("td", { staticClass: "showView" }, [
+                                _vm._v(_vm._s(_vm.User.sname))
+                              ]),
+                              _vm._v(" "),
+                              _vm._m(19)
+                            ]),
+                            _vm._v(" "),
+                            _c("tr", [
+                              _c("th", [_vm._v("Субсчет депозита *")]),
+                              _vm._v(" "),
+                              _c("td", { staticClass: "showView" }, [
+                                _vm._v(_vm._s(_vm.User.name))
+                              ]),
+                              _vm._v(" "),
+                              _vm._m(20)
+                            ]),
+                            _vm._v(" "),
+                            _c("tr", [
+                              _c("th", [_vm._v("Субсчет свободных средств *")]),
+                              _vm._v(" "),
+                              _c("td", { staticClass: "showView" }, [
+                                _vm._v(_vm._s(_vm.User.sname))
+                              ]),
+                              _vm._v(" "),
+                              _vm._m(21)
+                            ]),
+                            _vm._v(" "),
+                            _c("tr", [
+                              _c("th", [
+                                _vm._v(
+                                  "Субсчет заблокированных средств в счет задатка *"
+                                )
+                              ]),
+                              _vm._v(" "),
+                              _c("td", { staticClass: "showView" }, [
+                                _vm._v(_vm._s(_vm.User.sname))
+                              ]),
+                              _vm._v(" "),
+                              _vm._m(22)
+                            ])
+                          ])
+                        ]
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col-md-6 profile_data" }, [
+                      _c("h3", { staticClass: "personal_data_title" }, [
+                        _vm._v("Реквизиты для пополнения лицевого счета")
+                      ]),
+                      _vm._v(" "),
+                      _c(
+                        "table",
+                        { staticClass: "table table-striped table-hover" },
+                        [
+                          _c("tbody", [
+                            _c("tr", [
+                              _c("th", [_vm._v("Расчетный счет *")]),
+                              _vm._v(" "),
+                              _c("td", { staticClass: "showView" }, [
+                                _vm._v(_vm._s(_vm.User.phone))
+                              ]),
+                              _vm._v(" "),
+                              _vm._m(23)
+                            ]),
+                            _vm._v(" "),
+                            _c("tr", [
+                              _c("th", [_vm._v("Корреспондентский счет *")]),
+                              _vm._v(" "),
+                              _c("td", { staticClass: "showView" }, [
+                                _vm._v(_vm._s(_vm.User.email))
+                              ]),
+                              _vm._v(" "),
+                              _vm._m(24)
+                            ]),
+                            _vm._v(" "),
+                            _c("tr", [
+                              _c("th", [_vm._v("БИК *")]),
+                              _vm._v(" "),
+                              _c("td", { staticClass: "showView" }, [
+                                _vm._v(_vm._s(_vm.User.postcode))
+                              ]),
+                              _vm._v(" "),
+                              _vm._m(25)
+                            ]),
+                            _vm._v(" "),
+                            _c("tr", [
+                              _c("th", [_vm._v("ИНН *")]),
+                              _vm._v(" "),
+                              _c("td", { staticClass: "showView" }, [
+                                _vm._v(_vm._s(_vm.User.date_of_birth))
+                              ]),
+                              _vm._v(" "),
+                              _vm._m(26)
+                            ]),
+                            _vm._v(" "),
+                            _c("tr", [
+                              _c("th", [_vm._v("КПП *")]),
+                              _vm._v(" "),
+                              _c("td", { staticClass: "showView" }, [
+                                _vm._v(_vm._s(_vm.User.sname))
+                              ]),
+                              _vm._v(" "),
+                              _vm._m(27)
+                            ]),
+                            _vm._v(" "),
+                            _c("tr", [
+                              _c("th", [_vm._v("Наименование банка *")]),
+                              _vm._v(" "),
+                              _c("td", { staticClass: "showView" }, [
+                                _vm._v(_vm._s(_vm.User.sname))
+                              ]),
+                              _vm._v(" "),
+                              _vm._m(28)
+                            ]),
+                            _vm._v(" "),
+                            _c("tr", [
+                              _c("th", [_vm._v("Наименование получателя *")]),
+                              _vm._v(" "),
+                              _c("td", { staticClass: "showView" }, [
+                                _vm._v(_vm._s(_vm.User.sname))
+                              ]),
+                              _vm._v(" "),
+                              _vm._m(29)
+                            ]),
+                            _vm._v(" "),
+                            _c("tr", [
+                              _c("th", [
+                                _vm._v(
+                                  "Назначение платежа для субсчета депозита *"
+                                )
+                              ]),
+                              _vm._v(" "),
+                              _c("td", { staticClass: "showView" }, [
+                                _vm._v(_vm._s(_vm.User.sname))
+                              ]),
+                              _vm._v(" "),
+                              _vm._m(30)
+                            ]),
+                            _vm._v(" "),
+                            _c("tr", [
+                              _c("th", [
+                                _vm._v(
+                                  "Назначение платежа для субсчета свободных средств *"
+                                )
+                              ]),
+                              _vm._v(" "),
+                              _c("td", { staticClass: "showView" }, [
+                                _vm._v(_vm._s(_vm.User.sname))
+                              ]),
+                              _vm._v(" "),
+                              _vm._m(31)
+                            ])
+                          ])
+                        ]
+                      )
+                    ])
+                  ])
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticClass: "tabcontent", attrs: { id: "changepasstab" } },
+                [
+                  _c("div", { staticClass: "row count_row" }, [
+                    _c("div", { staticClass: "col-md-12 profile_data" }, [
+                      _c(
+                        "form",
+                        { attrs: { method: "POST", action: "changepassword" } },
+                        [
+                          _c("input", {
+                            attrs: { type: "hidden", name: "_token" },
+                            domProps: { value: _vm.csrf }
+                          }),
+                          _vm._v(" "),
+                          _c("h3", { staticClass: "personal_data_title" }, [
+                            _vm._v("Изменить пароль")
+                          ]),
+                          _vm._v(" "),
+                          _vm._m(32)
+                        ]
+                      )
+                    ])
+                  ])
+                ]
+              )
+            ])
+          ])
+        : _vm._e(),
       _vm._v(" "),
-      _c("footer-component")
+      _vm.User.length != 0 ? _c("footer-component") : _vm._e()
     ],
     1
   )
@@ -48795,19 +49312,19 @@ var render = function() {
   return _c(
     "div",
     [
-      _vm.slider.length == 0 ? _c("Cube") : _vm._e(),
-      _vm._v(" "),
-      _vm.slider.length > 0 ? _c("header-component") : _vm._e(),
-      _vm._v(" "),
-      _vm.slider.length > 0
-        ? _c("slider", { attrs: { sliders: this.slider } })
+      _vm.Cars.length > 0 && _vm.Slider.length > 0
+        ? _c("header-component")
         : _vm._e(),
       _vm._v(" "),
-      _vm.slider.length > 0
-        ? _c("filters", { attrs: { allcars: this.allcars } })
+      _vm.Cars.length > 0 && _vm.Slider.length > 0
+        ? _c("slider", { attrs: { sliders: this.Slider } })
         : _vm._e(),
       _vm._v(" "),
-      _vm.slider.length > 0
+      _vm.Cars.length > 0 && _vm.Slider.length > 0
+        ? _c("filters", { attrs: { allcars: _vm.Cars } })
+        : _vm._e(),
+      _vm._v(" "),
+      _vm.Slider.length > 0
         ? _c("div", { staticClass: "container-fluid" }, [
             _vm.carssearch.length != 0
               ? _c("div", { staticClass: "container container-back" }, [
@@ -48945,9 +49462,9 @@ var render = function() {
                                 _vm._v(" "),
                                 _c("div", { staticClass: "article-price" }, [
                                   _vm._v(
-                                    "\n                                    " +
+                                    "\n                                " +
                                       _vm._s(car.currentPrice) +
-                                      "₽\n                                "
+                                      "₽\n                            "
                                   )
                                 ])
                               ])
@@ -48970,7 +49487,9 @@ var render = function() {
           ])
         : _vm._e(),
       _vm._v(" "),
-      _vm.slider.length > 0 ? _c("footer-component") : _vm._e()
+      _vm.Cars.length > 0 && _vm.Slider.length > 0
+        ? _c("footer-component")
+        : _vm._e()
     ],
     1
   )
@@ -49021,11 +49540,13 @@ var render = function() {
   return _c(
     "div",
     [
-      _vm.car.length == 0 ? _c("Cube") : _vm._e(),
+      _vm.car.length == 0 && _vm.Images.length == 0 ? _c("Cube") : _vm._e(),
       _vm._v(" "),
-      _vm.car.length != 0 ? _c("header-component") : _vm._e(),
+      _vm.car.length != 0 && _vm.Images.length != 0
+        ? _c("header-component")
+        : _vm._e(),
       _vm._v(" "),
-      _vm.car.length != 0
+      _vm.car.length != 0 && _vm.Images.length != 0
         ? _c("div", { staticClass: "container-fluid margin" }, [
             _c("div", { staticClass: "container" }, [
               _c("div", { staticClass: "row main_row" }, [
@@ -49042,22 +49563,24 @@ var render = function() {
                   _c(
                     "div",
                     { staticClass: "row small_pics_row" },
-                    _vm._l(_vm.images, function(image) {
-                      return _c("div", { staticClass: "col-md-3 smallSlide" }, [
-                        _c("img", {
-                          staticClass: "img-fluid smallImages",
-                          attrs: {
-                            id: image.id,
-                            src: "/img/" + image.name,
-                            alt: "Slide"
-                          },
-                          on: {
-                            click: function($event) {
-                              return _vm.slide(image.id)
-                            }
-                          }
-                        })
-                      ])
+                    _vm._l(_vm.Images, function(image) {
+                      return image.carID == _vm.id
+                        ? _c("div", { staticClass: "col-md-3 smallSlide" }, [
+                            _c("img", {
+                              staticClass: "img-fluid smallImages",
+                              attrs: {
+                                id: image.id,
+                                src: "/img/" + image.name,
+                                alt: "Slide"
+                              },
+                              on: {
+                                click: function($event) {
+                                  return _vm.slide(image.id)
+                                }
+                              }
+                            })
+                          ])
+                        : _vm._e()
                     }),
                     0
                   )
@@ -49218,7 +49741,9 @@ var render = function() {
           ])
         : _vm._e(),
       _vm._v(" "),
-      _vm.car.length != 0 ? _c("footer-component") : _vm._e()
+      _vm.car.length != 0 && _vm.Images.length != 0
+        ? _c("footer-component")
+        : _vm._e()
     ],
     1
   )
@@ -49645,118 +50170,6 @@ var staticRenderFns = [
     )
   }
 ]
-render._withStripped = true
-
-
-
-/***/ }),
-
-/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Statistic.vue?vue&type=template&id=1657fb75&scoped=true&":
-/*!************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Statistic.vue?vue&type=template&id=1657fb75&scoped=true& ***!
-  \************************************************************************************************************************************************************************************************************************/
-/*! exports provided: render, staticRenderFns */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "container-fluid" }, [
-    _c("div", { staticClass: "container" }, [
-      _c("div", { staticClass: "row count-up-row" }, [
-        _c("div", { staticClass: "count-up-back" }, [
-          _c(
-            "div",
-            { staticClass: "iCountUp" },
-            [
-              _c("i", { staticClass: "fas fa-user statisti-icons" }),
-              _vm._v(" "),
-              _c("ICountUp", {
-                attrs: {
-                  delay: _vm.delay,
-                  endVal: _vm.endValUsers,
-                  options: _vm.options
-                }
-              }),
-              _vm._v(" "),
-              _c("h5", [_vm._v("Пользовательи")])
-            ],
-            1
-          )
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "count-up-back" }, [
-          _c(
-            "div",
-            { staticClass: "iCountUp" },
-            [
-              _c("i", { staticClass: "fas fa-user statisti-icons" }),
-              _vm._v(" "),
-              _c("ICountUp", {
-                attrs: {
-                  delay: _vm.delay,
-                  endVal: _vm.endValUsers,
-                  options: _vm.options
-                }
-              }),
-              _vm._v(" "),
-              _c("h5", [_vm._v("Пользовательи")])
-            ],
-            1
-          )
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "count-up-back" }, [
-          _c(
-            "div",
-            { staticClass: "iCountUp" },
-            [
-              _c("i", { staticClass: "fas fa-user statisti-icons" }),
-              _vm._v(" "),
-              _c("ICountUp", {
-                attrs: {
-                  delay: _vm.delay,
-                  endVal: _vm.endValUsers,
-                  options: _vm.options
-                }
-              }),
-              _vm._v(" "),
-              _c("h5", [_vm._v("Пазвательи")])
-            ],
-            1
-          )
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "count-up-back" }, [
-          _c(
-            "div",
-            { staticClass: "iCountUp" },
-            [
-              _c("i", { staticClass: "fas fa-car" }),
-              _vm._v(" "),
-              _c("ICountUp", {
-                attrs: {
-                  delay: _vm.delay,
-                  endVal: _vm.endValCars,
-                  options: _vm.options
-                }
-              }),
-              _vm._v(" "),
-              _c("h5", [_vm._v("Машины")])
-            ],
-            1
-          )
-        ])
-      ])
-    ])
-  ])
-}
-var staticRenderFns = []
 render._withStripped = true
 
 
@@ -65898,22 +66311,11 @@ Vue.use(vue_router__WEBPACK_IMPORTED_MODULE_0__["default"]);
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
 Vue.component('header-component', __webpack_require__(/*! ./components/HeaderComponent.vue */ "./resources/js/components/HeaderComponent.vue")["default"]);
-Vue.component('footer-component', __webpack_require__(/*! ./components/FooterComponent.vue */ "./resources/js/components/FooterComponent.vue")["default"]); // Vue.component('home', require('./components/Home.vue').default);
-// Vue.component('register', require('./components/Register.vue').default);
-// Vue.component('auctions', require('./components/Auctions.vue').default);
-// Vue.component('faq', require('./components/Faq.vue').default);
-// Vue.component('about', require('./components/About.vue').default);
-// Vue.component('rules', require('./components/Rules.vue').default);
-// Vue.component('contacts', require('./components/Contacts.vue').default);
-// Vue.component('searchcar', require('./components/SearchCar.vue').default);
-// Vue.component('filtercars', require('./components/FilterCars.vue').default);
-// Vue.component('showcar', require('./components/ShowCar.vue').default);
-
+Vue.component('footer-component', __webpack_require__(/*! ./components/FooterComponent.vue */ "./resources/js/components/FooterComponent.vue")["default"]);
 Vue.component('Cube', __webpack_require__(/*! ./components/Cube.vue */ "./resources/js/components/Cube.vue")["default"]);
 Vue.component('app', __webpack_require__(/*! ./components/app.vue */ "./resources/js/components/app.vue")["default"]);
 Vue.component('filters', __webpack_require__(/*! ./components/Filters.vue */ "./resources/js/components/Filters.vue")["default"]);
 Vue.component('slider', __webpack_require__(/*! ./components/Slider.vue */ "./resources/js/components/Slider.vue")["default"]);
-Vue.component('statistic', __webpack_require__(/*! ./components/Statistic.vue */ "./resources/js/components/Statistic.vue")["default"]);
 Vue.component('cars-root', __webpack_require__(/*! ./components/Carsroot.vue */ "./resources/js/components/Carsroot.vue")["default"]);
 Vue.component('pagination', __webpack_require__(/*! laravel-vue-pagination */ "./node_modules/laravel-vue-pagination/dist/laravel-vue-pagination.common.js"));
 /**
@@ -67248,75 +67650,6 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./resources/js/components/Statistic.vue":
-/*!***********************************************!*\
-  !*** ./resources/js/components/Statistic.vue ***!
-  \***********************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _Statistic_vue_vue_type_template_id_1657fb75_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Statistic.vue?vue&type=template&id=1657fb75&scoped=true& */ "./resources/js/components/Statistic.vue?vue&type=template&id=1657fb75&scoped=true&");
-/* harmony import */ var _Statistic_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Statistic.vue?vue&type=script&lang=js& */ "./resources/js/components/Statistic.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
-
-
-
-
-
-/* normalize component */
-
-var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
-  _Statistic_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
-  _Statistic_vue_vue_type_template_id_1657fb75_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"],
-  _Statistic_vue_vue_type_template_id_1657fb75_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
-  false,
-  null,
-  "1657fb75",
-  null
-  
-)
-
-/* hot reload */
-if (false) { var api; }
-component.options.__file = "resources/js/components/Statistic.vue"
-/* harmony default export */ __webpack_exports__["default"] = (component.exports);
-
-/***/ }),
-
-/***/ "./resources/js/components/Statistic.vue?vue&type=script&lang=js&":
-/*!************************************************************************!*\
-  !*** ./resources/js/components/Statistic.vue?vue&type=script&lang=js& ***!
-  \************************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Statistic_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./Statistic.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Statistic.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Statistic_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
-
-/***/ }),
-
-/***/ "./resources/js/components/Statistic.vue?vue&type=template&id=1657fb75&scoped=true&":
-/*!******************************************************************************************!*\
-  !*** ./resources/js/components/Statistic.vue?vue&type=template&id=1657fb75&scoped=true& ***!
-  \******************************************************************************************/
-/*! exports provided: render, staticRenderFns */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Statistic_vue_vue_type_template_id_1657fb75_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./Statistic.vue?vue&type=template&id=1657fb75&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Statistic.vue?vue&type=template&id=1657fb75&scoped=true&");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Statistic_vue_vue_type_template_id_1657fb75_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Statistic_vue_vue_type_template_id_1657fb75_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
-
-
-
-/***/ }),
-
 /***/ "./resources/js/components/app.vue":
 /*!*****************************************!*\
   !*** ./resources/js/components/app.vue ***!
@@ -67503,10 +67836,549 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vue__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
+/* harmony import */ var _modules_auction_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./modules/auction.js */ "./resources/js/store/modules/auction.js");
+/* harmony import */ var _modules_user_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./modules/user.js */ "./resources/js/store/modules/user.js");
+/* harmony import */ var _modules_slider_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./modules/slider.js */ "./resources/js/store/modules/slider.js");
+/* harmony import */ var _modules_cars_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./modules/cars.js */ "./resources/js/store/modules/cars.js");
+/* harmony import */ var _modules_models_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./modules/models.js */ "./resources/js/store/modules/models.js");
+/* harmony import */ var _modules_states_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./modules/states.js */ "./resources/js/store/modules/states.js");
+/* harmony import */ var _modules_parking_js__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./modules/parking.js */ "./resources/js/store/modules/parking.js");
+/* harmony import */ var _modules_image_js__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./modules/image.js */ "./resources/js/store/modules/image.js");
+
+
+
+
+
+
+
+
 
 
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vuex__WEBPACK_IMPORTED_MODULE_1__["default"]);
-/* harmony default export */ __webpack_exports__["default"] = (new vuex__WEBPACK_IMPORTED_MODULE_1__["default"].Store({}));
+/* harmony default export */ __webpack_exports__["default"] = (new vuex__WEBPACK_IMPORTED_MODULE_1__["default"].Store({
+  modules: {
+    auctions: _modules_auction_js__WEBPACK_IMPORTED_MODULE_2__["default"],
+    user: _modules_user_js__WEBPACK_IMPORTED_MODULE_3__["default"],
+    slider: _modules_slider_js__WEBPACK_IMPORTED_MODULE_4__["default"],
+    cars: _modules_cars_js__WEBPACK_IMPORTED_MODULE_5__["default"],
+    models: _modules_models_js__WEBPACK_IMPORTED_MODULE_6__["default"],
+    states: _modules_states_js__WEBPACK_IMPORTED_MODULE_7__["default"],
+    parkings: _modules_parking_js__WEBPACK_IMPORTED_MODULE_8__["default"],
+    images: _modules_image_js__WEBPACK_IMPORTED_MODULE_9__["default"]
+  }
+}));
+
+/***/ }),
+
+/***/ "./resources/js/store/modules/auction.js":
+/*!***********************************************!*\
+  !*** ./resources/js/store/modules/auction.js ***!
+  \***********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  actions: {
+    fetchAuctions: function () {
+      var _fetchAuctions = _asyncToGenerator(
+      /*#__PURE__*/
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee(ctx) {
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                axios.get('/fetchauctions').then(function (response) {
+                  var auctions = response.data;
+                  ctx.commit('updateAuctions', auctions);
+                });
+
+              case 1:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, _callee);
+      }));
+
+      function fetchAuctions(_x) {
+        return _fetchAuctions.apply(this, arguments);
+      }
+
+      return fetchAuctions;
+    }()
+  },
+  mutations: {
+    updateAuctions: function updateAuctions(state, auctions) {
+      state.auctions = auctions;
+    }
+  },
+  state: {
+    auctions: []
+  },
+  getters: {
+    allAuctions: function allAuctions(state) {
+      return state.auctions;
+    }
+  }
+});
+
+/***/ }),
+
+/***/ "./resources/js/store/modules/cars.js":
+/*!********************************************!*\
+  !*** ./resources/js/store/modules/cars.js ***!
+  \********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  actions: {
+    fetchCars: function () {
+      var _fetchCars = _asyncToGenerator(
+      /*#__PURE__*/
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee(ctx) {
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                axios.get('/fetchcarsall').then(function (response) {
+                  var cars = response.data;
+                  ctx.commit('setCars', cars);
+                });
+
+              case 1:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, _callee);
+      }));
+
+      function fetchCars(_x) {
+        return _fetchCars.apply(this, arguments);
+      }
+
+      return fetchCars;
+    }()
+  },
+  mutations: {
+    setCars: function setCars(state, cars) {
+      state.cars = cars;
+    }
+  },
+  state: {
+    cars: []
+  },
+  getters: {
+    Cars: function Cars(state) {
+      return state.cars;
+    }
+  }
+});
+
+/***/ }),
+
+/***/ "./resources/js/store/modules/image.js":
+/*!*********************************************!*\
+  !*** ./resources/js/store/modules/image.js ***!
+  \*********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  actions: {
+    fetchImages: function () {
+      var _fetchImages = _asyncToGenerator(
+      /*#__PURE__*/
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee(ctx) {
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                axios.get('/images').then(function (response) {
+                  var images = response.data;
+                  ctx.commit('setImages', images);
+                });
+
+              case 1:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, _callee);
+      }));
+
+      function fetchImages(_x) {
+        return _fetchImages.apply(this, arguments);
+      }
+
+      return fetchImages;
+    }()
+  },
+  mutations: {
+    setImages: function setImages(state, images) {
+      state.images = images;
+    }
+  },
+  state: {
+    images: []
+  },
+  getters: {
+    Images: function Images(state) {
+      return state.images;
+    }
+  }
+});
+
+/***/ }),
+
+/***/ "./resources/js/store/modules/models.js":
+/*!**********************************************!*\
+  !*** ./resources/js/store/modules/models.js ***!
+  \**********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  actions: {
+    fetchModels: function () {
+      var _fetchModels = _asyncToGenerator(
+      /*#__PURE__*/
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee(ctx) {
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                axios.get('/fetchmodels').then(function (response) {
+                  var models = response.data;
+                  ctx.commit('setModels', models);
+                });
+
+              case 1:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, _callee);
+      }));
+
+      function fetchModels(_x) {
+        return _fetchModels.apply(this, arguments);
+      }
+
+      return fetchModels;
+    }()
+  },
+  mutations: {
+    setModels: function setModels(state, models) {
+      state.models = models;
+    }
+  },
+  state: {
+    models: []
+  },
+  getters: {
+    Models: function Models(state) {
+      return state.models;
+    }
+  }
+});
+
+/***/ }),
+
+/***/ "./resources/js/store/modules/parking.js":
+/*!***********************************************!*\
+  !*** ./resources/js/store/modules/parking.js ***!
+  \***********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  actions: {
+    fetchParkings: function () {
+      var _fetchParkings = _asyncToGenerator(
+      /*#__PURE__*/
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee(ctx) {
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                axios.get('/fetchparkings').then(function (response) {
+                  var parkings = response.parkings;
+                  ctx.commit('setParkings', parkings);
+                });
+
+              case 1:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, _callee);
+      }));
+
+      function fetchParkings(_x) {
+        return _fetchParkings.apply(this, arguments);
+      }
+
+      return fetchParkings;
+    }()
+  },
+  mutations: {
+    setParkings: function setParkings(state, parkings) {
+      state.parkings = parkings;
+    }
+  },
+  state: {
+    parkings: []
+  },
+  getters: {
+    Parkings: function Parkings(state) {
+      return state.parkings;
+    }
+  }
+});
+
+/***/ }),
+
+/***/ "./resources/js/store/modules/slider.js":
+/*!**********************************************!*\
+  !*** ./resources/js/store/modules/slider.js ***!
+  \**********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  actions: {
+    fetchSlider: function () {
+      var _fetchSlider = _asyncToGenerator(
+      /*#__PURE__*/
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee(ctx) {
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                axios.get('/fetchslider').then(function (response) {
+                  var slider = response.data;
+                  ctx.commit('setSlider', slider);
+                });
+
+              case 1:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, _callee);
+      }));
+
+      function fetchSlider(_x) {
+        return _fetchSlider.apply(this, arguments);
+      }
+
+      return fetchSlider;
+    }()
+  },
+  mutations: {
+    setSlider: function setSlider(state, slider) {
+      state.slider = slider;
+    }
+  },
+  state: {
+    slider: []
+  },
+  getters: {
+    Slider: function Slider(state) {
+      return state.slider;
+    }
+  }
+});
+
+/***/ }),
+
+/***/ "./resources/js/store/modules/states.js":
+/*!**********************************************!*\
+  !*** ./resources/js/store/modules/states.js ***!
+  \**********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  actions: {
+    fetchStates: function () {
+      var _fetchStates = _asyncToGenerator(
+      /*#__PURE__*/
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee(ctx) {
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                axios.get('/fetchstates').then(function (response) {
+                  var states = response.data;
+                  ctx.commit('setStates', states);
+                });
+
+              case 1:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, _callee);
+      }));
+
+      function fetchStates(_x) {
+        return _fetchStates.apply(this, arguments);
+      }
+
+      return fetchStates;
+    }()
+  },
+  mutations: {
+    setStates: function setStates(state, states) {
+      state.states = states;
+    }
+  },
+  state: {
+    states: []
+  },
+  getters: {
+    States: function States(state) {
+      return state.states;
+    }
+  }
+});
+
+/***/ }),
+
+/***/ "./resources/js/store/modules/user.js":
+/*!********************************************!*\
+  !*** ./resources/js/store/modules/user.js ***!
+  \********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  actions: {
+    fetchUser: function () {
+      var _fetchUser = _asyncToGenerator(
+      /*#__PURE__*/
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee(ctx) {
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                axios.get('/fetchUser').then(function (response) {
+                  var user = response.data;
+                  ctx.commit('updateUser', user);
+                });
+
+              case 1:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, _callee);
+      }));
+
+      function fetchUser(_x) {
+        return _fetchUser.apply(this, arguments);
+      }
+
+      return fetchUser;
+    }()
+  },
+  mutations: {
+    updateUser: function updateUser(state, user) {
+      state.user = user;
+    }
+  },
+  state: {
+    user: []
+  },
+  getters: {
+    User: function User(state) {
+      return state.user;
+    }
+  }
+});
 
 /***/ }),
 

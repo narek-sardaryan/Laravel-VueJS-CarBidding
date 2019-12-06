@@ -1,20 +1,22 @@
 <template>
     <div>
-        <header-component></header-component>
-        <div class="container-fluid profile_bg_white">
+        <Cube v-if="User.length == 0"></Cube>
+        <header-component v-if="User.length != 0"></header-component>
+        <div class="container-fluid profile_bg_white" v-if="User.length != 0">
             <div class="container profile_container">
                 <div class="row">
                     <div class="col profile_menu">
                         <div class="row mx-0">
                             <div class="col-md-3 avatar_section">
-                                <img class="avatar_img" v-if="!user.avatar && user.gender == 'male'"
+                                <h1>{{User.length}}</h1>
+                                <img class="avatar_img" v-if="!User.avatar && User.gender == 'male'"
                                      src="/img/avatar/images.png">
-                                <img class="avatar_img" v-else-if="!user.avatar && user.gender == 'female'"
+                                <img class="avatar_img" v-else-if="!User.avatar && User.gender == 'female'"
                                      src="/img/avatar/female-avatar-profile-icon-round-african-american-vector-18307298.jpg">
-                                <img class="avatar_img" v-else :src="'/img/'+user.avatar">
+                                <img class="avatar_img" v-else-if="User.avatar" :src="'/img/'+User.avatar">
                             </div>
                             <div class="col-md-6 user_name_ul ">
-                                <h6 class="user_name_tag">{{user.name}} {{user.sname}}</h6>
+                                <h6 class="user_name_tag">{{User.name}} {{User.sname}}</h6>
                                 <button class="myprofile_btn">Мой профиль</button>
                                 <button class="profile_btn_followers">Мои подписки</button>
                             </div>
@@ -44,21 +46,21 @@
                             <tbody>
                             <tr>
                                 <th>Фамилия *</th>
-                                <td class="showView">{{user.sname}}</td>
+                                <td class="showView">{{User.sname}}</td>
                                 <td class="showEdit">
                                     <input class="form-control  required" type="text" name="lastName" value="Sardaryan">
                                 </td>
                             </tr>
                             <tr>
                                 <th>Имя *</th>
-                                <td class="showView">{{user.name}}</td>
+                                <td class="showView">{{User.name}}</td>
                                 <td class="showEdit">
                                     <input class="form-control  required" type="text" name="lastName" value="Sardaryan">
                                 </td>
                             </tr>
                             <tr>
                                 <th>Дата рождения *</th>
-                                <td class="showView">{{user.date_of_birth}}</td>
+                                <td class="showView">{{User.date_of_birth}}</td>
                                 <td class="showEdit">
                                     <input class="form-control datepicker hasDatepicker" type="date" name="birthDate">
                                 </td>
@@ -96,7 +98,7 @@
                                 <tbody>
                                 <tr>
                                     <th>Паспорт *</th>
-                                    <td class="showView">{{user.passport}}</td>
+                                    <td class="showView">{{User.passport}}</td>
                                     <td class="showEdit">
                                         <input class="form-control  required" type="text" name="passportNumber"
                                                value="Sardaryan">
@@ -104,7 +106,7 @@
                                 </tr>
                                 <tr>
                                     <th>Кем выдан *</th>
-                                    <td class="showView">{{user.issuedBy}}</td>
+                                    <td class="showView">{{User.issuedBy}}</td>
                                     <td class="showEdit">
                                         <input class="form-control  required" type="text" name="givenFrom"
                                                value="Sardaryan">
@@ -112,7 +114,7 @@
                                 </tr>
                                 <tr>
                                     <th>Дата выдачи *</th>
-                                    <td class="showView">{{user.dateOfIssue}}</td>
+                                    <td class="showView">{{User.dateOfIssue}}</td>
                                     <td class="showEdit">
                                         <input class="form-control  required" type="text" name="givenDate"
                                                value="Sardaryan">
@@ -120,7 +122,7 @@
                                 </tr>
                                 <tr>
                                     <th>Код подразделения *</th>
-                                    <td class="showView">{{user.unitCode}}</td>
+                                    <td class="showView">{{User.unitCode}}</td>
                                     <td class="showEdit">
                                         <input class="form-control  required" type="text" name="placeCode"
                                                value="Sardaryan">
@@ -128,7 +130,7 @@
                                 </tr>
                                 <tr>
                                     <th>Место регистрации *</th>
-                                    <td class="showView">{{user.placeOfRegistration}}</td>
+                                    <td class="showView">{{User.placeOfRegistration}}</td>
                                     <td class="showEdit">
                                         <input class="form-control  required" type="text" name="RegistrName"
                                                value="Sardaryan">
@@ -143,7 +145,7 @@
                                 <tbody>
                                 <tr>
                                     <th>Телефон *</th>
-                                    <td class="showView">{{user.phone}}</td>
+                                    <td class="showView">{{User.phone}}</td>
                                     <td class="showEdit">
                                         <input class="form-control  required" type="tel" name="phone"
                                                value="Sardaryan">
@@ -151,7 +153,7 @@
                                 </tr>
                                 <tr>
                                     <th>E-mail *</th>
-                                    <td class="showView">{{user.email}}</td>
+                                    <td class="showView">{{User.email}}</td>
                                     <td class="showEdit">
                                         <input class="form-control  required" type="email" name="email"
                                                value="Sardaryan">
@@ -159,7 +161,7 @@
                                 </tr>
                                 <tr>
                                     <th>Почтовый индекс *</th>
-                                    <td class="showView">{{user.postcode}}</td>
+                                    <td class="showView">{{User.postcode}}</td>
                                     <td class="showEdit">
                                         <input class="form-control  required" type="text" name="postIndex"
                                                value="Sardaryan">
@@ -167,14 +169,14 @@
                                 </tr>
                                 <tr>
                                     <th>Почтовый адрес *</th>
-                                    <td class="showView">{{user.email}}</td>
+                                    <td class="showView">{{User.email}}</td>
                                     <td class="showEdit">
                                         <input class="form-control required" type="text" name="postCode">
                                     </td>
                                 </tr>
                                 <tr>
                                     <th>Дополнительно *</th>
-                                    <td class="showView">{{user.additionally}}</td>
+                                    <td class="showView">{{User.additionally}}</td>
                                     <td class="showEdit">
                                         <input class="form-control required" type="text" name="additional"
                                                value="Sardaryan">
@@ -192,8 +194,8 @@
                             <table class="table table-striped table-hover">
                                 <tbody>
                                 <tr>
-                                    <th>Лицевой счет № {{user.id}} *</th>
-                                    <td class="showView">{{user.sname}}</td>
+                                    <th>Лицевой счет № {{User.id}} *</th>
+                                    <td class="showView">{{User.sname}}</td>
                                     <td class="showEdit">
                                         <input class="form-control  required" type="text" name="passportNumber"
                                                value="Sardaryan">
@@ -201,7 +203,7 @@
                                 </tr>
                                 <tr>
                                     <th>Субсчет депозита *</th>
-                                    <td class="showView">{{user.name}}</td>
+                                    <td class="showView">{{User.name}}</td>
                                     <td class="showEdit">
                                         <input class="form-control  required" type="text" name="givenFrom"
                                                value="Sardaryan">
@@ -209,7 +211,7 @@
                                 </tr>
                                 <tr>
                                     <th>Субсчет свободных средств *</th>
-                                    <td class="showView">{{user.sname}}</td>
+                                    <td class="showView">{{User.sname}}</td>
                                     <td class="showEdit">
                                         <input class="form-control  required" type="text" name="givenDate"
                                                value="Sardaryan">
@@ -217,7 +219,7 @@
                                 </tr>
                                 <tr>
                                     <th>Субсчет заблокированных средств в счет задатка *</th>
-                                    <td class="showView">{{user.sname}}</td>
+                                    <td class="showView">{{User.sname}}</td>
                                     <td class="showEdit">
                                         <input class="form-control  required" type="text" name="placeCode"
                                                value="Sardaryan">
@@ -232,7 +234,7 @@
                                 <tbody>
                                 <tr>
                                     <th>Расчетный счет *</th>
-                                    <td class="showView">{{user.phone}}</td>
+                                    <td class="showView">{{User.phone}}</td>
                                     <td class="showEdit">
                                         <input class="form-control  required" type="tel" name="phone"
                                                value="Sardaryan">
@@ -240,7 +242,7 @@
                                 </tr>
                                 <tr>
                                     <th>Корреспондентский счет *</th>
-                                    <td class="showView">{{user.email}}</td>
+                                    <td class="showView">{{User.email}}</td>
                                     <td class="showEdit">
                                         <input class="form-control  required" type="email" name="email"
                                                value="Sardaryan">
@@ -248,7 +250,7 @@
                                 </tr>
                                 <tr>
                                     <th>БИК *</th>
-                                    <td class="showView">{{user.postcode}}</td>
+                                    <td class="showView">{{User.postcode}}</td>
                                     <td class="showEdit">
                                         <input class="form-control  required" type="text" name="postIndex"
                                                value="Sardaryan">
@@ -256,14 +258,14 @@
                                 </tr>
                                 <tr>
                                     <th>ИНН *</th>
-                                    <td class="showView">{{user.date_of_birth}}</td>
+                                    <td class="showView">{{User.date_of_birth}}</td>
                                     <td class="showEdit">
                                         <input class="form-control required" type="text" name="postCode">
                                     </td>
                                 </tr>
                                 <tr>
                                     <th>КПП *</th>
-                                    <td class="showView">{{user.sname}}</td>
+                                    <td class="showView">{{User.sname}}</td>
                                     <td class="showEdit">
                                         <input class="form-control required" type="text" name="additional"
                                                value="Sardaryan">
@@ -271,7 +273,7 @@
                                 </tr>
                                 <tr>
                                     <th>Наименование банка *</th>
-                                    <td class="showView">{{user.sname}}</td>
+                                    <td class="showView">{{User.sname}}</td>
                                     <td class="showEdit">
                                         <input class="form-control required" type="text" name="additional"
                                                value="Sardaryan">
@@ -279,7 +281,7 @@
                                 </tr>
                                 <tr>
                                     <th>Наименование получателя *</th>
-                                    <td class="showView">{{user.sname}}</td>
+                                    <td class="showView">{{User.sname}}</td>
                                     <td class="showEdit">
                                         <input class="form-control required" type="text" name="additional"
                                                value="Sardaryan">
@@ -287,7 +289,7 @@
                                 </tr>
                                 <tr>
                                     <th>Назначение платежа для субсчета депозита *</th>
-                                    <td class="showView">{{user.sname}}</td>
+                                    <td class="showView">{{User.sname}}</td>
                                     <td class="showEdit">
                                         <input class="form-control required" type="text" name="additional"
                                                value="Sardaryan">
@@ -295,7 +297,7 @@
                                 </tr>
                                 <tr>
                                     <th>Назначение платежа для субсчета свободных средств *</th>
-                                    <td class="showView">{{user.sname}}</td>
+                                    <td class="showView">{{User.sname}}</td>
                                     <td class="showEdit">
                                         <input class="form-control required" type="text" name="additional"
                                                value="Sardaryan">
@@ -350,28 +352,23 @@
                 </div>
             </div>
         </div>
-        <footer-component></footer-component>
+        <footer-component v-if="User.length != 0"></footer-component>
     </div>
 </template>
 
 <script>
+    import {mapGetters} from 'vuex';
     export default {
         name: "Profile",
         data() {
             return {
-                user: [],
                 csrf: document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
             }
         },
-        created: function () {
-            this.fetchUser();
+        mounted(){
+            this.$store.dispatch('fetchUser');
         },
         methods: {
-            fetchUser() {
-                axios.get('/fetchUser').then(response => {
-                    this.user = response.data;
-                })
-            },
             openTabs(tabname) {
                 var i, tabcontent, tablinks;
                 tabcontent = document.getElementsByClassName("tabcontent");
@@ -390,7 +387,8 @@
                 }
                 document.getElementById(tabname + 'but').classList.add("active");
             },
-        }
+        },
+        computed: mapGetters(["User"]),
     }
 </script>
 

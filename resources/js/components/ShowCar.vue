@@ -1,14 +1,14 @@
 <template>
     <div>
-        <Cube v-if="car.length == 0"></Cube>
-        <header-component v-if="car.length != 0"></header-component>
-        <div class="container-fluid margin" v-if="car.length != 0">
+        <Cube v-if="car.length == 0 && Images.length == 0"></Cube>
+        <header-component v-if="car.length != 0 && Images.length != 0"></header-component>
+        <div class="container-fluid margin" v-if="car.length != 0 && Images.length != 0">
             <div class="container">
                 <div class="row main_row">
                     <div class="col cars_section">
                         <img class="img-fluid" id="main_pic" :src="'/img/'+car.mainpics" alt="BMW">
                         <div class="row small_pics_row">
-                            <div v-for="image in images" class="col-md-3 smallSlide">
+                            <div v-for="image in Images" v-if="image.carID == id" class="col-md-3 smallSlide">
                                 <img @click="slide(image.id)" :id="image.id" class="img-fluid smallImages"
                                      :src="'/img/'+image.name" alt="Slide">
                             </div>
@@ -85,38 +85,31 @@
                 </div>
             </div>
         </div>
-        <footer-component v-if="car.length != 0"></footer-component>
+        <footer-component v-if="car.length != 0 && Images.length != 0"></footer-component>
     </div>
 </template>
 
 <script>
-    import Cube from './Cube';
-
+    import {mapGetters} from 'vuex';
     export default {
         name: "ShowCar",
         data() {
             return {
                 id: this.$route.params['id'],
                 car: [],
-                images: [],
             }
         },
         created: function () {
             this.fetchCar();
-            this.fetchImages();
         },
-        component: {
-            Cube
+        mounted(){
+            this.$store.dispatch('fetchImages');
         },
+        computed: mapGetters(["Images"]),
         methods: {
             fetchCar() {
                 axios.get('/car/' + this.id).then(response => {
                     this.car = response.data;
-                })
-            },
-            fetchImages() {
-                axios.get('/images').then(response => {
-                    this.images = response.data.filter(obj => obj.carID == this.id);
                 })
             },
             slide(id) {
