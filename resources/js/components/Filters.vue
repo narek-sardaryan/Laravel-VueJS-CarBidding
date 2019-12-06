@@ -89,7 +89,7 @@
                         <select @change="filterByModels($event)" id="model" name="modelval"
                                 class="form-control options selectbox">
                             <option value="">Все марки</option>
-                            <option v-for="(model, index) in models" :value="model.id">{{ model.name
+                            <option v-for="(model, index) in Models" :value="model.id">{{ model.name
                                 }}
                             </option>
                         </select>
@@ -99,7 +99,7 @@
                         <select id="state" @change="filterByStates($event)" name="stateval"
                                 class="form-control options selectbox">
                             <option value="">Все состояния</option>
-                            <option v-for="(state, index) in states" :value="state.id">{{ state.name
+                            <option v-for="(state, index) in States" :value="state.id">{{ state.name
                                 }}
                             </option>
                         </select>
@@ -109,7 +109,7 @@
                         <select id="parking" name="parkingval" @change="filterByParkings($event)"
                                 class="form-control options selectbox">
                             <option value="">Все стоянки</option>
-                            <option v-for="(parking, index) in parkings" :value="parking.id">
+                            <option v-for="(parking, index) in Parkings" :value="parking.id">
                                 {{ parking.address }}
                             </option>
                         </select>
@@ -144,6 +144,7 @@
 </template>
 
 <script>
+    import {mapGetters} from 'vuex';
     export default {
         name: "Filters",
         props: ['allcars'],
@@ -158,9 +159,6 @@
                 quanitityTrailers: 0,
                 quanitityBus: 0,
                 quanititySprecialTech: 0,
-                states: [],
-                parkings: [],
-                models: [],
                 startAu: '',
                 endAu: '',
                 stateId: '',
@@ -172,9 +170,15 @@
         },
         created: function(){
             this.counts();
-            this.fetchsFilters();
             this.allCarsLength = this.allcars.length;
         },
+        mounted(){
+            this.$store.dispatch('fetchModels');
+            this.$store.dispatch('fetchStates');
+            this.$store.dispatch('fetchParkings');
+            this.$store.dispatch('fetchCars');
+        },
+        computed: mapGetters(["Models","States","Parkings","Cars"]),
         methods: {
             counts(){
                 this.quanitityAll = this.allcars.length
@@ -186,48 +190,25 @@
                 this.quanitityBus = this.allcars.filter(obj => (obj.bodyId == 8)).length
                 this.quanititySprecialTech = this.allcars.filter(obj => (obj.bodyId == 9)).length
             },
-            fetchsFilters() {
-                axios.get('/fetchmodels').then(response => {
-                    this.models = response.data;
-                })
-                axios.get('/fetchstates').then(response => {
-                    this.states = response.data;
-                })
-                axios.get('/fetchparkings').then(response => {
-                    this.parkings = response.data;
-                })
-            },
-
             filterByParkings(event) {
                 this.parkingId = event.target.value;
-                axios.get('/fetchcarsall').then(response => {
-                    this.allCarsLength = response.data.filter(obj => (obj.parkingId == this.parkingId) && (this.stateId == obj.stateId || this.stateId == '') && (this.modelId == obj.modelId || this.modelId == '') && (this.bodiesId == obj.bodyId || this.bodiesId == '') && (!this.startAu || this.startAu >= new Date(obj.auctionStart).getTime()) && (!this.endAu || this.endAu <= new Date(obj.endOfAuction).getTime())).length;
-                })
+                    this.allCarsLength = this.Cars.filter(obj => (obj.parkingId == this.parkingId) && (this.stateId == obj.stateId || this.stateId == '') && (this.modelId == obj.modelId || this.modelId == '') && (this.bodiesId == obj.bodyId || this.bodiesId == '') && (!this.startAu || this.startAu >= new Date(obj.auctionStart).getTime()) && (!this.endAu || this.endAu <= new Date(obj.endOfAuction).getTime())).length;
             },
             filterByStarts(event) {
                 this.startAu = new Date(event.target.value).getTime();
-                axios.get('/fetchcarsall').then(response => {
-                    this.allCarsLength = response.data.filter(obj => ((new Date(obj.auctionStart).getTime()) >= this.startAu) && (this.stateId == obj.stateId || this.stateId == '') && (this.parkingId == obj.parkingId || this.parkingId == '') && (this.modelId == obj.modelId || this.modelId == '') && (this.bodiesId == obj.bodyId || this.bodiesId == '') && (!this.endAu || this.endAu <= new Date(obj.endOfAuction).getTime())).length;
-                })
+                    this.allCarsLength = this.Cars.filter(obj => ((new Date(obj.auctionStart).getTime()) >= this.startAu) && (this.stateId == obj.stateId || this.stateId == '') && (this.parkingId == obj.parkingId || this.parkingId == '') && (this.modelId == obj.modelId || this.modelId == '') && (this.bodiesId == obj.bodyId || this.bodiesId == '') && (!this.endAu || this.endAu <= new Date(obj.endOfAuction).getTime())).length;
             },
             filterByEnds(event) {
                 this.endAu = new Date(event.target.value).getTime();
-                axios.get('/fetchcarsall').then(response => {
-                    this.allCarsLength = response.data.filter(obj => ((new Date(obj.endOfAuction).getTime()) <= this.endAu) && (this.stateId == obj.stateId || this.stateId == '') && (this.parkingId == obj.parkingId || this.parkingId == '') && (this.modelId == obj.modelId || this.modelId == '') && (this.bodiesId == obj.bodyId || this.bodiesId == '') && (!this.startAu || this.startAu >= new Date(obj.auctionStart).getTime())).length;
-                })
+                    this.allCarsLength = this.Cars.filter(obj => ((new Date(obj.endOfAuction).getTime()) <= this.endAu) && (this.stateId == obj.stateId || this.stateId == '') && (this.parkingId == obj.parkingId || this.parkingId == '') && (this.modelId == obj.modelId || this.modelId == '') && (this.bodiesId == obj.bodyId || this.bodiesId == '') && (!this.startAu || this.startAu >= new Date(obj.auctionStart).getTime())).length;
             },
             filterByModels(event) {
                 this.modelId = event.target.value;
-                axios.get('/fetchcarsall').then(response => {
-                    this.allCarsLength = response.data.filter(obj => (obj.modelId == this.modelId) && (this.stateId == obj.stateId || this.stateId == '') && (this.parkingId == obj.parkingId || this.parkingId == '') && (this.bodiesId == obj.bodyId || this.bodiesId == '') && (!this.startAu || this.startAu >= new Date(obj.auctionStart).getTime()) && (!this.endAu || this.endAu <= new Date(obj.endOfAuction).getTime())).length;
-                })
+                    this.allCarsLength = this.Cars.filter(obj => (obj.modelId == this.modelId) && (this.stateId == obj.stateId || this.stateId == '') && (this.parkingId == obj.parkingId || this.parkingId == '') && (this.bodiesId == obj.bodyId || this.bodiesId == '') && (!this.startAu || this.startAu >= new Date(obj.auctionStart).getTime()) && (!this.endAu || this.endAu <= new Date(obj.endOfAuction).getTime())).length;
             },
             filterByStates(event) {
                 this.stateId = event.target.value;
-                console.log(this.stateId)
-                axios.get('/fetchcarsall').then(response => {
-                    this.allCarsLength = response.data.filter(obj => (obj.stateId == this.stateId) && (this.bodiesId == obj.bodyId || this.bodiesId == '') && (this.parkingId == obj.parkingId || this.parkingId == '') && (this.modelId == obj.modelId || this.modelId == '') && (!this.startAu || this.startAu >= new Date(obj.auctionStart).getTime()) && (!this.endAu || this.endAu <= new Date(obj.endOfAuction).getTime())).length;
-                })
+                    this.allCarsLength = this.Cars.filter(obj => (obj.stateId == this.stateId) && (this.bodiesId == obj.bodyId || this.bodiesId == '') && (this.parkingId == obj.parkingId || this.parkingId == '') && (this.modelId == obj.modelId || this.modelId == '') && (!this.startAu || this.startAu >= new Date(obj.auctionStart).getTime()) && (!this.endAu || this.endAu <= new Date(obj.endOfAuction).getTime())).length;
             },
             classLi(id) {
                 const li = document.getElementsByClassName("body-cars");
