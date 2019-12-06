@@ -1949,6 +1949,39 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "About",
   data: function data() {
@@ -2043,32 +2076,6 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -2219,25 +2226,6 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -3255,6 +3243,17 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Profile",
@@ -3718,6 +3717,8 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
+//
+//
 //
 //
 //
@@ -45543,60 +45544,56 @@ var render = function() {
     [
       _c("header-component"),
       _vm._v(" "),
-      _c(
-        "div",
-        { staticClass: "bg_img", staticStyle: { "margin-top": "79px" } },
-        [
-          _c("div", { staticClass: "container" }, [
-            _c("div", { staticClass: "row justify-content-end" }, [
-              _c(
-                "div",
-                { staticClass: "col-md-6 about_div" },
-                [
-                  _c("h1", { staticClass: "about_paragraph" }, [
-                    _vm._v("О компании")
-                  ]),
-                  _vm._v(" "),
-                  _c("p", { staticClass: "about_txt" }),
-                  _c("p", { staticClass: "hello" }, [_vm._v("Здравствуйте!")]),
-                  _vm._v(
-                    "\n                    Мы создали нашу компанию в 2006 году. У нас была цель, сделать красивый и современный\n                    бизнес."
-                  ),
-                  _c("br"),
-                  _vm._v(
-                    "\n                    Воплощая эту идею, мы создали в сети Интернет торговую площадку по продаже аварийных\n                    автомобилей. Нас с самого начала не интересовали простые доски объявлений – мы стремились\n                    создать именно сайт по оценке и продаже автомобилей после ДТП, где конечную стоимость\n                    продаваемого поврежденного автомобиля, будет определять рынок – именно такая цена является\n                    справедливой и для продавцов – страховых и лизинговых компаний, и для покупателей.\n                    Воплощая эту идею, мы создали в сети Интернет торговую площадку по продаже аварийных\n                    автомобилей. Нас с самого начала не интересовали простые доски объявлений – мы стремились\n                    создать именно сайт по оценке и продаже автомобилей после ДТП, где конечную стоимость\n                    продаваемого поврежденного автомобиля, будет определять рынок – именно такая цена является\n                    справедливой и для продавцов – страховых и лизинговых компаний, и для покупателей.\n                    Воплощая эту идею, мы создали в сети Интернет торговую площадку по продаже аварийных\n                    автомобилей. Нас с самого начала не интересовали простые доски объявлений – мы стремились\n                    создать именно сайт по оценке и продаже автомобилей после ДТП, где конечную стоимость\n                    продаваемого поврежденного автомобиля, будет определять рынок – именно такая цена является\n                    справедливой и для продавцов – страховых и лизинговых компаний, и для покупателей.\n                    "
-                  ),
-                  _c("p"),
-                  _vm._v(" "),
-                  _c("transition", { attrs: { name: "slide-fade" } }, [
-                    _vm.show
-                      ? _c("p", { staticClass: "add_txt_show" }, [
-                          _vm._v(
-                            "\n                            Воплощая эту идею, мы создали в сети Интернет торговую площадку по продаже аварийных\n                            автомобилей. Нас с самого начала не интересовали простые доски объявлений – мы\n                            стремились создать именно сайт по оценке и продаже автомобилей после ДТП, где конечную\n                            стоимость продаваемого поврежденного автомобиля, будет определять рынок – именно такая\n                            цена является справедливой и для продавцов – страховых и лизинговых компаний, и для\n                            покупателей.\n                        "
-                          )
-                        ])
-                      : _vm._e()
-                  ]),
-                  _vm._v(" "),
-                  _c(
-                    "button",
-                    {
-                      staticClass: "show_more_btn",
-                      on: {
-                        click: function($event) {
-                          _vm.show = !_vm.show
-                        }
+      _c("div", { staticClass: "bg_img" }, [
+        _c("div", { staticClass: "container" }, [
+          _c("div", { staticClass: "row justify-content-end" }, [
+            _c(
+              "div",
+              { staticClass: "col-md-6 about_div" },
+              [
+                _c("h1", { staticClass: "about_paragraph" }, [
+                  _vm._v("О компании")
+                ]),
+                _vm._v(" "),
+                _c("p", { staticClass: "about_txt" }),
+                _c("p", { staticClass: "hello" }, [_vm._v("Здравствуйте!")]),
+                _vm._v(
+                  "\n                    Мы создали нашу компанию в 2006 году. У нас была цель, сделать красивый и современный\n                    бизнес."
+                ),
+                _c("br"),
+                _vm._v(
+                  "\n                    Воплощая эту идею, мы создали в сети Интернет торговую площадку по продаже аварийных\n                    автомобилей. Нас с самого начала не интересовали простые доски объявлений – мы стремились\n                    создать именно сайт по оценке и продаже автомобилей после ДТП, где конечную стоимость\n                    продаваемого поврежденного автомобиля, будет определять рынок – именно такая цена является\n                    справедливой и для продавцов – страховых и лизинговых компаний, и для покупателей.\n                    Воплощая эту идею, мы создали в сети Интернет торговую площадку по продаже аварийных\n                    автомобилей. Нас с самого начала не интересовали простые доски объявлений – мы стремились\n                    создать именно сайт по оценке и продаже автомобилей после ДТП, где конечную стоимость\n                    продаваемого поврежденного автомобиля, будет определять рынок – именно такая цена является\n                    справедливой и для продавцов – страховых и лизинговых компаний, и для покупателей.\n                    "
+                ),
+                _c("p"),
+                _vm._v(" "),
+                _c("transition", { attrs: { name: "slide-fade" } }, [
+                  _vm.show
+                    ? _c("p", { staticClass: "add_txt_show" }, [
+                        _vm._v(
+                          "\n                            Воплощая эту идею, мы создали в сети Интернет торговую площадку по продаже аварийных\n                            автомобилей. Нас с самого начала не интересовали простые доски объявлений – мы\n                            стремились создать именно сайт по оценке и продаже автомобилей после ДТП, где конечную\n                            стоимость продаваемого поврежденного автомобиля, будет определять рынок – именно такая\n                            цена является справедливой и для продавцов – страховых и лизинговых компаний, и для\n                            покупателей.\n                        "
+                        )
+                      ])
+                    : _vm._e()
+                ]),
+                _vm._v(" "),
+                _c(
+                  "button",
+                  {
+                    staticClass: "show_more_btn",
+                    on: {
+                      click: function($event) {
+                        _vm.show = !_vm.show
                       }
-                    },
-                    [_vm._v("Show More")]
-                  )
-                ],
-                1
-              )
-            ])
+                    }
+                  },
+                  [_vm._v("Show More")]
+                )
+              ],
+              1
+            )
           ])
-        ]
-      ),
+        ])
+      ]),
       _vm._v(" "),
       _c("section", { staticClass: "partners" }, [
         _c("div", { staticClass: "container" }, [
@@ -45607,7 +45604,7 @@ var render = function() {
           _c(
             "div",
             {
-              staticClass: "carousel slide m-50 slide",
+              staticClass: "carousel slide d-none d-sm-block m-50 slide",
               attrs: { id: "carouselAbout", "data-ride": "carousel" }
             },
             [
@@ -45729,6 +45726,125 @@ var render = function() {
                 _vm._m(1)
               ])
             ]
+          ),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              staticClass: "carousel slide d-block d-sm-none slide",
+              attrs: { id: "about_slide_responsive", "data-ride": "carousel" }
+            },
+            [
+              _c("div", { staticClass: "carousel-inner text-center" }, [
+                _c("div", { staticClass: "carousel-item active" }, [
+                  _c("img", {
+                    directives: [
+                      {
+                        name: "lazy-src",
+                        rawName: "v-lazy-src",
+                        value: "/img/about_img/bmw].png",
+                        expression: "'/img/about_img/bmw].png'"
+                      }
+                    ]
+                  })
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "carousel-item" }, [
+                  _c("img", {
+                    directives: [
+                      {
+                        name: "lazy-src",
+                        rawName: "v-lazy-src",
+                        value: "/img/about_img/Porsche-logo.png",
+                        expression: "'/img/about_img/Porsche-logo.png'"
+                      }
+                    ]
+                  })
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "carousel-item" }, [
+                  _c("img", {
+                    directives: [
+                      {
+                        name: "lazy-src",
+                        rawName: "v-lazy-src",
+                        value: "/img/about_img/toyota.png",
+                        expression: "'/img/about_img/toyota.png'"
+                      }
+                    ]
+                  })
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "carousel-item" }, [
+                  _c("img", {
+                    directives: [
+                      {
+                        name: "lazy-src",
+                        rawName: "v-lazy-src",
+                        value: "/img/about_img/Ferrari-logo.png",
+                        expression: "'/img/about_img/Ferrari-logo.png'"
+                      }
+                    ]
+                  })
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "carousel-item" }, [
+                  _c("img", {
+                    directives: [
+                      {
+                        name: "lazy-src",
+                        rawName: "v-lazy-src",
+                        value: "/img/about_img/Lamborghini-logo.png",
+                        expression: "'/img/about_img/Lamborghini-logo.png'"
+                      }
+                    ]
+                  })
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "carousel-item" }, [
+                  _c("img", {
+                    directives: [
+                      {
+                        name: "lazy-src",
+                        rawName: "v-lazy-src",
+                        value: "/img/about_img/Volkswagen-logo.png",
+                        expression: "'/img/about_img/Volkswagen-logo.png'"
+                      }
+                    ]
+                  })
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "carousel-item" }, [
+                  _c("img", {
+                    directives: [
+                      {
+                        name: "lazy-src",
+                        rawName: "v-lazy-src",
+                        value: "/img/about_img/Bugatti-logo.png",
+                        expression: "'/img/about_img/Bugatti-logo.png'"
+                      }
+                    ]
+                  })
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "carousel-item" }, [
+                  _c("img", {
+                    directives: [
+                      {
+                        name: "lazy-src",
+                        rawName: "v-lazy-src",
+                        value: "/img/about_img/Mitsubishi-logo.png",
+                        expression: "'/img/about_img/Mitsubishi-logo.png'"
+                      }
+                    ]
+                  })
+                ]),
+                _vm._v(" "),
+                _vm._m(2),
+                _vm._v(" "),
+                _vm._m(3)
+              ])
+            ]
           )
         ])
       ]),
@@ -45769,6 +45885,44 @@ var staticRenderFns = [
           staticClass: "carousel-arrow-right",
           attrs: {
             href: "#carouselAbout",
+            role: "button",
+            "data-slide": "prev"
+          }
+        },
+        [_c("i", { staticClass: "fas fa-chevron-right" })]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "about-row" }, [
+      _c(
+        "a",
+        {
+          staticClass: "carousel-arrow-left",
+          attrs: {
+            href: "#about_slide_responsive",
+            role: "button",
+            "data-slide": "next"
+          }
+        },
+        [_c("i", { staticClass: "fas fa-chevron-left" })]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "about-row" }, [
+      _c(
+        "a",
+        {
+          staticClass: "carousel-arrow-right",
+          attrs: {
+            href: "#about_slide_responsive",
             role: "button",
             "data-slide": "prev"
           }
@@ -45875,7 +46029,7 @@ var render = function() {
                       { key: car.id, attrs: { to: "/cars/" + car.id } },
                       [
                         _c("div", { staticClass: "row" }, [
-                          _c("div", { staticClass: "col-md-12 text-hover" }, [
+                          _c("div", { staticClass: "text-hover" }, [
                             _c("img", {
                               directives: [
                                 {
@@ -45890,90 +46044,30 @@ var render = function() {
                             _vm._v(" "),
                             _c(
                               "div",
-                              { staticClass: "car-informacion-article" },
+                              { staticClass: "drop-text drop-text-responsive" },
                               [
-                                _c(
-                                  "div",
-                                  { staticClass: "inform-text-article" },
-                                  [
-                                    _c("div", { staticClass: "drop-text" }, [
-                                      _c("div", { staticClass: "row" }, [
-                                        _c("div", { staticClass: "col" }, [
-                                          _c("p", [
-                                            _vm._v(
-                                              _vm._s(car.name) +
-                                                " | " +
-                                                _vm._s(car.year)
-                                            )
-                                          ])
-                                        ])
-                                      ]),
-                                      _vm._v(" "),
-                                      _c("div", { staticClass: "row" }, [
-                                        _c("div", { staticClass: "col" }, [
-                                          _c("p", [
-                                            _vm._v(
-                                              "Текущая цена | " +
-                                                _vm._s(car.currentPrice) +
-                                                " ₽"
-                                            )
-                                          ])
-                                        ])
-                                      ]),
-                                      _vm._v(" "),
-                                      _c("div", { staticClass: "row" }, [
-                                        _c("div", { staticClass: "col" }, [
-                                          _c("p", [
-                                            _vm._v(
-                                              "Начало торгов | " +
-                                                _vm._s(car.auctionStart)
-                                            )
-                                          ])
-                                        ])
-                                      ]),
-                                      _vm._v(" "),
-                                      _c("div", { staticClass: "row" }, [
-                                        _c("div", { staticClass: "col" }, [
-                                          _c("p", [
-                                            _vm._v(
-                                              "Завершение торгов: | " +
-                                                _vm._s(car.endOfAuction)
-                                            )
-                                          ])
-                                        ])
-                                      ])
-                                    ])
-                                  ]
-                                )
-                              ]
-                            ),
-                            _vm._v(" "),
-                            _c(
-                              "div",
-                              { staticClass: "inform_txt_responsive" },
-                              [
-                                _c("p", { staticClass: "inform_txt_p" }, [
+                                _c("p", { staticClass: "cars-article-texts" }, [
                                   _vm._v(
                                     _vm._s(car.name) + " | " + _vm._s(car.year)
                                   )
                                 ]),
                                 _vm._v(" "),
-                                _c("p", { staticClass: "inform_txt_p" }, [
+                                _c("p", { staticClass: "cars-article-texts" }, [
                                   _vm._v(
-                                    "Текущая цена |  " +
+                                    "Текущая цена | " +
                                       _vm._s(car.currentPrice) +
                                       " ₽"
                                   )
                                 ]),
                                 _vm._v(" "),
-                                _c("p", { staticClass: "inform_txt_p" }, [
+                                _c("p", { staticClass: "cars-article-texts" }, [
                                   _vm._v(
                                     "Начало торгов | " +
                                       _vm._s(car.auctionStart)
                                   )
                                 ]),
                                 _vm._v(" "),
-                                _c("p", { staticClass: "inform_txt_p" }, [
+                                _c("p", { staticClass: "cars-article-texts" }, [
                                   _vm._v(
                                     "Завершение торгов: | " +
                                       _vm._s(car.endOfAuction)
@@ -45984,11 +46078,9 @@ var render = function() {
                           ]),
                           _vm._v(" "),
                           _c("div", { staticClass: "article-price" }, [
-                            _vm._v(
-                              "\n                            " +
-                                _vm._s(car.currentPrice) +
-                                "₽\n                        "
-                            )
+                            _c("p", { staticClass: "article-price-tag" }, [
+                              _vm._v(_vm._s(car.currentPrice) + "₽")
+                            ])
                           ])
                         ])
                       ]
@@ -46087,7 +46179,7 @@ var staticRenderFns = [
     return _c("div", { staticClass: "container-fluid contacts_bg_img" }, [
       _c(
         "div",
-        { staticClass: "container", staticStyle: { "margin-top": "79px" } },
+        { staticClass: "container", staticStyle: { "margin-top": "80px" } },
         [
           _c("div", { staticClass: "row" }, [
             _c("div", { staticClass: "col-md-4 contacts_div" }, [
@@ -46238,6 +46330,8 @@ var render = function() {
   return _c(
     "div",
     [
+      _vm.Slider.length == 0 || _vm.Cars.length == 0 ? _c("Cube") : _vm._e(),
+      _vm._v(" "),
       _vm.Cars.length > 0 && _vm.Slider.length > 0
         ? _c("header-component")
         : _vm._e(),
@@ -46250,7 +46344,7 @@ var render = function() {
         ? _c("filters", { attrs: { allcars: _vm.Cars } })
         : _vm._e(),
       _vm._v(" "),
-      _vm.Slider.length > 0
+      _vm.Slider.length > 0 && _vm.Cars.length > 0
         ? _c("div", { staticClass: "container-fluid" }, [
             _vm.carsfilter.length != 0
               ? _c("div", { staticClass: "container container-back" }, [
@@ -46267,131 +46361,76 @@ var render = function() {
                             { key: car.id, attrs: { to: "/cars/" + car.id } },
                             [
                               _c("div", { staticClass: "row" }, [
-                                _c(
-                                  "div",
-                                  { staticClass: "col-md-12 text-hover" },
-                                  [
-                                    _c("img", {
-                                      attrs: {
-                                        src: "/img/" + car.mainpics,
-                                        alt: car.name
-                                      }
-                                    }),
-                                    _vm._v(" "),
+                                _c("div", { staticClass: "text-hover" }, [
+                                  _c("img", {
+                                    attrs: {
+                                      src: "/img/" + car.mainpics,
+                                      alt: car.name
+                                    }
+                                  }),
+                                  _vm._v(" "),
+                                  _c(
+                                    "div",
+                                    {
+                                      staticClass:
+                                        "drop-text drop-text-responsive"
+                                    },
+                                    [
+                                      _c(
+                                        "p",
+                                        { staticClass: "cars-article-texts" },
+                                        [
+                                          _vm._v(
+                                            _vm._s(car.name) +
+                                              " | " +
+                                              _vm._s(car.year)
+                                          )
+                                        ]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "p",
+                                        { staticClass: "cars-article-texts" },
+                                        [
+                                          _vm._v(
+                                            "Текущая цена | " +
+                                              _vm._s(car.currentPrice) +
+                                              " ₽"
+                                          )
+                                        ]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "p",
+                                        { staticClass: "cars-article-texts" },
+                                        [
+                                          _vm._v(
+                                            "Начало торгов | " +
+                                              _vm._s(car.auctionStart)
+                                          )
+                                        ]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "p",
+                                        { staticClass: "cars-article-texts" },
+                                        [
+                                          _vm._v(
+                                            "Завершение торгов: | " +
+                                              _vm._s(car.endOfAuction)
+                                          )
+                                        ]
+                                      )
+                                    ]
+                                  ),
+                                  _vm._v(" "),
+                                  _c("div", { staticClass: "article-price" }, [
                                     _c(
-                                      "div",
-                                      {
-                                        staticClass: "car-informacion-article"
-                                      },
-                                      [
-                                        _c(
-                                          "div",
-                                          {
-                                            staticClass: "inform-text-article"
-                                          },
-                                          [
-                                            _c(
-                                              "div",
-                                              { staticClass: "drop-text" },
-                                              [
-                                                _c(
-                                                  "div",
-                                                  { staticClass: "row" },
-                                                  [
-                                                    _c(
-                                                      "div",
-                                                      { staticClass: "col" },
-                                                      [
-                                                        _c("p", [
-                                                          _vm._v(
-                                                            _vm._s(car.name) +
-                                                              " | " +
-                                                              _vm._s(car.year)
-                                                          )
-                                                        ])
-                                                      ]
-                                                    )
-                                                  ]
-                                                ),
-                                                _vm._v(" "),
-                                                _c(
-                                                  "div",
-                                                  { staticClass: "row" },
-                                                  [
-                                                    _c(
-                                                      "div",
-                                                      { staticClass: "col" },
-                                                      [
-                                                        _c("p", [
-                                                          _vm._v(
-                                                            "Текущая цена | " +
-                                                              _vm._s(
-                                                                car.currentPrice
-                                                              ) +
-                                                              " ₽"
-                                                          )
-                                                        ])
-                                                      ]
-                                                    )
-                                                  ]
-                                                ),
-                                                _vm._v(" "),
-                                                _c(
-                                                  "div",
-                                                  { staticClass: "row" },
-                                                  [
-                                                    _c(
-                                                      "div",
-                                                      { staticClass: "col" },
-                                                      [
-                                                        _c("p", [
-                                                          _vm._v(
-                                                            "Начало торгов | " +
-                                                              _vm._s(
-                                                                car.auctionStart
-                                                              )
-                                                          )
-                                                        ])
-                                                      ]
-                                                    )
-                                                  ]
-                                                ),
-                                                _vm._v(" "),
-                                                _c(
-                                                  "div",
-                                                  { staticClass: "row" },
-                                                  [
-                                                    _c(
-                                                      "div",
-                                                      { staticClass: "col" },
-                                                      [
-                                                        _c("p", [
-                                                          _vm._v(
-                                                            "Завершение торгов: | " +
-                                                              _vm._s(
-                                                                car.endOfAuction
-                                                              )
-                                                          )
-                                                        ])
-                                                      ]
-                                                    )
-                                                  ]
-                                                )
-                                              ]
-                                            )
-                                          ]
-                                        )
-                                      ]
+                                      "p",
+                                      { staticClass: "article-price-tag" },
+                                      [_vm._v(_vm._s(car.currentPrice) + "₽")]
                                     )
-                                  ]
-                                ),
-                                _vm._v(" "),
-                                _c("div", { staticClass: "article-price" }, [
-                                  _vm._v(
-                                    "\n                                " +
-                                      _vm._s(car.currentPrice) +
-                                      "₽\n                            "
-                                  )
+                                  ])
                                 ])
                               ])
                             ]
@@ -46945,7 +46984,7 @@ var staticRenderFns = [
           _c("div", { staticClass: "container footer-opacity" }, [
             _c("div", { staticClass: "row" }, [
               _c("div", { staticClass: "col-md-12" }, [
-                _c("p", [
+                _c("p", { staticClass: "footer_txts" }, [
                   _vm._v("© 2019 ООО «CarBidding» Все права защищены."),
                   _c("br"),
                   _vm._v(
@@ -46961,7 +47000,7 @@ var staticRenderFns = [
             _vm._v(" "),
             _c("div", { staticClass: "row" }, [
               _c("div", { staticClass: "col-md-12" }, [
-                _c("p", [
+                _c("p", { staticClass: "footer_txts" }, [
                   _vm._v(
                     "Свидетельство о регистрации электронного СМИ ЭЛ № ФС 77-68898 выдано Федеральной\n                            службой"
                   ),
@@ -46999,7 +47038,7 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [
+  return _c("div", { attrs: { id: "header_design_one" } }, [
     _c("div", { staticClass: "container-fluid headerback" }, [
       _c(
         "div",
@@ -47260,7 +47299,7 @@ var staticRenderFns = [
     return _c(
       "button",
       {
-        staticClass: "navbar-toggler third-button",
+        staticClass: "navbar-toggler third-button navbar-expand-lg",
         attrs: {
           type: "button",
           "data-toggle": "collapse",
@@ -47302,7 +47341,7 @@ var staticRenderFns = [
           _c("div", { staticClass: "input-group no-border searchdiv" }, [
             _c("input", {
               staticClass: "form-control searchinput",
-              attrs: { type: "text", name: "name", placeholder: "Search..." }
+              attrs: { type: "text", name: "name", placeholder: "Поиск..." }
             }),
             _vm._v(" "),
             _c("div", { staticClass: "input-group-append" }, [
@@ -47600,225 +47639,114 @@ var render = function() {
     [
       _vm.User.length == 0 ? _c("Cube") : _vm._e(),
       _vm._v(" "),
-      _vm.User.length != 0 ? _c("header-component") : _vm._e(),
-      _vm._v(" "),
-      _vm.User.length != 0
-        ? _c("div", { staticClass: "container-fluid profile_bg_white" }, [
-            _c("div", { staticClass: "container profile_container" }, [
-              _c("div", { staticClass: "row" }, [
-                _c("div", { staticClass: "col profile_menu" }, [
-                  _c("div", { staticClass: "row mx-0" }, [
-                    _c("div", { staticClass: "col-md-3 avatar_section" }, [
-                      _c("h1", [_vm._v(_vm._s(_vm.User.length))]),
-                      _vm._v(" "),
-                      !_vm.User.avatar && _vm.User.gender == "male"
-                        ? _c("img", {
-                            staticClass: "avatar_img",
-                            attrs: { src: "/img/avatar/images.png" }
-                          })
-                        : !_vm.User.avatar && _vm.User.gender == "female"
-                        ? _c("img", {
-                            staticClass: "avatar_img",
-                            attrs: {
-                              src:
-                                "/img/avatar/female-avatar-profile-icon-round-african-american-vector-18307298.jpg"
-                            }
-                          })
-                        : _vm.User.avatar
-                        ? _c("img", {
-                            staticClass: "avatar_img",
-                            attrs: { src: "/img/" + _vm.User.avatar }
-                          })
-                        : _vm._e()
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "col-md-6 user_name_ul " }, [
-                      _c("h6", { staticClass: "user_name_tag" }, [
-                        _vm._v(
-                          _vm._s(_vm.User.name) + " " + _vm._s(_vm.User.sname)
-                        )
-                      ]),
-                      _vm._v(" "),
-                      _c("button", { staticClass: "myprofile_btn" }, [
-                        _vm._v("Мой профиль")
-                      ]),
-                      _vm._v(" "),
-                      _c("button", { staticClass: "profile_btn_followers" }, [
-                        _vm._v("Мои подписки")
-                      ])
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "col-md-12 profile_menu_nav" }, [
-                      _c("ul", { staticClass: "profile_menu_ul" }, [
-                        _c(
-                          "button",
-                          {
-                            staticClass: "tablinks",
-                            on: {
-                              click: function($event) {
-                                return _vm.openTabs("profile")
-                              }
-                            }
-                          },
-                          [_vm._m(0)]
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "button",
-                          {
-                            staticClass: "tablinks",
-                            on: {
-                              click: function($event) {
-                                return _vm.openTabs("balance")
-                              }
-                            }
-                          },
-                          [_vm._m(1)]
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "button",
-                          {
-                            staticClass: "tablinks",
-                            on: {
-                              click: function($event) {
-                                return _vm.openTabs("changepass")
-                              }
-                            }
-                          },
-                          [_vm._m(2)]
-                        )
-                      ])
-                    ])
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "col profile_data" }, [
-                  _c("h3", { staticClass: "personal_data_title" }, [
-                    _vm._v("Личные данные")
-                  ]),
-                  _vm._v(" "),
-                  _c(
-                    "table",
-                    { staticClass: "table table-striped table-hover" },
-                    [
-                      _c("tbody", [
-                        _c("tr", [
-                          _c("th", [_vm._v("Фамилия *")]),
+      _c(
+        "div",
+        { attrs: { id: "header_design_two" } },
+        [
+          _vm.User.length != 0 ? _c("header-component") : _vm._e(),
+          _vm._v(" "),
+          _vm.User.length != 0
+            ? _c("div", { staticClass: "container-fluid profile_bg_white" }, [
+                _c("div", { staticClass: "container profile_container" }, [
+                  _c("div", { staticClass: "row profile_row" }, [
+                    _c("div", { staticClass: "col profile_menu" }, [
+                      _c("div", { staticClass: "row mx-0" }, [
+                        _c("div", { staticClass: "col-md-3 avatar_section" }, [
+                          _c("h1", [_vm._v(_vm._s(_vm.User.length))]),
                           _vm._v(" "),
-                          _c("td", { staticClass: "showView" }, [
-                            _vm._v(_vm._s(_vm.User.sname))
-                          ]),
-                          _vm._v(" "),
-                          _vm._m(3)
+                          !_vm.User.avatar && _vm.User.gender == "male"
+                            ? _c("img", {
+                                staticClass: "avatar_img",
+                                attrs: { src: "/img/avatar/images.png" }
+                              })
+                            : !_vm.User.avatar && _vm.User.gender == "female"
+                            ? _c("img", {
+                                staticClass: "avatar_img",
+                                attrs: {
+                                  src:
+                                    "/img/avatar/female-avatar-profile-icon-round-african-american-vector-18307298.jpg"
+                                }
+                              })
+                            : _vm.User.avatar
+                            ? _c("img", {
+                                staticClass: "avatar_img",
+                                attrs: { src: "/img/" + _vm.User.avatar }
+                              })
+                            : _vm._e()
                         ]),
                         _vm._v(" "),
-                        _c("tr", [
-                          _c("th", [_vm._v("Имя *")]),
-                          _vm._v(" "),
-                          _c("td", { staticClass: "showView" }, [
-                            _vm._v(_vm._s(_vm.User.name))
+                        _c("div", { staticClass: "col-md-6 user_name_ul " }, [
+                          _c("h6", { staticClass: "user_name_tag" }, [
+                            _vm._v(
+                              _vm._s(_vm.User.name) +
+                                " " +
+                                _vm._s(_vm.User.sname)
+                            )
                           ]),
                           _vm._v(" "),
-                          _vm._m(4)
-                        ]),
-                        _vm._v(" "),
-                        _c("tr", [
-                          _c("th", [_vm._v("Дата рождения *")]),
-                          _vm._v(" "),
-                          _c("td", { staticClass: "showView" }, [
-                            _vm._v(_vm._s(_vm.User.date_of_birth))
+                          _c("button", { staticClass: "myprofile_btn" }, [
+                            _vm._v("Мой профиль")
                           ]),
                           _vm._v(" "),
-                          _vm._m(5)
+                          _c(
+                            "button",
+                            { staticClass: "profile_btn_followers" },
+                            [_vm._v("Мои подписки")]
+                          )
                         ]),
                         _vm._v(" "),
-                        _vm._m(6),
-                        _vm._v(" "),
-                        _vm._m(7),
-                        _vm._v(" "),
-                        _vm._m(8)
-                      ])
-                    ]
-                  )
-                ])
-              ]),
-              _vm._v(" "),
-              _c(
-                "div",
-                {
-                  staticClass: "tabcontent activetabis",
-                  attrs: { id: "profiletab" }
-                },
-                [
-                  _c("div", { staticClass: "row contact_info_row" }, [
-                    _c("div", { staticClass: "col-md-6 profile_data" }, [
-                      _c("h3", { staticClass: "personal_data_title" }, [
-                        _vm._v("Паспортные данные")
-                      ]),
-                      _vm._v(" "),
-                      _c(
-                        "table",
-                        { staticClass: "table table-striped table-hover" },
-                        [
-                          _c("tbody", [
-                            _c("tr", [
-                              _c("th", [_vm._v("Паспорт *")]),
+                        _c(
+                          "div",
+                          { staticClass: "col-md-12 profile_menu_nav" },
+                          [
+                            _c("ul", { staticClass: "profile_menu_ul" }, [
+                              _c(
+                                "button",
+                                {
+                                  staticClass: "tablinks",
+                                  on: {
+                                    click: function($event) {
+                                      return _vm.openTabs("profile")
+                                    }
+                                  }
+                                },
+                                [_vm._m(0)]
+                              ),
                               _vm._v(" "),
-                              _c("td", { staticClass: "showView" }, [
-                                _vm._v(_vm._s(_vm.User.passport))
-                              ]),
+                              _c(
+                                "button",
+                                {
+                                  staticClass: "tablinks",
+                                  on: {
+                                    click: function($event) {
+                                      return _vm.openTabs("balance")
+                                    }
+                                  }
+                                },
+                                [_vm._m(1)]
+                              ),
                               _vm._v(" "),
-                              _vm._m(9)
-                            ]),
-                            _vm._v(" "),
-                            _c("tr", [
-                              _c("th", [_vm._v("Кем выдан *")]),
-                              _vm._v(" "),
-                              _c("td", { staticClass: "showView" }, [
-                                _vm._v(_vm._s(_vm.User.issuedBy))
-                              ]),
-                              _vm._v(" "),
-                              _vm._m(10)
-                            ]),
-                            _vm._v(" "),
-                            _c("tr", [
-                              _c("th", [_vm._v("Дата выдачи *")]),
-                              _vm._v(" "),
-                              _c("td", { staticClass: "showView" }, [
-                                _vm._v(_vm._s(_vm.User.dateOfIssue))
-                              ]),
-                              _vm._v(" "),
-                              _vm._m(11)
-                            ]),
-                            _vm._v(" "),
-                            _c("tr", [
-                              _c("th", [_vm._v("Код подразделения *")]),
-                              _vm._v(" "),
-                              _c("td", { staticClass: "showView" }, [
-                                _vm._v(_vm._s(_vm.User.unitCode))
-                              ]),
-                              _vm._v(" "),
-                              _vm._m(12)
-                            ]),
-                            _vm._v(" "),
-                            _c("tr", [
-                              _c("th", [_vm._v("Место регистрации *")]),
-                              _vm._v(" "),
-                              _c("td", { staticClass: "showView" }, [
-                                _vm._v(_vm._s(_vm.User.placeOfRegistration))
-                              ]),
-                              _vm._v(" "),
-                              _vm._m(13)
+                              _c(
+                                "button",
+                                {
+                                  staticClass: "tablinks",
+                                  on: {
+                                    click: function($event) {
+                                      return _vm.openTabs("changepass")
+                                    }
+                                  }
+                                },
+                                [_vm._m(2)]
+                              )
                             ])
-                          ])
-                        ]
-                      )
+                          ]
+                        )
+                      ])
                     ]),
                     _vm._v(" "),
-                    _c("div", { staticClass: "col-md-6 profile_data" }, [
+                    _c("div", { staticClass: "col profile_data" }, [
                       _c("h3", { staticClass: "personal_data_title" }, [
-                        _vm._v("Контактная информация")
+                        _vm._v("Личные данные")
                       ]),
                       _vm._v(" "),
                       _c(
@@ -47827,275 +47755,417 @@ var render = function() {
                         [
                           _c("tbody", [
                             _c("tr", [
-                              _c("th", [_vm._v("Телефон *")]),
-                              _vm._v(" "),
-                              _c("td", { staticClass: "showView" }, [
-                                _vm._v(_vm._s(_vm.User.phone))
-                              ]),
-                              _vm._v(" "),
-                              _vm._m(14)
-                            ]),
-                            _vm._v(" "),
-                            _c("tr", [
-                              _c("th", [_vm._v("E-mail *")]),
-                              _vm._v(" "),
-                              _c("td", { staticClass: "showView" }, [
-                                _vm._v(_vm._s(_vm.User.email))
-                              ]),
-                              _vm._v(" "),
-                              _vm._m(15)
-                            ]),
-                            _vm._v(" "),
-                            _c("tr", [
-                              _c("th", [_vm._v("Почтовый индекс *")]),
-                              _vm._v(" "),
-                              _c("td", { staticClass: "showView" }, [
-                                _vm._v(_vm._s(_vm.User.postcode))
-                              ]),
-                              _vm._v(" "),
-                              _vm._m(16)
-                            ]),
-                            _vm._v(" "),
-                            _c("tr", [
-                              _c("th", [_vm._v("Почтовый адрес *")]),
-                              _vm._v(" "),
-                              _c("td", { staticClass: "showView" }, [
-                                _vm._v(_vm._s(_vm.User.email))
-                              ]),
-                              _vm._v(" "),
-                              _vm._m(17)
-                            ]),
-                            _vm._v(" "),
-                            _c("tr", [
-                              _c("th", [_vm._v("Дополнительно *")]),
-                              _vm._v(" "),
-                              _c("td", { staticClass: "showView" }, [
-                                _vm._v(_vm._s(_vm.User.additionally))
-                              ]),
-                              _vm._v(" "),
-                              _vm._m(18)
-                            ])
-                          ])
-                        ]
-                      )
-                    ])
-                  ])
-                ]
-              ),
-              _vm._v(" "),
-              _c(
-                "div",
-                { staticClass: "tabcontent", attrs: { id: "balancetab" } },
-                [
-                  _c("div", { staticClass: "row count_row" }, [
-                    _c("div", { staticClass: "col-md-6 profile_data" }, [
-                      _c("h3", { staticClass: "personal_data_title" }, [
-                        _vm._v("Лицевой счет")
-                      ]),
-                      _vm._v(" "),
-                      _c(
-                        "table",
-                        { staticClass: "table table-striped table-hover" },
-                        [
-                          _c("tbody", [
-                            _c("tr", [
-                              _c("th", [
-                                _vm._v(
-                                  "Лицевой счет № " + _vm._s(_vm.User.id) + " *"
-                                )
-                              ]),
+                              _c("th", [_vm._v("Фамилия *")]),
                               _vm._v(" "),
                               _c("td", { staticClass: "showView" }, [
                                 _vm._v(_vm._s(_vm.User.sname))
                               ]),
                               _vm._v(" "),
-                              _vm._m(19)
+                              _vm._m(3)
                             ]),
                             _vm._v(" "),
                             _c("tr", [
-                              _c("th", [_vm._v("Субсчет депозита *")]),
+                              _c("th", [_vm._v("Имя *")]),
                               _vm._v(" "),
                               _c("td", { staticClass: "showView" }, [
                                 _vm._v(_vm._s(_vm.User.name))
                               ]),
                               _vm._v(" "),
-                              _vm._m(20)
+                              _vm._m(4)
                             ]),
                             _vm._v(" "),
                             _c("tr", [
-                              _c("th", [_vm._v("Субсчет свободных средств *")]),
-                              _vm._v(" "),
-                              _c("td", { staticClass: "showView" }, [
-                                _vm._v(_vm._s(_vm.User.sname))
-                              ]),
-                              _vm._v(" "),
-                              _vm._m(21)
-                            ]),
-                            _vm._v(" "),
-                            _c("tr", [
-                              _c("th", [
-                                _vm._v(
-                                  "Субсчет заблокированных средств в счет задатка *"
-                                )
-                              ]),
-                              _vm._v(" "),
-                              _c("td", { staticClass: "showView" }, [
-                                _vm._v(_vm._s(_vm.User.sname))
-                              ]),
-                              _vm._v(" "),
-                              _vm._m(22)
-                            ])
-                          ])
-                        ]
-                      )
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "col-md-6 profile_data" }, [
-                      _c("h3", { staticClass: "personal_data_title" }, [
-                        _vm._v("Реквизиты для пополнения лицевого счета")
-                      ]),
-                      _vm._v(" "),
-                      _c(
-                        "table",
-                        { staticClass: "table table-striped table-hover" },
-                        [
-                          _c("tbody", [
-                            _c("tr", [
-                              _c("th", [_vm._v("Расчетный счет *")]),
-                              _vm._v(" "),
-                              _c("td", { staticClass: "showView" }, [
-                                _vm._v(_vm._s(_vm.User.phone))
-                              ]),
-                              _vm._v(" "),
-                              _vm._m(23)
-                            ]),
-                            _vm._v(" "),
-                            _c("tr", [
-                              _c("th", [_vm._v("Корреспондентский счет *")]),
-                              _vm._v(" "),
-                              _c("td", { staticClass: "showView" }, [
-                                _vm._v(_vm._s(_vm.User.email))
-                              ]),
-                              _vm._v(" "),
-                              _vm._m(24)
-                            ]),
-                            _vm._v(" "),
-                            _c("tr", [
-                              _c("th", [_vm._v("БИК *")]),
-                              _vm._v(" "),
-                              _c("td", { staticClass: "showView" }, [
-                                _vm._v(_vm._s(_vm.User.postcode))
-                              ]),
-                              _vm._v(" "),
-                              _vm._m(25)
-                            ]),
-                            _vm._v(" "),
-                            _c("tr", [
-                              _c("th", [_vm._v("ИНН *")]),
+                              _c("th", [_vm._v("Дата рождения *")]),
                               _vm._v(" "),
                               _c("td", { staticClass: "showView" }, [
                                 _vm._v(_vm._s(_vm.User.date_of_birth))
                               ]),
                               _vm._v(" "),
-                              _vm._m(26)
+                              _vm._m(5)
                             ]),
                             _vm._v(" "),
-                            _c("tr", [
-                              _c("th", [_vm._v("КПП *")]),
-                              _vm._v(" "),
-                              _c("td", { staticClass: "showView" }, [
-                                _vm._v(_vm._s(_vm.User.sname))
-                              ]),
-                              _vm._v(" "),
-                              _vm._m(27)
-                            ]),
+                            _vm._m(6),
                             _vm._v(" "),
-                            _c("tr", [
-                              _c("th", [_vm._v("Наименование банка *")]),
-                              _vm._v(" "),
-                              _c("td", { staticClass: "showView" }, [
-                                _vm._v(_vm._s(_vm.User.sname))
-                              ]),
-                              _vm._v(" "),
-                              _vm._m(28)
-                            ]),
+                            _vm._m(7),
                             _vm._v(" "),
-                            _c("tr", [
-                              _c("th", [_vm._v("Наименование получателя *")]),
-                              _vm._v(" "),
-                              _c("td", { staticClass: "showView" }, [
-                                _vm._v(_vm._s(_vm.User.sname))
-                              ]),
-                              _vm._v(" "),
-                              _vm._m(29)
-                            ]),
-                            _vm._v(" "),
-                            _c("tr", [
-                              _c("th", [
-                                _vm._v(
-                                  "Назначение платежа для субсчета депозита *"
-                                )
-                              ]),
-                              _vm._v(" "),
-                              _c("td", { staticClass: "showView" }, [
-                                _vm._v(_vm._s(_vm.User.sname))
-                              ]),
-                              _vm._v(" "),
-                              _vm._m(30)
-                            ]),
-                            _vm._v(" "),
-                            _c("tr", [
-                              _c("th", [
-                                _vm._v(
-                                  "Назначение платежа для субсчета свободных средств *"
-                                )
-                              ]),
-                              _vm._v(" "),
-                              _c("td", { staticClass: "showView" }, [
-                                _vm._v(_vm._s(_vm.User.sname))
-                              ]),
-                              _vm._v(" "),
-                              _vm._m(31)
-                            ])
+                            _vm._m(8)
                           ])
                         ]
                       )
                     ])
-                  ])
-                ]
-              ),
-              _vm._v(" "),
-              _c(
-                "div",
-                { staticClass: "tabcontent", attrs: { id: "changepasstab" } },
-                [
-                  _c("div", { staticClass: "row count_row" }, [
-                    _c("div", { staticClass: "col-md-12 profile_data" }, [
-                      _c(
-                        "form",
-                        { attrs: { method: "POST", action: "changepassword" } },
-                        [
-                          _c("input", {
-                            attrs: { type: "hidden", name: "_token" },
-                            domProps: { value: _vm.csrf }
-                          }),
-                          _vm._v(" "),
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    {
+                      staticClass: "tabcontent activetabis",
+                      attrs: { id: "profiletab" }
+                    },
+                    [
+                      _c("div", { staticClass: "row contact_info_row" }, [
+                        _c("div", { staticClass: "col-md-6 profile_data" }, [
                           _c("h3", { staticClass: "personal_data_title" }, [
-                            _vm._v("Изменить пароль")
+                            _vm._v("Паспортные данные")
                           ]),
                           _vm._v(" "),
-                          _vm._m(32)
-                        ]
-                      )
-                    ])
-                  ])
-                ]
-              )
-            ])
-          ])
-        : _vm._e(),
-      _vm._v(" "),
-      _vm.User.length != 0 ? _c("footer-component") : _vm._e()
+                          _c(
+                            "table",
+                            { staticClass: "table table-striped table-hover" },
+                            [
+                              _c("tbody", [
+                                _c("tr", [
+                                  _c("th", [_vm._v("Паспорт *")]),
+                                  _vm._v(" "),
+                                  _c("td", { staticClass: "showView" }, [
+                                    _vm._v(_vm._s(_vm.User.passport))
+                                  ]),
+                                  _vm._v(" "),
+                                  _vm._m(9)
+                                ]),
+                                _vm._v(" "),
+                                _c("tr", [
+                                  _c("th", [_vm._v("Кем выдан *")]),
+                                  _vm._v(" "),
+                                  _c("td", { staticClass: "showView" }, [
+                                    _vm._v(_vm._s(_vm.User.issuedBy))
+                                  ]),
+                                  _vm._v(" "),
+                                  _vm._m(10)
+                                ]),
+                                _vm._v(" "),
+                                _c("tr", [
+                                  _c("th", [_vm._v("Дата выдачи *")]),
+                                  _vm._v(" "),
+                                  _c("td", { staticClass: "showView" }, [
+                                    _vm._v(_vm._s(_vm.User.dateOfIssue))
+                                  ]),
+                                  _vm._v(" "),
+                                  _vm._m(11)
+                                ]),
+                                _vm._v(" "),
+                                _c("tr", [
+                                  _c("th", [_vm._v("Код подразделения *")]),
+                                  _vm._v(" "),
+                                  _c("td", { staticClass: "showView" }, [
+                                    _vm._v(_vm._s(_vm.User.unitCode))
+                                  ]),
+                                  _vm._v(" "),
+                                  _vm._m(12)
+                                ]),
+                                _vm._v(" "),
+                                _c("tr", [
+                                  _c("th", [_vm._v("Место регистрации *")]),
+                                  _vm._v(" "),
+                                  _c("td", { staticClass: "showView" }, [
+                                    _vm._v(_vm._s(_vm.User.placeOfRegistration))
+                                  ]),
+                                  _vm._v(" "),
+                                  _vm._m(13)
+                                ])
+                              ])
+                            ]
+                          )
+                        ]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "col-md-6 profile_data" }, [
+                          _c("h3", { staticClass: "personal_data_title" }, [
+                            _vm._v("Контактная информация")
+                          ]),
+                          _vm._v(" "),
+                          _c(
+                            "table",
+                            { staticClass: "table table-striped table-hover" },
+                            [
+                              _c("tbody", [
+                                _c("tr", [
+                                  _c("th", [_vm._v("Телефон *")]),
+                                  _vm._v(" "),
+                                  _c("td", { staticClass: "showView" }, [
+                                    _vm._v(_vm._s(_vm.User.phone))
+                                  ]),
+                                  _vm._v(" "),
+                                  _vm._m(14)
+                                ]),
+                                _vm._v(" "),
+                                _c("tr", [
+                                  _c("th", [_vm._v("E-mail *")]),
+                                  _vm._v(" "),
+                                  _c("td", { staticClass: "showView" }, [
+                                    _vm._v(_vm._s(_vm.User.email))
+                                  ]),
+                                  _vm._v(" "),
+                                  _vm._m(15)
+                                ]),
+                                _vm._v(" "),
+                                _c("tr", [
+                                  _c("th", [_vm._v("Почтовый индекс *")]),
+                                  _vm._v(" "),
+                                  _c("td", { staticClass: "showView" }, [
+                                    _vm._v(_vm._s(_vm.User.postcode))
+                                  ]),
+                                  _vm._v(" "),
+                                  _vm._m(16)
+                                ]),
+                                _vm._v(" "),
+                                _c("tr", [
+                                  _c("th", [_vm._v("Почтовый адрес *")]),
+                                  _vm._v(" "),
+                                  _c("td", { staticClass: "showView" }, [
+                                    _vm._v(_vm._s(_vm.User.email))
+                                  ]),
+                                  _vm._v(" "),
+                                  _vm._m(17)
+                                ]),
+                                _vm._v(" "),
+                                _c("tr", [
+                                  _c("th", [_vm._v("Дополнительно *")]),
+                                  _vm._v(" "),
+                                  _c("td", { staticClass: "showView" }, [
+                                    _vm._v(_vm._s(_vm.User.additionally))
+                                  ]),
+                                  _vm._v(" "),
+                                  _vm._m(18)
+                                ])
+                              ])
+                            ]
+                          )
+                        ])
+                      ])
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    { staticClass: "tabcontent", attrs: { id: "balancetab" } },
+                    [
+                      _c("div", { staticClass: "row count_row" }, [
+                        _c("div", { staticClass: "col-md-6 profile_data" }, [
+                          _c("h3", { staticClass: "personal_data_title" }, [
+                            _vm._v("Лицевой счет")
+                          ]),
+                          _vm._v(" "),
+                          _c(
+                            "table",
+                            { staticClass: "table table-striped table-hover" },
+                            [
+                              _c("tbody", [
+                                _c("tr", [
+                                  _c("th", [
+                                    _vm._v(
+                                      "Лицевой счет № " +
+                                        _vm._s(_vm.User.id) +
+                                        " *"
+                                    )
+                                  ]),
+                                  _vm._v(" "),
+                                  _c("td", { staticClass: "showView" }, [
+                                    _vm._v(_vm._s(_vm.User.sname))
+                                  ]),
+                                  _vm._v(" "),
+                                  _vm._m(19)
+                                ]),
+                                _vm._v(" "),
+                                _c("tr", [
+                                  _c("th", [_vm._v("Субсчет депозита *")]),
+                                  _vm._v(" "),
+                                  _c("td", { staticClass: "showView" }, [
+                                    _vm._v(_vm._s(_vm.User.name))
+                                  ]),
+                                  _vm._v(" "),
+                                  _vm._m(20)
+                                ]),
+                                _vm._v(" "),
+                                _c("tr", [
+                                  _c("th", [
+                                    _vm._v("Субсчет свободных средств *")
+                                  ]),
+                                  _vm._v(" "),
+                                  _c("td", { staticClass: "showView" }, [
+                                    _vm._v(_vm._s(_vm.User.sname))
+                                  ]),
+                                  _vm._v(" "),
+                                  _vm._m(21)
+                                ]),
+                                _vm._v(" "),
+                                _c("tr", [
+                                  _c("th", [
+                                    _vm._v(
+                                      "Субсчет заблокированных средств в счет задатка *"
+                                    )
+                                  ]),
+                                  _vm._v(" "),
+                                  _c("td", { staticClass: "showView" }, [
+                                    _vm._v(_vm._s(_vm.User.sname))
+                                  ]),
+                                  _vm._v(" "),
+                                  _vm._m(22)
+                                ])
+                              ])
+                            ]
+                          )
+                        ]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "col-md-6 profile_data" }, [
+                          _c("h3", { staticClass: "personal_data_title" }, [
+                            _vm._v("Реквизиты для пополнения лицевого счета")
+                          ]),
+                          _vm._v(" "),
+                          _c(
+                            "table",
+                            { staticClass: "table table-striped table-hover" },
+                            [
+                              _c("tbody", [
+                                _c("tr", [
+                                  _c("th", [_vm._v("Расчетный счет *")]),
+                                  _vm._v(" "),
+                                  _c("td", { staticClass: "showView" }, [
+                                    _vm._v(_vm._s(_vm.User.phone))
+                                  ]),
+                                  _vm._v(" "),
+                                  _vm._m(23)
+                                ]),
+                                _vm._v(" "),
+                                _c("tr", [
+                                  _c("th", [
+                                    _vm._v("Корреспондентский счет *")
+                                  ]),
+                                  _vm._v(" "),
+                                  _c("td", { staticClass: "showView" }, [
+                                    _vm._v(_vm._s(_vm.User.email))
+                                  ]),
+                                  _vm._v(" "),
+                                  _vm._m(24)
+                                ]),
+                                _vm._v(" "),
+                                _c("tr", [
+                                  _c("th", [_vm._v("БИК *")]),
+                                  _vm._v(" "),
+                                  _c("td", { staticClass: "showView" }, [
+                                    _vm._v(_vm._s(_vm.User.postcode))
+                                  ]),
+                                  _vm._v(" "),
+                                  _vm._m(25)
+                                ]),
+                                _vm._v(" "),
+                                _c("tr", [
+                                  _c("th", [_vm._v("ИНН *")]),
+                                  _vm._v(" "),
+                                  _c("td", { staticClass: "showView" }, [
+                                    _vm._v(_vm._s(_vm.User.date_of_birth))
+                                  ]),
+                                  _vm._v(" "),
+                                  _vm._m(26)
+                                ]),
+                                _vm._v(" "),
+                                _c("tr", [
+                                  _c("th", [_vm._v("КПП *")]),
+                                  _vm._v(" "),
+                                  _c("td", { staticClass: "showView" }, [
+                                    _vm._v(_vm._s(_vm.User.sname))
+                                  ]),
+                                  _vm._v(" "),
+                                  _vm._m(27)
+                                ]),
+                                _vm._v(" "),
+                                _c("tr", [
+                                  _c("th", [_vm._v("Наименование банка *")]),
+                                  _vm._v(" "),
+                                  _c("td", { staticClass: "showView" }, [
+                                    _vm._v(_vm._s(_vm.User.sname))
+                                  ]),
+                                  _vm._v(" "),
+                                  _vm._m(28)
+                                ]),
+                                _vm._v(" "),
+                                _c("tr", [
+                                  _c("th", [
+                                    _vm._v("Наименование получателя *")
+                                  ]),
+                                  _vm._v(" "),
+                                  _c("td", { staticClass: "showView" }, [
+                                    _vm._v(_vm._s(_vm.User.sname))
+                                  ]),
+                                  _vm._v(" "),
+                                  _vm._m(29)
+                                ]),
+                                _vm._v(" "),
+                                _c("tr", [
+                                  _c("th", [
+                                    _vm._v(
+                                      "Назначение платежа для субсчета депозита *"
+                                    )
+                                  ]),
+                                  _vm._v(" "),
+                                  _c("td", { staticClass: "showView" }, [
+                                    _vm._v(_vm._s(_vm.User.sname))
+                                  ]),
+                                  _vm._v(" "),
+                                  _vm._m(30)
+                                ]),
+                                _vm._v(" "),
+                                _c("tr", [
+                                  _c("th", [
+                                    _vm._v(
+                                      "Назначение платежа для субсчета свободных средств *"
+                                    )
+                                  ]),
+                                  _vm._v(" "),
+                                  _c("td", { staticClass: "showView" }, [
+                                    _vm._v(_vm._s(_vm.User.sname))
+                                  ]),
+                                  _vm._v(" "),
+                                  _vm._m(31)
+                                ])
+                              ])
+                            ]
+                          )
+                        ])
+                      ])
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    {
+                      staticClass: "tabcontent",
+                      attrs: { id: "changepasstab" }
+                    },
+                    [
+                      _c("div", { staticClass: "row count_row" }, [
+                        _c("div", { staticClass: "col-md-12 profile_data" }, [
+                          _c(
+                            "form",
+                            {
+                              attrs: {
+                                method: "POST",
+                                action: "changepassword"
+                              }
+                            },
+                            [
+                              _c("input", {
+                                attrs: { type: "hidden", name: "_token" },
+                                domProps: { value: _vm.csrf }
+                              }),
+                              _vm._v(" "),
+                              _c("h3", { staticClass: "personal_data_title" }, [
+                                _vm._v("Изменить пароль")
+                              ]),
+                              _vm._v(" "),
+                              _vm._m(32)
+                            ]
+                          )
+                        ])
+                      ])
+                    ]
+                  )
+                ])
+              ])
+            : _vm._e(),
+          _vm._v(" "),
+          _vm.User.length != 0 ? _c("footer-component") : _vm._e()
+        ],
+        1
+      )
     ],
     1
   )
@@ -48110,7 +48180,7 @@ var staticRenderFns = [
       { staticClass: "profile_menu_li active", attrs: { id: "profilebut" } },
       [
         _c("i", { staticClass: "fas fa-user" }),
-        _vm._v("Профиль\n                                    ")
+        _vm._v("Профиль\n                                        ")
       ]
     )
   },
@@ -48124,7 +48194,7 @@ var staticRenderFns = [
       [
         _c("i", { staticClass: "fas fa-ruble-sign" }),
         _vm._v(
-          "Лицевой\n                                        счёт\n                                    "
+          "Лицевой\n                                            счёт\n                                        "
         )
       ]
     )
@@ -48139,7 +48209,7 @@ var staticRenderFns = [
       [
         _c("i", { staticClass: "fas fa-unlock" }),
         _vm._v(
-          "\n                                        Изменить пароль\n                                    "
+          "\n                                            Изменить пароль\n                                        "
         )
       ]
     )
@@ -48544,7 +48614,7 @@ var staticRenderFns = [
               { staticClass: "btn btn-primary", attrs: { type: "submit" } },
               [
                 _vm._v(
-                  "\n                                            Изменить\n                                        "
+                  "\n                                                Изменить\n                                            "
                 )
               ]
             )
@@ -49550,7 +49620,7 @@ var render = function() {
         ? _c("div", { staticClass: "container-fluid margin" }, [
             _c("div", { staticClass: "container" }, [
               _c("div", { staticClass: "row main_row" }, [
-                _c("div", { staticClass: "col cars_section" }, [
+                _c("div", { staticClass: "col-lg-5 cars_section" }, [
                   _c("img", {
                     staticClass: "img-fluid",
                     attrs: {
@@ -49561,24 +49631,26 @@ var render = function() {
                   }),
                   _vm._v(" "),
                   _c(
-                    "div",
-                    { staticClass: "row small_pics_row" },
+                    "ul",
+                    { staticClass: "small_pics_row" },
                     _vm._l(_vm.Images, function(image) {
                       return image.carID == _vm.id
-                        ? _c("div", { staticClass: "col-md-3 smallSlide" }, [
-                            _c("img", {
-                              staticClass: "img-fluid smallImages",
-                              attrs: {
-                                id: image.id,
-                                src: "/img/" + image.name,
-                                alt: "Slide"
-                              },
-                              on: {
-                                click: function($event) {
-                                  return _vm.slide(image.id)
-                                }
-                              }
-                            })
+                        ? _c("li", { staticClass: "smallSlide" }, [
+                            image.carID == _vm.id
+                              ? _c("img", {
+                                  staticClass: "img-fluid smallImages",
+                                  attrs: {
+                                    id: image.id,
+                                    src: "/img/" + image.name,
+                                    alt: "Slide"
+                                  },
+                                  on: {
+                                    click: function($event) {
+                                      return _vm.slide(image.id)
+                                    }
+                                  }
+                                })
+                              : _vm._e()
                           ])
                         : _vm._e()
                     }),
@@ -49586,7 +49658,7 @@ var render = function() {
                   )
                 ]),
                 _vm._v(" "),
-                _c("div", { staticClass: "col car_info" }, [
+                _c("div", { staticClass: "col-lg-5 car_info" }, [
                   _c("span", { staticClass: "lot_number" }, [
                     _vm._v("Лот №1907-0906")
                   ]),
@@ -49778,9 +49850,9 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "ending_counter_div" }, [
-      _c("span", { staticClass: "hour_span" }, [_vm._v("21ч.0м.")]),
+      _c("span", { staticClass: "hour_span" }, [_vm._v(" 21ч. 0м. ")]),
       _vm._v(" "),
-      _c("span", { staticClass: "txt_span" }, [_vm._v("до завершения")])
+      _c("span", { staticClass: "txt_span" }, [_vm._v(" до завершения")])
     ])
   },
   function() {

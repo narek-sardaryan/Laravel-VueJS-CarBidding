@@ -5,43 +5,17 @@
                 <div class="col-md-4 cars-article" v-for="(car, index) in cars.data.data">
                     <router-link :to="'/cars/'+car.id" :key="car.id">
                         <div class="row">
-                            <div class="col-md-12 text-hover">
+                            <div class="text-hover">
                                 <img v-lazy-src="'/img/'+car.mainpics" :alt="car.name">
-                                <div class="car-informacion-article">
-                                    <div class="inform-text-article">
-                                        <div class="drop-text">
-                                            <div class="row">
-                                                <div class="col">
-                                                    <p>{{car.name}} | {{car.year}}</p>
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col">
-                                                    <p>Текущая цена | {{car.currentPrice}} ₽</p>
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col">
-                                                    <p>Начало торгов | {{car.auctionStart}}</p>
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col">
-                                                    <p>Завершение торгов: | {{car.endOfAuction}}</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="inform_txt_responsive">
-                                    <p class="inform_txt_p">{{car.name}} | {{car.year}}</p>
-                                    <p class="inform_txt_p">Текущая цена |  {{car.currentPrice}} ₽</p>
-                                    <p class="inform_txt_p">Начало торгов | {{car.auctionStart}}</p>
-                                    <p class="inform_txt_p">Завершение торгов: | {{car.endOfAuction}}</p>
+                                <div class="drop-text drop-text-responsive">
+                                    <p class="cars-article-texts">{{car.name}} | {{car.year}}</p>
+                                    <p class="cars-article-texts">Текущая цена | {{car.currentPrice}} ₽</p>
+                                    <p class="cars-article-texts">Начало торгов | {{car.auctionStart}}</p>
+                                    <p class="cars-article-texts">Завершение торгов: | {{car.endOfAuction}}</p>
                                 </div>
                             </div>
                             <div class="article-price">
-                                {{car.currentPrice}}₽
+                                <p class="article-price-tag">{{car.currentPrice}}₽</p>
                             </div>
                         </div>
                     </router-link>

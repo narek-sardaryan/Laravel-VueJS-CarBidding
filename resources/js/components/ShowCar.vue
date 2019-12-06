@@ -5,16 +5,18 @@
         <div class="container-fluid margin" v-if="car.length != 0 && Images.length != 0">
             <div class="container">
                 <div class="row main_row">
-                    <div class="col cars_section">
+                    <div class="col-lg-5 cars_section">
                         <img class="img-fluid" id="main_pic" :src="'/img/'+car.mainpics" alt="BMW">
-                        <div class="row small_pics_row">
-                            <div v-for="image in Images" v-if="image.carID == id" class="col-md-3 smallSlide">
-                                <img @click="slide(image.id)" :id="image.id" class="img-fluid smallImages"
+<!--                        <div class="row small_pics_row">-->
+<!--                            <div v-for="image in Images" v-if="image.carID == id" class="col-md-3 smallSlide">-->
+                        <ul class="small_pics_row">
+                            <li v-for="image in Images" v-if="image.carID == id" class="smallSlide">
+                                <img @click="slide(image.id)" :id="image.id" v-if="image.carID == id" class="img-fluid smallImages"
                                      :src="'/img/'+image.name" alt="Slide">
-                            </div>
-                        </div>
+                            </li>
+                        </ul>
                     </div>
-                    <div class="col car_info">
+                    <div class="col-lg-5 car_info">
                         <span class="lot_number">Лот №1907-0906</span>
                         <h6 class="current_prize">Текущая цена: {{ car.currentPrice }} &#8381;</h6>
                         <h6 class="car_type">Легковой автомобиль {{ car.name }} {{ car.year }}</h6>
@@ -39,8 +41,8 @@
                             </div>
                         </div>
                         <div class="ending_counter_div">
-                            <span class="hour_span">21ч.0м.</span>
-                            <span class="txt_span">до завершения</span>
+                            <span class="hour_span"> 21ч. 0м. </span>
+                            <span class="txt_span"> до завершения</span>
                         </div>
                     </div>
                 </div>
@@ -117,7 +119,7 @@
                 let that = document.getElementById(id);
                 let src = that.getAttribute('src');
                 current.setAttribute('src', src);
-            }
+            },
         },
         watch: {
             $route(toR, fromR) {
