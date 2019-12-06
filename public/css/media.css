@@ -80,6 +80,10 @@
     .navbar-collapse .menunavbar ul li ol li:hover a {
         color: #fff;
     }
+    .menunavbar ol {
+        top: 30px;
+        right: 0;
+    }
 
     .searchbox_div .searchbox .searchdiv {
         margin-top: 0;
@@ -195,6 +199,7 @@
     /*contatcs section mb*/
     .contacts_div {
         order: 2;
+        padding: 17px 15px 17px 15px;
     }
     .contacts_div_txt .add_services_title {
         font-size: 18px;
@@ -328,6 +333,10 @@
 
     .navbar-collapse .menunavbar ul li ol a {
         color: #000;
+    }
+    .menunavbar ol {
+        top: 30px;
+        right: 0;
     }
 
     .navbar-collapse .menunavbar ul li:hover ol li {

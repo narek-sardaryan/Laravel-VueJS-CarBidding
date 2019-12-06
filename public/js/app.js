@@ -46711,7 +46711,7 @@ var render = function() {
                   _vm._l(_vm.Models, function(model, index) {
                     return _c("option", { domProps: { value: model.id } }, [
                       _vm._v(
-                        _vm._s(model.name) + "\n                            "
+                        _vm._s(model.name) + "\r\n                            "
                       )
                     ])
                   })
@@ -46742,7 +46742,7 @@ var render = function() {
                   _vm._l(_vm.States, function(state, index) {
                     return _c("option", { domProps: { value: state.id } }, [
                       _vm._v(
-                        _vm._s(state.name) + "\n                            "
+                        _vm._s(state.name) + "\r\n                            "
                       )
                     ])
                   })
@@ -46773,9 +46773,9 @@ var render = function() {
                   _vm._l(_vm.Parkings, function(parking, index) {
                     return _c("option", { domProps: { value: parking.id } }, [
                       _vm._v(
-                        "\n                                " +
+                        "\r\n                                " +
                           _vm._s(parking.address) +
-                          "\n                            "
+                          "\r\n                            "
                       )
                     ])
                   })
@@ -46848,7 +46848,7 @@ var render = function() {
                   _vm._v(
                     " " +
                       _vm._s(this.allCarsLength) +
-                      "\n                        "
+                      "\r\n                        "
                   )
                 ]
               )
@@ -68472,8 +68472,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\xampp\htdocs\CarBidding\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\xampp\htdocs\CarBidding\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\xampp\htdocs\Laravel-VueJS-CarBidding\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\xampp\htdocs\Laravel-VueJS-CarBidding\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

@@ -844,6 +844,9 @@ body {
     background-color: #0C74CA;
     padding: 60px 15px 60px 15px;
 }
+.contacts_div i {
+    padding-right: 7px;
+}
 
 .contact_title, .w_hours_title, .address_title {
     margin-top: 20px;
