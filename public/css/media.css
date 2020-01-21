@@ -1,102 +1,54 @@
 /*mobile version design*/
 @media only screen and (min-width: 320px) and (max-width: 480px) {
-    .mobile_nav {
-        width: 100%;
+    .menunavbar .nav-item .nav-link {
+        list-style: none;
+        font-size: 12px;
+    }
+    .dropdown-menu li a {
+        font-size: 12px;
     }
 
-    .mobile_nav .navbar-toggler {
-        color: #4e555b;
-        font-size: 30px;
+    .navbar-collapse {
+        padding: 15px 0;
     }
 
-    .mobile_nav .navbar-toggler:focus {
+    .menunavbar .nav-item {
+        list-style: none;
+        padding: 7px 5px;
+    }
+
+    .navbar .navbar-toggler:focus {
         outline: none;
-    }
-
-    .responsive {
-        padding: 0;
-        order: 2;
     }
 
     #headerlogo {
         width: 70px;
     }
 
-    .navbar {
-        padding: 0.5rem 0;
-    }
-
-    .navbar-collapse .menunavbar ul {
-        position: relative;
-        width: 100%;
-    }
-    .navbar-nav .fa-angle-down {
-        color: #fff;
-        font-size: 11px;
-    }
     .logoutbut a:not([href]):not([tabindex]) {
         font-size: 11px;
     }
 
-    .navbar-collapse {
-        position: absolute;
-        right: 0;
-        top: 58px;
-        display: block;
-        background: #0f92ff;
-        width: 100%;
-    }
-
-    .navbar-collapse .menunavbar:before {
-        content: "";
-        width: 0;
-        height: 0;
-        border-left: 15px solid transparent;
-        border-right: 15px solid transparent;
-        border-bottom: 15px solid #0f92ff;
-        position: absolute;
-        top: -15px;
-        right: 10px;
-    }
-
-    .menunavbar {
-        padding-top: 0;
-    }
-
-    .navbar-collapse .menunavbar ul li a {
-        color: #fff;
-        font-size: 11px;
-    }
-
-    .navbar-collapse .menunavbar ul li ol a {
-        color: #000;
-    }
-
-    .navbar-collapse .menunavbar ul li:hover ol li {
-        padding: 10px;
-        color: #fff;
-    }
-
-    .navbar-collapse .menunavbar ul li ol li:hover a {
-        color: #fff;
-    }
-    .menunavbar ol {
-        top: 30px;
-        right: 0;
-    }
-
     .searchbox_div .searchbox .searchdiv {
         margin-top: 0;
-        border: 1px solid #0f92ff;
+        border-bottom: 1px solid #000;
+    }
+
+    .searchinput:focus {
+        background-color: transparent;
+    }
+
+    .searchdiv {
+        background: transparent;
+        border-radius: 0;
     }
 
     .searchbox_div .searchbox {
         position: relative;
         right: 0;
         background: transparent;
-        max-width: 120px;
         padding: 0;
-        margin: 0;
+        margin: 7px 0;
         height: 0;
     }
 
@@ -196,7 +148,7 @@
         font-size: 15px;
     }
 
-    /*contatcs section mb*/
+    /*contacts section mb*/
     .contacts_div {
         order: 2;
         padding: 17px 15px 17px 15px;
@@ -269,98 +221,62 @@
     }
 }
 
+@media only screen and (min-width: 481px) and (max-width: 767px) {
+    .searchbox_div .searchbox {
+        position: relative;
+        right: 15px;
+        background: transparent;
+        height: 0;
+    }
+}
+@media only screen and (min-width: 767px) and (max-width: 991px) {
+    .searchbox_div .searchbox {
+        right: 0;
+        background: transparent;
+        height: 0;
+        top: 35px;
+        max-width: 200px;
+    }
+}
+
 /*tablet version design*/
 @media only screen and (min-width: 481px) and (max-width: 991px) {
-    .mobile_nav .navbar-toggler {
-        color: #4e555b;
-        font-size: 50px;
-    }
-
-    .mobile_nav .navbar-toggler:focus {
-        outline: none;
-    }
-
-    .mobile_nav {
-        width: 100%;
-        justify-content: space-between;
-    }
-
-    .responsive {
-        padding: 0;
-        order: 2;
-    }
-
-    .navbar {
-        padding: 0.5rem 0;
+    .menunavbar .nav-item .nav-link {
+        list-style: none;
+        font-size: 12px;
     }
 
     .navbar-collapse {
-        position: absolute;
-        right: 0;
-        top: 83px;
-        display: block;
-        background: #0f92ff;
-        width: 100%;
+        padding: 15px 0;
     }
-    .navbar-nav .fa-angle-down {
-        color: #fff;
-        font-size: 11px;
+
+    .menunavbar .nav-item {
+        list-style: none;
+        padding: 7px 5px;
     }
+
+    .dropdown-menu li a {
+        font-size: 12px;
+    }
+
     .logoutbut a:not([href]):not([tabindex]) {
         font-size: 11px;
     }
 
-    .navbar-collapse .menunavbar:before {
-        content: "";
-        width: 0;
-        height: 0;
-        border-left: 15px solid transparent;
-        border-right: 15px solid transparent;
-        border-bottom: 15px solid #0f92ff;
-        position: absolute;
-        top: -14px;
-        right: 17px;
-    }
-    .navbar-collapse .menunavbar ul {
-        position: relative;
-        width: 100%;
-    }
-
-    .navbar-collapse .menunavbar ul li a {
-        color: #fff;
-        font-size: 11px;
-    }
-
-    .navbar-collapse .menunavbar ul li ol a {
-        color: #000;
-    }
-    .menunavbar ol {
-        top: 30px;
-        right: 0;
-    }
-
-    .navbar-collapse .menunavbar ul li:hover ol li {
-        padding: 10px;
-        color: #fff;
-    }
-
-    .navbar-collapse .menunavbar ul li ol li:hover a {
-        color: #fff;
-    }
-
     .searchbox_div .searchbox .searchdiv {
         margin-top: 0;
-        margin-left: 20px;
-        border: 1px solid #0f92ff;
+        border-bottom: 1px solid #000;
     }
 
-    .searchbox_div .searchbox {
-        position: relative;
-        right: 0;
-        background: transparent;
-        margin: 0;
-        height: 0;
+    .searchinput:focus {
+        background-color: transparent;
     }
+
+    .searchdiv {
+        background: transparent;
+        border-radius: 0;
+    }
+
 
     .searchbox_div .searchbox .input-group-append .searchicon {
         height: 23px;
@@ -405,6 +321,7 @@
     .carousel-arrow-left .fa-chevron-left, .carousel-arrow-right .fa-chevron-right {
         font-size: 40px;
     }
+
     /*about page design*/
     .bg_img {
         background-image: url(../img/design_img/bg1.jpg);
@@ -492,11 +409,13 @@
 }
 
 @media only screen and (min-width: 769px) and (max-width: 1200px) {
-     .menunavbar ul li, ol li {
-        padding: 15px 13px;
+    .menunavbar .nav-item .nav-link {
+        list-style: none;
+        font-size: 12px;
     }
-    .menunavbar ul li a, ol li a {
-       font-size: 13px;
+    .menunavbar .nav-item {
+        list-style: none;
+        padding: 7px 5px;
     }
     .body-cars {
         margin: 0 3px;

@@ -18,8 +18,8 @@
                                 </div>
                                 <div class="col-md-6 user_name_ul ">
                                     <h6 class="user_name_tag">{{User.name}} {{User.sname}}</h6>
-                                    <button class="myprofile_btn">Мой профиль</button>
-                                    <button class="profile_btn_followers">Мои подписки</button>
+                                    <button class="myprofile_btn btn-ripple">Мой профиль</button>
+                                    <button class="profile_btn_followers btn-ripple">Мои подписки</button>
                                 </div>
                                 <div class="col-md-12 profile_menu_nav">
                                     <ul class="profile_menu_ul">

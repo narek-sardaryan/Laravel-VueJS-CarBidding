@@ -75,12 +75,12 @@
                             </div>
                         </div>
                         <div class="about-row">
-                            <a class="carousel-arrow-left" href="#carouselAbout" role="button" data-slide="next">
+                            <a class="carousel-arrow-left" href="#carouselAbout" role="button" data-slide="prev">
                                 <i class="fas fa-chevron-left"></i>
                             </a>
                         </div>
                         <div class="about-row">
-                            <a class="carousel-arrow-right" href="#carouselAbout" role="button" data-slide="prev">
+                            <a class="carousel-arrow-right" href="#carouselAbout" role="button" data-slide="next">
                                 <i class="fas fa-chevron-right"></i>
                             </a>
                         </div>
@@ -113,12 +113,12 @@
                             <img v-lazy-src="'/img/about_img/Mitsubishi-logo.png'">
                         </div>
                         <div class="about-row">
-                            <a class="carousel-arrow-left" href="#about_slide_responsive" role="button" data-slide="next">
+                            <a class="carousel-arrow-left" href="#about_slide_responsive" role="button" data-slide="prev">
                                 <i class="fas fa-chevron-left"></i>
                             </a>
                         </div>
                         <div class="about-row">
-                            <a class="carousel-arrow-right" href="#about_slide_responsive" role="button" data-slide="prev">
+                            <a class="carousel-arrow-right" href="#about_slide_responsive" role="button" data-slide="next">
                                 <i class="fas fa-chevron-right"></i>
                             </a>
                         </div>

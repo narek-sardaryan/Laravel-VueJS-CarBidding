@@ -30,7 +30,7 @@
                                 </div>
                             </div>
 					  		<div class="login_btn_div text-center">
-					  			<input type="submit" class="login_btn" name="send" value="Войти">
+					  			<input type="submit" class="login_btn btn-ripple" name="send" value="Войти">
 					  		</div>
 					  		<label class="fpssw_label text-center">
 					  			<router-link class="fpssw_txt" to="passwordrequest">Забыли пароль?</router-link>
@@ -42,7 +42,7 @@
 			  		 	<p class="registr_txts">Регистрация участника ЭТП в качестве Покупателья </p>
 			  		 	<p class="registr_txts">Регистрация участника ЭТП в качестве Продавца</p>
 			  		 	<div class="registr_btn_div text-center">
-			  		 		<router-link to="/register"><input type="submit" class="registr_btn" name="send" value="Регистрация"></router-link>
+			  		 		<router-link to="/register"><input type="submit" class="registr_btn btn-ripple" name="send" value="Регистрация"></router-link>
 			  		 	</div>
 			  		</div>
 			  	</div>
