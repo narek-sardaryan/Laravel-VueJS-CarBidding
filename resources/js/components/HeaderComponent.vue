@@ -11,21 +11,21 @@
                         <ul class="nav navbar-nav">
                             <li class="nav-item dropdown">
                                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Меню</a>
-                                <div class="dropdown-menu">
-                                    <li class="nav-item">
-                                        <router-link to="/">Главная</router-link>
+                                <div id="link" class="dropdown-menu">
+                                    <li class="nav-item router-link-exact-active router-link-active">
+                                        <router-link class="nav-link" to="/">Главная</router-link>
                                     </li>
                                     <li class="nav-item">
-                                        <router-link to="/faq">Вопрос-ответ</router-link>
+                                        <router-link class="nav-link" to="/faq">Вопрос-ответ</router-link>
                                     </li>
                                     <li class="nav-item">
-                                        <router-link to="/about">О компании</router-link>
+                                        <router-link class="nav-link" to="/about">О компании</router-link>
                                     </li>
                                     <li class="nav-item">
-                                        <router-link to="/rules">Правила</router-link>
+                                        <router-link class="nav-link" to="/rules">Правила</router-link>
                                     </li>
                                     <li class="nav-item">
-                                        <router-link to="/contacts">Контакты</router-link>
+                                        <router-link class="nav-link" to="/contacts">Контакты</router-link>
                                     </li>
                                 </div>
                             </li>
@@ -33,7 +33,7 @@
                                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Все Аукционы</a>
                                 <div class="dropdown-menu">
                                     <li class="nav-item" v-for="auction in allAuctions">
-                                        <router-link :to="'/auctions/'+auction.id">{{auction.name}}
+                                        <router-link class="nav-link" :to="'/auctions/'+auction.id">{{auction.name}}
                                         </router-link>
                                     </li>
                                 </div>
@@ -47,8 +47,8 @@
                             <li class="nav-item dropdown" v-if="User.length != 0">
                                 <a class="nav-link dropdown-toggle" data-toggle="dropdown">{{User.name}}</a>
                                 <div class="dropdown-menu">
-                                    <li class="nav-item" v-if="User.usertype == 'admin'">
-                                        <a href="/admin">Админ Панель</a>
+                                    <li class="nav-item router-link-exact-active router-link-active" v-if="User.usertype == 'admin'">
+                                        <a href="/admin" class="nav-link">Админ Панель</a>
                                     </li>
                                     <li class="nav-item">
                                         <router-link class="nav-link" to="/profile">Профиль</router-link>
@@ -103,8 +103,8 @@
         mounted(){
             this.$store.dispatch('fetchAuctions');
             this.$store.dispatch('fetchUser');
-            console.log(this.$ref.aaa);
         },
+
         computed: mapGetters(["allAuctions", "User"]),
     }
 </script>

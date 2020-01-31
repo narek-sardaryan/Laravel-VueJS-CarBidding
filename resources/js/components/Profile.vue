@@ -390,7 +390,6 @@
                 tablinks = document.getElementsByClassName("tablinks");
                 for (i = 0; i < tablinks.length; i++) {
                     tablinks[i].className = tablinks[i].className.replace(" active", "");
-
                 }
                 document.getElementById(tabname + 'tab').style.display = "block";
                 var elem = document.getElementsByClassName('profile_menu_li');

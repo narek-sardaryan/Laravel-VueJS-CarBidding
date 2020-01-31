@@ -82,6 +82,7 @@
     .body-cats {
         justify-content: center;
     }
+
     .body-cars {
         width: 100%;
     }
@@ -164,6 +165,16 @@
     }
 
     /*register page mb*/
+    .register_content {
+       margin: 35px 0;
+    }
+    .register_content .register_title {
+        font-size: 15px;
+    }
+    .reg_btn {
+        padding: 3px;
+        font-size: 12px;
+    }
     .register_inputs {
         width: 100%;
     }
@@ -191,9 +202,7 @@
     .profile_container {
         margin-top: 80px;
     }
-    .profile_data {
-        margin-top: 20px;
-    }
+
     .avatar_section {
         margin-left: 0;
         margin-bottom: 15px;
